@@ -1,0 +1,180 @@
+---
+title: Accordian
+description: "The Accordion is a highly customizable and intuitive component that allows you to present your content in a collapsible style. It is ideal for scenarios where you want to manage a large amount of content or information in a limited space, such as FAQs, menus, or lists."
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion from '../../../components/Potion.astro'
+import { Accordian } from '../../../ui/React/Accordian/accordian.tsx'
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center w-3/4 h-80">
+      <Accordian client:load/>
+    </div>
+</div>
+
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const accordianPotion = tv({
+  slots: {
+    accordianRoot:
+      "flex w-full flex-col divide-y-2 divide-neutral-400 rounded-xl p-8",
+    accordianItem: "p-2",
+    accordianTrigger:
+      "flex w-full items-center justify-between rounded-xl bg-transparent p-0 pb-2 text-lg font-bold transition-all hover:underline [&:not(data-[expanded])]:pb-4 [&[data-expanded]>svg]:rotate-180",
+    accordianContent: " [data-expanded]]:p-0 text-sm",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center w-3/4 h-72">
+      <Accordian client:load/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs vueDisabled>
+<Fragment slot="vsc">
+```tsx
+bui-accordian // react
+bui-s-accordian // solid 
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import { ChevronDown } from "lucide-react";
+
+import {
+  AccordionContent,
+  AccordionItem,
+  Accordion as AccordionRoot,
+  AccordionTrigger,
+} from "@ark-ui/react";
+
+import { accordianPotion } from "@potions/accordianPotion";
+
+const { accordianRoot, accordianItem, accordianTrigger, accordianContent } =
+  accordianPotion();
+
+const parts = [
+  {
+    trigger: "Is it Accessible?",
+    content: "Yep! All components adhere to WAI-ARIA design patterns.",
+  },
+  {
+    trigger: "Can I customize?",
+    content:
+      "The open component architecture allows for customization and customization.",
+  },
+  {
+    trigger: "Uncontrolled or Controlled?",
+    content:
+      "Components can be uncontrolled by default or controlled alternatively.",
+  },
+];
+
+export const Accordian = () => {
+  return (
+    <AccordionRoot className={accordianRoot()} defaultValue="Is it Accessible?">
+      {parts.map((part, id) => (
+        <AccordionItem
+          className={accordianItem()}
+          key={id}
+          value={part.trigger}
+        >
+          <AccordionTrigger className={accordianTrigger()}>
+            {part.trigger}
+            <ChevronDown className="h-5 w-5 transition duration-500" />
+          </AccordionTrigger>
+          <AccordionContent className={accordianContent()}>
+            <div className="mb-2">{part.content}</div>
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </AccordionRoot>
+  );
+};
+
+```
+</Fragment>
+<Fragment slot="solid">
+```tsx
+import { ChevronDown } from "lucide-solid";
+
+import {
+  AccordionContent,
+  AccordionItem,
+  Accordion as AccordionRoot,
+  AccordionTrigger,
+} from "@ark-ui/solid";
+import { accordianPotion } from "@potions/accordianPotion";
+import { For } from "solid-js";
+
+const { accordianRoot, accordianItem, accordianTrigger, accordianContent } =
+  accordianPotion();
+
+const parts = [
+  {
+    trigger: "Is it Accessible?",
+    content: "Yep! All components adhere to WAI-ARIA design patterns.",
+  },
+  {
+    trigger: "Can I customize?",
+    content:
+      "The open component architecture allows for customization and customization.",
+  },
+  {
+    trigger: "Uncontrolled or Controlled?",
+    content:
+      "Components can be uncontrolled by default or controlled alternatively.",
+  },
+];
+
+export const Accordian = () => {
+  return (
+    <div class="h-full w-full rounded-xl bg-slate-200 p-8">
+      <AccordionRoot class={accordianRoot()}>
+        <For each={parts}>
+          {(part) => (
+            <AccordionItem class={accordianItem()} value={part.trigger}>
+              <AccordionTrigger class={accordianTrigger()}>
+                {part.trigger}
+                <ChevronDown class="h-5 w-5 transition duration-500" />
+              </AccordionTrigger>
+              <AccordionContent class={accordianContent()}>
+                <div class="mb-2">{part.content}</div>
+              </AccordionContent>
+            </AccordionItem>
+          )}
+        </For>
+      </AccordionRoot>
+    </div>
+  );
+};
+
+```
+</Fragment>
+
+</DemoTabs>
+
+

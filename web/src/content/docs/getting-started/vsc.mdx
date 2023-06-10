@@ -1,0 +1,33 @@
+---
+title: VScode Extension
+description: "The Potion extension, for VScode."
+tags: "Download, Configure, Commands"
+---
+
+---
+
+The Potion VScode Extension provides snippets of all starter components.
+
+## Install 
+
+Locate and install [potionUI](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) in the VScode marketplace.
+
+## Using
+
+All commands are prefixed with "pui". Currently only React components are supported, in the future additional frameworks will be added. *Since solid also uses .tsx file extension the commands for solid will be prefixed with "pui-s".
+
+For example,
+
+```tsx
+bui-button
+```
+will print the below code your editor!
+
+```tsx
+import { Pressable as Button } from "@ark-ui/react";
+import { buttonPotion } from "@potions/buttonPotion";
+
+<Button className={buttonPotion()}>Button</Button>;
+```
+
+

@@ -1,0 +1,152 @@
+---
+import { Github, Menu, X, Paintbrush } from "lucide-react";
+import { SearchDialog } from "./SearchDialog";
+import { getCollection } from "astro:content";
+
+const allDocs = await getCollection("docs");
+const currentPage = Astro.url.pathname;
+---
+
+<script>
+  // Toggle menu
+  const menuBtn = document.querySelector("#menuToggle");
+  menuBtn?.addEventListener("click", function () {
+    const sideNavMenu = document.getElementById("side-nav");
+    const menuIcon = document.getElementById("menuIcon");
+    const xIcon = document.getElementById("xIcon");
+    const menuOpen = menuBtn?.getAttribute("aria-expanded");
+    if (menuOpen === "false") {
+      menuBtn?.setAttribute("aria-expanded", "true");
+      menuIcon?.classList.add("hidden");
+      xIcon?.classList.remove("hidden");
+      sideNavMenu?.classList.remove("hidden");
+    } else {
+      menuBtn?.setAttribute("aria-expanded", "false");
+      menuIcon?.classList.remove("hidden");
+      xIcon?.classList.add("hidden");
+      sideNavMenu?.classList.add("hidden");
+    }
+  });
+</script>
+
+<div
+  class=" top-0 z-40 flex h-16 w-full fixed items-center border-b-2 bg-surface pl-2 pr-4"
+>
+  <div class="flex w-full flex-row items-center justify-between">
+    <div class="flex items-center gap-2">
+      <a
+        class:list={[
+          "text-xl md:text-3xl font-bold tracking-tighter text-text md:block",
+          currentPage === "/" ? "" : "hidden",
+        ]}
+        href="/"
+        ><div class="flex items-center">
+          <img class="h-12 w-12" src="/potion.png" /><p class="-ml-2 text-2xl">potionUI</p>
+        </div>
+      </a>
+      <button
+        id="menuToggle"
+        aria-expanded="false"
+        class:list={[currentPage === "/" ? "hidden" : ""]}
+      >
+        <Menu id="menuIcon" className="block md:hidden" />
+        <X id="xIcon" className="hidden" />
+      </button>
+    </div>
+    <div class="flex flex-row items-center gap-4">
+      <a class="text-text" href="/docs/">Docs</a>
+      <SearchDialog searchList={allDocs} client:load />
+      <button
+        class="items flex justify-center gap-2 rounded-xl bg-surface-2 p-2 px-4 text-text"
+        id="button"
+        aria-describedby="tooltip">Theme<Paintbrush /></button
+      >
+      <div
+        class="w-max-content text--2 absolute hidden rounded-xl bg-surface-2"
+        id="tooltip"
+        role="tooltip"
+      >
+        <div class="flex w-48 flex-col items-start gap-2 rounded-xl p-4">
+          <button
+            class="w-full rounded-xl p-2 text-start hover:text-primary text-text"
+            id="set-light"
+            data-set-theme="light"
+            data-act-class="ACTIVECLASS">Light</button
+          >
+          <button
+            class="w-full rounded-xl p-2 text-start hover:text-primary text-text"
+            id="set-dark"
+            data-set-theme="dark"
+            data-act-class="ACTIVECLASS">Dark</button
+          >
+          <button
+            class="w-full rounded-xl p-2 text-start hover:text-primary text-text"
+            id="set-candy"
+            data-set-theme="candy"
+            data-act-class="ACTIVECLASS">Candy</button
+          >
+        </div>
+      </div>
+      <a class="p-2 text-text" href="https://github.com/potionUI">
+        <Github />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { computePosition, shift, offset } from "@floating-ui/dom";
+
+  const button = document.querySelector("#button") as HTMLElement;
+  const tooltip = document.querySelector("#tooltip") as HTMLElement;
+
+  const setLight = document.querySelector("#set-light");
+  const setDark = document.querySelector("#set-dark");
+  const setCandy = document.querySelector("#set-candy");
+  function update() {
+    computePosition(button, tooltip, {
+      middleware: [offset(6), shift({ padding: 5 })],
+    }).then(({ x, y }) => {
+      Object.assign(tooltip.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
+    });
+  }
+
+  function showTooltip() {
+    tooltip.style.display = "block";
+    update();
+  }
+
+  function hideTooltip() {
+    tooltip.style.display = "";
+  }
+  setLight?.addEventListener("click", hideTooltip);
+  setDark?.addEventListener("click", hideTooltip);
+
+  setCandy?.addEventListener("click", hideTooltip);
+  button?.addEventListener("click", showTooltip);
+  document.addEventListener("click", function (event) {
+    const target = event.target as Node;
+
+    if (
+      !tooltip?.contains(target) &&
+      target !== button &&
+      !button?.contains(target)
+    ) {
+      hideTooltip();
+    }
+  });
+</script>
+
+<style>
+  .ACTIVECLASS {
+    background-color: #c269e9;
+    color: black;
+  }
+  .ACTIVECLASS:hover {
+    background-color: #c269e9 !important;
+    color: black !important;
+  }
+</style>

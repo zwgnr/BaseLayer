@@ -1,0 +1,246 @@
+---
+title: Dropdown
+description: "An accessible dropdown and context menu that is used to display a list of actions or options that a user can choose."
+---
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { Dropdown } from "../../../ui/React/Dropdown/dropdown.tsx"
+
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+const baseItemStyles = tv({
+  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
+});
+
+export const dropdownPotion = tv({
+  slots: {
+    content:
+      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
+    item: [baseItemStyles(), "mb-2 flex justify-between p-2"],
+    itemGroupLabel: "text-sm  font-bold",
+    optionItem: [baseItemStyles(), "w-full rounded-md p-2 text-sm"],
+    triggerItem: [baseItemStyles(), "inline-flex w-full flex-wrap gap-2"],
+    seperator: "w-full rounded-md border border-gray-200",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default 
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="not-prose flex items-center w-full justify-center">
+      <Dropdown client:only="react"/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs solidDisabled vueDisabled>
+  <Fragment slot="react">
+```tsx
+import {
+  MenuContent as DropdownContent,
+  MenuItem as DropdownItem,
+  MenuItemGroup as DropdownItemGroup,
+  MenuItemGroupLabel as DropdownItemGroupLabel,
+  MenuOptionItem as DropdownOptionItem,
+  MenuPositioner as DropdownPositioner,
+  Menu as DropdownRoot,
+  MenuSeparator as DropdownSeparator,
+  MenuTrigger as DropdownTrigger,
+  MenuTriggerItem as DropdownTriggerItem,
+  Portal,
+  Radio,
+  RadioControl,
+  RadioGroup,
+  RadioInput,
+  RadioLabel,
+} from "@ark-ui/react";
+import { Avatar } from "@components/avatar";
+import { Checkbox } from "@components/checkbox";
+import { dropdownPotion } from "@potions/dropdownPotion";
+import { radioGroupPotion } from "@potions/radioGroupPotion";
+import { ChevronRight, Plus, Settings } from "lucide-react";
+import { useState } from "react";
+
+const { content, item, seperator, itemGroupLabel, optionItem, triggerItem } =
+  dropdownPotion();
+
+const { radioGroupRoot, radioControl, radio, radioLabel } = radioGroupPotion();
+
+export const Dropdown = () => {
+  const [value, setValue] = useState<Record<string, string | string[]>>({
+    theme: "",
+    features: [],
+  });
+  const options = [
+    { id: "light", label: "Light" },
+    { id: "dark", label: "Dark" },
+  ];
+  return (
+    <DropdownRoot
+      closeOnSelect={false}
+      onValueChange={(data) => {
+        setValue((prev) => ({
+          ...prev,
+          [data.name]: data.value,
+        }));
+      }}
+      value={value}
+    >
+      <DropdownTrigger asChild>
+        <button>
+          <Avatar />
+        </button>
+      </DropdownTrigger>
+      <Portal>
+        <DropdownPositioner className="z-50">
+          <DropdownContent className={content()}>
+            <DropdownItem
+              className={item({ className: "cursor-default" })}
+              disabled
+              id="new-tab"
+            >
+              <p className="text-gray-500">me@hey.com</p>
+            </DropdownItem>
+            <DropdownSeparator className={seperator({ className: "mb-2" })} />
+            <DropdownItem className={item()} id="profile">
+              <p>Account Settings</p>
+              <Settings className="h-5 w-5" />
+            </DropdownItem>
+            <DropdownItem className={item()} id="projects">
+              <p>Create a Team</p>
+              <Plus className="h-5 w-5" />
+            </DropdownItem>
+            <DropdownSeparator className={seperator({ className: "my-2" })} />
+            <DropdownItemGroup id="radio-group" className="mb-2">
+              <DropdownItemGroupLabel
+                className={itemGroupLabel()}
+                htmlFor="radio-group"
+              >
+                Theme
+              </DropdownItemGroupLabel>
+              <RadioGroup className={radioGroupRoot()} defaultValue="light">
+                {options.map((option, id) => (
+                  <DropdownOptionItem
+                    className={optionItem()}
+                    name="theme"
+                    type="radio"
+                    value={option.id}
+                    key={id}
+                  >
+                    <Radio className={radio()} value={option.id}>
+                      <RadioInput />
+                      <RadioControl className={radioControl()} />
+                      <RadioLabel className={radioLabel()}>
+                        {option.label}
+                      </RadioLabel>
+                    </Radio>
+                  </DropdownOptionItem>
+                ))}
+              </RadioGroup>
+            </DropdownItemGroup>
+            <DropdownItemGroup
+              id="checkbox-group"
+              className="mb-2 flex flex-col gap-2"
+            >
+              <DropdownItemGroupLabel
+                className={itemGroupLabel()}
+                htmlFor="checkbox-group"
+              >
+                Beta Features
+              </DropdownItemGroupLabel>
+              <DropdownOptionItem
+                className={optionItem()}
+                name="features"
+                type="checkbox"
+                value="stats-1"
+              >
+                {({ isActive }) => (
+                  <Checkbox size="sm" checked={isActive}>
+                    Stats
+                  </Checkbox>
+                )}
+              </DropdownOptionItem>
+              <DropdownOptionItem
+                className={optionItem()}
+                name="features"
+                type="checkbox"
+                value="autosave-1"
+              >
+                {({ isActive }) => (
+                  <Checkbox size="sm" checked={isActive}>
+                    Autosave
+                  </Checkbox>
+                )}
+              </DropdownOptionItem>
+              <DropdownOptionItem
+                className={optionItem()}
+                name="features"
+                type="checkbox"
+                value="ai-1"
+              >
+                {({ isActive }) => (
+                  <Checkbox size="sm" checked={isActive}>
+                    AI Assist
+                  </Checkbox>
+                )}
+              </DropdownOptionItem>
+            </DropdownItemGroup>
+            <DropdownSeparator className={seperator({ className: "mb-2" })} />
+            <DropdownRoot
+              closeOnSelect={false}
+              positioning={{ placement: "right-start" }}
+            >
+              <DropdownTriggerItem className={triggerItem()}>
+                <span className="flex flex-1 p-2">Contact options</span>
+                <ChevronRight />
+              </DropdownTriggerItem>
+              <Portal>
+                <DropdownPositioner className="z-50">
+                  <DropdownContent className={content()}>
+                    <DropdownItem className={item()} id="twitter">
+                      Twitter
+                    </DropdownItem>
+                    <DropdownItem
+                      className={item({ className: "mb-0" })}
+                      id="message"
+                    >
+                      Email
+                    </DropdownItem>
+                  </DropdownContent>
+                </DropdownPositioner>
+              </Portal>
+            </DropdownRoot>
+          </DropdownContent>
+        </DropdownPositioner>
+      </Portal>
+    </DropdownRoot>
+  );
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+bui-dropdown
+```
+  </Fragment>
+</DemoTabs>

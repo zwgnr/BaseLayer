@@ -1,0 +1,32 @@
+{
+  "name": "potionui",
+  "displayName": "potionUI",
+  "description": "Elegant components built with Ark UI & TailwindCSS.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/React/Accordian/accordian.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/React/Button/button.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/React/Button/button-icon.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/React/Button/button-loader.code-snippets"
+      }
+    ]
+  }
+}

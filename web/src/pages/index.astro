@@ -1,0 +1,21 @@
+---
+import { Avatar } from "@ui/React/Avatar/avatar";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="w-1/2">
+    <h1 class="bg-primary">Welcome to potion</h1>
+    <div class="flex h-80 w-full items-center justify-center bg-slate-500">
+      <Avatar client:load/>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+</style>

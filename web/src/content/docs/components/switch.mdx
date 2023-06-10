@@ -1,0 +1,50 @@
+---
+title: Switch
+description: "The Switch is an interactive, binary component designed for your applications. It offers a clear, visual interface for users to enable or disable specific settings, features, or functionalities."
+---
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { Switch } from "../../../ui/React/Switch/switch"
+
+
+## Installation 
+
+```bash
+potion add switch
+```
+
+<br />
+
+## Default 
+
+<div class="bg-surface-2 h-12 w-full flex justify-center items-center">
+    <div className="flex items-center">
+      <Switch client:load/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs solidDisabled vueDisabled>
+  <Fragment slot="code">
+```tsx
+import { Switch } from "@/components/switch"
+
+export function SwitchDemo() {
+  return (
+    <div className="flex items-center">
+      <Switch />
+    </div>
+  )
+}
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+bui-switch
+```
+  </Fragment>
+</DemoTabs>

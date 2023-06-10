@@ -1,0 +1,32 @@
+---
+import { ComponentTabs } from "@components/ComponentTabs";
+const { solidDisabled, vueDisabled } = Astro.props;
+---
+
+<!--
+<div id="loader" class="mx-auto h-96 w-full rounded-xl bg-[#282c34]">
+  <div class="flex h-full flex-row justify-center space-x-5">
+    <div class="flex w-full flex-col gap-4">
+      <div
+        class=" h-10 w-full rounded-b-none rounded-md border-b-4 border-gray-500"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<ComponentTabs
+  client:only="react"
+  solidDisabled={solidDisabled}
+  vueDisabled={vueDisabled}
+>
+  <Fragment slot="reactTab">
+    <slot name="react" />
+  </Fragment>
+  <Fragment slot="solidTab">
+    <slot name="solid" />
+  </Fragment>
+  <Fragment slot="vscTab">
+    <slot name="vsc" />
+  </Fragment>
+</ComponentTabs>

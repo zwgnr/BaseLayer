@@ -1,0 +1,100 @@
+---
+title: Rating Group
+description: "The RatingGroup allows a user to add and remove ratings for an item."
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion from '../../../components/Potion.astro'
+import { RatingGroup } from '../../../ui/React/RatingGroup/ratingGroup.tsx'
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center w-72 h-24">
+      <RatingGroup client:load/>
+    </div>
+</div>
+
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const ratingGroupPotion = tv({
+  slots: {
+    rgRoot: "",
+    rgControl: "flex gap-1",
+    rgRating:
+      "[&[data-[highlighted]]:text-accent cursor-pointer fill-surface-3 text-text-3 transition duration-75  focus:outline-0 [&>svg]:h-12 [&>svg]:w-12 [&[data-highlighted]]:fill-accent",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center w-72 h-24">
+      <RatingGroup client:load/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs vueDisabled solidDisabled>
+<Fragment slot="vsc">
+```tsx
+pui-rating-group 
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import {
+  Rating,
+  RatingGroupControl,
+  RatingGroup as RatingGroupRoot,
+} from "@ark-ui/react";
+import { ratingGroupPotion } from "@potions/ratingGroupPotion";
+import { Star } from "lucide-react";
+
+const { rgControl, rgRating, rgRoot } = ratingGroupPotion();
+
+export const RatingGroup = () => {
+  return (
+    <RatingGroupRoot max={5} defaultValue={4} className={rgRoot()}>
+      <RatingGroupControl className={rgControl()}>
+        {({ sizeArray }) =>
+          sizeArray.map((index) => (
+            <Rating className={rgRating()} key={index} index={index}>
+              {({ isHalf, isHighlighted }) => {
+                return isHighlighted ? (
+                  <Star className="fill-accent text-accent" />
+                ) : (
+                  <Star className="stroke-surface-4" />
+                );
+              }}
+            </Rating>
+          ))
+        }
+      </RatingGroupControl>
+    </RatingGroupRoot>
+  );
+};
+
+
+```
+</Fragment>
+
+</DemoTabs>
+
+

@@ -1,0 +1,209 @@
+---
+title: Dialog
+description: "A dialog is a window overlaid on either the primary window or another dialog window. Content behind a modal dialog is inert, meaning that users cannot interact with it."
+---
+---
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { Dialog } from "../../../ui/React/Dialog/dialog.tsx"
+
+## Installation 
+
+<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
+```bash
+potion add dialog
+```
+</div>
+
+## Default 
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center w-full justify-center">
+      <Dialog client:load/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs solidDisabled vueDisabled>
+  <Fragment slot="react">
+```tsx
+import { Button } from "@components/button";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Portal,
+} from "@components/dialog";
+import { X } from "lucide-react";
+
+export const DialogDemo = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <Portal>
+        <DialogBackdrop />
+        <DialogContainer>
+          <DialogContent>
+            <div className="flex flex-col gap-8 p-6">
+              <div className="flex flex-col gap-1">
+                <DialogTitle>Dialog Title</DialogTitle>
+                <DialogDescription>Dialog Description</DialogDescription>
+              </div>
+              <div className="flex w-full gap-3 justify-center items-center">
+                <DialogCloseTrigger asChild>
+                  <Button state="outline" className="border-critical hover:border-critical-700 text-critical">Cancel</Button>
+                </DialogCloseTrigger>
+                <Button className="bg-positive hover:bg-positive-700">Confirm</Button>
+              </div>
+            </div>
+            <DialogCloseTrigger asChild>
+              <button className="absolute top-6 right-6">
+                <X aria-label="Close dialog"/>
+              </button>
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogContainer>
+      </Portal>
+    </Dialog>
+  );
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+bui-dialog
+```
+  </Fragment>
+</DemoTabs>
+
+## Manual Install
+
+<p>
+  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
+  paste the code below into a new file!
+</p>
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import {
+  Dialog as ArkDialog,
+  DialogBackdrop as ArkDialogBackdrop,
+  DialogContainer as ArkDialogContainer,
+  DialogContent as ArkDialogContent,
+  DialogDescription as ArkDialogDescription,
+  DialogTitle as ArkDialogTitle,
+  DialogTrigger as ArkDialogTrigger,
+  Portal as ArkPortal,
+  DialogCloseTrigger as ArkDialogCloseTrigger
+} from "@ark-ui/react";
+
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { tv } from "tailwind-variants";
+
+const carouselStyles = tv({
+  slots: {
+    backdrop: "bg-gray-800/30 inset-0 fixed z-40",
+    container: "flex items-center inset-0 justify-center fixed z-40",
+    content: "bg-surface rounded-xl shadow-lg relative min-w-80 w-80 z-50",
+  },
+});
+
+const { backdrop, container, content } = carouselStyles();
+
+const Dialog = ArkDialog;
+const DialogTrigger = ArkDialogTrigger;
+const DialogCloseTrigger = ArkDialogCloseTrigger;
+const Portal = ArkPortal;
+
+const DialogBackdrop = forwardRef<
+  ElementRef<typeof ArkDialogBackdrop>,
+  ComponentPropsWithoutRef<typeof ArkDialogBackdrop>
+>(({ className, children, ...props }, ref) => (
+  <ArkDialogBackdrop
+    ref={ref}
+    className={backdrop({ className: className })}
+    {...props}
+  ></ArkDialogBackdrop>
+));
+
+DialogBackdrop.displayName = ArkDialogBackdrop.displayName;
+
+const DialogContainer = forwardRef<
+  ElementRef<typeof ArkDialogContainer>,
+  ComponentPropsWithoutRef<typeof ArkDialogContainer>
+>(({ className, children, ...props }, ref) => (
+  <ArkDialogContainer
+    ref={ref}
+    className={container({ className: className })}
+    {...props}
+  >
+    {children}
+  </ArkDialogContainer>
+));
+
+DialogContainer.displayName = ArkDialogContainer.displayName;
+
+const DialogContent = forwardRef<
+  ElementRef<typeof ArkDialogContent>,
+  ComponentPropsWithoutRef<typeof ArkDialogContent>
+>(({ className, children, ...props }, ref) => (
+  <ArkDialogContent
+    ref={ref}
+    className={content({ className: className })}
+    {...props}
+  >
+    {children}
+  </ArkDialogContent>
+));
+
+DialogContent.displayName = ArkDialogContent.displayName;
+
+const DialogTitle = forwardRef<
+  ElementRef<typeof ArkDialogTitle>,
+  ComponentPropsWithoutRef<typeof ArkDialogTitle>
+>(({ className, children, ...props }, ref) => (
+  <ArkDialogTitle ref={ref} className="text-lg font-bold" {...props}>
+    {children}
+  </ArkDialogTitle>
+));
+
+DialogTitle.displayName = ArkDialogTitle.displayName;
+
+const DialogDescription = forwardRef<
+  ElementRef<typeof ArkDialogDescription>,
+  ComponentPropsWithoutRef<typeof ArkDialogDescription>
+>(({ className, children, ...props }, ref) => (
+  <ArkDialogDescription ref={ref} className="text-sm text-gray-400" {...props}>
+    {children}
+  </ArkDialogDescription>
+));
+
+DialogDescription.displayName = ArkDialogDescription.displayName;
+
+export {
+  Dialog,
+  DialogTrigger,
+  DialogCloseTrigger,
+  Portal,
+  DialogBackdrop,
+  DialogContainer,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+};
+
+```
+</Fragment>
+</Potion>
+

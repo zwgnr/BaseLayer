@@ -1,0 +1,87 @@
+---
+title: Avatar
+description: The Avatar component is a versatile and compact element used for representing users or entities via images or initials. It's commonly used in headers, user interfaces, or anywhere you need to display a user's picture or initials.
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion from '../../../components/Potion.astro'
+import { Avatar } from '../../../ui/React/Avatar/avatar.tsx'
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center not-prose">
+      <Avatar client:only="react"/>
+    </div>
+</div>
+
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const avatarPotion = tv({
+  slots: {
+    avatarRoot: "h-16 w-16 rounded-full border-2 border-accent",
+    avatarFallback:
+      "flex h-[inherit] items-center justify-center bg-surface-2 font-bold text-text",
+    avatarImage: "object-cover",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center not-prose">
+      <Avatar client:load/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs solidDisabled vueDisabled>
+<Fragment slot="vsc">
+```tsx
+bui-accordian 
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import {
+  AvatarFallback,
+  AvatarImage,
+  Avatar as AvatarRoot,
+} from "@ark-ui/react";
+import { avatarPotion } from "@potions/avatarPotion";
+
+const { avatarRoot, avatarFallback, avatarImage } = avatarPotion();
+
+export const Avatar = () => (
+  <AvatarRoot className={avatarRoot()}>
+    <AvatarFallback className={avatarFallback()}>ME</AvatarFallback>
+    <AvatarImage
+      className={avatarImage()}
+      src="https://i.pravatar.cc/300"
+      alt="avatar"
+    />
+  </AvatarRoot>
+);
+
+```
+</Fragment>
+
+</DemoTabs>
+
+

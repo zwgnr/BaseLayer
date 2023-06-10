@@ -1,0 +1,172 @@
+---
+title: Overview
+description: "To better understard how Potion works, lets take a look at some examples."
+tags: ["Slots", "Variants", "Overrides"]
+---
+
+---
+
+import { PinInput } from '../../../ui/React/PinInput/PinInput.tsx'
+import { Pressable as Button } from "@ark-ui/react";
+import { buttonPotion } from "@potions/buttonPotion";
+
+## Potion Slots
+
+Let's dive with an example. Take a look at this simple Pin Input component.
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center">
+      <PinInput client:load />
+    </div>
+</div>
+
+The potion for the component looks like this.
+
+```tsx
+import { tv } from "tailwind-variants";
+
+export const pinInputPotion = tv({
+  slots: {
+    root: "flex flex-row items-center gap-4",
+    field:
+      "h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+    control: "flex gap-2",
+    label: "text-md font-bold",
+  },
+});
+
+```
+
+and the component itself like this.
+
+```tsx
+import {
+  PinInputControl,
+  PinInputField,
+  PinInputLabel,
+  PinInput as PinInputRoot,
+} from "@ark-ui/react";
+import { pinInputPotion } from "@potions/pinInputPotion";
+
+const { root, field, control, label } = pinInputPotion();
+
+export const PinInput = () => (
+  <PinInputRoot
+    className={root()}
+    placeholder="0"
+    onComplete={(e) => alert(e.valueAsString)}
+  >
+    <PinInputLabel className={label({ className: "text-xl" })}>
+      Enter Pin:
+    </PinInputLabel>
+    <PinInputControl className={control()}>
+      {[0, 1, 2, 3].map((id, index) => (
+        <PinInputField className={field()} key={id} index={index} />
+      ))}
+    </PinInputControl>
+  </PinInputRoot>
+);
+
+```
+
+In the above example, each slot from the Potion matches up perfectly with a sub component of the Ark Pin Input Component.
+
+## Potion Variants
+
+As you can see, Potion leverages the <a target="_blank" rel="noopener noreferrer" href="https://www.tailwind-variants.org/">Tailwind Variants</a> library to create reusable styles. This library allows for things such as Variants, Responsive Variants, Slots, overrides, and Conflict resolution  (Tailwind Merge is built in). 
+
+Let's take a look at how variants work in Potion.
+
+<div class="max-h-96 overflow-y-auto no-scrollbar">
+```tsx
+import { tv, type VariantProps } from "tailwind-variants";
+
+export const buttonPotion = tv({
+  base: "inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-transform duration-100 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+  variants: {
+    intent: {
+      primary: "bg-primary text-primary-content hover:bg-primary-400",
+      accent: "bg-accent text-accent-content hover:bg-accent-400",
+    },
+    state: {
+      filled: "",
+      ghost: "",
+      soft: "",
+      outline: "",
+    },
+    size: {
+      sm: "h-8 px-2 text-sm",
+      md: "text-md h-10 px-4",
+      lg: "h-12 px-6 text-lg",
+    },
+  },
+  compoundVariants: [
+    {
+      intent: "primary",
+      state: "ghost",
+      className: "border-2 border-primary bg-primary/30 hover:bg-primary",
+    },
+    {
+      intent: "primary",
+      state: "soft",
+      className:
+        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
+    },
+    {
+      intent: "primary",
+      state: "outline",
+      className:
+        "border-2 border-primary bg-transparent text-primary-content hover:bg-primary-500 hover:text-black",
+    },
+    {
+      intent: "accent",
+      state: "ghost",
+      className: "border-2 border-primary bg-primary/30 hover:bg-primary",
+    },
+    {
+      intent: "accent",
+      state: "soft",
+      className:
+        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
+    },
+    {
+      intent: "accent",
+      state: "outline",
+      className:
+        "border-2 border-primary bg-transparent text-primary-content hover:bg-primary-500 hover:text-black",
+    },
+  ],
+  defaultVariants: {
+    intent: "primary",
+    state: "filled",
+    size: "md",
+  },
+});
+
+export type ButtonPotionProps = VariantProps<typeof buttonPotion>;
+
+```
+</div>
+
+Here is a Button component using the buttonPotion with several variants.
+
+<div class="flex items-center justify-center w-full p-2">
+<Button className={buttonPotion({ intent:"accent", state:"ghost" })}>
+Button
+</Button>
+</div>
+```tsx
+import { Pressable as Button } from "@ark-ui/react";
+import { buttonPotion } from "@potions/buttonPotion";
+
+<Button className={buttonPotion({ intent:"accent", state:"ghost" })}>Button</Button>;
+```
+
+You can use the variants inline like shown above, or pass them as props to your component itself.
+
+
+## Overrides
+
+Tailwind Variants provides excellent support for overriding styles and handling conflicts. The library uses tw-merge under the hood.
+All Tailwind Variants components provide an optional class / className for overriding classes on any component.
+Be sure to check out the <a target="_blank" rel="noopener noreferrer" href="https://www.tailwind-variants.org/docs/overriding-styles">Tailwind Variants</a> docs for more info info.

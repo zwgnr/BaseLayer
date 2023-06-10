@@ -1,0 +1,99 @@
+---
+import clsx from "clsx";
+
+export type Props = {
+  pageHeadings: Array<{ depth: number; text: string; slug: string }>;
+};
+
+const { pageHeadings } = Astro.props;
+---
+
+<!--- adapted from idea by @fazzaamiarso-->
+<nav id="toc">
+  <h2 class="mb-4 font-bold text-text">On This Page</h2>
+  <ul class="space-y-4 text-sm">
+    {
+      pageHeadings.map((h) => {
+        return (
+          h.depth < 4 && (
+            <li
+              class={clsx(
+                "text-text-2",
+                h.depth === 2 && "text-[15px]",
+                h.depth === 3 && "ml-4 text-[14px]"
+              )}
+            >
+              <a href={`#${h.slug}`} class="line-clamp-1">
+                {h.text}
+              </a>
+            </li>
+          )
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  .active {
+    color: #c269e9;
+  }
+</style>
+
+<script>
+  // Add a flag to check if a heading link was clicked
+  let isHeadingClicked = false;
+  // eslint-disable-next-line no-undef
+  const setCurrent: IntersectionObserverCallback = (entries) => {
+    // Check if a heading link was clicked
+    if (!isHeadingClicked) {
+      for (let entry of entries) {
+        const { id } = entry.target;
+        const tocHeadingEl = document.querySelector(`#toc a[href="#${id}"]`);
+        if (!tocHeadingEl) return;
+        if (entry.isIntersecting) {
+          document
+            .querySelectorAll("#toc a")
+            .forEach((e) => e.classList.remove("active"));
+          tocHeadingEl.classList.add("active");
+        }
+      }
+    }
+  };
+  // eslint-disable-next-line no-undef
+  const observerOption: IntersectionObserverInit = {
+    rootMargin: "0px 0px -66%",
+    threshold: 1,
+  };
+  const headingObserver = new IntersectionObserver(setCurrent, observerOption);
+  document
+    .querySelectorAll("article :is(h2,h3,h4)")
+    .forEach((heading) => headingObserver.observe(heading));
+
+  window.onload = function () {
+    document
+      .querySelectorAll("#toc a")
+      .forEach((e) => e.classList.remove("active"));
+
+    const firstHeading = document.querySelector("#toc a");
+    if (firstHeading) {
+      firstHeading.classList.add("active");
+    }
+
+    document.querySelectorAll("#toc a").forEach((link) => {
+      link.addEventListener("click", () => {
+        // Set the flag to true when a heading link is clicked
+        isHeadingClicked = true;
+        document
+          .querySelectorAll("#toc a")
+          .forEach((e) => e.classList.remove("active"));
+        // Add a delay before adding the 'active' class to the clicked link
+        setTimeout(() => {
+          link.classList.add("active");
+          // Reset the flag after updating the 'active' class
+          isHeadingClicked = false;
+        }, 100);
+      });
+    });
+  };
+</script>

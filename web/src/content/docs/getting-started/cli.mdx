@@ -1,0 +1,115 @@
+---
+title: CLI
+description: "The Potion CLI, written in GO."
+tags: ["Downloads", "Configure", "Commands"]
+---
+
+---
+
+The CLI can be used to setup your project, and install potions for you.
+
+To install the CLI you can either download your OS binary below or build from <a href="/">Source</a> yourself.
+
+## Downloads
+
+<div class="flex flex-col">
+<a href="/">Linux-amd64 </a>
+<a href="/">Darwin-amd-64 </a>
+<a href="/">Windows-x64 </a>
+</div>
+
+## Configure
+
+After downloading and extracting your .tar.gz file, ensure the binary file *potion* is executable.
+
+```bash
+chmod +x potion
+```
+
+*Optional - add potion to your path for ability to run potion command anywhere.
+
+```bash
+export PATH="/path/to/binary/folder:$PATH"
+```
+
+## Commands
+
+Potion supports the following commands.
+
+Running just the potion command by itself with no flags will bring up a help menu.
+
+```bash
+Usage:
+  potion [command]
+
+Available Commands:
+  add         Add components to your project
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  init        Configure your project
+  list        List all available components
+
+Flags:
+  -h, --help   help for potion
+
+Use "potion [command] --help" for more information about a command.
+```
+
+### potion init
+
+This command will walk you through the proccess of setting up your project for use with Potion. It will,
+
+1. Install required dependencies
+2. Configure your tailwind config
+3. Configure your global styles
+
+When the command is run, it will ask you what framework you are using.
+
+```bash
+What framework are you using? [type to search]: 
+>  React
+   Solid
+   Vue
+```
+
+Based on your selection, it will install the appropriate versions of 
+
+1. Ark UI (@arkui/react, or @arkui/solid, or @arkui/vue)
+2. Lucide Icons (lucide-react, or lucide-solid, or lucide-vue-next)
+3. tailwind-variants
+
+From there a <a href="/">tailwind.config.js</a> will be setup, as well as a <a href="/">global.css</a>
+
+*When you make your framework selection a warning will pop up promting you to confirm your actions.
+
+```bash
+What framework are you using?: 
+  >  React
+
+ WARNING  You are about to do the following,
+
+• Install @ark-ui/react, lucide-react, tailwind-variants
+• Overwrite your tailwind.config & global.css
+
+Proceed? [y/N]: 
+```
+
+### potion add
+
+This command will promt a multi-select menu where you can choose which potions you would like to install.
+
+```bash
+Please choose the 🧪 potions you would like to add: 
+> [✗]  Accordian
+  [✗]  Button
+  [✗]  Carousel
+  [✗]  Checkbox
+  [✗]  ColorPicker
+enter: select | tab: confirm | left: none | right: all| type to filter
+```
+
+You can select as many as you like, and also type with your keyboard to sort through the list faster!
+
+### potion list
+
+This command will list all the available potions you can add.

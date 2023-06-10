@@ -1,0 +1,164 @@
+---
+title: Carousel
+description: "The Carousel component is a dynamic and responsive content display tool for your applications. It provides support for various configurations, including slide alignment, text direction, and slide orientation."
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { Carousel } from "../../../ui/React/Carousel/carousel.tsx"
+
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file.
+
+## Default 
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center w-full h-72">
+      <Carousel client:load/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs solidDisabled vueDisabled>
+  <Fragment slot="code">
+```tsx
+export const CarouselDemo = () => {
+  const images = [
+    "https://tinyurl.com/bdz4mty4",
+    "https://tinyurl.com/2wx9ymsr",
+    "https://tinyurl.com/4sjr5mvu",
+  ];
+  return (
+    <Carousel>
+      <CarouselSlideGroup>
+        {images.map((image, index) => (
+          <CarouselSlide key={index} index={index}>
+            <img
+              src={image}
+              alt={`Slide Image ${index}`}
+              className="h-56 w-full object-cover"
+            />
+          </CarouselSlide>
+        ))}
+      </CarouselSlideGroup>
+      <CarouselControl>
+        <CarouselPrevSlideTrigger asChild>
+          <button>
+            <ChevronLeftSquare
+              aria-label="Previous Slide"
+              className="h-8 w-8 text-white"
+            />
+          </button>
+        </CarouselPrevSlideTrigger>
+        <CarouselNextSlideTrigger asChild>
+          <button>
+            <ChevronRightSquare
+              aria-label="Next Slide"
+              className="h-8 w-8 text-white"
+            />
+          </button>
+        </CarouselNextSlideTrigger>
+      </CarouselControl>
+    </Carousel>
+  );
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+bui-carousel
+```
+  </Fragment>
+</DemoTabs>
+
+## Manual Install
+
+<p>
+  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
+  paste the code below into a new file!
+</p>
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import {
+  Carousel as ArkCarousel,
+  CarouselControl as ArkCarouselControl,
+  CarouselNextSlideTrigger as ArkCarouselNextSlideTrigger,
+  CarouselPrevSlideTrigger as ArkCarouselPrevSlideTrigger,
+  CarouselSlide as ArkCarouselSlide,
+  CarouselSlideGroup as ArkCarouselSlideGroup,
+  CarouselViewport as ArkCarouselViewport,
+} from "@ark-ui/react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { tv } from "tailwind-variants";
+
+const carouselStyles = tv({
+  slots: {
+    root: "w-full",
+    control: "flex absolute justify-between left-4 right-4 top-1/2 z-1 -translate-y-2/4	",
+  },
+});
+
+const { root, control } = carouselStyles();
+
+const Carousel = forwardRef<
+  ElementRef<typeof ArkCarousel>,
+  ComponentPropsWithoutRef<typeof ArkCarousel>
+>(({ className, children, ...props }, ref) => (
+  <ArkCarousel ref={ref} className={root({ className: className })} {...props}>
+    <ArkCarouselViewport className="relative overflow-x-hidden">
+      {children}
+    </ArkCarouselViewport>
+  </ArkCarousel>
+));
+
+Carousel.displayName = ArkCarousel.displayName;
+
+const CarouselControl = forwardRef<
+  ElementRef<typeof ArkCarouselControl>,
+  ComponentPropsWithoutRef<typeof ArkCarouselControl>
+>(({ className, children, ...props }, ref) => (
+  <ArkCarouselControl
+    ref={ref}
+    className={control({ className: className })}
+    {...props}
+  >
+    {children}
+  </ArkCarouselControl>
+));
+
+CarouselControl.displayName = ArkCarouselControl.displayName;
+
+const CarouselPrevSlideTrigger = ArkCarouselPrevSlideTrigger;
+CarouselPrevSlideTrigger.displayName = ArkCarouselPrevSlideTrigger.displayName;
+
+const CarouselNextSlideTrigger = ArkCarouselNextSlideTrigger;
+CarouselNextSlideTrigger.displayName = ArkCarouselNextSlideTrigger.displayName;
+
+const CarouselSlideGroup = ArkCarouselSlideGroup
+
+CarouselSlideGroup.displayName = ArkCarouselSlideGroup.displayName;
+
+const CarouselSlide = ArkCarouselSlide;
+CarouselSlide.displayName = ArkCarouselSlide.displayName;
+
+export {
+  Carousel,
+  CarouselControl,
+  CarouselPrevSlideTrigger,
+  CarouselNextSlideTrigger,
+  CarouselSlideGroup,
+  CarouselSlide,
+};
+
+```
+</Fragment>
+</Potion>
+

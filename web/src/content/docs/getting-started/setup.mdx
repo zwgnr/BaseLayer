@@ -1,0 +1,407 @@
+---
+title: Setup
+description: "How to install components."
+tags: ["tailwind.config.js", "global.css", "Path Alias", "IntelliSense", "Prettier"]
+---
+---
+
+import VariantDemo from '../../../components/VariantDemo.astro'
+
+## CLI Installation
+
+1. Ensure you have your project initialized with your chosen framework as well as [TailwindCSS](https://tailwindcss.com/docs/installation).
+
+2. Run the <a href="/docs/getting-started/cli">CLI</a> init command. 
+
+   ```bash
+   potion init
+   ```
+
+   This will install [Ark UI](https://ark-ui.com/), [Lucide Icons](https://ark-ui.com/), and [Tailwind Variants](https://www.tailwind-variants.org/). It will also configure various project files for you.
+
+   ***Please note that running the potion init command will overwrite your tailwind.config.cjs, as well as your global.css file!***
+
+## Manual Installation
+
+1. ### Install Dependencies
+    <VariantDemo>
+    <Fragment slot="react">
+     ```bash
+     pnpm add @ark-ui/react lucide-react tailwind-variants
+     ```
+     </Fragment>
+     <Fragment slot="solid">
+     ```bash
+     pnpm add @ark-ui/solid lucide-solid tailwind-variants
+     ```
+     </Fragment>
+       <Fragment slot="vue">
+     ```bash
+     pnpm add @ark-ui/vue lucide-vue-next tailwind-variants
+     ```
+     </Fragment>
+    </VariantDemo>
+
+2.  ### Set up tailwind.config.js
+
+    <div class="max-h-72 overflow-y-auto no-scrollbar">
+    ```tsx
+    const { fontFamily } = require("tailwindcss/defaultTheme");
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+      darkMode: "class",
+      theme: {
+        container: {
+          center: true,
+          padding: "2rem",
+          screens: {
+            "2xl": "1400px",
+          },
+        },
+        extend: {
+          colors: {
+            surface: {
+              DEFAULT: "rgb(var(--surface))",
+              2: "rgb(var(--surface-2))",
+              3: "rgb(var(--surface-3))",
+            },
+            "on-surface": {
+              DEFAULT: "rgb(var(--on-surface))",
+            },
+            : {
+              DEFAULT: "rgb(var(--))",
+              sub: "rgb(var(---sub))",
+              "sub-2": "rgb(var(---sub-2))",
+            },
+            border: "hsl(var(--border))",
+            input: "hsl(var(--input))",
+            ring: "hsl(var(--ring))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            lightnav: "hsl(var(--light-active-nav))",
+            primary: {
+              DEFAULT: "rgb(var(--primary-500))",
+              100: "rgb(var(--primary-100))",
+              200: "rgb(var(--primary-200))",
+              300: "rgb(var(--primary-300))",
+              400: "rgb(var(--primary-400))",
+              500: "rgb(var(--primary-500))",
+              600: "rgb(var(--primary-600))",
+              700: "rgb(var(--primary-700))",
+              800: "rgb(var(--primary-800))",
+              900: "rgb(var(--primary-900))",
+              content: "rgb(var(--primary-content))",
+            },
+            accent: {
+              DEFAULT: "rgb(var(--accent-500))",
+              100: "rgb(var(--accent-100))",
+              200: "rgb(var(--accent-200))",
+              300: "rgb(var(--accent-300))",
+              400: "rgb(var(--accent-400))",
+              500: "rgb(var(--accent-500))",
+              600: "rgb(var(--accent-600))",
+              700: "rgb(var(--accent-700))",
+              800: "rgb(var(--accent-800))",
+              900: "rgb(var(--accent-900))",
+              content: "rgb(var(--accent-content))",
+            },
+            positive: {
+              DEFAULT: "rgb(var(--positive-500))",
+              100: "rgb(var(--positive-100))",
+              200: "rgb(var(--positive-200))",
+              300: "rgb(var(--positive-300))",
+              400: "rgb(var(--positive-400))",
+              500: "rgb(var(--positive-500))",
+              600: "rgb(var(--positive-600))",
+              700: "rgb(var(--positive-700))",
+              800: "rgb(var(--positive-800))",
+              900: "rgb(var(--positive-900))",
+              content: "rgb(var(--accent-content))",
+            },
+            critical: {
+              DEFAULT: "rgb(var(--critical-500))",
+              100: "rgb(var(--critical-100))",
+              200: "rgb(var(--critical-200))",
+              300: "rgb(var(--critical-300))",
+              400: "rgb(var(--critical-400))",
+              500: "rgb(var(--critical-500))",
+              600: "rgb(var(--critical-600))",
+              700: "rgb(var(--critical-700))",
+              800: "rgb(var(--critical-800))",
+              900: "rgb(var(--critical-900))",
+              content: "rgb(var(--accent-content))",
+            },
+            secondary: {
+              DEFAULT: "hsl(var(--secondary))",
+              foreground: "hsl(var(--secondary-foreground))",
+            },
+            destructive: {
+              DEFAULT: "hsl(var(--destructive))",
+              foreground: "hsl(var(--destructive-foreground))",
+            },
+            muted: {
+              DEFAULT: "hsl(var(--muted))",
+              foreground: "hsl(var(--muted-foreground))",
+            },
+            popover: {
+              DEFAULT: "hsl(var(--popover))",
+              foreground: "hsl(var(--popover-foreground))",
+            },
+            card: {
+              DEFAULT: "hsl(var(--card))",
+              foreground: "hsl(var(--card-foreground))",
+            },
+          },
+          fontFamily: {
+            sans: ["Inter var", fontFamily.sans],
+          },
+          keyframes: {
+            "accordion-down": {
+              from: { height: 0 },
+              to: { height: "var(--radix-accordion-content-height)" },
+            },
+            "accordion-up": {
+              from: { height: "var(--radix-accordion-content-height)" },
+              to: { height: 0 },
+            },
+          },
+          animation: {
+            "accordion-down": "accordion-down 0.2s ease-out",
+            "accordion-up": "accordion-up 0.2s ease-out",
+          },
+        },
+      },
+      plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+    };
+    
+    ```
+    </div>
+
+3.  ### Set up global.css 
+
+    <div class="max-h-72 overflow-y-auto no-scrollbar">
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    
+    @layer base {
+      :root {
+       
+      }
+      [data-theme="light"] {
+     /*  base  */
+     --surface: 255 255 255; /* #ffffff */
+     --on-surface: 0 0 0 ; /* #0a0a0a */
+    
+     --surface-2: 241 245 249; /* #f1f5f9 */
+     --on-surface-2: #171717;
+    
+     --surface-3: 226 232 240; /* 	#e2e8f0 */
+    
+     --border: 0 0% 90%; /* neutral-200 */
+     --border-alt: 0 0% 90%; /* neutral-400 */
+     --input: 0 0% 90%; /* neutral-200 */
+     --focus: 199 89% 48%; /* sky-500 */
+    
+     /*  hierarchy */
+     --: 23 23 23 ; /* #171717 */
+     ---sub: 38 38 38 /* #262626; */
+     ---sub-2: #404040;
+     ---sub-3: #737373;
+     ---sub-4: #a3a3a3;
+     ---sub-5: #d4d4d4;
+    
+     /*  primary #fb9779 */
+     --primary-50: 254 239 235; /* ⬅ #feefeb */
+     --primary-100: 254 234 228; /* ⬅ #feeae4 */
+     --primary-200: 254 229 222; /* ⬅ #fee5de */
+     --primary-300: 253 213 201; /* ⬅ #fdd5c9 */
+     --primary-400: 252 182 161; /* ⬅ #fcb6a1 */
+     --primary-500: 251 151 121; /* ⬅ #fb9779 */
+     --primary-600: 226 136 109; /* ⬅ #e2886d */
+     --primary-700: 188 113 91; /* ⬅ #bc715b */
+     --primary-800: 151 91 73; /* ⬅ #975b49 */
+     --primary-900: 123 74 59; /* ⬅ #7b4a3b */
+     --on-primary: 23, 23, 23; /* ⬅ #171717 neutral-900 */
+    
+     /*  accent #05b978 */
+     --accent-50: 218 245 235; /* ⬅ #daf5eb */
+     --accent-100: 205 241 228; /* ⬅ #cdf1e4 */
+     --accent-200: 193 238 221; /* ⬅ #c1eedd */
+     --accent-300: 155 227 201; /* ⬅ #9be3c9 */
+     --accent-400: 80 206 161; /* ⬅ #50cea1 */
+     --accent-500: 5 185 120; /* ⬅ #05b978 */
+     --accent-600: 5 167 108; /* ⬅ #05a76c */
+     --accent-700: 4 139 90; /* ⬅ #048b5a */
+     --accent-800: 3 111 72; /* ⬅ #036f48 */
+     --accent-900: 2 91 59; /* ⬅ #025b3b */
+     --on-accent: 23, 23, 23; /* ⬅ #171717 
+    
+     /* positive  #75DD35 */
+     --positive-50: 234 250 225; /* ⬅ #eafae1 */
+     --positive-100: 227 248 215; /* ⬅ #e3f8d7 */
+     --positive-200: 221 247 205; /* ⬅ #ddf7cd */
+     --positive-300: 200 241 174; /* ⬅ #c8f1ae */
+     --positive-400: 158 231 114; /* ⬅ #9ee772 */
+     --positive-500: 117 221 53; /* ⬅ #75DD35 */
+     --positive-600: 105 199 48; /* ⬅ #69c730 */
+     --positive-700: 88 166 40; /* ⬅ #58a628 */
+     --positive-800: 70 133 32; /* ⬅ #468520 */
+     --positive-900: 57 108 26; /* ⬅ #396c1a */
+    
+     /* warning  #FCE835 */
+     --warning-50: 255 252 225; /* ⬅ #fffce1 */
+     --warning-100: 254 250 215; /* ⬅ #fefad7 */
+     --warning-200: 254 249 205; /* ⬅ #fef9cd */
+     --warning-300: 254 246 174; /* ⬅ #fef6ae */
+     --warning-400: 253 239 114; /* ⬅ #fdef72 */
+     --warning-500: 252 232 53; /* ⬅ #FCE835 */
+     --warning-600: 227 209 48; /* ⬅ #e3d130 */
+     --warning-700: 189 174 40; /* ⬅ #bdae28 */
+     --warning-800: 151 139 32; /* ⬅ #978b20 */
+     --warning-900: 123 114 26; /* ⬅ #7b721a */
+    
+     /* critical  #FF6326 */
+     --critical-50: 255 232 222; /* ⬅ #ffe8de */
+     --critical-100: 255 224 212; /* ⬅ #ffe0d4 */
+     --critical-200: 255 216 201; /* ⬅ #ffd8c9 */
+     --critical-300: 255 193 168; /* ⬅ #ffc1a8 */
+     --critical-400: 255 146 103; /* ⬅ #ff9267 */
+     --critical-500: 255 99 38; /* ⬅ #FF6326 */
+     --critical-600: 230 89 34; /* ⬅ #e65922 */
+     --critical-700: 191 74 29; /* ⬅ #bf4a1d */
+     --critical-800: 153 59 23; /* ⬅ #993b17 */
+     --critical-900: 125 49 19; /* ⬅ #7d3113 */
+    
+     --light-active-nav: 255 99 38; /* ⬅ #FF6326 */
+      }
+      [data-theme="dark"] {
+        --surface: 10 10 10; /* 	#0a0a0a */
+        --on-surface: 255 255 255; /* #ffffff */
+    
+        --surface-2: 241 245 249; /* #f1f5f9 */
+        --on-surface-2: #171717;
+    
+        --surface-3: 226 232 240; /* 	#e2e8f0 */
+    
+        --border: 0 0% 90%; /* neutral-200 */
+        --border-alt: 0 0% 90%; /* neutral-400 */
+        --input: 0 0% 90%; /* neutral-200 */
+        --focus: 199 89% 48%; /* sky-500 */
+    
+        /*  hierarchy */
+        --: 212 212 212 ; /*  #d4d4d4 */
+        ---sub: #a3a3a3;
+        ---sub-2: #737373;
+        ---sub-3: #404040;
+        ---sub-4: #262626;
+        ---sub-5: #171717;
+      }
+      
+      [data-theme="cotton-candy"] {
+        /*  base  */
+        --base: 225 183 255; /* #E1B7FF */
+    
+        --base-two: 255 183 213; /*   #FFB7D5 */
+    
+        --primary-500: 255 81 153; /*  #FF5199 */
+    
+        --background: "#22D65E";
+        --foreground: 213 31% 91%;
+    
+        --muted: 223 47% 11%;
+        --muted-foreground: 215.4 16.3% 56.9%;
+    
+        --popover: 224 71% 4%;
+        --popover-foreground: 215 20.2% 65.1%;
+    
+        --card: 224 71% 4%;
+        --card-foreground: 213 31% 91%;
+    
+        --border: 216 34% 17%;
+        --input: 216 34% 17%;
+    
+        --primary: 5 10% 50%;
+        --primary-foreground: 222.2 47.4% 1.2%;
+    
+        --secondary: 222.2 47.4% 11.2%;
+        --secondary-foreground: 210 40% 98%;
+    
+        --accent: 216 34% 17%;
+        --accent-foreground: 210 40% 98%;
+    
+        --destructive: 0 63% 31%;
+        --destructive-foreground: 210 40% 98%;
+    
+        --ring: 216 34% 17%;
+    
+        --radius: 0.5rem;
+      }
+    }
+    
+    @layer utilities {
+      /* Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    }
+    
+    ```
+    </div>
+
+## Optional Configurations
+
+1. ### Path Alias
+
+    NextJS will look something like
+    ```json
+    {
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["./*"]
+        }
+      }
+    }
+    ```
+    
+    Astro will look something like
+    ```json
+    {
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@potions/*": ["src/potions/*"],
+        }
+      }
+    }
+    ```
+
+2.  ### TW IntelliSense
+
+    If you are using VScode and would like to enable auto-complete/highlights (for Tailwind Variants), add the following to your settings.json.
+
+
+    ```json
+    {
+      "tailwindCSS.experimental.classRegex": [
+         ["tv\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+       ]
+    }
+    ```
+
+3.  ### TW-Prettier class sorting
+
+    If you are using the Tailwind-Prettier sorting plugin, and would like this plugin to sort classes within Tailwind Variants, add the following to your module.exports inside your Prettier.config.
+
+
+    ```json
+      tailwindFunctions: ["tv"],
+    ```

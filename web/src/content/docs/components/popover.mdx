@@ -1,0 +1,338 @@
+---
+title: Popover
+description: "An accessible dropdown and context menu that is used to display a list of actions or options that a user can choose."
+---
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { Popover } from "../../../ui/React/Popover/popover.tsx"
+
+## Installation 
+
+<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
+```bash
+potion add dropdown
+```
+</div>
+
+## Default 
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="not-prose flex items-center w-full justify-center">
+      <Popover client:only="react"/>
+    </div>
+</div>
+
+<br />
+
+<DemoTabs solidDisabled vueDisabled>
+  <Fragment slot="code">
+```tsx
+import {
+  Radio,
+  RadioControl,
+  RadioGroup,
+  RadioInput,
+  RadioLabel,
+} from "@components/RadioGroup";
+import { Checkbox } from "@components/checkbox";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownItemGroup,
+  DropdownItemGroupLabel,
+  DropdownOptionItem,
+  DropdownSeparator,
+  DropdownTrigger,
+  DropdownTriggerItem,
+} from "@components/dropdown";
+import { ChevronRight, Plus, Settings } from "lucide-react";
+import { useState } from "react";
+
+export const DropdownExample = () => {
+  const [value, setValue] = useState<Record<string, string | string[]>>({
+    theme: "",
+    features: [],
+  });
+  const options = [
+    { id: "light", label: "Light" },
+    { id: "dark", label: "Dark" },
+  ];
+  return (
+    <Dropdown
+      closeOnSelect={false}
+      onValueChange={(data) => {
+        setValue((prev) => ({
+          ...prev,
+          [data.name]: data.value,
+        }));
+      }}
+      value={value}
+    >
+      <DropdownTrigger asChild>
+        <button className="rounded-md bg-primary p-2">me</button>
+      </DropdownTrigger>
+
+      <DropdownContent>
+        <DropdownItem disabled className="cursor-default" id="new-tab">
+          <p className="text-gray-500">me@hey.com</p>
+        </DropdownItem>
+        <DropdownSeparator className="mb-2" />
+        <DropdownItem id="profile">
+          <p>Account Settings</p>
+          <Settings className="h-5 w-5" />
+        </DropdownItem>
+        <DropdownItem id="projects">
+          <p>Create a Team</p>
+          <Plus className="h-5 w-5" />
+        </DropdownItem>
+        <DropdownSeparator className="my-2" />
+        <DropdownItemGroup id="radio-group" className="mb-2">
+          <DropdownItemGroupLabel htmlFor="radio-group">
+            Theme
+          </DropdownItemGroupLabel>
+
+          <RadioGroup defaultValue="light">
+            {options.map((option, id) => (
+              <DropdownOptionItem name="theme" type="radio" value={option.id}>
+                <Radio key={id} value={option.id}>
+                  <RadioInput />
+                  <RadioControl />
+                  <RadioLabel>{option.label}</RadioLabel>
+                </Radio>
+              </DropdownOptionItem>
+            ))}
+          </RadioGroup>
+        </DropdownItemGroup>
+        <DropdownItemGroup
+          id="checkbox-group"
+          className="mb-2 flex flex-col gap-2"
+        >
+          <DropdownItemGroupLabel htmlFor="checkbox-group">
+            Beta Features
+          </DropdownItemGroupLabel>
+          <DropdownOptionItem name="features" type="checkbox" value="stats-1">
+            {({ isActive }) => (
+              <Checkbox size="sm" checked={isActive}>
+                Stats
+              </Checkbox>
+            )}
+          </DropdownOptionItem>
+          <DropdownOptionItem
+            name="features"
+            type="checkbox"
+            value="autosave-1"
+          >
+            {({ isActive }) => (
+              <Checkbox size="sm" checked={isActive}>
+                Autosave
+              </Checkbox>
+            )}
+          </DropdownOptionItem>
+          <DropdownOptionItem name="features" type="checkbox" value="ai-1">
+            {({ isActive }) => (
+              <Checkbox size="sm" checked={isActive}>
+                AI Assist
+              </Checkbox>
+            )}
+          </DropdownOptionItem>
+        </DropdownItemGroup>
+        <DropdownSeparator className="mb-2" />
+        <Dropdown
+          closeOnSelect={false}
+          positioning={{ placement: "right-start" }}
+        >
+          <DropdownTriggerItem>
+            <span className="flex flex-1 p-2">Contact options</span>
+            <ChevronRight />
+          </DropdownTriggerItem>
+
+          <DropdownContent>
+            <DropdownItem id="twitter">Twitter</DropdownItem>
+            <DropdownItem className="mb-0" id="message">
+              Email
+            </DropdownItem>
+          </DropdownContent>
+        </Dropdown>
+      </DropdownContent>
+    </Dropdown>
+  );
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+bui-dropdown
+```
+  </Fragment>
+</DemoTabs>
+
+## Manual Install
+
+<p>
+  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
+  paste the code below into a new file!
+</p>
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import {
+  Menu as ArkMenu,
+  MenuArrow as ArkMenuArrow,
+  MenuArrowTip as ArkMenuArrowTip,
+  MenuContent as ArkMenuContent,
+  MenuContextTrigger as ArkMenuContextTrigger,
+  MenuItem as ArkMenuItem,
+  MenuItemGroup as ArkMenuItemGroup,
+  MenuItemGroupLabel as ArkMenuItemGroupLabel,
+  MenuOptionItem as ArkMenuOptionItem,
+  MenuPositioner as ArkMenuPositioner,
+  MenuSeparator as ArkMenuSeparator,
+  MenuTrigger as ArkMenuTrigger,
+  MenuTriggerItem as ArkMenuTriggerItem,
+  Portal as ArkPortal,
+} from "@ark-ui/react";
+
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { tv } from "tailwind-variants";
+
+const baseItemStyles = tv({
+  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
+});
+
+const dropdownStyles = tv({
+  slots: {
+    content:
+      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
+    item: [baseItemStyles(), "mb-2 flex justify-between p-2"],
+    itemGroupLabel: "text-sm  font-bold",
+    optionItem: [baseItemStyles(), "w-full rounded-md p-2 text-sm"],
+    triggerItem: [baseItemStyles(), "inline-flex w-full flex-wrap gap-2"],
+    seperator: "w-full rounded-md border border-gray-200",
+  },
+});
+
+const { content, item, seperator, itemGroupLabel, optionItem, triggerItem } =
+  dropdownStyles();
+
+const Dropdown = ArkMenu;
+const DropdownTrigger = ArkMenuTrigger;
+const DropdownItemGroup = ArkMenuItemGroup;
+const DropdownContextTrigger = ArkMenuContextTrigger;
+const DropdownArrow = ArkMenuArrow;
+const DropdownArrowTip = ArkMenuArrowTip;
+
+const DropdownContent = forwardRef<
+  ElementRef<typeof ArkMenuContent>,
+  ComponentPropsWithoutRef<typeof ArkMenuContent>
+>(({ className, children, ...props }, ref) => (
+  <ArkPortal>
+    <ArkMenuPositioner className="z-50">
+      <ArkMenuContent
+        ref={ref}
+        className={content({ className: className })}
+        {...props}
+      >
+        {children}
+      </ArkMenuContent>
+    </ArkMenuPositioner>
+  </ArkPortal>
+));
+
+DropdownContent.displayName = ArkMenuContent.displayName;
+
+const DropdownItem = forwardRef<
+  ElementRef<typeof ArkMenuItem>,
+  ComponentPropsWithoutRef<typeof ArkMenuItem>
+>(({ className, children, ...props }, ref) => (
+  <ArkMenuItem ref={ref} className={item({ className: className })} {...props}>
+    {children}
+  </ArkMenuItem>
+));
+
+DropdownItem.displayName = ArkMenuItem.displayName;
+
+const DropdownItemGroupLabel = forwardRef<
+  ElementRef<typeof ArkMenuItemGroupLabel>,
+  ComponentPropsWithoutRef<typeof ArkMenuItemGroupLabel>
+>(({ className, children, ...props }, ref) => (
+  <ArkMenuItemGroupLabel
+    ref={ref}
+    className={itemGroupLabel({ className: className })}
+    {...props}
+  >
+    {children}
+  </ArkMenuItemGroupLabel>
+));
+
+DropdownItemGroupLabel.displayName = ArkMenuItemGroupLabel.displayName;
+
+const DropdownOptionItem = forwardRef<
+  ElementRef<typeof ArkMenuOptionItem>,
+  ComponentPropsWithoutRef<typeof ArkMenuOptionItem>
+>(({ className, children, ...props }, ref) => (
+  <ArkMenuOptionItem
+    ref={ref}
+    className={optionItem({ className: className })}
+    {...props}
+  >
+    {children}
+  </ArkMenuOptionItem>
+));
+
+DropdownOptionItem.displayName = ArkMenuOptionItem.displayName;
+
+const DropdownTriggerItem = forwardRef<
+  ElementRef<typeof ArkMenuTriggerItem>,
+  ComponentPropsWithoutRef<typeof ArkMenuTriggerItem>
+>(({ className, children, ...props }, ref) => (
+  <ArkMenuTriggerItem
+    ref={ref}
+    className={triggerItem({ className: className })}
+    {...props}
+  >
+    {children}
+  </ArkMenuTriggerItem>
+));
+
+DropdownTriggerItem.displayName = ArkMenuTriggerItem.displayName;
+
+const DropdownSeparator = forwardRef<
+  ElementRef<typeof ArkMenuSeparator>,
+  ComponentPropsWithoutRef<typeof ArkMenuSeparator>
+>(({ className, ...props }, ref) => (
+  <ArkMenuSeparator
+    ref={ref}
+    className={seperator({ className: className })}
+    {...props}
+  />
+));
+
+DropdownSeparator.displayName = ArkMenuSeparator.displayName;
+
+export {
+  Dropdown,
+  DropdownArrow,
+  DropdownArrowTip,
+  DropdownContent,
+  DropdownContextTrigger,
+  DropdownItem,
+  DropdownItemGroup,
+  DropdownItemGroupLabel,
+  DropdownOptionItem,
+  DropdownSeparator,
+  DropdownTrigger,
+  DropdownTriggerItem,
+};
+
+
+
+```
+</Fragment>
+</Potion>
+

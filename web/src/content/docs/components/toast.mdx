@@ -1,0 +1,293 @@
+---
+title: Toast
+description: "The toast component is used to give feedback to users after an action has taken place."
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion from '../../../components/Potion.astro'
+import { ToastExample } from '../../../components/Examples/toastExample.tsx'
+import { ToastBase } from '../../../components/Examples/toastBase.tsx'
+import { ToastSuccess } from '../../../components/Examples/toastSuccess.tsx'
+import { ToastAlert } from '../../../components/Examples/toastAlert.tsx'
+import { ToastError } from '../../../components/Examples/toastError.tsx'
+import { Toast } from '../../../ui/React/Toast/toast.tsx'
+import VariantDemo from '../../../components/VariantDemo.astro'
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center">
+      <ToastExample client:load />
+    </div>
+</div>
+
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { VariantProps, tv } from "tailwind-variants";
+
+export const toastPotion = tv({
+  slots: {
+    toastRoot: "min-w-56 rounded-xl border bg-surface p-4 shadow-lg",
+    toastGroup: "p-4",
+    toastTitle: "text-sm font-semibold",
+    toastDescription: "text-sm text-text-2",
+  },
+  variants: {
+    intent: {
+      success: {
+        toastRoot: "bg-positive",
+      },
+      alert: {
+        toastRoot: "bg-warning",
+      },
+      error: {
+        toastRoot: "bg-critical",
+      },
+    },
+  },
+});
+
+export type ToastPotionProps = VariantProps<typeof toastPotion>;
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
+The deafult Toast component is just the wrapper functionality for the Toaster. It is meant to be used as a parent for the toast trigger (see below.)
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center">
+      <ToastExample client:load />
+    </div>
+</div>
+
+<br />
+
+<DemoTabs vueDisabled solidDisabled>
+<Fragment slot="vsc">
+```tsx
+bui-toast
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import {
+  Portal,
+  ToastCloseTrigger,
+  ToastDescription,
+  ToastGroup,
+  ToastPlacements,
+  ToastProvider,
+  Toast as ToastRoot,
+  ToastTitle,
+} from "@ark-ui/react";
+import { ToastPotionProps, toastPotion } from "@potions/toastPotion";
+import { X } from "lucide-react";
+import type { ReactNode } from "react";
+
+interface ToastProps extends ToastPotionProps {
+  children: ReactNode;
+}
+
+export const Toast = ({ children, intent }: ToastProps) => {
+  const { toastRoot, toastGroup, toastTitle, toastDescription } = toastPotion({
+    intent,
+  });
+  return (
+    <ToastProvider>
+      <Portal>
+        <ToastPlacements>
+          {(placements) =>
+            placements.map((placement) => (
+              <ToastGroup
+                key={placement}
+                placement={placement}
+                className={toastGroup()}
+              >
+                {(toasts) =>
+                  toasts.map((toast) => (
+                    <ToastRoot
+                      className={toastRoot({ className: "w-72" })}
+                      key={toast.id}
+                      toast={toast}
+                    >
+                      <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-1">
+                          <ToastTitle className={toastTitle()} />
+                          <ToastDescription className={toastDescription()} />
+                        </div>
+                        <div className="absolute right-0 top-0 p-4">
+                          <ToastCloseTrigger asChild>
+                            <button>
+                              <X />
+                            </button>
+                          </ToastCloseTrigger>
+                        </div>
+                      </div>
+                    </ToastRoot>
+                  ))
+                }
+              </ToastGroup>
+            ))
+          }
+        </ToastPlacements>
+      </Portal>
+      {children}
+    </ToastProvider>
+  );
+};
+
+```
+</Fragment>
+
+</DemoTabs>
+
+### Toast Trigger
+
+The trigger toast component is meant to be used as a child to the Toast component itself. You would use it like so,
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center">
+    ```tsx
+    <Toast>
+      <ToastTrigger />
+    </Toast>
+    ```
+    </div>
+</div>
+
+<br />
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center">
+      <ToastExample client:load />
+    </div>
+</div>
+
+<br />
+
+<DemoTabs vueDisabled solidDisabled>
+<Fragment slot="vsc">
+```tsx
+bui-toast-trigger
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+export const ToastTrigger = () => {
+  const toast = useToast();
+  return (
+    <button
+      className={buttonPotion({ intent: "accent" })}
+      onClick={() => {
+        toast.create({
+          title: "Hello",
+          description: "I'm a toast",
+          placement: "bottom-end",
+          removeDelay: 0,
+        });
+      }}
+    >
+      Pop Toast!
+    </button>
+  );
+};
+
+```
+</Fragment>
+
+</DemoTabs>
+
+## Variants
+
+These variants will primarily affect the Toast Trigger, as you can control styles + text of the Toast component itself from the Trigger.
+
+### Intent
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex gap-2 items-center">
+      <ToastBase client:load />
+      <ToastSuccess client:load />
+      <ToastAlert client:load />
+      <ToastError client:load />
+    </div>
+</div>
+
+<br />
+
+<VariantDemo solidDisabled vueDisabled>
+
+<Fragment slot="react">
+
+```tsx
+    <button
+      className={buttonPotion({ intent: "accent" })}
+      onClick={() => {
+        toast.create({
+          title: "Hi,",
+          description: "I'm a basic Toast",
+          placement: "bottom-end",
+          removeDelay: 0,
+        });
+      }}
+    >
+      Base
+    </button>
+
+    <button
+      className={buttonPotion({ className: "bg-positive hover:bg-positive-700" })}
+      onClick={() => {
+        toast.create({
+          title: "Hi,",
+          description: "I'm a Success Toast",
+          placement: "bottom-end",
+          removeDelay: 0,
+        });
+      }}
+    >
+      Success
+    </button>
+
+    <button
+      className={buttonPotion({ className: "bg-warning hover:bg-warning-700" })}
+      onClick={() => {
+        toast.create({
+          title: "Hi,",
+          description: "I'm an Alert Toast",
+          placement: "bottom-end",
+          removeDelay: 0,
+        });
+      }}
+    >
+      Alert
+    </button>
+
+     <button
+      className={buttonPotion({ className: "bg-critical hover:bg-critcal-700" })}
+      onClick={() => {
+        toast.create({
+          title: "Hi,",
+          description: "I'm an Erro Toast",
+          placement: "bottom-end",
+          removeDelay: 0,
+        });
+      }}
+    >
+      Error
+    </button>
+```
+
+</Fragment>
+
+</VariantDemo>
