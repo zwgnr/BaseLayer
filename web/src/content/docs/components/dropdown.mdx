@@ -8,6 +8,14 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
 import { Dropdown } from "../../../ui/React/Dropdown/dropdown.tsx"
 
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="not-prose flex items-center w-full justify-center">
+      <Dropdown client:only="react"/>
+    </div>
+</div>
+
+<br />
+
 ## Installation
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
@@ -42,14 +50,6 @@ export const dropdownPotion = tv({
 ## Components 
 
 ### Default 
-
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="not-prose flex items-center w-full justify-center">
-      <Dropdown client:only="react"/>
-    </div>
-</div>
-
-<br />
 
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
@@ -240,7 +240,7 @@ export const Dropdown = () => {
 
     <Fragment slot="vsc">
 ```bash
-bui-dropdown
+pc-dropdown
 ```
   </Fragment>
 </DemoTabs>

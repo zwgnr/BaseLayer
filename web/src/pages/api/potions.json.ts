@@ -53,6 +53,11 @@ const potions: Potion[] = [
     files: "import { tv } from \"tailwind-variants\";\n\nexport const hoverCardPotion = tv({\n  slots: {\n    positioner: \"rounded-lg bg-surface-3 shadow-xl\",\n    content: \"max-w-96 relative w-96 p-4\",\n  },\n});\n"
   },
   {
+    potion: "numberInputPotion",
+    name: "NumberInput",
+    files: "import { tv } from \"tailwind-variants\";\n\nconst baseTriggerStyles = tv({\n  base: \"relative inline-flex cursor-pointer select-none appearance-none items-center whitespace-nowrap rounded-md bg-surface-3 align-middle font-semibold outline-none transition duration-100 ease-out hover:bg-surface-2 focus-visible:z-10 focus-visible:border-accent focus-visible:shadow-md data-[disabled]:cursor-not-allowed hover:data-[disabled]:cursor-not-allowed\",\n});\n\nexport const numberInputPotion = tv({\n  slots: {\n    root: \"text-md flex overflow-hidden rounded-lg border-2 border-transparent bg-surface-3 pl-4 shadow-sm focus-within:z-10 focus-within:border-accent focus-within:shadow-lg\",\n    control: \"border-surface-4 flex flex-col\",\n    field: \"bg-surface-3 outline-none\",\n    decrementTrigger: [baseTriggerStyles()],\n    incrementTrigger: [baseTriggerStyles()],\n  },\n});\n"
+  },
+  {
     potion: "pinInputPotion",
     name: "PinInput",
     files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-md font-bold\",\n  },\n});\n"
@@ -101,6 +106,11 @@ const potions: Potion[] = [
     potion: "tabsPotion",
     name: "Tabs",
     files: "import { tv } from \"tailwind-variants\";\n\nexport const tabsPotion = tv({\n  slots: {\n    list: \"bg-muted text-muted-foreground relative inline-flex h-10 items-center justify-center rounded-md\",\n    trigger:\n      \"text-md ring-offset-background focus-visible:ring-ring data-[selected]:bg-background data-[selected]:text-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-2 font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[selected]:shadow-sm\",\n    content:\n      \"ring-offset-background focus-visible:ring-ring mt-4 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2\",\n    indicator: \"-bottom-1 h-1 bg-primary\",\n  },\n});\n"
+  },
+  {
+    potion: "tagsInputPotion",
+    name: "TagsInput",
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const tagsInputPotion = tv({\n  slots: {\n    root: \"w-full\",\n    control:\n      \"flex flex-wrap gap-2 rounded-lg border-2 border-surface-3 bg-surface p-3 text-text shadow-md transition duration-100 focus-within:z-10  focus-within:border-accent focus-within:shadow-lg\",\n    field: \"bg-surface outline-none\",\n    tag: \"inline-flex h-6 items-center justify-center rounded-lg border border-border bg-surface pl-2.5 pr-1 text-sm data-[selected]:z-10 data-[selected]:border-accent [&[data=hidden]]:hidden\",\n    tagInput: \"bg-surface outline-none\",\n    deleteTrigger:\n      \"ml-1 inline-flex h-4 items-center bg-transparent p-0 text-text-5 [&>svg]:h-4 [&>svg]:w-4\",\n  },\n});\n"
   },
   {
     potion: "toastPotion",

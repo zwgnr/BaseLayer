@@ -24,8 +24,7 @@ import { ChevronRight, Plus, Settings } from "lucide-react";
 import { useState } from "react";
 
 const dp = dropdownPotion();
-
-const { radioGroupRoot, radioControl, radio, radioLabel } = radioGroupPotion();
+const rgp = radioGroupPotion();
 
 export const Dropdown = () => {
   const [value, setValue] = useState<Record<string, string | string[]>>({
@@ -83,7 +82,7 @@ export const Dropdown = () => {
               >
                 Theme
               </DropdownItemGroupLabel>
-              <RadioGroup className={radioGroupRoot()} defaultValue="light">
+              <RadioGroup className={rgp.root()} defaultValue="light">
                 {options.map((option, id) => (
                   <DropdownOptionItem
                     className={dp.optionItem()}
@@ -92,10 +91,10 @@ export const Dropdown = () => {
                     value={option.id}
                     key={id}
                   >
-                    <Radio className={radio()} value={option.id}>
+                    <Radio className={rgp.radio()} value={option.id}>
                       <RadioInput />
-                      <RadioControl className={radioControl()} />
-                      <RadioLabel className={radioLabel()}>
+                      <RadioControl className={rgp.control()} />
+                      <RadioLabel className={rgp.radioLabel()}>
                         {option.label}
                       </RadioLabel>
                     </Radio>
