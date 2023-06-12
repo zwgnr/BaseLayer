@@ -63,6 +63,11 @@ const potions: Potion[] = [
     files: "import { tv } from \"tailwind-variants\";\n\nconst baseTriggerStyles = tv({\n  base: \"relative inline-flex cursor-pointer select-none appearance-none items-center whitespace-nowrap rounded-md bg-surface-3 align-middle font-semibold outline-none transition duration-100 ease-out hover:bg-surface-2 focus-visible:z-10 focus-visible:border-accent focus-visible:shadow-md data-[disabled]:cursor-not-allowed hover:data-[disabled]:cursor-not-allowed\",\n});\n\nexport const numberInputPotion = tv({\n  slots: {\n    root: \"text-md flex overflow-hidden rounded-lg border-2 border-transparent bg-surface-3 pl-4 shadow-sm focus-within:z-10 focus-within:border-accent focus-within:shadow-lg\",\n    control: \"border-surface-4 flex flex-col\",\n    field: \"bg-surface-3 outline-none\",\n    decrementTrigger: [baseTriggerStyles()],\n    incrementTrigger: [baseTriggerStyles()],\n  },\n});\n"
   },
   {
+    potion: "paginationPotion",
+    name: "Pagination",
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const paginationPotion = tv({\n  slots: {\n    root: \"flex justify-between\",\n    list: \"flex list-none gap-1 p-0\",\n    pageTrigger: \" \",\n    ellipsis: \"min-w-10 inline-flex h-10 items-center px-4 text-sm\",\n  },\n});\n"
+  },
+  {
     potion: "pinInputPotion",
     name: "PinInput",
     files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-md font-bold\",\n  },\n});\n"
