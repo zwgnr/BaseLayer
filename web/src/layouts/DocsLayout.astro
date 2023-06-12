@@ -14,7 +14,23 @@ const { Content, headings } = await doc.render();
     <!-- mdx Content-->
     <article class="prose prose-slate h-fit w-full max-w-6xl">
       <h1 class="-mb-2">{doc.data.title}</h1>
-      <p class="-mb-4">{doc.data.description}</p>
+      <p class:list={[doc.data.arkDocs !== undefined ? null : "-mb-4"]}>
+        {doc.data.description}
+      </p>
+      {
+        doc.data.arkDocs !== undefined ? (
+          <div class="-mb-4">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-lg border-2 border-surface-3 p-2 text-xs no-underline"
+              href={doc.data.arkDocs}
+            >
+              Ark
+            </a>
+          </div>
+        ) : null
+      }
       <Content />
     </article>
     <!-- On This Page  -->

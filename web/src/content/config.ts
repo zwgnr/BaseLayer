@@ -4,5 +4,6 @@ export const docsCollection = z.object({
   title: z.string(),
   description: z.string(),
   tags: z.array(z.string()).optional(),
+  arkDocs: z.string().optional(),
 });
 export const collections = { docs: docsCollection };

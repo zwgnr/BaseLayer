@@ -1,0 +1,135 @@
+---
+title: Badge
+description: "Displays a badge or a component."
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion from '../../../components/Potion.astro'
+import { Badge } from '../../../ui/React/Badge/badge.tsx'
+import { badgePotion } from "@potions/badgePotion"
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex items-center">
+      <div className={badgePotion()}>
+      Badge 
+      </div>
+    </div>
+</div>
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { VariantProps, tv } from "tailwind-variants";
+
+export const badgePotion = tv({
+  base: "flex items-center justify-center rounded-xl",
+  variants: {
+    intent: {
+      default: "bg-surface-3",
+      info: "bg-accent",
+      alert: "bg-critical",
+    },
+    size: {
+      sm: "px-2 py-1 text-sm",
+      md: "px-4 py-1 text-base",
+      lg: "px-6 py-2 text-lg",
+    },
+  },
+  defaultVariants: {
+    intent: "default",
+    size: "md",
+  },
+});
+
+export type BadgePotionProps = VariantProps<typeof badgePotion>;
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
+<DemoTabs vueDisabled solidDisabled>
+<Fragment slot="vsc">
+```tsx
+pc-badge 
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import { badgePotion } from "@potions/badgePotion";
+
+export const Badge = () => {
+  return <div className={badgePotion()}>Badge</div>;
+};
+
+```
+</Fragment>
+
+</DemoTabs>
+
+## Variants
+
+### Intent
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex gap-2 items-center">
+      <div className={badgePotion({ intent: "default" })}>
+      Default
+      </div>
+      <div className={badgePotion({ intent: "info" })}>
+        Info
+      </div>
+      <div className={badgePotion({ intent: "alert" })}>
+        Alert
+      </div>
+    </div>
+</div>
+
+<br />
+
+<div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
+```tsx
+<div className={badgePotion({ intent: "default" })}>Default</div>
+<div className={badgePotion({ intent: "info" })}>Info</div>
+<div className={badgePotion({ intent: "alert" })}>Alert</div>
+```
+</div>
+
+### Sizes
+
+<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+    <div className="flex gap-2 items-center">
+      <div className={badgePotion({ size: "sm" })}>
+      Small
+      </div>
+      <div className={badgePotion({ size: "md" })}>
+        Medium
+      </div>
+      <div className={badgePotion({ large: "lg" })}>
+        Large
+      </div>
+    </div>
+</div>
+
+<br />
+
+<div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
+```tsx
+<div className={badgePotion({ size: "sm" })}>Small</div>
+<div className={badgePotion({ size: "md" })}>Medium</div>
+<div className={badgePotion({ size: "lg" })}>Large</div>
+```
+</div>
+
+

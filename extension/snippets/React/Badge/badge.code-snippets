@@ -1,0 +1,12 @@
+{
+  "badge": {
+    "prefix": "pc-badge",
+    "body": [
+      "import { badgePotion } from '@potions/badgePotion';",
+      "",
+      "<div className={badgePotion()}>Badge</div>;",
+      ""
+    ],
+    "description": "badge component\n\n"
+  }
+}
