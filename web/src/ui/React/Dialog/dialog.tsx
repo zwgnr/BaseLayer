@@ -14,13 +14,7 @@ import { buttonPotion } from "@potions/buttonPotion";
 import { dialogPotion } from "@potions/dialogPotion";
 import { X } from "lucide-react";
 
-const {
-  dialogBackdrop,
-  dialogContainer,
-  dialogContent,
-  dialogDescription,
-  dialogTitle,
-} = dialogPotion();
+const { backdrop, container, content, description, title } = dialogPotion();
 
 export const Dialog = () => {
   return (
@@ -29,15 +23,13 @@ export const Dialog = () => {
         <Button className={buttonPotion()}>Open dialog</Button>
       </DialogTrigger>
       <Portal>
-        <DialogBackdrop className={dialogBackdrop()} />
-        <DialogContainer className={dialogContainer()}>
-          <DialogContent className={dialogContent()}>
+        <DialogBackdrop className={backdrop()} />
+        <DialogContainer className={container()}>
+          <DialogContent className={content()}>
             <div className="flex flex-col gap-8 p-6">
               <div className="flex flex-col gap-1">
-                <DialogTitle className={dialogTitle()}>
-                  Dialog Title
-                </DialogTitle>
-                <DialogDescription className={dialogDescription()}>
+                <DialogTitle className={title()}>Dialog Title</DialogTitle>
+                <DialogDescription className={description()}>
                   Dialog Description
                 </DialogDescription>
               </div>
