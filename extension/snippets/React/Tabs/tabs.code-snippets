@@ -1,6 +1,6 @@
 {
   "tabs": {
-    "prefix": "pui-tabs",
+    "prefix": "pc-tabs",
     "body": [
       "import {",
       "  TabContent as ArkContent,",

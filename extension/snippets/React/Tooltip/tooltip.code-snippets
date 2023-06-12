@@ -1,6 +1,6 @@
 {
   "tooltip": {
-    "prefix": "pui-tooltip",
+    "prefix": "pc-tooltip",
     "body": [
       "import {",
       "  TooltipArrow,",

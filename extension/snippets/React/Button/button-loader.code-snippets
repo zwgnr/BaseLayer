@@ -1,6 +1,6 @@
 {
   "button-loader": {
-    "prefix": "pui-button-loader",
+    "prefix": "pc-button-loader",
     "body": [
       "import { Pressable as Button } from '@ark-ui/react';",
       "import { buttonPotion } from '@potions/buttonPotion';",

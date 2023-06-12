@@ -1,6 +1,6 @@
 {
   "slider": {
-    "prefix": "pui-slider",
+    "prefix": "pc-slider",
     "body": [
       "import {",
       "  SliderControl,",

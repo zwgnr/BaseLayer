@@ -1,6 +1,6 @@
 {
   "toast": {
-    "prefix": "pui-toast",
+    "prefix": "pc-toast",
     "body": [
       "import {",
       "  Portal,",

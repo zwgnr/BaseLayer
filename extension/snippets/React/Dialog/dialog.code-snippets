@@ -1,6 +1,6 @@
 {
   "dialog": {
-    "prefix": "pui-dialog",
+    "prefix": "pc-dialog",
     "body": [
       "import {",
       "  Pressable as Button,",

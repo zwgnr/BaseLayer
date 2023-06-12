@@ -5,22 +5,22 @@ import {
 } from "@ark-ui/react";
 import { splitterPotion } from "@potions/splitterPotion";
 
-const { splitterPanel, splitterResizeTrigger, splitterRoot } = splitterPotion();
+const { panel, resizeTrigger, root } = splitterPotion();
 
 export const Splitter = () => (
   <SplitterRoot
     orientation="horizontal"
-    className={splitterRoot()}
+    className={root()}
     defaultSize={[
       { id: "a", size: 50 },
       { id: "b", size: 50 },
     ]}
   >
-    <SplitterPanel className={splitterPanel()} id="a">
+    <SplitterPanel className={panel()} id="a">
       A
     </SplitterPanel>
-    <SplitterResizeTrigger className={splitterResizeTrigger()} id="a:b" />
-    <SplitterPanel className={splitterPanel()} id="b">
+    <SplitterResizeTrigger className={resizeTrigger()} id="a:b" />
+    <SplitterPanel className={panel()} id="b">
       B
     </SplitterPanel>
   </SplitterRoot>
