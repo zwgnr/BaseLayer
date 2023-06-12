@@ -15,7 +15,7 @@ export const RatingGroup = () => {
         {({ sizeArray }) =>
           sizeArray.map((index) => (
             <Rating className={rating()} key={index} index={index}>
-              {({ isHalf, isHighlighted }) => {
+              {({ isHighlighted }) => {
                 return isHighlighted ? (
                   <Star className="fill-accent text-accent" />
                 ) : (

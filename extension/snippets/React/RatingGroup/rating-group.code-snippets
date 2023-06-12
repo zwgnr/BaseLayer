@@ -1,5 +1,5 @@
 {
-  "ratingGroup": {
+  "RatingGroup": {
     "prefix": "pc-rating-group",
     "body": [
       "import {",
@@ -19,7 +19,7 @@
       "        {({ sizeArray }) =>",
       "          sizeArray.map((index) => (",
       "            <Rating className={rating()} key={index} index={index}>",
-      "              {({ isHalf, isHighlighted }) => {",
+      "              {({ isHighlighted }) => {",
       "                return isHighlighted ? (",
       "                  <Star className='fill-accent text-accent' />",
       "                ) : (",
@@ -35,6 +35,6 @@
       "};",
       ""
     ],
-    "description": "ratingGroup component\n\n"
+    "description": "RatingGroup component\n\n"
   }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "ExtensionParser": "ts-node --esm utils/ExtensionParser.ts",
     "ApiParser": "ts-node --esm utils/ApiParser.ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "lint-staged": {
     "web/src/potions/*": [

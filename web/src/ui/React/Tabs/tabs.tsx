@@ -18,15 +18,15 @@ const items = [
 export const Tabs = () => (
   <TabsRoot defaultValue={"react"}>
     <TabList className={list()}>
-      {items.map((item) => (
-        <TabTrigger className={trigger()} value={item.value}>
+      {items.map((item, id) => (
+        <TabTrigger key={id} className={trigger()} value={item.value}>
           {item.name}
         </TabTrigger>
       ))}
       <TabIndicator className={indicator()} />
     </TabList>
-    {items.map((item) => (
-      <TabContent className={content()} value={item.value}>
+    {items.map((item, id) => (
+      <TabContent key={id} className={content()} value={item.value}>
         {item.name} Content
       </TabContent>
     ))}

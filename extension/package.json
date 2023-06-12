@@ -1,32 +1,62 @@
 {
   "name": "potionui",
-  "displayName": "potionUI",
-  "description": "Elegant components built with Ark UI & TailwindCSS.",
+  "displayName": "PotionUI",
+  "publisher": "Potion",
+  "description": "",
+  "icon": "./potionIcon.png",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.78.0"
+    "vscode": "^1.79.0"
   },
   "categories": [
-    "Snippets"
+    "Other"
   ],
+  "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "extension.add",
+        "title": "Potion: add"
+      },
+      {
+        "command": "extension.init",
+        "title": "Potion: init"
+      },
+      {
+        "command": "extension.missing",
+        "title": "Potion: missing"
+      }
+    ],
     "snippets": [
       {
         "language": "typescriptreact",
-        "path": "./snippets/React/Accordian/accordian.code-snippets"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./snippets/React/Button/button.code-snippets"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./snippets/React/Button/button-icon.code-snippets"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./snippets/React/Button/button-loader.code-snippets"
+        "path": "./out/snippets/React/Accordian/accordian.code-snippets"
       }
     ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && cp -r ./snippets ./out/snippets",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.79.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.12",
+    "node-fetch": "^2.6.11"
   }
 }

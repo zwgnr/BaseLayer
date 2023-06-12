@@ -9,6 +9,11 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   overrides: [
     {
       files: ['*.ts'],
@@ -18,7 +23,13 @@ module.exports = {
       rules: {},
       parserOptions: {
         tsconfigRootDir: __dirname,
-        project: ['./utils/tsconfig.json', './web/tsconfig.json'],
+        project: ['./utils/tsconfig.json', './web/tsconfig.json', './extension/tsconfig.json'],
+      },
+    },
+    {
+      files: ['./extension/**/*.ts'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
     {
