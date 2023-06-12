@@ -70,7 +70,7 @@ const potions: Potion[] = [
   {
     potion: "pinInputPotion",
     name: "PinInput",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-md font-bold\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-12 w-12 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-base font-bold\",\n  },\n});\n"
   },
   {
     potion: "popoverPotion",

@@ -14,7 +14,7 @@ export const PinInput = () => (
     placeholder="0"
     onComplete={(e) => alert(e.valueAsString)}
   >
-    <PinInputLabel className={label({ className: "text-xl" })}>
+    <PinInputLabel className={label()}>
       Enter Pin:
     </PinInputLabel>
     <PinInputControl className={control()}>

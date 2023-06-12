@@ -24,7 +24,7 @@ export const SearchDialog = ({ searchList }: SearchProps) => {
           })}
         >
           <div className="flex gap-2 text-text">
-            Search
+            <p className="hidden md:block">Search</p>
             <SearchIcon />
           </div>
         </Button>
