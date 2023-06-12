@@ -11,7 +11,7 @@ import { clsx } from "clsx";
 import { Copy } from "lucide-react";
 import { useState } from "react";
 
-const { tabsList, tabsTrigger, tabsContent, tabsIndicator } = tabsPotion();
+const { list, trigger, content, indicator } = tabsPotion();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ComponentTabs = (props: any) => {
@@ -54,13 +54,13 @@ export const ComponentTabs = (props: any) => {
       className="w-full rounded-xl bg-[#1b1e28]"
     >
       <TabList
-        className={tabsList({
+        className={list({
           className:
             "grid w-full grid-cols-4 rounded-b-none border-b-4 border-gray-500 bg-transparent text-gray-500",
         })}
       >
         <TabTrigger
-          className={tabsTrigger({
+          className={trigger({
             className:
               "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
           })}
@@ -69,7 +69,7 @@ export const ComponentTabs = (props: any) => {
           <Icon icon="devicon:vscode" className="mb-2 h-6 w-6 text-gray-600" />
         </TabTrigger>
         <TabTrigger
-          className={tabsTrigger({
+          className={trigger({
             className:
               "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
           })}
@@ -82,7 +82,7 @@ export const ComponentTabs = (props: any) => {
         </TabTrigger>
         <TabTrigger
           disabled={solidDisabled && true}
-          className={tabsTrigger({
+          className={trigger({
             className:
               "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
           })}
@@ -98,7 +98,7 @@ export const ComponentTabs = (props: any) => {
         </TabTrigger>
         <TabTrigger
           disabled={vueDisabled && true}
-          className={tabsTrigger({
+          className={trigger({
             className:
               "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
           })}
@@ -112,7 +112,7 @@ export const ComponentTabs = (props: any) => {
             )}
           />
         </TabTrigger>
-        <TabIndicator className={tabsIndicator()} />
+        <TabIndicator className={indicator()} />
       </TabList>
       <div className="flex w-full justify-end rounded-md pr-4 pt-4">
         <button
@@ -123,22 +123,22 @@ export const ComponentTabs = (props: any) => {
         </button>
       </div>
 
-      <TabContent className={tabsContent({ className: "-mt-8" })} value="vsc">
+      <TabContent className={content({ className: "-mt-8" })} value="vsc">
         <div className="no-scrollbar max-h-64 overflow-y-auto rounded-xl">
           {vscTab}
         </div>
       </TabContent>
-      <TabContent className={tabsContent({ className: "-mt-8" })} value="react">
+      <TabContent className={content({ className: "-mt-8" })} value="react">
         <div className="no-scrollbar max-h-64 overflow-y-auto rounded-xl">
           {reactTab}
         </div>
       </TabContent>
-      <TabContent className={tabsContent({ className: "-mt-8" })} value="solid">
+      <TabContent className={content({ className: "-mt-8" })} value="solid">
         <div className="no-scrollbar max-h-64 overflow-y-auto rounded-xl">
           {solidTab}
         </div>
       </TabContent>
-      <TabContent className={tabsContent({ className: "-mt-8" })} value="vue">
+      <TabContent className={content({ className: "-mt-8" })} value="vue">
         vue placeholder
       </TabContent>
     </Tabs>

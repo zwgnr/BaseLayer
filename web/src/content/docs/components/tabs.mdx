@@ -6,174 +6,92 @@ description: "The Tabs component is a powerful and flexible navigation tool for 
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-
-## Installation 
-
-<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
-```bash
-potion add tabs
-```
-</div>
-
-## Default 
+import { Tabs } from '../../../ui/React/Tabs/tabs.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="not-prose flex items-center w-full justify-center">
-
+   <Tabs client:load />
     </div>
 </div>
 
 <br />
 
+## Installation
+
+Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```ts
+import { tv } from "tailwind-variants";
+
+export const tabsPotion = tv({
+  slots: {
+    list: "bg-muted text-muted-foreground relative inline-flex h-10 items-center justify-center rounded-md",
+    trigger:
+      "text-md ring-offset-background focus-visible:ring-ring data-[selected]:bg-background data-[selected]:text-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-2 font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[selected]:shadow-sm",
+    content:
+      "ring-offset-background focus-visible:ring-ring mt-4 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+    indicator: "-bottom-1 h-1 bg-primary",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
 <DemoTabs solidDisabled vueDisabled>
-  <Fragment slot="code">
+  <Fragment slot="react">
 ```tsx
 import {
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioInput,
-  RadioLabel,
-} from "@components/RadioGroup";
+  TabContent,
+  TabIndicator,
+  TabList,
+  TabTrigger,
+  Tabs as TabsRoot,
+} from "@ark-ui/react";
+import { tabsPotion } from "@potions/tabsPotion";
 
-export const RadioGroupExample = () => {
-  const options = [
-    { id: "mobile", label: "Mobile" },
-    { id: "web", label: "Web" },
-    { id: "Native", label: "Native" },
-  ];
-  return (
-    <RadioGroup defaultValue="mobile">
-      {options.map((option, id) => (
-        <Radio key={id} value={option.id} >
-          <RadioInput />
-          <RadioControl />
-          <RadioLabel>{option.label}</RadioLabel>
-        </Radio>
+const { list, trigger, content, indicator } = tabsPotion();
+
+const items = [
+  { value: "react", name: "React" },
+  { value: "solid", name: "Solid" },
+  { value: "vue", name: "Vue" },
+];
+
+export const Tabs = () => (
+  <TabsRoot defaultValue={"react"}>
+    <TabList className={list()}>
+      {items.map((item) => (
+        <TabTrigger className={trigger()} value={item.value}>
+          {item.name}
+        </TabTrigger>
       ))}
-    </RadioGroup>
-  );
-};
+      <TabIndicator className={indicator()} />
+    </TabList>
+    {items.map((item) => (
+      <TabContent className={content()} value={item.value}>
+        {item.name} Content
+      </TabContent>
+    ))}
+  </TabsRoot>
+);
+
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bui-radio-group
+pc-tabs
 ```
   </Fragment>
 </DemoTabs>
-
-## Manual Install
-
-<p>
-  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
-  paste the code below into a new file!
-</p>
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
-import {
-  Radio as ArkRadio,
-  RadioControl as ArkRadioControl,
-  RadioGroup as ArkRadioGroup,
-  RadioInput as ArkRadioInput,
-  RadioLabel as ArkRadioLabel,
-} from "@ark-ui/react";
-
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { tv } from "tailwind-variants";
-
-const radioGroupStyles = tv({
-  slots: {
-    root: "flex flex-col gap-2",
-    radioControl:
-      "h-5 w-5 rounded-full border-2 bg-surface data-[checked]:border-primary data-[checked]:bg-surface data-[checked]:outline data-[checked]:outline-[4px] data-[checked]:outline-offset-[-5px] data-[checked]:outline-primary",
-    radio: "flex cursor-pointer items-center gap-3",
-    radioLabel: "",
-  },
-});
-
-const { root, radioControl, radio, radioLabel } = radioGroupStyles();
-
-const RadioGroup = forwardRef<
-  ElementRef<typeof ArkRadioGroup>,
-  ComponentPropsWithoutRef<typeof ArkRadioGroup>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioGroup ref={ref} className={root({ className })} {...rest}>
-      {children}
-    </ArkRadioGroup>
-  );
-});
-
-RadioGroup.displayName = ArkRadioGroup.displayName;
-
-const Radio = forwardRef<
-  ElementRef<typeof ArkRadio>,
-  ComponentPropsWithoutRef<typeof ArkRadio>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadio ref={ref} className={radio({ className })} {...rest}>
-      {children}
-    </ArkRadio>
-  );
-});
-
-Radio.displayName = ArkRadio.displayName;
-
-const RadioInput = forwardRef<
-  ElementRef<typeof ArkRadioInput>,
-  ComponentPropsWithoutRef<typeof ArkRadioInput>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioInput ref={ref} className="out peer" {...rest}>
-      {children}
-    </ArkRadioInput>
-  );
-});
-
-RadioInput.displayName = ArkRadioInput.displayName;
-
-const RadioControl = forwardRef<
-  ElementRef<typeof ArkRadioControl>,
-  ComponentPropsWithoutRef<typeof ArkRadioControl>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioControl
-      ref={ref}
-      className={radioControl({ className })}
-      {...rest}
-    />
-  );
-});
-
-RadioControl.displayName = ArkRadioControl.displayName;
-
-const RadioLabel = forwardRef<
-  ElementRef<typeof ArkRadioLabel>,
-  ComponentPropsWithoutRef<typeof ArkRadioLabel>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioLabel ref={ref} className={radioLabel({ className })} {...rest}>
-      {children}
-    </ArkRadioLabel>
-  );
-});
-
-RadioLabel.displayName = ArkRadioLabel.displayName;
-
-export { Radio, RadioControl, RadioGroup, RadioInput, RadioLabel };
-
-
-```
-</Fragment>
-</Potion>
 
