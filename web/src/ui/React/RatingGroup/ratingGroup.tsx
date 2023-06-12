@@ -6,15 +6,15 @@ import {
 import { ratingGroupPotion } from "@potions/ratingGroupPotion";
 import { Star } from "lucide-react";
 
-const { rgControl, rgRating, rgRoot } = ratingGroupPotion();
+const { control, rating, root } = ratingGroupPotion();
 
 export const RatingGroup = () => {
   return (
-    <RatingGroupRoot max={5} defaultValue={4} className={rgRoot()}>
-      <RatingGroupControl className={rgControl()}>
+    <RatingGroupRoot max={5} defaultValue={4} className={root()}>
+      <RatingGroupControl className={control()}>
         {({ sizeArray }) =>
           sizeArray.map((index) => (
-            <Rating className={rgRating()} key={index} index={index}>
+            <Rating className={rating()} key={index} index={index}>
               {({ isHalf, isHighlighted }) => {
                 return isHighlighted ? (
                   <Star className="fill-accent text-accent" />

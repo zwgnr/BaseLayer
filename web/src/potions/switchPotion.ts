@@ -2,10 +2,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const switchPotion = tv({
   slots: {
-    switchRoot: "w-fit-content relative flex items-center gap-2",
-    switchControl:
+    root: "w-fit-content relative flex items-center gap-2",
+    control:
       "focus-visible:focus focus-visible:shadow-0-0-0-4 inline-flex flex-shrink-0 cursor-pointer items-center justify-start rounded-full  border-2 border-transparent transition-colors duration-150",
-    switchThumb:
+    thumb:
       "pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform",
   },
   variants: {

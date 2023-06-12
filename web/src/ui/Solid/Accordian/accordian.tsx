@@ -10,8 +10,7 @@ import {
 import { accordianPotion } from "@potions/accordianPotion";
 import { For } from "solid-js";
 
-const { accordianRoot, accordianItem, accordianTrigger, accordianContent } =
-  accordianPotion();
+const { root, item, trigger, content } = accordianPotion();
 
 const parts = [
   {
@@ -33,15 +32,15 @@ const parts = [
 export const Accordian = () => {
   return (
     <div class="h-full w-full rounded-xl bg-slate-200 p-8">
-      <AccordionRoot class={accordianRoot()}>
+      <AccordionRoot class={root()}>
         <For each={parts}>
           {(part) => (
-            <AccordionItem class={accordianItem()} value={part.trigger}>
-              <AccordionTrigger class={accordianTrigger()}>
+            <AccordionItem class={item()} value={part.trigger}>
+              <AccordionTrigger class={trigger()}>
                 {part.trigger}
                 <ChevronDown class="h-5 w-5 transition duration-500" />
               </AccordionTrigger>
-              <AccordionContent class={accordianContent()}>
+              <AccordionContent class={content()}>
                 <div class="mb-2">{part.content}</div>
               </AccordionContent>
             </AccordionItem>

@@ -5,13 +5,13 @@ import {
 } from "@ark-ui/react";
 import { avatarPotion } from "@potions/avatarPotion";
 
-const { avatarRoot, avatarFallback, avatarImage } = avatarPotion();
+const { root, fallback, image } = avatarPotion();
 
 export const Avatar = () => (
-  <AvatarRoot className={avatarRoot()}>
-    <AvatarFallback className={avatarFallback()}>ME</AvatarFallback>
+  <AvatarRoot className={root()}>
+    <AvatarFallback className={fallback()}>ME</AvatarFallback>
     <AvatarImage
-      className={avatarImage()}
+      className={image()}
       src="https://i.pravatar.cc/300"
       alt="avatar"
     />

@@ -8,16 +8,6 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
 import { Select } from "../../../ui/React/Select/select.tsx"
 
-## Installation 
-
-<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
-```bash
-potion add select
-```
-</div>
-
-## Default 
-
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="not-prose flex items-center w-full justify-center">
       <Select client:only="react"/>
@@ -26,155 +16,100 @@ potion add select
 
 <br />
 
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const selectPotion = tv({
+  slots: {
+    trigger: "flex h-12 w-56 items-center rounded-xl bg-slate-300 px-2",
+    content: "w-56 rounded-xl bg-slate-300 p-2",
+    option:
+      "mb-1 cursor-pointer rounded-md p-2 hover:bg-primary-300 data-[selected]:bg-primary",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default
+
 <DemoTabs solidDisabled vueDisabled>
-  <Fragment slot="code">
+  <Fragment slot="react">
 ```tsx
 import {
-  Radio,
-  RadioControl,
-  RadioGroup,
-  RadioInput,
-  RadioLabel,
-} from "@components/RadioGroup";
+  Portal,
+  SelectContent,
+  SelectOption,
+  SelectPositioner,
+  Select as SelectRoot,
+  SelectTrigger,
+} from "@ark-ui/react";
+import { selectPotion } from "@potions/selectPotion";
+import { ChevronDown } from "lucide-react";
 
-export const RadioGroupExample = () => {
-  const options = [
-    { id: "mobile", label: "Mobile" },
-    { id: "web", label: "Web" },
-    { id: "Native", label: "Native" },
-  ];
+const { trigger, content, option } = selectPotion();
+
+export const Select = () => {
+  const SelectIcon = (props: { isOpen: boolean }) => {
+    const iconStyles = {
+      transform: props.isOpen ? "rotate(-180deg)" : undefined,
+      transition: "transform 0.2s",
+      transformOrigin: "center",
+    };
+    return <ChevronDown style={iconStyles} />;
+  };
+
   return (
-    <RadioGroup defaultValue="mobile">
-      {options.map((option, id) => (
-        <Radio key={id} value={option.id} >
-          <RadioInput />
-          <RadioControl />
-          <RadioLabel>{option.label}</RadioLabel>
-        </Radio>
-      ))}
-    </RadioGroup>
+    <SelectRoot>
+      {({ selectedOption, isOpen }) => (
+        <>
+          <SelectTrigger className={trigger()} asChild>
+            <button className="flex flex-row justify-between">
+              <span>{selectedOption?.label ?? "Select option"}</span>
+              <SelectIcon isOpen={isOpen} />
+            </button>
+          </SelectTrigger>
+          <Portal>
+            <SelectPositioner>
+              <SelectContent className={content()}>
+                <SelectOption
+                  className={option()}
+                  value="react"
+                  label="React"
+                />
+                <SelectOption className={option()} value="solid" label="Solid">
+                  Solid
+                </SelectOption>
+                <SelectOption className={option()} value="vue" label="Vue">
+                  Vue
+                </SelectOption>
+              </SelectContent>
+            </SelectPositioner>
+          </Portal>
+        </>
+      )}
+    </SelectRoot>
   );
 };
+
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bui-radio-group
+pc-select
 ```
   </Fragment>
 </DemoTabs>
-
-## Manual Install
-
-<p>
-  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
-  paste the code below into a new file!
-</p>
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
-import {
-  Radio as ArkRadio,
-  RadioControl as ArkRadioControl,
-  RadioGroup as ArkRadioGroup,
-  RadioInput as ArkRadioInput,
-  RadioLabel as ArkRadioLabel,
-} from "@ark-ui/react";
-
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { tv } from "tailwind-variants";
-
-const radioGroupStyles = tv({
-  slots: {
-    root: "flex flex-col gap-2",
-    radioControl:
-      "h-5 w-5 rounded-full border-2 bg-surface data-[checked]:border-primary data-[checked]:bg-surface data-[checked]:outline data-[checked]:outline-[4px] data-[checked]:outline-offset-[-5px] data-[checked]:outline-primary",
-    radio: "flex cursor-pointer items-center gap-3",
-    radioLabel: "",
-  },
-});
-
-const { root, radioControl, radio, radioLabel } = radioGroupStyles();
-
-const RadioGroup = forwardRef<
-  ElementRef<typeof ArkRadioGroup>,
-  ComponentPropsWithoutRef<typeof ArkRadioGroup>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioGroup ref={ref} className={root({ className })} {...rest}>
-      {children}
-    </ArkRadioGroup>
-  );
-});
-
-RadioGroup.displayName = ArkRadioGroup.displayName;
-
-const Radio = forwardRef<
-  ElementRef<typeof ArkRadio>,
-  ComponentPropsWithoutRef<typeof ArkRadio>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadio ref={ref} className={radio({ className })} {...rest}>
-      {children}
-    </ArkRadio>
-  );
-});
-
-Radio.displayName = ArkRadio.displayName;
-
-const RadioInput = forwardRef<
-  ElementRef<typeof ArkRadioInput>,
-  ComponentPropsWithoutRef<typeof ArkRadioInput>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioInput ref={ref} className="out peer" {...rest}>
-      {children}
-    </ArkRadioInput>
-  );
-});
-
-RadioInput.displayName = ArkRadioInput.displayName;
-
-const RadioControl = forwardRef<
-  ElementRef<typeof ArkRadioControl>,
-  ComponentPropsWithoutRef<typeof ArkRadioControl>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioControl
-      ref={ref}
-      className={radioControl({ className })}
-      {...rest}
-    />
-  );
-});
-
-RadioControl.displayName = ArkRadioControl.displayName;
-
-const RadioLabel = forwardRef<
-  ElementRef<typeof ArkRadioLabel>,
-  ComponentPropsWithoutRef<typeof ArkRadioLabel>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioLabel ref={ref} className={radioLabel({ className })} {...rest}>
-      {children}
-    </ArkRadioLabel>
-  );
-});
-
-RadioLabel.displayName = ArkRadioLabel.displayName;
-
-export { Radio, RadioControl, RadioGroup, RadioInput, RadioLabel };
-
-
-```
-</Fragment>
-</Potion>
-

@@ -17,7 +17,7 @@ import { Avatar } from '../../../ui/React/Avatar/avatar.tsx'
 
 ## Installation
 
-Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
 
 ## Potion 
 
@@ -43,18 +43,10 @@ export const avatarPotion = tv({
 
 ### Default
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center not-prose">
-      <Avatar client:load/>
-    </div>
-</div>
-
-<br />
-
 <DemoTabs solidDisabled vueDisabled>
 <Fragment slot="vsc">
 ```tsx
-bui-accordian 
+pc-accordian 
 ```
 </Fragment>
 <Fragment slot="react">
@@ -66,13 +58,13 @@ import {
 } from "@ark-ui/react";
 import { avatarPotion } from "@potions/avatarPotion";
 
-const { avatarRoot, avatarFallback, avatarImage } = avatarPotion();
+const { root, fallback, image } = avatarPotion();
 
 export const Avatar = () => (
-  <AvatarRoot className={avatarRoot()}>
-    <AvatarFallback className={avatarFallback()}>ME</AvatarFallback>
+  <AvatarRoot className={root()}>
+    <AvatarFallback className={fallback()}>ME</AvatarFallback>
     <AvatarImage
-      className={avatarImage()}
+      className={image()}
       src="https://i.pravatar.cc/300"
       alt="avatar"
     />

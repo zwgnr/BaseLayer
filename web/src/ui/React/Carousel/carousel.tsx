@@ -8,7 +8,7 @@ import {
   CarouselViewport,
 } from "@ark-ui/react";
 
-const { carouselRoot, carouselViewport, carouselControl } = carouselPotion();
+const { root, viewport, control } = carouselPotion();
 
 import { carouselPotion } from "@potions/carouselPotion";
 import { ChevronLeftSquare, ChevronRightSquare } from "lucide-react";
@@ -20,8 +20,8 @@ export const Carousel = () => {
     "https://tinyurl.com/4sjr5mvu",
   ];
   return (
-    <CarouselRoot className={carouselRoot()}>
-      <CarouselViewport className={carouselViewport()}>
+    <CarouselRoot className={root()}>
+      <CarouselViewport className={viewport()}>
         <CarouselSlideGroup>
           {images.map((image, index) => (
             <CarouselSlide key={index} index={index}>
@@ -33,7 +33,7 @@ export const Carousel = () => {
             </CarouselSlide>
           ))}
         </CarouselSlideGroup>
-        <CarouselControl className={carouselControl()}>
+        <CarouselControl className={control()}>
           <CarouselPrevSlideTrigger asChild>
             <button>
               <ChevronLeftSquare

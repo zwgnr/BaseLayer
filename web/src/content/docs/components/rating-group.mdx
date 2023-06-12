@@ -17,7 +17,7 @@ import { RatingGroup } from '../../../ui/React/RatingGroup/ratingGroup.tsx'
 
 ## Installation
 
-Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
 
 ## Potion 
 
@@ -54,7 +54,7 @@ export const ratingGroupPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-rating-group 
+pc-rating-group 
 ```
 </Fragment>
 <Fragment slot="react">
@@ -67,15 +67,15 @@ import {
 import { ratingGroupPotion } from "@potions/ratingGroupPotion";
 import { Star } from "lucide-react";
 
-const { rgControl, rgRating, rgRoot } = ratingGroupPotion();
+const { control, rating, root } = ratingGroupPotion();
 
 export const RatingGroup = () => {
   return (
-    <RatingGroupRoot max={5} defaultValue={4} className={rgRoot()}>
-      <RatingGroupControl className={rgControl()}>
+    <RatingGroupRoot max={5} defaultValue={4} className={root()}>
+      <RatingGroupControl className={control()}>
         {({ sizeArray }) =>
           sizeArray.map((index) => (
-            <Rating className={rgRating()} key={index} index={index}>
+            <Rating className={rating()} key={index} index={index}>
               {({ isHalf, isHighlighted }) => {
                 return isHighlighted ? (
                   <Star className="fill-accent text-accent" />
@@ -90,7 +90,6 @@ export const RatingGroup = () => {
     </RatingGroupRoot>
   );
 };
-
 
 ```
 </Fragment>

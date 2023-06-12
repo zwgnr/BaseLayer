@@ -17,7 +17,7 @@ import { RangeSlider } from '../../../ui/React/RangeSlider/rangeSlider.tsx'
 
 ## Installation
 
-Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
 
 ## Potion 
 
@@ -28,13 +28,13 @@ import { tv } from "tailwind-variants";
 
 export const rangeSliderPotion = tv({
   slots: {
-    rsRoot: "w-full",
-    rsControl: "relative flex items-center py-2",
-    rsTrack: "h-2 flex-1 rounded-md bg-surface-3",
-    rsRange: "h-2 rounded-md bg-accent",
-    rsThumb:
+    root: "w-full",
+    control: "relative flex items-center py-2",
+    track: "h-2 flex-1 rounded-md bg-surface-3",
+    range: "h-2 rounded-md bg-accent",
+    thumb:
       "h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
-    rsMarker: "text-md mt-2",
+    marker: "mt-2 text-sm",
   },
 });
 
@@ -57,7 +57,7 @@ export const rangeSliderPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-range-slider 
+pc-range-slider 
 ```
 </Fragment>
 <Fragment slot="react">
@@ -75,8 +75,7 @@ import {
 
 import { rangeSliderPotion } from "@potions/rangeSliderPotion";
 
-const { rsControl, rsMarker, rsRange, rsRoot, rsThumb, rsTrack } =
-  rangeSliderPotion();
+const rsp = rangeSliderPotion();
 
 export const RangeSlider = (props: Partial<RangeSliderProps>) => {
   const markers = [25, 50, 75];
@@ -87,24 +86,28 @@ export const RangeSlider = (props: Partial<RangeSliderProps>) => {
       min={0}
       max={100}
       defaultValue={[10, 75]}
-      className={rsRoot()}
+      className={rsp.root()}
       {...props}
     >
-      <RangeSliderControl className={rsControl()}>
-        <RangeSliderTrack className={rsTrack()}>
-          <RangeSliderRange className={rsRange()} />
+      <RangeSliderControl className={rsp.control()}>
+        <RangeSliderTrack className={rsp.track()}>
+          <RangeSliderRange className={rsp.range()} />
         </RangeSliderTrack>
         {thumbs.map((thumbIndex) => (
           <RangeSliderThumb
             key={thumbIndex}
-            className={rsThumb()}
+            className={rsp.thumb()}
             index={thumbIndex}
           />
         ))}
       </RangeSliderControl>
       <RangeSliderMarkerGroup>
         {markers.map((marker) => (
-          <RangeSliderMarker key={marker} className={rsMarker()} value={marker}>
+          <RangeSliderMarker
+            key={marker}
+            className={rsp.marker()}
+            value={marker}
+          >
             {marker}
           </RangeSliderMarker>
         ))}

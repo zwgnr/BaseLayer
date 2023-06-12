@@ -8,12 +8,6 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
 import { ColorPicker } from "../../../ui/React/ColorPicker/ColorPicker.tsx"
 
-## Installation
-
-Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
-
-## Default 
-
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-full justify-center">
       <ColorPicker client:load/>
@@ -21,6 +15,39 @@ Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the po
 </div>
 
 <br />
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const colorPickerPotion = tv({
+  slots: {
+    content: "w-fit overflow-hidden rounded-xl border bg-surface shadow-lg",
+    areaThumb:
+      "z-1 h-4 w-4 rounded-full border-2 border-white shadow-lg shadow-black outline-none",
+    channelSliderTrack: "h-4 rounded-full border",
+    swatch: "h-4 w-4 shrink-0 rounded-sm",
+    swatchGroup: "inline-flex w-full flex-wrap gap-2",
+    input: "w-16 rounded-md border border-gray-200",
+    channelSliderThumb:
+      "h-4 w-4 -translate-x-2/4 -translate-y-2/4 rounded-full border-2 border-white shadow-lg shadow-black outline-none",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default 
 
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
@@ -93,173 +120,7 @@ export const ColorPickerDemo = () => {
 
     <Fragment slot="vsc">
 ```bash
-bui-color-picker
+pc-color-picker
 ```
   </Fragment>
 </DemoTabs>
-
-## Manual Install
-
-<p>
-  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
-  paste the code below into a new file!
-</p>
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
-import {
-  ColorPicker as ArkColorPicker,
-  ColorPickerArea as ArkColorPickerArea,
-  ColorPickerAreaGradient as ArkColorPickerAreaGradient,
-  ColorPickerAreaThumb as ArkColorPickerAreaThumb,
-  ColorPickerChannelInput as ArkColorPickerChannelInput,
-  ColorPickerChannelSliderBackground as ArkColorPickerChannelSliderBackground,
-  ColorPickerChannelSliderThumb as ArkColorPickerChannelSliderThumb,
-  ColorPickerChannelSliderTrack as ArkColorPickerChannelSliderTrack,
-  ColorPickerContent as ArkColorPickerContent,
-  ColorPickerEyeDropperTrigger as ArkColorPickerEyeDropperTrigger,
-  ColorPickerSwatch as ArkColorPickerSwatch,
-  ColorPickerSwatchBackground as ArkColorPickerSwatchBackground,
-  ColorPickerSwatchGroup as ArkColorPickerSwatchGroup,
-} from "@ark-ui/react";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { tv } from "tailwind-variants";
-
-const colorPickerStyles = tv({
-  slots: {
-    content: "bg-surface rounded-xl border shadow-lg w-fit overflow-hidden",
-    areaThumb:
-      "rounded-full border-2 border-white h-4 w-4 shadow-lg shadow-black outline-none z-1",
-    channelSliderTrack: "h-4 rounded-full border",
-    swatch: "h-4 w-4 rounded-sm shrink-0",
-    swatchGroup: "inline-flex flex-wrap gap-2 w-full",
-    input: "border border-gray-200 rounded-md w-16",
-    channelSliderThumb:
-      "rounded-full border-2 border-white h-4 w-4 outline-none -translate-x-2/4 -translate-y-2/4 shadow-lg shadow-black",
-  },
-});
-
-const {
-  content,
-  areaThumb,
-  input,
-  channelSliderTrack,
-  swatch,
-  swatchGroup,
-  channelSliderThumb,
-} = colorPickerStyles();
-
-const ColorPicker = ArkColorPicker;
-//
-//ColorPicker.displayName = ArkColorPicker.displayName;
-
-const ColorPickerContent = forwardRef<
-  ElementRef<typeof ArkColorPickerContent>,
-  ComponentPropsWithoutRef<typeof ArkColorPickerContent>
->(({ className, children, ...props }, ref) => (
-  <ArkColorPickerContent
-    ref={ref}
-    className={content({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkColorPickerContent>
-));
-
-ColorPickerContent.displayName = ArkColorPickerContent.displayName;
-
-const ColorPickerArea = forwardRef<
-  ElementRef<typeof ArkColorPickerArea>,
-  ComponentPropsWithoutRef<typeof ArkColorPickerArea>
->(({ className, children, ...props }, ref) => (
-  <ArkColorPickerArea ref={ref} className="h-48" {...props}>
-    <ArkColorPickerAreaGradient className="h-full" />
-    <ArkColorPickerAreaThumb className={areaThumb({ className: className })} />
-  </ArkColorPickerArea>
-));
-
-ColorPickerArea.displayName = ArkColorPickerArea.displayName;
-
-const ColorPickerChannelSliderTrack = forwardRef<
-  ElementRef<typeof ArkColorPickerChannelSliderTrack>,
-  ComponentPropsWithoutRef<typeof ArkColorPickerChannelSliderTrack>
->(({ className, children, ...props }, ref) => (
-  <ArkColorPickerChannelSliderTrack
-    ref={ref}
-    className={channelSliderTrack({ className: className })}
-    {...props}
-  >
-    <ArkColorPickerChannelSliderBackground />
-    <ArkColorPickerChannelSliderThumb className={channelSliderThumb()} />
-  </ArkColorPickerChannelSliderTrack>
-));
-
-ColorPickerChannelSliderTrack.displayName =
-  ArkColorPickerChannelSliderTrack.displayName;
-
-const ColorPickerSwatchGroup = forwardRef<
-  ElementRef<typeof ArkColorPickerSwatchGroup>,
-  ComponentPropsWithoutRef<typeof ArkColorPickerSwatchGroup>
->(({ className, children, ...props }, ref) => (
-  <ArkColorPickerSwatchGroup
-    ref={ref}
-    className={swatchGroup({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkColorPickerSwatchGroup>
-));
-
-ColorPickerSwatchGroup.displayName = ArkColorPickerSwatchGroup.displayName;
-
-const ColorPickerSwatch = forwardRef<
-  ElementRef<typeof ArkColorPickerSwatch>,
-  ComponentPropsWithoutRef<typeof ArkColorPickerSwatch>
->(({ className, children, ...props }, ref) => (
-  <ArkColorPickerSwatch
-    ref={ref}
-    className={swatch({ className: className })}
-    {...props}
-  >
-    <ArkColorPickerSwatchBackground />
-  </ArkColorPickerSwatch>
-));
-
-ColorPickerSwatch.displayName = ArkColorPickerSwatch.displayName;
-
-const ColorPickerChannelInput = forwardRef<
-  ElementRef<typeof ArkColorPickerChannelInput>,
-  ComponentPropsWithoutRef<typeof ArkColorPickerChannelInput>
->(({ className, children, ...props }, ref) => (
-  <ArkColorPickerChannelInput
-    ref={ref}
-    className={input({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkColorPickerChannelInput>
-));
-
-ColorPickerChannelInput.displayName = ArkColorPickerChannelInput.displayName;
-
-const ColorPickerEyeDropperTrigger = ArkColorPickerEyeDropperTrigger;
-ColorPickerEyeDropperTrigger.displayName =
-  ArkColorPickerEyeDropperTrigger.displayName;
-
-export {
-  ColorPicker,
-  ColorPickerContent,
-  ColorPickerArea,
-  ColorPickerChannelSliderTrack,
-  ColorPickerSwatchGroup,
-  ColorPickerSwatch,
-  ColorPickerChannelInput,
-  ColorPickerEyeDropperTrigger,
-};
-
-
-```
-</Fragment>
-</Potion>
-

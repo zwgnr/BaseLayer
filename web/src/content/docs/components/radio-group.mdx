@@ -8,16 +8,6 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
 import { RadioGroup } from "../../../ui/React/RadioGroup/RadioGroup.tsx"
 
-## Installation 
-
-<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
-```bash
-potion add radio-group
-```
-</div>
-
-## Default 
-
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="not-prose flex items-center w-full justify-center">
       <RadioGroup client:only="react"/>
@@ -26,33 +16,62 @@ potion add radio-group
 
 <br />
 
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const ratingGroupPotion = tv({
+  slots: {
+    root: "",
+    control: "flex gap-1",
+    rating:
+      "[&[data-[highlighted]]:text-accent cursor-pointer fill-surface-3 text-text-3 transition duration-75  focus:outline-0 [&>svg]:h-12 [&>svg]:w-12 [&[data-highlighted]]:fill-accent",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Default 
+
 <DemoTabs solidDisabled vueDisabled>
-  <Fragment slot="code">
+  <Fragment slot="react">
 ```tsx
 import {
   Radio,
   RadioControl,
-  RadioGroup,
+  RadioGroup as RadioGroupRoot,
   RadioInput,
   RadioLabel,
-} from "@components/RadioGroup";
+} from "@ark-ui/react";
+import { radioGroupPotion } from "@potions/radioGroupPotion";
 
-export const RadioGroupExample = () => {
+const { root, control, radio, radioLabel } = radioGroupPotion();
+
+export const RadioGroup = () => {
   const options = [
     { id: "mobile", label: "Mobile" },
     { id: "web", label: "Web" },
     { id: "Native", label: "Native" },
   ];
   return (
-    <RadioGroup defaultValue="mobile">
+    <RadioGroupRoot className={root()} defaultValue="mobile">
       {options.map((option, id) => (
-        <Radio key={id} value={option.id} >
+        <Radio className={radio()} key={id} value={option.id}>
           <RadioInput />
-          <RadioControl />
-          <RadioLabel>{option.label}</RadioLabel>
+          <RadioControl className={control()} />
+          <RadioLabel className={radioLabel()}>{option.label}</RadioLabel>
         </Radio>
       ))}
-    </RadioGroup>
+    </RadioGroupRoot>
   );
 };
 
@@ -61,120 +80,8 @@ export const RadioGroupExample = () => {
 
     <Fragment slot="vsc">
 ```bash
-bui-radio-group
+pc-radio-group
 ```
   </Fragment>
 </DemoTabs>
-
-## Manual Install
-
-<p>
-  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
-  paste the code below into a new file!
-</p>
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
-import {
-  Radio as ArkRadio,
-  RadioControl as ArkRadioControl,
-  RadioGroup as ArkRadioGroup,
-  RadioInput as ArkRadioInput,
-  RadioLabel as ArkRadioLabel,
-} from "@ark-ui/react";
-
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { tv } from "tailwind-variants";
-
-const radioGroupStyles = tv({
-  slots: {
-    root: "flex flex-col gap-2",
-    radioControl:
-      "h-5 w-5 rounded-full border-2 bg-surface data-[checked]:border-primary data-[checked]:bg-surface data-[checked]:outline data-[checked]:outline-[4px] data-[checked]:outline-offset-[-5px] data-[checked]:outline-primary",
-    radio: "flex cursor-pointer items-center gap-3",
-    radioLabel: "",
-  },
-});
-
-const { root, radioControl, radio, radioLabel } = radioGroupStyles();
-
-const RadioGroup = forwardRef<
-  ElementRef<typeof ArkRadioGroup>,
-  ComponentPropsWithoutRef<typeof ArkRadioGroup>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioGroup ref={ref} className={root({ className })} {...rest}>
-      {children}
-    </ArkRadioGroup>
-  );
-});
-
-RadioGroup.displayName = ArkRadioGroup.displayName;
-
-const Radio = forwardRef<
-  ElementRef<typeof ArkRadio>,
-  ComponentPropsWithoutRef<typeof ArkRadio>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadio ref={ref} className={radio({ className })} {...rest}>
-      {children}
-    </ArkRadio>
-  );
-});
-
-Radio.displayName = ArkRadio.displayName;
-
-const RadioInput = forwardRef<
-  ElementRef<typeof ArkRadioInput>,
-  ComponentPropsWithoutRef<typeof ArkRadioInput>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioInput ref={ref} className="out peer" {...rest}>
-      {children}
-    </ArkRadioInput>
-  );
-});
-
-RadioInput.displayName = ArkRadioInput.displayName;
-
-const RadioControl = forwardRef<
-  ElementRef<typeof ArkRadioControl>,
-  ComponentPropsWithoutRef<typeof ArkRadioControl>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioControl
-      ref={ref}
-      className={radioControl({ className })}
-      {...rest}
-    />
-  );
-});
-
-RadioControl.displayName = ArkRadioControl.displayName;
-
-const RadioLabel = forwardRef<
-  ElementRef<typeof ArkRadioLabel>,
-  ComponentPropsWithoutRef<typeof ArkRadioLabel>
->((props, ref) => {
-  const { className, children, ...rest } = props;
-  return (
-    <ArkRadioLabel ref={ref} className={radioLabel({ className })} {...rest}>
-      {children}
-    </ArkRadioLabel>
-  );
-});
-
-RadioLabel.displayName = ArkRadioLabel.displayName;
-
-export { Radio, RadioControl, RadioGroup, RadioInput, RadioLabel };
-
-
-```
-</Fragment>
-</Potion>
 

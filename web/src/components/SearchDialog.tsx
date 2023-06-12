@@ -12,7 +12,7 @@ import { dialogPotion } from "@potions/dialogPotion";
 import { Search as SearchIcon } from "lucide-react";
 import Search, { type SearchProps } from "./search";
 
-const { dialogBackdrop, dialogContainer, dialogContent } = dialogPotion();
+const { backdrop, container, content } = dialogPotion();
 
 export const SearchDialog = ({ searchList }: SearchProps) => {
   return (
@@ -30,10 +30,10 @@ export const SearchDialog = ({ searchList }: SearchProps) => {
         </Button>
       </DialogTrigger>
       <Portal>
-        <DialogBackdrop className={dialogBackdrop()} />
-        <DialogContainer className={dialogContainer()}>
+        <DialogBackdrop className={backdrop()} />
+        <DialogContainer className={container()}>
           <DialogContent
-            className={dialogContent({
+            className={content({
               className: "mx-8 w-full overflow-hidden md:w-1/3",
             })}
           >

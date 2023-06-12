@@ -7,7 +7,7 @@ import {
 } from "@ark-ui/react";
 import { radioGroupPotion } from "@potions/radioGroupPotion";
 
-const { radioGroupRoot, radioControl, radio, radioLabel } = radioGroupPotion();
+const { root, control, radio, radioLabel } = radioGroupPotion();
 
 export const RadioGroup = () => {
   const options = [
@@ -16,11 +16,11 @@ export const RadioGroup = () => {
     { id: "Native", label: "Native" },
   ];
   return (
-    <RadioGroupRoot className={radioGroupRoot()} defaultValue="mobile">
+    <RadioGroupRoot className={root()} defaultValue="mobile">
       {options.map((option, id) => (
         <Radio className={radio()} key={id} value={option.id}>
           <RadioInput />
-          <RadioControl className={radioControl()} />
+          <RadioControl className={control()} />
           <RadioLabel className={radioLabel()}>{option.label}</RadioLabel>
         </Radio>
       ))}

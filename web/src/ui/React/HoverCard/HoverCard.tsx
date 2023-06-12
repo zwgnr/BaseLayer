@@ -11,7 +11,7 @@ import {
 import { buttonPotion } from "@potions/buttonPotion";
 import { hoverCardPotion } from "@potions/hoverCardPotion";
 
-const { hcPositioner, hcContent } = hoverCardPotion();
+const { positioner, content } = hoverCardPotion();
 
 export const HoverCard = () => {
   return (
@@ -25,8 +25,8 @@ export const HoverCard = () => {
         </a>
       </HoverCardTrigger>
       <Portal>
-        <HoverCardPositioner className={hcPositioner()}>
-          <HoverCardContent className={hcContent()}>
+        <HoverCardPositioner className={positioner()}>
+          <HoverCardContent className={content()}>
             <HoverCardArrow>
               <HoverCardArrowTip />
             </HoverCardArrow>

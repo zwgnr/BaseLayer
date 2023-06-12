@@ -9,7 +9,7 @@ import {
 import { selectPotion } from "@potions/selectPotion";
 import { ChevronDown } from "lucide-react";
 
-const { selectTrigger, selectContent, selectOption } = selectPotion();
+const { trigger, content, option } = selectPotion();
 
 export const Select = () => {
   const SelectIcon = (props: { isOpen: boolean }) => {
@@ -25,7 +25,7 @@ export const Select = () => {
     <SelectRoot>
       {({ selectedOption, isOpen }) => (
         <>
-          <SelectTrigger className={selectTrigger()} asChild>
+          <SelectTrigger className={trigger()} asChild>
             <button className="flex flex-row justify-between">
               <span>{selectedOption?.label ?? "Select option"}</span>
               <SelectIcon isOpen={isOpen} />
@@ -33,24 +33,16 @@ export const Select = () => {
           </SelectTrigger>
           <Portal>
             <SelectPositioner>
-              <SelectContent className={selectContent()}>
+              <SelectContent className={content()}>
                 <SelectOption
                   className={option()}
                   value="react"
                   label="React"
                 />
-                <SelectOption
-                  className={selectOption()}
-                  value="solid"
-                  label="Solid"
-                >
+                <SelectOption className={option()} value="solid" label="Solid">
                   Solid
                 </SelectOption>
-                <SelectOption
-                  className={selectOption()}
-                  value="vue"
-                  label="Vue"
-                >
+                <SelectOption className={option()} value="vue" label="Vue">
                   Vue
                 </SelectOption>
               </SelectContent>

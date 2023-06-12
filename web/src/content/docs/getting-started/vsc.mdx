@@ -1,33 +1,69 @@
 ---
 title: VScode Extension
 description: "The Potion extension, for VScode."
-tags: "Download, Configure, Commands"
+tags: "Install, Configure, Commands, Snippets, init, add, missing"
 ---
 
 ---
 
-The Potion VScode Extension provides snippets of all starter components.
+The Potion VScode Extension is where the magic of PotionUI happens. From the extension you are able to init your project, install potions, and use code snippets to rapidly create components.
+
+*Why an extension and not a CLI?*
+
+CLI tools are great for certain things, but in this instance the extension is significantly faster than any npx TS CLI tools as it does not have to temp download and files to execute the scripts. There was also the option to write a CLI in a lanugage like GO, allowing for shipping an executable binary, but distrubuting updates via a VScode extension is much easier in this situaion.
+
+There is also the advantage of great built in UI features of VScode. Finally, as many are already use VScode, there is near zero friction when using Potion in your project.
 
 ## Install 
 
-Locate and install [potionUI](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) in the VScode marketplace.
+Locate and install [PotionUI](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) in the VScode marketplace.
 
-## Using
+## Parts
 
-All commands are prefixed with "pui". Currently only React components are supported, in the future additional frameworks will be added. *Since solid also uses .tsx file extension the commands for solid will be prefixed with "pui-s".
+The extension currently has two main parts.
 
-For example,
+1. Command Palette commands
+2. Code Snippets
 
-```tsx
-bui-button
-```
-will print the below code your editor!
+## Commands 
 
-```tsx
-import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
+Let's start with the available commands, and how to use them.
 
-<Button className={buttonPotion()}>Button</Button>;
-```
+To use any of the below commands simply open the command palette in VScode. You can access this pressing Ctrl+Shift+P. 
+
+### Potion: init
+
+This command gets your project set up and configured with everything you need to use PotionUI. It does this though a series of promts and auto detections under hood. Let's walk through the process.
+
+1. First you will be asked 'Where is the folder you would like to init Potion in?'
+   The string you enter is relative to the workspace root of your VScode window. So if you would if you would like your projectRoot to be set in your workspace root, then simply press enter. If you are in a mono repo type setup and your project is located in folder for example called "myproject/frontend", simply type myproject/frontend.
+2. You will then be asked "What framework are you using?", with the options being react, solid, vue.  Upon selection, you will be asked a confirmation and then the configuration begins.
+3. At this point the proper version of `@ark-ui/{react/solid/vue}` `lucide-{react/solid/vue}` and Tailwind Variants will be installed. Whatever package manager you have setup in your projectRoot will be automatically detected. 
+
+Potion UI is now ready to use!
 
 
+### Potion: add
+
+This command provies a multi-pick where you can choose one or more potions to install. Upon selection, the `potions.{ts}` files will be automatically created and placed in your potions folder. 
+
+*If you do not have a potions folder set up, and error will be thrown.
+
+### Potion: missing
+
+There will be times when you are using the component snippets that you find out you have required potions that are not installed. Simply running the missing command will scan the current file you have open and install all dependant potions to your potions folder.
+
+
+## Snippets
+
+### Components
+
+Potion includes a huge array of prebuilt componets that you can modify and extend however you want.  
+
+All components are prefixed with the command pc-. So if you would like a button, you can type pc-button.
+
+*If you are using Solid, you will need to prefix the command with pcs- instead of pc-.
+
+If you find you are missing any potions, you can run the command Potion: missing.
+
+### Themes

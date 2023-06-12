@@ -9,8 +9,7 @@ import {
 
 import { accordianPotion } from "@potions/accordianPotion";
 
-const { accordianRoot, accordianItem, accordianTrigger, accordianContent } =
-  accordianPotion();
+const { root, item, trigger, content } = accordianPotion();
 
 const parts = [
   {
@@ -31,18 +30,14 @@ const parts = [
 
 export const Accordian = () => {
   return (
-    <AccordionRoot className={accordianRoot()} defaultValue="Is it Accessible?">
+    <AccordionRoot className={root()} defaultValue="Is it Accessible?">
       {parts.map((part, id) => (
-        <AccordionItem
-          className={accordianItem()}
-          key={id}
-          value={part.trigger}
-        >
-          <AccordionTrigger className={accordianTrigger()}>
+        <AccordionItem className={item()} key={id} value={part.trigger}>
+          <AccordionTrigger className={trigger()}>
             {part.trigger}
             <ChevronDown className="h-5 w-5 transition duration-500" />
           </AccordionTrigger>
-          <AccordionContent className={accordianContent()}>
+          <AccordionContent className={content()}>
             <div className="mb-2">{part.content}</div>
           </AccordionContent>
         </AccordionItem>

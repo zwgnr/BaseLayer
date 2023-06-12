@@ -8,16 +8,6 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
 import { PinInput } from "../../../ui/React/PinInput/PinInput.tsx"
 
-## Installation 
-
-<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
-```bash
-potion add pin-input
-```
-</div>
-
-## Default 
-
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="not-prose flex items-center w-full justify-center">
       <PinInput client:only="react"/>
@@ -26,184 +16,74 @@ potion add pin-input
 
 <br />
 
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const pinInputPotion = tv({
+  slots: {
+    root: "flex flex-row items-center gap-4",
+    field:
+      "h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+    control: "flex gap-2",
+    label: "text-md font-bold",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components 
+
+### Default 
+
 <DemoTabs solidDisabled vueDisabled>
-  <Fragment slot="code">
+  <Fragment slot="react">
 ```tsx
 import {
-  HoverCard,
-  HoverCardArrow,
-  HoverCardContent,
-  HoverCardPositioner,
-  HoverCardTrigger,
-  HoverPortal,
-} from "@components/HoverCard";
-import { Button } from "@components/button";
+  PinInputControl,
+  PinInputField,
+  PinInputLabel,
+  PinInput as PinInputRoot,
+} from "@ark-ui/react";
+import { pinInputPotion } from "@potions/pinInputPotion";
 
-export const HoverCardDemo = () => {
-  return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <a href="" target="_blank" rel="noreferrer">
-          <img
-            className="h-24 w-24 rounded-lg object-cover"
-            src="https://tinyurl.com/2vscrc3v"
-          />
-        </a>
-      </HoverCardTrigger>
-      <HoverPortal>
-        <HoverCardPositioner>
-          <HoverCardContent>
-            <HoverCardArrow />
-            <div className="flex w-full flex-col gap-4">
-              <div className="flex w-full justify-between">
-                <img
-                  className="h-16 w-16 rounded-xl object-cover"
-                  alt="Headphones"
-                  src="https://tinyurl.com/2vscrc3v"
-                />
-                <Button onClick={() => alert("Added to Cart!")}>Add to Cart</Button>
-              </div>
+const { root, field, control, label } = pinInputPotion();
 
-              <div className="flex flex-col gap-2">
-                <h1 className="font-bold text-lg">Noise Canceling Headphones</h1>
-                <h2 className="text-md">$299.99</h2>
-              </div>
-            </div>
-          </HoverCardContent>
-        </HoverCardPositioner>
-      </HoverPortal>
-    </HoverCard>
-  );
-};
+export const PinInput = () => (
+  <PinInputRoot
+    className={root()}
+    placeholder="0"
+    onComplete={(e) => alert(e.valueAsString)}
+  >
+    <PinInputLabel className={label({ className: "text-xl" })}>
+      Enter Pin:
+    </PinInputLabel>
+    <PinInputControl className={control()}>
+      {[0, 1, 2, 3].map((id, index) => (
+        <PinInputField className={field()} key={id} index={index} />
+      ))}
+    </PinInputControl>
+  </PinInputRoot>
+);
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bui-hover-card
+pc-pin-input
 ```
   </Fragment>
 </DemoTabs>
 
-## Manual Install
 
-<p>
-  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
-  paste the code below into a new file!
-</p>
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
-import {
-  Dialog as ArkDialog,
-  DialogBackdrop as ArkDialogBackdrop,
-  DialogContainer as ArkDialogContainer,
-  DialogContent as ArkDialogContent,
-  DialogDescription as ArkDialogDescription,
-  DialogTitle as ArkDialogTitle,
-  DialogTrigger as ArkDialogTrigger,
-  Portal as ArkPortal,
-  DialogCloseTrigger as ArkDialogCloseTrigger
-} from "@ark-ui/react";
-
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { tv } from "tailwind-variants";
-
-const carouselStyles = tv({
-  slots: {
-    backdrop: "bg-gray-800/30 inset-0 fixed z-40",
-    container: "flex items-center inset-0 justify-center fixed z-40",
-    content: "bg-surface rounded-xl shadow-lg relative min-w-80 w-80 z-50",
-  },
-});
-
-const { backdrop, container, content } = carouselStyles();
-
-const Dialog = ArkDialog;
-const DialogTrigger = ArkDialogTrigger;
-const DialogCloseTrigger = ArkDialogCloseTrigger;
-const Portal = ArkPortal;
-
-const DialogBackdrop = forwardRef<
-  ElementRef<typeof ArkDialogBackdrop>,
-  ComponentPropsWithoutRef<typeof ArkDialogBackdrop>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogBackdrop
-    ref={ref}
-    className={backdrop({ className: className })}
-    {...props}
-  ></ArkDialogBackdrop>
-));
-
-DialogBackdrop.displayName = ArkDialogBackdrop.displayName;
-
-const DialogContainer = forwardRef<
-  ElementRef<typeof ArkDialogContainer>,
-  ComponentPropsWithoutRef<typeof ArkDialogContainer>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogContainer
-    ref={ref}
-    className={container({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkDialogContainer>
-));
-
-DialogContainer.displayName = ArkDialogContainer.displayName;
-
-const DialogContent = forwardRef<
-  ElementRef<typeof ArkDialogContent>,
-  ComponentPropsWithoutRef<typeof ArkDialogContent>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogContent
-    ref={ref}
-    className={content({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkDialogContent>
-));
-
-DialogContent.displayName = ArkDialogContent.displayName;
-
-const DialogTitle = forwardRef<
-  ElementRef<typeof ArkDialogTitle>,
-  ComponentPropsWithoutRef<typeof ArkDialogTitle>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogTitle ref={ref} className="text-lg font-bold" {...props}>
-    {children}
-  </ArkDialogTitle>
-));
-
-DialogTitle.displayName = ArkDialogTitle.displayName;
-
-const DialogDescription = forwardRef<
-  ElementRef<typeof ArkDialogDescription>,
-  ComponentPropsWithoutRef<typeof ArkDialogDescription>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogDescription ref={ref} className="text-sm text-gray-400" {...props}>
-    {children}
-  </ArkDialogDescription>
-));
-
-DialogDescription.displayName = ArkDialogDescription.displayName;
-
-export {
-  Dialog,
-  DialogTrigger,
-  DialogCloseTrigger,
-  Portal,
-  DialogBackdrop,
-  DialogContainer,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-};
-
-```
-</Fragment>
-</Potion>
 

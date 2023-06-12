@@ -12,7 +12,7 @@ import { buttonPotion } from "@potions/buttonPotion";
 import { popoverPotion } from "@potions/popoverPotion";
 import { Star } from "lucide-react";
 
-const { popoverPositioner, popoverContent, popoverTitle } = popoverPotion();
+const { positioner, content, title } = popoverPotion();
 
 export const Popover = () => {
   return (
@@ -23,13 +23,11 @@ export const Popover = () => {
           <p>Favorite</p>
         </button>
       </PopoverTrigger>
-      <PopoverPositioner className={popoverPositioner()}>
-        <PopoverContent className={popoverContent()}>
+      <PopoverPositioner className={positioner()}>
+        <PopoverContent className={content()}>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <PopoverTitle className={popoverTitle()}>
-                Favorite Lists
-              </PopoverTitle>
+              <PopoverTitle className={title()}>Favorite Lists</PopoverTitle>
               <PopoverDescription className="text-sm">
                 Add to or create a new list!
               </PopoverDescription>

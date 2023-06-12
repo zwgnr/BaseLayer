@@ -16,16 +16,16 @@ type SwitchProps = ArkSwitchProps &
   };
 
 export const Switch = ({ children, intent, size, ...props }: SwitchProps) => {
-  const { switchRoot, switchControl, switchThumb } = switchPotion({
+  const { root, control, thumb } = switchPotion({
     intent,
     size,
   });
 
   return (
-    <ArkSwitch className={switchRoot()} {...props}>
+    <ArkSwitch className={root()} {...props}>
       <SwitchInput />
-      <SwitchControl className={switchControl()}>
-        <SwitchThumb className={switchThumb()} />
+      <SwitchControl className={control()}>
+        <SwitchThumb className={thumb()} />
       </SwitchControl>
       {children ? <SwitchLabel>{children}</SwitchLabel> : null}
     </ArkSwitch>

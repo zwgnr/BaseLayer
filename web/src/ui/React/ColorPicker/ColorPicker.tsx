@@ -17,13 +17,13 @@ import { colorPickerPotion } from "@potions/colorPickerPotion";
 import { Pipette } from "lucide-react";
 
 const {
-  cpContent,
-  cpAreaThumb,
-  cpInput,
-  cpChannelSliderTrack,
-  cpSwatch,
-  cpSwatchGroup,
-  cpChannelSliderThumb,
+  content,
+  areaThumb,
+  input,
+  channelSliderTrack,
+  swatch,
+  swatchGroup,
+  channelSliderThumb,
 } = colorPickerPotion();
 
 const presets = [
@@ -45,14 +45,14 @@ export const ColorPicker = () => {
       {(api) => {
         const [hue, saturation, lightness] = api.channels;
         return (
-          <ColorPickerContent className={cpContent()}>
+          <ColorPickerContent className={content()}>
             <ColorPickerArea
               className="h-48"
               xChannel={saturation}
               yChannel={lightness}
             >
               <ColorPickerAreaGradient className="h-full" />
-              <ColorPickerAreaThumb className={cpAreaThumb()} />
+              <ColorPickerAreaThumb className={areaThumb()} />
             </ColorPickerArea>
             <div className="flex w-full flex-row gap-4 p-4">
               <ColorPickerEyeDropperTrigger>
@@ -60,43 +60,43 @@ export const ColorPicker = () => {
               </ColorPickerEyeDropperTrigger>
               <div className="flex w-full flex-col gap-2">
                 <ColorPickerChannelSliderTrack
-                  className={cpChannelSliderTrack()}
+                  className={channelSliderTrack()}
                   channel={hue}
                 >
                   <ColorPickerChannelSliderBackground />
                   <ColorPickerChannelSliderThumb
-                    className={cpChannelSliderThumb()}
+                    className={channelSliderThumb()}
                   />
                 </ColorPickerChannelSliderTrack>
                 <ColorPickerChannelSliderTrack
-                  className={cpChannelSliderTrack()}
+                  className={channelSliderTrack()}
                   channel="alpha"
                 >
                   <ColorPickerChannelSliderBackground />
                   <ColorPickerChannelSliderThumb
-                    className={cpChannelSliderThumb()}
+                    className={channelSliderThumb()}
                   />
                 </ColorPickerChannelSliderTrack>
               </div>
             </div>
             <div className="flex justify-center gap-2 p-4 pb-0">
-              <ColorPickerChannelInput className={cpInput()} channel={hue} />
+              <ColorPickerChannelInput className={input()} channel={hue} />
               <ColorPickerChannelInput
-                className={cpInput()}
+                className={input()}
                 channel={saturation}
               />
               <ColorPickerChannelInput
-                className={cpInput()}
+                className={input()}
                 channel={lightness}
               />
-              <ColorPickerChannelInput className={cpInput()} channel="alpha" />
+              <ColorPickerChannelInput className={input()} channel="alpha" />
             </div>
             <div className="p-4">
               <p>Presets</p>
-              <ColorPickerSwatchGroup className={cpSwatchGroup()}>
+              <ColorPickerSwatchGroup className={swatchGroup()}>
                 {presets.map((color) => (
                   <ColorPickerSwatch
-                    className={cpSwatch()}
+                    className={swatch()}
                     key={color}
                     value={color}
                   >

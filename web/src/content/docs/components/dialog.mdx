@@ -7,16 +7,6 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
 import { Dialog } from "../../../ui/React/Dialog/dialog.tsx"
 
-## Installation 
-
-<div class="bg-slate-800 h-12 flex items-center rounded-xl p-2">
-```bash
-potion add dialog
-```
-</div>
-
-## Default 
-
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-full justify-center">
       <Dialog client:load/>
@@ -24,6 +14,37 @@ potion add dialog
 </div>
 
 <br />
+
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+
+## Potion
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+export const dialogPotion = tv({
+  slots: {
+    backdrop: "fixed inset-0 z-40 bg-slate-700/50",
+    container: "fixed inset-0 z-40 flex items-center justify-center",
+    content: "min-w-80 relative z-50 w-80 rounded-xl bg-surface shadow-lg",
+    description: "text-sm text-gray-400",
+    title: "text-lg font-bold",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components
+
+### Default 
 
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
@@ -86,124 +107,4 @@ bui-dialog
   </Fragment>
 </DemoTabs>
 
-## Manual Install
-
-<p>
-  Ensure Ark-UI is installed as well as Tailwind Variants. Then simply copy and
-  paste the code below into a new file!
-</p>
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
-import {
-  Dialog as ArkDialog,
-  DialogBackdrop as ArkDialogBackdrop,
-  DialogContainer as ArkDialogContainer,
-  DialogContent as ArkDialogContent,
-  DialogDescription as ArkDialogDescription,
-  DialogTitle as ArkDialogTitle,
-  DialogTrigger as ArkDialogTrigger,
-  Portal as ArkPortal,
-  DialogCloseTrigger as ArkDialogCloseTrigger
-} from "@ark-ui/react";
-
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { tv } from "tailwind-variants";
-
-const carouselStyles = tv({
-  slots: {
-    backdrop: "bg-gray-800/30 inset-0 fixed z-40",
-    container: "flex items-center inset-0 justify-center fixed z-40",
-    content: "bg-surface rounded-xl shadow-lg relative min-w-80 w-80 z-50",
-  },
-});
-
-const { backdrop, container, content } = carouselStyles();
-
-const Dialog = ArkDialog;
-const DialogTrigger = ArkDialogTrigger;
-const DialogCloseTrigger = ArkDialogCloseTrigger;
-const Portal = ArkPortal;
-
-const DialogBackdrop = forwardRef<
-  ElementRef<typeof ArkDialogBackdrop>,
-  ComponentPropsWithoutRef<typeof ArkDialogBackdrop>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogBackdrop
-    ref={ref}
-    className={backdrop({ className: className })}
-    {...props}
-  ></ArkDialogBackdrop>
-));
-
-DialogBackdrop.displayName = ArkDialogBackdrop.displayName;
-
-const DialogContainer = forwardRef<
-  ElementRef<typeof ArkDialogContainer>,
-  ComponentPropsWithoutRef<typeof ArkDialogContainer>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogContainer
-    ref={ref}
-    className={container({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkDialogContainer>
-));
-
-DialogContainer.displayName = ArkDialogContainer.displayName;
-
-const DialogContent = forwardRef<
-  ElementRef<typeof ArkDialogContent>,
-  ComponentPropsWithoutRef<typeof ArkDialogContent>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogContent
-    ref={ref}
-    className={content({ className: className })}
-    {...props}
-  >
-    {children}
-  </ArkDialogContent>
-));
-
-DialogContent.displayName = ArkDialogContent.displayName;
-
-const DialogTitle = forwardRef<
-  ElementRef<typeof ArkDialogTitle>,
-  ComponentPropsWithoutRef<typeof ArkDialogTitle>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogTitle ref={ref} className="text-lg font-bold" {...props}>
-    {children}
-  </ArkDialogTitle>
-));
-
-DialogTitle.displayName = ArkDialogTitle.displayName;
-
-const DialogDescription = forwardRef<
-  ElementRef<typeof ArkDialogDescription>,
-  ComponentPropsWithoutRef<typeof ArkDialogDescription>
->(({ className, children, ...props }, ref) => (
-  <ArkDialogDescription ref={ref} className="text-sm text-gray-400" {...props}>
-    {children}
-  </ArkDialogDescription>
-));
-
-DialogDescription.displayName = ArkDialogDescription.displayName;
-
-export {
-  Dialog,
-  DialogTrigger,
-  DialogCloseTrigger,
-  Portal,
-  DialogBackdrop,
-  DialogContainer,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-};
-
-```
-</Fragment>
-</Potion>
 
