@@ -49,7 +49,10 @@ const currentPage = Astro.url.pathname;
   id="side-nav"
   class="small-scrollbar absolute z-10 hidden w-full flex-col overflow-y-auto bg-surface-2 p-8 shadow-lg md:static md:flex md:w-80 md:bg-transparent md:shadow-none"
 >
-  <a class="mb-4 text-lg md:hidden" href="/">potion UI</a>
+  <div class="mb-4 md:hidden">
+    <a class="text-xl md:hidden font-bold" href="/">PotionUI</a>
+  </div>
+
   <ul class="nav-groups">
     {
       Object.entries(SIDEBAR).map(([header, children]) => (

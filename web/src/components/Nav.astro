@@ -1,5 +1,5 @@
 ---
-import { Github, Menu, X, Paintbrush } from "lucide-react";
+import { Github, Menu, X, Paintbrush, Twitter } from "lucide-react";
 import { SearchDialog } from "./SearchDialog";
 import { getCollection } from "astro:content";
 
@@ -53,17 +53,21 @@ const currentPage = Astro.url.pathname;
         aria-expanded="false"
         class:list={[currentPage === "/" ? "hidden" : ""]}
       >
-        <Menu id="menuIcon" className="block md:hidden" />
-        <X id="xIcon" className="hidden" />
+        <Menu id="menuIcon" className="block md:hidden h-8 w-8" />
+        <X id="xIcon" className="hidden h-8 w-8" />
       </button>
     </div>
-    <div class="flex flex-row items-center gap-4">
-      <a class="text-text" href="/docs/">Docs</a>
+    <div class="flex flex-row items-center gap-2">
+      <a
+        class:list={[currentPage !== "/" ? "hidden" : "", "text-text"]}
+        href="/docs/">Docs</a
+      >
       <SearchDialog searchList={allDocs} client:load />
       <button
-        class="items flex justify-center gap-2 rounded-xl bg-surface-2 p-2 px-4 text-text"
+        class="items flex justify-center gap-2 rounded-xl bg-surface-2 p-2 px-4 text-text hover:bg-surface-3"
         id="button"
-        aria-describedby="tooltip"><p class="hidden md:block">Theme</p><Paintbrush /></button
+        aria-describedby="tooltip"
+        ><p class="hidden md:block">Theme</p><Paintbrush /></button
       >
       <div
         class="w-max-content text--2 absolute hidden rounded-xl bg-surface-2"
@@ -91,8 +95,17 @@ const currentPage = Astro.url.pathname;
           >
         </div>
       </div>
-      <a class="text-text" href="https://github.com/potionUI">
+      <a
+        class="rounded-xl p-2 text-text hover:bg-surface-2"
+        href="https://github.com/potionUI"
+      >
         <Github />
+      </a>
+      <a
+        class="rounded-xl p-2 text-text hover:bg-surface-2"
+        href="https://twitter.com/zwagnr"
+      >
+        <Twitter />
       </a>
     </div>
   </div>
