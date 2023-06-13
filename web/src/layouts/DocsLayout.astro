@@ -9,7 +9,8 @@ const { Content, headings } = await doc.render();
 <div class="flex h-full overflow-y-hidden">
   <SideNav />
   <div
-    class="small-scrollbar flex h-full w-full justify-center overflow-y-auto px-8 py-8 sm:px-16 xl:gap-24"
+    id="docs-main"
+    class="small-scrollbar h-full w-full justify-center overflow-y-auto px-8 py-8 sm:px-16 md:flex xl:gap-24"
   >
     <!-- mdx Content-->
     <article class="prose prose-slate h-fit w-full max-w-6xl">
