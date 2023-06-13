@@ -9,8 +9,8 @@ import Potion  from '../../../components/Potion.astro'
 import { ColorPicker } from "../../../ui/React/ColorPicker/ColorPicker.tsx"
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center w-full justify-center">
-      <ColorPicker client:load/>
+    <div className="flex items-center w-full justify-center p-8">
+      <ColorPicker client:only="react"/>
     </div>
 </div>
 

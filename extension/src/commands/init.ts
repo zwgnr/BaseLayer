@@ -3,6 +3,7 @@ import * as util from 'util';
 import { findDirectory } from '../lib/findDirectory';
 import { getWorkspaceRoot } from '../lib/getWorkspaceRoot';
 import { detectPackageManager } from '../lib/detectPackageManager';
+import { findFile } from '../lib/findFile';
 const fs = require('fs');
 const path = require('path');
 const exec = util.promisify(require('child_process').exec);
@@ -70,24 +71,22 @@ Would you like to proceed?`;
       const presets = require(path.join(__dirname, '../templates/presets'));
       const stylesPresetContent = presets.stylesPreset;
 
-      // Find 'styles' directory in projectRoot or any of its subdirectories
-      const stylesDirPath = await findDirectory(projectRoot, 'styles');
-
-      if (stylesDirPath) {
-        // If 'styles' directory found, write the file there
-        const globalCssPath = path.join(stylesDirPath, 'global.css');
-        fs.writeFileSync(globalCssPath, stylesPresetContent);
-        vscode.window.showInformationMessage('Tailwind + Global CSS configured.');
-      } else {
-        // If 'styles' directory not found, create it under projectRoot and write the file there
-        const stylesDirPath = path.join(projectRoot, 'styles');
-        const globalCssPath = path.join(stylesDirPath, 'global.css');
-        fs.mkdirSync(stylesDirPath, { recursive: true });
-        fs.writeFileSync(globalCssPath, stylesPresetContent);
-        vscode.window.showInformationMessage('Tailwind + Global CSS configured.');
+      let stylesFilePath = await findFile(projectRoot, 'global.css');
+      if (stylesFilePath !== null) {
+        fs.writeFileSync(stylesFilePath, stylesPresetContent);
+      }
+      if (stylesFilePath === null) {
+        stylesFilePath = await findFile(projectRoot, 'globals.css');
+        if (stylesFilePath !== null) {
+          fs.writeFileSync(stylesFilePath, stylesPresetContent);
+        } else {
+          // If 'styles' directory not found, create it under projectRoot and write the file there
+          const globalCssPath = path.join(projectRoot, 'global.css');
+          fs.writeFileSync(globalCssPath, stylesPresetContent);
+        }
       }
     } catch (err) {
-      vscode.window.showErrorMessage(`Error setting presets: ${err}`);
+      vscode.window.showErrorMessage(`Error setting GlobalCSS: ${err}`);
       return;
     }
   };
