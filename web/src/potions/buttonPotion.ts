@@ -1,11 +1,11 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonPotion = tv({
-  base: "inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-transform duration-100 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+  base: "ring-offset-background appearance-none inline-flex items-center justify-center rounded-md font-medium ring-focus transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   variants: {
     intent: {
-      primary: "bg-primary text-primary-content hover:bg-primary-400",
-      accent: "bg-accent text-accent-content hover:bg-accent-400",
+      primary: "text-primary-content bg-primary hover:bg-primary-400",
+      accent: "text-accent-content bg-accent hover:bg-accent-400",
     },
     state: {
       filled: "",
@@ -35,7 +35,7 @@ export const buttonPotion = tv({
       intent: "primary",
       state: "outline",
       className:
-        "border-2 border-primary bg-transparent text-primary-content hover:bg-primary-500 hover:text-black",
+        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary-500 hover:text-black",
     },
     {
       intent: "accent",
@@ -52,7 +52,7 @@ export const buttonPotion = tv({
       intent: "accent",
       state: "outline",
       className:
-        "border-2 border-primary bg-transparent text-primary-content hover:bg-primary-500 hover:text-black",
+        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary-500 hover:text-black",
     },
   ],
   defaultVariants: {
