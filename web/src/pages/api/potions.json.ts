@@ -80,7 +80,7 @@ const potions: Potion[] = [
   {
     potion: "radioGroupPotion",
     name: "RadioGroup",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const radioGroupPotion = tv({\n  slots: {\n    root: \"flex flex-col gap-2\",\n    control:\n      \"h-5 w-5 rounded-full border-2 bg-surface data-[checked]:border-primary data-[checked]:bg-surface data-[checked]:outline data-[checked]:outline-[4px] data-[checked]:outline-offset-[-5px] data-[checked]:outline-primary\",\n    radio: \"flex cursor-pointer items-center gap-3\",\n    radioLabel: \"\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const radioGroupPotion = tv({\n  slots: {\n    root: \"flex flex-col gap-2\",\n    control:\n      \"h-5 w-5 appearance-none rounded-full border-2 bg-surface data-[checked]:border-primary data-[checked]:bg-surface data-[checked]:outline data-[checked]:outline-[4px] data-[checked]:outline-offset-[-5px] data-[checked]:outline-primary\",\n    radio: \"flex cursor-pointer items-center gap-3\",\n    radioLabel: \"\",\n  },\n});\n"
   },
   {
     potion: "rangeSliderPotion",

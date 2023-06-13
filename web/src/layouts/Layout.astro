@@ -6,7 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 
 import "../styles/global.css";
-import AstroNav from "@components/Nav.astro";
+import Nav from "@components/Nav.astro";
 ---
 
 <!DOCTYPE html>
@@ -43,9 +43,9 @@ import AstroNav from "@components/Nav.astro";
     />
   </head>
 
-  <body class="flex h-screen flex-col bg-surface overflow-hidden">
-    <AstroNav />
-    <main class="flex h-screen flex-grow flex-col overflow-hidden mt-16">   
+  <body class=" h-screen grid grid-rows-[auto,1fr] overflow-hidden">
+    <Nav />
+    <main class="flex h-full flex-col overflow-hidden">   
       <slot />
     </main>
   </body>

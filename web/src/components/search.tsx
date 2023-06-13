@@ -72,11 +72,13 @@ const Search = ({ searchList }: SearchProps) => {
                   <a href={`/docs/${post.slug}`}>
                     <div className="flex flex-col gap-2">
                       <p className="font-bold text-text-3">{post.data.title}</p>
-                      <p className="text-md text-text-5">{post.data.description}</p>
+                      <p className="text-md text-text-5">
+                        {post.data.description}
+                      </p>
                       <div className="ml-2 flex gap-2">
                         {/* eslint-disable-next-line react/no-array-index-key */}
                         {Array.isArray(post.data.tags) && (
-                          <div className="ml-2 flex gap-2">
+                          <div className="ml-2 flex flex-wrap gap-2">
                             <p>🏷️</p>
                             {post.data.tags.map((tag, tagIndex) => (
                               <p

@@ -10,6 +10,7 @@ import { tabsPotion } from "@potions/tabsPotion";
 import { clsx } from "clsx";
 import { Copy } from "lucide-react";
 import { useState } from "react";
+import { CopyToaster } from "./copyToaster";
 
 const { list, trigger, content, indicator } = tabsPotion();
 
@@ -44,7 +45,6 @@ export const ComponentTabs = (props: any) => {
     const textContent = doc.body.textContent || "";
 
     navigator.clipboard.writeText(textContent);
-    alert("success");
   };
 
   return (
@@ -115,12 +115,7 @@ export const ComponentTabs = (props: any) => {
         <TabIndicator className={indicator()} />
       </TabList>
       <div className="flex w-full justify-end rounded-md pr-4 pt-4">
-        <button
-          className="flex h-8 w-8 items-center justify-center  text-white"
-          onClick={copyToClipboard}
-        >
-          <Copy className="hover:text-slate-600" />
-        </button>
+      <CopyToaster copyToClipboard={copyToClipboard} />
       </div>
 
       <TabContent className={content({ className: "-mt-8" })} value="vsc">
