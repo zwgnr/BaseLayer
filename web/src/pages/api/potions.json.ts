@@ -40,12 +40,12 @@ const potions: Potion[] = [
   {
     potion: "colorPickerPotion",
     name: "ColorPicker",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const colorPickerPotion = tv({\n  slots: {\n    content:\n      \"w-fit overflow-hidden rounded-xl border border-border bg-surface shadow-lg\",\n    areaThumb:\n      \"z-1 h-4 w-4 rounded-full border-2 border-white shadow-lg shadow-black outline-none\",\n    channelSliderTrack: \"h-4 rounded-full border\",\n    swatch: \"h-4 w-4 shrink-0 rounded-sm\",\n    swatchGroup: \"inline-flex w-full flex-wrap gap-2\",\n    input:\n      \"w-16 rounded-md border border-border bg-surface-2 p-1 ring-focus focus-visible:outline-none focus-visible:ring-2\",\n    channelSliderThumb:\n      \"h-4 w-4 -translate-x-2/4 -translate-y-2/4 rounded-full border-2 border-white shadow-lg shadow-black outline-none\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const colorPickerPotion = tv({\n  slots: {\n    content:\n      \"w-80 overflow-hidden rounded-xl border border-border bg-surface shadow-lg\",\n    area: \"h-72\",\n    areaThumb:\n      \"z-1 h-4 w-4 rounded-full border-2 border-white shadow-lg shadow-black outline-none\",\n    gradient: \"h-full rounded-t-xl\",\n    channelSliderTrack: \"h-4 rounded-full border\",\n    swatch: \"h-4 w-4 shrink-0 rounded-sm\",\n    swatchGroup: \"inline-flex w-full flex-wrap gap-2\",\n    input:\n      \"w-16 rounded-md border border-border bg-surface-2 p-1 ring-focus focus-visible:outline-none focus-visible:ring-2\",\n    channelSliderThumb:\n      \"h-4 w-4 -translate-x-2/4 -translate-y-2/4 rounded-full border-2 border-white shadow-lg shadow-black outline-none\",\n  },\n});\n"
   },
   {
     potion: "dialogPotion",
     name: "Dialog",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const dialogPotion = tv({\n  slots: {\n    backdrop: \"fixed inset-0 z-40 bg-slate-700/50\",\n    container: \"fixed inset-0 z-40 flex items-center justify-center\",\n    content: \"min-w-80 relative z-50 w-80 rounded-xl bg-surface shadow-lg\",\n    description: \"text-sm text-gray-400\",\n    title: \"text-lg font-bold\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const dialogPotion = tv({\n  slots: {\n    backdrop: \"fixed inset-0 z-40 bg-slate-700/50\",\n    container: \"fixed inset-0 z-40 flex items-center justify-center\",\n    content: \"min-w-80 relative z-50 w-80 rounded-xl bg-surface shadow-lg\",\n    description: \"text-sm text-text-5\",\n    title: \"text-lg font-bold text-text\",\n  },\n});\n"
   },
   {
     potion: "dropdownPotion",
@@ -70,7 +70,7 @@ const potions: Potion[] = [
   {
     potion: "pinInputPotion",
     name: "PinInput",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-12 w-12 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-base font-bold\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-12 w-12 appearance-none rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-base font-bold\",\n  },\n});\n"
   },
   {
     potion: "popoverPotion",

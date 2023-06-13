@@ -251,8 +251,8 @@
 
   .small-scrollbar {
     /* Works on Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: gray transparent;
+    scrollbar-width: auto;
+    scrollbar-color: #a3a3a3 transparent;
   }
 
   /* Works on Chrome, Edge, and Safari */

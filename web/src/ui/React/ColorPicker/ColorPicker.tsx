@@ -18,8 +18,10 @@ import { Pipette } from "lucide-react";
 
 const {
   content,
+  area,
   areaThumb,
   input,
+  gradient,
   channelSliderTrack,
   swatch,
   swatchGroup,
@@ -47,11 +49,11 @@ export const ColorPicker = () => {
         return (
           <ColorPickerContent className={content()}>
             <ColorPickerArea
-              className="h-48"
+              className={area()}
               xChannel={saturation}
               yChannel={lightness}
             >
-              <ColorPickerAreaGradient className="h-full" />
+              <ColorPickerAreaGradient className={gradient()} />
               <ColorPickerAreaThumb className={areaThumb()} />
             </ColorPickerArea>
             <div className="flex w-full flex-row gap-4 p-4">

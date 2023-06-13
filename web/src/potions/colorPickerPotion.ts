@@ -3,9 +3,11 @@ import { tv } from "tailwind-variants";
 export const colorPickerPotion = tv({
   slots: {
     content:
-      "w-fit overflow-hidden rounded-xl border border-border bg-surface shadow-lg",
+      "w-80 overflow-hidden rounded-xl border border-border bg-surface shadow-lg",
+    area: "h-72",
     areaThumb:
       "z-1 h-4 w-4 rounded-full border-2 border-white shadow-lg shadow-black outline-none",
+    gradient: "h-full rounded-t-xl",
     channelSliderTrack: "h-4 rounded-full border",
     swatch: "h-4 w-4 shrink-0 rounded-sm",
     swatchGroup: "inline-flex w-full flex-wrap gap-2",

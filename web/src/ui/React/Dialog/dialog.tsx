@@ -39,24 +39,18 @@ export const Dialog = () => {
                     className={buttonPotion({
                       state: "outline",
                       className:
-                        "border-critical text-critical hover:border-critical-700",
+                        "border-critical text-critical hover:bg-critical hover:text-black",
                     })}
                   >
                     Cancel
                   </Button>
                 </DialogCloseTrigger>
-                <Button
-                  className={buttonPotion({
-                    className: "bg-positive hover:bg-positive-700",
-                  })}
-                >
-                  Confirm
-                </Button>
+                <Button className={buttonPotion()}>Confirm</Button>
               </div>
             </div>
             <DialogCloseTrigger asChild>
               <Button className="absolute right-6 top-6">
-                <X aria-label="Close dialog" />
+                <X className="text-text" aria-label="Close dialog" />
               </Button>
             </DialogCloseTrigger>
           </DialogContent>
