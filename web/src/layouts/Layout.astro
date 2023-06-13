@@ -43,9 +43,9 @@ import Nav from "@components/Nav.astro";
     />
   </head>
 
-  <body class="grid h-screen grid-rows-[auto,1fr] overflow-hidden">
+  <body class="flex flex-col flex-grow">
     <Nav />
-    <main class="flex overflow-y-auto bg-surface">
+    <main class="bg-surface relative w-full flex-1">
       <slot />
     </main>
   </body>

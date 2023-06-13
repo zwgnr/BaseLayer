@@ -6,39 +6,38 @@ const { doc } = Astro.props;
 const { Content, headings } = await doc.render();
 ---
 
-<>
-  <SideNav />
-  <div
-    id="docs-main"
-    class="small-scrollbar flex-grow justify-center overflow-y-auto px-8 py-8 sm:px-16 flex xl:gap-24"
-  >
-    <!-- mdx Content-->
-    <article class="prose prose-slate h-fit w-full max-w-6xl">
-      <h1 class="-mb-2">{doc.data.title}</h1>
-      <p class:list={[doc.data.arkDocs !== undefined ? null : "-mb-4"]}>
-        {doc.data.description}
-      </p>
-      {
-        doc.data.arkDocs !== undefined ? (
-          <div class="-mb-4">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              class="rounded-lg border-2 border-surface-3 p-2 text-xs no-underline"
-              href={doc.data.arkDocs}
-            >
-              Ark
-            </a>
-          </div>
-        ) : null
-      }
-      <Content />
-    </article>
-    <!-- On This Page  -->
-    <div
-      class="sticky top-0 hidden w-fit items-center px-12 lg:flex lg:flex-col"
-    >
-      <TOC pageHeadings={headings} />
-    </div>
-  </div>
-</>
+<SideNav />
+<div
+  id="docs-main"
+  class="small-scrollbar xl:docMax justify-center overflow-y-auto py-8 md:flex md:pl-72"
+>
+  <!-- mdx Content-->
+  <article class="prose prose-slate w-full max-w-6xl px-8 pb-8">
+    <h1 class="-mb-2">{doc.data.title}</h1>
+    <p class:list={[doc.data.arkDocs !== undefined ? null : "-mb-4"]}>
+      {doc.data.description}
+    </p>
+    {
+      doc.data.arkDocs !== undefined ? (
+        <div class="-mb-4">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-lg border-2 border-surface-3 p-2 text-xs no-underline"
+            href={doc.data.arkDocs}
+          >
+            Ark
+          </a>
+        </div>
+      ) : null
+    }
+    <Content />
+  </article>
+</div>
+<!-- On This Page  -->
+<div
+  id="toc"
+  class="fixed bottom-0 right-0 top-16 hidden w-56 flex-col items-start pt-8 xl:flex"
+>
+  <TOC pageHeadings={headings} />
+</div>
