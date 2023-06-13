@@ -6,7 +6,7 @@ const { doc } = Astro.props;
 const { Content, headings } = await doc.render();
 ---
 
-<div class="flex h-full">
+<>
   <SideNav />
   <div
     id="docs-main"
@@ -41,4 +41,4 @@ const { Content, headings } = await doc.render();
       <TOC pageHeadings={headings} />
     </div>
   </div>
-</div>
+</>
