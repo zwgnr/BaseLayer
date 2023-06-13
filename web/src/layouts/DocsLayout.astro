@@ -6,11 +6,11 @@ const { doc } = Astro.props;
 const { Content, headings } = await doc.render();
 ---
 
-<div class="flex flex-grow">
+<div class="flex h-full">
   <SideNav />
   <div
     id="docs-main"
-    class="small-scrollbar flex-grow w-full justify-center overflow-y-auto px-8 py-8 sm:px-16 md:flex xl:gap-24"
+    class="small-scrollbar h-full w-full justify-center overflow-y-auto px-8 py-8 sm:px-16 md:flex xl:gap-24"
   >
     <!-- mdx Content-->
     <article class="prose prose-slate h-fit w-full max-w-6xl pb-16 md:pb-0">
