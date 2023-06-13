@@ -10,10 +10,10 @@ const { Content, headings } = await doc.render();
   <SideNav />
   <div
     id="docs-main"
-    class="small-scrollbar h-full w-full justify-center overflow-y-auto px-8 py-8 sm:px-16 md:flex xl:gap-24"
+    class="small-scrollbar flex-grow justify-center overflow-y-auto px-8 py-8 sm:px-16 flex xl:gap-24"
   >
     <!-- mdx Content-->
-    <article class="prose prose-slate h-fit w-full max-w-6xl pb-16 md:pb-0">
+    <article class="prose prose-slate h-fit w-full max-w-6xl">
       <h1 class="-mb-2">{doc.data.title}</h1>
       <p class:list={[doc.data.arkDocs !== undefined ? null : "-mb-4"]}>
         {doc.data.description}
