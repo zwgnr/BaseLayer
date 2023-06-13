@@ -47,7 +47,7 @@ const currentPage = Astro.url.pathname;
           <img class="h-12 w-12" src="/potion.png" /><p
             class="-ml-2 hidden text-2xl md:block"
           >
-            potionUI
+            PotionUI
           </p>
         </div>
       </a>
@@ -56,8 +56,8 @@ const currentPage = Astro.url.pathname;
         aria-expanded="false"
         class:list={[currentPage === "/" ? "hidden" : ""]}
       >
-        <Menu id="menuIcon" className="block md:hidden h-8 w-8" />
-        <X id="xIcon" className="hidden h-8 w-8" />
+        <Menu id="menuIcon" className="block md:hidden h-8 w-8 text-text" />
+        <X id="xIcon" className="hidden h-8 w-8 text-text" />
       </button>
     </div>
     <div class="flex flex-row items-center gap-2">
