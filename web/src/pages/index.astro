@@ -1,21 +1,32 @@
 ---
-import { Avatar } from "@ui/React/Avatar/avatar";
+import { buttonPotion } from "@potions/buttonPotion";
 import Layout from "../layouts/Layout.astro";
+import { ColorPicker } from "@ui/React/ColorPicker/ColorPicker";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="w-1/2">
-    <h1 class="bg-primary">Welcome to potion</h1>
-    <div class="flex h-80 w-full items-center justify-center bg-slate-500">
-      <Avatar client:load/>
+  <div class="flex h-full w-full flex-col items-center gap-24 p-8 md:p-16">
+    <div
+      class="flex w-full flex-col items-center gap-8 md:h-[500px] md:flex-row"
+    >
+      <div class="flex h-full w-full flex-col gap-4 md:h-56 md:w-3/5">
+        <h1 class="text-6xl font-bold text-text">Build the way you want.</h1>
+        <p class="text-text-5">
+          Everything you need to build your next app, component library, or
+          design system without every leaving your editor. Open source, free,
+          without limits.
+        </p>
+        <div class="w-36">
+          <button class={buttonPotion()}><a href="docs/">Get Started</a></button
+          >
+        </div>
+      </div>
+      <div class="flex h-full w-full items-center justify-center md:h-56 md:w-2/5">
+        <ColorPicker client:only="react" />
+      </div>
     </div>
-  </main>
+    <div class="rounded-lg">
+      <img class="cover" src="https://tinyurl.com/3evywadz" />
+    </div>
+  </div>
 </Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
-  }
-</style>

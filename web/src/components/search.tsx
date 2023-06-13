@@ -54,7 +54,7 @@ const Search = ({ searchList }: SearchProps) => {
             type="text"
             value={query}
             onChange={handleOnSearch}
-            placeholder="Search Docs..."
+            placeholder="Search the Docs..."
           />
         </div>
         {query.length > 1 && (

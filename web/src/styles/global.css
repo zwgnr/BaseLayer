@@ -274,7 +274,10 @@
     height: 25px;
   }
   .docMax {
-    width: calc(100vw - 224px);
+    width: calc(1280px - 144px);
+  }
+  .rMax {
+    right: max(0px,calc(100vw / 2 - 647px));
   }
 }
 

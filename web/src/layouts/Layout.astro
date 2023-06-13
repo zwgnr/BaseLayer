@@ -10,7 +10,7 @@ import Nav from "@components/Nav.astro";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html class="min-h-screen flex bg-surface" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -43,9 +43,9 @@ import Nav from "@components/Nav.astro";
     />
   </head>
 
-  <body class="flex flex-col flex-grow">
+  <body class="flex flex-1 flex-col small-scrollbar">
     <Nav />
-    <main class="bg-surface relative w-full flex-1">
+    <main class="relative w-full flex-1 bg-surface max-w-7xl mx-auto">
       <slot />
     </main>
   </body>

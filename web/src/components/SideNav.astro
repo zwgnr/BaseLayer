@@ -11,7 +11,6 @@ const SIDEBAR: SideNav = {
   Themes: [
     { text: "Adaptive Themes", link: "/docs/themes/adaptive" },
     { text: "Customize", link: "/docs/themes/customize" },
-    { text: "Generator (soon)", link: "" },
   ],
   Core: [
     { text: "Accordian", link: "/docs/components/accordian" },
@@ -46,19 +45,20 @@ const currentPage = Astro.url.pathname;
 ---
 
 <div
-  id="side-nav" 
-  class="small-scrollbar fixed z-10 w-full hidden flex-col overflow-y-auto bg-surface-2 p-8 shadow-lg md:flex md:w-72 md:bg-transparent md:shadow-none bottom-0 top-16"
+  id="side-nav"
+  class="small-scrollbar fixed bottom-0 top-16 z-10 hidden w-full flex-col overflow-y-auto bg-surface-2 py-8 pl-8 pr-8 shadow-lg md:flex md:w-64 md:bg-transparent md:shadow-none xl:pl-0"
 >
   <div class="mb-4 md:hidden">
-    <a class="text-xl md:hidden font-bold text-text" href="/">PotionUI</a>
+    <a class="text-xl font-bold text-text md:hidden" href="/">PotionUI</a>
   </div>
-
   <ul class="nav-groups">
     {
       Object.entries(SIDEBAR).map(([header, children]) => (
         <li>
           <div class="nav-group ">
-            <h2 class="text-md mb-2 font-bold text-text-3">{header}</h2>
+            <div class="flex gap-2">
+            <h2 class="text-base mb-2 font-bold text-text-3">{header}</h2>
+          </div>
             <ul class="mb-4">
               {children.map((child) => {
                 const url = child.link;

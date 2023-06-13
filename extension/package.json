@@ -31,6 +31,106 @@
       {
         "language": "typescriptreact",
         "path": "./out/snippets/React/Accordian/accordian.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Avatar/avatar.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Badge/badge.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Button/button.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Button/button-loader.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Button/button-icon.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Carousel/carousel.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Checkbox/checkbox.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/ColorPicker/color-picker.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Dialog/dialog.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/HoverCard/hover-card.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/NumberInput/number-input.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Pagination/pagination.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/PinInput/pin-input.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Popover/popover.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/RadioGroup/radio-group.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/RangeSlider/range-slider.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/RatingGroup/rating-group.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Select/select.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Slider/slider.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Splitter/splitter.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Switch/switch.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Tabs/tabs.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/TagsInput/tags-input.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Toast/toast.code-snippets"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./out/snippets/React/Tooltip/tooltip.code-snippets"
       }
     ]
   },

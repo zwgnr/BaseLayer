@@ -9,10 +9,10 @@ const { Content, headings } = await doc.render();
 <SideNav />
 <div
   id="docs-main"
-  class="small-scrollbar xl:docMax justify-center overflow-y-auto py-8 md:flex md:pl-72"
+  class="small-scrollbar xl:docMax overflow-y-auto py-8 md:flex md:pl-64"
 >
   <!-- mdx Content-->
-  <article class="prose prose-slate w-full max-w-6xl px-8 pb-8">
+  <article class="prose prose-slate w-full max-w-5xl mx-auto px-6 md:px-16 pb-8">
     <h1 class="-mb-2">{doc.data.title}</h1>
     <p class:list={[doc.data.arkDocs !== undefined ? null : "-mb-4"]}>
       {doc.data.description}
@@ -37,7 +37,7 @@ const { Content, headings } = await doc.render();
 <!-- On This Page  -->
 <div
   id="toc"
-  class="fixed bottom-0 right-0 top-16 hidden w-56 flex-col items-start pt-8 xl:flex"
+  class="fixed bottom-0 rMax top-16 hidden w-36 flex-col pt-8 xl:flex"
 >
   <TOC pageHeadings={headings} />
 </div>
