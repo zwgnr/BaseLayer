@@ -48,8 +48,7 @@ export const accordianPotion = tv({
 <DemoTabs vueDisabled>
 <Fragment slot="vsc">
 ```tsx
-pc-accordian // react
-pcs-accordian // solid 
+pc-accordian
 ```
 </Fragment>
 <Fragment slot="react">
@@ -70,7 +69,7 @@ const { root, item, trigger, content } = accordianPotion();
 const parts = [
   {
     trigger: "Is it Accessible?",
-    content: "Yep. All components adhere to WAI-ARIA design patterns.",
+    content: "Yes! All components adhere to WAI-ARIA design patterns.",
   },
   {
     trigger: "Can I customize?",
@@ -106,7 +105,6 @@ export const Accordian = () => {
 </Fragment>
 <Fragment slot="solid">
 ```tsx
-/** @jsxImportSource solid-js */
 import { ChevronDown } from "lucide-solid";
 
 import {

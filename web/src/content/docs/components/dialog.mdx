@@ -33,8 +33,8 @@ export const dialogPotion = tv({
     backdrop: "fixed inset-0 z-40 bg-slate-700/50",
     container: "fixed inset-0 z-40 flex items-center justify-center",
     content: "min-w-80 relative z-50 w-80 rounded-xl bg-surface shadow-lg",
-    description: "text-sm text-gray-400",
-    title: "text-lg font-bold",
+    description: "text-sm text-text-5",
+    title: "text-lg font-bold text-text",
   },
 });
 
@@ -49,51 +49,65 @@ export const dialogPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
-import { Button } from "@components/button";
 import {
-  Dialog,
+  Pressable as Button,
   DialogBackdrop,
   DialogCloseTrigger,
   DialogContainer,
   DialogContent,
   DialogDescription,
+  Dialog as DialogRoot,
   DialogTitle,
   DialogTrigger,
   Portal,
-} from "@components/dialog";
+} from "@ark-ui/react";
+import { buttonPotion } from "@potions/buttonPotion";
+import { dialogPotion } from "@potions/dialogPotion";
 import { X } from "lucide-react";
 
-export const DialogDemo = () => {
+const { backdrop, container, content, description, title } = dialogPotion();
+
+export const Dialog = () => {
   return (
-    <Dialog>
+    <DialogRoot>
       <DialogTrigger asChild>
-        <Button>Open dialog</Button>
+        <Button className={buttonPotion()}>Open dialog</Button>
       </DialogTrigger>
       <Portal>
-        <DialogBackdrop />
-        <DialogContainer>
-          <DialogContent>
+        <DialogBackdrop className={backdrop()} />
+        <DialogContainer className={container()}>
+          <DialogContent className={content()}>
             <div className="flex flex-col gap-8 p-6">
               <div className="flex flex-col gap-1">
-                <DialogTitle>Dialog Title</DialogTitle>
-                <DialogDescription>Dialog Description</DialogDescription>
+                <DialogTitle className={title()}>Dialog Title</DialogTitle>
+                <DialogDescription className={description()}>
+                  Dialog Description
+                </DialogDescription>
               </div>
-              <div className="flex w-full gap-3 justify-center items-center">
+              <div className="flex w-full items-center justify-center gap-3">
                 <DialogCloseTrigger asChild>
-                  <Button state="outline" className="border-critical hover:border-critical-700 text-critical">Cancel</Button>
+                  <Button
+                    className={buttonPotion({
+                      state: "outline",
+                      className:
+                        "border-critical text-critical hover:bg-critical hover:text-black",
+                    })}
+                  >
+                    Cancel
+                  </Button>
                 </DialogCloseTrigger>
-                <Button className="bg-positive hover:bg-positive-700">Confirm</Button>
+                <Button className={buttonPotion()}>Confirm</Button>
               </div>
             </div>
             <DialogCloseTrigger asChild>
-              <button className="absolute top-6 right-6">
-                <X aria-label="Close dialog"/>
-              </button>
+              <Button className="absolute right-6 top-6">
+                <X className="text-text" aria-label="Close dialog" />
+              </Button>
             </DialogCloseTrigger>
           </DialogContent>
         </DialogContainer>
       </Portal>
-    </Dialog>
+    </DialogRoot>
   );
 };
 
@@ -102,7 +116,7 @@ export const DialogDemo = () => {
 
     <Fragment slot="vsc">
 ```bash
-bui-dialog
+pc-dialog
 ```
   </Fragment>
 </DemoTabs>

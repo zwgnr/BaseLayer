@@ -6,41 +6,43 @@ tags: "Install, Configure, Commands, Snippets, init, add, missing"
 
 ---
 
-The Potion VScode Extension is where the magic of PotionUI happens. From the extension you are able to init your project, install potions, and use code snippets to rapidly create components.
+The Potion VScode Extension lies at the heart of PotionUI, powering your project initialization, potion installations, and enabling rapid component creation with code snippets.
 
-*Why an extension and not a CLI?*
+*What sets it apart from a CLI tool?*
 
-CLI tools are great for certain things, but in this instance the extension is significantly faster than any npx TS CLI tools as it does not have to temp download and files to execute the scripts. There was also the option to write a CLI in a lanugage like GO, allowing for shipping an executable binary, but distrubuting updates via a VScode extension is much easier in this situaion.
+At the top of the list is efficiency. The extension outpaces any npx TS CLI tools by eradicating the need for temporary downloads and script executions, saving precious time.
 
-There is also the advantage of great built in UI features of VScode. Finally, as many are already use VScode, there is near zero friction when using Potion in your project.
+But speed is just the tip of the iceberg. The VScode extension leverages the platform's built-in features for an enhanced user experience. It uses the command palette to initialize your project and install potions. Then, it uses the Snippets feature to allow you to create new components from your installed potions, requiring just a few keystrokes.
 
-## Install 
+## Install Extension
 
-Locate and install [PotionUI](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) in the VScode marketplace.
-
-## Parts
-
-The extension currently has two main parts.
-
-1. Command Palette commands
-2. Code Snippets
+Locate and install [PotionUI](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) through the VScode marketplace.
 
 ## Commands 
 
 Let's start with the available commands, and how to use them.
 
-To use any of the below commands simply open the command palette in VScode. You can access this pressing Ctrl+Shift+P. 
+To use any of the below commands simply open the command palette in VScode.
+
+```bash
+Ctrl+Shift+P
+```
 
 ### Potion: init
 
-This command gets your project set up and configured with everything you need to use PotionUI. It does this though a series of promts and auto detections under hood. Let's walk through the process.
+ Automatically configures your project with everything you need. Here's a simplified version of the steps:
 
-1. First you will be asked 'Where is the folder you would like to init Potion in?'
-   The string you enter is relative to the workspace root of your VScode window. So if you would if you would like your projectRoot to be set in your workspace root, then simply press enter. If you are in a mono repo type setup and your project is located in folder for example called "myproject/frontend", simply type myproject/frontend.
-2. You will then be asked "What framework are you using?", with the options being react, solid, vue.  Upon selection, you will be asked a confirmation and then the configuration begins.
-3. At this point the proper version of `@ark-ui/{react/solid/vue}` `lucide-{react/solid/vue}` and Tailwind Variants will be installed. Whatever package manager you have setup in your projectRoot will be automatically detected. 
+  1.  When prompted, enter the folder where you want to initialize PotionUI. If it's in your workspace root, just press Enter. Or, if your project is in a folder called "myproject/frontend," enter "myproject/frontend."
 
-Potion UI is now ready to use!
+  2.  Select your frontend framework from the options: react, solid, or vue. Confirm your choice.
+
+  3.  The setup process will install the appropriate versions of `@ark-ui/{react/solid/vue}`, `lucide-{react/solid/vue}`, and Tailwind Variants. Your package manager, based on your projectRoot that you set earlier, will be automatically detected.
+
+  4. The setup will automatically configure your global.css and tailwind.config files. It will also create an empty *potions* directory. 
+
+  5. Finally, it will install workspace snippets (in .vscode) of all components in your chosen framework.
+
+That's it! PotionUI is now ready to use in your project.
 
 
 ### Potion: add
@@ -51,19 +53,16 @@ This command provies a multi-pick where you can choose one or more potions to in
 
 ### Potion: missing
 
-There will be times when you are using the component snippets that you find out you have required potions that are not installed. Simply running the missing command will scan the current file you have open and install all dependant potions to your potions folder.
+If you come across a situation where you're using component snippets and realize that you're missing required potions, don't worry! There's a convenient command you can use to resolve this. By running the "missing" command, it will scan the current file you have open and automatically install all the dependent potions to your potions folder.
 
+Simply run the "missing" command whenever you encounter missing dependencies, and PotionUI will take care of the rest.
 
 ## Snippets
 
 ### Components
 
-Potion includes a huge array of prebuilt componets that you can modify and extend however you want.  
+PotionUI offers an extensive collection of prebuilt components that you can customize and extend according to your needs. The extension is designed to install local workspace snippets of these components in your chosen framework (React, Solid, Vue) seamlessly.
 
-All components are prefixed with the command pc-. So if you would like a button, you can type pc-button.
-
-*If you are using Solid, you will need to prefix the command with pcs- instead of pc-.
-
-If you find you are missing any potions, you can run the command Potion: missing.
+To access the components, simply use the "pc-" prefix followed by the component name. For example, if you want to use a button, type "pc-button" in your code.
 
 ### Themes
