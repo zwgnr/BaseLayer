@@ -14,7 +14,7 @@ const { root, item, trigger, content } = accordianPotion();
 const parts = [
   {
     trigger: "Is it Accessible?",
-    content: "Yep. All components adhere to WAI-ARIA design patterns.",
+    content: "Yes! All components adhere to WAI-ARIA design patterns.",
   },
   {
     trigger: "Can I customize?",
