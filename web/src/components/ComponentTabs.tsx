@@ -118,17 +118,17 @@ export const ComponentTabs = (props: any) => {
       </div>
 
       <TabContent className={content({ className: "-mt-8" })} value="vsc">
-        <div className="no-scrollbar h-56 max-h-64 overflow-y-auto rounded-xl">
+        <div className="no-scrollbar max-h-64 w-72 md:w-full overflow-y-auto rounded-xl">
           {vscTab}
         </div>
       </TabContent>
       <TabContent className={content({ className: "-mt-8" })} value="react">
-        <div className="no-scrollbar h-56 max-h-64 overflow-y-auto rounded-xl">
+        <div className="no-scrollbar max-h-64 w-72 md:w-full overflow-y-auto rounded-xl">
           {reactTab}
         </div>
       </TabContent>
       <TabContent className={content({ className: "-mt-8" })} value="solid">
-        <div className="no-scrollbar h-56 max-h-64 overflow-y-auto rounded-xl">
+        <div className="no-scrollbar max-h-64 w-72 md:w-full overflow-y-auto rounded-xl">
           {solidTab}
         </div>
       </TabContent>

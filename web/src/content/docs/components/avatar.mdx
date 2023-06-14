@@ -11,7 +11,7 @@ import { Avatar } from '../../../ui/React/Avatar/avatar.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center not-prose">
-      <Avatar client:only="react"/>
+      <Avatar client:load/>
     </div>
 </div>
 
@@ -44,11 +44,6 @@ export const avatarPotion = tv({
 ### Default
 
 <DemoTabs solidDisabled vueDisabled>
-<Fragment slot="vsc">
-```tsx
-pc-accordian 
-```
-</Fragment>
 <Fragment slot="react">
 ```tsx
 import {
@@ -71,6 +66,12 @@ export const Avatar = () => (
   </AvatarRoot>
 );
 
+```
+</Fragment>
+
+<Fragment slot="vsc">
+```bash
+pc-accordian 
 ```
 </Fragment>
 
