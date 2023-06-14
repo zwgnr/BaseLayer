@@ -73,7 +73,7 @@ Would you like to proceed?`;
     files: string;
   }
 
-  async function createSnippets(framework: string, projectRoot: string) {
+  const createSnippets = async (framework: string, projectRoot: string) => {
     // Fetch data from URL
     const response = await fetch('https://potion-ui-nu.vercel.app/api/components.json');
     const data = await response.json();
@@ -86,9 +86,11 @@ Would you like to proceed?`;
     // Format components data
     const formattedComponents: { [key: string]: unknown } = {};
     for (const component of filteredComponents) {
+      const baseName = component.name;
+      const kebabCaseName = baseName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
       formattedComponents[component.name] = {
         scope: framework.toLowerCase() === 'vue' ? 'vue' : `typescriptreact`,
-        prefix: 'pc-',
+        prefix: `pc-${kebabCaseName}`,
         body: [component.files],
         description: `${
           component.name.charAt(0).toUpperCase() + component.name.slice(1)
@@ -106,7 +108,7 @@ Would you like to proceed?`;
       JSON.stringify(formattedComponents, null, 2),
       'utf8'
     );
-  }
+  };
 
   // Call function with your framework and projectRoot path
 

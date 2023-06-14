@@ -13,7 +13,7 @@ import DemoTabs from '../../../components/DemoTabs.astro'
 import VariantDemo from '../../../components/VariantDemo.astro'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center">
+    <div className="flex items-center h-16">
       <Button className={buttonPotion()}>
       Button
       </Button>
@@ -105,7 +105,7 @@ export type ButtonPotionProps = VariantProps<typeof buttonPotion>;
 ### Default
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center">
+    <div className="flex items-center h-16">
       <Button className={buttonPotion()}>
       Button
       </Button>
@@ -146,7 +146,7 @@ import { buttonPotion } from "@potions/buttonPotion";
 ### Icon Button
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div class="flex gap-2 items-center">
+    <div class="flex gap-2 items-center h-16">
     <Button className={buttonPotion()}>
      <Heart className='mr-2'/>
       Icon Button
@@ -181,7 +181,7 @@ pc-button-icon
 ### Loader Button
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div class="flex gap-2 items-center">
+    <div class="flex gap-2 items-center h-16">
       <Button className={buttonPotion()} disabled>
         <Loader className="mr-2 h-4 w-4 animate-spin" />
           Loading...
@@ -218,7 +218,7 @@ pc-button-loader
 ### Intent
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center h-16">
       <Button className={buttonPotion({ intent: "primary" })}>
       Primary
       </Button>
@@ -240,7 +240,7 @@ pc-button-loader
 ### State 
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex gap-2 items-center flex-wrap">
+    <div className="flex gap-2 items-center flex-wrap h-16">
       <Button className={buttonPotion({ state: "filled" })}>
       Filled
       </Button>
@@ -270,7 +270,7 @@ pc-button-loader
 ### Sizes
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center h-16">
       <Button className={buttonPotion({ size: "sm" })}>
       sm
       </Button>
