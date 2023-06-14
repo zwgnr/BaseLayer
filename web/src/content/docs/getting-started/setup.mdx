@@ -7,7 +7,7 @@ tags: ["tailwind.config.js", "global.css", "Path Alias", "IntelliSense", "Pretti
 
 import VariantDemo from '../../../components/VariantDemo.astro'
 
-## Command Installation (VSCode)
+## VSCode
 
 1. Ensure you have your project initialized with your chosen frameworks as well as [TailwindCSS](https://tailwindcss.com/docs/installation).
 
@@ -15,7 +15,7 @@ import VariantDemo from '../../../components/VariantDemo.astro'
 
 ## Manual Installation
 
-1. ### Install Dependencies
+1. ### Dependencies
     <VariantDemo>
     <Fragment slot="react">
      ```bash
@@ -34,7 +34,7 @@ import VariantDemo from '../../../components/VariantDemo.astro'
      </Fragment>
     </VariantDemo>
 
-2.  ### Set up Tailwind Preset
+2.  ### Tailwind Preset
 
     Create a file in the root of your project called tailwindPreset.js
     Copy the contents below into the file.
@@ -129,7 +129,7 @@ import VariantDemo from '../../../components/VariantDemo.astro'
     ```
     </div>
 
-3.  ### Set up tailwind.config
+3.  ### tailwind.config
 
     Add the preset to your tailwind config.
 
@@ -147,7 +147,7 @@ import VariantDemo from '../../../components/VariantDemo.astro'
 
     *If you are using next.js with the App dir, you will likely need to add `./potions/**/*.{ts,tsx}` to your tailwind content array.
 
-4.  ### Set up global.css 
+4.  ### global.css 
 
     <div class="max-h-72 overflow-y-auto no-scrollbar">
     ```css
@@ -366,7 +366,7 @@ import VariantDemo from '../../../components/VariantDemo.astro'
     }
     ```
 
-3.  ### TW-Prettier class sorting
+3.  ### class sorting
 
     If you are using the Tailwind-Prettier sorting plugin, and would like this plugin to sort classes within Tailwind Variants, add the following to your module.exports inside your Prettier.config.
 
