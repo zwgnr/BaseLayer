@@ -1,58 +1,75 @@
-import * as vscode from 'vscode';
-import { getWorkspaceRoot } from '../lib/getWorkspaceRoot';
-import { findDirectory } from '../lib/findDirectory';
-import * as fs from 'fs';
-import * as path from 'path';
-
+const vscode = require('vscode');
+const { getWorkspaceRoot } = require('../lib/getWorkspaceRoot');
+const { findDirectory } = require('../lib/findDirectory');
+const fs = require('fs');
+const path = require('path');
 const fetch = require('node-fetch');
 
-export const missingCommand = vscode.commands.registerCommand(
-  'extension.missing',
-  async () => {
-    const activeEditor = vscode.window.activeTextEditor;
+const tsMorph = require('ts-morph');
+const Project = tsMorph.Project;
+const project = new Project();
 
-    if (activeEditor) {
-      const document = activeEditor.document;
-      const text = document.getText();
+export const missingCommand = vscode.commands.registerCommand('extension.missing', async () => {
+  const activeEditor = vscode.window.activeTextEditor;
 
-      const importRegEx = /import .+ from '@potions\/(.+)';/gm;
-      let match;
+  if (activeEditor) {
+    const document = activeEditor.document;
+    const text = document.getText();
+    const potionModules: string[] = [];
 
-      while ((match = importRegEx.exec(text)) !== null) {
-        const moduleName = match[1];
+    const sourceFile = project.createSourceFile('temp.ts', text);
 
-        const workspaceRoot = getWorkspaceRoot();
-        if (workspaceRoot === null) {
-          return;
-        }
+    const importDeclarations = sourceFile.getImportDeclarations();
 
-        const potionsDir = await findDirectory(workspaceRoot, 'potions');
+    for (const declaration of importDeclarations) {
+      const moduleSpecifier = declaration.getModuleSpecifierValue();
+      if (moduleSpecifier.startsWith('@potions/')) {
+        const moduleName = moduleSpecifier.replace('@potions/', '');
+        potionModules.push(moduleName);
+      }
+    }
 
-        if (!potionsDir) {
-          vscode.window.showErrorMessage(
-            'Potions Directory not found, please create one and try again!'
-          );
-          return;
-        }
+    // Delete the source file after using
+    sourceFile.delete();
 
-        const modulePath = path.join(potionsDir, `${moduleName}.ts`);
+    // Process modules after traversal
+    for (const moduleName of potionModules) {
+      const workspaceRoot = getWorkspaceRoot();
+      if (workspaceRoot === null) {
+        return;
+      }
 
-        // Check if module file exists, if not create it
-        if (!fs.existsSync(modulePath)) {
-          const response = await fetch('https://potion-ui-nu.vercel.app/api/potions.json');
-          const json = await response.json();
-          const module = json.find((m: { potion: string }) => m.potion === moduleName);
+      const potionsDir = await findDirectory(workspaceRoot, 'potions');
 
-          if (module) {
-            fs.writeFileSync(modulePath, module.files);
-            vscode.window.showInformationMessage(`Created missing module: ${moduleName}`);
-          } else {
-            vscode.window.showInformationMessage(
-              `Module ${moduleName} not found in the Potions API.`
-            );
+      if (!potionsDir) {
+        vscode.window.showErrorMessage(
+          'Potions Directory not found, please create one and try again!'
+        );
+        return;
+      }
+
+      const modulePath = path.join(potionsDir, `${moduleName}.ts`);
+
+      const response = await fetch('https://potion-ui-nu.vercel.app/api/potions.json');
+      const json: Array<{ potion: string; files: string }> = await response.json();
+      const module = json.find((m) => m.potion === moduleName);
+
+      if (module) {
+        // Check if file already exists and contents are the same
+        if (fs.existsSync(modulePath)) {
+          const existingContent = fs.readFileSync(modulePath, 'utf8');
+          if (existingContent === module.files) {
+            // Skip this file
+            continue;
           }
         }
+
+        // Write new content to file
+        fs.writeFileSync(modulePath, module.files);
+        vscode.window.showInformationMessage(`Created missing module: ${moduleName}`);
+      } else {
+        vscode.window.showInformationMessage(`Module ${moduleName} not found in the Potions API.`);
       }
     }
   }
-);
+});
