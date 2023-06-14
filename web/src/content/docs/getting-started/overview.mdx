@@ -10,7 +10,10 @@ import { PinInput } from '../../../ui/React/PinInput/PinInput.tsx'
 import { Pressable as Button } from "@ark-ui/react";
 import { buttonPotion } from "@potions/buttonPotion";
 
-## Potion Slots
+
+## Potions
+
+### Slots
 
 Let's dive with an example. Take a look at this simple Pin Input component.
 
@@ -70,7 +73,7 @@ export const PinInput = () => (
 ```
 As you can see, Potion leverages the <a target="_blank" rel="noopener noreferrer" href="https://www.tailwind-variants.org/">Tailwind Variants</a> library to create reusable styles. The TV library provides usefull slots, which are perfect for handling the styles of complex multi part Ark Components.
 
-## Potion Variants
+### Variants
 
 Tailwind Variants (as the name implies) also provies support for creating style variants as well as compound and even responsive variants.
 
@@ -164,8 +167,12 @@ import { buttonPotion } from "@potions/buttonPotion";
 You can use the variants inline like shown above, or pass them as props to your component itself.
 
 
-## Overrides
+### Overrides
 
 Tailwind Variants provides excellent support for overriding styles and handling conflicts. The library uses tw-merge under the hood.
 All Tailwind Variants components provide an optional class / className for overriding classes on any component.
 Be sure to check out the <a target="_blank" rel="noopener noreferrer" href="https://www.tailwind-variants.org/docs/overriding-styles">Tailwind Variants</a> docs for more info info.
+
+## Components
+
+Potion components, such as the pin-input above are distributed via VScode snippets. This allows you to rapidly build complex systems with just a few keystrokes. Have a look at the [VsCode Docs](/docs/getting-started/vsc#snippets) for how to use.
