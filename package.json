@@ -4,17 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ExtensionParser": "ts-node --esm utils/ExtensionParser.ts",
-    "ApiParser": "ts-node --esm utils/ApiParser.ts",
+    "ComponentParser": "ts-node --esm utils/ComponentParser.ts",
+    "PotionParser": "ts-node --esm utils/PotionParser.ts",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "lint-staged": {
     "web/src/potions/*": [
-      "pnpm run ApiParser"
+      "pnpm run PotionParser"
     ],
     "web/src/ui/**/*": [
-      "pnpm run ExtensionParser"
+      "pnpm run ComponentParser",
+      "pnpm dlx prettier --write './web/src/json/components.ts'"
     ]
   },
   "keywords": [],

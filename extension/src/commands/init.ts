@@ -7,6 +7,7 @@ import { findFile } from '../lib/findFile';
 const fs = require('fs');
 const path = require('path');
 const exec = util.promisify(require('child_process').exec);
+const fetch = require('node-fetch');
 
 export const initCommand = vscode.commands.registerCommand('extension.init', async () => {
   const workspaceRoot = getWorkspaceRoot();
@@ -65,6 +66,49 @@ Would you like to proceed?`;
   const title = `Using ${packageManager}, installing @ark-ui/${framework} lucide-${framework} tailwind-variants.`;
 
   const answer = await vscode.window.showWarningMessage(message, 'Yes', 'No');
+
+  interface Component {
+    framework: string;
+    name: string;
+    files: string;
+  }
+
+  async function createSnippets(framework: string, projectRoot: string) {
+    // Fetch data from URL
+    const response = await fetch('https://potion-ui-nu.vercel.app/api/components.json');
+    const data = await response.json();
+
+    // Filter components based on framework
+    const filteredComponents = data.filter(
+      (component: Component) => component.framework.toLowerCase() === framework.toLowerCase()
+    );
+
+    // Format components data
+    const formattedComponents: { [key: string]: unknown } = {};
+    for (const component of filteredComponents) {
+      formattedComponents[component.name] = {
+        scope: framework.toLowerCase() === 'vue' ? 'vue' : `typescriptreact`,
+        prefix: 'pc-',
+        body: [component.files],
+        description: `${
+          component.name.charAt(0).toUpperCase() + component.name.slice(1)
+        } Component`,
+      };
+    }
+
+    // Write data to file
+    const snippetsDirPath = path.join(projectRoot, '.vscode');
+    if (!fs.existsSync(snippetsDirPath)) {
+      fs.mkdirSync(snippetsDirPath, { recursive: true });
+    }
+    fs.writeFileSync(
+      path.join(snippetsDirPath, 'potion-components.code-snippets'),
+      JSON.stringify(formattedComponents, null, 2),
+      'utf8'
+    );
+  }
+
+  // Call function with your framework and projectRoot path
 
   const setGlobalStyles = async () => {
     try {
@@ -177,6 +221,7 @@ Would you like to proceed?`;
 
   if (answer === 'Yes') {
     try {
+      createSnippets(framework, projectRoot);
       createPotionDir();
       setGlobalStyles();
       copyPreset();

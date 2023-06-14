@@ -21,10 +21,10 @@ const potionsJsonTsFile = path.resolve(dirname, '../web/src/pages/api/potions.js
 const potionFiles = fs.readdirSync(potionsDir);
 
 // Filter only .ts files
-const tsxFiles = potionFiles.filter((file) => path.extname(file) === '.ts');
+const tsFiles = potionFiles.filter((file) => path.extname(file) === '.ts');
 
 // Parse each .ts file into a Component object
-const potions: Potion[] = tsxFiles.map((file) => {
+const potions: Potion[] = tsFiles.map((file) => {
   // Read content of the file
   const fileContent = fs.readFileSync(path.join(potionsDir, file), 'utf8');
 
