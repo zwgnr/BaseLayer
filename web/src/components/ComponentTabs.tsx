@@ -8,7 +8,6 @@ import {
 import { Icon } from "@iconify/react";
 import { tabsPotion } from "@potions/tabsPotion";
 import { clsx } from "clsx";
-import { Copy } from "lucide-react";
 import { useState } from "react";
 import { CopyToaster } from "./copyToaster";
 
@@ -66,7 +65,7 @@ export const ComponentTabs = (props: any) => {
           })}
           value="vsc"
         >
-          <Icon icon="devicon:vscode" className="mb-2 h-6 w-6 text-gray-600" />
+          <Icon icon="devicon:vscode" className="mb-2 h-5 w-5 text-gray-600" />
         </TabTrigger>
         <TabTrigger
           className={trigger({
@@ -77,7 +76,7 @@ export const ComponentTabs = (props: any) => {
         >
           <Icon
             icon="simple-icons:react"
-            className="mb-2 h-6 w-6 text-blue-400"
+            className="mb-2 h-5 w-5 text-blue-400"
           />
         </TabTrigger>
         <TabTrigger
@@ -91,7 +90,7 @@ export const ComponentTabs = (props: any) => {
           <Icon
             icon="simple-icons:solid"
             className={clsx(
-              "mb-2 h-6 w-6",
+              "mb-2 h-5 w-5",
               solidDisabled === true ? null : "text-blue-500"
             )}
           />
@@ -107,7 +106,7 @@ export const ComponentTabs = (props: any) => {
           <Icon
             icon="simple-icons:vuedotjs"
             className={clsx(
-              "mb-2 h-6 w-6",
+              "mb-2 h-5 w-5",
               vueDisabled === true ? null : "text-green-500"
             )}
           />
@@ -119,17 +118,17 @@ export const ComponentTabs = (props: any) => {
       </div>
 
       <TabContent className={content({ className: "-mt-8" })} value="vsc">
-        <div className="no-scrollbar max-h-64 overflow-y-auto rounded-xl">
+        <div className="no-scrollbar h-56 max-h-64 overflow-y-auto rounded-xl">
           {vscTab}
         </div>
       </TabContent>
       <TabContent className={content({ className: "-mt-8" })} value="react">
-        <div className="no-scrollbar max-h-64 overflow-y-auto rounded-xl">
+        <div className="no-scrollbar h-56 max-h-64 overflow-y-auto rounded-xl">
           {reactTab}
         </div>
       </TabContent>
       <TabContent className={content({ className: "-mt-8" })} value="solid">
-        <div className="no-scrollbar max-h-64 overflow-y-auto rounded-xl">
+        <div className="no-scrollbar h-56 max-h-64 overflow-y-auto rounded-xl">
           {solidTab}
         </div>
       </TabContent>

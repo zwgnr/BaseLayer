@@ -46,7 +46,7 @@ const currentPage = Astro.url.pathname;
 
 <div
   id="side-nav"
-  class="small-scrollbar fixed bottom-0 top-16 z-10 hidden w-full flex-col overflow-y-auto bg-surface-2 py-8 pl-8 pr-8 shadow-lg md:flex md:w-64 md:bg-transparent md:shadow-none xl:pl-0"
+  class="small-scrollbar bottom-0 top-16 z-10 hidden w-full flex-col overflow-y-auto bg-surface-2 py-8 pl-8 pr-8 shadow-lg md:fixed md:flex md:w-64 md:bg-transparent md:shadow-none xl:pl-0"
 >
   <div class="mb-4 md:hidden">
     <a class="text-xl font-bold text-text md:hidden" href="/">PotionUI</a>
@@ -57,8 +57,8 @@ const currentPage = Astro.url.pathname;
         <li>
           <div class="nav-group ">
             <div class="flex gap-2">
-            <h2 class="text-base mb-2 font-bold text-text-3">{header}</h2>
-          </div>
+              <h2 class="mb-2 text-base font-bold text-text-3">{header}</h2>
+            </div>
             <ul class="mb-4">
               {children.map((child) => {
                 const url = child.link;
