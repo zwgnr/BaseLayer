@@ -1,3 +1,4 @@
+import { tooltipPotion } from "@/potions/tooltipPotion";
 import {
   TooltipArrow,
   TooltipArrowTip,
@@ -7,7 +8,6 @@ import {
   TooltipTrigger,
   type TooltipProps as ArkToolTipProps,
 } from "@ark-ui/react";
-import { tooltipPotion } from "@potions/tooltipPotion";
 
 export type TooltipProps = Partial<ArkToolTipProps> & {
   placement?: NonNullable<ArkToolTipProps["positioning"]>["placement"];

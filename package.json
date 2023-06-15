@@ -15,7 +15,7 @@
     ],
     "web/src/ui/**/*": [
       "pnpm run ComponentParser",
-      "pnpm dlx prettier --write './web/src/json/components.ts'"
+      "pnpm dlx prettier --write './web/src/templates/components.ts'"
     ]
   },
   "keywords": [],
