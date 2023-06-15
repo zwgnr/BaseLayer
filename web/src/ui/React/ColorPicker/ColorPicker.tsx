@@ -1,3 +1,5 @@
+"use client";
+
 import { colorPickerPotion } from "@/potions/colorPickerPotion";
 import {
   ColorPickerArea,
@@ -56,9 +58,11 @@ export const ColorPicker = () => {
               <ColorPickerAreaGradient className={gradient()} />
               <ColorPickerAreaThumb className={areaThumb()} />
             </ColorPickerArea>
-            <div className="flex w-full flex-row gap-4 p-4">
-              <ColorPickerEyeDropperTrigger>
-                <Pipette />
+            <div className="flex w-full flex-row items-center gap-4 p-4">
+              <ColorPickerEyeDropperTrigger asChild>
+                <button>
+                  <Pipette />
+                </button>
               </ColorPickerEyeDropperTrigger>
               <div className="flex w-full flex-col gap-2">
                 <ColorPickerChannelSliderTrack
@@ -81,8 +85,11 @@ export const ColorPicker = () => {
                 </ColorPickerChannelSliderTrack>
               </div>
             </div>
-            <div className="flex justify-center gap-2 p-4 pb-0">
-              <ColorPickerChannelInput className={input()} channel={hue} />
+            <div className="flex w-full items-center justify-center gap-2 p-4 ">
+              <ColorPickerChannelInput
+                className={input()}
+                channel={hue}
+              ></ColorPickerChannelInput>
               <ColorPickerChannelInput
                 className={input()}
                 channel={saturation}
@@ -112,4 +119,8 @@ export const ColorPicker = () => {
       }}
     </ColorPickerRoot>
   );
+};
+
+export const CP = () => {
+  return <ColorPicker />;
 };
