@@ -1,6 +1,6 @@
 export const tailwindPreset = `module.exports = {
-  extend: {
-    theme: {
+  theme: {
+    extend: {
       colors: {
         surface: {
           DEFAULT: 'rgb(var(--surface))',
