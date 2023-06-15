@@ -7,8 +7,8 @@ import {
   DialogTrigger,
   Portal,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { dialogPotion } from "@potions/dialogPotion";
+import { buttonPotion } from "@/potions/buttonPotion";
+import { dialogPotion } from "@/potions/dialogPotion";
 import { Search as SearchIcon } from "lucide-react";
 import Search, { type SearchProps } from "./search";
 

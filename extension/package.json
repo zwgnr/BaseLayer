@@ -30,7 +30,7 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "vscode:prepublish": "npm run clean && npm run esbuild-base -- --minify",
     "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node --target=es2020",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
@@ -39,8 +39,7 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "clean": "rimraf ./out/*",
-    "copy-templates": "ncp src/templates out/templates"
+    "clean": "rimraf ./out/*"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
@@ -55,6 +54,7 @@
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
     "ncp": "^2.0.0",
+    "rimraf": "^5.0.1",
     "typescript": "^5.0.4"
   },
   "dependencies": {

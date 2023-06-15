@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@ark-ui/react";
 
-import { accordianPotion } from "@potions/accordianPotion";
+import { accordianPotion } from "@/potions/accordianPotion";
 
 const { root, item, trigger, content } = accordianPotion();
 

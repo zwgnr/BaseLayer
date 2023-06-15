@@ -1,6 +1,6 @@
 import { useToast } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { Toast } from "../../ui/React/Toast/toast";
+import { buttonPotion } from "@/potions/buttonPotion";
+import { Toast } from "@/ui/React/Toast/toast";
 
 export const ToastExample = () => {
   return (

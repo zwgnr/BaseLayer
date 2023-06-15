@@ -1,3 +1,4 @@
+import { colorPickerPotion } from "@/potions/colorPickerPotion";
 import {
   ColorPickerArea,
   ColorPickerAreaGradient,
@@ -13,7 +14,6 @@ import {
   ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
 } from "@ark-ui/react";
-import { colorPickerPotion } from "@potions/colorPickerPotion";
 import { Pipette } from "lucide-react";
 
 const {

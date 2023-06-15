@@ -1,9 +1,9 @@
+import { splitterPotion } from "@/potions/splitterPotion";
 import {
   SplitterPanel,
   SplitterResizeTrigger,
   Splitter as SplitterRoot,
 } from "@ark-ui/react";
-import { splitterPotion } from "@potions/splitterPotion";
 
 const { panel, resizeTrigger, root } = splitterPotion();
 

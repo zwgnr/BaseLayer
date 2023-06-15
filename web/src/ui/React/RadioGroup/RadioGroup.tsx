@@ -1,3 +1,4 @@
+import { radioGroupPotion } from "@/potions/radioGroupPotion";
 import {
   Radio,
   RadioControl,
@@ -5,7 +6,6 @@ import {
   RadioInput,
   RadioLabel,
 } from "@ark-ui/react";
-import { radioGroupPotion } from "@potions/radioGroupPotion";
 
 const { root, control, radio, radioLabel } = radioGroupPotion();
 

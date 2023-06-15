@@ -1,3 +1,4 @@
+import { ToastPotionProps, toastPotion } from "@/potions/toastPotion";
 import {
   Portal,
   ToastCloseTrigger,
@@ -8,7 +9,6 @@ import {
   Toast as ToastRoot,
   ToastTitle,
 } from "@ark-ui/react";
-import { ToastPotionProps, toastPotion } from "@potions/toastPotion";
 import { X } from "lucide-react";
 import type { ReactNode } from "react";
 

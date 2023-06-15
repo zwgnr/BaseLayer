@@ -1,3 +1,4 @@
+import { numberInputPotion } from "@/potions/numberInputPotion";
 import {
   NumberInputControl,
   NumberInputDecrementTrigger,
@@ -6,7 +7,6 @@ import {
   NumberInput as NumberInputRoot,
   NumberInputScrubber,
 } from "@ark-ui/react";
-import { numberInputPotion } from "@potions/numberInputPotion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const { root, control, field, decrementTrigger, incrementTrigger } =

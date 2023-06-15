@@ -329,25 +329,13 @@ import VariantDemo from '../../../components/VariantDemo.astro'
 
 1. ### Path Alias
 
-    NextJS will look something like
+    The default installs/components have @/ as they defaul path alias.
     ```json
     {
       "compilerOptions": {
         "baseUrl": ".",
         "paths": {
           "@/*": ["./*"]
-        }
-      }
-    }
-    ```
-    
-    Astro will look something like
-    ```json
-    {
-      "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-          "@potions/*": ["src/potions/*"],
         }
       }
     }

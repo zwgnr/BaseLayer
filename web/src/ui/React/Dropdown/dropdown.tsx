@@ -1,3 +1,7 @@
+import { Avatar } from "@/components/avatar";
+import { Checkbox } from "@/components/checkbox";
+import { dropdownPotion } from "@/potions/dropdownPotion";
+import { radioGroupPotion } from "@/potions/radioGroupPotion";
 import {
   MenuContent as DropdownContent,
   MenuItem as DropdownItem,
@@ -16,10 +20,6 @@ import {
   RadioInput,
   RadioLabel,
 } from "@ark-ui/react";
-import { Avatar } from "@components/avatar";
-import { Checkbox } from "@components/checkbox";
-import { dropdownPotion } from "@potions/dropdownPotion";
-import { radioGroupPotion } from "@potions/radioGroupPotion";
 import { ChevronRight, Plus, Settings } from "lucide-react";
 import { useState } from "react";
 

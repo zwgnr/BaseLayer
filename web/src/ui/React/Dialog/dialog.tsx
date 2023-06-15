@@ -1,3 +1,5 @@
+import { buttonPotion } from "@/potions/buttonPotion";
+import { dialogPotion } from "@/potions/dialogPotion";
 import {
   Pressable as Button,
   DialogBackdrop,
@@ -10,8 +12,6 @@ import {
   DialogTrigger,
   Portal,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { dialogPotion } from "@potions/dialogPotion";
 import { X } from "lucide-react";
 
 const { backdrop, container, content, description, title } = dialogPotion();

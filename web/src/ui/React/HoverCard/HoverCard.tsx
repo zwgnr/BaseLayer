@@ -1,3 +1,5 @@
+import { buttonPotion } from "@/potions/buttonPotion";
+import { hoverCardPotion } from "@/potions/hoverCardPotion";
 import {
   Pressable as Button,
   HoverCardArrow,
@@ -8,8 +10,6 @@ import {
   HoverCardTrigger,
   Portal,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { hoverCardPotion } from "@potions/hoverCardPotion";
 
 const { positioner, content } = hoverCardPotion();
 

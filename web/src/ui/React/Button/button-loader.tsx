@@ -1,5 +1,5 @@
+import { buttonPotion } from "@/potions/buttonPotion";
 import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
 import { Loader } from "lucide-react";
 
 <Button className={buttonPotion()} disabled>

@@ -1,9 +1,9 @@
+import { avatarPotion } from "@/potions/avatarPotion";
 import {
   AvatarFallback,
   AvatarImage,
   Avatar as AvatarRoot,
 } from "@ark-ui/react";
-import { avatarPotion } from "@potions/avatarPotion";
 
 const { root, fallback, image } = avatarPotion();
 

@@ -1,13 +1,13 @@
 /** @jsxImportSource solid-js */
 import { ChevronDown } from "lucide-solid";
 
+import { accordianPotion } from "@/potions/accordianPotion";
 import {
   AccordionContent,
   AccordionItem,
   Accordion as AccordionRoot,
   AccordionTrigger,
 } from "@ark-ui/solid";
-import { accordianPotion } from "@potions/accordianPotion";
 import { For } from "solid-js";
 
 const { root, item, trigger, content } = accordianPotion();

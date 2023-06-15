@@ -9,7 +9,7 @@ import {
   type RangeSliderProps,
 } from "@ark-ui/react";
 
-import { rangeSliderPotion } from "@potions/rangeSliderPotion";
+import { rangeSliderPotion } from "@/potions/rangeSliderPotion";
 
 const rsp = rangeSliderPotion();
 

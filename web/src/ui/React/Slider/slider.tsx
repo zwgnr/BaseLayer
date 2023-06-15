@@ -1,3 +1,4 @@
+import { sliderPotion } from "@/potions/sliderPotion";
 import {
   SliderControl,
   SliderMarker,
@@ -8,7 +9,6 @@ import {
   SliderTrack,
   type SliderProps,
 } from "@ark-ui/react";
-import { sliderPotion } from "@potions/sliderPotion";
 
 const {
   sliderControl,

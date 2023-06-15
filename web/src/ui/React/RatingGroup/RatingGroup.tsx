@@ -1,9 +1,9 @@
+import { ratingGroupPotion } from "@/potions/ratingGroupPotion";
 import {
   Rating,
   RatingGroupControl,
   RatingGroup as RatingGroupRoot,
 } from "@ark-ui/react";
-import { ratingGroupPotion } from "@potions/ratingGroupPotion";
 import { Star } from "lucide-react";
 
 const { control, rating, root } = ratingGroupPotion();

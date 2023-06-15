@@ -148,7 +148,7 @@ Would you like to proceed?`;
 
     const response = await fetch('https://potion-ui-nu.vercel.app/api/tailwind.json');
     const tailwindPreset = await response.json();
-    const tailwindPresetPath = path.join(projectRoot, 'tailwind.js');
+    const tailwindPresetPath = path.join(projectRoot, 'tailwindPreset.js');
     fs.writeFileSync(tailwindPresetPath, tailwindPreset);
   }
 

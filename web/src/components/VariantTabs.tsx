@@ -6,7 +6,7 @@ import {
   Tabs,
 } from "@ark-ui/react";
 import { Icon } from "@iconify/react";
-import { tabsPotion } from "@potions/tabsPotion";
+import { tabsPotion } from "@/potions/tabsPotion";
 import { clsx } from "clsx";
 import { useState } from "react";
 import { CopyToaster } from "./copyToaster";

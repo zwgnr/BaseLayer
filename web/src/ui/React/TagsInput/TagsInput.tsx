@@ -1,3 +1,4 @@
+import { tagsInputPotion } from "@/potions/tagsInputPotion";
 import {
   Tag,
   TagDeleteTrigger,
@@ -6,7 +7,6 @@ import {
   TagsInputField,
   TagsInput as TagsInputRoot,
 } from "@ark-ui/react";
-import { tagsInputPotion } from "@potions/tagsInputPotion";
 import { X } from "lucide-react";
 import { Fragment } from "react";
 

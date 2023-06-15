@@ -1,3 +1,4 @@
+import { selectPotion } from "@/potions/selectPotion";
 import {
   Portal,
   SelectContent,
@@ -6,7 +7,6 @@ import {
   Select as SelectRoot,
   SelectTrigger,
 } from "@ark-ui/react";
-import { selectPotion } from "@potions/selectPotion";
 import { ChevronDown } from "lucide-react";
 
 const { trigger, content, option } = selectPotion();

@@ -1,3 +1,4 @@
+import { buttonPotion } from "@/potions/buttonPotion";
 import {
   PaginationEllipsis,
   PaginationList,
@@ -7,9 +8,8 @@ import {
   Pagination as PaginationRoot,
   type PaginationProps,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
 
-import { paginationPotion } from "@potions/paginationPotion";
+import { paginationPotion } from "@/potions/paginationPotion";
 
 const { root, list, pageTrigger, ellipsis } = paginationPotion();
 

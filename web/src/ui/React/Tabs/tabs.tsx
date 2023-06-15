@@ -1,3 +1,4 @@
+import { tabsPotion } from "@/potions/tabsPotion";
 import {
   TabContent,
   TabIndicator,
@@ -5,7 +6,6 @@ import {
   TabTrigger,
   Tabs as TabsRoot,
 } from "@ark-ui/react";
-import { tabsPotion } from "@potions/tabsPotion";
 
 const { list, trigger, content, indicator } = tabsPotion();
 

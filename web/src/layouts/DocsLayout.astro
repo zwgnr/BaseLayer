@@ -1,6 +1,6 @@
 ---
-import SideNav from "@components/SideNav.astro";
-import TOC from "@components/TOC.astro";
+import SideNav from "@/components/SideNav.astro";
+import TOC from "@/components/TOC.astro";
 
 const { doc } = Astro.props;
 const { Content, headings } = await doc.render();

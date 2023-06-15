@@ -1,3 +1,5 @@
+import { buttonPotion } from "@/potions/buttonPotion";
+import { popoverPotion } from "@/potions/popoverPotion";
 import {
   Pressable as Button,
   PopoverCloseTrigger,
@@ -8,8 +10,6 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { popoverPotion } from "@potions/popoverPotion";
 import { Star } from "lucide-react";
 
 const { positioner, content, title } = popoverPotion();

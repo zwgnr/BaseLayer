@@ -23,8 +23,8 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
 
     for (const declaration of importDeclarations) {
       const moduleSpecifier = declaration.getModuleSpecifierValue();
-      if (moduleSpecifier.startsWith('@potions/')) {
-        const moduleName = moduleSpecifier.replace('@potions/', '');
+      if (moduleSpecifier.startsWith('@/potions/')) {
+        const moduleName = moduleSpecifier.replace('@/potions/', '');
         potionModules.push(moduleName);
       }
     }

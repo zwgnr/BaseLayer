@@ -1,5 +1,6 @@
 import { Check, Minus } from "lucide-react";
 
+import { CheckboxPotionProps, checkboxPotion } from "@/potions/checkboxPotion";
 import {
   CheckboxProps as ArkCheckboxProps,
   CheckboxControl,
@@ -7,7 +8,6 @@ import {
   CheckboxLabel,
   Checkbox as CheckboxRoot,
 } from "@ark-ui/react";
-import { CheckboxPotionProps, checkboxPotion } from "@potions/checkboxPotion";
 import type { ReactNode } from "react";
 
 type CheckboxProps = ArkCheckboxProps &
