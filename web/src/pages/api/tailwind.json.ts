@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { tailwindPreset } from "src/templates/presets";
+import { tailwindPreset } from "@/templates/presets";
 
 export const get: APIRoute = () => {
   return {

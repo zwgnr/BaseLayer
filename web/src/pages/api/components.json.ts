@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { components } from '../../json/components'
+import { components } from '../../templates/components'
 
 export const get: APIRoute = () => {
   return {

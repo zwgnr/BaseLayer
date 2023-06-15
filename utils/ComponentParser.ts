@@ -48,7 +48,7 @@ const components = [...reactComponents, ...solidComponents];
 const componentsFileContent = `export const components = ${JSON.stringify(components, null, 2)};`;
 
 // Define path for the components.ts file
-const componentsTsFile = path.resolve(__dirname, '../web/src/json/components.ts');
+const componentsTsFile = path.resolve(__dirname, '../web/src/templates/components.ts');
 
 // Write the components.ts file
 fs.writeFileSync(componentsTsFile, componentsFileContent);

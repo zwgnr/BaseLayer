@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { stylesPreset } from "src/templates/presets";
+import { stylesPreset } from "@/templates/presets";
 
 export const get: APIRoute = () => {
   return {
