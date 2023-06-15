@@ -1,8 +1,7 @@
-import { buttonPotion } from "@/potions/buttonPotion";
-import { Pressable as Button } from "@ark-ui/react";
+import { Button } from "@/components/button";
 import { Heart } from "lucide-react";
 
-<Button className={buttonPotion()}>
+<Button>
   <Heart className="mr-2" />
   Icon Button
 </Button>;

@@ -1,8 +1,7 @@
-import { buttonPotion } from "@/potions/buttonPotion";
-import { Pressable as Button } from "@ark-ui/react";
+import { Button } from "@/components/button";
 import { Loader } from "lucide-react";
 
-<Button className={buttonPotion()} disabled>
+<Button disabled>
   <Loader className="mr-2 h-4 w-4 animate-spin" />
   Loading
 </Button>;

@@ -21,19 +21,19 @@ export const components = [
     framework: "React",
     name: "button-icon",
     files:
-      'import { buttonPotion } from "@/potions/buttonPotion";\nimport { Pressable as Button } from "@ark-ui/react";\nimport { Heart } from "lucide-react";\n\n<Button className={buttonPotion()}>\n  <Heart className="mr-2" />\n  Icon Button\n</Button>;\n',
+      'import { Button } from \'@/components/button\'\nimport { Heart } from "lucide-react";\n\n<Button>\n  <Heart className="mr-2" />\n  Icon Button\n</Button>;\n',
   },
   {
     framework: "React",
     name: "button-loader",
     files:
-      'import { buttonPotion } from "@/potions/buttonPotion";\nimport { Pressable as Button } from "@ark-ui/react";\nimport { Loader } from "lucide-react";\n\n<Button className={buttonPotion()} disabled>\n  <Loader className="mr-2 h-4 w-4 animate-spin" />\n  Loading\n</Button>;\n',
+      'import { Button } from "@/components/button";\nimport { Loader } from "lucide-react";\n\n<Button disabled>\n  <Loader className="mr-2 h-4 w-4 animate-spin" />\n  Loading\n</Button>;\n',
   },
   {
     framework: "React",
     name: "button",
     files:
-      'import { buttonPotion } from "@/potions/buttonPotion";\nimport { Pressable as Button } from "@ark-ui/react";\n\n<Button className={buttonPotion()}>Button</Button>;\n',
+      'import { buttonPotion, type ButtonPotionProps } from "@/potions/buttonPotion";\nimport type { ButtonHTMLAttributes } from "react";\n\nexport interface ButtonProps\n  extends ButtonHTMLAttributes<HTMLButtonElement>,\n    ButtonPotionProps {}\n\nexport const Button = ({\n  children,\n  className,\n  intent,\n  size,\n  state,\n  ...props\n}: ButtonProps) => {\n  return (\n    <button\n      className={buttonPotion({ intent, size, state, className })}\n      {...props}\n    >\n      {children}\n    </button>\n  );\n};\n',
   },
   {
     framework: "React",
@@ -159,7 +159,7 @@ export const components = [
     framework: "React",
     name: "tooltip",
     files:
-      'import {\n  TooltipArrow,\n  TooltipArrowTip,\n  TooltipContent,\n  TooltipPositioner,\n  Tooltip as TooltipRoot,\n  TooltipTrigger,\n  type TooltipProps as ArkToolTipProps,\n} from "@ark-ui/react";\nimport { tooltipPotion } from "@/potions/tooltipPotion";\n\nexport type TooltipProps = Partial<ArkToolTipProps> & {\n  placement?: NonNullable<ArkToolTipProps["positioning"]>["placement"];\n};\nconst { tooltipPositioner, tooltipContent } = tooltipPotion();\n\nexport const Tooltip = (props: TooltipProps) => {\n  const { placement = "top", ...tooltipProps } = props;\n  return (\n    <TooltipRoot\n      openDelay={0}\n      closeDelay={200}\n      positioning={{ placement }}\n      {...tooltipProps}\n    >\n      <TooltipTrigger asChild>\n        <span>Hover me</span>\n      </TooltipTrigger>\n      <TooltipPositioner className={tooltipPositioner()}>\n        <TooltipArrow>\n          <TooltipArrowTip />\n        </TooltipArrow>\n        <TooltipContent className={tooltipContent()}>My Tooltip</TooltipContent>\n      </TooltipPositioner>\n    </TooltipRoot>\n  );\n};\n',
+      'import { tooltipPotion } from "@/potions/tooltipPotion";\nimport {\n  TooltipArrow,\n  TooltipArrowTip,\n  TooltipContent,\n  TooltipPositioner,\n  Tooltip as TooltipRoot,\n  TooltipTrigger,\n  type TooltipProps as ArkToolTipProps,\n} from "@ark-ui/react";\n\nexport type TooltipProps = Partial<ArkToolTipProps> & {\n  placement?: NonNullable<ArkToolTipProps["positioning"]>["placement"];\n};\nconst { tooltipPositioner, tooltipContent } = tooltipPotion();\n\nexport const Tooltip = (props: TooltipProps) => {\n  const { placement = "top", ...tooltipProps } = props;\n  return (\n    <TooltipRoot\n      openDelay={0}\n      closeDelay={200}\n      positioning={{ placement }}\n      {...tooltipProps}\n    >\n      <TooltipTrigger asChild>\n        <span>Hover me</span>\n      </TooltipTrigger>\n      <TooltipPositioner className={tooltipPositioner()}>\n        <TooltipArrow>\n          <TooltipArrowTip />\n        </TooltipArrow>\n        <TooltipContent className={tooltipContent()}>My Tooltip</TooltipContent>\n      </TooltipPositioner>\n    </TooltipRoot>\n  );\n};\n',
   },
   {
     framework: "Solid",

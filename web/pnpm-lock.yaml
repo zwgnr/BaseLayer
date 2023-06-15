@@ -59,8 +59,8 @@ dependencies:
     specifier: ^1.4.3
     version: 1.7.6
   tailwind-variants:
-    specifier: ^0.1.5
-    version: 0.1.5(tailwindcss@3.3.2)
+    specifier: ^0.1.6
+    version: 0.1.6(tailwindcss@3.3.2)
   tailwindcss:
     specifier: ^3.0.24
     version: 3.3.2
@@ -4373,8 +4373,8 @@ packages:
     resolution: {integrity: sha512-Y17eDp7FtN1+JJ4OY0Bqv9OA41O+MS8c1Iyr3T6JFLnOgLg3EvcyMKZAnQ8AGyvB5Nxm3t9Xb5Mhe139m8QT/g==}
     dev: false
 
-  /tailwind-variants@0.1.5(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-/dQnADaHlt/3xSDcOYnTvTwvgDFpz+Nq++XNw3mCfIkBFoJhRJ4x3WG2ZQ9cWUqAFjVaRfdlG3KVYqs9bKlIhg==}
+  /tailwind-variants@0.1.6(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-jWk724Ov5Dm64hKBUQVf9s8pAQOpcMIQTqM8LSjzqOKGZdUVcRUmtxszG5VzNOe3/gPNG6g/CacSniNZolOB8w==}
     engines: {node: '>=16.x', pnpm: '>=7.x'}
     peerDependencies:
       tailwindcss: '*'

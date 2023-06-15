@@ -1,6 +1,6 @@
 ---
 title: Button
-description: "Handles press interactions across mouse, touch, keyboard, and screen readers."
+description: "Displays a button component."
 ---
 
 ---
@@ -123,10 +123,30 @@ pc-button
 
 <Fragment slot="react">
 ```tsx
-import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
+import { buttonPotion, type ButtonPotionProps } from "@/potions/buttonPotion";
+import type { ButtonHTMLAttributes } from "react";
 
-<Button className={buttonPotion()}>Button</Button>;
+export interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    ButtonPotionProps {}
+
+export const Button = ({
+  children,
+  className,
+  intent,
+  size,
+  state,
+  ...props
+}: ButtonProps) => {
+  return (
+    <button
+      className={buttonPotion({ intent, size, state, className })}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 
 ```
 </Fragment>
@@ -157,13 +177,12 @@ import { buttonPotion } from "@potions/buttonPotion";
 <br />
 
 <DemoTabs solidDisabled vueDisabled>
-  <Fragment slot="code">
+  <Fragment slot="react">
 ```tsx
-import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
+import { Button } from '@/components/button'
 import { Heart } from "lucide-react";
 
-<Button className={buttonPotion()}>
+<Button>
   <Heart className="mr-2" />
   Icon Button
 </Button>;
@@ -192,15 +211,14 @@ pc-button-icon
 <br />
 
 <DemoTabs solidDisabled vueDisabled>
-  <Fragment slot="code">
+  <Fragment slot="react">
 ```tsx
-import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
+import { Button } from '@/components/button'
 import { Loader } from "lucide-react";
 
-<Button className={buttonPotion()} disabled>
+<Button disabled>
   <Loader className="mr-2 h-4 w-4 animate-spin" />
-  Loading
+  Loading...
 </Button>;
 
 ```
@@ -232,8 +250,10 @@ pc-button-loader
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-<Button className={buttonPotion({ intent: "primary" })}>Primary</Button>
-<Button className={buttonPotion({ intent: "accent" })}>Accent</Button>
+import { Button } from "@/components/button";
+
+<Button intent="primary">Primary</Button>
+<Button intent="accent">Accent</Button>
 ```
 </div>
 
@@ -260,10 +280,12 @@ pc-button-loader
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
- <Button className={buttonPotion({ state: "filled" })}>Filled</Button>
- <Button className={buttonPotion({ state: "soft" })}>Soft</Button>
- <Button className={buttonPotion({ state: "ghost" })}>Ghost</Button>
- <Button className={buttonPotion({ state: "outline" })}>Outline</Button>
+  import { Button } from "@/components/button";
+
+ <Button state="filled">Filled</Button>
+ <Button state="soft">Soft</Button>
+ <Button state="ghost">Ghost</Button>
+ <Button state="outline">Outline</Button>
 ```
 </div>
 
@@ -290,9 +312,11 @@ pc-button-loader
 <Fragment slot="react">
 
 ```tsx
-<Button className={buttonPotion({ size: "sm" })}>sm</Button>
-<Button className={buttonPotion({ size: "md" })}>md</Button>
-<Button className={buttonPotion({ size: "lg" })}>lg</Button>
+import { Button } from "@/components/button";
+
+<Button size="sm">sm</Button>
+<Button size="md">md</Button>
+<Button size="lg">lg</Button>
 ```
 
 </Fragment>
