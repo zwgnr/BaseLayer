@@ -99,7 +99,7 @@ Would you like to proceed?`;
     }
 
     // Write data to file
-    const snippetsDirPath = path.join(projectRoot, '.vscode');
+    const snippetsDirPath = path.join(workspaceRoot, '.vscode');
     if (!fs.existsSync(snippetsDirPath)) {
       fs.mkdirSync(snippetsDirPath, { recursive: true });
     }
@@ -114,21 +114,23 @@ Would you like to proceed?`;
 
   const setGlobalStyles = async () => {
     try {
-      const presets = require(path.join(__dirname, '../templates/presets'));
-      const stylesPresetContent = presets.stylesPreset;
+      //const presets = require(path.join(__dirname, '../templates/presets'));
+      //const stylesPresetContent = presets.stylesPreset;
+      const response = await fetch('https://potion-ui-nu.vercel.app/api/global.json');
+      const stylesPreset = await response.json();
 
       let stylesFilePath = await findFile(projectRoot, 'global.css');
       if (stylesFilePath !== null) {
-        fs.writeFileSync(stylesFilePath, stylesPresetContent);
+        fs.writeFileSync(stylesFilePath, stylesPreset);
       }
       if (stylesFilePath === null) {
         stylesFilePath = await findFile(projectRoot, 'globals.css');
         if (stylesFilePath !== null) {
-          fs.writeFileSync(stylesFilePath, stylesPresetContent);
+          fs.writeFileSync(stylesFilePath, stylesPreset);
         } else {
           // If 'styles' directory not found, create it under projectRoot and write the file there
           const globalCssPath = path.join(projectRoot, 'global.css');
-          fs.writeFileSync(globalCssPath, stylesPresetContent);
+          fs.writeFileSync(globalCssPath, stylesPreset);
         }
       }
     } catch (err) {
@@ -138,11 +140,16 @@ Would you like to proceed?`;
   };
 
   async function copyPreset() {
-    const destinationPresetPath = path.join(projectRoot, 'tailwindPreset.js');
-    const presets = require(path.join(__dirname, '../templates/presets'));
-    const tailwindPreset = presets.tailwindPreset;
+    //const destinationPresetPath = path.join(projectRoot, 'tailwindPreset.js');
+    //const presets = require(path.join(__dirname, '../templates/presets'));
+    //const tailwindPreset = presets.tailwindPreset;
 
-    fs.writeFileSync(destinationPresetPath, tailwindPreset);
+    //fs.writeFileSync(destinationPresetPath, tailwindPreset);
+
+    const response = await fetch('https://potion-ui-nu.vercel.app/api/tailwind.json');
+    const tailwindPreset = await response.json();
+    const tailwindPresetPath = path.join(projectRoot, 'tailwind.js');
+    fs.writeFileSync(tailwindPresetPath, tailwindPreset);
   }
 
   async function updateTailwindConfig() {
