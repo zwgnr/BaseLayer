@@ -59,7 +59,7 @@ export const ColorPicker = () => {
             <div className="flex w-full flex-row items-center gap-4 p-4">
               <ColorPickerEyeDropperTrigger asChild>
                 <button>
-                  <Pipette />
+                  <Pipette className="text-text-4" />
                 </button>
               </ColorPickerEyeDropperTrigger>
               <div className="flex w-full flex-col gap-2">
@@ -99,7 +99,7 @@ export const ColorPicker = () => {
               <ColorPickerChannelInput className={input()} channel="alpha" />
             </div>
             <div className="p-4">
-              <p>Presets</p>
+              <p className="text-text-4">Presets</p>
               <ColorPickerSwatchGroup className={swatchGroup()}>
                 {presets.map((color) => (
                   <ColorPickerSwatch
