@@ -130,7 +130,7 @@ const potions: Potion[] = [
   {
     potion: "tooltipPotion",
     name: "Tooltip",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const tooltipPotion = tv({\n  slots: {\n    tooltipPositioner: \"rounded-lg bg-surface-3 px-3 py-2 shadow-lg\",\n    tooltipContent: \"text-xs font-semibold\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const tooltipPotion = tv({\n  slots: {\n    positioner: \"rounded-lg bg-surface-3 px-3 py-2 shadow-lg\",\n    content: \"text-xs font-semibold text-text-3\",\n  },\n});\n"
   }
 ];
 

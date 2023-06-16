@@ -2,31 +2,39 @@
 import { buttonPotion } from "@/potions/buttonPotion";
 import Layout from "../layouts/Layout.astro";
 import { ColorPicker } from "@/ui/React/ColorPicker/ColorPicker";
-import { Github } from "lucide-react";
+import { Github, Twitter } from "lucide-react";
 import { LandingTabs } from "@/components/LandingTabs";
 import { Icon } from "@iconify/react";
+import { IconTooltip } from "@/components/IconTooltip";
+import { Heart } from "lucide-react";
+import { Coffee } from "lucide-react";
 ---
 
 <Layout title="PotionUI">
   <div
-    class="mt-24 flex h-full w-full flex-col items-center gap-24 p-8 md:p-16"
+    class="mt-12 flex h-full w-full flex-col items-center p-8 md:p-16 lg:mt-24"
   >
-    <div class="flex w-full max-w-4xl flex-col items-center gap-8 text-center">
-      <h1 class="text-7xl font-bold text-text">
-        Creativity unleashed.
+    <div
+      class="flex lg:h-[calc(100vh-14rem)] w-full max-w-5xl flex-col items-center gap-12 overflow-hidden text-center"
+    >
+      <h1 class="text-6xl font-extrabold tracking-tight text-text lg:text-8xl">
+        Creativity <span
+          class="bg-gradient-to-r from-red-500 via-primary to-accent bg-clip-text text-transparent"
+          >unleashed.</span
+        >
       </h1>
-      <p class="max-w-3xl text-lg text-text-5">
-        Shape your vision into reality, from apps to component libraries, without
-        ever leaving your editor. A DX like never before.
+      <p class="max-w-3xl text-lg lg:text-xl tracking-wide text-text-5">
+        Unlock limitless potential, unparalleled convenience, right within your
+        editor. Build stunning apps, libraries, and design systems effortlessly.
         Your next big idea starts here, with Potion UI.
       </p>
-      <div class="flex w-full justify-center gap-2">
+      <div class="flex w-full justify-center gap-6">
         <button
-          class="font-regular rounded-lg bg-primary px-4 py-3 text-base hover:bg-primary-400"
+          class="font-regular rounded-lg bg-primary px-6 py-3 text-base hover:bg-primary-400"
           ><a href="docs/">Get Started</a></button
         >
         <button
-          class="rounded-lg border border-border bg-surface px-4 py-3 text-base hover:bg-surface-2"
+          class="rounded-lg border border-border bg-surface px-6 py-3 text-base hover:bg-surface-2"
         >
           <a
             class="flex items-center gap-2 text-text-4"
@@ -37,30 +45,84 @@ import { Icon } from "@iconify/react";
           </a>
         </button>
       </div>
-      <div class="flex gap-4">
-        <span title="TailwindCSS">
-          <Icon icon="devicon:tailwindcss" className="h-10 w-10 " client:load />
-        </span>
-        <span title="PandaCSS (soon)">
-          <Icon
-            icon="simple-icons:foodpanda"
-            className="h-10 w-10 text-surface-3"
-            client:load
-          />
-        </span>
-        <span title="React">
-          <Icon icon="devicon:react" className="h-10 w-10 " client:load />
-        </span>
-        <span title="SolidJS">
-          <Icon icon="devicon:solidjs" className="h-10 w-10 " client:load />
-        </span>
-        <span title="VueJS">
-          <Icon icon="devicon:vuejs" className="h-10 w-10 " client:load />
-        </span>
+      <div class="mt-16 flex flex-col gap-8 mb-16">
+        <p class="font-serrif text-base uppercase tracking-wider text-text-4">
+          Use your favorite tools
+        </p>
+        <div class="flex gap-8">
+          <IconTooltip client:only="react" name="VsCode">
+            <span>
+              <Icon
+                icon="devicon-plain:vscode"
+                className="h-12 w-12 text-text-5 hover:text-blue-500"
+                client:load
+              />
+            </span>
+          </IconTooltip>
+          <IconTooltip client:only="react" name="TailwindCSS">
+            <span>
+              <Icon
+                icon="simple-icons:tailwindcss"
+                className="h-12 w-12 text-text-5 hover:text-sky-500"
+                client:load
+              />
+            </span>
+          </IconTooltip>
+          <IconTooltip client:only="react" name="PandaCSS (soon)">
+            <span>
+              <Icon
+                icon="simple-icons:foodpanda"
+                className="h-12 w-12 text-surface-3"
+                client:load
+              />
+            </span>
+          </IconTooltip>
+          <IconTooltip client:only="react" name="React">
+            <span>
+              <Icon
+                icon="simple-icons:react"
+                className="h-12 w-12 text-text-5 hover:text-blue-500"
+                client:load
+              />
+            </span>
+          </IconTooltip>
+          <IconTooltip client:only="react" name="Solid">
+            <span>
+              <Icon
+                icon="simple-icons:solid"
+                className="h-12 w-12 text-text-5 hover:text-blue-500"
+                client:load
+              />
+            </span>
+          </IconTooltip>
+          <IconTooltip client:only="react" name="Vue">
+            <span>
+              <Icon
+                icon="simple-icons:vuedotjs"
+                className="h-12 w-12 text-text-5 hover:text-emerald-500"
+                client:load
+              />
+            </span>
+          </IconTooltip>
+        </div>
       </div>
     </div>
-    <div class="flex w-full gap-8">
+    <div class="w-full overflow-x-hidden">
+      <p class="mb-12 text-xl font-bold text-text-3">
+        Style Recipes and Components, all powered by a VScode Extension.
+      </p>
       <LandingTabs client:only="react" />
     </div>
   </div>
+  <footer class="flex w-full items-center justify-between border-t-2 p-12">
+    <div class="flex gap-4">
+      <Github className="h-8 w-8"/>
+      <Twitter className="h-8 w-8"/>
+    </div>
+    <p class="flex gap-2">
+      Made with <span><Heart /></span>and <span><Coffee /></span> by <a
+        >Zach Wagner</a
+      >
+    </p>
+  </footer>
 </Layout>

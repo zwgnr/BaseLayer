@@ -12,7 +12,7 @@ import {
 export type TooltipProps = Partial<ArkToolTipProps> & {
   placement?: NonNullable<ArkToolTipProps["positioning"]>["placement"];
 };
-const { tooltipPositioner, tooltipContent } = tooltipPotion();
+const { positioner, content } = tooltipPotion();
 
 export const Tooltip = (props: TooltipProps) => {
   const { placement = "top", ...tooltipProps } = props;
@@ -26,11 +26,11 @@ export const Tooltip = (props: TooltipProps) => {
       <TooltipTrigger asChild>
         <span>Hover me</span>
       </TooltipTrigger>
-      <TooltipPositioner className={tooltipPositioner()}>
+      <TooltipPositioner className={positioner()}>
         <TooltipArrow>
           <TooltipArrowTip />
         </TooltipArrow>
-        <TooltipContent className={tooltipContent()}>My Tooltip</TooltipContent>
+        <TooltipContent className={content()}>My Tooltip</TooltipContent>
       </TooltipPositioner>
     </TooltipRoot>
   );

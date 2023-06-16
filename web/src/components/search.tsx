@@ -50,7 +50,7 @@ const Search = ({ searchList }: SearchProps) => {
       <div className="flex flex-col">
         <div className="flex flex-row items-center justify-center gap-2">
           <input
-            className="w-full rounded-lg border-2 border-border bg-input p-2 text-text-2"
+            className="w-full mt-4 rounded-lg border-2 border-border bg-input p-2 text-text-2"
             type="text"
             value={query}
             onChange={handleOnSearch}

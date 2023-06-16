@@ -48,7 +48,7 @@ const currentPage = Astro.url.pathname;
         href="/"
         ><div class="flex items-center">
           <img class="h-12 w-12" src="/potion.png" />
-          <p class="-ml-2 hidden items-center gap-2 text-2xl md:flex">
+          <p class="-ml-2 items-center gap-2 text-2xl flex">
             PotionUI <span
               class="rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal"
               >v{version}</span
@@ -66,7 +66,11 @@ const currentPage = Astro.url.pathname;
       </button>
     </div>
     <div class="flex flex-row items-center gap-2">
-      <a href="/docs" class:list={["text-text-4", currentPage !== "/" ? "hidden" : ""]}>Docs</a>
+      <a
+        href="/docs"
+        class:list={["text-text-4", currentPage !== "/" ? "hidden" : ""]}
+        >Docs</a
+      >
       <SearchDialog searchList={allDocs} client:load />
       <button
         class="items flex justify-center gap-2 rounded-xl bg-surface-2 p-2 px-4 text-text hover:bg-surface-3"
@@ -101,13 +105,19 @@ const currentPage = Astro.url.pathname;
         </div>
       </div>
       <a
-        class="rounded-xl p-2 text-text hover:bg-surface-2"
+        class:list={[
+          "rounded-xl p-2 text-text hover:bg-surface-2",
+          currentPage === "/" ? "hidden" : "",
+        ]}
         href="https://github.com/zwagnr/PotionUI"
       >
         <Github />
       </a>
       <a
-        class="rounded-xl p-2 text-text hover:bg-surface-2"
+        class:list={[
+          "rounded-xl p-2 text-text hover:bg-surface-2",
+          currentPage === "/" ? "hidden" : "",
+        ]}
         href="https://twitter.com/zwagnr"
       >
         <Twitter />
