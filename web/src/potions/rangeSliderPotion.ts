@@ -8,6 +8,6 @@ export const rangeSliderPotion = tv({
     range: "h-2 rounded-md bg-accent",
     thumb:
       "h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
-    marker: "mt-2 text-sm",
+    marker: "mt-2 text-sm text-text-4",
   },
 });

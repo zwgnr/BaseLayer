@@ -66,6 +66,7 @@ const currentPage = Astro.url.pathname;
       </button>
     </div>
     <div class="flex flex-row items-center gap-2">
+      <a href="/docs" class:list={["", currentPage !== "/" ? "hidden" : ""]}>Docs</a>
       <SearchDialog searchList={allDocs} client:load />
       <button
         class="items flex justify-center gap-2 rounded-xl bg-surface-2 p-2 px-4 text-text hover:bg-surface-3"

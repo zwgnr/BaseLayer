@@ -20,7 +20,9 @@ export const Dialog = () => {
   return (
     <DialogRoot>
       <DialogTrigger asChild>
-        <Button className={buttonPotion()}>Open dialog</Button>
+        <Button className={buttonPotion({ intent: "accent" })}>
+          Open dialog
+        </Button>
       </DialogTrigger>
       <Portal>
         <DialogBackdrop className={backdrop()} />

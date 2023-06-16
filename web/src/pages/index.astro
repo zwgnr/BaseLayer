@@ -2,31 +2,65 @@
 import { buttonPotion } from "@/potions/buttonPotion";
 import Layout from "../layouts/Layout.astro";
 import { ColorPicker } from "@/ui/React/ColorPicker/ColorPicker";
+import { Github } from "lucide-react";
+import { LandingTabs } from "@/components/LandingTabs";
+import { Icon } from "@iconify/react";
 ---
 
-<Layout title="Welcome to Astro.">
-  <div class="flex h-full w-full flex-col items-center gap-24 p-8 md:p-16">
-    <div
-      class="flex w-full flex-col items-center gap-8 md:h-[500px] md:flex-row"
-    >
-      <div class="flex h-full w-full flex-col gap-4 md:h-56 md:w-3/5">
-        <h1 class="text-6xl font-bold text-text">Build the way you want.</h1>
-        <p class="text-text-5">
-          Everything you need to build your next app, component library, or
-          design system without every leaving your editor. Open source, free,
-          without limits.
-        </p>
-        <div class="w-36">
-          <button class={buttonPotion()}><a href="docs/">Get Started</a></button
+<Layout title="PotionUI">
+  <div
+    class="mt-12 flex h-full w-full flex-col items-center gap-24 p-8 md:p-16"
+  >
+    <div class="flex w-full max-w-4xl flex-col items-center gap-8 text-center">
+      <h1 class="text-5xl font-bold text-text lg:text-7xl">
+        Build the way you want.
+      </h1>
+      <p class="max-w-3xl text-lg text-text-5">
+        Everything you need to build your next app, component library, or design
+        system without every leaving your editor. Open source, free, without
+        limits.
+      </p>
+      <div class="flex w-full justify-center gap-2">
+        <button
+          class="font-regular rounded-lg bg-primary p-2 px-4 text-base hover:bg-primary-400"
+          ><a href="docs/">Get Started</a></button
+        >
+        <button
+          class="rounded-lg border border-border bg-surface p-2 px-4 text-base hover:bg-surface-2"
+        >
+          <a
+            class="flex items-center gap-2 text-text-4"
+            href="https://github.com/zwagnr/PotionUI"
           >
-        </div>
+            <span class="flex items-center gap-2">Github</span>
+            <Github className="h-4 w-4" />
+          </a>
+        </button>
       </div>
-      <div class="flex h-full w-full items-center justify-center md:h-56 md:w-2/5">
-        <ColorPicker client:only="react" />
+      <div class="flex gap-4">
+        <span title="TailwindCSS">
+          <Icon icon="devicon:tailwindcss" className="h-10 w-10 " client:load />
+        </span>
+        <span title="PandaCSS (soon)">
+          <Icon
+            icon="simple-icons:foodpanda"
+            className="h-10 w-10 text-surface-3"
+            client:load
+          />
+        </span>
+        <span title="React">
+          <Icon icon="devicon:react" className="h-10 w-10 " client:load />
+        </span>
+        <span title="SolidJS">
+          <Icon icon="devicon:solidjs" className="h-10 w-10 " client:load />
+        </span>
+        <span title="VueJS">
+          <Icon icon="devicon:vuejs" className="h-10 w-10 " client:load />
+        </span>
       </div>
     </div>
-    <div class="rounded-lg">
-      <img class="cover" src="https://tinyurl.com/3evywadz" />
+    <div class="flex w-full gap-8">
+      <LandingTabs client:only="react" />
     </div>
   </div>
 </Layout>

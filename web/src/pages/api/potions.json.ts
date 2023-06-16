@@ -65,7 +65,7 @@ const potions: Potion[] = [
   {
     potion: "paginationPotion",
     name: "Pagination",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const paginationPotion = tv({\n  slots: {\n    root: \"flex justify-between\",\n    list: \"flex list-none gap-1 p-0\",\n    pageTrigger: \" \",\n    ellipsis: \"min-w-10 inline-flex h-10 items-center px-4 text-sm\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const paginationPotion = tv({\n  slots: {\n    root: \"flex justify-center\",\n    list: \"flex list-none gap-1 p-0\",\n    pageTrigger: \" \",\n    ellipsis: \"min-w-10 inline-flex h-10 items-center px-4 text-sm\",\n  },\n});\n"
   },
   {
     potion: "pinInputPotion",
@@ -85,7 +85,7 @@ const potions: Potion[] = [
   {
     potion: "rangeSliderPotion",
     name: "RangeSlider",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const rangeSliderPotion = tv({\n  slots: {\n    root: \"w-full\",\n    control: \"relative flex items-center py-2\",\n    track: \"h-2 flex-1 rounded-md bg-surface-3\",\n    range: \"h-2 rounded-md bg-accent\",\n    thumb:\n      \"h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none\",\n    marker: \"mt-2 text-sm\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const rangeSliderPotion = tv({\n  slots: {\n    root: \"w-full\",\n    control: \"relative flex items-center py-2\",\n    track: \"h-2 flex-1 rounded-md bg-surface-3\",\n    range: \"h-2 rounded-md bg-accent\",\n    thumb:\n      \"h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none\",\n    marker: \"mt-2 text-sm text-text-4\",\n  },\n});\n"
   },
   {
     potion: "ratingGroupPotion",
@@ -100,7 +100,7 @@ const potions: Potion[] = [
   {
     potion: "sliderPotion",
     name: "Slider",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const sliderPotion = tv({\n  slots: {\n    sliderRoot: \"w-full\",\n    sliderControl: \"relative flex items-center py-2\",\n    sliderTrack: \"h-2 flex-1 rounded-md bg-surface-3\",\n    sliderRange: \"h-2 rounded-md bg-accent\",\n    sliderThumb:\n      \"h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none\",\n    sliderMarker: \"mt-2 text-sm\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const sliderPotion = tv({\n  slots: {\n    sliderRoot: \"w-full\",\n    sliderControl: \"relative flex items-center py-2\",\n    sliderTrack: \"h-2 flex-1 rounded-md bg-surface-3\",\n    sliderRange: \"h-2 rounded-md bg-accent\",\n    sliderThumb:\n      \"h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none\",\n    sliderMarker: \"mt-2 text-sm text-text-4\",\n  },\n});\n"
   },
   {
     potion: "splitterPotion",
@@ -110,7 +110,7 @@ const potions: Potion[] = [
   {
     potion: "switchPotion",
     name: "Switch",
-    files: "import { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const switchPotion = tv({\n  slots: {\n    root: \"w-fit-content relative flex items-center gap-2\",\n    control:\n      \"focus-visible:focus focus-visible:shadow-0-0-0-4 inline-flex flex-shrink-0 cursor-pointer items-center justify-start rounded-full  border-2 border-transparent transition-colors duration-150\",\n    thumb:\n      \"pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform\",\n  },\n  variants: {\n    intent: {\n      primary: {\n        control: \"bg-gray-200 data-[checked]:bg-primary\",\n      },\n      accent: {\n        control: \"bg-gray-200 data-[checked]:bg-green-800\",\n        thumb: \"bg-primary\",\n      },\n    },\n    size: {\n      sm: {\n        root: \"h-[20px] w-[36px]\",\n        thumb: \"h-4 w-4 translate-x-0 data-[checked]:translate-x-8\",\n      },\n      md: {\n        root: \"\",\n        control: \"h-6 w-11\",\n        thumb: \"h-5 w-5 translate-x-0 data-[checked]:translate-x-5\",\n      },\n      lg: {\n        root: \"h-[30px] w-[56px]\",\n        thumb:\n          \"h-6 w-6 data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-0\",\n      },\n    },\n  },\n  defaultVariants: {\n    intent: \"primary\",\n    size: \"md\",\n  },\n});\n\nexport type SwitchPotionProps = VariantProps<typeof switchPotion>;\n"
+    files: "import { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const switchPotion = tv({\n  slots: {\n    root: \"w-fit-content relative flex items-center gap-2\",\n    control:\n      \"focus-visible:focus focus-visible:shadow-0-0-0-4 inline-flex flex-shrink-0 cursor-pointer items-center justify-start rounded-full  border-2 border-transparent transition-colors duration-150\",\n    thumb:\n      \"pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform\",\n    label: \"text-text-3\",\n  },\n  variants: {\n    intent: {\n      primary: {\n        control: \"bg-surface-3 data-[checked]:bg-primary\",\n      },\n      accent: {\n        control: \"bg-surface-3 data-[checked]:bg-green-800\",\n        thumb: \"bg-accent\",\n      },\n    },\n    size: {\n      sm: {\n        root: \"h-[20px] w-[36px]\",\n        thumb: \"h-4 w-4 translate-x-0 data-[checked]:translate-x-8\",\n      },\n      md: {\n        root: \"\",\n        control: \"h-6 w-11\",\n        thumb: \"h-5 w-5 translate-x-0 data-[checked]:translate-x-5\",\n      },\n      lg: {\n        root: \"h-[30px] w-[56px]\",\n        thumb:\n          \"h-6 w-6 data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-0\",\n      },\n    },\n  },\n  defaultVariants: {\n    intent: \"primary\",\n    size: \"md\",\n  },\n});\n\nexport type SwitchPotionProps = VariantProps<typeof switchPotion>;\n"
   },
   {
     potion: "tabsPotion",

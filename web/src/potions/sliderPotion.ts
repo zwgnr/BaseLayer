@@ -8,6 +8,6 @@ export const sliderPotion = tv({
     sliderRange: "h-2 rounded-md bg-accent",
     sliderThumb:
       "h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
-    sliderMarker: "mt-2 text-sm",
+    sliderMarker: "mt-2 text-sm text-text-4",
   },
 });
