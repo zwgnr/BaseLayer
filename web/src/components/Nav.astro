@@ -2,6 +2,7 @@
 import { Github, Menu, X, Paintbrush, Twitter } from "lucide-react";
 import { SearchDialog } from "./SearchDialog";
 import { getCollection } from "astro:content";
+import { version } from "../../package.json";
 
 const allDocs = await getCollection("docs");
 const currentPage = Astro.url.pathname;
@@ -46,10 +47,12 @@ const currentPage = Astro.url.pathname;
         ]}
         href="/"
         ><div class="flex items-center">
-          <img class="h-12 w-12" src="/potion.png" /><p
-            class="-ml-2 hidden text-2xl md:block"
-          >
-            PotionUI
+          <img class="h-12 w-12" src="/potion.png" />
+          <p class="-ml-2 hidden items-center gap-2 text-2xl md:flex">
+            PotionUI <span
+              class="rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal"
+              >v{version}</span
+            >
           </p>
         </div>
       </a>
