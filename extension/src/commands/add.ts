@@ -7,10 +7,10 @@ import * as path from 'path';
 const fetch = require('node-fetch');
 
 export const addCommand = vscode.commands.registerCommand('extension.add', async () => {
-  console.log('Add command executed.');
-
   const options = [
     'Accordian',
+    'Avatar',
+    'Badge',
     'Button',
     'Carousel',
     'Checkbox',
@@ -18,7 +18,21 @@ export const addCommand = vscode.commands.registerCommand('extension.add', async
     'Dialog',
     'Dropdown',
     'HoverCard',
+    'NumbersInput',
+    'Pagination',
+    'PinInput',
+    'Popover',
+    'RadioGroup',
+    'RangeSlider',
+    'RatingGroup',
+    'Select',
+    'Slider',
+    'Splitter',
     'Switch',
+    'Tabs',
+    'TagsInput',
+    'Toast',
+    'Tooltip',
   ];
   const selections = await vscode.window.showQuickPick(options, {
     placeHolder: 'Please choose the 🧪 you would like to add:',
