@@ -28,12 +28,12 @@ export const LandingTabs = () => {
   const [value, setValue] = useState<string | null>("potions");
   return (
     <Tabs
-      className="flex w-full flex-col gap-8 md:flex-row"
+      className="flex w-full flex-col gap-8 lg:flex-row"
       orientation="vertical"
       value={value}
       onChange={(e) => setValue(e.value)}
     >
-      <TabList className="flex w-full items-start gap-2 md:w-1/4 md:flex-col">
+      <TabList className="flex w-full items-start gap-2 lg:w-1/4 lg:flex-col">
         <TabTrigger
           className={trigger({
             className: "flex h-16 w-full items-center justify-start gap-2",
@@ -56,20 +56,25 @@ export const LandingTabs = () => {
           className={trigger({
             className: "flex h-16 w-full items-center justify-start gap-2",
           })}
-          value="something"
+          value="vsc"
         >
-           <Code />
+          <Code />
           <p>VScode</p>
         </TabTrigger>
       </TabList>
-      <TabContent className="h-96 w-full md:w-3/4" value="potions">
-        <img src="/public/potionDemo.png" />
+      <TabContent className="h-24 w-full lg:h-96 lg:w-3/4" value="potions">
+        <div className="flex w-full justify-center">
+          <img
+            className="mb-12 mt-12 w-full rounded-xl shadow-2xl lg:w-4/5"
+            src="/public/ptn.png"
+          />
+        </div>
       </TabContent>
-      <TabContent className="h-96 w-full md:w-3/4" value="components">
-        <div className="w-full hidden md:block justify-center items-center px-8 pb-4 overflow-hidden">
+      <TabContent className="h-96 w-full lg:w-3/4" value="components">
+        <div className="mt-12 hidden w-full items-center justify-center overflow-hidden px-8 pb-4 lg:block">
           <Pagination />
         </div>
-        <div className="flex flex-col items-center md:flex-row w-full gap-8 p-8">
+        <div className="flex w-full flex-col items-center gap-8 p-8 lg:flex-row">
           <div className="flex w-1/2 flex-col justify-center gap-16">
             <div className="flex gap-4">
               <Button intent="accent" className="w-24 px-6">
@@ -88,8 +93,17 @@ export const LandingTabs = () => {
           </div>
         </div>
       </TabContent>
-      <TabContent className="h-96 w-3/4 bg-red-200" value="solid">
-        Solid Content
+      <TabContent className="h-96 w-full lg:w-3/4" value="vsc">
+        <div className="relative mt-12 flex flex-col items-center gap-4 lg:h-[500px] lg:flex-row">
+          <img
+            className="left-0 top-0 w-full rounded-lg shadow-2xl lg:absolute lg:mb-0 lg:w-1/2 "
+            src="/add.jpg"
+          />
+          <img
+            className="bottom-0 right-12 mb-12 w-full rounded-lg shadow-2xl lg:absolute lg:w-1/2"
+            src="/snippets.jpg"
+          />
+        </div>
       </TabContent>
     </Tabs>
   );

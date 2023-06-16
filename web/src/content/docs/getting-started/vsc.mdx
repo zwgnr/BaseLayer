@@ -22,6 +22,8 @@ Locate and install [PotionUI](https://marketplace.visualstudio.com/items?itemNam
 
 Let's start with the available commands, and how to use them.
 
+![All Commands](../../../public/allCommands.jpg)
+
 To use any of the below commands simply open the command palette in VScode.
 
 ```bash
@@ -34,7 +36,11 @@ Ctrl+Shift+P
 
   1.  When prompted, enter the folder where you want to initialize PotionUI. If it's in your workspace root, just press Enter. Or, if your project is in a folder called "myproject/frontend," enter "myproject/frontend."
 
+    ![Install Destination](../../../public/installDestination.jpg)
+
   2.  Select your frontend framework from the options: react, solid, or vue. Confirm your choice.
+
+    ![framework](../../../public/feFramework.jpg)
 
   3.  The setup process will install the appropriate versions of `@ark-ui/{react/solid/vue}`, `lucide-{react/solid/vue}`, and Tailwind Variants. Your package manager, based on your projectRoot that you set earlier, will be automatically detected.
 
@@ -48,6 +54,8 @@ That's it! PotionUI is now ready to use in your project.
 ### Potion: add
 
 This command provies a multi-pick where you can choose one or more potions to install. Upon selection, the `potions.{ts}` files will be automatically created and placed in your potions folder. 
+
+![add](../../../public/add.jpg)
 
 *If you do not have a potions folder set up, and error will be thrown.
 
@@ -66,3 +74,5 @@ PotionUI offers an extensive collection of prebuilt components that you can cust
 To access the components, simply use the "pc-" prefix followed by the component name. For example, if you want to use a button, type "pc-button" in your code.
 
 ### Themes
+
+*coming soon*
