@@ -50,12 +50,12 @@ const potions: Potion[] = [
   {
     potion: "dropdownPotion",
     name: "Dropdown",
-    files: "import { tv } from \"tailwind-variants\";\n\nconst baseItemPotion = tv({\n  base: \"block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary\",\n});\n\nexport const dropdownPotion = tv({\n  slots: {\n    content:\n      \"min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none \",\n    item: [baseItemPotion(), \"mb-2 flex justify-between p-2\"],\n    itemGroupLabel: \"text-sm  font-bold\",\n    optionItem: [baseItemPotion(), \"w-full rounded-md p-2 text-sm\"],\n    triggerItem: [baseItemPotion(), \"inline-flex w-full flex-wrap gap-2\"],\n    seperator: \"w-full rounded-md border border-gray-200\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nconst baseItemPotion = tv({\n  base: \"block cursor-pointer items-center rounded-md text-sm  text-text-3 data-[focus]:bg-surface-2 data-[selected]:bg-primary\",\n});\n\nexport const dropdownPotion = tv({\n  slots: {\n    content:\n      \"min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none \",\n    item: [baseItemPotion(), \"mb-2 flex justify-between p-2\"],\n    itemGroupLabel: \"text-sm  font-bold text-text-2\",\n    optionItem: [baseItemPotion(), \"w-full rounded-md p-2 text-sm\"],\n    triggerItem: [baseItemPotion(), \"inline-flex w-full flex-wrap gap-2\"],\n    seperator: \"w-full rounded-md border border-gray-200\",\n  },\n});\n"
   },
   {
     potion: "hoverCardPotion",
     name: "HoverCard",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const hoverCardPotion = tv({\n  slots: {\n    positioner: \"rounded-lg bg-surface-3 shadow-xl\",\n    content: \"max-w-96 relative w-96 p-4\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const hoverCardPotion = tv({\n  slots: {\n    positioner: \"rounded-lg bg-surface-3 shadow-xl\",\n    content: \"max-w-96 relative w-96 p-4 text-text-2\",\n  },\n});\n"
   },
   {
     potion: "numberInputPotion",
@@ -70,12 +70,12 @@ const potions: Potion[] = [
   {
     potion: "pinInputPotion",
     name: "PinInput",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-12 w-12 appearance-none rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n    control: \"flex gap-2\",\n    label: \"text-base font-bold\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const pinInputPotion = tv({\n  slots: {\n    root: \"flex flex-row items-center gap-4\",\n    field:\n      \"h-12 w-12 appearance-none rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-surface-3\",\n    control: \"flex gap-2\",\n    label: \"text-base font-bold\",\n  },\n});\n"
   },
   {
     potion: "popoverPotion",
     name: "Popover",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const popoverPotion = tv({\n  slots: {\n    positioner: \"z-50 rounded-lg bg-surface shadow-xl \",\n    content: \"max-w-96  w-96 p-4\",\n    title: \"text-md font-bold\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const popoverPotion = tv({\n  slots: {\n    positioner: \"z-50 rounded-lg bg-surface-3 shadow-xl \",\n    content: \"max-w-96 w-72 p-4\",\n    title: \"text-md font-bold\",\n  },\n});\n"
   },
   {
     potion: "radioGroupPotion",
@@ -95,7 +95,7 @@ const potions: Potion[] = [
   {
     potion: "selectPotion",
     name: "Select",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const selectPotion = tv({\n  slots: {\n    trigger: \"flex h-12 w-56 items-center rounded-xl bg-slate-300 px-2\",\n    content: \"w-56 rounded-xl bg-slate-300 p-2\",\n    option:\n      \"mb-1 cursor-pointer rounded-md p-2 hover:bg-primary-300 data-[selected]:bg-primary\",\n  },\n});\n"
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const selectPotion = tv({\n  slots: {\n    trigger: \"flex h-12 w-56 items-center rounded-xl bg-surface-3 px-2\",\n    content: \"w-56 rounded-xl bg-surface-3 p-2 text-text-3\",\n    option:\n      \"mb-1 cursor-pointer rounded-md p-2 hover:bg-primary hover:text-text-2 data-[selected]:bg-primary\",\n  },\n});\n"
   },
   {
     potion: "sliderPotion",
@@ -125,7 +125,7 @@ const potions: Potion[] = [
   {
     potion: "toastPotion",
     name: "Toast",
-    files: "import { VariantProps, tv } from \"tailwind-variants\";\n\nexport const toastPotion = tv({\n  slots: {\n    toastRoot: \"min-w-56 rounded-xl border bg-surface p-4 shadow-lg\",\n    toastGroup: \"p-4\",\n    toastTitle: \"text-sm font-semibold text-text\",\n    toastDescription: \"text-sm text-text-2\",\n  },\n  variants: {\n    intent: {\n      success: {\n        toastRoot: \"border-none bg-positive\",\n      },\n      alert: {\n        toastRoot: \"bg-warning border-none\",\n        toastTitle: \"text-black\",\n        toastDescription: \"text-black\",\n      },\n      error: {\n        toastRoot: \"bg-critical border-none\",\n        toastTitle: \"text-black\",\n        toastDescription: \"text-black\",\n      },\n    },\n  },\n});\n\nexport type ToastPotionProps = VariantProps<typeof toastPotion>;\n"
+    files: "import { VariantProps, tv } from \"tailwind-variants\";\n\nexport const toastPotion = tv({\n  slots: {\n    root: \"min-w-56 rounded-xl border bg-surface p-4 shadow-lg\",\n    group: \"p-4\",\n    title: \"text-sm font-semibold text-text\",\n    description: \"text-sm text-text-2\",\n  },\n  variants: {\n    intent: {\n      base: {\n        root: \"border-none bg-accent\",\n        title: \"text-white\",\n        description: \"text-white\",\n      },\n      success: {\n        root: \"border-none bg-positive\",\n        title: \"text-black\",\n        description: \"text-black\",\n      },\n      alert: {\n        root: \"border-none bg-warning\",\n        title: \"text-black\",\n        description: \"text-black\",\n      },\n      error: {\n        root: \"border-none bg-critical\",\n        title: \"text-black\",\n        description: \"text-black\",\n      },\n    },\n  },\n  defaultVariants: {\n    intent: \"base\",\n  },\n});\n\nexport type ToastPotionProps = VariantProps<typeof toastPotion>;\n"
   },
   {
     potion: "tooltipPotion",

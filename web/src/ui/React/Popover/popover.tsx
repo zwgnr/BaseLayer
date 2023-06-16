@@ -18,7 +18,7 @@ export const Popover = () => {
   return (
     <PopoverRoot>
       <PopoverTrigger asChild>
-        <button className={buttonPotion()}>
+        <button className={buttonPotion({ className: "flex gap-2" })}>
           <Star />
           <p>Favorite</p>
         </button>
@@ -26,7 +26,7 @@ export const Popover = () => {
       <PopoverPositioner className={positioner()}>
         <PopoverContent className={content()}>
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <PopoverTitle className={title()}>Favorite Lists</PopoverTitle>
               <PopoverDescription className="text-sm">
                 Add to or create a new list!
@@ -43,7 +43,7 @@ export const Popover = () => {
                   Dismiss
                 </Button>
               </PopoverCloseTrigger>
-              <Button className={buttonPotion()}>Dismiss</Button>
+              <Button className={buttonPotion()}>Save</Button>
             </div>
           </div>
         </PopoverContent>

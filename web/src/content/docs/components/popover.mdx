@@ -1,6 +1,7 @@
 ---
 title: Popover
 description: "An accessible dropdown and context menu that is used to display a list of actions or options that a user can choose."
+arkDocs: https://ark-ui.com/docs/react/components/popover
 ---
 ---
 
@@ -44,6 +45,8 @@ export const popoverPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
+import { buttonPotion } from "@/potions/buttonPotion";
+import { popoverPotion } from "@/potions/popoverPotion";
 import {
   Pressable as Button,
   PopoverCloseTrigger,
@@ -54,8 +57,6 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { popoverPotion } from "@potions/popoverPotion";
 import { Star } from "lucide-react";
 
 const { positioner, content, title } = popoverPotion();
@@ -64,7 +65,7 @@ export const Popover = () => {
   return (
     <PopoverRoot>
       <PopoverTrigger asChild>
-        <button className={buttonPotion()}>
+        <button className={buttonPotion({ className: "flex gap-2" })}>
           <Star />
           <p>Favorite</p>
         </button>
@@ -72,7 +73,7 @@ export const Popover = () => {
       <PopoverPositioner className={positioner()}>
         <PopoverContent className={content()}>
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <PopoverTitle className={title()}>Favorite Lists</PopoverTitle>
               <PopoverDescription className="text-sm">
                 Add to or create a new list!
@@ -89,7 +90,7 @@ export const Popover = () => {
                   Dismiss
                 </Button>
               </PopoverCloseTrigger>
-              <Button className={buttonPotion()}>Dismiss</Button>
+              <Button className={buttonPotion()}>Save</Button>
             </div>
           </div>
         </PopoverContent>

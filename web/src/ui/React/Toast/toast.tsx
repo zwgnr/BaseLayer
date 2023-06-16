@@ -17,7 +17,7 @@ interface ToastProps extends ToastPotionProps {
 }
 
 export const Toast = ({ children, intent }: ToastProps) => {
-  const { toastRoot, toastGroup, toastTitle, toastDescription } = toastPotion({
+  const { root, group, title, description } = toastPotion({
     intent,
   });
   return (
@@ -29,19 +29,19 @@ export const Toast = ({ children, intent }: ToastProps) => {
               <ToastGroup
                 key={placement}
                 placement={placement}
-                className={toastGroup()}
+                className={group()}
               >
                 {(toasts) =>
                   toasts.map((toast) => (
                     <ToastRoot
-                      className={toastRoot({ className: "w-72" })}
+                      className={root({ className: "w-72" })}
                       key={toast.id}
                       toast={toast}
                     >
                       <div className="flex flex-col gap-4">
                         <div className="flex flex-col gap-1">
-                          <ToastTitle className={toastTitle()} />
-                          <ToastDescription className={toastDescription()} />
+                          <ToastTitle className={title()} />
+                          <ToastDescription className={description()} />
                         </div>
                         <div className="absolute right-0 top-0 p-4">
                           <ToastCloseTrigger asChild>

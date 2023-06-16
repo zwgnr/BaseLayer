@@ -1,6 +1,7 @@
 ---
 title: Pin Input
 description: "The pin input is optimized for entering a sequence of digits or letters. The input fields allow one character at a time. When the digit or letter is entered, focus transfers to the next input in the sequence, until every input is filled."
+arkDocs: https://ark-ui.com/docs/react/components/pin-input
 ---
 ---
 
@@ -31,9 +32,9 @@ export const pinInputPotion = tv({
   slots: {
     root: "flex flex-row items-center gap-4",
     field:
-      "h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+      "h-12 w-12 appearance-none rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-surface-3",
     control: "flex gap-2",
-    label: "text-md font-bold",
+    label: "text-base font-bold",
   },
 });
 

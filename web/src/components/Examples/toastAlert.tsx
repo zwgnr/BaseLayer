@@ -14,7 +14,7 @@ export const ToastTrigger = () => {
   const toast = useToast();
   return (
     <button
-      className={buttonPotion({ className: "bg-warning hover:bg-warning-700" })}
+      className={buttonPotion({ className: "bg-warning hover:bg-warning-700 text-black" })}
       onClick={() => {
         toast.create({
           title: "Hi,",

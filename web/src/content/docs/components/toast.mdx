@@ -1,6 +1,7 @@
 ---
 title: Toast
 description: "The toast component is used to give feedback to users after an action has taken place."
+arkDocs: https://ark-ui.com/docs/react/components/toast
 ---
 
 ---
@@ -34,23 +35,37 @@ import { VariantProps, tv } from "tailwind-variants";
 
 export const toastPotion = tv({
   slots: {
-    toastRoot: "min-w-56 rounded-xl border bg-surface p-4 shadow-lg",
-    toastGroup: "p-4",
-    toastTitle: "text-sm font-semibold",
-    toastDescription: "text-sm text-text-2",
+    root: "min-w-56 rounded-xl border bg-surface p-4 shadow-lg",
+    group: "p-4",
+    title: "text-sm font-semibold text-text",
+    description: "text-sm text-text-2",
   },
   variants: {
     intent: {
+      base: {
+        root: "border-none bg-accent",
+        title: "text-white",
+        description: "text-white",
+      },
       success: {
-        toastRoot: "bg-positive",
+        root: "border-none bg-positive",
+        title: "text-black",
+        description: "text-black",
       },
       alert: {
-        toastRoot: "bg-warning",
+        root: "border-none bg-warning",
+        title: "text-black",
+        description: "text-black",
       },
       error: {
-        toastRoot: "bg-critical",
+        root: "border-none bg-critical",
+        title: "text-black",
+        description: "text-black",
       },
     },
+  },
+  defaultVariants: {
+    intent: "base",
   },
 });
 
@@ -82,6 +97,7 @@ pc-toast
 </Fragment>
 <Fragment slot="react">
 ```tsx
+import { ToastPotionProps, toastPotion } from "@/potions/toastPotion";
 import {
   Portal,
   ToastCloseTrigger,
@@ -92,7 +108,6 @@ import {
   Toast as ToastRoot,
   ToastTitle,
 } from "@ark-ui/react";
-import { ToastPotionProps, toastPotion } from "@potions/toastPotion";
 import { X } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -101,7 +116,7 @@ interface ToastProps extends ToastPotionProps {
 }
 
 export const Toast = ({ children, intent }: ToastProps) => {
-  const { toastRoot, toastGroup, toastTitle, toastDescription } = toastPotion({
+  const { root, group, title, description } = toastPotion({
     intent,
   });
   return (
@@ -113,19 +128,19 @@ export const Toast = ({ children, intent }: ToastProps) => {
               <ToastGroup
                 key={placement}
                 placement={placement}
-                className={toastGroup()}
+                className={group()}
               >
                 {(toasts) =>
                   toasts.map((toast) => (
                     <ToastRoot
-                      className={toastRoot({ className: "w-72" })}
+                      className={root({ className: "w-72" })}
                       key={toast.id}
                       toast={toast}
                     >
                       <div className="flex flex-col gap-4">
                         <div className="flex flex-col gap-1">
-                          <ToastTitle className={toastTitle()} />
-                          <ToastDescription className={toastDescription()} />
+                          <ToastTitle className={title()} />
+                          <ToastDescription className={description()} />
                         </div>
                         <div className="absolute right-0 top-0 p-4">
                           <ToastCloseTrigger asChild>
