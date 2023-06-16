@@ -1,6 +1,6 @@
 {
-  "name": "potionui",
-  "version": "0.0.1",
+  "name": "potion",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
