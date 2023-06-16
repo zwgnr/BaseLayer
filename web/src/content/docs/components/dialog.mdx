@@ -28,13 +28,19 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 ```tsx
 import { tv } from "tailwind-variants";
 
-export const dialogPotion = tv({
+const baseItemPotion = tv({
+  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
+});
+
+export const dropdownPotion = tv({
   slots: {
-    backdrop: "fixed inset-0 z-40 bg-slate-700/50",
-    container: "fixed inset-0 z-40 flex items-center justify-center",
-    content: "min-w-80 relative z-50 w-80 rounded-xl bg-surface shadow-lg",
-    description: "text-sm text-text-5",
-    title: "text-lg font-bold text-text",
+    content:
+      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
+    item: [baseItemPotion(), "mb-2 flex justify-between p-2"],
+    itemGroupLabel: "text-sm  font-bold",
+    optionItem: [baseItemPotion(), "w-full rounded-md p-2 text-sm"],
+    triggerItem: [baseItemPotion(), "inline-flex w-full flex-wrap gap-2"],
+    seperator: "w-full rounded-md border border-gray-200",
   },
 });
 
@@ -49,6 +55,8 @@ export const dialogPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
+import { buttonPotion } from "@/potions/buttonPotion";
+import { dialogPotion } from "@/potions/dialogPotion";
 import {
   Pressable as Button,
   DialogBackdrop,
@@ -61,8 +69,6 @@ import {
   DialogTrigger,
   Portal,
 } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
-import { dialogPotion } from "@potions/dialogPotion";
 import { X } from "lucide-react";
 
 const { backdrop, container, content, description, title } = dialogPotion();

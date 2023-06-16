@@ -29,13 +29,17 @@ import { tv } from "tailwind-variants";
 
 export const colorPickerPotion = tv({
   slots: {
-    content: "w-fit overflow-hidden rounded-xl border bg-surface shadow-lg",
+    content:
+      "w-80 overflow-hidden rounded-xl border border-border bg-surface shadow-lg",
+    area: "h-72",
     areaThumb:
       "z-1 h-4 w-4 rounded-full border-2 border-white shadow-lg shadow-black outline-none",
+    gradient: "h-full rounded-t-xl",
     channelSliderTrack: "h-4 rounded-full border",
     swatch: "h-4 w-4 shrink-0 rounded-sm",
     swatchGroup: "inline-flex w-full flex-wrap gap-2",
-    input: "w-16 rounded-md border border-gray-200",
+    input:
+      "w-16 rounded-md border border-border bg-surface-2 p-1 ring-focus focus-visible:outline-none focus-visible:ring-2",
     channelSliderThumb:
       "h-4 w-4 -translate-x-2/4 -translate-y-2/4 rounded-full border-2 border-white shadow-lg shadow-black outline-none",
   },
@@ -52,17 +56,35 @@ export const colorPickerPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
+import { colorPickerPotion } from "@/potions/colorPickerPotion";
 import {
-  ColorPicker,
   ColorPickerArea,
+  ColorPickerAreaGradient,
+  ColorPickerAreaThumb,
   ColorPickerChannelInput,
+  ColorPickerChannelSliderBackground,
+  ColorPickerChannelSliderThumb,
   ColorPickerChannelSliderTrack,
   ColorPickerContent,
   ColorPickerEyeDropperTrigger,
+  ColorPicker as ColorPickerRoot,
   ColorPickerSwatch,
+  ColorPickerSwatchBackground,
   ColorPickerSwatchGroup,
-} from "@components/ColorPicker";
+} from "@ark-ui/react";
 import { Pipette } from "lucide-react";
+
+const {
+  content,
+  area,
+  areaThumb,
+  input,
+  gradient,
+  channelSliderTrack,
+  swatch,
+  swatchGroup,
+  channelSliderThumb,
+} = colorPickerPotion();
 
 const presets = [
   "hsl(10, 81%, 59%)",
@@ -77,41 +99,81 @@ const presets = [
   "hsl(350, 81%, 59%)",
 ];
 
-export const ColorPickerDemo = () => {
+export const ColorPicker = () => {
   return (
-    <ColorPicker defaultValue="hsl(10, 81%, 59%)">
+    <ColorPickerRoot defaultValue="hsl(10, 81%, 59%)">
       {(api) => {
         const [hue, saturation, lightness] = api.channels;
         return (
-          <ColorPickerContent>
-            <ColorPickerArea xChannel={saturation} yChannel={lightness} />
-            <div className="flex w-full flex-row gap-4 p-4">
-              <ColorPickerEyeDropperTrigger>
-                <Pipette />
+          <ColorPickerContent className={content()}>
+            <ColorPickerArea
+              className={area()}
+              xChannel={saturation}
+              yChannel={lightness}
+            >
+              <ColorPickerAreaGradient className={gradient()} />
+              <ColorPickerAreaThumb className={areaThumb()} />
+            </ColorPickerArea>
+            <div className="flex w-full flex-row items-center gap-4 p-4">
+              <ColorPickerEyeDropperTrigger asChild>
+                <button>
+                  <Pipette />
+                </button>
               </ColorPickerEyeDropperTrigger>
               <div className="flex w-full flex-col gap-2">
-                <ColorPickerChannelSliderTrack channel={hue} />
-                <ColorPickerChannelSliderTrack channel="alpha" />
+                <ColorPickerChannelSliderTrack
+                  className={channelSliderTrack()}
+                  channel={hue}
+                >
+                  <ColorPickerChannelSliderBackground />
+                  <ColorPickerChannelSliderThumb
+                    className={channelSliderThumb()}
+                  />
+                </ColorPickerChannelSliderTrack>
+                <ColorPickerChannelSliderTrack
+                  className={channelSliderTrack()}
+                  channel="alpha"
+                >
+                  <ColorPickerChannelSliderBackground />
+                  <ColorPickerChannelSliderThumb
+                    className={channelSliderThumb()}
+                  />
+                </ColorPickerChannelSliderTrack>
               </div>
             </div>
-            <div className="flex justify-center gap-2 p-4 pb-0">
-              <ColorPickerChannelInput channel={hue} />
-              <ColorPickerChannelInput channel={saturation} />
-              <ColorPickerChannelInput channel={lightness} />
-              <ColorPickerChannelInput channel="alpha" />
+            <div className="flex w-full items-center justify-center gap-2 p-4 ">
+              <ColorPickerChannelInput
+                className={input()}
+                channel={hue}
+              ></ColorPickerChannelInput>
+              <ColorPickerChannelInput
+                className={input()}
+                channel={saturation}
+              />
+              <ColorPickerChannelInput
+                className={input()}
+                channel={lightness}
+              />
+              <ColorPickerChannelInput className={input()} channel="alpha" />
             </div>
             <div className="p-4">
               <p>Presets</p>
-              <ColorPickerSwatchGroup>
+              <ColorPickerSwatchGroup className={swatchGroup()}>
                 {presets.map((color) => (
-                  <ColorPickerSwatch key={color} value={color} />
+                  <ColorPickerSwatch
+                    className={swatch()}
+                    key={color}
+                    value={color}
+                  >
+                    <ColorPickerSwatchBackground />
+                  </ColorPickerSwatch>
                 ))}
               </ColorPickerSwatchGroup>
             </div>
           </ColorPickerContent>
         );
       }}
-    </ColorPicker>
+    </ColorPickerRoot>
   );
 };
 

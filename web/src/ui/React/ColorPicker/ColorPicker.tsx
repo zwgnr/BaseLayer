@@ -1,5 +1,3 @@
-"use client";
-
 import { colorPickerPotion } from "@/potions/colorPickerPotion";
 import {
   ColorPickerArea,
@@ -119,8 +117,4 @@ export const ColorPicker = () => {
       }}
     </ColorPickerRoot>
   );
-};
-
-export const CP = () => {
-  return <ColorPicker />;
 };
