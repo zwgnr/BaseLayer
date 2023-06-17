@@ -48,10 +48,12 @@ const currentPage = Astro.url.pathname;
         href="/"
         ><div class="flex items-center">
           <img class="h-12 w-12" src="/potion.png" />
-          <p class="-ml-2 items-center gap-2 text-2xl flex">
+          <p class="-ml-2 flex items-center gap-2 text-2xl">
             PotionUI <span
-              class="rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal"
-              >v{version}</span
+              class:list={[
+                "rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal",
+                currentPage === "/" ? "hidden" : "",
+              ]}>v{version}</span
             >
           </p>
         </div>

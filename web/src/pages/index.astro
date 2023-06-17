@@ -12,10 +12,10 @@ import { Coffee } from "lucide-react";
 
 <Layout title="PotionUI">
   <div
-    class="mt-12 flex h-full w-full flex-col items-center p-8 md:p-16 lg:mt-24"
+    class="mt-12 -mb-24 flex h-full w-full flex-col items-center p-8 md:p-16 lg:mt-24"
   >
     <div
-      class="flex lg:h-[calc(100vh-14rem)] w-full max-w-5xl flex-col items-center gap-12 overflow-hidden text-center"
+      class="flex w-full max-w-5xl flex-col items-center gap-12 overflow-hidden text-center lg:h-[calc(100vh-14rem)]"
     >
       <h1 class="text-6xl font-extrabold tracking-tight text-text lg:text-8xl">
         Creativity <span
@@ -23,7 +23,7 @@ import { Coffee } from "lucide-react";
           >unleashed.</span
         >
       </h1>
-      <p class="max-w-3xl text-lg lg:text-xl tracking-wide text-text-5">
+      <p class="max-w-3xl text-lg tracking-wide text-text-5 lg:text-xl">
         Unlock limitless potential, unparalleled convenience, right within your
         editor. Build stunning apps, libraries, and design systems effortlessly.
         Your next big idea starts here, with Potion UI.
@@ -45,7 +45,7 @@ import { Coffee } from "lucide-react";
           </a>
         </button>
       </div>
-      <div class="mt-16 flex flex-col gap-8 mb-16">
+      <div class="mb-16 mt-16 flex flex-col gap-8">
         <p class="font-serrif text-base uppercase tracking-wider text-text-4">
           Use your favorite tools
         </p>
@@ -114,12 +114,14 @@ import { Coffee } from "lucide-react";
       <LandingTabs client:only="react" />
     </div>
   </div>
-  <footer class="flex w-full items-center justify-between border-t-2 p-12">
-    <div class="flex gap-4">
-      <Github className="h-8 w-8"/>
-      <Twitter className="h-8 w-8"/>
+  <footer
+    class="flex w-full flex-col items-center justify-between gap-8 border-t-2 px-8 py-12 md:flex-row"
+  >
+    <div class="flex gap-4 text-text-3">
+      <Github className="h-8 w-8" />
+      <Twitter className="h-8 w-8" />
     </div>
-    <p class="flex gap-2">
+    <p class="flex flex-wrap gap-2 text-text-3">
       Made with <span><Heart /></span>and <span><Coffee /></span> by <a
         >Zach Wagner</a
       >
