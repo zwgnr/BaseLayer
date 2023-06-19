@@ -1,12 +1,6 @@
-import {
-  TabContent,
-  TabIndicator,
-  TabList,
-  TabTrigger,
-  Tabs,
-} from "@ark-ui/react";
-import { Icon } from "@iconify/react";
 import { tabsPotion } from "@/potions/tabsPotion";
+import { TabContent, TabList, TabTrigger, Tabs } from "@ark-ui/react";
+import { Icon } from "@iconify/react";
 import { clsx } from "clsx";
 import { useState } from "react";
 import { CopyToaster } from "./copyToaster";
@@ -16,7 +10,7 @@ const { list, trigger, content, indicator } = tabsPotion();
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ComponentTabs = (props: any) => {
   const { vscTab, reactTab, solidTab, solidDisabled, vueDisabled } = props;
-  const [value, setValue] = useState<string | null>("vsc");
+  const [value, setValue] = useState<string | null>("react");
   /*
   useEffect(() => {
     const loader = document.getElementById("loader") as HTMLElement;
@@ -50,50 +44,32 @@ export const ComponentTabs = (props: any) => {
     <Tabs
       value={value}
       onChange={(e) => setValue(e.value)}
-      className="w-full rounded-xl bg-[#1b1e28]"
+      className="relative flex w-full  flex-col gap-4 rounded-xl"
     >
       <TabList
         className={list({
           className:
-            "grid w-full grid-cols-4 rounded-b-none border-b-4 border-gray-500 bg-transparent text-gray-500",
+            "grid w-full grid-cols-3 border-gray-500 bg-surface-2 p-1 text-gray-500",
         })}
       >
         <TabTrigger
           className={trigger({
             className:
-              "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
-          })}
-          value="vsc"
-        >
-          <Icon icon="devicon:vscode" className="mb-2 h-5 w-5 text-gray-600" />
-        </TabTrigger>
-        <TabTrigger
-          className={trigger({
-            className:
-              "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
+              "data-[selected]:bg-surface data-[selected]:font-bold data-[selected]:text-blue-400",
           })}
           value="react"
         >
-          <Icon
-            icon="simple-icons:react"
-            className="mb-2 h-5 w-5 text-blue-400"
-          />
+          <Icon icon="simple-icons:react" className="h-5 w-5" />
         </TabTrigger>
         <TabTrigger
           disabled={solidDisabled && true}
           className={trigger({
             className:
-              "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
+              "data-[selected]:bg-surface data-[selected]:font-bold data-[selected]:text-blue-400",
           })}
           value="solid"
         >
-          <Icon
-            icon="simple-icons:solid"
-            className={clsx(
-              "mb-2 h-5 w-5",
-              solidDisabled === true ? null : "text-blue-500"
-            )}
-          />
+          <Icon icon="simple-icons:solid" className="h-5 w-5" />
         </TabTrigger>
         <TabTrigger
           disabled={vueDisabled && true}
@@ -106,35 +82,31 @@ export const ComponentTabs = (props: any) => {
           <Icon
             icon="simple-icons:vuedotjs"
             className={clsx(
-              "mb-2 h-5 w-5",
+              "h-5 w-5",
               vueDisabled === true ? null : "text-green-500"
             )}
           />
         </TabTrigger>
-        <TabIndicator className={indicator()} />
       </TabList>
-      <div className="flex w-full justify-end rounded-md pr-4 pt-4">
-      <CopyToaster copyToClipboard={copyToClipboard} />
+      <div className="absolute right-8 top-24 rounded-md ">
+        <CopyToaster copyToClipboard={copyToClipboard} />
       </div>
 
-      <TabContent className={content({ className: "-mt-8" })} value="vsc">
-        <div className="no-scrollbar max-h-64 w-72 md:w-full overflow-y-auto rounded-xl">
-          {vscTab}
-        </div>
-      </TabContent>
-      <TabContent className={content({ className: "-mt-8" })} value="react">
-        <div className="no-scrollbar max-h-64 w-72 md:w-full overflow-y-auto rounded-xl">
-          {reactTab}
-        </div>
-      </TabContent>
-      <TabContent className={content({ className: "-mt-8" })} value="solid">
-        <div className="no-scrollbar max-h-64 w-72 md:w-full overflow-y-auto rounded-xl">
-          {solidTab}
-        </div>
-      </TabContent>
-      <TabContent className={content({ className: "-mt-8" })} value="vue">
-        vue placeholder
-      </TabContent>
+      <div className="overflow-y-auto rounded-lg bg-[#1b1e28]">
+        <TabContent className={content({ className: "" })} value="react">
+          <div className="no-scrollbar max-h-64 w-72 overflow-y-auto rounded-xl md:w-full">
+            {reactTab}
+          </div>
+        </TabContent>
+        <TabContent className={content({ className: "-mt-8" })} value="solid">
+          <div className="no-scrollbar max-h-64 w-72 overflow-y-auto rounded-xl md:w-full">
+            {solidTab}
+          </div>
+        </TabContent>
+        <TabContent className={content({ className: "-mt-8" })} value="vue">
+          vue placeholder
+        </TabContent>
+      </div>
     </Tabs>
   );
 };
