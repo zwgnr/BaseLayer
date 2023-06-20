@@ -8,9 +8,9 @@ type Potion = {
 
 const potions: Potion[] = [
   {
-    potion: "accordianPotion",
-    name: "Accordian",
-    files: "import { tv } from \"tailwind-variants\";\n\nexport const accordianPotion = tv({\n  slots: {\n    root: \"flex w-full flex-col divide-y-2 divide-neutral-400 rounded-xl p-8\",\n    item: \"p-2\",\n    trigger:\n      \"flex w-full items-center justify-between rounded-xl bg-transparent p-0 pb-2 text-lg font-bold transition-all hover:underline [&:not(data-[expanded])]:pb-4 [&[data-expanded]>svg]:rotate-180\",\n    content: \" text-sm data-[expanded]:p-0\",\n  },\n});\n"
+    potion: "accordionPotion",
+    name: "Accordion",
+    files: "import { tv } from \"tailwind-variants\";\n\nexport const accordionPotion = tv({\n  slots: {\n    root: \"flex w-full flex-col divide-y-2 divide-neutral-400 rounded-xl p-8\",\n    item: \"p-2\",\n    trigger:\n      \"flex w-full items-center justify-between rounded-xl bg-transparent p-0 pb-2 text-lg font-bold transition-all hover:underline [&[data-expanded]>svg]:rotate-180\",\n    content: \" text-sm data-[expanded]:p-0\",\n  },\n});\n"
   },
   {
     potion: "avatarPotion",

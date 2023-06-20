@@ -7,9 +7,9 @@ import {
   AccordionTrigger,
 } from "@ark-ui/react";
 
-import { accordianPotion } from "@/potions/accordianPotion";
+import { accordionPotion } from "@/potions/accordionPotion";
 
-const { root, item, trigger, content } = accordianPotion();
+const { root, item, trigger, content } = accordionPotion();
 
 const parts = [
   {
@@ -28,7 +28,7 @@ const parts = [
   },
 ];
 
-export const Accordian = () => {
+export const Accordion = () => {
   return (
     <AccordionRoot className={root()} defaultValue="Is it Accessible?">
       {parts.map((part, id) => (

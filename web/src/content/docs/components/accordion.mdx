@@ -8,11 +8,11 @@ arkDocs: https://ark-ui.com/docs/react/components/accordion
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { Accordian } from '../../../ui/React/Accordian/accordian.tsx'
+import { Accordion } from '../../../ui/React/Accordion/accordion.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-3/4 h-80">
-      <Accordian client:load/>
+      <Accordion client:load/>
     </div>
 </div>
 
@@ -27,7 +27,7 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 ```tsx
 import { tv } from "tailwind-variants";
 
-export const accordianPotion = tv({
+export const accordionPotion = tv({
   slots: {
     root: "flex w-full flex-col divide-y-2 divide-neutral-400 rounded-xl p-8",
     item: "p-2",
