@@ -1,3 +1,3 @@
-import { badgePotion } from "@/potions/badgePotion";
+import { badge } from "@/potions/badge";
 
-<div className={badgePotion()}>Badge</div>;
+<span className={badge()}>Badge</span>;

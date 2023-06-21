@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-export const accordionPotion = tv({
+export const accordion = tv({
   slots: {
     root: "flex w-full flex-col divide-y-2 divide-neutral-400 rounded-xl p-8",
     item: "p-2",

@@ -9,12 +9,11 @@ arkDocs: https://ark-ui.com/docs/react/components/avatar
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
 import { Avatar } from '../../../ui/React/Avatar/avatar.tsx'
+import { MdxExample } from '../../../components/Examples/MdxExample.tsx'
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center not-prose">
-      <Avatar client:load/>
-    </div>
-</div>
+<MdxExample>
+  <Avatar client:load/>
+</MdxExample>
 
 ## Installation
 
@@ -27,7 +26,7 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 ```tsx
 import { tv } from "tailwind-variants";
 
-export const avatarPotion = tv({
+export const avatar = tv({
   slots: {
     root: "h-16 w-16 rounded-full border-2 border-accent",
     fallback:
@@ -47,20 +46,19 @@ export const avatarPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
 <Fragment slot="react">
 ```tsx
+import { avatar } from "@/potions/avatar";
+
 import {
   AvatarFallback,
   AvatarImage,
   Avatar as AvatarRoot,
 } from "@ark-ui/react";
-import { avatarPotion } from "@potions/avatarPotion";
-
-const { root, fallback, image } = avatarPotion();
 
 export const Avatar = () => (
-  <AvatarRoot className={root()}>
-    <AvatarFallback className={fallback()}>ME</AvatarFallback>
+  <AvatarRoot className={avatar().root()}>
+    <AvatarFallback className={avatar().fallback()}>ME</AvatarFallback>
     <AvatarImage
-      className={image()}
+      className={avatar().image()}
       src="https://i.pravatar.cc/300"
       alt="avatar"
     />

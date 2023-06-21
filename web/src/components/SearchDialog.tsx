@@ -7,7 +7,7 @@ import {
   DialogTrigger,
   Portal,
 } from "@ark-ui/react";
-import { buttonPotion } from "@/potions/buttonPotion";
+import { button } from "@/potions/button";
 import { dialogPotion } from "@/potions/dialogPotion";
 import { Search as SearchIcon } from "lucide-react";
 import Search, { type SearchProps } from "./search";
@@ -19,7 +19,7 @@ export const SearchDialog = ({ searchList }: SearchProps) => {
     <DialogRoot>
       <DialogTrigger asChild>
         <Button
-          className={buttonPotion({
+          className={button({
             className: "rounded-xl bg-surface-2 py-2 hover:bg-surface-3",
           })}
         >

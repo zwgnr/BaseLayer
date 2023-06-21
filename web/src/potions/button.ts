@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const buttonPotion = tv({
+export const button = tv({
   base: "ring-offset-background appearance-none inline-flex items-center justify-center rounded-md font-medium ring-focus transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   variants: {
     intent: {
@@ -62,4 +62,4 @@ export const buttonPotion = tv({
   },
 });
 
-export type ButtonPotionProps = VariantProps<typeof buttonPotion>;
+export type ButtonPotionProps = VariantProps<typeof button>;

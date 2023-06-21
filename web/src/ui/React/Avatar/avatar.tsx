@@ -1,17 +1,16 @@
-import { avatarPotion } from "@/potions/avatarPotion";
+import { avatar } from "@/potions/avatar";
+
 import {
   AvatarFallback,
   AvatarImage,
   Avatar as AvatarRoot,
 } from "@ark-ui/react";
 
-const { root, fallback, image } = avatarPotion();
-
 export const Avatar = () => (
-  <AvatarRoot className={root()}>
-    <AvatarFallback className={fallback()}>ME</AvatarFallback>
+  <AvatarRoot className={avatar().root()}>
+    <AvatarFallback className={avatar().fallback()}>ME</AvatarFallback>
     <AvatarImage
-      className={image()}
+      className={avatar().image()}
       src="https://i.pravatar.cc/300"
       alt="avatar"
     />

@@ -8,7 +8,7 @@ arkDocs: https://ark-ui.com/docs/react/components/accordion
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { Accordion } from '../../../ui/React/Accordion/accordion.tsx'
+import { Accordion } from '../../../ui/React/Accordion/Accordion.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-3/4 h-80">
@@ -27,12 +27,12 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 ```tsx
 import { tv } from "tailwind-variants";
 
-export const accordionPotion = tv({
+export const accordion = tv({
   slots: {
     root: "flex w-full flex-col divide-y-2 divide-neutral-400 rounded-xl p-8",
     item: "p-2",
     trigger:
-      "flex w-full items-center justify-between rounded-xl bg-transparent p-0 pb-2 text-lg font-bold transition-all hover:underline [&:not(data-[expanded])]:pb-4 [&[data-expanded]>svg]:rotate-180",
+      "flex w-full items-center justify-between rounded-xl bg-transparent p-0 pb-2 text-lg font-bold transition-all hover:underline [&[data-expanded]>svg]:rotate-180",
     content: " text-sm data-[expanded]:p-0",
   },
 });

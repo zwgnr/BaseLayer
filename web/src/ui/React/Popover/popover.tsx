@@ -1,4 +1,4 @@
-import { buttonPotion } from "@/potions/buttonPotion";
+import { buttonPotion } from "@/potions/button";
 import { popoverPotion } from "@/potions/popoverPotion";
 import {
   Pressable as Button,

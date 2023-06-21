@@ -1,6 +1,6 @@
 import { VariantProps, tv } from "tailwind-variants";
 
-export const badgePotion = tv({
+export const badge = tv({
   base: "flex items-center justify-center rounded-xl",
   variants: {
     intent: {
@@ -20,4 +20,4 @@ export const badgePotion = tv({
   },
 });
 
-export type BadgePotionProps = VariantProps<typeof badgePotion>;
+export type BadgePotionProps = VariantProps<typeof badge>;

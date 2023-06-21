@@ -1,24 +1,3 @@
-import { buttonPotion, type ButtonPotionProps } from "@/potions/buttonPotion";
-import type { ButtonHTMLAttributes } from "react";
+import { button } from "@/potions/button";
 
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonPotionProps {}
-
-export const Button = ({
-  children,
-  className,
-  intent,
-  size,
-  state,
-  ...props
-}: ButtonProps) => {
-  return (
-    <button
-      className={buttonPotion({ intent, size, state, className })}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+<button className={button()}>Button</button>;

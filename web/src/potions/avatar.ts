@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-export const avatarPotion = tv({
+export const avatar = tv({
   slots: {
     root: "h-16 w-16 rounded-full border-2 border-accent",
     fallback:

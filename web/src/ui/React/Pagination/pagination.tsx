@@ -1,4 +1,4 @@
-import { buttonPotion } from "@/potions/buttonPotion";
+import { buttonPotion } from "@/potions/button";
 import {
   PaginationEllipsis,
   PaginationList,

@@ -6,19 +6,17 @@ description: "Displays a button component."
 ---
 
 import { Heart, Loader } from 'lucide-react'
-import { Pressable as Button } from "@ark-ui/react"
-import { buttonPotion } from "@/potions/buttonPotion"
-import Potion from '../../../components/Potion.astro'
-import DemoTabs from '../../../components/DemoTabs.astro'
-import VariantDemo from '../../../components/VariantDemo.astro'
+import { button} from "@/potions/button"
+import Potion from '@/components/Potion.astro'
+import DemoTabs from '@/components/DemoTabs.astro'
+import VariantDemo from '@/components/VariantDemo.astro'
+import { MdxExample } from '@/components/Examples/MdxExample.tsx'
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center">
-      <Button className={buttonPotion()}>
-      Button
-      </Button>
-    </div>
-</div>
+<MdxExample>
+  <button className={button()}>
+    Button
+  </button>
+</MdxExample>
 
 ## Installation
 
@@ -105,9 +103,9 @@ export type ButtonPotionProps = VariantProps<typeof buttonPotion>;
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center">
-      <Button className={buttonPotion()}>
+      <button className={button()}>
       Button
-      </Button>
+      </button>
     </div>
 </div>
 
@@ -139,7 +137,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={buttonPotion({ intent, size, state, className })}
+      className={button({ intent, size, state, className })}
       {...props}
     >
       {children}
@@ -155,7 +153,7 @@ export const Button = ({
 import { Pressable as Button } from "@ark-ui/solid";
 import { buttonPotion } from "@potions/buttonPotion";
 
-<Button class={buttonPotion()}>Button</Button>;
+<Button class={button()}>Button</Button>;
 
 ```
 </Fragment>
@@ -166,10 +164,10 @@ import { buttonPotion } from "@potions/buttonPotion";
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div class="flex gap-2 items-center">
-    <Button className={buttonPotion()}>
+    <button className={button()}>
      <Heart className='mr-2'/>
       Icon Button
-      </Button>
+      </button>
     </div>
 </div>
 
@@ -200,10 +198,10 @@ pc-button-icon
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div class="flex gap-2 items-center">
-      <Button className={buttonPotion()} disabled>
+      <button className={button()} disabled>
         <Loader className="mr-2 h-4 w-4 animate-spin" />
           Loading...
-      </Button>
+      </button>
     </div>
 </div>
 
@@ -236,12 +234,12 @@ pc-button-loader
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center">
-      <Button className={buttonPotion({ intent: "primary" })}>
+      <button className={button({ intent: "primary" })}>
       Primary
-      </Button>
-      <Button className={buttonPotion({ intent: "accent" })}>
+      </button>
+      <button className={button({ intent: "accent" })}>
         Accent
-      </Button>
+      </button>
     </div>
 </div>
 
@@ -260,18 +258,18 @@ import { Button } from "@/components/button";
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center flex-wrap">
-      <Button className={buttonPotion({ state: "filled" })}>
+      <button className={button({ state: "filled" })}>
       Filled
-      </Button>
-      <Button className={buttonPotion({ state: "soft" })}>
+      </button>
+      <button className={button({ state: "soft" })}>
       Soft
-      </Button>
-      <Button className={buttonPotion({ state: "ghost" })}>
+      </button>
+      <button className={button({ state: "ghost" })}>
       Ghost
-      </Button>
-      <Button className={buttonPotion({ state: "outline" })}>
+      </button>
+      <button className={button({ state: "outline" })}>
       Outline
-      </Button>
+      </button>
     </div>
 </div>
 
@@ -292,15 +290,15 @@ import { Button } from "@/components/button";
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center">
-      <Button className={buttonPotion({ size: "sm" })}>
+      <button className={button({ size: "sm" })}>
       sm
-      </Button>
-      <Button className={buttonPotion({ size: "md" })}>
+      </button>
+      <button className={button({ size: "md" })}>
       md
-      </Button>
-      <Button className={buttonPotion({ size: "lg" })}>
+      </button>
+      <button className={button({ size: "lg" })}>
       lg
-      </Button>
+      </button>
     </div>
 </div>
 

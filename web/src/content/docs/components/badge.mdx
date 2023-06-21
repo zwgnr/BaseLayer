@@ -5,17 +5,16 @@ description: "Displays a badge or a component."
 
 ---
 
-import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion from '../../../components/Potion.astro'
-import { badgePotion } from "@/potions/badgePotion"
+import DemoTabs from '@/components/DemoTabs.astro'
+import Potion from '@/components/Potion.astro'
+import { MdxExample } from '@/components/Examples/MdxExample.tsx'
+import { badge } from "@/potions/badge"
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center">
-      <div className={badgePotion()}>
-      Badge 
-      </div>
-    </div>
-</div>
+<MdxExample>
+  <span className={badge()}>
+    Badge 
+  </span>
+</MdxExample>
 
 ## Installation
 
@@ -69,7 +68,7 @@ pc-badge
 import { badgePotion } from "@potions/badgePotion";
 
 export const Badge = () => {
-  return <div className={badgePotion()}>Badge</div>;
+  return <div className={badge()}>Badge</div>;
 };
 
 ```
@@ -83,13 +82,13 @@ export const Badge = () => {
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center">
-      <div className={badgePotion({ intent: "default" })}>
+      <div className={badge({ intent: "default" })}>
       Default
       </div>
-      <div className={badgePotion({ intent: "info" })}>
+      <div className={badge({ intent: "info" })}>
         Info
       </div>
-      <div className={badgePotion({ intent: "alert" })}>
+      <div className={badge({ intent: "alert" })}>
         Alert
       </div>
     </div>
@@ -99,9 +98,9 @@ export const Badge = () => {
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-<div className={badgePotion({ intent: "default" })}>Default</div>
-<div className={badgePotion({ intent: "info" })}>Info</div>
-<div className={badgePotion({ intent: "alert" })}>Alert</div>
+<div className={badge({ intent: "default" })}>Default</div>
+<div className={badge({ intent: "info" })}>Info</div>
+<div className={badge({ intent: "alert" })}>Alert</div>
 ```
 </div>
 
@@ -109,13 +108,13 @@ export const Badge = () => {
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center">
-      <div className={badgePotion({ size: "sm" })}>
+      <div className={badge({ size: "sm" })}>
       Small
       </div>
-      <div className={badgePotion({ size: "md" })}>
+      <div className={badge({ size: "md" })}>
         Medium
       </div>
-      <div className={badgePotion({ large: "lg" })}>
+      <div className={badge({ large: "lg" })}>
         Large
       </div>
     </div>
@@ -125,9 +124,9 @@ export const Badge = () => {
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-<div className={badgePotion({ size: "sm" })}>Small</div>
-<div className={badgePotion({ size: "md" })}>Medium</div>
-<div className={badgePotion({ size: "lg" })}>Large</div>
+<div className={badge({ size: "sm" })}>Small</div>
+<div className={badge({ size: "md" })}>Medium</div>
+<div className={badge({ size: "lg" })}>Large</div>
 ```
 </div>
 
