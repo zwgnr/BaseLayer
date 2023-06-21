@@ -62,4 +62,4 @@ export const button = tv({
   },
 });
 
-export type ButtonPotionProps = VariantProps<typeof button>;
+export type buttonProps = VariantProps<typeof button>;

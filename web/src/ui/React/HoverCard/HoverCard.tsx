@@ -1,4 +1,4 @@
-import { buttonPotion } from "@/potions/button";
+import { button } from "@/potions/button";
 import { hoverCardPotion } from "@/potions/hoverCardPotion";
 import {
   Pressable as Button,
@@ -38,7 +38,7 @@ export const HoverCard = () => {
                   src="https://tinyurl.com/2vscrc3v"
                 />
                 <Button
-                  className={buttonPotion()}
+                  className={button()}
                   onClick={() => alert("Added to Cart!")}
                 >
                   Add to Cart

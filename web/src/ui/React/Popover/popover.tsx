@@ -1,4 +1,4 @@
-import { buttonPotion } from "@/potions/button";
+import { button } from "@/potions/button";
 import { popoverPotion } from "@/potions/popoverPotion";
 import {
   Pressable as Button,
@@ -18,7 +18,7 @@ export const Popover = () => {
   return (
     <PopoverRoot>
       <PopoverTrigger asChild>
-        <button className={buttonPotion({ className: "flex gap-2" })}>
+        <button className={button({ className: "flex gap-2" })}>
           <Star />
           <p>Favorite</p>
         </button>
@@ -35,7 +35,7 @@ export const Popover = () => {
             <div className="flex gap-3">
               <PopoverCloseTrigger asChild>
                 <Button
-                  className={buttonPotion({
+                  className={button({
                     state: "outline",
                     className: "border- bg-surface hover:bg-slate-200",
                   })}
@@ -43,7 +43,7 @@ export const Popover = () => {
                   Dismiss
                 </Button>
               </PopoverCloseTrigger>
-              <Button className={buttonPotion()}>Save</Button>
+              <Button className={button()}>Save</Button>
             </div>
           </div>
         </PopoverContent>

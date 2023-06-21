@@ -1,5 +1,5 @@
 import { useToast } from "@ark-ui/react";
-import { buttonPotion } from "@/potions/button";
+import { button } from "@/potions/button";
 import { Toast } from "@/ui/React/Toast/toast";
 
 export const ToastSuccess = () => {
@@ -14,7 +14,7 @@ export const ToastTrigger = () => {
   const toast = useToast();
   return (
     <button
-      className={buttonPotion({ className: "bg-positive hover:bg-positive-700 text-black" })}
+      className={button({ className: "bg-positive hover:bg-positive-700 text-black" })}
       onClick={() => {
         toast.create({
           title: "Hi,",

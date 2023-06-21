@@ -8,7 +8,7 @@ tags: ["Slots", "Variants", "Overrides"]
 
 import { PinInput } from '../../../ui/React/PinInput/PinInput.tsx'
 import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@/potions/buttonPotion";
+import { button } from "@/potions/button";
 
 
 ## Potions
@@ -83,7 +83,7 @@ Let's take a look at how variants work in Potion.
 ```tsx
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const buttonPotion = tv({
+export const button = tv({
   base: "inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-transform duration-100 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   variants: {
     intent: {
@@ -145,23 +145,23 @@ export const buttonPotion = tv({
   },
 });
 
-export type ButtonPotionProps = VariantProps<typeof buttonPotion>;
+export type buttonProps = VariantProps<typeof button>;
 
 ```
 </div>
 
-Here is a Button component using the buttonPotion with several variants.
+Here is a Button component using the button with several variants.
 
 <div class="flex items-center justify-center w-full p-2">
-<Button className={buttonPotion({ intent:"accent", state:"ghost" })}>
+<Button className={button({ intent:"accent", state:"ghost" })}>
 Button
 </Button>
 </div>
 ```tsx
 import { Pressable as Button } from "@ark-ui/react";
-import { buttonPotion } from "@potions/buttonPotion";
+import { button } from "@potions/button";
 
-<Button className={buttonPotion({ intent:"accent", state:"ghost" })}>Button</Button>;
+<Button className={button({ intent:"accent", state:"ghost" })}>Button</Button>;
 ```
 
 You can use the variants inline like shown above, or pass them as props to your component itself.

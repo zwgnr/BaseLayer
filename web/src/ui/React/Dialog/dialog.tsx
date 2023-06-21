@@ -1,4 +1,4 @@
-import { buttonPotion } from "@/potions/button";
+import { button } from "@/potions/button";
 import { dialogPotion } from "@/potions/dialogPotion";
 import {
   Pressable as Button,
@@ -20,9 +20,7 @@ export const Dialog = () => {
   return (
     <DialogRoot>
       <DialogTrigger asChild>
-        <Button className={buttonPotion({ intent: "accent" })}>
-          Open dialog
-        </Button>
+        <Button className={button({ intent: "accent" })}>Open dialog</Button>
       </DialogTrigger>
       <Portal>
         <DialogBackdrop className={backdrop()} />
@@ -38,7 +36,7 @@ export const Dialog = () => {
               <div className="flex w-full items-center justify-center gap-3">
                 <DialogCloseTrigger asChild>
                   <Button
-                    className={buttonPotion({
+                    className={button({
                       state: "outline",
                       className:
                         "border-critical text-critical hover:bg-critical hover:text-black",
@@ -47,7 +45,7 @@ export const Dialog = () => {
                     Cancel
                   </Button>
                 </DialogCloseTrigger>
-                <Button className={buttonPotion()}>Confirm</Button>
+                <Button className={button()}>Confirm</Button>
               </div>
             </div>
             <DialogCloseTrigger asChild>

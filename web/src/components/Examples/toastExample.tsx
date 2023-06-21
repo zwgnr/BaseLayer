@@ -1,6 +1,6 @@
-import { useToast } from "@ark-ui/react";
-import { buttonPotion } from "@/potions/button";
+import { button } from "@/potions/button";
 import { Toast } from "@/ui/React/Toast/toast";
+import { useToast } from "@ark-ui/react";
 
 export const ToastExample = () => {
   return (
@@ -14,7 +14,7 @@ export const ToastTrigger = () => {
   const toast = useToast();
   return (
     <button
-      className={buttonPotion({ intent: "accent" })}
+      className={button({ intent: "accent" })}
       onClick={() => {
         toast.create({
           title: "Hello",

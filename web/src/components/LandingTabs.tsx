@@ -1,6 +1,5 @@
 import { TabContent, TabList, TabTrigger, Tabs } from "@ark-ui/react";
 
-import { Button } from "@/ui/React/Button/button";
 import { ColorPicker } from "@/ui/React/ColorPicker/ColorPicker";
 import { Dialog } from "@/ui/React/Dialog/dialog";
 import { Pagination } from "@/ui/React/Pagination/pagination";
@@ -33,11 +32,11 @@ export const LandingTabs = () => {
       value={value}
       onChange={(e) => setValue(e.value)}
     >
-      <TabList className="flex w-full items-start gap-2 lg:w-1/4 lg:flex-col px-2">
+      <TabList className="flex w-full items-start gap-2 px-2 lg:w-1/4 lg:flex-col">
         <TabTrigger
           className={trigger({
             className:
-              "flex text-sm lg:text-base h-16 w-1/3 flex-col items-center justify-start gap-2 lg:w-full lg:flex-row",
+              "flex h-16 w-1/3 flex-col items-center justify-start gap-2 text-sm lg:w-full lg:flex-row lg:text-base",
           })}
           value="potions"
         >
@@ -47,7 +46,7 @@ export const LandingTabs = () => {
         <TabTrigger
           className={trigger({
             className:
-              "flex h-16 w-1/3 text-sm lg:text-base flex-col items-center justify-start gap-2 lg:w-full lg:flex-row",
+              "flex h-16 w-1/3 flex-col items-center justify-start gap-2 text-sm lg:w-full lg:flex-row lg:text-base",
           })}
           value="components"
         >
@@ -57,7 +56,7 @@ export const LandingTabs = () => {
         <TabTrigger
           className={trigger({
             className:
-              "flex h-16 w-1/3 text-sm lg:text-base flex-col items-center justify-start gap-2 lg:w-full lg:flex-row",
+              "flex h-16 w-1/3 flex-col items-center justify-start gap-2 text-sm lg:w-full lg:flex-row lg:text-base",
           })}
           value="vsc"
         >
@@ -66,7 +65,7 @@ export const LandingTabs = () => {
         </TabTrigger>
       </TabList>
       <TabContent className="w-full lg:w-3/4" value="potions">
-        <div className="flex w-full lg:h-fit pb-16 justify-center px-8">
+        <div className="flex w-full justify-center px-8 pb-16 lg:h-fit">
           <img
             className="mt-16 w-full rounded-xl shadow-2xl lg:w-full"
             src="/ptn.png"
@@ -77,9 +76,9 @@ export const LandingTabs = () => {
         <div className="flex w-full flex-col items-center gap-8 py-8 lg:flex-row lg:p-8">
           <div className="flex w-full flex-col items-center justify-center gap-16 lg:w-1/2">
             <div className="flex gap-4">
-              <Button intent="accent" className="w-24 px-6">
+              <button intent="accent" className="w-24 px-6">
                 Button
-              </Button>
+              </button>
               <Switch>Switch</Switch>
             </div>
             <Slider />

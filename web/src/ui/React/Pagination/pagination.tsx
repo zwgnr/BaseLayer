@@ -1,4 +1,4 @@
-import { buttonPotion } from "@/potions/button";
+import { button } from "@/potions/button";
 import {
   PaginationEllipsis,
   PaginationList,
@@ -26,7 +26,7 @@ export const Pagination = (props: Partial<PaginationProps>) => (
         <PaginationList className={list()}>
           <PaginationPrevPageTrigger asChild>
             <button
-              className={buttonPotion({
+              className={button({
                 className: "bg-surface-4 hover:bg-accent",
               })}
             >
@@ -43,7 +43,7 @@ export const Pagination = (props: Partial<PaginationProps>) => (
                 asChild
               >
                 <button
-                  className={buttonPotion({
+                  className={button({
                     className: "bg-surface-3 hover:bg-accent",
                   })}
                 >
@@ -62,7 +62,7 @@ export const Pagination = (props: Partial<PaginationProps>) => (
           )}
 
           <PaginationNextPageTrigger asChild>
-            <button className={buttonPotion({ intent: "accent" })}>Next</button>
+            <button className={button({ intent: "accent" })}>Next</button>
           </PaginationNextPageTrigger>
         </PaginationList>
       </>

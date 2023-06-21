@@ -29,7 +29,7 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 ```tsx
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const buttonPotion = tv({
+export const button = tv({
   base: "ring-offset-background appearance-none inline-flex items-center justify-center rounded-md font-medium ring-focus transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
   variants: {
     intent: {
@@ -91,7 +91,7 @@ export const buttonPotion = tv({
   },
 });
 
-export type ButtonPotionProps = VariantProps<typeof buttonPotion>;
+export type buttonProps = VariantProps<typeof button>;
 
 ```
 </Fragment>
@@ -120,12 +120,12 @@ pc-button
 
 <Fragment slot="react">
 ```tsx
-import { buttonPotion, type ButtonPotionProps } from "@/potions/buttonPotion";
+import { button, type buttonProps } from "@/potions/button";
 import type { ButtonHTMLAttributes } from "react";
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonPotionProps {}
+    buttonProps {}
 
 export const Button = ({
   children,
@@ -151,7 +151,7 @@ export const Button = ({
 <Fragment slot="solid">
 ```tsx
 import { Pressable as Button } from "@ark-ui/solid";
-import { buttonPotion } from "@potions/buttonPotion";
+import { button } from "@potions/button";
 
 <Button class={button()}>Button</Button>;
 
