@@ -1,4 +1,4 @@
-import { colorPicker as cp } from "@/potions/colorPicker";
+import { colorPicker, colorPicker as cp } from "@/potions/colorPicker";
 
 import {
   ColorPickerArea,
@@ -30,20 +30,23 @@ const presets = [
   "hsl(350, 81%, 59%)",
 ];
 
+const { content, area, areaThumb, gradient, sliderTrack, sliderThumb } =
+  colorPicker();
+
 export const ColorPicker = () => {
   return (
     <ColorPickerRoot defaultValue="hsl(10, 81%, 59%)">
       {(api) => {
         const [hue, saturation, lightness] = api.channels;
         return (
-          <ColorPickerContent className={cp().content()}>
+          <ColorPickerContent className={content()}>
             <ColorPickerArea
-              className={cp().area()}
+              className={area()}
               xChannel={saturation}
               yChannel={lightness}
             >
-              <ColorPickerAreaGradient className={cp().gradient()} />
-              <ColorPickerAreaThumb className={cp().areaThumb()} />
+              <ColorPickerAreaGradient className={gradient()} />
+              <ColorPickerAreaThumb className={areaThumb()} />
             </ColorPickerArea>
             <div className="flex w-full flex-row items-center gap-4 p-4">
               <ColorPickerEyeDropperTrigger asChild>
@@ -53,22 +56,18 @@ export const ColorPicker = () => {
               </ColorPickerEyeDropperTrigger>
               <div className="flex w-full flex-col gap-2">
                 <ColorPickerChannelSliderTrack
-                  className={cp().sliderTrack()}
+                  className={sliderTrack()}
                   channel={hue}
                 >
                   <ColorPickerChannelSliderBackground />
-                  <ColorPickerChannelSliderThumb
-                    className={cp().sliderThumb()}
-                  />
+                  <ColorPickerChannelSliderThumb className={sliderThumb()} />
                 </ColorPickerChannelSliderTrack>
                 <ColorPickerChannelSliderTrack
-                  className={cp().sliderTrack()}
+                  className={sliderTrack()}
                   channel="alpha"
                 >
                   <ColorPickerChannelSliderBackground />
-                  <ColorPickerChannelSliderThumb
-                    className={cp().sliderThumb()}
-                  />
+                  <ColorPickerChannelSliderThumb className={sliderThumb()} />
                 </ColorPickerChannelSliderTrack>
               </div>
             </div>

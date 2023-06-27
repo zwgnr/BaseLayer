@@ -1,5 +1,6 @@
+import { Button } from "@/potions/button";
+import { dialogPotion } from "@/potions/dialogPotion";
 import {
-  Pressable as Button,
   DialogBackdrop,
   DialogContainer,
   DialogContent,
@@ -7,8 +8,6 @@ import {
   DialogTrigger,
   Portal,
 } from "@ark-ui/react";
-import { button } from "@/potions/button";
-import { dialogPotion } from "@/potions/dialogPotion";
 import { Search as SearchIcon } from "lucide-react";
 import Search, { type SearchProps } from "./search";
 
@@ -18,11 +17,7 @@ export const SearchDialog = ({ searchList }: SearchProps) => {
   return (
     <DialogRoot>
       <DialogTrigger asChild>
-        <Button
-          className={button({
-            className: "rounded-xl bg-surface-2 py-2 hover:bg-surface-3",
-          })}
-        >
+        <Button>
           <div className="flex gap-2 text-text">
             <p className="hidden md:block">Search</p>
             <SearchIcon />

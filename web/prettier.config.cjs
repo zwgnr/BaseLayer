@@ -5,7 +5,7 @@ module.exports = {
     require("prettier-plugin-astro"),
     require("prettier-plugin-tailwindcss"),
   ],
-  tailwindFunctions: ['tv'],
+  tailwindFunctions: ["tv", "potion"],
   overrides: [
     {
       files: "*.astro",

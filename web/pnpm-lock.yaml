@@ -41,6 +41,9 @@ dependencies:
   astro:
     specifier: ^2.5.1
     version: 2.5.1(@types/node@20.2.3)
+  class-variance-authority:
+    specifier: ^0.6.1
+    version: 0.6.1
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
@@ -62,6 +65,9 @@ dependencies:
   solid-js:
     specifier: ^1.4.3
     version: 1.7.6
+  tailwind-merge:
+    specifier: ^1.13.2
+    version: 1.13.2
   tailwind-variants:
     specifier: ^0.1.8
     version: 0.1.8(tailwindcss@3.3.2)
@@ -1990,6 +1996,12 @@ packages:
   /ci-info@3.8.0:
     resolution: {integrity: sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==}
     engines: {node: '>=8'}
+    dev: false
+
+  /class-variance-authority@0.6.1:
+    resolution: {integrity: sha512-eurOEGc7YVx3majOrOb099PNKgO3KnKSApOprXI4BTq6bcfbqbQXPN2u+rPPmIJ2di23bMwhk0SxCCthBmszEQ==}
+    dependencies:
+      clsx: 1.2.1
     dev: false
 
   /cli-boxes@3.0.0:
