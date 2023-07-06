@@ -1,19 +1,19 @@
 ---
 title: Badge
-description: "Displays a badge or a component."
+description: "Displays a badge component."
 ---
 
 ---
 
 import DemoTabs from '@/components/DemoTabs.astro'
 import Potion from '@/components/Potion.astro'
-import { MdxExample } from '@/components/Examples/MdxExample.tsx'
-import { badge } from "@/potions/badge"
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
+import { Badge } from "@/potions/badge"
 
 <MdxExample>
-  <span className={badge()}>
+  <Badge>
     Badge 
-  </span>
+  </Badge>
 </MdxExample>
 
 ## Installation
@@ -25,20 +25,20 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 <Potion>
 <Fragment slot="contentSlot">
 ```tsx
-import { VariantProps, tv } from "tailwind-variants";
+import { tv, VariantProps } from "tailwind-variants";
 
-export const badgePotion = tv({
+export const badge = tv({
   base: "flex items-center justify-center rounded-xl",
   variants: {
     intent: {
       default: "bg-surface-3",
-      info: "bg-accent",
+      info: "bg-secondary",
       alert: "bg-critical",
     },
     size: {
-      sm: "px-2 py-1 text-sm",
-      md: "px-4 py-1 text-base",
-      lg: "px-6 py-2 text-lg",
+      sm: "h-6 px-2 py-1 text-sm",
+      md: "h-8 px-4 py-1 text-base",
+      lg: "h-10 px-6 py-2 text-lg",
     },
   },
   defaultVariants: {
@@ -47,29 +47,37 @@ export const badgePotion = tv({
   },
 });
 
-export type BadgePotionProps = VariantProps<typeof badgePotion>;
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLSpanElement>,
+    VariantProps<typeof badge> {}
+
+export const Badge = ({ className, size, intent, ...props }: BadgeProps) => (
+  <div className={badge({ size, intent, className })} {...props} />
+);
 
 ```
 </Fragment>
 </Potion>
 
-## Components 
+## Examples 
 
 ### Default
 
 <DemoTabs vueDisabled solidDisabled>
+
 <Fragment slot="vsc">
+
 ```tsx
-pc-badge 
+pui-badge 
 ```
+
 </Fragment>
+
 <Fragment slot="react">
 ```tsx
-import { badgePotion } from "@potions/badgePotion";
+import { Badge } from "@/potions/badge";
 
-export const Badge = () => {
-  return <div className={badge()}>Badge</div>;
-};
+export const BadgeExample = () => <Badge>Badge</Badge>;
 
 ```
 </Fragment>
@@ -82,15 +90,15 @@ export const Badge = () => {
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center">
-      <div className={badge({ intent: "default" })}>
+      <Badge >
       Default
-      </div>
-      <div className={badge({ intent: "info" })}>
+      </Badge>
+      <Badge intent="info">
         Info
-      </div>
-      <div className={badge({ intent: "alert" })}>
+      </Badge>
+      <Badge intent="alert">
         Alert
-      </div>
+      </Badge>
     </div>
 </div>
 
@@ -98,9 +106,9 @@ export const Badge = () => {
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-<div className={badge({ intent: "default" })}>Default</div>
-<div className={badge({ intent: "info" })}>Info</div>
-<div className={badge({ intent: "alert" })}>Alert</div>
+  <Badge>Default</Badge>
+  <Badge>Info</Badge>
+  <Badge>Alert</Badge>
 ```
 </div>
 
@@ -108,15 +116,15 @@ export const Badge = () => {
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex gap-2 items-center">
-      <div className={badge({ size: "sm" })}>
+      <Badge size="sm">
       Small
-      </div>
-      <div className={badge({ size: "md" })}>
+      </Badge>
+      <Badge size="md">
         Medium
-      </div>
-      <div className={badge({ large: "lg" })}>
+      </Badge>
+      <Badge size="lg">
         Large
-      </div>
+      </Badge>
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 import { useToast } from "@ark-ui/react";
 import { Copy } from "lucide-react";
-import { Toast } from "../ui/React/Toast/toast";
+import { Toast } from "../Examples/React/Toast/toast";
 
 interface CopyToasterProps {
   copyToClipboard?: () => void;

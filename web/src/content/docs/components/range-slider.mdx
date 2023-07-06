@@ -8,7 +8,7 @@ arkDocs: https://ark-ui.com/docs/react/components/range-slider
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { RangeSlider } from '../../../ui/React/RangeSlider/rangeSlider.tsx'
+import { RangeSlider } from '../../../Examples/React/RangeSlider/rangeSlider.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-72 h-24">
@@ -32,9 +32,9 @@ export const rangeSliderPotion = tv({
     root: "w-full",
     control: "relative flex items-center py-2",
     track: "h-2 flex-1 rounded-md bg-surface-3",
-    range: "h-2 rounded-md bg-accent",
+    range: "h-2 rounded-md bg-secondary",
     thumb:
-      "h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
+      "h-6 w-6 rounded-full border-2 border-secondary bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
     marker: "mt-2 text-sm text-text-4",
   },
 });
@@ -58,7 +58,7 @@ export const rangeSliderPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pc-range-slider 
+pui-range-slider 
 ```
 </Fragment>
 <Fragment slot="react">

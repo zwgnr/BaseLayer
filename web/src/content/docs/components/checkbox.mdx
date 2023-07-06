@@ -1,26 +1,27 @@
 ---
 title: Checkbox
-description: "The Checkbox is a widely used input component for toggling between checked and unchecked states. It supports basic, controlled, and indeterminate states."
-arkDocs: https://ark-ui.com/docs/react/components/checkbox
+description: "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Checkbox.html"
 ---
 
 ---
 
-import DemoTabs from '../../../components/DemoTabs.astro'
-import  Potion  from '../../../components/Potion.astro'
-import { Checkbox } from "../../../ui/React/Checkbox/checkbox.tsx"
+import DemoTabs from "../../../components/DemoTabs.astro";
+import Potion from "../../../components/Potion.astro";
+import { Checkbox } from "@/potions/checkbox.tsx";
+import { CheckboxGroup } from "@/potions/checkboxGroup.tsx";
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div class="flex items-center">
-      <Checkbox  client:load />
-    </div>
-</div>
+<MdxExample>
+  <Checkbox client:load> Checkbox </Checkbox>
+</MdxExample>
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called _potions_.
 
-## Potion 
+## Potion
 
 <Potion>
 <Fragment slot="contentSlot">
@@ -48,17 +49,17 @@ export const checkboxPotion = tv({
 
 export type CheckboxProps = VariantProps<typeof checkboxPotion>;
 
-```
+````
 </Fragment>
 </Potion>
 
-## Components 
+## Components
 
 ### Default
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div class="flex items-center">
-      <Checkbox client:load />
+      <Checkbox className="flex-col" client:load />
     </div>
 </div>
 
@@ -104,7 +105,8 @@ export const Checkbox = ({ children, size }: CheckboxProps) => {
   );
 };
 
-```
+````
+
 </Fragment>
 
 <Fragment slot="vsc">
@@ -118,40 +120,38 @@ pui-checkbox
 
 ### With Label
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div class="flex items-center">
-      <Checkbox client:only="react">
-      Label
-      </Checkbox>
-    </div>
+<div class="flex w-full items-center justify-center rounded-md bg-surface-2 p-4">
+  <div class="flex items-center">
+    <Checkbox client:only="react">Label</Checkbox>
+  </div>
 </div>
 
 <br />
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
-```tsx
-<Checkbox>Label</Checkbox>
-```
+  ```tsx
+  <Checkbox>Label</Checkbox>
+  ```
 </div>
 
 <br />
 
 ### Sizes
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div class="flex items-center gap-2">
-      <Checkbox size="sm" client:load />
-      <Checkbox size="md" client:load />
-      <Checkbox size="lg" client:load />
-    </div>
+<div class="flex w-full items-center justify-center rounded-md bg-surface-2 p-4">
+  <div class="flex items-center gap-2">
+    <Checkbox size="sm" client:load />
+    <Checkbox size="md" client:load />
+    <Checkbox size="lg" client:load />
+  </div>
 </div>
 
 <br />
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
-```tsx
-<Checkbox size="sm"/>
-<Checkbox size="md"/>
-<Checkbox size="lg"/>
-```
+  ```tsx
+  <Checkbox size="sm" />
+  <Checkbox size="md" />
+  <Checkbox size="lg" />
+  ```
 </div>

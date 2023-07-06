@@ -1,11 +1,47 @@
 ---
-import { CodeExample } from "./CodeExample";
+import { Check, Copy } from "lucide-react";
 ---
 
-<CodeExample client:only="react">
-  <Fragment slot="content">
-    <slot name="contentSlot"/>
-  </Fragment>
-</CodeExample>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const copyBtn = document.getElementById("copyBtn");
+    const contentDiv = document.getElementById("contentDiv");
+    const copy = document.getElementById("copy");
+    const check = document.getElementById("check");
+    copyBtn.addEventListener("click", function () {
+      navigator.clipboard.writeText(contentDiv.innerText).then(
+        function () {
+          copy?.classList.add("hidden");
+          check?.classList.remove("hidden");
+          //console.log("Copying to clipboard was successful!");
+          setTimeout(() => {
+            copy?.classList.remove("hidden");
+            check?.classList.add("hidden");
+          }, 1000);
+        },
+        function (err) {
+          console.error("Could not copy text: ", err);
+        }
+      );
+    });
+  });
+</script>
 
-
+<div 
+  class="max-h-80 w-full rounded-xl overflow-clip bg-[#1b1e28] relative p-4">
+  <button
+    id="copyBtn"
+    class="absolute p-4 top-4 right-4">
+    <Copy id="copy" className="text-white" client:load />
+    <Check
+      id="check"
+      className="text-white hidden"
+      client:load
+    />
+  </button>
+  <div class="max-h-72 overflow-y-auto no-scrollbar">
+    <div id="contentDiv">
+      <slot name="contentSlot" />
+    </div>
+  </div>
+</div>

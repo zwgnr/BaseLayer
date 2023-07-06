@@ -1,0 +1,128 @@
+---
+title: Calendar
+description: "A calendar displays one or more date grids and allows users to select a single date."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Calendar.html"
+---
+---
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { Calendar } from "@/potions/calendar"
+import { DatePicker } from "@/potions/datePicker"
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
+
+<MdxExample>
+  <Calendar client:load/>
+</MdxExample>
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { tv } from "tailwind-variants";
+
+const baseItemPotion = tv({
+  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
+});
+
+export const dropdownPotion = tv({
+  slots: {
+    content:
+      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
+    item: [baseItemPotion(), "mb-2 flex justify-between p-2"],
+    itemGroupLabel: "text-sm  font-bold",
+    optionItem: [baseItemPotion(), "w-full rounded-md p-2 text-sm"],
+    triggerItem: [baseItemPotion(), "inline-flex w-full flex-wrap gap-2"],
+    seperator: "w-full rounded-md border border-gray-200",
+  },
+});
+
+```
+</Fragment>
+</Potion>
+
+## Components
+
+### Default 
+
+<DemoTabs solidDisabled vueDisabled>
+  <Fragment slot="react">
+```tsx
+import { button } from "@/potions/button";
+import { dialogPotion } from "@/potions/dialogPotion";
+import {
+  Pressable as Button,
+  DialogBackdrop,
+  DialogCloseTrigger,
+  DialogContainer,
+  DialogContent,
+  DialogDescription,
+  Dialog as DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+  Portal,
+} from "@ark-ui/react";
+import { X } from "lucide-react";
+
+const { backdrop, container, content, description, title } = dialogPotion();
+
+export const Dialog = () => {
+  return (
+    <DialogRoot>
+      <DialogTrigger asChild>
+        <Button className={button()}>Open dialog</Button>
+      </DialogTrigger>
+      <Portal>
+        <DialogBackdrop className={backdrop()} />
+        <DialogContainer className={container()}>
+          <DialogContent className={content()}>
+            <div className="flex flex-col gap-8 p-6">
+              <div className="flex flex-col gap-1">
+                <DialogTitle className={title()}>Dialog Title</DialogTitle>
+                <DialogDescription className={description()}>
+                  Dialog Description
+                </DialogDescription>
+              </div>
+              <div className="flex w-full items-center justify-center gap-3">
+                <DialogCloseTrigger asChild>
+                  <Button
+                    className={button({
+                      state: "outline",
+                      className:
+                        "border-critical text-critical hover:bg-critical hover:text-black",
+                    })}
+                  >
+                    Cancel
+                  </Button>
+                </DialogCloseTrigger>
+                <Button className={button()}>Confirm</Button>
+              </div>
+            </div>
+            <DialogCloseTrigger asChild>
+              <Button className="absolute right-6 top-6">
+                <X className="text-fg" aria-label="Close dialog" />
+              </Button>
+            </DialogCloseTrigger>
+          </DialogContent>
+        </DialogContainer>
+      </Portal>
+    </DialogRoot>
+  );
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+pui-dialog
+```
+  </Fragment>
+</DemoTabs>
+
+

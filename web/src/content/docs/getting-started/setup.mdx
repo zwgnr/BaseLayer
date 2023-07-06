@@ -5,7 +5,6 @@ tags: ["tailwind.config.js", "global.css", "Path Alias", "IntelliSense", "Pretti
 ---
 ---
 
-import VariantDemo from '../../../components/VariantDemo.astro'
 
 ## VSCode
 
@@ -16,23 +15,10 @@ import VariantDemo from '../../../components/VariantDemo.astro'
 ## Manual Installation
 
 1. ### Dependencies
-    <VariantDemo>
-    <Fragment slot="react">
+
      ```bash
-     pnpm add @ark-ui/react lucide-react tailwind-variants
+     pnpm add react-aria-components tailwind-variants
      ```
-     </Fragment>
-     <Fragment slot="solid">
-     ```bash
-     pnpm add @ark-ui/solid lucide-solid tailwind-variants
-     ```
-     </Fragment>
-       <Fragment slot="vue">
-     ```bash
-     pnpm add @ark-ui/vue lucide-vue-next tailwind-variants
-     ```
-     </Fragment>
-    </VariantDemo>
 
 2.  ### Tailwind Preset
 
@@ -73,17 +59,17 @@ import VariantDemo from '../../../components/VariantDemo.astro'
             800: 'rgb(var(--primary-800))',
             900: 'rgb(var(--primary-900))',
           },
-          accent: {
-            DEFAULT: 'rgb(var(--accent-500))',
-            100: 'rgb(var(--accent-100))',
-            200: 'rgb(var(--accent-200))',
-            300: 'rgb(var(--accent-300))',
-            400: 'rgb(var(--accent-400))',
-            500: 'rgb(var(--accent-500))',
-            600: 'rgb(var(--accent-600))',
-            700: 'rgb(var(--accent-700))',
-            800: 'rgb(var(--accent-800))',
-            900: 'rgb(var(--accent-900))',
+          secondary: {
+            DEFAULT: 'rgb(var(--secondary-500))',
+            100: 'rgb(var(--secondary-100))',
+            200: 'rgb(var(--secondary-200))',
+            300: 'rgb(var(--secondary-300))',
+            400: 'rgb(var(--secondary-400))',
+            500: 'rgb(var(--secondary-500))',
+            600: 'rgb(var(--secondary-600))',
+            700: 'rgb(var(--secondary-700))',
+            800: 'rgb(var(--secondary-800))',
+            900: 'rgb(var(--secondary-900))',
           },
           positive: {
             DEFAULT: 'rgb(var(--positive-500))',
@@ -195,18 +181,18 @@ import VariantDemo from '../../../components/VariantDemo.astro'
      --primary-900: 123 74 59; /* ⬅ #7b4a3b */
      --on-primary: 23, 23, 23; /* ⬅ #171717 neutral-900 */
     
-     /*  accent #05b978 */
-     --accent-50: 218 245 235; /* ⬅ #daf5eb */
-     --accent-100: 205 241 228; /* ⬅ #cdf1e4 */
-     --accent-200: 193 238 221; /* ⬅ #c1eedd */
-     --accent-300: 155 227 201; /* ⬅ #9be3c9 */
-     --accent-400: 80 206 161; /* ⬅ #50cea1 */
-     --accent-500: 5 185 120; /* ⬅ #05b978 */
-     --accent-600: 5 167 108; /* ⬅ #05a76c */
-     --accent-700: 4 139 90; /* ⬅ #048b5a */
-     --accent-800: 3 111 72; /* ⬅ #036f48 */
-     --accent-900: 2 91 59; /* ⬅ #025b3b */
-     --on-accent: 23, 23, 23; /* ⬅ #171717 
+     /*  secondary #05b978 */
+     --secondary-50: 218 245 235; /* ⬅ #daf5eb */
+     --secondary-100: 205 241 228; /* ⬅ #cdf1e4 */
+     --secondary-200: 193 238 221; /* ⬅ #c1eedd */
+     --secondary-300: 155 227 201; /* ⬅ #9be3c9 */
+     --secondary-400: 80 206 161; /* ⬅ #50cea1 */
+     --secondary-500: 5 185 120; /* ⬅ #05b978 */
+     --secondary-600: 5 167 108; /* ⬅ #05a76c */
+     --secondary-700: 4 139 90; /* ⬅ #048b5a */
+     --secondary-800: 3 111 72; /* ⬅ #036f48 */
+     --secondary-900: 2 91 59; /* ⬅ #025b3b */
+     --on-secondary: 23, 23, 23; /* ⬅ #171717 
     
      /* positive  #75DD35 */
      --positive-50: 234 250 225; /* ⬅ #eafae1 */
@@ -298,8 +284,8 @@ import VariantDemo from '../../../components/VariantDemo.astro'
         --secondary: 222.2 47.4% 11.2%;
         --secondary-foreground: 210 40% 98%;
     
-        --accent: 216 34% 17%;
-        --accent-foreground: 210 40% 98%;
+        --secondary: 216 34% 17%;
+        --secondary-foreground: 210 40% 98%;
     
         --destructive: 0 63% 31%;
         --destructive-foreground: 210 40% 98%;

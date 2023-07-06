@@ -8,7 +8,7 @@ arkDocs: https://ark-ui.com/docs/react/components/pagination
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { Pagination } from '../../../ui/React/Pagination/pagination.tsx'
+import { Pagination } from '../../../Examples/React/Pagination/pagination.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center overflow-x-auto">
@@ -47,7 +47,7 @@ export const paginationPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pc-pagination 
+pui-pagination 
 ```
 </Fragment>
 <Fragment slot="react">
@@ -81,7 +81,7 @@ export const Pagination = (props: Partial<PaginationProps>) => (
           <PaginationPrevPageTrigger asChild>
             <button
               className={button({
-                className: "bg-surface-4 hover:bg-accent",
+                className: "bg-surface-4 hover:bg-secondary",
               })}
             >
               Previous
@@ -98,7 +98,7 @@ export const Pagination = (props: Partial<PaginationProps>) => (
               >
                 <button
                   className={button({
-                    className: "bg-surface-3 hover:bg-accent",
+                    className: "bg-surface-3 hover:bg-secondary",
                   })}
                 >
                   {page.value}
@@ -116,7 +116,7 @@ export const Pagination = (props: Partial<PaginationProps>) => (
           )}
 
           <PaginationNextPageTrigger asChild>
-            <button className={button({ intent: "accent" })}>Next</button>
+            <button className={button({ intent: "secondary" })}>Next</button>
           </PaginationNextPageTrigger>
         </PaginationList>
       </>

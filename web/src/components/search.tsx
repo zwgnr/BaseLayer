@@ -50,7 +50,7 @@ const Search = ({ searchList }: SearchProps) => {
       <div className="flex flex-col">
         <div className="flex flex-row items-center justify-center gap-2">
           <input
-            className="w-full mt-4 rounded-lg border-2 border-border bg-input p-2 text-text-2"
+            className="w-full mt-4 rounded-lg border-2 border-border bg-input p-2 text-fg-2"
             type="text"
             value={query}
             onChange={handleOnSearch}
@@ -58,7 +58,7 @@ const Search = ({ searchList }: SearchProps) => {
           />
         </div>
         {query.length > 1 && (
-          <p className="my-2 text-lg text-text-2">
+          <p className="my-2 text-lg text-fg-2">
             Found {posts.length} {posts.length === 1 ? "result" : "results"}{" "}
             for&nbsp;&rsquo;{query}&rsquo;
           </p>
@@ -71,8 +71,8 @@ const Search = ({ searchList }: SearchProps) => {
                   {/* eslint-disable-next-line react/jsx-key */}
                   <a href={`/docs/${post.slug}`}>
                     <div className="flex flex-col gap-2">
-                      <p className="font-bold text-text-3">{post.data.title}</p>
-                      <p className="text-md text-text-5">
+                      <p className="font-bold text-fg-3">{post.data.title}</p>
+                      <p className="text-md text-fg-5">
                         {post.data.description}
                       </p>
                       <div className="ml-2 flex gap-2">
@@ -83,7 +83,7 @@ const Search = ({ searchList }: SearchProps) => {
                             {post.data.tags.map((tag, tagIndex) => (
                               <p
                                 key={tagIndex}
-                                className="rounded-md bg-surface-3 p-1 text-xs text-text-5"
+                                className="rounded-md bg-surface-3 p-1 text-xs text-fg-5"
                               >
                                 {tag}
                               </p>

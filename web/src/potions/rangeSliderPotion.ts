@@ -5,9 +5,9 @@ export const rangeSliderPotion = tv({
     root: "w-full",
     control: "relative flex items-center py-2",
     track: "h-2 flex-1 rounded-md bg-surface-3",
-    range: "h-2 rounded-md bg-accent",
+    range: "h-2 rounded-md bg-secondary",
     thumb:
-      "h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
-    marker: "mt-2 text-sm text-text-4",
+      "h-6 w-6 rounded-full border-2 border-secondary bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
+    marker: "mt-2 text-sm text-fg-4",
   },
 });

@@ -5,16 +5,11 @@ const { solidDisabled, vueDisabled } = Astro.props;
 
 <ComponentTabs
   client:only="react"
-  solidDisabled={solidDisabled}
-  vueDisabled={vueDisabled}
 >
-  <Fragment slot="reactTab">
-    <slot name="react" />
-  </Fragment>
-  <Fragment slot="solidTab">
-    <slot name="solid" />
-  </Fragment>
   <Fragment slot="vscTab">
     <slot name="vsc" />
+  </Fragment>
+  <Fragment slot="reactTab">
+    <slot name="react" />
   </Fragment>
 </ComponentTabs>

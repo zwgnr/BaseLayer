@@ -1,3 +1,3 @@
-import { Checkbox as PotionCheckbox } from "@/ui/React/Checkbox/checkbox";
+import { Checkbox as PotionCheckbox } from "@/Examples/React/Checkbox/checkbox";
 
 export const Checkbox = PotionCheckbox

@@ -5,6 +5,35 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      keyframes: {
+        slideDown: {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        slideUp: {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        zoom: {
+          from: { transform: "scale(0.8)" },
+          to: { transform: "scale(1)" },
+        },
+        fade: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        fade: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+      },
+      animation: {
+        slideDown: "slideDown .5s ease-out",
+        slideUp: "slideUp .5s ease-out",
+        zoom: "zoom .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        fade: "fade .2s",
+        fadeOut: "fade reverse .2s ease-in",
+      },
       colors: {
         surface: {
           DEFAULT: "rgb(var(--surface))",
@@ -12,76 +41,33 @@ module.exports = {
           3: "rgb(var(--surface-3))",
           4: "rgb(var(--surface-4))",
         },
-        text: {
-          DEFAULT: "rgb(var(--text))",
-          2: "rgb(var(--text-2))",
-          3: "rgb(var(--text-3))",
-          4: "rgb(var(--text-4))",
-          5: "rgb(var(--text-5))",
-          6: "rgb(var(--text-6))",
+        fg: {
+          DEFAULT: "rgb(var(--fg))",
+          2: "rgb(var(--fg-2))",
+          3: "rgb(var(--fg-3))",
+          4: "rgb(var(--fg-4))",
+          5: "rgb(var(--fg-5))",
+          6: "rgb(var(--fg-6))",
         },
         border: "rgb(var(--border))",
         input: "rgb(var(--input))",
         focus: "rgb(var(--focus))",
         primary: {
-          DEFAULT: "rgb(var(--primary-500))",
-          100: "rgb(var(--primary-100))",
-          200: "rgb(var(--primary-200))",
-          300: "rgb(var(--primary-300))",
-          400: "rgb(var(--primary-400))",
-          500: "rgb(var(--primary-500))",
-          600: "rgb(var(--primary-600))",
-          700: "rgb(var(--primary-700))",
-          800: "rgb(var(--primary-800))",
-          900: "rgb(var(--primary-900))",
+          DEFAULT: "rgb(var(--primary))",
+          fg: "rgb(var(--primary-fg))",
         },
-        accent: {
-          DEFAULT: "rgb(var(--accent-500))",
-          100: "rgb(var(--accent-100))",
-          200: "rgb(var(--accent-200))",
-          300: "rgb(var(--accent-300))",
-          400: "rgb(var(--accent-400))",
-          500: "rgb(var(--accent-500))",
-          600: "rgb(var(--accent-600))",
-          700: "rgb(var(--accent-700))",
-          800: "rgb(var(--accent-800))",
-          900: "rgb(var(--accent-900))",
+        secondary: {
+          DEFAULT: "rgb(var(--secondary))",
+          fg: "rgb(var(--secondary-fg))",
         },
         positive: {
-          DEFAULT: "rgb(var(--positive-500))",
-          100: "rgb(var(--positive-100))",
-          200: "rgb(var(--positive-200))",
-          300: "rgb(var(--positive-300))",
-          400: "rgb(var(--positive-400))",
-          500: "rgb(var(--positive-500))",
-          600: "rgb(var(--positive-600))",
-          700: "rgb(var(--positive-700))",
-          800: "rgb(var(--positive-800))",
-          900: "rgb(var(--positive-900))",
+          DEFAULT: "rgb(var(--positive))",
         },
         warning: {
-          DEFAULT: "rgb(var(--warning-500))",
-          100: "rgb(var(--warning-100))",
-          200: "rgb(var(--warning-200))",
-          300: "rgb(var(--warning-300))",
-          400: "rgb(var(--warning-400))",
-          500: "rgb(var(--warning-500))",
-          600: "rgb(var(--warning-600))",
-          700: "rgb(var(--warning-700))",
-          800: "rgb(var(--warning-800))",
-          900: "rgb(var(--warning-900))",
+          DEFAULT: "rgb(var(--warning))",
         },
         critical: {
-          DEFAULT: "rgb(var(--critical-500))",
-          100: "rgb(var(--critical-100))",
-          200: "rgb(var(--critical-200))",
-          300: "rgb(var(--critical-300))",
-          400: "rgb(var(--critical-400))",
-          500: "rgb(var(--critical-500))",
-          600: "rgb(var(--critical-600))",
-          700: "rgb(var(--critical-700))",
-          800: "rgb(var(--critical-800))",
-          900: "rgb(var(--critical-900))",
+          DEFAULT: "rgb(var(--critical))",
         },
       },
       fontFamily: {
@@ -90,26 +76,26 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            color: "rgb(var(--text))",
+            color: "rgb(var(--fg))",
             h1: {
-              color: "rgb(var(--text))",
+              color: "rgb(var(--fg))",
             },
             h2: {
-              color: "rgb(var(--text-2))",
+              color: "rgb(var(--fg-2))",
             },
             h3: {
-              color: "rgb(var(--text-3))",
+              color: "rgb(var(--fg-3))",
             },
             a: {
-              color: "rgb(var(--text))",
+              color: "rgb(var(--fg))",
             },
             strong: {
-              color: "rgb(var(--text))",
+              color: "rgb(var(--fg))",
             },
           },
         },
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 };

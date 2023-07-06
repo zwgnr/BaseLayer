@@ -12,32 +12,35 @@ const SIDEBAR: SideNav = {
     { text: "Adaptive Themes", link: "/docs/themes/adaptive" },
     { text: "Customize", link: "/docs/themes/customize" },
   ],
-  Core: [
-    { text: "Accordion", link: "/docs/components/accordion" },
-    { text: "Avatar", link: "/docs/components/avatar" },
+  Components: [
+    //{ text: "Accordion", link: "/docs/components/accordion" },
+    //{ text: "Avatar", link: "/docs/components/avatar" },
     { text: "Badge", link: "/docs/components/badge" },
     { text: "Button", link: "/docs/components/button" },
-    { text: "Carousel", link: "/docs/components/carousel" },
+    //{ text: "Carousel", link: "/docs/components/carousel" },
     { text: "Checkbox", link: "/docs/components/checkbox" },
-    { text: "Color Picker", link: "/docs/components/color-picker" },
+    { text: "Checkbox Group", link: "/docs/components/checkbox-group" },
+    { text: "Calendar", link: "/docs/components/calendar" },
+    //{ text: "Color Picker", link: "/docs/components/color-picker" },
+    { text: "Date Picker", link: "/docs/components/date-picker" },
     { text: "Dialog", link: "/docs/components/dialog" },
-    { text: "Dropdown", link: "/docs/components/dropdown" },
-    { text: "Hover Card", link: "/docs/components/hover-card" },
-    { text: "Pagination", link: "/docs/components/pagination" },
-    { text: "Pin Input", link: "/docs/components/pin-input" },
-    { text: "Popover", link: "/docs/components/popover" },
-    { text: "Number Input", link: "/docs/components/number-input" },
-    { text: "Radio Group", link: "/docs/components/radio-group" },
-    { text: "Range Slider", link: "/docs/components/range-slider" },
-    { text: "Rating Group", link: "/docs/components/rating-group" },
-    { text: "Select", link: "/docs/components/select" },
+    //{ text: "Dropdown", link: "/docs/components/dropdown" },
+    //{ text: "Hover Card", link: "/docs/components/hover-card" },
+    //{ text: "Pagination", link: "/docs/components/pagination" },
+    //{ text: "Pin Input", link: "/docs/components/pin-input" },
+    //{ text: "Popover", link: "/docs/components/popover" },
+    //{ text: "Number Input", link: "/docs/components/number-input" },
+    //{ text: "Radio Group", link: "/docs/components/radio-group" },
+    //{ text: "Range Slider", link: "/docs/components/range-slider" },
+    //{ text: "Rating Group", link: "/docs/components/rating-group" },
+    //{ text: "Select", link: "/docs/components/select" },
     { text: "Slider", link: "/docs/components/slider" },
-    { text: "Splitter", link: "/docs/components/splitter" },
-    { text: "Switch", link: "/docs/components/switch" },
+    //{ text: "Splitter", link: "/docs/components/splitter" },
+    //{ text: "Switch", link: "/docs/components/switch" },
     { text: "Tabs", link: "/docs/components/tabs" },
-    { text: "Tags Input", link: "/docs/components/tags-input" },
-    { text: "Toast", link: "/docs/components/toast" },
-    { text: "Tooltip", link: "/docs/components/tooltip" },
+    //{ text: "Tags Input", link: "/docs/components/tags-input" },
+    //{ text: "Toast", link: "/docs/components/toast" },
+//{ text: "Tooltip", link: "/docs/components/tooltip" },
   ],
 };
 
@@ -49,15 +52,15 @@ const currentPage = Astro.url.pathname;
   class="small-scrollbar bottom-0 top-16 z-10 hidden w-full flex-col overflow-y-auto bg-surface-2 py-8 pl-8 pr-8 shadow-lg md:fixed md:flex md:w-64 md:bg-transparent md:shadow-none xl:pl-0"
 >
   <div class="mb-4 md:hidden">
-    <a class="text-xl font-bold text-text md:hidden" href="/">PotionUI</a>
+    <a class="text-xl font-bold text-fg md:hidden" href="/">PotionUI</a>
   </div>
   <ul class="nav-groups">
     {
       Object.entries(SIDEBAR).map(([header, children]) => (
         <li>
-          <div class="nav-group ">
+          <div class="nav-group">
             <div class="flex gap-2">
-              <h2 class="mb-2 text-base font-bold text-text-3">{header}</h2>
+              <h2 class="mb-2 text-base font-bold text-fg-3">{header}</h2>
             </div>
             <ul class="mb-4">
               {children.map((child) => {
@@ -65,16 +68,16 @@ const currentPage = Astro.url.pathname;
                 return (
                   <li
                     class:list={[
-                      "h-8 flex items-center p-4",
-                      currentPage === child.link ? "bg-primary rounded-lg" : "",
+                      "h-8 flex items-center p-4 border-l-2",
+                      currentPage === child.link ? "border-primary" : "",
                     ]}
                   >
                     <a
                       class:list={[
                         "text-sm w-full",
                         currentPage === child.link
-                          ? "font-bold text-black"
-                          : "text-text-5",
+                          ? "font-bold text-secondary"
+                          : "text-fg-5",
                       ]}
                       href={url}
                       aria-current={currentPage === child.link ? "page" : false}

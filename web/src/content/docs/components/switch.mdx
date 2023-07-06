@@ -7,7 +7,7 @@ arkDocs: https://ark-ui.com/docs/react/components/switch
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { Switch } from "../../../ui/React/Switch/switch"
+import { Switch } from "../../../Examples/React/Switch/switch"
 
 <div class="bg-surface-2 h-12 w-full flex justify-center items-center">
     <div className="flex items-center">
@@ -41,9 +41,9 @@ export const switchPotion = tv({
       primary: {
         control: "bg-surface-3 data-[checked]:bg-primary",
       },
-      accent: {
+      secondary: {
         control: "bg-surface-3 data-[checked]:bg-green-800",
-        thumb: "bg-accent",
+        thumb: "bg-secondary",
       },
     },
     size: {
@@ -130,7 +130,7 @@ export const Switch = ({ children, intent, size, ...props }: SwitchProps) => {
 
     <Fragment slot="vsc">
 ```bash
-pc-switch
+pui-switch
 ```
   </Fragment>
 </DemoTabs>

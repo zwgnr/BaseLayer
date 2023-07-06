@@ -7,7 +7,7 @@ arkDocs: https://ark-ui.com/docs/react/components/radio-group
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { RadioGroup } from "../../../ui/React/RadioGroup/RadioGroup.tsx"
+import { RadioGroup } from "../../../Examples/React/RadioGroup/RadioGroup.tsx"
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="not-prose flex items-center w-full justify-center">
@@ -33,7 +33,7 @@ export const ratingGroupPotion = tv({
     root: "",
     control: "flex gap-1",
     rating:
-      "[&[data-[highlighted]]:text-accent cursor-pointer fill-surface-3 text-text-3 transition duration-75  focus:outline-0 [&>svg]:h-12 [&>svg]:w-12 [&[data-highlighted]]:fill-accent",
+      "[&[data-[highlighted]]:text-secondary cursor-pointer fill-surface-3 text-text-3 transition duration-75  focus:outline-0 [&>svg]:h-12 [&>svg]:w-12 [&[data-highlighted]]:fill-secondary",
   },
 });
 
@@ -81,7 +81,7 @@ export const RadioGroup = () => {
 
     <Fragment slot="vsc">
 ```bash
-pc-radio-group
+pui-radio-group
 ```
   </Fragment>
 </DemoTabs>

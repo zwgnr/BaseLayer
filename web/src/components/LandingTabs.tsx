@@ -1,11 +1,11 @@
 import { TabContent, TabList, TabTrigger, Tabs } from "@ark-ui/react";
 
-import { ColorPicker } from "@/ui/React/ColorPicker/ColorPicker";
-import { Dialog } from "@/ui/React/Dialog/dialog";
-import { Pagination } from "@/ui/React/Pagination/pagination";
-import { RangeSlider } from "@/ui/React/RangeSlider/rangeSlider";
-import { Slider } from "@/ui/React/Slider/slider";
-import { Switch } from "@/ui/React/Switch/switch";
+import { ColorPicker } from "@/Examples/React/ColorPicker/ColorPicker";
+import { Dialog } from "@/Examples/Dialog/Dialog";
+import { Pagination } from "@/Examples/React/Pagination/pagination";
+import { RangeSlider } from "@/Examples/React/RangeSlider/rangeSlider";
+import { Slider } from "@/Examples/Slider/Slider";
+import { Switch } from "@/Examples/React/Switch/switch";
 import { Code, ComponentIcon, DropletIcon } from "lucide-react";
 import { useState } from "react";
 import { tv } from "tailwind-variants";
@@ -14,7 +14,7 @@ export const tabsPotion = tv({
   slots: {
     list: "bg-muted text-muted-foreground relative inline-flex h-10 items-center justify-center rounded-md",
     trigger:
-      " text-md  focus-visible:ring-ring inline-flex appearance-none  items-center justify-center whitespace-nowrap rounded-md px-3 py-2 font-medium text-text-5 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none  disabled:opacity-50 data-[selected]:bg-surface-2 data-[selected]:text-text data-[selected]:shadow-xl",
+      " text-md  focus-visible:ring-ring inline-flex appearance-none  items-center justify-center whitespace-nowrap rounded-md px-3 py-2 font-medium text-fg-5 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none  disabled:opacity-50 data-[selected]:bg-surface-2 data-[selected]:text-fg data-[selected]:shadow-xl",
     content:
       "focus-visible:ring-ring mt-4 p-4 focus-visible:outline-none focus-visible:ring-2",
     indicator: "-bottom-1 h-1 bg-primary",
@@ -76,7 +76,7 @@ export const LandingTabs = () => {
         <div className="flex w-full flex-col items-center gap-8 py-8 lg:flex-row lg:p-8">
           <div className="flex w-full flex-col items-center justify-center gap-16 lg:w-1/2">
             <div className="flex gap-4">
-              <button intent="accent" className="w-24 px-6">
+              <button intent="secondary" className="w-24 px-6">
                 Button
               </button>
               <Switch>Switch</Switch>

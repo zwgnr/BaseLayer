@@ -8,7 +8,7 @@ arkDocs: https://ark-ui.com/docs/react/components/rating-group
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { RatingGroup } from '../../../ui/React/RatingGroup/RatingGroup.tsx'
+import { RatingGroup } from '../../../Examples/React/RatingGroup/RatingGroup.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-72 h-24">
@@ -32,7 +32,7 @@ export const ratingGroupPotion = tv({
     rgRoot: "",
     rgControl: "flex gap-1",
     rgRating:
-      "[&[data-[highlighted]]:text-accent cursor-pointer fill-surface-3 text-text-3 transition duration-75  focus:outline-0 [&>svg]:h-12 [&>svg]:w-12 [&[data-highlighted]]:fill-accent",
+      "[&[data-[highlighted]]:text-secondary cursor-pointer fill-surface-3 text-text-3 transition duration-75  focus:outline-0 [&>svg]:h-12 [&>svg]:w-12 [&[data-highlighted]]:fill-secondary",
   },
 });
 
@@ -55,7 +55,7 @@ export const ratingGroupPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pc-rating-group 
+pui-rating-group 
 ```
 </Fragment>
 <Fragment slot="react">
@@ -79,7 +79,7 @@ export const RatingGroup = () => {
             <Rating className={rating()} key={index} index={index}>
               {({ isHalf, isHighlighted }) => {
                 return isHighlighted ? (
-                  <Star className="fill-accent text-accent" />
+                  <Star className="fill-secondary text-secondary" />
                 ) : (
                   <Star className="stroke-surface-4" />
                 );

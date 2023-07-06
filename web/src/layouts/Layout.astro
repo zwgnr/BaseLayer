@@ -4,20 +4,23 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-
+const currentPage = Astro.url.pathname;
 import "../styles/global.css";
 import Nav from "@/components/Nav.astro";
 ---
 
 <!DOCTYPE html>
-<html class="min-h-screen flex bg-surface" lang="en">
+<html class="flex min-h-screen bg-surface" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/potionIcon.png" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"
+    />
     <title>{title}</title>
     <script is:inline>
       // ☝️ This script prevent the FART effect.
@@ -44,9 +47,11 @@ import Nav from "@/components/Nav.astro";
     />
   </head>
 
-  <body class="flex flex-1 flex-col small-scrollbar overflow-x-hidden">
-    <Nav />
-    <main class="relative w-full flex-1 bg-surface max-w-7xl mx-auto ">
+  <body class="small-scrollbar flex flex-1 flex-col overflow-x-hidden">
+    {currentPage === "/" ? "" : <Nav />}
+    <main
+      class=`relative w-full flex-1 bg-surface ${currentPage === "/" ? "" : "max-w-7xl"} mx-auto `
+    >
       <slot />
     </main>
   </body>

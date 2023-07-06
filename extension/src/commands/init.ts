@@ -49,6 +49,7 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
     return;
   }
 
+  /*
   const options = ['react', 'solid', 'vue'];
   const framework = await vscode.window.showQuickPick(options, {
     placeHolder: 'What framework are you using?',
@@ -57,43 +58,34 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
     // User canceled the prompt without making a selection
     return;
   }
+*/
 
   const message = `You are about to do the following:\n
-  Install @ark-ui/${framework}, lucide-${framework}, tailwind-variants, and
-  overwrite your global.css, and modify you tailwind.config files.
+  Install react-aria-components, lucide-react, twc, and
+  overwrite your global.css + modify you tailwind.config files.
 Would you like to proceed?`;
 
-  const title = `Using ${packageManager}, installing @ark-ui/${framework} lucide-${framework} tailwind-variants.`;
+  const title = `Using ${packageManager}, installing react-aria-components, lucide-react, twc.`;
 
   const answer = await vscode.window.showWarningMessage(message, 'Yes', 'No');
 
-  interface Component {
-    framework: string;
-    name: string;
-    files: string;
-  }
-
-  const createSnippets = async (framework: string, projectRoot: string) => {
+  const createSnippets = async () => {
     // Fetch data from URL
-    const response = await fetch('https://potion-ui-nu.vercel.app/api/components.json');
+    const response = await fetch('https://potion-ui-nu.vercel.app/api/examples.json');
     const data = await response.json();
 
-    // Filter components based on framework
-    const filteredComponents = data.filter(
-      (component: Component) => component.framework.toLowerCase() === framework.toLowerCase()
-    );
-
+ 
     // Format components data
     const formattedComponents: { [key: string]: unknown } = {};
-    for (const component of filteredComponents) {
-      const baseName = component.name;
+    for (const example of data) {
+      const baseName = example.name;
       const kebabCaseName = baseName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-      formattedComponents[component.name] = {
-        scope: framework.toLowerCase() === 'vue' ? 'vue' : `typescriptreact`,
-        prefix: `pc-${kebabCaseName}`,
-        body: [component.files],
+      formattedComponents[example.name] = {
+        scope: `typescriptreact`,
+        prefix: `pui-${kebabCaseName}`,
+        body: [example.files],
         description: `${
-          component.name.charAt(0).toUpperCase() + component.name.slice(1)
+          example.name.charAt(0).toUpperCase() + example.name.slice(1)
         } Component`,
       };
     }
@@ -104,7 +96,7 @@ Would you like to proceed?`;
       fs.mkdirSync(snippetsDirPath, { recursive: true });
     }
     fs.writeFileSync(
-      path.join(snippetsDirPath, 'potion-components.code-snippets'),
+      path.join(snippetsDirPath, 'potion-examples.code-snippets'),
       JSON.stringify(formattedComponents, null, 2),
       'utf8'
     );
@@ -230,7 +222,7 @@ Would you like to proceed?`;
 
   if (answer === 'Yes') {
     try {
-      createSnippets(framework, projectRoot);
+      createSnippets(projectRoot);
       createPotionDir();
       setGlobalStyles();
       copyPreset();
@@ -243,12 +235,12 @@ Would you like to proceed?`;
         },
         async () => {
           if (packageManager === 'npm') {
-            await exec(`npm add @ark-ui/${framework} lucide-${framework} tailwind-variants`, {
+            await exec(`npm i react-aria-components lucide-react`, {
               cwd: projectRoot,
             });
           } else {
             await exec(
-              `${packageManager} add @ark-ui/${framework} lucide-${framework} tailwind-variants`,
+              `${packageManager} add react-aria-components lucide-react`,
               {
                 cwd: projectRoot,
               }

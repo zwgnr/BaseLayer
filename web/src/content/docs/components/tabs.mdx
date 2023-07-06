@@ -7,15 +7,13 @@ arkDocs: https://ark-ui.com/docs/react/components/tabs
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { Tabs } from '../../../ui/React/Tabs/tabs.tsx'
+import { Tabs } from '../../../Examples/React/Tabs/Tabs.tsx'
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="not-prose flex items-center w-full justify-center">
-   <Tabs client:load />
-    </div>
-</div>
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
-<br />
+<MdxExample>
+    <Tabs client:load />
+</MdxExample>
 
 ## Installation
 
@@ -91,7 +89,7 @@ export const Tabs = () => (
 
     <Fragment slot="vsc">
 ```bash
-pc-tabs
+pui-tabs
 ```
   </Fragment>
 </DemoTabs>

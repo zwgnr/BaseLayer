@@ -30,17 +30,17 @@ export const tailwindPreset = `module.exports = {
         800: 'rgb(var(--primary-800))',
         900: 'rgb(var(--primary-900))',
       },
-      accent: {
-        DEFAULT: 'rgb(var(--accent-500))',
-        100: 'rgb(var(--accent-100))',
-        200: 'rgb(var(--accent-200))',
-        300: 'rgb(var(--accent-300))',
-        400: 'rgb(var(--accent-400))',
-        500: 'rgb(var(--accent-500))',
-        600: 'rgb(var(--accent-600))',
-        700: 'rgb(var(--accent-700))',
-        800: 'rgb(var(--accent-800))',
-        900: 'rgb(var(--accent-900))',
+      secondary: {
+        DEFAULT: 'rgb(var(--secondary-500))',
+        100: 'rgb(var(--secondary-100))',
+        200: 'rgb(var(--secondary-200))',
+        300: 'rgb(var(--secondary-300))',
+        400: 'rgb(var(--secondary-400))',
+        500: 'rgb(var(--secondary-500))',
+        600: 'rgb(var(--secondary-600))',
+        700: 'rgb(var(--secondary-700))',
+        800: 'rgb(var(--secondary-800))',
+        900: 'rgb(var(--secondary-900))',
       },
       positive: {
         DEFAULT: 'rgb(var(--positive-500))',
@@ -119,16 +119,16 @@ export const stylesPreset = `@tailwind base;
     --primary-800: 83 33 135; /* ⬅ #532187 */
     --primary-900: 59 20 111; /* ⬅ #3B146F */
 
-    /*  accent #2B91FF */
-    --accent-100: 212 241 255; /* #D4F1FF */
-    --accent-200: 170 223 255; /* #AADFFF */
-    --accent-300: 127 201 255; /* #7FC9FF */
-    --accent-400: 96 180 255; /* #60B4FF */
-    --accent-500: 43 145 255; /* #2B91FF */
-    --accent-600: 31 112 219; /* #1F70DB */
-    --accent-700: 21 83 183; /* #1553B7 */
-    --accent-800: 13 58 147; /* #0D3A93 */
-    --accent-900: 8 41 122; /* #08297A */
+    /*  secondary #2B91FF */
+    --secondary-100: 212 241 255; /* #D4F1FF */
+    --secondary-200: 170 223 255; /* #AADFFF */
+    --secondary-300: 127 201 255; /* #7FC9FF */
+    --secondary-400: 96 180 255; /* #60B4FF */
+    --secondary-500: 43 145 255; /* #2B91FF */
+    --secondary-600: 31 112 219; /* #1F70DB */
+    --secondary-700: 21 83 183; /* #1553B7 */
+    --secondary-800: 13 58 147; /* #0D3A93 */
+    --secondary-900: 8 41 122; /* #08297A */
 
     /* positive  #6DD32E  */
     --positive-100: 237 252 213; /* #EDFCD5 */
@@ -197,16 +197,16 @@ export const stylesPreset = `@tailwind base;
     --primary-800: 83 33 135; /* ⬅ #532187 */
     --primary-900: 59 20 111; /* ⬅ #3B146F */
 
-    /*  accent #2B91FF */
-    --accent-100: 212 241 255; /* #D4F1FF */
-    --accent-200: 170 223 255; /* #AADFFF */
-    --accent-300: 127 201 255; /* #7FC9FF */
-    --accent-400: 96 180 255; /* #60B4FF */
-    --accent-500: 43 145 255; /* #2B91FF */
-    --accent-600: 31 112 219; /* #1F70DB */
-    --accent-700: 21 83 183; /* #1553B7 */
-    --accent-800: 13 58 147; /* #0D3A93 */
-    --accent-900: 8 41 122; /* #08297A */
+    /*  secondary #2B91FF */
+    --secondary-100: 212 241 255; /* #D4F1FF */
+    --secondary-200: 170 223 255; /* #AADFFF */
+    --secondary-300: 127 201 255; /* #7FC9FF */
+    --secondary-400: 96 180 255; /* #60B4FF */
+    --secondary-500: 43 145 255; /* #2B91FF */
+    --secondary-600: 31 112 219; /* #1F70DB */
+    --secondary-700: 21 83 183; /* #1553B7 */
+    --secondary-800: 13 58 147; /* #0D3A93 */
+    --secondary-900: 8 41 122; /* #08297A */
 
     /* positive  #6DD32E  */
     --positive-100: 237 252 213; /* #EDFCD5 */

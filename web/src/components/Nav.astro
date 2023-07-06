@@ -1,8 +1,10 @@
 ---
-import { Github, Menu, X, Paintbrush, Twitter } from "lucide-react";
+import { Github, Menu, X, Paintbrush, Twitter, Sun } from "lucide-react";
 import { SearchDialog } from "./SearchDialog";
 import { getCollection } from "astro:content";
 import { version } from "../../package.json";
+import { Icon } from "@iconify/react";
+import { Moon } from "lucide-react";
 
 const allDocs = await getCollection("docs");
 const currentPage = Astro.url.pathname;
@@ -31,6 +33,20 @@ const currentPage = Astro.url.pathname;
       docsMain?.classList.remove("hidden");
     }
   });
+
+  const themeBtn = document.getElementById("themeToggle");
+  themeBtn?.addEventListener("click", function () {
+    const moon = document.getElementById("moon");
+    const sun = document.getElementById("sun");
+
+    if (moon?.classList.contains("hidden")) {
+      moon?.classList.remove("hidden");
+      sun?.classList.add("hidden");
+    } else {
+      sun?.classList.remove("hidden");
+      moon?.classList.add("hidden");
+    }
+  });
 </script>
 
 <div
@@ -42,13 +58,17 @@ const currentPage = Astro.url.pathname;
     <div class="flex items-center gap-2">
       <a
         class:list={[
-          "text-xl md:text-3xl font-bold tracking-tighter text-text md:block",
+          "text-xl md:text-3xl font-bold tracking-tighter text-fg md:block",
           currentPage === "/" ? "" : "hidden",
         ]}
         href="/"
         ><div class="flex items-center">
-          <img class="h-12 w-12" src="/potion.png" />
-          <p class="-ml-2 flex items-center gap-2 text-2xl">
+          <Icon
+            icon="bxs:droplet"
+            client:load
+            className="text-primary h-10 w-10"
+          />
+          <p class="flex items-center gap-2 text-2xl">
             PotionUI <span
               class:list={[
                 "rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal",
@@ -63,52 +83,27 @@ const currentPage = Astro.url.pathname;
         aria-expanded="false"
         class:list={[currentPage === "/" ? "hidden" : ""]}
       >
-        <Menu id="menuIcon" className="block md:hidden h-8 w-8 text-text" />
-        <X id="xIcon" className="hidden h-8 w-8 text-text" />
+        <Menu id="menuIcon" className="block md:hidden h-8 w-8 text-fg" />
+        <X id="xIcon" className="hidden h-8 w-8 text-fg" />
       </button>
     </div>
     <div class="flex flex-row items-center gap-2">
       <a
         href="/docs"
-        class:list={["text-text-4", currentPage !== "/" ? "hidden" : ""]}
-        >Docs</a
+        class:list={["text-fg-4", currentPage !== "/" ? "hidden" : ""]}>Docs</a
       >
       <SearchDialog searchList={allDocs} client:load />
       <button
-        class="items flex justify-center gap-2 rounded-xl bg-surface-2 p-2 px-4 text-text hover:bg-surface-3"
-        id="button"
-        aria-describedby="tooltip"
-        ><p class="hidden md:block">Theme</p><Paintbrush /></button
+        id="themeToggle"
+        data-toggle-theme="dark,light"
+        data-act-class="ACTIVECLASS"
       >
-      <div
-        class="w-max-content text--2 absolute hidden rounded-xl bg-surface-2"
-        id="tooltip"
-        role="tooltip"
-      >
-        <div class="flex w-48 flex-col items-start gap-2 rounded-xl p-4">
-          <button
-            class="w-full rounded-xl p-2 text-start text-text hover:text-primary"
-            id="set-light"
-            data-set-theme="light"
-            data-act-class="ACTIVECLASS">Light</button
-          >
-          <button
-            class="w-full rounded-xl p-2 text-start text-text hover:text-primary"
-            id="set-dark"
-            data-set-theme="dark"
-            data-act-class="ACTIVECLASS">Dark</button
-          >
-          <button
-            class="w-full rounded-xl p-2 text-start text-text hover:text-primary"
-            id="set-candy"
-            data-set-theme="candy"
-            data-act-class="ACTIVECLASS">Candy</button
-          >
-        </div>
-      </div>
+        <Moon id="moon" className="text-fg" />
+        <Sun id="sun" className="hidden text-fg" />
+      </button>
       <a
         class:list={[
-          "rounded-xl p-2 text-text hover:bg-surface-2",
+          "rounded-xl p-2 text-fg hover:bg-surface-2",
           currentPage === "/" ? "hidden" : "",
         ]}
         href="https://github.com/zwagnr/PotionUI"
@@ -117,7 +112,7 @@ const currentPage = Astro.url.pathname;
       </a>
       <a
         class:list={[
-          "rounded-xl p-2 text-text hover:bg-surface-2",
+          "rounded-xl p-2 text-fg hover:bg-surface-2",
           currentPage === "/" ? "hidden" : "",
         ]}
         href="https://twitter.com/zwagnr"
@@ -127,60 +122,3 @@ const currentPage = Astro.url.pathname;
     </div>
   </div>
 </div>
-
-<script>
-  import { computePosition, shift, offset } from "@floating-ui/dom";
-
-  const button = document.querySelector("#button") as HTMLElement;
-  const tooltip = document.querySelector("#tooltip") as HTMLElement;
-
-  const setLight = document.querySelector("#set-light");
-  const setDark = document.querySelector("#set-dark");
-  const setCandy = document.querySelector("#set-candy");
-  function update() {
-    computePosition(button, tooltip, {
-      middleware: [offset(6), shift({ padding: 5 })],
-    }).then(({ x, y }) => {
-      Object.assign(tooltip.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-      });
-    });
-  }
-
-  function showTooltip() {
-    tooltip.style.display = "block";
-    update();
-  }
-
-  function hideTooltip() {
-    tooltip.style.display = "";
-  }
-  setLight?.addEventListener("click", hideTooltip);
-  setDark?.addEventListener("click", hideTooltip);
-
-  setCandy?.addEventListener("click", hideTooltip);
-  button?.addEventListener("click", showTooltip);
-  document.addEventListener("click", function (event) {
-    const target = event.target as Node;
-
-    if (
-      !tooltip?.contains(target) &&
-      target !== button &&
-      !button?.contains(target)
-    ) {
-      hideTooltip();
-    }
-  });
-</script>
-
-<style>
-  .ACTIVECLASS {
-    background-color: #c269e9;
-    color: black;
-  }
-  .ACTIVECLASS:hover {
-    background-color: #c269e9 !important;
-    color: black !important;
-  }
-</style>

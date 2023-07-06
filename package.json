@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ComponentParser": "ts-node --esm utils/ComponentParser.ts",
+    "ExampleParser": "ts-node --esm utils/ExampleParser.ts",
     "PotionParser": "ts-node --esm utils/PotionParser.ts",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
@@ -13,9 +13,9 @@
     "web/src/potions/*": [
       "pnpm run PotionParser"
     ],
-    "web/src/ui/**/*": [
-      "pnpm run ComponentParser",
-      "pnpm dlx prettier --write './web/src/templates/components.ts'"
+    "web/src/Examples/**/*": [
+      "pnpm run ExampleParser",
+      "pnpm dlx prettier --write './web/src/templates/examples.ts'"
     ]
   },
   "keywords": [],

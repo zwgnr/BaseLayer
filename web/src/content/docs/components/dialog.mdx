@@ -1,26 +1,22 @@
 ---
 title: Dialog
-description: "A dialog is a window overlaid on either the primary window or another dialog window. Content behind a modal dialog is inert, meaning that users cannot interact with it."
-arkDocs: https://ark-ui.com/docs/react/components/dialog
+description: "A dialog is an overlay shown above other content in an application."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Dialog.html"
 ---
 ---
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { Dialog } from "../../../ui/React/Dialog/dialog.tsx"
+import { Dialog } from "@/Examples/Dialog/Dialog"
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center w-full justify-center">
-      <Dialog client:load/>
-    </div>
-</div>
-
-<br />
-
+<MdxExample>
+  <Dialog client:load/>
+</MdxExample>
 
 ## Installation
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
-
 
 ## Potion
 
@@ -123,7 +119,7 @@ export const Dialog = () => {
 
     <Fragment slot="vsc">
 ```bash
-pc-dialog
+pui-dialog
 ```
   </Fragment>
 </DemoTabs>

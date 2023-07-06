@@ -10,7 +10,7 @@ const { pageHeadings } = Astro.props;
 
 <!--- adapted from idea by @fazzaamiarso-->
 
-  <h2 class="mb-4 font-bold text-text">On This Page</h2>
+  <h2 class="mb-4 font-bold text-fg">On This Page</h2>
   <ul class="space-y-4 text-sm">
     {
       pageHeadings.map((h) => {
@@ -18,7 +18,7 @@ const { pageHeadings } = Astro.props;
           h.depth < 4 && (
             <li
               class={clsx(
-                "text-text-2",
+                "text-fg-2",
                 h.depth === 2 && "text-[15px]",
                 h.depth === 3 && "ml-4 text-[14px]"
               )}
@@ -36,7 +36,7 @@ const { pageHeadings } = Astro.props;
 
 <style>
   .active {
-    color: #c269e9;
+    color: #09E57B;
   }
 </style>
 

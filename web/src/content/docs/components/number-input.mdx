@@ -7,7 +7,7 @@ arkDocs: https://ark-ui.com/docs/react/components/number-input
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { NumberInput } from '../../../ui/React/NumberInput/NumberInput.tsx'
+import { NumberInput } from '../../../Examples/React/NumberInput/NumberInput.tsx'
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="not-prose flex items-center w-full justify-center">
@@ -32,9 +32,9 @@ export const tagsInputPotion = tv({
   slots: {
     root: "w-full",
     control:
-      "flex flex-wrap gap-2 rounded-lg border-2 border-surface-3 bg-surface p-3 text-text shadow-md transition duration-100 focus-within:z-10  focus-within:border-accent focus-within:shadow-lg",
+      "flex flex-wrap gap-2 rounded-lg border-2 border-surface-3 bg-surface p-3 text-text shadow-md transition duration-100 focus-within:z-10  focus-within:border-secondary focus-within:shadow-lg",
     field: "bg-surface outline-none",
-    tag: "inline-flex h-6 items-center justify-center rounded-lg border border-border bg-surface pl-2.5 pr-1 text-sm data-[selected]:z-10 data-[selected]:border-accent [&[data=hidden]]:hidden",
+    tag: "inline-flex h-6 items-center justify-center rounded-lg border border-border bg-surface pl-2.5 pr-1 text-sm data-[selected]:z-10 data-[selected]:border-secondary [&[data=hidden]]:hidden",
     tagInput: "bg-surface outline-none",
     deleteTrigger:
       "ml-1 inline-flex h-4 items-center bg-transparent p-0 text-text-5 [&>svg]:h-4 [&>svg]:w-4",
@@ -56,12 +56,12 @@ export const tagsInputPotion = tv({
 import { tv } from "tailwind-variants";
 
 const baseTriggerStyles = tv({
-  base: "relative inline-flex cursor-pointer select-none appearance-none items-center whitespace-nowrap rounded-md bg-surface-3 align-middle font-semibold outline-none transition duration-100 ease-out hover:bg-surface-2 focus-visible:z-10 focus-visible:border-accent focus-visible:shadow-md data-[disabled]:cursor-not-allowed hover:data-[disabled]:cursor-not-allowed",
+  base: "relative inline-flex cursor-pointer select-none appearance-none items-center whitespace-nowrap rounded-md bg-surface-3 align-middle font-semibold outline-none transition duration-100 ease-out hover:bg-surface-2 focus-visible:z-10 focus-visible:border-secondary focus-visible:shadow-md data-[disabled]:cursor-not-allowed hover:data-[disabled]:cursor-not-allowed",
 });
 
 export const numberInputPotion = tv({
   slots: {
-    root: "text-md flex overflow-hidden rounded-lg border-2 border-transparent bg-surface-3 pl-4 shadow-sm focus-within:z-10 focus-within:border-accent focus-within:shadow-lg",
+    root: "text-md flex overflow-hidden rounded-lg border-2 border-transparent bg-surface-3 pl-4 shadow-sm focus-within:z-10 focus-within:border-secondary focus-within:shadow-lg",
     control: "border-surface-4 flex flex-col",
     field: "bg-surface-3 outline-none",
     decrementTrigger: [baseTriggerStyles()],
@@ -75,7 +75,7 @@ export const numberInputPotion = tv({
 
     <Fragment slot="vsc">
 ```bash
-pc-number-input
+pui-number-input
 ```
   </Fragment>
 </DemoTabs>

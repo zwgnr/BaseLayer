@@ -1,78 +1,18 @@
-import { styled } from "@/lib/twc";
-import { ptn, pv } from "@/lib/split";
-import { tv, type VariantProps } from "tailwind-variants";
+import { forwardRef, type ElementRef } from "react";
 
-export const Button = styled("button",  {
-  base: "ring-offset-background inline-flex appearance-none items-center justify-center rounded-md font-medium ring-focus transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-  variants: {
-    intent: {
-      primary: "text-primary-content bg-primary hover:bg-primary-400",
-      accent: "text-accent-content bg-accent hover:bg-accent-400",
-    },
-    state: {
-      filled: "",
-      ghost: "",
-      soft: "",
-      outline: "",
-    },
-    size: {
-      sm: "h-8 px-2 text-sm",
-      md: "text-md h-10 px-4",
-      lg: "h-12 px-6 text-lg",
-    },
-  },
-  compoundVariants: [
-    {
-      intent: "primary",
-      state: "ghost",
-      className: "border-2 border-primary bg-primary/30 hover:bg-primary",
-    },
-    {
-      intent: "primary",
-      state: "soft",
-      className:
-        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
-    },
-    {
-      intent: "primary",
-      state: "outline",
-      className:
-        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary-500 hover:text-black",
-    },
-    {
-      intent: "accent",
-      state: "ghost",
-      className: "border-2 border-primary bg-primary/30 hover:bg-primary",
-    },
-    {
-      intent: "accent",
-      state: "soft",
-      className:
-        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
-    },
-    {
-      intent: "accent",
-      state: "outline",
-      className:
-        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary-500 hover:text-black",
-    },
-  ],
-  defaultVariants: {
-    intent: "primary",
-    state: "filled",
-    size: "md",
-  },
-});
+import {
+  Button as AriaButton,
+  ButtonProps as AriaButtonProps,
+} from "react-aria-components";
 
-export const SmollButton = ptn("button", "bg-red-500 p-8");
-
+import { VariantProps, tv } from "tailwind-variants";
 
 export const button = tv({
-  base: "ring-offset-background inline-flex appearance-none items-center justify-center rounded-md font-medium ring-focus transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
   variants: {
     intent: {
-      primary: "text-primary-content bg-primary hover:bg-primary-400",
-      accent: "text-accent-content bg-accent hover:bg-accent-400",
+      primary: "bg-primary text-primary-fg hover:bg-primary/70",
+      secondary: "bg-secondary text-secondary-fg hover:bg-secondary/70",
     },
     state: {
       filled: "",
@@ -90,36 +30,36 @@ export const button = tv({
     {
       intent: "primary",
       state: "ghost",
-      className: "border-2 border-primary bg-primary/30 hover:bg-primary",
+      class: "border-2 border-primary bg-primary/30 hover:bg-primary",
     },
     {
       intent: "primary",
       state: "soft",
-      className:
+      class:
         "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
     },
     {
       intent: "primary",
       state: "outline",
-      className:
-        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary-500 hover:text-black",
+      class:
+        "text-primary-content hover:bg-primary-500 border-2 border-primary bg-transparent hover:text-black",
     },
     {
-      intent: "accent",
+      intent: "secondary",
       state: "ghost",
-      className: "border-2 border-primary bg-primary/30 hover:bg-primary",
+      class: "border-2 border-primary bg-primary/30 hover:bg-primary",
     },
     {
-      intent: "accent",
+      intent: "secondary",
       state: "soft",
-      className:
+      class:
         "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
     },
     {
-      intent: "accent",
+      intent: "secondary",
       state: "outline",
-      className:
-        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary-500 hover:text-black",
+      class:
+        "text-primary-content hover:bg-primary-500 border-2 border-primary bg-transparent hover:text-black",
     },
   ],
   defaultVariants: {
@@ -129,4 +69,24 @@ export const button = tv({
   },
 });
 
-export type buttonProps = VariantProps<typeof button>;
+export interface ButtonProps
+  extends AriaButtonProps,
+    VariantProps<typeof button> {
+  className?: string | undefined;
+}
+
+export const Button = forwardRef<ElementRef<typeof AriaButton>, ButtonProps>(
+  ({ className, size, intent, state, children, ...props }, ref) => {
+    return (
+      <AriaButton
+        className={button({ className, size, intent, state })}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </AriaButton>
+    );
+  }
+);
+
+Button.displayName = "Button";

@@ -1,20 +1,21 @@
 ---
 title: Slider
-description: "A slider allows users to make selections from a range of values. Think of it as a custom `<input type='range'/>` with the ability to achieve custom styling and accessibility."
-arkDocs: https://ark-ui.com/docs/react/components/slider
+description: "A slider allows a user to select one or more values within a range."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Slider.html"
 ---
 
 ---
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { Slider } from '../../../ui/React/Slider/slider.tsx'
+import { Slider } from '../../../Examples/Slider/Slider.tsx'
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center w-72 h-24">
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
+
+<MdxExample>
       <Slider client:load/>
-    </div>
-</div>
+</MdxExample>
 
 ## Installation
 
@@ -32,9 +33,9 @@ export const sliderPotion = tv({
     sliderRoot: "w-full",
     sliderControl: "relative flex items-center py-2",
     sliderTrack: "h-2 flex-1 rounded-md bg-surface-3",
-    sliderRange: "h-2 rounded-md bg-accent",
+    sliderRange: "h-2 rounded-md bg-secondary",
     sliderThumb:
-      "h-6 w-6 rounded-full border-2 border-accent bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
+      "h-6 w-6 rounded-full border-2 border-secondary bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
     sliderMarker: "mt-2 text-sm text-text-4",
   },
 });
@@ -50,7 +51,7 @@ export const sliderPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pc-slider 
+pui-slider 
 ```
 </Fragment>
 <Fragment slot="react">

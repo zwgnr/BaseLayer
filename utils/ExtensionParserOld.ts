@@ -29,7 +29,7 @@ function convertToJSON(filename: string, relativePath: string): void {
   const isSolid = relativePath.includes('Solid');
 
   // Set the prefix based on whether the file is from the "Solid" folder
-  const prefix = isSolid ? `pcs-${kebabCaseName}` : `pc-${kebabCaseName}`;
+  const prefix = isSolid ? `pcs-${kebabCaseName}` : `pui-${kebabCaseName}`;
 
   // Format array as JSON
   const json = {

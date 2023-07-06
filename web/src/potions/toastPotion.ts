@@ -4,13 +4,13 @@ export const toastPotion = tv({
   slots: {
     root: "min-w-56 rounded-xl border bg-surface p-4 shadow-lg",
     group: "p-4",
-    title: "text-sm font-semibold text-text",
-    description: "text-sm text-text-2",
+    title: "text-sm font-semibold text-fg",
+    description: "text-sm text-fg-2",
   },
   variants: {
     intent: {
       base: {
-        root: "border-none bg-accent",
+        root: "border-none bg-secondary",
         title: "text-white",
         description: "text-white",
       },

@@ -6,7 +6,7 @@ tags: ["Slots", "Variants", "Overrides"]
 
 ---
 
-import { PinInput } from '../../../ui/React/PinInput/PinInput.tsx'
+import { PinInput } from '../../../Examples/React/PinInput/PinInput.tsx'
 import { Pressable as Button } from "@ark-ui/react";
 import { button } from "@/potions/button";
 
@@ -88,7 +88,7 @@ export const button = tv({
   variants: {
     intent: {
       primary: "bg-primary text-primary-content hover:bg-primary-400",
-      accent: "bg-accent text-accent-content hover:bg-accent-400",
+      secondary: "bg-secondary text-secondary-content hover:bg-secondary-400",
     },
     state: {
       filled: "",
@@ -121,18 +121,18 @@ export const button = tv({
         "border-2 border-primary bg-transparent text-primary-content hover:bg-primary-500 hover:text-black",
     },
     {
-      intent: "accent",
+      intent: "secondary",
       state: "ghost",
       className: "border-2 border-primary bg-primary/30 hover:bg-primary",
     },
     {
-      intent: "accent",
+      intent: "secondary",
       state: "soft",
       className:
         "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
     },
     {
-      intent: "accent",
+      intent: "secondary",
       state: "outline",
       className:
         "border-2 border-primary bg-transparent text-primary-content hover:bg-primary-500 hover:text-black",
@@ -153,7 +153,7 @@ export type buttonProps = VariantProps<typeof button>;
 Here is a Button component using the button with several variants.
 
 <div class="flex items-center justify-center w-full p-2">
-<Button className={button({ intent:"accent", state:"ghost" })}>
+<Button className={button({ intent:"secondary", state:"ghost" })}>
 Button
 </Button>
 </div>
@@ -161,7 +161,7 @@ Button
 import { Pressable as Button } from "@ark-ui/react";
 import { button } from "@potions/button";
 
-<Button className={button({ intent:"accent", state:"ghost" })}>Button</Button>;
+<Button className={button({ intent:"secondary", state:"ghost" })}>Button</Button>;
 ```
 
 You can use the variants inline like shown above, or pass them as props to your component itself.

@@ -7,16 +7,16 @@ export const switchPotion = tv({
       "focus-visible:focus focus-visible:shadow-0-0-0-4 inline-flex flex-shrink-0 cursor-pointer items-center justify-start rounded-full  border-2 border-transparent transition-colors duration-150",
     thumb:
       "pointer-events-none block rounded-full bg-white shadow-lg ring-0 transition-transform",
-    label: "text-text-3",
+    label: "text-fg-3",
   },
   variants: {
     intent: {
       primary: {
         control: "bg-surface-3 data-[checked]:bg-primary",
       },
-      accent: {
+      secondary: {
         control: "bg-surface-3 data-[checked]:bg-green-800",
-        thumb: "bg-accent",
+        thumb: "bg-secondary",
       },
     },
     size: {

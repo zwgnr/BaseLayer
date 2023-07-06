@@ -1,36 +1,26 @@
-import { tabsPotion } from "@/potions/tabsPotion";
-import { TabContent, TabList, TabTrigger, Tabs } from "@ark-ui/react";
+import { Tab, TabList, TabPanel, TabsRoot } from "@/potions/tabs";
 import { Icon } from "@iconify/react";
-import { clsx } from "clsx";
+import clsx from "clsx";
+import { Check, Copy } from "lucide-react";
 import { useState } from "react";
-import { CopyToaster } from "./copyToaster";
-
-const { list, trigger, content, indicator } = tabsPotion();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ComponentTabs = (props: any) => {
-  const { vscTab, reactTab, solidTab, solidDisabled, vueDisabled } = props;
-  const [value, setValue] = useState<string | null>("react");
-  /*
-  useEffect(() => {
-    const loader = document.getElementById("loader") as HTMLElement;
-    if (loader) {
-      loader.style.display = "none";
-    }
-  }, []);
-*/
+  const { vscTab, reactTab } = props;
+  const [val, setVal] = useState<React.Key>("react");
+  const [copied, setCopied] = useState(false);
+
   const copyToClipboard = () => {
     let contentToCopy;
 
-    if (value === "vsc") {
+    if (val === "vsc") {
       contentToCopy = vscTab;
-    } else if (value === "react") {
+    } else if (val === "react") {
       contentToCopy = reactTab;
-    } else if (value === "solid") {
-      contentToCopy = solidTab;
     } else {
       contentToCopy = null; // handle the case when the value doesn't match any of the options
     }
+
     const parser = new DOMParser();
     // Parse the contentToCopy as HTML
     const doc = parser.parseFromString(contentToCopy.props.value, "text/html");
@@ -38,75 +28,62 @@ export const ComponentTabs = (props: any) => {
     const textContent = doc.body.textContent || "";
 
     navigator.clipboard.writeText(textContent);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
   };
 
   return (
-    <Tabs
-      value={value}
-      onChange={(e) => setValue(e.value)}
-      className="relative flex w-full  flex-col gap-4 rounded-xl"
+    <TabsRoot
+      selectedKey={val}
+      onSelectionChange={setVal}
+      className="relative flex w-full  flex-col rounded-xl"
     >
-      <TabList
-        className={list({
-          className:
-            "grid w-full grid-cols-3 border-gray-500 bg-surface-2 p-1 text-gray-500",
-        })}
-      >
-        <TabTrigger
-          className={trigger({
-            className:
-              "data-[selected]:bg-surface data-[selected]:font-bold data-[selected]:text-blue-400",
-          })}
-          value="react"
+      <TabList className="w-full rounded-b-none border-gray-500 bg-[#1b1e28]  p-1  text-gray-500">
+        <Tab
+          className="w-1/2 rounded-none border-b-2 border-surface-3 hover:bg-transparent aria-selected:border-b-primary aria-selected:bg-transparent aria-selected:text-blue-400"
+          id="vsc"
+        >
+          <Icon icon="devicon-plain:vscode" className="h-5 w-5" />
+        </Tab>
+        <Tab
+          className="w-1/2 rounded-none border-b-2 border-surface-3 hover:bg-transparent aria-selected:border-b-primary aria-selected:bg-transparent aria-selected:text-blue-400"
+          id="react"
         >
           <Icon icon="simple-icons:react" className="h-5 w-5" />
-        </TabTrigger>
-        <TabTrigger
-          disabled={solidDisabled && true}
-          className={trigger({
-            className:
-              "data-[selected]:bg-surface data-[selected]:font-bold data-[selected]:text-blue-400",
-          })}
-          value="solid"
-        >
-          <Icon icon="simple-icons:solid" className="h-5 w-5" />
-        </TabTrigger>
-        <TabTrigger
-          disabled={vueDisabled && true}
-          className={trigger({
-            className:
-              "data-[selected]:bg-transparent data-[selected]:font-bold data-[selected]:text-white",
-          })}
-          value="vue"
-        >
-          <Icon
-            icon="simple-icons:vuedotjs"
-            className={clsx(
-              "h-5 w-5",
-              vueDisabled === true ? null : "text-green-500"
-            )}
-          />
-        </TabTrigger>
+        </Tab>
       </TabList>
       <div className="absolute right-8 top-24 rounded-md ">
-        <CopyToaster copyToClipboard={copyToClipboard} />
+        <button onClick={copyToClipboard}>
+          <Copy
+            className={clsx(
+              "text-white hover:text-slate-600",
+              copied ? "hidden" : "block"
+            )}
+          />
+          <Check
+            className={clsx(
+              "text-white hover:text-slate-600",
+              copied ? "block" : "hidden"
+            )}
+          />
+        </button>
       </div>
 
-      <div className="overflow-y-auto rounded-lg bg-[#1b1e28]">
-        <TabContent className={content({ className: "" })} value="react">
+      <div className="w-full overflow-y-auto rounded-b-xl bg-[#1b1e28] ">
+        <TabPanel
+          className="no-scrollbar rounded-t-0 max-h-64 w-72 overflow-y-auto rounded-xl bg-[#1b1e28] md:w-full"
+          id="vsc"
+        >
+          {vscTab}
+        </TabPanel>
+        <TabPanel id="react">
           <div className="no-scrollbar max-h-64 w-72 overflow-y-auto rounded-xl md:w-full">
             {reactTab}
           </div>
-        </TabContent>
-        <TabContent className={content({ className: "-mt-8" })} value="solid">
-          <div className="no-scrollbar max-h-64 w-72 overflow-y-auto rounded-xl md:w-full">
-            {solidTab}
-          </div>
-        </TabContent>
-        <TabContent className={content({ className: "-mt-8" })} value="vue">
-          vue placeholder
-        </TabContent>
+        </TabPanel>
       </div>
-    </Tabs>
+    </TabsRoot>
   );
 };

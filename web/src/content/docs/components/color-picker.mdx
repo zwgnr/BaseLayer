@@ -7,7 +7,7 @@ arkDocs: https://ark-ui.com/docs/react/components/color-picker
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { ColorPicker } from "../../../ui/React/ColorPicker/ColorPicker.tsx"
+import { ColorPicker } from "../../../Examples/React/ColorPicker/ColorPicker.tsx"
 
 <div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
     <div className="flex items-center w-full justify-center">
@@ -40,7 +40,7 @@ export const colorPickerPotion = tv({
     swatch: "h-4 w-4 shrink-0 rounded-sm",
     swatchGroup: "inline-flex w-full flex-wrap gap-2",
     input:
-      "w-16 rounded-md border border-border bg-surface-2 p-1 text-text-4 ring-focus focus-visible:outline-none focus-visible:ring-2",
+      "w-16 rounded-md border border-border bg-surface-2 p-1 text-fg-4 ring-focus focus-visible:outline-none focus-visible:ring-2",
     channelSliderThumb:
       "h-4 w-4 -translate-x-2/4 -translate-y-2/4 rounded-full border-2 border-white shadow-lg shadow-black outline-none",
   },
@@ -118,7 +118,7 @@ export const ColorPicker = () => {
             <div className="flex w-full flex-row items-center gap-4 p-4">
               <ColorPickerEyeDropperTrigger asChild>
                 <button>
-                  <Pipette className="text-text-4" />
+                  <Pipette className="text-fg-4" />
                 </button>
               </ColorPickerEyeDropperTrigger>
               <div className="flex w-full flex-col gap-2">
@@ -158,7 +158,7 @@ export const ColorPicker = () => {
               <ColorPickerChannelInput className={input()} channel="alpha" />
             </div>
             <div className="p-4">
-              <p className="text-text-4">Presets</p>
+              <p className="text-fg-4">Presets</p>
               <ColorPickerSwatchGroup className={swatchGroup()}>
                 {presets.map((color) => (
                   <ColorPickerSwatch
@@ -183,7 +183,7 @@ export const ColorPicker = () => {
 
     <Fragment slot="vsc">
 ```bash
-pc-color-picker
+pui-color-picker
 ```
   </Fragment>
 </DemoTabs>
