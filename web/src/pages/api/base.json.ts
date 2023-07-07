@@ -91,6 +91,6 @@ const components: Component[] = [
 
 export const get: APIRoute = () => {
   return {
-    body: JSON.stringify(potions),
+    body: JSON.stringify(components),
   };
 };
