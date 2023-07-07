@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, TabsRoot } from "@/potions/tabs";
+import { Tab, TabList, TabPanel, TabsRoot } from "@/components/base/tabs";
 
 const items = [
   { value: "react", name: "React" },

@@ -10,7 +10,7 @@ import {
 
 const { root, viewport, control } = carouselPotion();
 
-import { carouselPotion } from "@/potions/carouselPotion";
+import { carouselPotion } from "@/components/base/carouselPotion";
 import { ChevronLeftSquare, ChevronRightSquare } from "lucide-react";
 
 export const Carousel = () => {

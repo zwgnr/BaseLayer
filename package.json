@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "ExampleParser": "ts-node --esm utils/ExampleParser.ts",
-    "PotionParser": "ts-node --esm utils/PotionParser.ts",
+    "BaseParser": "ts-node --esm utils/BaseParser.ts",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "lint-staged": {
-    "web/src/potions/*": [
-      "pnpm run PotionParser"
+    "web/src/components/base/*": [
+      "pnpm run BaseParser"
     ],
     "web/src/Examples/**/*": [
       "pnpm run ExampleParser",

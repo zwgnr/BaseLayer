@@ -1,4 +1,4 @@
-import { ToastPotionProps, toastPotion } from "@/potions/toastPotion";
+import { ToastPotionProps, toastPotion } from "@/components/base/toastPotion";
 import {
   Portal,
   ToastCloseTrigger,

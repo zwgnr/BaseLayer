@@ -7,8 +7,8 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Calendar.html"
 ---
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion  from '../../../components/Potion.astro'
-import { Calendar } from "@/potions/calendar"
-import { DatePicker } from "@/potions/datePicker"
+import { Calendar } from "@/components/base/calendar"
+import { DatePicker } from "@/components/base/datePicker"
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 <MdxExample>
@@ -53,8 +53,8 @@ export const dropdownPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
-import { button } from "@/potions/button";
-import { dialogPotion } from "@/potions/dialogPotion";
+import { button } from "@/components/base/button";
+import { dialogPotion } from "@/components/base/dialogPotion";
 import {
   Pressable as Button,
   DialogBackdrop,

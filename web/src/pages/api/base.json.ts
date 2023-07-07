@@ -1,12 +1,12 @@
 import type { APIRoute } from "astro";
 
-type Potion = {
+type Component = {
   potion: string;
   name: string;
   files: string;
 };
 
-const potions: Potion[] = [
+const components: Component[] = [
   {
     potion: "colorPicker",
     name: "ColorPicker",

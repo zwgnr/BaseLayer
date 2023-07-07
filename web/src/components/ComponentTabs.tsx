@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, TabsRoot } from "@/potions/tabs";
+import { Tab, TabList, TabPanel, TabsRoot } from "@/components/base/tabs";
 import { Icon } from "@iconify/react";
 import clsx from "clsx";
 import { Check, Copy } from "lucide-react";

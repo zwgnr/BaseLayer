@@ -1,4 +1,4 @@
-import { splitterPotion } from "@/potions/splitterPotion";
+import { splitterPotion } from "@/components/base/splitterPotion";
 import {
   SplitterPanel,
   SplitterResizeTrigger,

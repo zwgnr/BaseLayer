@@ -1,3 +1,3 @@
-import { Button } from "@/potions/button";
+import { Button } from "@/components/base/button";
 
 <Button>Button</Button>;

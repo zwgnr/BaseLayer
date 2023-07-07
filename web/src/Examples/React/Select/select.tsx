@@ -1,4 +1,4 @@
-import { selectPotion } from "@/potions/selectPotion";
+import { selectPotion } from "@/components/base/selectPotion";
 import {
   Portal,
   SelectContent,

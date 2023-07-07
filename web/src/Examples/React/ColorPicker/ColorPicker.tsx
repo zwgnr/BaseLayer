@@ -1,4 +1,4 @@
-import { colorPicker, colorPicker as cp } from "@/potions/colorPicker";
+import { colorPicker, colorPicker as cp } from "@/components/base/colorPicker";
 
 import {
   ColorPickerArea,

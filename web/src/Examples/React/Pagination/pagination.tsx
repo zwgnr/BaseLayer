@@ -1,4 +1,4 @@
-import { button } from "@/potions/button";
+import { button } from "@/components/base/button";
 import {
   PaginationEllipsis,
   PaginationList,
@@ -9,7 +9,7 @@ import {
   type PaginationProps,
 } from "@ark-ui/react";
 
-import { paginationPotion } from "@/potions/paginationPotion";
+import { paginationPotion } from "@/components/base/paginationPotion";
 
 const { root, list, pageTrigger, ellipsis } = paginationPotion();
 

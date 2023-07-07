@@ -1,10 +1,10 @@
-import { Button } from "@/potions/button";
+import { Button } from "@/components/base/button";
 
 import {
   DialogContent,
   DialogModal,
   DialogTrigger,
-} from "@/potions/dialog";
+} from "@/components/base/dialog";
 import { Search as SearchIcon } from "lucide-react";
 import Search, { type SearchProps } from "./search";
 

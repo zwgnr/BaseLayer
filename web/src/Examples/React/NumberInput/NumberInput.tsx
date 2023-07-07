@@ -1,4 +1,4 @@
-import { numberInputPotion } from "@/potions/numberInputPotion";
+import { numberInputPotion } from "@/components/base/numberInputPotion";
 import {
   NumberInputControl,
   NumberInputDecrementTrigger,

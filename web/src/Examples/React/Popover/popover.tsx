@@ -1,5 +1,5 @@
-import { button } from "@/potions/button";
-import { popoverPotion } from "@/potions/popoverPotion";
+import { button } from "@/components/base/button";
+import { popoverPotion } from "@/components/base/popoverPotion";
 import {
   Pressable as Button,
   PopoverCloseTrigger,

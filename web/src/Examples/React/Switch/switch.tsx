@@ -7,7 +7,10 @@ import {
   type SwitchProps as ArkSwitchProps,
 } from "@ark-ui/react";
 
-import { switchPotion, type SwitchPotionProps } from "@/potions/switchPotion";
+import {
+  switchPotion,
+  type SwitchPotionProps,
+} from "@/components/base/switchPotion";
 import type { ReactNode } from "react";
 
 type SwitchProps = ArkSwitchProps &

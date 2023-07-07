@@ -61,11 +61,11 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
 */
 
   const message = `You are about to do the following:\n
-  Install react-aria-components, lucide-react, twc, and
+  Install react-aria-components, lucide-react and
   overwrite your global.css + modify you tailwind.config files.
 Would you like to proceed?`;
 
-  const title = `Using ${packageManager}, installing react-aria-components, lucide-react, twc.`;
+  const title = `Using ${packageManager}, installing react-aria-components & lucide-react.`;
 
   const answer = await vscode.window.showWarningMessage(message, 'Yes', 'No');
 
@@ -185,45 +185,45 @@ Would you like to proceed?`;
     fs.writeFileSync(tailwindConfigPath, tailwindConfig);
   }
 
-  const createPotionDir = async () => {
+  const createBaseDir = async () => {
     const isAppDir = await findDirectory(projectRoot, 'app');
     const srcDir = await findDirectory(projectRoot, 'src');
 
-    let potionsDir;
+    let baseDir;
 
     if (srcDir) {
       // Create potions directory inside the 'src' directory if it doesn't already exist
-      potionsDir = path.join(projectRoot, 'src', 'potions');
-      if (!fs.existsSync(potionsDir)) {
-        fs.mkdirSync(potionsDir);
+      baseDir = path.join(projectRoot, 'src', 'potions');
+      if (!fs.existsSync(baseDir)) {
+        fs.mkdirSync(baseDir);
       }
     } else if (isAppDir) {
       if (fs.existsSync(path.join(projectRoot, 'next.config.js'))) {
         // Create potions directory at the root level if 'next.config.js' exists
-        potionsDir = path.join(projectRoot, 'potions');
-        if (!fs.existsSync(potionsDir)) {
-          fs.mkdirSync(potionsDir);
+        baseDir = path.join(projectRoot, 'components/base');
+        if (!fs.existsSync(baseDir)) {
+          fs.mkdirSync(baseDir);
         }
       } else {
         // Create potions directory inside the 'app' directory if it doesn't already exist
-        potionsDir = path.join(projectRoot, 'app', 'potions');
-        if (!fs.existsSync(potionsDir)) {
-          fs.mkdirSync(potionsDir);
+        baseDir = path.join(projectRoot, 'app', 'components/base');
+        if (!fs.existsSync(baseDir)) {
+          fs.mkdirSync(baseDir);
         }
       }
     } else {
       // Create potions directory at the root level if neither 'app' nor 'src' directories exist
-      potionsDir = path.join(projectRoot, 'potions');
-      if (!fs.existsSync(potionsDir)) {
-        fs.mkdirSync(potionsDir);
+      baseDir = path.join(projectRoot, 'components/base');
+      if (!fs.existsSync(baseDir)) {
+        fs.mkdirSync(baseDir);
       }
     }
   };
 
   if (answer === 'Yes') {
     try {
-      createSnippets(projectRoot);
-      createPotionDir();
+      createSnippets();
+      createBaseDir();
       setGlobalStyles();
       copyPreset();
       updateTailwindConfig();

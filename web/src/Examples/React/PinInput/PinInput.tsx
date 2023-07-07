@@ -1,4 +1,4 @@
-import { pinInputPotion } from "@/potions/pinInputPotion";
+import { pinInputPotion } from "@/components/base/pinInputPotion";
 import {
   PinInputControl,
   PinInputField,

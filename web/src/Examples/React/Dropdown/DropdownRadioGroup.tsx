@@ -1,5 +1,5 @@
-import { dropdownPotion } from "@/potions/dropdownPotion";
-import { radioGroupPotion } from "@/potions/radioGroupPotion";
+import { dropdownPotion } from "@/components/base/dropdownPotion";
+import { radioGroupPotion } from "@/components/base/radioGroupPotion";
 import {
   MenuContent as DropdownContent,
   MenuItemGroup as DropdownItemGroup,

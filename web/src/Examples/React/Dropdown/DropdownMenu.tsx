@@ -1,4 +1,4 @@
-import { dropdownPotion } from "@/potions/dropdownPotion";
+import { dropdownPotion } from "@/components/base/dropdownPotion";
 import {
   MenuContent as DropdownContent,
   MenuItem as DropdownItem,

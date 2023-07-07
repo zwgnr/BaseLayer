@@ -1,4 +1,4 @@
-import { checkbox, type CheckboxPotionProps } from "@/potions/checkbox";
+import { checkbox, type CheckboxPotionProps } from "@/components/base/checkbox";
 import { Check } from "lucide-react";
 
 import {

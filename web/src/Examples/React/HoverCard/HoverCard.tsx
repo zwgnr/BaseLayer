@@ -1,5 +1,5 @@
-import { button } from "@/potions/button";
-import { hoverCardPotion } from "@/potions/hoverCardPotion";
+import { button } from "@/components/base/button";
+import { hoverCardPotion } from "@/components/base/hoverCardPotion";
 import {
   Pressable as Button,
   HoverCardArrow,

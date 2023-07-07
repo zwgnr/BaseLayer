@@ -1,4 +1,4 @@
-import { SliderLabel, SliderRoot, SliderThumb } from "@/potions/slider";
+import { SliderLabel, SliderRoot, SliderThumb } from "@/components/base/slider";
 
 export const Slider = () => {
   return (

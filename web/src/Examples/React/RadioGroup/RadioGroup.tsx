@@ -1,4 +1,4 @@
-import { radioGroupPotion } from "@/potions/radioGroupPotion";
+import { radioGroupPotion } from "@/components/base/radioGroupPotion";
 import {
   Radio,
   RadioControl,

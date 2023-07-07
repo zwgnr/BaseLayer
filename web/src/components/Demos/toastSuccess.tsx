@@ -1,5 +1,5 @@
 import { useToast } from "@ark-ui/react";
-import { button } from "@/potions/button";
+import { button } from "@/components/base/button";
 import { Toast } from "@/Examples/React/Toast/toast";
 
 export const ToastSuccess = () => {

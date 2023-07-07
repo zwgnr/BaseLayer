@@ -3,7 +3,6 @@ import { getWorkspaceRoot } from '../lib/getWorkspaceRoot';
 import { findDirectory } from '../lib/findDirectory';
 import * as fs from 'fs';
 import * as path from 'path';
-
 const fetch = require('node-fetch');
 
 export const addCommand = vscode.commands.registerCommand('extension.add', async () => {
@@ -46,43 +45,43 @@ export const addCommand = vscode.commands.registerCommand('extension.add', async
   }
 
   try {
-    const response = await fetch('https://potion-ui-nu.vercel.app/api/potions.json');
+    const response = await fetch('https://potion-ui-nu.vercel.app/api/base.json');
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const potions = await response.json();
+    const components = await response.json();
 
     const workspaceRoot = getWorkspaceRoot();
     if (workspaceRoot === null) {
       return;
     }
 
-    const potionsDir = await findDirectory(workspaceRoot, 'potions');
+    const baseDir = await findDirectory(workspaceRoot, 'base');
 
-    if (!potionsDir) {
-      vscode.window.showErrorMessage(
-        'Potions Directory not found, please create one and try again!'
-      );
+    if (!baseDir) {
+      vscode.window.showErrorMessage('Base Directory not found, please create one and try again!');
       return;
     }
 
     for (const selectedOption of selections) {
-      const potion = potions.find((potion: { name: string }) => potion.name === selectedOption);
-      if (potion) {
-        const fileName = `${potion.potion}.tsx`;
-        const content = potion.files;
-        const filePath = path.join(potionsDir, fileName);
+      const component = components.find(
+        (component: { name: string }) => component.name === selectedOption
+      );
+      if (component) {
+        const fileName = `${component.component}.tsx`;
+        const content = component.files;
+        const filePath = path.join(baseDir, fileName);
         fs.writeFileSync(filePath, content);
         console.log('File created:', filePath);
       } else {
-        console.error(`Potion not found for option: ${selectedOption}`);
+        console.error(`Component not found for option: ${selectedOption}`);
       }
     }
-    vscode.window.showInformationMessage(`Potions created`);
+    vscode.window.showInformationMessage(`Components created`);
     return;
   } catch (error) {
-    console.error('Error retrieving potions:', error);
+    console.error('Error retrieving Components:', error);
   }
 });

@@ -8,8 +8,8 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Button.html"
 ---
 
 import { Heart, Loader } from 'lucide-react'
-import { Button } from "@/potions/button"
-import { Calendar } from "@/potions/calendar"
+import { Button } from "@/components/base/button"
+import { Calendar } from "@/components/base/calendar"
 import Potion from '@/components/Potion.astro'
 import DemoTabs from '@/components/DemoTabs.astro'
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
@@ -147,7 +147,7 @@ pui-button
 
 <Fragment slot="react">
 ```tsx
-import { Button } from "@/potions/button";
+import { Button } from "@/components/base/button";
 
 <Button>Button</Button>;
 
@@ -171,7 +171,7 @@ import { Button } from "@/potions/button";
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
-import { Button } from '@/potions/button'
+import { Button } from '@/components/base/button'
 import { Heart } from "lucide-react";
 
 <Button>
@@ -205,7 +205,7 @@ pui-button-icon
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
-import { Button } from '@/potions/button'
+import { Button } from '@/components/base/button'
 import { Loader } from "lucide-react";
 
 <Button disabled>
@@ -238,7 +238,7 @@ pui-button-loader
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-import { Button } from "@/potions/button";
+import { Button } from "@/components/base/button";
 
 <Button intent="primary">Primary</Button>
 <Button intent="secondary">Accent</Button>
@@ -260,7 +260,7 @@ import { Button } from "@/potions/button";
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-  import { Button } from "@/potions/button";
+  import { Button } from "@/components/base/button";
 
  <Button state="filled">Filled</Button>
  <Button state="soft">Soft</Button>
@@ -283,7 +283,7 @@ import { Button } from "@/potions/button";
 
 
 ```tsx
-import { Button } from "@/potions/button";
+import { Button } from "@/components/base/button";
 
 <Button size="sm">sm</Button>
 <Button size="md">md</Button>

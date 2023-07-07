@@ -1,4 +1,4 @@
-import { tooltipPotion } from "@/potions/tooltipPotion";
+import { tooltipPotion } from "@/components/base/tooltipPotion";
 import {
   TooltipArrow,
   TooltipArrowTip,

@@ -1,4 +1,4 @@
-import { Button } from "@/potions/button";
+import { Button } from "@/components/base/button";
 import { useToast } from "@ark-ui/react";
 import { Toast } from "../../Examples/React/Toast/toast";
 

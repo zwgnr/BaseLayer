@@ -1,4 +1,4 @@
-import { tagsInputPotion } from "@/potions/tagsInputPotion";
+import { tagsInputPotion } from "@/components/base/tagsInputPotion";
 import {
   Tag,
   TagDeleteTrigger,

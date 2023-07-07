@@ -23,8 +23,8 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
 
     for (const declaration of importDeclarations) {
       const moduleSpecifier = declaration.getModuleSpecifierValue();
-      if (moduleSpecifier.startsWith('@/potions/')) {
-        const moduleName = moduleSpecifier.replace('@/potions/', '');
+      if (moduleSpecifier.startsWith('@/components/base/')) {
+        const moduleName = moduleSpecifier.replace('@/components/base/', '');
         potionModules.push(moduleName);
       }
     }
@@ -39,18 +39,18 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
         return;
       }
 
-      const potionsDir = await findDirectory(workspaceRoot, 'potions');
+      const baseDir = await findDirectory(workspaceRoot, 'base');
 
-      if (!potionsDir) {
+      if (!baseDir) {
         vscode.window.showErrorMessage(
-          'Potions Directory not found, please create one and try again!'
+          'Base Directory not found, please create one and try again!'
         );
         return;
       }
 
-      const modulePath = path.join(potionsDir, `${moduleName}.ts`);
+      const modulePath = path.join(baseDir, `${moduleName}.ts`);
 
-      const response = await fetch('https://potion-ui-nu.vercel.app/api/potions.json');
+      const response = await fetch('https://potion-ui-nu.vercel.app/api/base.json');
       const json: Array<{ potion: string; files: string }> = await response.json();
       const module = json.find((m) => m.potion === moduleName);
 
@@ -68,7 +68,7 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
         fs.writeFileSync(modulePath, module.files);
         vscode.window.showInformationMessage(`Created missing module: ${moduleName}`);
       } else {
-        vscode.window.showInformationMessage(`Module ${moduleName} not found in the Potions API.`);
+        vscode.window.showInformationMessage(`Module ${moduleName} not found in the Base API.`);
       }
     }
   }

@@ -1,4 +1,4 @@
-import { ratingGroupPotion } from "@/potions/ratingGroupPotion";
+import { ratingGroupPotion } from "@/components/base/ratingGroupPotion";
 import {
   Rating,
   RatingGroupControl,
