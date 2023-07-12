@@ -59,7 +59,7 @@ export const button = tv({
       intent: "secondary",
       state: "outline",
       class:
-        "text-primary-content hover:bg-primary-500 border-2 border-primary bg-transparent hover:text-black",
+        "text-primary-content hover:bg-primary-500 border-2 border-secondary bg-transparent hover:text-black",
     },
   ],
   defaultVariants: {

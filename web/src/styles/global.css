@@ -78,7 +78,13 @@
   }
 }
 
+.react-aria-DropIndicator[data-drop-target] {
+  outline: 1px solid #00FF00;
+}
+
 @layer utilities {
+
+
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

@@ -1,0 +1,91 @@
+---
+title: Menu
+description: "A menu displays a list of actions or options that a user can choose."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Menu.html"
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion from '../../../components/Potion.astro'
+import { MenuExample } from '../../../Examples/Menu/Menu.tsx'
+import { MenuFull } from '../../../Examples/Menu/MenuFull.tsx'
+
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
+
+<MdxExample>
+      <MenuFull client:load/>
+</MdxExample>
+
+
+<MdxExample>
+      <MenuExample client:load/>
+</MdxExample>
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```ts
+import { forwardRef, type ElementRef } from "react";
+
+import { ToggleButton, ToggleButtonProps } from "react-aria-components";
+
+import { VariantProps, tv } from "tailwind-variants";
+
+export const toggle = tv({
+  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg bg-surface-2 p-2 font-medium outline-none transition-transform  duration-100 disabled:pointer-events-none disabled:opacity-50 [&[aria-pressed=true]]:bg-primary",
+});
+
+export interface ToggleProps
+  extends ToggleButtonProps,
+    VariantProps<typeof toggle> {
+  className?: string | undefined;
+}
+
+export const Toggle = forwardRef<ElementRef<typeof ToggleButton>, ToggleProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <ToggleButton className={toggle({ className })} ref={ref} {...props}>
+        {children}
+      </ToggleButton>
+    );
+  }
+);
+
+Toggle.displayName = "Toggle";
+
+```
+</Fragment>
+</Potion>
+
+## Examples 
+
+### Default
+
+<DemoTabs vueDisabled solidDisabled>
+<Fragment slot="vsc">
+```tsx
+pui-toggle 
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import { Toggle } from "@/components/base/toggle";
+
+export const ToggleExample = () => {
+  return <Toggle>Mode</Toggle>;
+};
+
+
+```
+</Fragment>
+
+</DemoTabs>
+
+

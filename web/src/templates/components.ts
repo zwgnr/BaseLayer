@@ -17,7 +17,23 @@ export const components = [
   },
   {
     "name": "Dialog",
-    "files": "import { Button } from \"@/components/base/button\";\nimport { DialogContent, DialogModal, DialogTrigger } from \"@/components/base/dialog\";\nimport { Check } from \"lucide-react\";\nimport { Heading } from \"react-aria-components\";\n\nexport const Dialog = () => {\n  return (\n    <DialogTrigger>\n      <Button>Checkout</Button>\n      <DialogModal>\n        <DialogContent>\n          {({ close }) => (\n            <>\n              <Check className=\"h-8 w-8 text-green-500\" />\n              <Heading className=\"text-lg font-bold\">\n                Payment Successfull\n              </Heading>\n              <p className=\"text-sm text-fg-3\">\n                Your order has been placed. Check your email for order details!\n              </p>\n              <Button intent=\"secondary\" onPress={close}>\n                Back to Dashboard\n              </Button>\n            </>\n          )}\n        </DialogContent>\n      </DialogModal>\n    </DialogTrigger>\n  );\n};\n"
+    "files": "import { Button } from \"@/components/base/button\";\nimport {\n  DialogContent,\n  DialogModal,\n  DialogTrigger,\n} from \"@/components/base/dialog\";\nimport { Check } from \"lucide-react\";\nimport { Heading } from \"react-aria-components\";\n\nexport const Dialog = () => {\n  return (\n    <DialogTrigger>\n      <Button>Checkout</Button>\n      <DialogModal>\n        <DialogContent>\n          {({ close }) => (\n            <>\n              <Check className=\"h-8 w-8 text-green-500\" />\n              <Heading className=\"text-lg font-bold\">\n                Payment Successfull\n              </Heading>\n              <p className=\"text-sm text-fg-3\">\n                Your order has been placed. Check your email for order details!\n              </p>\n              <Button intent=\"secondary\" onPress={close}>\n                Back to Dashboard\n              </Button>\n            </>\n          )}\n        </DialogContent>\n      </DialogModal>\n    </DialogTrigger>\n  );\n};\n"
+  },
+  {
+    "name": "ListBox",
+    "files": "import { ListBox, ListBoxItem } from \"@/components/base/listBox\";\n\nexport const ListBoxExample = () => {\n  return (\n    <ListBox aria-label=\"Ice cream flavors\" selectionMode=\"multiple\">\n      <ListBoxItem>Chocolate</ListBoxItem>\n      <ListBoxItem>Mint</ListBoxItem>\n      <ListBoxItem>Strawberry</ListBoxItem>\n      <ListBoxItem>Vanilla</ListBoxItem>\n    </ListBox>\n  );\n};\n"
+  },
+  {
+    "name": "ListBoxReorderable",
+    "files": "import { ListBox, ListBoxItem } from \"@/components/base/listBox\";\nimport { useDragAndDrop } from \"react-aria-components\";\nimport { useListData } from \"react-stately\";\n\nexport const ListBoxReorderable = () => {\n  let list = useListData({\n    initialItems: [\n      { id: 1, name: \"Adobe Photoshop\" },\n      { id: 2, name: \"Adobe XD\" },\n      { id: 3, name: \"Adobe Dreamweaver\" },\n      { id: 4, name: \"Adobe InDesign\" },\n      { id: 5, name: \"Adobe Connect\" },\n    ],\n  });\n\n  let { dragAndDropHooks } = useDragAndDrop({\n    getItems: (keys) =>\n      [...keys].map((key) => ({ \"text/plain\": list.getItem(key).name })),\n    onReorder(e) {\n      if (e.target.dropPosition === \"before\") {\n        list.moveBefore(e.target.key, e.keys);\n      } else if (e.target.dropPosition === \"after\") {\n        list.moveAfter(e.target.key, e.keys);\n      }\n    },\n  });\n\n  return (\n    <ListBox\n      aria-label=\"Reorderable list\"\n      selectionMode=\"multiple\"\n      items={list.items}\n      dragAndDropHooks={dragAndDropHooks}\n    >\n      {(item: any) => <ListBoxItem>{item.name}</ListBoxItem>}\n    </ListBox>\n  );\n};\n"
+  },
+  {
+    "name": "Menu",
+    "files": "import { Button } from \"@/components/base/button\";\nimport { MenuConent, MenuItem, MenuTrigger } from \"@/components/base/menu\";\n\nexport const MenuExample = () => {\n  return (\n    <MenuTrigger>\n      <Button intent=\"secondary\">Edit</Button>\n      <MenuConent>\n        <MenuItem>Cut</MenuItem>\n        <MenuItem>Copy</MenuItem>\n        <MenuItem>Paste</MenuItem>\n      </MenuConent>\n    </MenuTrigger>\n  );\n};\n"
+  },
+  {
+    "name": "MenuFull",
+    "files": "import { Button } from \"@/components/base/button\";\nimport {\n  Header,\n  MenuConent,\n  MenuItem,\n  MenuSeperator,\n  MenuTrigger,\n  Section,\n} from \"@/components/base/menu\";\nimport { Settings } from \"lucide-react\";\n\nexport const MenuFull = () => {\n  return (\n    <MenuTrigger>\n      <Button className=\"h-full rounded-full p-4 text-xl\" state=\"outline\">\n        Me\n      </Button>\n      <MenuConent>\n        <Section>\n          <Header>me@hello.com</Header>\n        </Section>\n        <MenuSeperator />\n        <MenuItem>\n          <p>Settings</p>\n          <Settings />\n        </MenuItem>\n        <MenuItem>Paste</MenuItem>\n      </MenuConent>\n    </MenuTrigger>\n  );\n};\n"
   },
   {
     "name": "carousel",
@@ -85,7 +101,7 @@ export const components = [
   },
   {
     "name": "switch",
-    "files": "import {\n  Switch as ArkSwitch,\n  SwitchControl,\n  SwitchInput,\n  SwitchLabel,\n  SwitchThumb,\n  type SwitchProps as ArkSwitchProps,\n} from \"@ark-ui/react\";\n\nimport { switchPotion, type SwitchPotionProps } from \"@/components/base/switchPotion\";\nimport type { ReactNode } from \"react\";\n\ntype SwitchProps = ArkSwitchProps &\n  SwitchPotionProps & {\n    children?: ReactNode;\n  };\n\nexport const Switch = ({ children, intent, size, ...props }: SwitchProps) => {\n  const { root, control, thumb, label } = switchPotion({\n    intent,\n    size,\n  });\n\n  return (\n    <ArkSwitch className={root()} {...props}>\n      <SwitchInput />\n      <SwitchControl className={control()}>\n        <SwitchThumb className={thumb()} />\n      </SwitchControl>\n      {children ? (\n        <SwitchLabel className={label()}>{children}</SwitchLabel>\n      ) : null}\n    </ArkSwitch>\n  );\n};\n"
+    "files": "import {\n  Switch as ArkSwitch,\n  SwitchControl,\n  SwitchInput,\n  SwitchLabel,\n  SwitchThumb,\n  type SwitchProps as ArkSwitchProps,\n} from \"@ark-ui/react\";\n\nimport {\n  switchPotion,\n  type SwitchPotionProps,\n} from \"@/components/base/switchPotion\";\nimport type { ReactNode } from \"react\";\n\ntype SwitchProps = ArkSwitchProps &\n  SwitchPotionProps & {\n    children?: ReactNode;\n  };\n\nexport const Switch = ({ children, intent, size, ...props }: SwitchProps) => {\n  const { root, control, thumb, label } = switchPotion({\n    intent,\n    size,\n  });\n\n  return (\n    <ArkSwitch className={root()} {...props}>\n      <SwitchInput />\n      <SwitchControl className={control()}>\n        <SwitchThumb className={thumb()} />\n      </SwitchControl>\n      {children ? (\n        <SwitchLabel className={label()}>{children}</SwitchLabel>\n      ) : null}\n    </ArkSwitch>\n  );\n};\n"
   },
   {
     "name": "Tabs",
@@ -106,5 +122,9 @@ export const components = [
   {
     "name": "Slider",
     "files": "import { SliderLabel, SliderRoot, SliderThumb } from \"@/components/base/slider\";\n\nexport const Slider = () => {\n  return (\n    <SliderRoot defaultValue={30}>\n      <SliderLabel>Opacity</SliderLabel>\n      <SliderThumb />\n    </SliderRoot>\n  );\n};\n"
+  },
+  {
+    "name": "Toggle",
+    "files": "import { Toggle } from \"@/components/base/toggle\";\n\nexport const ToggleExample = () => {\n  return <Toggle>Mode</Toggle>;\n};\n"
   }
 ];
