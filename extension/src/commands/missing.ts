@@ -48,11 +48,11 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
         return;
       }
 
-      const modulePath = path.join(baseDir, `${moduleName}.ts`);
+      const modulePath = path.join(baseDir, `${moduleName}.tsx`);
 
       const response = await fetch('https://potion-ui-nu.vercel.app/api/base.json');
-      const json: Array<{ potion: string; files: string }> = await response.json();
-      const module = json.find((m) => m.potion === moduleName);
+      const json: Array<{ component: string; files: string }> = await response.json();
+      const module = json.find((m) => m.component === moduleName);
 
       if (module) {
         // Check if file already exists and contents are the same

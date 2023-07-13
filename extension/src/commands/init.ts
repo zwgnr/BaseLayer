@@ -193,7 +193,7 @@ Would you like to proceed?`;
     let baseDir;
   
     if (srcDir) {
-      baseDir = path.join(projectRoot, 'src', 'base');
+      baseDir = path.join(projectRoot, 'src', 'components', 'base');
     } else if (isAppDir && nextConfigExists) {
       baseDir = path.join(projectRoot, 'components', 'base');
     } else if (isAppDir) {
