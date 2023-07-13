@@ -1,15 +1,13 @@
 import { TabContent, TabList, TabTrigger, Tabs } from "@ark-ui/react";
 
-import { ColorPicker } from "@/Examples/React/ColorPicker/ColorPicker";
 import { Dialog } from "@/Examples/Dialog/Dialog";
-import { Pagination } from "@/Examples/React/Pagination/pagination";
-import { RangeSlider } from "@/Examples/React/RangeSlider/rangeSlider";
 import { Slider } from "@/Examples/Slider/Slider";
 import { Switch } from "@/components/base/switch";
 import { Code, ComponentIcon, DropletIcon } from "lucide-react";
 import { useState } from "react";
 import { tv } from "tailwind-variants";
 import { Button } from "./base/button";
+import { Calendar } from "./base/calendar";
 
 export const tabsPotion = tv({
   slots: {
@@ -83,16 +81,13 @@ export const LandingTabs = () => {
               <Switch>Switch</Switch>
             </div>
             <Slider />
-            <RangeSlider />
             <Dialog />
           </div>
           <div className="flex w-full justify-center lg:w-1/2">
-            <ColorPicker />
+            <Calendar />
           </div>
         </div>
-        <div className="hidden w-full items-center justify-center lg:flex">
-          <Pagination />
-        </div>
+
       </TabContent>
       <TabContent className="w-full lg:w-3/4" value="vsc">
         <div className="relative mt-12 flex flex-col items-center gap-4 lg:h-[500px] lg:flex-row">
