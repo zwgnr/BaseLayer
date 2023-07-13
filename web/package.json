@@ -22,6 +22,7 @@
     "@phosphor-icons/react": "^2.0.10",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.3",
+    "@react-stately/data": "^3.10.0",
     "@types/node": "^20.2.3",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",

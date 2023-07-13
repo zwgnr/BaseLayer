@@ -1,0 +1,176 @@
+---
+title: Table
+description: "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Table.html"
+---
+
+---
+
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { TableExample } from "@/Examples/Table/Table"
+import { TableSortable } from "@/Examples/Table/TableSortable"
+import { TableReorderable } from "@/Examples/Table/TableReorderable"
+
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
+
+<MdxExample>
+      <TableExample client:load/>
+</MdxExample>
+
+<br />
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder *components/base*.
+
+## Potion 
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import { forwardRef, ReactNode, type ElementRef } from "react";
+
+import {
+  Switch as AriaSwitch,
+  SwitchProps as AriaSwitchProps,
+} from "react-aria-components";
+
+import { tv, type VariantProps } from "tailwind-variants";
+
+export const switchVariants = tv({
+  slots: {
+    root: "flex items-center gap-2 transition-none duration-200",
+    indicator:
+      "h-6 w-10 cursor-pointer rounded-2xl bg-surface-3 duration-200 before:mx-[2px] before:mt-[2px] before:block before:h-5 before:w-5 before:rounded-2xl before:bg-white before:transition-all",
+    label: "text-fg-3",
+  },
+  variants: {
+    selected: {
+      true: { indicator: "bg-primary before:translate-x-4" },
+    },
+  },
+  defaultVariants: {
+    selected: false,
+  },
+});
+
+export type SwitchVariantProps = VariantProps<typeof switchVariants>;
+
+interface SwitchProps
+  extends VariantProps<typeof switchVariants>,
+    AriaSwitchProps {
+  children?: ReactNode;
+  className?: string | undefined;
+}
+
+export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <AriaSwitch
+        className={switchVariants().root({ className })}
+        ref={ref}
+        {...props}
+      >
+        {({ isSelected }) => (
+          <>
+            <div
+              className={switchVariants({
+                selected: isSelected,
+              }).indicator()}
+            />
+            {children}
+          </>
+        )}
+      </AriaSwitch>
+    );
+  }
+);
+
+```
+</Fragment>
+</Potion>
+
+## Examples 
+
+### Default
+
+<MdxExample>
+      <TableExample client:load/>
+</MdxExample>
+
+<br />
+
+<DemoTabs >
+  <Fragment slot="react">
+```tsx
+import { Switch } from "@/components/base/switch";
+
+export const SwitchExample = () => {
+  return <Switch>On/Off</Switch>;
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+pui-table
+```
+  </Fragment>
+</DemoTabs>
+
+### Sortable
+
+<MdxExample>
+      <TableSortable client:load/>
+</MdxExample>
+
+<br />
+
+<DemoTabs >
+  <Fragment slot="react">
+```tsx
+import { Switch } from "@/components/base/switch";
+
+export const SwitchExample = () => {
+  return <Switch>On/Off</Switch>;
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+pui-table-sortable
+```
+  </Fragment>
+</DemoTabs>
+
+### Reorderable
+
+<MdxExample>
+      <TableReorderable client:load/>
+</MdxExample>
+
+<br />
+
+<DemoTabs >
+  <Fragment slot="react">
+```tsx
+import { Switch } from "@/components/base/switch";
+
+export const SwitchExample = () => {
+  return <Switch>On/Off</Switch>;
+};
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+pui-table-reorderable
+```
+  </Fragment>
+</DemoTabs>

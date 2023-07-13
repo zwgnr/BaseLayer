@@ -41,6 +41,9 @@ dependencies:
   '@radix-ui/react-avatar':
     specifier: ^1.0.3
     version: 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
+  '@react-stately/data':
+    specifier: ^3.10.0
+    version: 3.10.0(react@18.2.0)
   '@types/node':
     specifier: ^20.2.3
     version: 20.2.3
