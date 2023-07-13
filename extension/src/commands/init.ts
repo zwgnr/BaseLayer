@@ -61,11 +61,11 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
 */
 
   const message = `You are about to do the following:\n
-  Install react-aria-components, lucide-react and
-  overwrite your global.css + modify you tailwind.config files.
+  Install react-aria-components, lucide-react, tailwind-variants and
+  overwrite your global.css + modify your tailwind.config files.
 Would you like to proceed?`;
 
-  const title = `Using ${packageManager}, installing react-aria-components & lucide-react.`;
+  const title = `Using ${packageManager}, installing react-aria-components, tailwind-variants & lucide-react.`;
 
   const answer = await vscode.window.showWarningMessage(message, 'Yes', 'No');
 
@@ -162,7 +162,7 @@ Would you like to proceed?`;
     }
 
     function updateTailwindContentArray(tailwindConfigContent: string | string[]) {
-      const contentPathToAdd = "'./potions/**/*.{ts,tsx}', ";
+      const contentPathToAdd = "'./components/**/*.{ts,tsx}', ";
       const contentIndex = tailwindConfigContent.indexOf('content: [');
       if (contentIndex === -1) {
         vscode.window.showErrorMessage('Could not find "content" array in the configuration file');
@@ -188,37 +188,24 @@ Would you like to proceed?`;
   const createBaseDir = async () => {
     const isAppDir = await findDirectory(projectRoot, 'app');
     const srcDir = await findDirectory(projectRoot, 'src');
-
+    const nextConfigExists = fs.existsSync(path.join(projectRoot, 'next.config.js'));
+  
     let baseDir;
-
+  
     if (srcDir) {
-      // Create potions directory inside the 'src' directory if it doesn't already exist
-      baseDir = path.join(projectRoot, 'src', 'potions');
-      if (!fs.existsSync(baseDir)) {
-        fs.mkdirSync(baseDir);
-      }
+      baseDir = path.join(projectRoot, 'src', 'base');
+    } else if (isAppDir && nextConfigExists) {
+      baseDir = path.join(projectRoot, 'components', 'base');
     } else if (isAppDir) {
-      if (fs.existsSync(path.join(projectRoot, 'next.config.js'))) {
-        // Create potions directory at the root level if 'next.config.js' exists
-        baseDir = path.join(projectRoot, 'components/base');
-        if (!fs.existsSync(baseDir)) {
-          fs.mkdirSync(baseDir);
-        }
-      } else {
-        // Create potions directory inside the 'app' directory if it doesn't already exist
-        baseDir = path.join(projectRoot, 'app', 'components/base');
-        if (!fs.existsSync(baseDir)) {
-          fs.mkdirSync(baseDir);
-        }
-      }
+      baseDir = path.join(projectRoot, 'app', 'components', 'base');
     } else {
-      // Create potions directory at the root level if neither 'app' nor 'src' directories exist
-      baseDir = path.join(projectRoot, 'components/base');
-      if (!fs.existsSync(baseDir)) {
-        fs.mkdirSync(baseDir);
-      }
+      baseDir = path.join(projectRoot, 'components', 'base');
     }
-  };
+  
+    if (!fs.existsSync(baseDir)) {
+      fs.mkdirSync(baseDir, { recursive: true });
+    }
+  };  
 
   if (answer === 'Yes') {
     try {
@@ -235,12 +222,12 @@ Would you like to proceed?`;
         },
         async () => {
           if (packageManager === 'npm') {
-            await exec(`npm i react-aria-components lucide-react`, {
+            await exec(`npm i react-aria-components lucide-react tailwind-variants`, {
               cwd: projectRoot,
             });
           } else {
             await exec(
-              `${packageManager} add react-aria-components lucide-react`,
+              `${packageManager} add react-aria-components lucide-react tailwind-variants`,
               {
                 cwd: projectRoot,
               }

@@ -20,8 +20,8 @@ const baseJsonTsFile = path.resolve(dirname, '../web/src/pages/api/base.json.ts'
 // Read all files from the components directory
 const baseFiles = fs.readdirSync(baseDir);
 
-// Filter only .ts files
-const tsFiles = baseFiles.filter((file) => path.extname(file) === '.ts');
+// Filter only .tsx files
+const tsFiles = baseFiles.filter((file) => path.extname(file) === '.tsx');
 
 // Parse each .ts file into a Component object
 const components: Component[] = tsFiles.map((file) => {
@@ -52,14 +52,14 @@ const components: Component[] = tsFiles.map((file) => {
 const baseJsonTsContent = fs.readFileSync(baseJsonTsFile, 'utf8');
 
 // Convert new potions array to a string
-const potionsString = JSON.stringify(components, null, 2)
+const componentsString = JSON.stringify(components, null, 2)
   // Reformat to match the TypeScript syntax
   .replace(/"([^"]+)":/g, '$1:');
 
 // Replace existing potions array in the file content with the new one
 const newBaseJsonTsContent = baseJsonTsContent.replace(
-  /(const potions: Potion\[] = )\[[\s\S]*?\];/m,
-  `$1${potionsString};`
+  /(const components: Component\[] = )\[[\s\S]*?\];/m,
+  `$1${componentsString};`
 );
 
 // Write updated content back to the potions.json.ts file

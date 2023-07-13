@@ -11,7 +11,7 @@
   "categories": [
     "Other"
   ],
-  "repository": "https://github.com/zwagnr/PotionUI",
+  "repository": "https://github.com/zwgnr/PotionUI",
   "main": "./out/main.js",
   "contributes": {
     "commands": [
