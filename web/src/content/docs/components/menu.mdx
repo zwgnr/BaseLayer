@@ -9,18 +9,13 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Menu.html"
 
 import DemoTabs from '../../../components/DemoTabs.astro'
 import Potion from '../../../components/Potion.astro'
-import { MenuExample } from '../../../Examples/Menu/Menu.tsx'
-import { MenuFull } from '../../../Examples/Menu/MenuFull.tsx'
+import { MenuSimple } from '../../../Examples/Menu/MenuSimple.tsx'
+import { Menu } from '../../../Examples/Menu/Menu.tsx'
 
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 <MdxExample>
-      <MenuFull client:load/>
-</MdxExample>
-
-
-<MdxExample>
-      <MenuExample client:load/>
+      <Menu client:load/>
 </MdxExample>
 
 ## Installation
@@ -68,10 +63,44 @@ Toggle.displayName = "Toggle";
 
 ### Default
 
+<MdxExample>
+      <Menu client:load/>
+</MdxExample>
+
+<br />
+
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-toggle 
+pui-menu 
+```
+</Fragment>
+<Fragment slot="react">
+```tsx
+import { Toggle } from "@/components/base/toggle";
+
+export const ToggleExample = () => {
+  return <Toggle>Mode</Toggle>;
+};
+
+
+```
+</Fragment>
+
+</DemoTabs>
+
+### Simple
+
+<MdxExample>
+      <MenuSimple client:load/>
+</MdxExample>
+
+<br />
+
+<DemoTabs vueDisabled solidDisabled>
+<Fragment slot="vsc">
+```tsx
+pui-menu-simple 
 ```
 </Fragment>
 <Fragment slot="react">
