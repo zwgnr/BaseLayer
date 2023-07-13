@@ -5,10 +5,11 @@ import { Dialog } from "@/Examples/Dialog/Dialog";
 import { Pagination } from "@/Examples/React/Pagination/pagination";
 import { RangeSlider } from "@/Examples/React/RangeSlider/rangeSlider";
 import { Slider } from "@/Examples/Slider/Slider";
-import { Switch } from "@/Examples/React/Switch/switch";
+import { Switch } from "@/components/base/switch";
 import { Code, ComponentIcon, DropletIcon } from "lucide-react";
 import { useState } from "react";
 import { tv } from "tailwind-variants";
+import { Button } from "./base/button";
 
 export const tabsPotion = tv({
   slots: {
@@ -76,9 +77,9 @@ export const LandingTabs = () => {
         <div className="flex w-full flex-col items-center gap-8 py-8 lg:flex-row lg:p-8">
           <div className="flex w-full flex-col items-center justify-center gap-16 lg:w-1/2">
             <div className="flex gap-4">
-              <button intent="secondary" className="w-24 px-6">
+              <Button className="w-24 px-6">
                 Button
-              </button>
+              </Button>
               <Switch>Switch</Switch>
             </div>
             <Slider />

@@ -1,35 +1,3 @@
----
-title: Switch
-description: "A switch allows a user to turn a setting on or off."
-primative: "ReactAria"
-docLink: "https://react-spectrum.adobe.com/react-aria/Switch.html"
----
-
----
-
-import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion  from '../../../components/Potion.astro'
-import { SwitchExample } from "@/Examples/Switch/Switch"
-
-
-import { MdxExample } from '@/components/Demos/MdxExample.tsx'
-
-<MdxExample>
-      <SwitchExample client:load/>
-</MdxExample>
-
-<br />
-
-
-## Installation
-
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder *components/base*.
-
-## Potion 
-
-<Potion>
-<Fragment slot="contentSlot">
-```tsx
 import { forwardRef, ReactNode, type ElementRef } from "react";
 
 import {
@@ -87,36 +55,3 @@ export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
     );
   }
 );
-
-```
-</Fragment>
-</Potion>
-
-## Examples 
-
-### Default
-
-<MdxExample>
-      <SwitchExample client:load/>
-</MdxExample>
-
-<br />
-
-<DemoTabs >
-  <Fragment slot="react">
-```tsx
-import { Switch } from "@/components/base/switch";
-
-export const SwitchExample = () => {
-  return <Switch>On/Off</Switch>;
-};
-
-```
-  </Fragment>
-
-    <Fragment slot="vsc">
-```bash
-pui-switch
-```
-  </Fragment>
-</DemoTabs>
