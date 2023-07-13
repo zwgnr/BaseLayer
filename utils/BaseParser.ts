@@ -23,13 +23,13 @@ const baseFiles = fs.readdirSync(baseDir);
 // Filter only .tsx files
 const tsFiles = baseFiles.filter((file) => path.extname(file) === '.tsx');
 
-// Parse each .ts file into a Component object
+// Parse each .tsx file into a Component object
 const components: Component[] = tsFiles.map((file) => {
   // Read content of the file
   const fileContent = fs.readFileSync(path.join(baseDir, file), 'utf8');
 
   // Generate Potion object
-  const componentName = path.basename(file, '.ts');
+  const componentName = path.basename(file, '.tsx');
 
   // Generate displayName by removing "Potion" from the end of potionName
   let displayName = componentName;

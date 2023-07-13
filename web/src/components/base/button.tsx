@@ -1,5 +1,3 @@
-import { forwardRef, type ElementRef } from "react";
-
 import {
   Button as AriaButton,
   ButtonProps as AriaButtonProps,
@@ -75,18 +73,17 @@ export interface ButtonProps
   className?: string | undefined;
 }
 
-export const Button = forwardRef<ElementRef<typeof AriaButton>, ButtonProps>(
-  ({ className, size, intent, state, children, ...props }, ref) => {
-    return (
-      <AriaButton
-        className={button({ className, size, intent, state })}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </AriaButton>
-    );
-  }
-);
+export const Button = (props: ButtonProps) => {
+  const { className, size, intent, state, children, ...restProps } = props;
+
+  return (
+    <AriaButton
+      className={button({ className, size, intent, state })}
+      {...restProps}
+    >
+      {children}
+    </AriaButton>
+  );
+};
 
 Button.displayName = "Button";
