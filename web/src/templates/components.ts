@@ -4,6 +4,10 @@ export const components = [
     "files": "import { Badge } from \"@/components/base/badge\";\n\nexport const BadgeExample = () => <Badge>Badge</Badge>;\n"
   },
   {
+    "name": "Breadcrumbs",
+    "files": "import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from \"@/components/base/breadcrumbs\";\nimport { ChevronRight } from \"lucide-react\";\n\nexport const BreadcrumbsExample = () => {\n  return (\n    <Breadcrumbs>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>\n          <a href=\"/\">Home</a>\n        </BreadCrumbsLink>\n        <ChevronRight className=\"w-4 h-4\"/>\n      </BreadCrumbsItem>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>\n          <a href=\"/docs\">Docs</a>\n        </BreadCrumbsLink>\n        <ChevronRight className=\"w-4 h-4\"/>\n      </BreadCrumbsItem>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>\n      </BreadCrumbsItem>\n    </Breadcrumbs>\n  );\n};\n"
+  },
+  {
     "name": "Button",
     "files": "import { Button } from \"@/components/base/button\";\n\n<Button>Button</Button>;\n"
   },
@@ -14,6 +18,10 @@ export const components = [
   {
     "name": "ButtonLoader",
     "files": "import { Button } from \"@/components/button\";\nimport { Loader } from \"lucide-react\";\n\n<Button disabled>\n  <Loader className=\"mr-2 h-4 w-4 animate-spin\" />\n  Loading\n</Button>;\n"
+  },
+  {
+    "name": "ComboBox",
+    "files": "import { ComboBox, ComboBoxItem } from \"@/components/base/combobox\";\n\nexport const ComboBoxExample = () => {\n  return (\n    <ComboBox label=\"Ice cream flavor\">\n      <ComboBoxItem>Chocolate</ComboBoxItem>\n      <ComboBoxItem>Mint</ComboBoxItem>\n      <ComboBoxItem>Strawberry</ComboBoxItem>\n      <ComboBoxItem>Vanilla</ComboBoxItem>\n    </ComboBox>\n  );\n};\n"
   },
   {
     "name": "Dialog",

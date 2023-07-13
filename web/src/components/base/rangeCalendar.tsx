@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
-  Calendar as AriaCalendar,
-  CalendarProps as AriaCalendarProps,
+  RangeCalendar as AriaRangeCalendar,
+  RangeCalendarProps as AriaRangeCalendarProps,
   Button,
   CalendarCell,
   CalendarGrid,
@@ -15,30 +15,30 @@ import {
 
 import { tv } from "tailwind-variants";
 
-export const calendar = tv({
+export const rangeCalendar = tv({
   slots: {
-    root: "w-fit max-w-full rounded-xl border bg-surface p-6 text-fg shadow-lg",
+    root: "w-fit max-w-full rounded-xl border bg-surface p-6 text-fg shadow-lg ",
     header: "mb-4 flex items-center ",
     heading: "text-md m-0 flex-1 text-center text-lg font-bold",
     gridHeaderCell: "pb-2 text-sm text-fg-5",
     iconButton:
       "m-0 flex h-8 w-8 appearance-none items-center justify-center rounded-xl text-center outline-none hover:bg-surface-2",
-    cell: " -m-[1px] mb-1 flex h-8 w-8 items-center justify-center rounded-xl p-5 text-center text-sm outline-none hover:bg-surface-2 [&[data-outside-month]]:hidden  [&[data-pressed]]:bg-surface-2 [&[data-selected]]:bg-primary [&[data-selected]]:text-primary-fg [&[data-unavailable]]:text-fg-6 [&[data-unavailable]]:line-through",
+    cell: "-m-[1px] mb-1 data-[selected]:rounded-none [&[data-selection-start]]:rounded-l-xl [&[data-selection-end]]:rounded-r-xl  flex h-8 w-8 items-center justify-center rounded-xl p-5 text-center text-sm outline-none hover:bg-surface-2 [&[data-outside-month]]:hidden  [&[data-pressed]]:bg-surface-2 [&[data-selected]]:bg-primary [&[data-selected]]:text-primary-fg [&[data-unavailable]]:text-fg-6 [&[data-unavailable]]:line-through",
   },
 });
 
-const { root, header, heading, gridHeaderCell, cell, iconButton } = calendar();
+const { root, header, heading, gridHeaderCell, cell, iconButton } = rangeCalendar();
 
-interface CalendarProps<T extends DateValue>
-  extends Omit<AriaCalendarProps<T>, "className"> {
+interface RangeCalendarCalendarProps<T extends DateValue>
+  extends Omit<AriaRangeCalendarProps<T>, "className"> {
   error?: string;
   className?: string;
 }
 
-export const Calendar = (props: CalendarProps<DateValue>) => {
+export const RangeCalendar = (props: RangeCalendarCalendarProps<DateValue>) => {
   const { className, error, children, ...restProps } = props;
   return (
-    <AriaCalendar {...restProps} className={root({ className })}>
+    <AriaRangeCalendar {...restProps} className={root({ className })}>
       <header className={header()}>
         <Button className={iconButton()} slot="previous">
           <ChevronLeft className="h-6 w-6" />
@@ -61,6 +61,6 @@ export const Calendar = (props: CalendarProps<DateValue>) => {
         </CalendarGridBody>
       </CalendarGrid>
       {error && <Text slot="error">{error}</Text>}
-    </AriaCalendar>
+    </AriaRangeCalendar>
   );
 };
