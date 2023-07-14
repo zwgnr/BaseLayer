@@ -43,10 +43,10 @@ const reactComponents = findTsxFiles(uiDir);
 const components = [...reactComponents];
 
 // Create the components.ts file
-const componentsFileContent = `export const components = ${JSON.stringify(components, null, 2)};`;
+const componentsFileContent = `export const examples = ${JSON.stringify(components, null, 2)};`;
 
 // Define path for the components.ts file
-const componentsTsFile = path.resolve(__dirname, '../web/src/templates/components.ts');
+const componentsTsFile = path.resolve(__dirname, '../web/src/templates/examples.ts');
 
 // Write the components.ts file
 fs.writeFileSync(componentsTsFile, componentsFileContent);
