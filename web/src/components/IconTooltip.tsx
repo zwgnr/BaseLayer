@@ -1,36 +1,22 @@
-import { tooltipPotion } from "@/components/base/tooltipPotion";
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipArrowTip,
-  TooltipContent,
-  TooltipPositioner,
-  TooltipTrigger,
-} from "@ark-ui/react";
-import type { ReactNode } from "react";
-
-const { positioner, content } = tooltipPotion();
+import { Icon } from "@iconify/react";
+import { Button } from "react-aria-components";
+import { Tooltip, TooltipTrigger } from "./base/tooltip";
 
 interface IconTooltipProps {
-  children: ReactNode;
+  iconName: string;
   name: string;
 }
 
-export const IconTooltip = ({ children, name }: IconTooltipProps) => {
+export const IconTooltip = ({ iconName, name }: IconTooltipProps) => {
   return (
-    <Tooltip
-      openDelay={100}
-      closeDelay={200}
-      positioning={{ placement: "bottom" }}
-    >
-      <TooltipTrigger className=" cursor-default ">{children}</TooltipTrigger>
-
-      <TooltipPositioner className={positioner()}>
-        <TooltipArrow>
-          <TooltipArrowTip />
-        </TooltipArrow>
-        <TooltipContent className={content()}>{name}</TooltipContent>
-      </TooltipPositioner>
-    </Tooltip>
+    <TooltipTrigger>
+      <Button>
+        <Icon
+          icon={iconName}
+          className="h-12 w-12 text-fg-5"
+        />
+      </Button>
+      <Tooltip placement="bottom">{name}</Tooltip>
+    </TooltipTrigger>
   );
 };

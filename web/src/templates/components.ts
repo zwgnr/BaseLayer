@@ -5,7 +5,7 @@ export const components = [
   },
   {
     "name": "Breadcrumbs",
-    "files": "import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from \"@/components/base/breadcrumbs\";\nimport { ChevronRight } from \"lucide-react\";\n\nexport const BreadcrumbsExample = () => {\n  return (\n    <Breadcrumbs>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>\n          <a href=\"/\">Home</a>\n        </BreadCrumbsLink>\n        <ChevronRight className=\"w-4 h-4\"/>\n      </BreadCrumbsItem>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>\n          <a href=\"/docs\">Docs</a>\n        </BreadCrumbsLink>\n        <ChevronRight className=\"w-4 h-4\"/>\n      </BreadCrumbsItem>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>\n      </BreadCrumbsItem>\n    </Breadcrumbs>\n  );\n};\n"
+    "files": "import {\n  BreadCrumbsItem,\n  BreadCrumbsLink,\n  Breadcrumbs,\n} from \"@/components/base/breadcrumbs\";\nimport { ChevronRight } from \"lucide-react\";\n\nexport const BreadcrumbsExample = () => {\n  return (\n    <Breadcrumbs>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>\n          <a href=\"/\">Home</a>\n        </BreadCrumbsLink>\n        <ChevronRight className=\"h-4 w-4\" />\n      </BreadCrumbsItem>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>\n          <a href=\"/docs\">Docs</a>\n        </BreadCrumbsLink>\n        <ChevronRight className=\"h-4 w-4\" />\n      </BreadCrumbsItem>\n      <BreadCrumbsItem>\n        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>\n      </BreadCrumbsItem>\n    </Breadcrumbs>\n  );\n};\n"
   },
   {
     "name": "Button",
@@ -13,11 +13,11 @@ export const components = [
   },
   {
     "name": "ButtonIcon",
-    "files": "import { Button } from \"@/components/button\";\nimport { Heart } from \"lucide-react\";\n\n<Button>\n  <Heart className=\"mr-2\" />\n  Icon Button\n</Button>;\n"
+    "files": "import { Button } from \"@/components/base/button\";\nimport { Heart } from \"lucide-react\";\n\n<Button>\n  <Heart className=\"mr-2\" />\n  Icon Button\n</Button>;\n"
   },
   {
     "name": "ButtonLoader",
-    "files": "import { Button } from \"@/components/button\";\nimport { Loader } from \"lucide-react\";\n\n<Button disabled>\n  <Loader className=\"mr-2 h-4 w-4 animate-spin\" />\n  Loading\n</Button>;\n"
+    "files": "import { Button } from \"@/components/base/button\";\nimport { Loader } from \"lucide-react\";\n\n<Button isDisabled>\n  <Loader className=\"mr-2 h-4 w-4 animate-spin\" />\n  Loading\n</Button>;\n"
   },
   {
     "name": "ComboBox",
@@ -44,16 +44,24 @@ export const components = [
     "files": "import { Button } from \"@/components/base/button\";\nimport { MenuConent, MenuItem, MenuTrigger } from \"@/components/base/menu\";\n\nexport const MenuSimple = () => {\n  return (\n    <MenuTrigger>\n      <Button intent=\"secondary\">Edit</Button>\n      <MenuConent>\n        <MenuItem>Cut</MenuItem>\n        <MenuItem>Copy</MenuItem>\n        <MenuItem>Paste</MenuItem>\n      </MenuConent>\n    </MenuTrigger>\n  );\n};\n"
   },
   {
-    "name": "PinInput",
-    "files": "import { pinInputPotion } from \"@/components/base/pinInputPotion\";\nimport {\n  PinInputControl,\n  PinInputField,\n  PinInputLabel,\n  PinInput as PinInputRoot,\n} from \"@ark-ui/react\";\n\nconst { root, field, control, label } = pinInputPotion();\n\nexport const PinInput = () => (\n  <PinInputRoot\n    className={root()}\n    placeholder=\"0\"\n    onComplete={(e) => alert(e.valueAsString)}\n  >\n    <PinInputLabel className={label()}>Enter Pin:</PinInputLabel>\n    <PinInputControl className={control()}>\n      {[0, 1, 2, 3].map((id, index) => (\n        <PinInputField className={field()} key={id} index={index} />\n      ))}\n    </PinInputControl>\n  </PinInputRoot>\n);\n"
+    "name": "Meter",
+    "files": "import { Meter } from \"@/components/base/meter\";\n\nexport const MeterExample = () => <Meter label=\"Storage Space\" value={80} />;\n"
   },
   {
-    "name": "Tabs",
-    "files": "import { Tab, TabList, TabPanel, TabsRoot } from \"@/components/base/tabs\";\n\nconst items = [\n  { value: \"react\", name: \"React\" },\n  { value: \"solid\", name: \"Solid\" },\n  { value: \"vue\", name: \"Vue\" },\n];\n\nexport const Tabs = () => (\n  <TabsRoot>\n    <TabList aria-label=\"Dashbord Panels\">\n      <Tab id=\"FoR\">Overview</Tab>\n      <Tab id=\"MaR\">Activity</Tab>\n      <Tab id=\"Emp\">Usage</Tab>\n    </TabList>\n    <TabPanel id=\"FoR\">\n      Arma virumque cano, Troiae qui primus ab\n      oris.fffffffffffffffffffffffffffffffffffff\n    </TabPanel>\n    <TabPanel id=\"MaR\">Senatus Populusque Romanus.</TabPanel>\n    <TabPanel id=\"Emp\">Alea jacta est.</TabPanel>\n  </TabsRoot>\n);\n"
+    "name": "Modal",
+    "files": "import { Button } from \"@/components/base/button\";\nimport { DialogContent, DialogTrigger, Modal } from \"@/components/base/modal\";\nimport { AlertTriangle } from \"lucide-react\";\nimport { Heading } from \"react-aria-components\";\n\nexport const ModalExample = () => {\n  return (\n    <DialogTrigger>\n      <Button className=\"bg-critical hover:bg-critical/70\">Delete</Button>\n      <Modal>\n        <DialogContent>\n          {({ close }) => (\n            <>\n              <AlertTriangle className=\"h-8 w-8 text-critical\" />\n              <Heading className=\"text-lg font-bold\">Warning</Heading>\n              <p className=\"text-sm text-fg-3\">\n                Your data will be permenantly deleted, proceed?\n              </p>\n              <div className=\"flex justify-center gap-4\">\n                <Button intent=\"secondary\" onPress={close}>\n                  Back to Safety\n                </Button>\n                <Button className=\"bg-critical hover:bg-critical/70\" onPress={close}>\n                  Delete\n                </Button>\n              </div>\n            </>\n          )}\n        </DialogContent>\n      </Modal>\n    </DialogTrigger>\n  );\n};\n"
   },
   {
-    "name": "tooltip",
-    "files": "import { tooltipPotion } from \"@/components/base/tooltipPotion\";\nimport {\n  TooltipArrow,\n  TooltipArrowTip,\n  TooltipContent,\n  TooltipPositioner,\n  Tooltip as TooltipRoot,\n  TooltipTrigger,\n  type TooltipProps as ArkToolTipProps,\n} from \"@ark-ui/react\";\n\nexport type TooltipProps = Partial<ArkToolTipProps> & {\n  placement?: NonNullable<ArkToolTipProps[\"positioning\"]>[\"placement\"];\n};\nconst { positioner, content } = tooltipPotion();\n\nexport const Tooltip = (props: TooltipProps) => {\n  const { placement = \"top\", ...tooltipProps } = props;\n  return (\n    <TooltipRoot\n      openDelay={0}\n      closeDelay={200}\n      positioning={{ placement }}\n      {...tooltipProps}\n    >\n      <TooltipTrigger asChild>\n        <span>Hover me</span>\n      </TooltipTrigger>\n      <TooltipPositioner className={positioner()}>\n        <TooltipArrow>\n          <TooltipArrowTip />\n        </TooltipArrow>\n        <TooltipContent className={content()}>My Tooltip</TooltipContent>\n      </TooltipPositioner>\n    </TooltipRoot>\n  );\n};\n"
+    "name": "Popover",
+    "files": "import { Button } from \"@/components/base/button\";\nimport { Popover, PopoverTrigger } from \"@/components/base/popover\";\n\nexport const PopoverExample = () => {\n  return (\n    <PopoverTrigger>\n      <Button>Open ME</Button>\n      <Popover>This is an example popover.</Popover>\n    </PopoverTrigger>\n  );\n};\n"
+  },
+  {
+    "name": "RadioGroup",
+    "files": "import { Radio, RadioGroup } from \"@/components/base/radioGroup\";\n\nexport const RadioGroupExample = () => (\n  <RadioGroup label=\"Favorite sport\">\n    <Radio value=\"soccer\">Soccer</Radio>\n    <Radio value=\"baseball\">Baseball</Radio>\n    <Radio value=\"basketball\">Basketball</Radio>\n  </RadioGroup>\n);\n"
+  },
+  {
+    "name": "Select",
+    "files": "import { Select, SelectItem } from \"@/components/base/select\";\n\nexport const SelectExample = () => {\n  return (\n    <Select label=\"Ice cream flavor\">\n      <SelectItem>Chocolate</SelectItem>\n      <SelectItem>Mint</SelectItem>\n      <SelectItem>Strawberry</SelectItem>\n      <SelectItem>Vanilla</SelectItem>\n    </Select>\n  );\n};\n"
   },
   {
     "name": "Slider",
@@ -76,11 +84,19 @@ export const components = [
     "files": "import {\n  Column,\n  Table,\n  TableBody,\n  TableCell,\n  TableHeader,\n  TableRow,\n} from \"@/components/base/table\";\nimport { useAsyncList } from \"@react-stately/data\";\n\ninterface Character {\n  name: string;\n  height: number;\n  mass: number;\n  birth_year: number;\n}\n\nexport function TableSortable() {\n  let list = useAsyncList<Character>({\n    async load({ signal }) {\n      let res = await fetch(`https://swapi.py4e.com/api/people/?search`, {\n        signal,\n      });\n      let json = await res.json();\n      return {\n        items: json.results,\n      };\n    },\n    async sort({ items, sortDescriptor }) {\n      return {\n        items: items.sort((a, b) => {\n          let first = a[sortDescriptor.column];\n          let second = b[sortDescriptor.column];\n          let cmp =\n            (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;\n          if (sortDescriptor.direction === \"descending\") {\n            cmp *= -1;\n          }\n          return cmp;\n        }),\n      };\n    },\n  });\n\n  return (\n    <Table\n      aria-label=\"Example table with client side sorting\"\n      sortDescriptor={list.sortDescriptor}\n      onSortChange={list.sort}\n    >\n      <TableHeader>\n        <Column id=\"name\" isRowHeader allowsSorting>\n          Name\n        </Column>\n        <Column id=\"height\" allowsSorting>\n          Height\n        </Column>\n        <Column id=\"mass\" allowsSorting>\n          Mass\n        </Column>\n        <Column id=\"birth_year\" allowsSorting>\n          Birth Year\n        </Column>\n      </TableHeader>\n      <TableBody items={list.items}>\n        {(item) => (\n          <TableRow id={item.name}>\n            <TableCell>{item.name}</TableCell>\n            <TableCell>{item.height}</TableCell>\n            <TableCell>{item.mass}</TableCell>\n            <TableCell>{item.birth_year}</TableCell>\n          </TableRow>\n        )}\n      </TableBody>\n    </Table>\n  );\n}\n"
   },
   {
+    "name": "Tabs",
+    "files": "import { Tab, TabList, TabPanel, TabsRoot } from \"@/components/base/tabs\";\n\nconst items = [\n  { value: \"react\", name: \"React\" },\n  { value: \"solid\", name: \"Solid\" },\n  { value: \"vue\", name: \"Vue\" },\n];\n\nexport const Tabs = () => (\n  <TabsRoot>\n    <TabList aria-label=\"Dashbord Panels\">\n      <Tab id=\"FoR\">Overview</Tab>\n      <Tab id=\"MaR\">Activity</Tab>\n      <Tab id=\"Emp\">Usage</Tab>\n    </TabList>\n    <TabPanel id=\"FoR\">\n      Arma virumque cano, Troiae qui primus ab\n      oris.fffffffffffffffffffffffffffffffffffff\n    </TabPanel>\n    <TabPanel id=\"MaR\">Senatus Populusque Romanus.</TabPanel>\n    <TabPanel id=\"Emp\">Alea jacta est.</TabPanel>\n  </TabsRoot>\n);\n"
+  },
+  {
     "name": "TagGroup",
     "files": "import { Tag, TagGroupRoot } from \"@/components/base/tagGroup\";\n\nexport const TagGroupExample = () => {\n  return (\n    <TagGroupRoot label=\"Ice cream flavor\" selectionMode=\"single\">\n      <Tag>Chocolate</Tag>\n      <Tag>Mint</Tag>\n      <Tag>Strawberry</Tag>\n      <Tag>Vanilla</Tag>\n    </TagGroupRoot>\n  );\n};\n"
   },
   {
     "name": "Toggle",
     "files": "import { Toggle } from \"@/components/base/toggle\";\n\nexport const ToggleExample = () => {\n  return <Toggle>Mode</Toggle>;\n};\n"
+  },
+  {
+    "name": "Tooltip",
+    "files": "import { Button } from \"@/components/base/button\";\nimport { Tooltip, TooltipTrigger } from \"@/components/base/tooltip\";\n\nexport const TooltipExample = () => {\n  return (\n    <TooltipTrigger>\n      <Button>💾</Button>\n      <Tooltip>Save</Tooltip>\n    </TooltipTrigger>\n  );\n};\n"
   }
 ];

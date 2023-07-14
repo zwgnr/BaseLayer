@@ -6,69 +6,109 @@ tags: ["Slots", "Variants", "Overrides"]
 
 ---
 
-import { PinInput } from '../../../Examples/React/PinInput/PinInput.tsx'
-import { Pressable as Button } from "@ark-ui/react";
-import { button } from "@/components/base/button";
-
+import { Button } from "@/components/base/button";
+import { ComboBoxExample } from '../../../Examples/ComboBox/ComboBox.tsx'
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Base
 
 ### Slots
 
-Let's dive with an example. Take a look at this simple Pin Input component.
+Let's dive with an example. Take a look at this ComboBox component.
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div className="flex items-center">
-      <PinInput client:load />
-    </div>
-</div>
+<MdxExample>
+  <ComboBoxExample  client:load/>
+</MdxExample>
+
 
 The potion for the component looks like this.
 
 ```tsx
-import { tv } from "tailwind-variants";
+import type {
+  ComboBoxProps as AriaComboBoxProps,
+  ItemProps,
+} from "react-aria-components";
 
-export const pinInputPotion = tv({
+import {
+  ComboBox as AriaComboBox,
+  Button,
+  Input,
+  Item,
+  Label,
+  ListBox,
+  Popover,
+  Text,
+} from "react-aria-components";
+
+import { tv } from "tailwind-variants";
+import { ChevronDown } from "lucide-react";
+
+export const combobox = tv({
   slots: {
-    root: "flex flex-row items-center gap-4",
-    field:
-      "h-16 w-16 rounded-md p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-    control: "flex gap-2",
-    label: "text-md font-bold",
+    input: "m-0 rounded-xl border p-2 align-middle w-64 bg-surface text-fg",
+    root: "max-h-inherit overflow-auto p-1 outline-none",
+    item: "relative m-1 flex cursor-default flex-col rounded-xl outline-none p-2 hover:bg-surface-2 ",
+    popover: "rounded-xl border shadow-xl outline-none bg-surface w-64 p-2 text-fg",
+    button:"absolute right-2 flex appearance-none items-center justify-center rounded-lg border-0 outline-none hover:bg-surface-2"
   },
 });
 
+const { input, button, item, popover, root } = combobox();
+
+interface ComboBoxProps<T extends object>
+  extends Omit<AriaComboBoxProps<T>, "children"> {
+  className?: string;
+  label?: string;
+  description?: string | null;
+  errorMessage?: string | null;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
+}
+
+export function ComboBox<T extends object>({
+  label,
+  className,
+  description,
+  errorMessage,
+  children,
+  ...props
+}: ComboBoxProps<T>) {
+  return (
+    <AriaComboBox className={root({ className })} {...props}>
+      <Label>{label}</Label>
+      <div className="relative flex w-fit items-center rounded-2xl bg-surface">
+        <Input className={input()} />
+        <Button className={button()}><ChevronDown  /></Button>
+      </div>
+      {description && <Text slot="description">{description}</Text>}
+      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+      <Popover className={popover()}>
+        <ListBox>{children}</ListBox>
+      </Popover>
+    </AriaComboBox>
+  );
+}
+
+export function ComboBoxItem(props: ItemProps) {
+  return <Item {...props} className={item()} />;
+}
+
 ```
 
-and the component itself like this.
+and the using the component itself like this.
 
 ```tsx
-import {
-  PinInputControl,
-  PinInputField,
-  PinInputLabel,
-  PinInput as PinInputRoot,
-} from "@ark-ui/react";
-import { pinInputPotion } from "@potions/pinInputPotion";
+import { ComboBox, ComboBoxItem } from "@/components/base/combobox";
 
-const { root, field, control, label } = pinInputPotion();
-
-export const PinInput = () => (
-  <PinInputRoot
-    className={root()}
-    placeholder="0"
-    onComplete={(e) => alert(e.valueAsString)}
-  >
-    <PinInputLabel className={label({ className: "text-xl" })}>
-      Enter Pin:
-    </PinInputLabel>
-    <PinInputControl className={control()}>
-      {[0, 1, 2, 3].map((id, index) => (
-        <PinInputField className={field()} key={id} index={index} />
-      ))}
-    </PinInputControl>
-  </PinInputRoot>
-);
+export const ComboBoxExample = () => {
+  return (
+    <ComboBox label="Ice cream flavor">
+      <ComboBoxItem>Chocolate</ComboBoxItem>
+      <ComboBoxItem>Mint</ComboBoxItem>
+      <ComboBoxItem>Strawberry</ComboBoxItem>
+      <ComboBoxItem>Vanilla</ComboBoxItem>
+    </ComboBox>
+  );
+};
 
 ```
 As you can see, Potion leverages the <a target="_blank" rel="noopener noreferrer" href="https://www.tailwind-variants.org/">Tailwind Variants</a> library to create reusable styles. The TV library provides usefull slots, which are perfect for handling the styles of complex multi part Ark Components.
@@ -153,10 +193,11 @@ export type buttonProps = VariantProps<typeof button>;
 Here is a Button component using the button with several variants.
 
 <div class="flex items-center justify-center w-full p-2">
-<Button className={button({ intent:"secondary", state:"ghost" })}>
+<Button intent="secondary" state="ghost">
 Button
 </Button>
 </div>
+
 ```tsx
 import { Pressable as Button } from "@ark-ui/react";
 import { button } from "@potions/button";

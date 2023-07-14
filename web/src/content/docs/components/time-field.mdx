@@ -1,0 +1,135 @@
+---
+title: Date Field
+description: "A date field allows users to enter and edit date and time values using a keyboard. Each part of a date value is displayed in an individually editable segment."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/DateField.html"
+---
+---
+import DemoTabs from '../../../components/DemoTabs.astro'
+import Potion  from '../../../components/Potion.astro'
+import { ComboBoxExample } from "@/Examples/ComboBox/ComboBox.tsx"
+import { TimeField } from "@/components/base/timeField"
+import { MdxExample } from '@/components/Demos/MdxExample.tsx'
+
+<MdxExample>
+  <TimeField label="Event Time" client:load/>
+</MdxExample>
+
+## Installation
+
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+
+## Potion
+
+<Potion>
+<Fragment slot="contentSlot">
+```tsx
+import {
+  Breadcrumbs as AriaBreadcrumbs,
+  Item,
+  ItemProps,
+  Link,
+  LinkProps,
+  type BreadcrumbsProps as AriaBreadcrumbsProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+
+export const breadcrumbs = tv({
+  slots: {
+    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
+    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
+    item: "flex items-center gap-2",
+  },
+});
+
+interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
+  className?: string | undefined;
+}
+
+const { root, link, item } = breadcrumbs();
+
+export const Breadcrumbs = <T extends object>({
+  children,
+  className,
+  ...props
+}: BreadcrumbsProps<T>) => {
+  return (
+    <AriaBreadcrumbs className={root({ className })} {...props}>
+      {children}
+    </AriaBreadcrumbs>
+  );
+};
+
+export const BreadCrumbsLink = ({
+  children,
+  className,
+  ...props
+}: LinkProps & { className?: string }) => {
+  return (
+    <Link className={link({ className })} {...props}>
+      {children}
+    </Link>
+  );
+};
+
+export const BreadCrumbsItem = ({
+  children,
+  className,
+  ...props
+}: ItemProps & { className?: string }) => {
+  return (
+    <Item className={item({ className })} {...props}>
+      {children}
+    </Item>
+  );
+};
+
+```
+</Fragment>
+</Potion>
+
+## Examples
+
+### Default 
+
+<DemoTabs>
+  <Fragment slot="react">
+```tsx
+
+import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
+import { ChevronRight } from "lucide-react";
+
+export const BreadcrumbsExample = () => {
+  return (
+    <Breadcrumbs>
+      <BreadCrumbsItem>
+        <BreadCrumbsLink>
+          <a href="/">Home</a>
+        </BreadCrumbsLink>
+        <ChevronRight className="w-4 h-4"/>
+      </BreadCrumbsItem>
+      <BreadCrumbsItem>
+        <BreadCrumbsLink>
+          <a href="/docs">Docs</a>
+        </BreadCrumbsLink>
+        <ChevronRight className="w-4 h-4"/>
+      </BreadCrumbsItem>
+      <BreadCrumbsItem>
+        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
+      </BreadCrumbsItem>
+    </Breadcrumbs>
+  );
+};
+
+
+```
+  </Fragment>
+
+    <Fragment slot="vsc">
+```bash
+pui-breadcrumbs
+```
+  </Fragment>
+</DemoTabs>
+
+

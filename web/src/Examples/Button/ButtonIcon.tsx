@@ -1,4 +1,4 @@
-import { Button } from "@/components/button";
+import { Button } from "@/components/base/button";
 import { Heart } from "lucide-react";
 
 <Button>

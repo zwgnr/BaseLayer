@@ -113,42 +113,26 @@ import { Coffee } from "lucide-react";
           Powered by
         </p>
         <div class="flex gap-8">
-          <IconTooltip client:only="react" name="VsCode">
-            <span>
-              <Icon
-                icon="devicon-plain:vscode"
-                className="h-12 w-12 text-fg-5 hover:text-blue-500"
-                client:load
-              />
-            </span>
-          </IconTooltip>
-          <IconTooltip client:only="react" name="TailwindCSS">
-            <span>
-              <Icon
-                icon="simple-icons:tailwindcss"
-                className="h-12 w-12 text-fg-5 hover:text-sky-500"
-                client:load
-              />
-            </span>
-          </IconTooltip>
-          <IconTooltip client:only="react" name="React">
-            <span>
-              <Icon
-                icon="simple-icons:react"
-                className="h-12 w-12 text-fg-5 hover:text-blue-500"
-                client:load
-              />
-            </span>
-          </IconTooltip>
-          <IconTooltip client:only="react" name="React Aria">
-            <span>
-              <Icon
-                icon="simple-icons:adobe"
-                className="h-12 w-12 text-fg-5 hover:text-red-500"
-                client:load
-              />
-            </span>
-          </IconTooltip>
+          <IconTooltip
+            iconName="devicon-plain:vscode"
+            client:only="react"
+            name="VsCode"
+          />
+          <IconTooltip
+            iconName="simple-icons:tailwindcss"
+            client:only="react"
+            name="TailwindCSS"
+          />
+          <IconTooltip
+            iconName="simple-icons:react"
+            client:only="react"
+            name="React"
+          />
+          <IconTooltip
+            iconName="simple-icons:adobe"
+            client:only="react"
+            name="React Aria"
+          />
         </div>
       </div>
       <div class="lg:-p-0 w-full max-w-7xl overflow-x-hidden p-8">

@@ -3,11 +3,9 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 
-import solidJs from "@astrojs/solid-js";
-
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), mdx(), solidJs()],
+  integrations: [tailwind(), react(), mdx()],
   markdown: {
     shikiConfig: {
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md

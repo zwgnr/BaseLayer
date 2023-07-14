@@ -49,7 +49,7 @@ export function ComboBox<T extends object>({
   return (
     <AriaComboBox className={root({ className })} {...props}>
       <Label>{label}</Label>
-      <div className="relative flex w-fit  items-center rounded-2xl bg-surface">
+      <div className="relative flex w-fit items-center rounded-2xl bg-surface">
         <Input className={input()} />
         <Button className={button()}><ChevronDown  /></Button>
       </div>
