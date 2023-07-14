@@ -71,7 +71,7 @@ Would you like to proceed?`;
 
   const createSnippets = async () => {
     // Fetch data from URL
-    const response = await fetch('https://potion-ui-nu.vercel.app/api/examples.json');
+    const response = await fetch('https://baselayer-zwgnr.vercel.app/api/examples.json');
     const data = await response.json();
 
  
@@ -108,7 +108,7 @@ Would you like to proceed?`;
     try {
       //const presets = require(path.join(__dirname, '../templates/presets'));
       //const stylesPresetContent = presets.stylesPreset;
-      const response = await fetch('https://potion-ui-nu.vercel.app/api/global.json');
+      const response = await fetch('https://baselayer-zwgnr.vercel.app/api/global.json');
       const stylesPreset = await response.json();
 
       let stylesFilePath = await findFile(projectRoot, 'global.css');
@@ -138,7 +138,7 @@ Would you like to proceed?`;
 
     //fs.writeFileSync(destinationPresetPath, tailwindPreset);
 
-    const response = await fetch('https://potion-ui-nu.vercel.app/api/tailwind.json');
+    const response = await fetch('https://baselayer-zwgnr.vercel.app/api/tailwind.json');
     const tailwindPreset = await response.json();
     const tailwindPresetPath = path.join(projectRoot, 'tailwindPreset.js');
     fs.writeFileSync(tailwindPresetPath, tailwindPreset);
