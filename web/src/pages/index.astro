@@ -53,31 +53,22 @@ import { Coffee } from "lucide-react";
             </p>
           </div>
           <div class="flex items-center">
-            <a href="/docs" class="mr-4">Docs</a>
+            <a href="/docs" class="mr-4 text-fg">Docs</a>
             <button
               id="themeToggle"
               data-toggle-theme="dark,light"
               data-act-class="ACTIVECLASS"
             >
-              <Moon id="moon" className="text-primary-fg" />
+              <Moon id="moon" className="text-fg" />
               <Sun id="sun" className="hidden text-fg" />
             </button>
-            <a
-              class="mx-4 rounded-xl"
-              href="https://github.com/zwagnr/BaseLayer"
-            >
-              <Github />
-            </a>
-            <a class="mx-4 rounded-xl" href="https://twitter.com/zwagnr">
-              <Twitter />
-            </a>
           </div>
         </div>
         <div
-          class="flex w-full flex-col items-center justify-center px-12 text-center md:w-1/2"
+          class="flex w-full flex-col items-center justify-center px-12 text-center lg:w-1/2"
         >
           <p
-            class="flex flex-col gap-4 text-6xl font-bold tracking-tight text-fg lg:text-9xl"
+            class="flex flex-col gap-4 text-6xl font-bold tracking-tight text-fg xl:text-9xl"
           >
             <span> Creativity</span>
             <span>Unleashed</span>
@@ -89,7 +80,7 @@ import { Coffee } from "lucide-react";
             BaseLayer.
           </p>
           <div
-            class="mt-12 flex w-full flex-col justify-center gap-4 md:flex-row"
+            class="mt-12 flex w-full flex-col justify-center gap-4 lg:flex-row"
           >
             <a href="/docs/getting-started/intro" class="inline-block">
               <Button className="p-8 w-full" size="lg">Get Started</Button>
@@ -105,8 +96,10 @@ import { Coffee } from "lucide-react";
             </Button>
           </div>
         </div>
-        <div class="justify-centerm hidden w-1/2 bg-primary p-24 md:flex">
-          <img class="min-w-[500px] object-scale-down" src="/ptnTransp.png" />
+        <div class="justify-center items-center hidden w-1/2 lg:flex">
+          <div class="rounded-xl h-1/2 w-full">
+          <img class=" rounded-xl shadow-2xl object-scale-down" src="/blBig.png" />
+        </div>
         </div>
       </div>
 
