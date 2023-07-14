@@ -1,13 +1,14 @@
-import { ElementRef, forwardRef } from "react";
 import type { CheckboxGroupProps as AriaCheckboxGroupProps } from "react-aria-components";
+
 import {
   CheckboxGroup as AriaCheckboxGroup,
   Text,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const checkboxGroup = tv({
-  base: "flex flex-col gap-2 items-start",
+const checkboxGroup = tv({
+  base: "flex flex-col items-start gap-2",
 });
 
 interface CheckboxGroupProps
@@ -19,15 +20,15 @@ interface CheckboxGroupProps
   error?: string;
 }
 
-export const CheckboxGroup = forwardRef<
-  ElementRef<typeof AriaCheckboxGroup>,
-  CheckboxGroupProps
->(({ className, label, description, error, children, ...props }, ref) => (
-  <AriaCheckboxGroup
-    ref={ref}
-    {...props}
-    className={checkboxGroup({ className })}
-  >
+export const CheckboxGroup = ({
+  className,
+  label,
+  description,
+  error,
+  children,
+  ...props
+}: CheckboxGroupProps) => (
+  <AriaCheckboxGroup {...props} className={checkboxGroup({ className })}>
     {label}
     {children}
     {description && (
@@ -41,4 +42,6 @@ export const CheckboxGroup = forwardRef<
       </Text>
     )}
   </AriaCheckboxGroup>
-));
+);
+
+CheckboxGroup.displayName = "CheckboxGroup";

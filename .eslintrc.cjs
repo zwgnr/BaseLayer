@@ -51,12 +51,6 @@ module.exports = {
       rules: {},
     },
     {
-      files: ['./web/src/ui/Solid/**/*.tsx'],
-      parser: '@typescript-eslint/parser',
-      plugins: ['solid'],
-      extends: ['plugin:solid/typescript', 'prettier'],
-    },
-    {
       files: ['*.astro'],
       extends: ['plugin:astro/recommended', 'prettier'],
       parser: 'astro-eslint-parser',

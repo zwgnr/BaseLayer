@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import {
   Calendar as AriaCalendar,
   CalendarProps as AriaCalendarProps,
@@ -15,7 +16,7 @@ import {
 
 import { tv } from "tailwind-variants";
 
-export const calendar = tv({
+const calendar = tv({
   slots: {
     root: "w-fit max-w-full rounded-xl border bg-surface p-6 text-fg shadow-lg",
     header: "mb-4 flex items-center ",
@@ -35,32 +36,35 @@ interface CalendarProps<T extends DateValue>
   className?: string;
 }
 
-export const Calendar = (props: CalendarProps<DateValue>) => {
-  const { className, error, children, ...restProps } = props;
-  return (
-    <AriaCalendar {...restProps} className={root({ className })}>
-      <header className={header()}>
-        <Button className={iconButton()} slot="previous">
-          <ChevronLeft className="h-6 w-6" />
-        </Button>
-        <Heading className={heading()} />
-        <Button className={iconButton()} slot="next">
-          <ChevronRight className="h-6 w-6" />
-        </Button>
-      </header>
-      <CalendarGrid>
-        <CalendarGridHeader>
-          {(day) => (
-            <CalendarHeaderCell className={gridHeaderCell()}>
-              {day}
-            </CalendarHeaderCell>
-          )}
-        </CalendarGridHeader>
-        <CalendarGridBody>
-          {(date) => <CalendarCell className={cell()} date={date} />}
-        </CalendarGridBody>
-      </CalendarGrid>
-      {error && <Text slot="error">{error}</Text>}
-    </AriaCalendar>
-  );
-};
+export const Calendar = ({
+  className,
+  error,
+  ...props
+}: CalendarProps<DateValue>) => (
+  <AriaCalendar {...props} className={root({ className })}>
+    <header className={header()}>
+      <Button className={iconButton()} slot="previous">
+        <ChevronLeft className="h-6 w-6" />
+      </Button>
+      <Heading className={heading()} />
+      <Button className={iconButton()} slot="next">
+        <ChevronRight className="h-6 w-6" />
+      </Button>
+    </header>
+    <CalendarGrid>
+      <CalendarGridHeader>
+        {(day) => (
+          <CalendarHeaderCell className={gridHeaderCell()}>
+            {day}
+          </CalendarHeaderCell>
+        )}
+      </CalendarGridHeader>
+      <CalendarGridBody>
+        {(date) => <CalendarCell className={cell()} date={date} />}
+      </CalendarGridBody>
+    </CalendarGrid>
+    {error && <Text slot="error">{error}</Text>}
+  </AriaCalendar>
+);
+
+Calendar.displayName = "Calendar";

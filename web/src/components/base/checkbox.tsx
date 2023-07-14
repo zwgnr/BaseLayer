@@ -1,12 +1,15 @@
 import { Check } from "lucide-react";
+
 import { ElementRef, forwardRef } from "react";
+
 import {
   CheckboxProps as AriaCheckBoxProps,
   Checkbox as AriaCheckbox,
 } from "react-aria-components";
+
 import { VariantProps, tv } from "tailwind-variants";
 
-export const checkbox = tv({
+const checkbox = tv({
   slots: {
     root: "flex items-center justify-center gap-2 py-1",
     box: "flex items-center justify-center rounded-lg border transition-all duration-200",
@@ -18,7 +21,7 @@ export const checkbox = tv({
       lg: { box: "h-8 w-8 rounded-lg", root: "text-lg" },
     },
     selected: {
-      true: { box: "bg-primary border-primary" },
+      true: { box: "border-primary bg-primary" },
     },
   },
   defaultVariants: {
@@ -27,12 +30,10 @@ export const checkbox = tv({
   },
 });
 
-export type CheckboxPotionProps = VariantProps<typeof checkbox>;
+type CheckboxVariantProps = VariantProps<typeof checkbox>;
 
-interface CheckBoxProps
-  extends VariantProps<typeof checkbox>,
-    AriaCheckBoxProps {
-  className?: string | undefined;
+interface CheckBoxProps extends CheckboxVariantProps, AriaCheckBoxProps {
+  className?: string;
 }
 
 export const Checkbox = forwardRef<
@@ -56,3 +57,5 @@ export const Checkbox = forwardRef<
     </AriaCheckbox>
   );
 });
+
+Checkbox.displayName = "Checkbox";

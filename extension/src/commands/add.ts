@@ -8,8 +8,8 @@ const fetch = require('node-fetch');
 export const addCommand = vscode.commands.registerCommand('extension.add', async () => {
   const options = [
     'Badge',
-    'Button',
     'Breadcrumbs',
+    'Button',
     'Checkbox',
     'CheckboxGroup',
     'Calendar',

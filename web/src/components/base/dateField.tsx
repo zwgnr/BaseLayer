@@ -2,6 +2,7 @@ import type {
   DateFieldProps as AriaDateFieldProps,
   DateValue,
 } from "react-aria-components";
+
 import {
   DateField as AriaDateField,
   DateInput,
@@ -9,39 +10,40 @@ import {
   Label,
   Text,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const dateField = tv({
+const dateField = tv({
   slots: {
-    input: "min-w-sm flex w-fit whitespace-nowrap rounded-xl border p-2 outline-none",
-    segmentStyles: "p-2 text-end focus:bg-secondary outline-none focus:text-secondary-fg rounded-xl",
+    input:
+      "min-w-sm flex w-fit whitespace-nowrap rounded-xl border p-2 outline-none",
+    segmentStyles:
+      "rounded-xl p-2 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
   },
 });
 
 const { input, segmentStyles } = dateField();
 
-interface MyDateFieldProps<T extends DateValue> extends AriaDateFieldProps<T> {
+interface DateFieldProps<T extends DateValue> extends AriaDateFieldProps<T> {
   label?: string;
   description?: string;
   errorMessage?: string;
 }
 
-export function DateField<T extends DateValue>({
+export const DateField = <T extends DateValue>({
   label,
   description,
   errorMessage,
   ...props
-}: MyDateFieldProps<T>) {
-  return (
-    <AriaDateField {...props}>
-      <Label>{label}</Label>
-      <DateInput className={input()}>
-        {(segment) => (
-          <DateSegment className={segmentStyles()} segment={segment} />
-        )}
-      </DateInput>
-      {description && <Text slot="description">{description}</Text>}
-      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-    </AriaDateField>
-  );
-}
+}: DateFieldProps<T>) => (
+  <AriaDateField {...props}>
+    <Label>{label}</Label>
+    <DateInput className={input()}>
+      {(segment) => (
+        <DateSegment className={segmentStyles()} segment={segment} />
+      )}
+    </DateInput>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+  </AriaDateField>
+);

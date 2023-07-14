@@ -1,8 +1,12 @@
-import { Button } from "@/components/base/button";
-import { Checkbox } from "@/components/base/checkbox";
 import { Menu } from "lucide-react";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import { ListBox as AriaListBox, Item } from "react-aria-components";
+
+import {
+  ListBox as AriaListBox,
+  Item,
+  ItemProps,
+  ListBoxProps,
+} from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
 export const listBox = tv({
@@ -14,44 +18,35 @@ export const listBox = tv({
 
 const { root, item } = listBox();
 
-export const ListBox = forwardRef<
-  ElementRef<typeof AriaListBox>,
-  Omit<ComponentPropsWithoutRef<typeof AriaListBox>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaListBox ref={ref} {...props} className={root({ className })}>
+const ListBox = <T extends object>({
+  children,
+  className,
+  ...props
+}: ListBoxProps<T> & { className?: string }) => (
+  <AriaListBox {...props} className={root({ className })}>
     {children}
   </AriaListBox>
-));
+);
 
-export const ListBoxItem = forwardRef<
-  ElementRef<typeof Item>,
-  Omit<ComponentPropsWithoutRef<typeof Item>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => {
+const ListBoxItem = <T extends object>({
+  children,
+  className,
+  ...props
+}: ItemProps<T> & { className?: string }) => {
   let textValue = typeof children === "string" ? children : undefined;
 
   return (
-    <Item
-      textValue={textValue}
-      {...props}
-      className={item({ className })}
-      ref={ref}
-    >
-      {({ selectionMode, selectionBehavior, allowsDragging, isSelected }) => (
+    <Item textValue={textValue} {...props} className={item({ className })}>
+      {({ allowsDragging, isSelected }) => (
         <div className="flex items-center gap-2">
           <>
             {/* Add elements for drag and drop and selection. */}
             {allowsDragging && (
-         
-                <Menu
-                  className={`h-4 w-4 mr-4 text-fg ${
-                    isSelected ? "text-primary-fg" : ""
-                  }`}
-                />
-           
+              <Menu
+                className={`mr-4 h-4 w-4 text-fg ${
+                  isSelected ? "text-primary-fg" : ""
+                }`}
+              />
             )}
             {}
             {children}
@@ -60,4 +55,6 @@ export const ListBoxItem = forwardRef<
       )}
     </Item>
   );
-});
+};
+
+export { ListBox, ListBoxItem };

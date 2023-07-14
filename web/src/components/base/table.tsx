@@ -1,13 +1,16 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-
 import {
   Column as AriaColumn,
   Table as AriaTable,
   TableBody as AriaTableBody,
   TableHeader as AriaTableheader,
   Cell,
+  CellProps,
   Collection,
+  ColumnProps,
   Row,
+  RowProps,
+  TableHeaderProps,
+  TableProps,
   useTableOptions,
 } from "react-aria-components";
 
@@ -16,7 +19,7 @@ import { tv } from "tailwind-variants";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
 
-export const table = tv({
+const table = tv({
   slots: {
     root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-2xl border-2 p-4 outline-none",
     column: "border-b-2 px-4 py-1 text-left outline-none",
@@ -27,44 +30,42 @@ export const table = tv({
 
 const { root, header, column } = table();
 
-export const TableBody = AriaTableBody;
+const TableBody = AriaTableBody;
 
-export const Table = forwardRef<
-  ElementRef<typeof AriaTable>,
-  Omit<ComponentPropsWithoutRef<typeof AriaTable>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaTable ref={ref} {...props} className={root()}>
+const Table = ({
+  children,
+  className,
+  ...props
+}: TableProps & { className?: string }) => (
+  <AriaTable {...props} className={root({ className })}>
     {children}
   </AriaTable>
-));
+);
 
-export const TableCell = forwardRef<
-  ElementRef<typeof Cell>,
-  Omit<ComponentPropsWithoutRef<typeof Cell>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <Cell ref={ref} {...props} className="px-4 py-2">
+const TableCell = ({
+  children,
+  className,
+  ...props
+}: CellProps & { className?: string }) => (
+  <Cell {...props} className="px-4 py-2">
     {children}
   </Cell>
-));
+);
 
-export const Column = forwardRef<
-  ElementRef<typeof AriaColumn>,
-  Omit<ComponentPropsWithoutRef<typeof AriaColumn>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaColumn ref={ref} {...props} className={column({ className })}>
+const Column = ({
+  children,
+  className,
+  ...props
+}: ColumnProps & { className?: string }) => (
+  <AriaColumn {...props} className={column({ className })}>
     {({ allowsSorting, sortDirection }) => (
       <div className="flex items-center gap-2">
         <>
           {children}
           {allowsSorting &&
-            (sortDirection === undefined ? <div className="w-6"></div> : sortDirection ===
-              "ascending" ? (
+            (sortDirection === undefined ? (
+              <div className="w-6"></div>
+            ) : sortDirection === "ascending" ? (
               <ChevronUp />
             ) : (
               <ChevronDown />
@@ -73,18 +74,17 @@ export const Column = forwardRef<
       </div>
     )}
   </AriaColumn>
-));
+);
 
-export const TableHeader = forwardRef<
-  ElementRef<typeof AriaTableheader>,
-  Omit<ComponentPropsWithoutRef<typeof AriaTableheader>, "className"> & {
-    className?: string;
-  }
->(({ className, children, columns, ...props }, ref) => {
+const TableHeader = <T extends object>({
+  children,
+  className,
+  columns,
+  ...props
+}: TableHeaderProps<T> & { className?: string }) => {
   let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
-
   return (
-    <AriaTableheader ref={ref} {...props} className={header()}>
+    <AriaTableheader {...props} className={header()}>
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <Column />}
       {selectionBehavior === "toggle" && (
@@ -95,26 +95,27 @@ export const TableHeader = forwardRef<
       <Collection items={columns}>{children}</Collection>
     </AriaTableheader>
   );
-});
+};
 
-export const TableRow = forwardRef<
-  ElementRef<typeof Row>,
-  Omit<ComponentPropsWithoutRef<typeof Row>, "className"> & {
-    className?: string;
-  }
->(({ className, children, columns, id, ...props }, ref) => {
+const TableRow = <T extends object>({
+  children,
+  className,
+  columns,
+  id,
+  ...props
+}: RowProps<T> & { className?: string }) => {
   let { selectionBehavior, allowsDragging } = useTableOptions();
-
   return (
     <Row
       id={id}
       {...props}
-      ref={ref}
       className="relative cursor-default rounded-xl outline-none"
     >
       {allowsDragging && (
         <Cell>
-          <Button className="bg-transparent" slot="drag"><Menu className="h-4 w-4 text-fg"/></Button>
+          <Button className="bg-transparent" slot="drag">
+            <Menu className="h-4 w-4 text-fg" />
+          </Button>
         </Cell>
       )}
       {selectionBehavior === "toggle" && (
@@ -125,4 +126,6 @@ export const TableRow = forwardRef<
       <Collection items={columns}>{children}</Collection>
     </Row>
   );
-});
+};
+
+export { TableBody, Table, TableCell, TableHeader, TableRow, Column };

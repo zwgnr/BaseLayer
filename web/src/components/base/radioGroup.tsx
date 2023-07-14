@@ -1,22 +1,27 @@
-import type { RadioGroupProps, RadioProps } from "react-aria-components";
+import type {
+  RadioGroupProps as AriaRadioGroupProps,
+  RadioProps,
+} from "react-aria-components";
+
 import {
   Radio as AriaRadio,
   RadioGroup as AriaRadioGroup,
   Text,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const radioGroup = tv({
+const radioGroup = tv({
   slots: {
     radio:
-      "flex items-center gap-2 before:border-fg-3 before:block before:rounded-full [&[data-selected]]:before:border-primary [&[data-selected]]:before:border-4   before:w-4 before:h-4 before:border before:transition-all text-fg",
+      "flex items-center gap-2 text-fg before:block before:h-4 before:w-4 before:rounded-full   before:border before:border-fg-3 before:transition-all [&[data-selected]]:before:border-4 [&[data-selected]]:before:border-primary",
     group: "flex flex-col gap-4",
   },
 });
 
 const { group, radio } = radioGroup();
 
-interface MyRadioGroupProps extends Omit<RadioGroupProps, "children"> {
+interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
   className?: string;
   children?: React.ReactNode;
   label?: string;
@@ -24,34 +29,32 @@ interface MyRadioGroupProps extends Omit<RadioGroupProps, "children"> {
   errorMessage?: string;
 }
 
-export function RadioGroup({
+const RadioGroup = ({
   className,
   label,
   description,
   errorMessage,
   children,
   ...props
-}: MyRadioGroupProps) {
-  return (
-    <AriaRadioGroup className={group({ className })} {...props}>
-      {label}
-      {children}
-      {description && <Text slot="description">{description}</Text>}
-      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-    </AriaRadioGroup>
-  );
-}
+}: RadioGroupProps) => (
+  <AriaRadioGroup className={group({ className })} {...props}>
+    {label}
+    {children}
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+  </AriaRadioGroup>
+);
 
-export function Radio({
+const Radio = ({
   children,
   className,
   ...props
 }: RadioProps & {
   className?: string;
-}) {
-  return (
-    <AriaRadio className={radio({ className })} {...props}>
-      {children}
-    </AriaRadio>
-  );
-}
+}) => (
+  <AriaRadio className={radio({ className })} {...props}>
+    {children}
+  </AriaRadio>
+);
+
+export { RadioGroup, Radio };

@@ -14,16 +14,18 @@ import {
   Text,
 } from "react-aria-components";
 
-import { tv } from "tailwind-variants";
 import { ChevronDown } from "lucide-react";
+import { tv } from "tailwind-variants";
 
-export const combobox = tv({
+const combobox = tv({
   slots: {
-    input: "m-0 rounded-xl border p-2 align-middle w-64 bg-surface text-fg",
+    input: "m-0 w-64 rounded-xl border bg-surface p-2 align-middle text-fg",
     root: "max-h-inherit overflow-auto p-1 outline-none",
-    item: "relative m-1 flex cursor-default flex-col rounded-xl outline-none p-2 hover:bg-surface-2 ",
-    popover: "rounded-xl border shadow-xl outline-none bg-surface w-64 p-2 text-fg",
-    button:"absolute right-2 flex appearance-none items-center justify-center rounded-lg border-0 outline-none hover:bg-surface-2"
+    item: "relative m-1 flex cursor-default flex-col rounded-xl p-2 outline-none hover:bg-surface-2 ",
+    popover:
+      "w-64 rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none",
+    button:
+      "absolute right-2 flex appearance-none items-center justify-center rounded-lg border-0 outline-none hover:bg-surface-2",
   },
 });
 
@@ -38,30 +40,36 @@ interface ComboBoxProps<T extends object>
   children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
-export function ComboBox<T extends object>({
+const ComboBox = <T extends object>({
   label,
   className,
   description,
   errorMessage,
   children,
   ...props
-}: ComboBoxProps<T>) {
-  return (
-    <AriaComboBox className={root({ className })} {...props}>
-      <Label>{label}</Label>
-      <div className="relative flex w-fit items-center rounded-2xl bg-surface">
-        <Input className={input()} />
-        <Button className={button()}><ChevronDown  /></Button>
-      </div>
-      {description && <Text slot="description">{description}</Text>}
-      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-      <Popover className={popover()}>
-        <ListBox>{children}</ListBox>
-      </Popover>
-    </AriaComboBox>
-  );
-}
+}: ComboBoxProps<T>) => (
+  <AriaComboBox className={root({ className })} {...props}>
+    <Label>{label}</Label>
+    <div className="relative flex w-fit items-center rounded-2xl bg-surface">
+      <Input className={input()} />
+      <Button className={button()}>
+        <ChevronDown />
+      </Button>
+    </div>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+    <Popover className={popover()}>
+      <ListBox>{children}</ListBox>
+    </Popover>
+  </AriaComboBox>
+);
 
-export function ComboBoxItem(props: ItemProps) {
-  return <Item {...props} className={item()} />;
-}
+ComboBox.displayName = "ComboBox";
+
+const ComboBoxItem = (props: ItemProps) => (
+  <Item {...props} className={item()} />
+);
+
+ComboBoxItem.displayName = "ComboBoxItem";
+
+export { ComboBox, ComboBoxItem };

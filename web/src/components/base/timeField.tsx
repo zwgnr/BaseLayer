@@ -1,6 +1,5 @@
 import type {
   TimeFieldProps as AriaTimeFieldProps,
-  DateValue,
   TimeValue,
 } from "react-aria-components";
 import {
@@ -14,8 +13,10 @@ import { tv } from "tailwind-variants";
 
 export const timeField = tv({
   slots: {
-    input: "min-w-sm flex w-fit whitespace-nowrap rounded-xl border p-2 outline-none",
-    segmentStyles: "p-2 text-end focus:bg-secondary outline-none focus:text-secondary-fg rounded-xl",
+    input:
+      "min-w-sm flex w-fit whitespace-nowrap rounded-xl border p-2 outline-none",
+    segmentStyles:
+      "rounded-xl p-2 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
   },
 });
 
@@ -27,22 +28,20 @@ interface TimeFieldProps<T extends TimeValue> extends AriaTimeFieldProps<T> {
   errorMessage?: string;
 }
 
-export function TimeField<T extends TimeValue>({
+export const TimeField = <T extends TimeValue>({
   label,
   description,
   errorMessage,
   ...props
-}: TimeFieldProps<T>) {
-  return (
-    <AriaTimeField {...props}>
-      <Label>{label}</Label>
-      <DateInput className={input()}>
-        {(segment) => (
-          <DateSegment className={segmentStyles()} segment={segment} />
-        )}
-      </DateInput>
-      {description && <Text slot="description">{description}</Text>}
-      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-    </AriaTimeField>
-  );
-}
+}: TimeFieldProps<T>) => (
+  <AriaTimeField {...props}>
+    <Label>{label}</Label>
+    <DateInput className={input()}>
+      {(segment) => (
+        <DateSegment className={segmentStyles()} segment={segment} />
+      )}
+    </DateInput>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+  </AriaTimeField>
+);

@@ -1,10 +1,12 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 import {
   Dialog as AriaDialogContent,
   DialogTrigger as AriaDialogTrigger,
   Modal as AriaModal,
+  DialogProps,
   ModalOverlay,
+  ModalOverlayProps,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
 export const modal = tv({
@@ -20,26 +22,24 @@ export const modal = tv({
 
 const { overlay, modalStyles, content } = modal();
 
-export const Modal = forwardRef<
-  ElementRef<typeof AriaModal>,
-  Omit<ComponentPropsWithoutRef<typeof AriaModal>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
+interface ModalProps extends Omit<ModalOverlayProps, "className"> {
+  className?: string;
+}
+
+const Modal = ({ children, className, ...props }: ModalProps) => (
   <ModalOverlay className={overlay()}>
-    <AriaModal ref={ref} {...props} className={modalStyles({ className })}>
+    <AriaModal {...props} className={modalStyles({ className })}>
       {children}
     </AriaModal>
   </ModalOverlay>
-));
+);
 
-export const DialogContent = forwardRef<
-  ElementRef<typeof AriaDialogContent>,
-  ComponentPropsWithoutRef<typeof AriaDialogContent>
->(({ className, children, ...props }, ref) => (
-  <AriaDialogContent ref={ref} {...props} className={content({ className })}>
+const ModalContent = ({ children, className, ...props }: DialogProps) => (
+  <AriaDialogContent {...props} className={content({ className })}>
     {children}
   </AriaDialogContent>
-));
+);
 
-export const DialogTrigger = AriaDialogTrigger;
+const ModalTrigger = AriaDialogTrigger;
+
+export { Modal, ModalContent, ModalTrigger };

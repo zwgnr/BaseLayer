@@ -24,18 +24,16 @@ interface TextFieldProps extends AriaTextFieldProps {
   errorMessage?: string;
 }
 
-export function TextField({
+export const TextField = ({
   label,
   description,
   errorMessage,
   ...props
-}: TextFieldProps) {
-  return (
-    <AriaTextField className={root()} {...props}>
-      <Label>{label}</Label>
-      <Input className={input()} />
-      {description && <Text slot="description">{description}</Text>}
-      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-    </AriaTextField>
-  );
-}
+}: TextFieldProps) => (
+  <AriaTextField className={root()} {...props}>
+    <Label>{label}</Label>
+    <Input className={input()} />
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+  </AriaTextField>
+);

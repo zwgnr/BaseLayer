@@ -1,14 +1,14 @@
 import { Button } from "@/components/base/button";
-import { DialogContent, DialogTrigger, Modal } from "@/components/base/modal";
+import { Modal, ModalContent, ModalTrigger } from "@/components/base/modal";
 import { AlertTriangle } from "lucide-react";
 import { Heading } from "react-aria-components";
 
 export const ModalExample = () => {
   return (
-    <DialogTrigger>
+    <ModalTrigger>
       <Button className="bg-critical hover:bg-critical/70">Delete</Button>
       <Modal>
-        <DialogContent>
+        <ModalContent>
           {({ close }) => (
             <>
               <AlertTriangle className="h-8 w-8 text-critical" />
@@ -29,8 +29,8 @@ export const ModalExample = () => {
               </div>
             </>
           )}
-        </DialogContent>
+        </ModalContent>
       </Modal>
-    </DialogTrigger>
+    </ModalTrigger>
   );
 };

@@ -3,6 +3,7 @@ import {
   BreadCrumbsLink,
   Breadcrumbs,
 } from "@/components/base/breadcrumbs";
+
 import { ChevronRight } from "lucide-react";
 
 export const BreadcrumbsExample = () => {

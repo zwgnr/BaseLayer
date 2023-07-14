@@ -22,15 +22,13 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at *components/base*.
 
 ## Potion 
 
 <Potion>
 <Fragment slot="contentSlot">
 ```tsx
-import { forwardRef, type ElementRef } from "react";
-
 import {
   Button as AriaButton,
   ButtonProps as AriaButtonProps,
@@ -38,12 +36,12 @@ import {
 
 import { VariantProps, tv } from "tailwind-variants";
 
-export const button = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
+const button = tv({
+  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
   variants: {
     intent: {
       primary: "bg-primary text-primary-fg hover:bg-primary/70",
-      secondary: "text-secondary-content hover:bg-secondary-400 bg-secondary",
+      secondary: "bg-secondary text-secondary-fg hover:bg-secondary/70",
     },
     state: {
       filled: "",
@@ -66,14 +64,13 @@ export const button = tv({
     {
       intent: "primary",
       state: "soft",
-      class:
-        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
+      class: "bg-primary/50 hover:bg-primary/30",
     },
     {
       intent: "primary",
       state: "outline",
       class:
-        "text-primary-content hover:bg-primary-500 border-2 border-primary bg-transparent hover:text-black",
+        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary hover:text-primary-fg",
     },
     {
       intent: "secondary",
@@ -83,14 +80,13 @@ export const button = tv({
     {
       intent: "secondary",
       state: "soft",
-      class:
-        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
+      class: "bg-primary/50 text-primary-fg hover:bg-primary/30",
     },
     {
       intent: "secondary",
       state: "outline",
       class:
-        "text-primary-content hover:bg-primary-500 border-2 border-primary bg-transparent hover:text-black",
+        "border-2 border-secondary bg-transparent text-primary-fg hover:bg-primary",
     },
   ],
   defaultVariants: {
@@ -100,24 +96,21 @@ export const button = tv({
   },
 });
 
-export interface ButtonProps
-  extends AriaButtonProps,
-    VariantProps<typeof button> {
+interface ButtonProps extends AriaButtonProps, VariantProps<typeof button> {
   className?: string | undefined;
 }
 
-export const Button = forwardRef<ElementRef<typeof AriaButton>, ButtonProps>(
-  ({ className, size, intent, state, children, ...props }, ref) => {
-    return (
-      <AriaButton
-        className={button({ className, size, intent, state })}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </AriaButton>
-    );
-  }
+export const Button = ({
+  className,
+  size,
+  intent,
+  state,
+  children,
+  ...props
+}: ButtonProps) => (
+  <AriaButton className={button({ className, size, intent, state })} {...props}>
+    {children}
+  </AriaButton>
 );
 
 Button.displayName = "Button";
@@ -138,7 +131,7 @@ Button.displayName = "Button";
 
 <br />
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
 <Fragment slot="vsc">
 ```bash
 pui-button
@@ -168,7 +161,7 @@ import { Button } from "@/components/base/button";
 
 <br />
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
 ```tsx
 import { Button } from '@/components/base/button'
@@ -202,7 +195,7 @@ pui-button-icon
 
 <br />
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
 ```tsx
 import { Button } from '@/components/base/button'

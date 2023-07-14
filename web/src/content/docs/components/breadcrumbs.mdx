@@ -17,7 +17,7 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at *components/base*.
 
 ## Potion
 
@@ -32,9 +32,10 @@ import {
   LinkProps,
   type BreadcrumbsProps as AriaBreadcrumbsProps,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const breadcrumbs = tv({
+const breadcrumbs = tv({
   slots: {
     root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
     link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
@@ -42,47 +43,45 @@ export const breadcrumbs = tv({
   },
 });
 
-interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
-  className?: string | undefined;
-}
-
 const { root, link, item } = breadcrumbs();
 
-export const Breadcrumbs = <T extends object>({
+const Breadcrumbs = <T extends object>({
   children,
   className,
   ...props
-}: BreadcrumbsProps<T>) => {
-  return (
-    <AriaBreadcrumbs className={root({ className })} {...props}>
-      {children}
-    </AriaBreadcrumbs>
-  );
-};
+}: AriaBreadcrumbsProps<T> & { className?: string }) => (
+  <AriaBreadcrumbs className={root({ className })} {...props}>
+    {children}
+  </AriaBreadcrumbs>
+);
 
-export const BreadCrumbsLink = ({
-  children,
-  className,
-  ...props
-}: LinkProps & { className?: string }) => {
-  return (
-    <Link className={link({ className })} {...props}>
-      {children}
-    </Link>
-  );
-};
+Breadcrumbs.displayName = "Breadcrumbs";
 
-export const BreadCrumbsItem = ({
+const BreadCrumbsLink = ({
   children,
   className,
   ...props
-}: ItemProps & { className?: string }) => {
-  return (
-    <Item className={item({ className })} {...props}>
-      {children}
-    </Item>
-  );
-};
+}: LinkProps & { className?: string }) => (
+  <Link className={link({ className })} {...props}>
+    {children}
+  </Link>
+);
+
+BreadCrumbsLink.displayName = "BreadCrumbsLink";
+
+const BreadCrumbsItem = ({
+  children,
+  className,
+  ...props
+}: ItemProps & { className?: string }) => (
+  <Item className={item({ className })} {...props}>
+    {children}
+  </Item>
+);
+
+BreadCrumbsItem.displayName = "BreadCrumbsItem";
+
+export { Breadcrumbs, BreadCrumbsItem, BreadCrumbsLink };
 
 ```
 </Fragment>
@@ -96,7 +95,12 @@ export const BreadCrumbsItem = ({
   <Fragment slot="react">
 ```tsx
 
-import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
+import {
+  BreadCrumbsItem,
+  BreadCrumbsLink,
+  Breadcrumbs,
+} from "@/components/base/breadcrumbs";
+
 import { ChevronRight } from "lucide-react";
 
 export const BreadcrumbsExample = () => {
@@ -106,13 +110,13 @@ export const BreadcrumbsExample = () => {
         <BreadCrumbsLink>
           <a href="/">Home</a>
         </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
+        <ChevronRight className="h-4 w-4" />
       </BreadCrumbsItem>
       <BreadCrumbsItem>
         <BreadCrumbsLink>
           <a href="/docs">Docs</a>
         </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
+        <ChevronRight className="h-4 w-4" />
       </BreadCrumbsItem>
       <BreadCrumbsItem>
         <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
@@ -120,7 +124,6 @@ export const BreadcrumbsExample = () => {
     </Breadcrumbs>
   );
 };
-
 
 ```
   </Fragment>

@@ -5,7 +5,7 @@ import {
 
 import { VariantProps, tv } from "tailwind-variants";
 
-export const button = tv({
+const button = tv({
   base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
   variants: {
     intent: {
@@ -33,14 +33,13 @@ export const button = tv({
     {
       intent: "primary",
       state: "soft",
-      class:
-        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
+      class: "bg-primary/50 hover:bg-primary/30",
     },
     {
       intent: "primary",
       state: "outline",
       class:
-        "text-primary-content hover:bg-primary-500 border-2 border-primary bg-transparent hover:text-black",
+        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary hover:text-primary-fg",
     },
     {
       intent: "secondary",
@@ -50,14 +49,13 @@ export const button = tv({
     {
       intent: "secondary",
       state: "soft",
-      class:
-        "bg-primary-200 text-primary-600 hover:bg-primary-400 hover:text-black",
+      class: "bg-primary/50 text-primary-fg hover:bg-primary/30",
     },
     {
       intent: "secondary",
       state: "outline",
       class:
-        "text-primary-content hover:bg-primary-500 border-2 border-secondary bg-transparent hover:text-black",
+        "border-2 border-secondary bg-transparent text-primary-fg hover:bg-primary",
     },
   ],
   defaultVariants: {
@@ -67,23 +65,23 @@ export const button = tv({
   },
 });
 
-export interface ButtonProps
-  extends AriaButtonProps,
-    VariantProps<typeof button> {
-  className?: string | undefined;
+type ButtonVariantProps = VariantProps<typeof button>;
+
+interface ButtonProps extends AriaButtonProps, ButtonVariantProps {
+  className?: string;
 }
 
-export const Button = (props: ButtonProps) => {
-  const { className, size, intent, state, children, ...restProps } = props;
-
-  return (
-    <AriaButton
-      className={button({ className, size, intent, state })}
-      {...restProps}
-    >
-      {children}
-    </AriaButton>
-  );
-};
+export const Button = ({
+  className,
+  size,
+  intent,
+  state,
+  children,
+  ...props
+}: ButtonProps) => (
+  <AriaButton className={button({ className, size, intent, state })} {...props}>
+    {children}
+  </AriaButton>
+);
 
 Button.displayName = "Button";

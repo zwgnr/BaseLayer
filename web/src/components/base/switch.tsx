@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, type ElementRef } from "react";
+import type { ReactNode } from "react";
 
 import {
   Switch as AriaSwitch,
@@ -7,7 +7,7 @@ import {
 
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const switchVariants = tv({
+const switchVariants = tv({
   slots: {
     root: "flex items-center gap-2 transition-none duration-200",
     indicator:
@@ -24,34 +24,24 @@ export const switchVariants = tv({
   },
 });
 
-export type SwitchVariantProps = VariantProps<typeof switchVariants>;
+type SwitchVariantProps = VariantProps<typeof switchVariants>;
 
-interface SwitchProps
-  extends VariantProps<typeof switchVariants>,
-    AriaSwitchProps {
+interface SwitchProps extends SwitchVariantProps, AriaSwitchProps {
   children?: ReactNode;
   className?: string | undefined;
 }
 
-export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <AriaSwitch
-        className={switchVariants().root({ className })}
-        ref={ref}
-        {...props}
-      >
-        {({ isSelected }) => (
-          <>
-            <div
-              className={switchVariants({
-                selected: isSelected,
-              }).indicator()}
-            />
-            {children}
-          </>
-        )}
-      </AriaSwitch>
-    );
-  }
+export const Switch = ({ className, children, ...restProps }: SwitchProps) => (
+  <AriaSwitch className={switchVariants().root({ className })} {...restProps}>
+    {({ isSelected }) => (
+      <>
+        <div
+          className={switchVariants({
+            selected: isSelected,
+          }).indicator()}
+        />
+        {children}
+      </>
+    )}
+  </AriaSwitch>
 );

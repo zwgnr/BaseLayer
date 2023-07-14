@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+
 import type { SearchFieldProps as AriaSearchFieldProps } from "react-aria-components";
 import {
   SearchField as AriaSearchField,
@@ -7,18 +8,19 @@ import {
   Label,
   Text,
 } from "react-aria-components";
+
 import { VariantProps, tv } from "tailwind-variants";
 
-export const searchField = tv({
+const searchField = tv({
   slots: {
     input:
-      "font-sm m-0 rounded-xl border p-2 focus:border-primary focus:shadow-xl focus:outline-none appearance-none",
+      "font-sm m-0 appearance-none rounded-xl border p-2 focus:border-primary focus:shadow-xl focus:outline-none",
     root: "flex flex-col gap-2",
     button: "absolute right-2 mt-3 [&[data-empty]]:hidden",
   },
 });
 
-export type SearchFieldVariantProps = VariantProps<typeof searchField>;
+type SearchFieldVariantProps = VariantProps<typeof searchField>;
 
 const { root, input, button } = searchField();
 
@@ -30,29 +32,27 @@ interface SearchFieldProps
   errorMessage?: string;
 }
 
-export function SearchField({
+export const SearchField = ({
   label,
   description,
   errorMessage,
   ...props
-}: SearchFieldProps) {
-  return (
-    <AriaSearchField className={root()} {...props}>
-      {({ value }) => (
-        <>
-          <Label>{label}</Label>
-          <div className="relative items-center">
-            <Input className={input()} />
-            {value !== "" && (
-              <Button className={button()}>
-                <X />
-              </Button>
-            )}
-          </div>
-          {description && <Text slot="description">{description}</Text>}
-          {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-        </>
-      )}
-    </AriaSearchField>
-  );
-}
+}: SearchFieldProps) => (
+  <AriaSearchField className={root()} {...props}>
+    {({ value }) => (
+      <>
+        <Label>{label}</Label>
+        <div className="relative items-center">
+          <Input className={input()} />
+          {value !== "" && (
+            <Button className={button()}>
+              <X />
+            </Button>
+          )}
+        </div>
+        {description && <Text slot="description">{description}</Text>}
+        {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+      </>
+    )}
+  </AriaSearchField>
+);

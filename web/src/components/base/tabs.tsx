@@ -1,13 +1,17 @@
-import { ComponentPropsWithoutRef, forwardRef, type ElementRef } from "react";
 import {
   Tab as AriaTab,
   TabList as AriaTabList,
+  TabListProps as AriaTabListProps,
   TabPanel as AriaTabPanel,
+  TabPanelProps as AriaTabPanelProps,
+  TabProps as AriaTabProps,
+  TabsProps as AriaTabsProps,
   Tabs as AriaTabsRoot,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const tabs = tv({
+const tabs = tv({
   slots: {
     root: "flex w-full flex-col items-center",
     list: "text-muted-foreground relative inline-flex w-80 items-center justify-between rounded-xl bg-surface-2 p-1",
@@ -21,54 +25,56 @@ export const tabs = tv({
 
 const { list, root, panel, tab } = tabs();
 
-export const TabsRoot = forwardRef<
-  ElementRef<typeof AriaTabsRoot>,
-  Omit<ComponentPropsWithoutRef<typeof AriaTabsRoot>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaTabsRoot ref={ref} {...props} className={root({ className })}>
+interface TabsProps extends Omit<AriaTabsProps, "className"> {
+  className?: string;
+}
+
+const TabsRoot = ({ children, className, ...props }: TabsProps) => (
+  <AriaTabsRoot {...props} className={root({ className })}>
     {children}
   </AriaTabsRoot>
-));
+);
 
-TabsRoot.displayName = AriaTabsRoot.displayName;
+TabsRoot.displayName = TabsRoot;
 
-export const TabList = forwardRef<
-  ElementRef<typeof AriaTabList>,
-  Omit<ComponentPropsWithoutRef<typeof AriaTabList>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaTabList ref={ref} {...props} className={list({ className })}>
+interface TabListProps<T> extends Omit<AriaTabListProps<T>, "className"> {
+  className?: string;
+}
+
+const TabList = <T extends object>({
+  children,
+  className,
+  ...props
+}: TabListProps<T>) => (
+  <AriaTabList {...props} className={list({ className })}>
     {children}
   </AriaTabList>
-));
+);
 
-TabList.displayName = AriaTabList.displayName;
+TabList.displayName = TabList;
 
-export const Tab = forwardRef<
-  ElementRef<typeof AriaTab>,
-  Omit<ComponentPropsWithoutRef<typeof AriaTab>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaTab ref={ref} {...props} className={tab({ className })}>
+interface TabProps extends Omit<AriaTabProps, "className"> {
+  className?: string;
+}
+
+const Tab = ({ children, className, ...props }: TabProps) => (
+  <AriaTab {...props} className={tab({ className })}>
     {children}
   </AriaTab>
-));
+);
 
-Tab.displayName = AriaTab.displayName;
+Tab.displayName = Tab;
 
-export const TabPanel = forwardRef<
-  ElementRef<typeof AriaTabPanel>,
-  Omit<ComponentPropsWithoutRef<typeof AriaTabPanel>, "className"> & {
-    className?: string;
-  }
->(({ className, children, ...props }, ref) => (
-  <AriaTabPanel ref={ref} {...props} className={panel({ className })}>
+interface TabPanelProps extends Omit<AriaTabPanelProps, "className"> {
+  className?: string;
+}
+
+const TabPanel = ({ children, className, ...props }: TabPanelProps) => (
+  <AriaTabPanel {...props} className={panel({ className })}>
     {children}
   </AriaTabPanel>
-));
+);
 
-TabPanel.displayName = AriaTabPanel.displayName;
+TabPanel.displayName = TabPanel;
+
+export { TabsRoot, TabList, Tab, TabPanel };

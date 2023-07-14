@@ -9,26 +9,27 @@ import {
   Popover,
 } from "react-aria-components";
 
+import { RangeCalendar } from "@/components/base/rangeCalendar";
 import { ChevronDown } from "lucide-react";
-import { ElementRef, forwardRef } from "react";
 import type {
   DateRangePickerProps as AriaDateRangePickerProps,
   DateValue,
 } from "react-aria-components";
 import { Text } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { RangeCalendar } from "./rangeCalendar";
 
-export const dateRangePicker = tv({
+const dateRangePicker = tv({
   slots: {
-    group: "relative flex w-fit  items-center rounded-2xl bg-surface border shadow-lg",
+    group:
+      "relative flex w-fit  items-center rounded-2xl border bg-surface shadow-lg",
     iconButton:
       "appearance-none border-none bg-primary p-0 align-middle text-primary-fg outline-none",
     input:
       "flex w-fit whitespace-nowrap rounded-xl border-2 border-transparent bg-transparent py-2 pl-2 pr-12 ",
     inputButton:
       "absolute right-2 flex appearance-none items-center justify-center rounded-lg border-0 outline-none hover:bg-surface-2",
-    dateSegment: "pr-2 text-end focus:outline-none focus:bg-secondary focus:text-secondary-fg rounded-xl p-1",
+    dateSegment:
+      "rounded-xl p-1 pr-2 text-end focus:bg-secondary focus:text-secondary-fg focus:outline-none",
     popover:
       "overflow-auto [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
   },
@@ -36,26 +37,33 @@ export const dateRangePicker = tv({
 
 const { group, input, inputButton, dateSegment, popover } = dateRangePicker();
 
-interface DatePickerProps<T extends DateValue> extends AriaDateRangePickerProps<T> {
+interface DateRangePickerProps<T extends DateValue>
+  extends AriaDateRangePickerProps<T> {
   label?: string;
   description?: string;
   error?: string;
 }
 
-export const DateRangePicker = forwardRef<
-  ElementRef<typeof AriaDateRangePicker>,
-  DatePickerProps<DateValue>
->(({ className, label, description, error, children, ...props }, ref) => (
-  <AriaDateRangePicker ref={ref} className={className} {...props}>
+export const DateRangePicker = <T extends DateValue>({
+  className,
+  label,
+  description,
+  error,
+  children,
+  ...props
+}: DateRangePickerProps<T>) => (
+  <AriaDateRangePicker className={className} {...props}>
     <Label className="text-sm">{label}</Label>
     <Group className={group()}>
-      <DateInput  slot="start" className={input()}>
+      <DateInput slot="start" className={input()}>
         {(segment) => (
           <DateSegment className={dateSegment()} segment={segment} />
         )}
       </DateInput>
-      <span className="-ml-10" aria-hidden="true">–</span>
-      <DateInput  slot="end" className={input()}>
+      <span className="-ml-10" aria-hidden="true">
+        –
+      </span>
+      <DateInput slot="end" className={input()}>
         {(segment) => (
           <DateSegment className={dateSegment()} segment={segment} />
         )}
@@ -64,7 +72,11 @@ export const DateRangePicker = forwardRef<
         <ChevronDown />
       </Button>
     </Group>
-    {description && <Text className="text-sm" slot="description">{description}</Text>}
+    {description && (
+      <Text className="text-sm" slot="description">
+        {description}
+      </Text>
+    )}
     {error && <Text slot="error">{error}</Text>}
     <Popover className={popover()}>
       <Dialog>
@@ -72,4 +84,4 @@ export const DateRangePicker = forwardRef<
       </Dialog>
     </Popover>
   </AriaDateRangePicker>
-));
+);

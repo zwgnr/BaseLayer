@@ -1,8 +1,8 @@
 import {
+  Label as AriaLabel,
   Tag as AriaTag,
   TagGroupProps as AriaTagGroupProps,
   TagProps as AriaTagProps,
-  Label as AriaLabel,
   TagGroup,
   TagList,
   TagListProps,
@@ -11,7 +11,7 @@ import {
 import { tv } from "tailwind-variants";
 import { Button } from "./button";
 
-export const tagGroup = tv({
+const tagGroup = tv({
   slots: {
     root: "flex flex-col gap-1 text-sm",
     list: "flex flex-wrap gap-2",
@@ -21,7 +21,7 @@ export const tagGroup = tv({
 
 const { root, list, tag } = tagGroup();
 
-export const Label = AriaLabel
+const Label = AriaLabel;
 
 interface TagGroupProps<T>
   extends Omit<AriaTagGroupProps, "children">,
@@ -31,7 +31,7 @@ interface TagGroupProps<T>
   errorMessage?: string;
 }
 
-export const TagGroupRoot = <T extends object>({
+const TagGroupRoot = <T extends object>({
   label,
   className,
   description,
@@ -40,36 +40,34 @@ export const TagGroupRoot = <T extends object>({
   children,
   renderEmptyState,
   ...props
-}: TagGroupProps<T>) => {
-  return (
-    <TagGroup className={root({ className })} {...props}>
-      <AriaLabel>{label}</AriaLabel>
-      <TagList
-        className={list()}
-        items={items}
-        renderEmptyState={renderEmptyState}
-      >
-        {children}
-      </TagList>
-      {description && (
-        <Text className="text-sm" slot="description">
-          {description}
-        </Text>
-      )}
-      {errorMessage && (
-        <Text className="text-sm text-critical" slot="errorMessage">
-          {errorMessage}
-        </Text>
-      )}
-    </TagGroup>
-  );
-};
+}: TagGroupProps<T>) => (
+  <TagGroup className={root({ className })} {...props}>
+    <AriaLabel>{label}</AriaLabel>
+    <TagList
+      className={list()}
+      items={items}
+      renderEmptyState={renderEmptyState}
+    >
+      {children}
+    </TagList>
+    {description && (
+      <Text className="text-sm" slot="description">
+        {description}
+      </Text>
+    )}
+    {errorMessage && (
+      <Text className="text-sm text-critical" slot="errorMessage">
+        {errorMessage}
+      </Text>
+    )}
+  </TagGroup>
+);
 
-interface TagProps extends AriaTagProps {
-  className?: string | undefined;
-}
-
-export const Tag = ({ children, className, ...props }: TagProps) => {
+const Tag = ({
+  children,
+  className,
+  ...props
+}: AriaTagProps & { className?: string }) => {
   let textValue = typeof children === "string" ? children : undefined;
   return (
     <AriaTag className={tag({ className })} textValue={textValue} {...props}>
@@ -82,3 +80,5 @@ export const Tag = ({ children, className, ...props }: TagProps) => {
     </AriaTag>
   );
 };
+
+export { Label, Tag, TagGroupRoot };

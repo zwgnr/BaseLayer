@@ -18,7 +18,7 @@ import { Badge } from "@/components/base/badge"
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at *components/base*.
 
 ## Base 
 
@@ -32,7 +32,7 @@ export const badge = tv({
   variants: {
     intent: {
       default: "bg-surface-3",
-      info: "bg-secondary",
+      info: "bg-secondary text-secondary-fg",
       alert: "bg-critical",
     },
     size: {
@@ -55,6 +55,8 @@ export const Badge = ({ className, size, intent, ...props }: BadgeProps) => (
   <div className={badge({ size, intent, className })} {...props} />
 );
 
+Badge.displayName = "Badge";
+
 ```
 </Fragment>
 </Potion>
@@ -63,7 +65,7 @@ export const Badge = ({ className, size, intent, ...props }: BadgeProps) => (
 
 ### Default
 
-<DemoTabs vueDisabled solidDisabled>
+<DemoTabs>
 
 <Fragment slot="vsc">
 
@@ -132,9 +134,9 @@ export const BadgeExample = () => <Badge>Badge</Badge>;
 
 <div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
 ```tsx
-<div className={badge({ size: "sm" })}>Small</div>
-<div className={badge({ size: "md" })}>Medium</div>
-<div className={badge({ size: "lg" })}>Large</div>
+  <Badge size="sm">Small</Badge>
+  <Badge size="md">Medium</Badge>
+  <Badge size="lg">Large</Badge>
 ```
 </div>
 

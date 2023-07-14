@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 export const badge = tv({
@@ -21,9 +22,11 @@ export const badge = tv({
 });
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
+  extends HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badge> {}
 
 export const Badge = ({ className, size, intent, ...props }: BadgeProps) => (
   <div className={badge({ size, intent, className })} {...props} />
 );
+
+Badge.displayName = "Badge";

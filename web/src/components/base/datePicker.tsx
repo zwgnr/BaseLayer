@@ -1,27 +1,27 @@
+import type { DatePickerProps as AriaDatePickerProps } from "react-aria-components";
+
 import {
   DatePicker as AriaDatePicker,
   Button,
   DateInput,
   DateSegment,
+  DateValue,
   Dialog,
   Group,
   Label,
   Popover,
+  Text,
 } from "react-aria-components";
 
 import { Calendar } from "@/components/base/calendar";
 import { ChevronDown } from "lucide-react";
-import { ElementRef, forwardRef } from "react";
-import type {
-  DatePickerProps as AriaDatePickerProps,
-  DateValue,
-} from "react-aria-components";
-import { Text } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const datePicker = tv({
+const datePicker = tv({
   slots: {
-    group: "relative flex w-fit  items-center rounded-2xl bg-surface border shadow-lg",
+    group:
+      "relative flex w-fit  items-center rounded-2xl border bg-surface shadow-lg",
     iconButton:
       "appearance-none border-none bg-primary p-0 align-middle text-primary-fg outline-none",
     input:
@@ -42,11 +42,15 @@ interface DatePickerProps<T extends DateValue> extends AriaDatePickerProps<T> {
   error?: string;
 }
 
-export const DatePicker = forwardRef<
-  ElementRef<typeof AriaDatePicker>,
-  DatePickerProps<DateValue>
->(({ className, label, description, error, children, ...props }, ref) => (
-  <AriaDatePicker ref={ref} className={className} {...props}>
+export const DatePicker = <T extends DateValue>({
+  className,
+  label,
+  description,
+  error,
+  children,
+  ...props
+}: DatePickerProps<T>) => (
+  <AriaDatePicker className={className} {...props}>
     <Label className="text-sm">{label}</Label>
     <Group className={group()}>
       <DateInput className={input()}>
@@ -58,7 +62,11 @@ export const DatePicker = forwardRef<
         <ChevronDown />
       </Button>
     </Group>
-    {description && <Text className="text-sm" slot="description">{description}</Text>}
+    {description && (
+      <Text className="text-sm" slot="description">
+        {description}
+      </Text>
+    )}
     {error && <Text slot="error">{error}</Text>}
     <Popover className={popover()}>
       <Dialog>
@@ -66,4 +74,4 @@ export const DatePicker = forwardRef<
       </Dialog>
     </Popover>
   </AriaDatePicker>
-));
+);
