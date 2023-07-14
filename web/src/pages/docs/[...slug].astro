@@ -20,6 +20,6 @@ export interface Props {
 const { doc } = Astro.props;
 ---
 
-<Layout title="first">
+<Layout title={doc.data.title}>
   <DocsLayout doc={doc}  />
 </Layout>

@@ -79,7 +79,7 @@ export const stylesPreset = `@tailwind base;
     --fg-5: 82 82 91; /* #52525b */
     --fg-6: 115 115 115; /* #737373 */
 
-    --primary: 9 229 123; /* #00FF00 */
+    --primary: 9 229 123; /* #09e57b  */
     --primary-fg: 10 10 10; /* #0a0a0a */
 
     --secondary: 10 10 10; /* #0a0a0a*/
@@ -112,7 +112,7 @@ export const stylesPreset = `@tailwind base;
 
     --arrow-background: 10 10 10; /* #0a0a0a */
 
-    --primary: 9 229 123; /* #00FF00 */
+    --primary: 9 229 123; /* #09e57b  */
     --primary-fg: 10 10 10; /* #0a0a0a */
 
     --secondary: 250 250 250; /* #fafafa*/
@@ -127,6 +127,6 @@ export const stylesPreset = `@tailwind base;
 }
 
 .react-aria-DropIndicator[data-drop-target] {
-  outline: 1px solid #00ff00;
+  outline: 1px solid #09e57b;
 }
 `;
