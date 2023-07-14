@@ -1,5 +1,3 @@
-import { cx } from "@/lib/twc";
-
 import {
   Slider as AriaSlider,
   SliderThumb as AriaSliderThumb,
@@ -52,7 +50,7 @@ const SliderLabel = ({
   ...props
 }: LabelProps & { className?: string }) => (
   <div className="col-span-2 my-4 flex w-full justify-between">
-    <Label className={cx("text-sm", className)} {...props}>
+    <Label className="text-sm" {...props}>
       {children}
     </Label>
     <SliderOutput className="text-sm" />

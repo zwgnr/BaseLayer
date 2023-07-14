@@ -18,7 +18,7 @@ const dateField = tv({
     input:
       "min-w-sm flex w-fit whitespace-nowrap rounded-xl border p-2 outline-none",
     segmentStyles:
-      "rounded-xl p-2 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
+      "rounded-xl p-1 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
   },
 });
 
@@ -36,7 +36,7 @@ export const DateField = <T extends DateValue>({
   errorMessage,
   ...props
 }: DateFieldProps<T>) => (
-  <AriaDateField {...props}>
+  <AriaDateField className="flex flex-col gap-2" {...props}>
     <Label>{label}</Label>
     <DateInput className={input()}>
       {(segment) => (

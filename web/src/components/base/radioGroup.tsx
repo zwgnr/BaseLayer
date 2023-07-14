@@ -14,7 +14,7 @@ import { tv } from "tailwind-variants";
 const radioGroup = tv({
   slots: {
     radio:
-      "flex items-center gap-2 text-fg before:block before:h-4 before:w-4 before:rounded-full   before:border before:border-fg-3 before:transition-all [&[data-selected]]:before:border-4 [&[data-selected]]:before:border-primary",
+      "flex items-center gap-2 text-fg before:block before:h-5 before:w-5 before:rounded-full before:border before:border-fg-3 before:transition-all [&[data-selected]]:before:border-4 [&[data-selected]]:before:border-primary",
     group: "flex flex-col gap-4",
   },
 });
