@@ -61,7 +61,7 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
 */
 
   const message = `You are about to do the following:\n
-  Install react-aria-components, lucide-react, tailwind-variants and
+  Install react-aria-components, lucide-react, tailwind-variants, tailwindcss-animate and
   overwrite your global.css + modify your tailwind.config files.
 Would you like to proceed?`;
 
@@ -222,12 +222,12 @@ Would you like to proceed?`;
         },
         async () => {
           if (packageManager === 'npm') {
-            await exec(`npm i react-aria-components lucide-react tailwind-variants`, {
+            await exec(`npm i react-aria-components lucide-react tailwind-variants tailwindcss-animate`, {
               cwd: projectRoot,
             });
           } else {
             await exec(
-              `${packageManager} add react-aria-components lucide-react tailwind-variants`,
+              `${packageManager} add react-aria-components lucide-react tailwind-variants tailwindcss-animate`,
               {
                 cwd: projectRoot,
               }

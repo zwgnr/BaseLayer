@@ -1,8 +1,4 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -51,37 +47,7 @@ module.exports = {
           to: { opacity: 1 },
         },
       },
-      animation: {
-        zoom: "zoom .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-        fade: "fade .2s",
-        fadeOut: "fade reverse .2s ease-in",
-      },
-      fontFamily: {
-        sans: ["Inter var", fontFamily.sans],
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: "rgb(var(--fg))",
-            h1: {
-              color: "rgb(var(--fg))",
-            },
-            h2: {
-              color: "rgb(var(--fg-2))",
-            },
-            h3: {
-              color: "rgb(var(--fg-3))",
-            },
-            a: {
-              color: "rgb(var(--fg))",
-            },
-            strong: {
-              color: "rgb(var(--fg))",
-            },
-          },
-        },
-      },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 };

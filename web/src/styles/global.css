@@ -35,8 +35,6 @@
     --warning: 237 227 40; /* #EDE328 */
 
     --critical: 255 82 56; /* #FF5238 */
-
-    --arrow-background: #d4d4d4;
     --scrollbar: #a3a3a3;
   }
   [data-theme="dark"] {
@@ -62,7 +60,7 @@
     --primary: 9 229 123; /* #00FF00 */
     --primary-fg: 10 10 10; /* #0a0a0a */
 
-    --secondary: 10 10 10; /* #0a0a0a*/
+    --secondary: 255 255 255; /* #0a0a0a*/
     --secondary-fg: 10 10 10; /* #0a0a0a */
 
     --positive: 109 211 46; /* #6DD32E */
@@ -70,17 +68,8 @@
     --warning: 237 227 40; /* #EDE328 */
 
     --critical: 255 82 56; /* #FF5238 */
-
-    --arrow-background: #334155;
     --scrollbar: #a3a3a3;
   }
-}
-
-.react-aria-DropIndicator[data-drop-target] {
-  outline: 1px solid #00ff00;
-}
-
-@layer utilities {
   /* clears the ‘X’ from Internet Explorer */
   input[type="search"]::-ms-clear {
     display: none;
@@ -99,6 +88,13 @@
   input[type="search"]::-webkit-search-results-decoration {
     display: none;
   }
+}
+
+.react-aria-DropIndicator[data-drop-target] {
+  outline: 1px solid #00ff00;
+}
+
+@layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -138,103 +134,5 @@
   }
   .rMax {
     right: max(0px, calc(100vw / 2 - 647px));
-  }
-}
-
-@layer reset {
-  * {
-    margin: 0;
-  }
-
-  *,
-  :after,
-  :before {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-  }
-
-  body,
-  html {
-    height: screen;
-  }
-
-  body {
-    line-height: 1.5;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  img {
-    border-style: none;
-  }
-
-  canvas,
-  img,
-  picture,
-  svg,
-  video {
-    display: block;
-    max-width: 100%;
-  }
-
-  button,
-  input,
-  select,
-  textarea {
-    font: inherit;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    overflow-wrap: break-word;
-  }
-
-  ::-webkit-search-decoration {
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  ::-webkit-file-upload-button {
-    -webkit-appearance: button;
-    appearance: none;
-    font: inherit;
-  }
-
-  ::-webkit-inner-spin-button,
-  ::-webkit-outer-spin-button {
-    height: auto;
-  }
-
-  code,
-  kbd,
-  pre,
-  samp {
-    font-size: 1em;
-  }
-
-  table {
-    border-collapse: collapse;
-  }
-
-  textarea {
-    resize: vertical;
-  }
-
-  sub {
-    bottom: -0.25em;
-  }
-
-  sup {
-    top: -0.5em;
-  }
-
-  dialog {
-    padding: 0;
   }
 }
