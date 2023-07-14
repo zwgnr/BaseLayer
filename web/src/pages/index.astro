@@ -1,13 +1,29 @@
 ---
 import { Button } from "@/components/base/button";
 import Layout from "../layouts/Layout.astro";
-import { Droplet, Github, Paintbrush, Twitter } from "lucide-react";
+import { Droplet, Github, Moon, Paintbrush, Sun, Twitter } from "lucide-react";
 import { LandingTabs } from "@/components/LandingTabs";
 import { Icon } from "@iconify/react";
 import { IconTooltip } from "@/components/IconTooltip";
 import { Heart } from "lucide-react";
 import { Coffee } from "lucide-react";
 ---
+
+<script>
+  const themeBtn = document.getElementById("themeToggle");
+  themeBtn?.addEventListener("click", function () {
+    const moon = document.getElementById("moon");
+    const sun = document.getElementById("sun");
+
+    if (moon?.classList.contains("hidden")) {
+      moon?.classList.remove("hidden");
+      sun?.classList.add("hidden");
+    } else {
+      sun?.classList.remove("hidden");
+      moon?.classList.add("hidden");
+    }
+  });
+</script>
 
 <Layout title="BaseLayer">
   <div class="w-full flex-col items-center gap-12">
@@ -19,10 +35,19 @@ import { Coffee } from "lucide-react";
           class="absolute top-0 flex w-full max-w-[calc(100vw-24px)] justify-between px-4 pt-4 md:px-8"
         >
           <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="#09e57b" d="M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              ><path
+                fill="#09e57b"
+                d="M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z"
+              ></path></svg
+            >
 
             <p
-              class="flex items-center gap-2 text-2xl font-bold tracking-tighter"
+              class="flex items-center gap-2 text-2xl font-bold tracking-tighter text-fg"
             >
               BaseLayer
             </p>
@@ -30,32 +55,13 @@ import { Coffee } from "lucide-react";
           <div class="flex items-center">
             <a href="/docs" class="mr-4">Docs</a>
             <button
-              class="flex justify-center gap-2 rounded-xl"
-              id="button"
-              aria-describedby="tooltip"><Paintbrush /></button
+              id="themeToggle"
+              data-toggle-theme="dark,light"
+              data-act-class="ACTIVECLASS"
             >
-            <div class="absolute hidden rounded-xl" id="tooltip" role="tooltip">
-              <div class="flex w-48 flex-col items-start rounded-xl p-4">
-                <button
-                  class="w-full rounded-xl"
-                  id="set-light"
-                  data-set-theme="light"
-                  data-act-class="ACTIVECLASS">Light</button
-                >
-                <button
-                  class="w-full rounded-xl"
-                  id="set-dark"
-                  data-set-theme="dark"
-                  data-act-class="ACTIVECLASS">Dark</button
-                >
-                <button
-                  class="w-full rounded-xl"
-                  id="set-candy"
-                  data-set-theme="candy"
-                  data-act-class="ACTIVECLASS">Candy</button
-                >
-              </div>
-            </div>
+              <Moon id="moon" className="text-primary-fg" />
+              <Sun id="sun" className="hidden text-fg" />
+            </button>
             <a
               class="mx-4 rounded-xl"
               href="https://github.com/zwagnr/BaseLayer"
@@ -79,7 +85,8 @@ import { Coffee } from "lucide-react";
           <p class="max-w-48 mt-8 text-xl text-fg-4">
             Unlock limitless potential and unparalleled convenience, right
             within your editor. Build stunning apps, libraries, and design
-            systems effortlessly. Your next big idea starts here, with BaseLayer.
+            systems effortlessly. Your next big idea starts here, with
+            BaseLayer.
           </p>
           <div
             class="mt-12 flex w-full flex-col justify-center gap-4 md:flex-row"
