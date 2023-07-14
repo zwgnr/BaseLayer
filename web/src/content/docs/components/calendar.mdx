@@ -6,7 +6,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Calendar.html"
 ---
 ---
 import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion  from '../../../components/Potion.astro'
+import BaseLayer  from '../../../components/BaseLayer.astro'
 import { CalendarExample } from "@/Examples/Calendar/Calendar"
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
@@ -18,9 +18,9 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at *components/base*.
 
-## Potion
+## BaseLayer
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -96,7 +96,7 @@ Calendar.displayName = "Calendar";
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Examples
 
@@ -172,7 +172,7 @@ export const Dialog = () => {
 
     <Fragment slot="vsc">
 ```bash
-pui-dialog
+bl-dialog
 ```
   </Fragment>
 </DemoTabs>

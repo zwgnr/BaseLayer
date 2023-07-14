@@ -1,7 +1,7 @@
 {
-  "name": "potionui",
-  "displayName": "PotionUI",
-  "publisher": "Potion",
+  "name": "baselayer",
+  "displayName": "BaseLayer",
+  "publisher": "BaseLayer",
   "description": "",
   "icon": "./potionIcon.png",
   "version": "0.0.3",
@@ -11,21 +11,21 @@
   "categories": [
     "Other"
   ],
-  "repository": "https://github.com/zwgnr/PotionUI",
+  "repository": "https://github.com/zwgnr/BaseLayer",
   "main": "./out/main.js",
   "contributes": {
     "commands": [
       {
         "command": "extension.add",
-        "title": "Potion: add"
+        "title": "BaseLayer: add"
       },
       {
         "command": "extension.init",
-        "title": "Potion: init"
+        "title": "BaseLayer: init"
       },
       {
         "command": "extension.missing",
-        "title": "Potion: missing"
+        "title": "BaseLayer: missing"
       }
     ]
   },

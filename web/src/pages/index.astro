@@ -1,5 +1,5 @@
 ---
-import { Button, button } from "@/components/base/button";
+import { Button } from "@/components/base/button";
 import Layout from "../layouts/Layout.astro";
 import { Droplet, Github, Paintbrush, Twitter } from "lucide-react";
 import { LandingTabs } from "@/components/LandingTabs";
@@ -9,7 +9,7 @@ import { Heart } from "lucide-react";
 import { Coffee } from "lucide-react";
 ---
 
-<Layout title="PotionUI">
+<Layout title="BaseLayer">
   <div class="w-full flex-col items-center gap-12">
     <div
       class="flex h-full w-full flex-col items-center justify-center text-start"
@@ -19,21 +19,12 @@ import { Coffee } from "lucide-react";
           class="absolute top-0 flex w-full max-w-[calc(100vw-24px)] justify-between px-4 pt-4 md:px-8"
         >
           <div class="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              ><path
-                fill="#09e57b"
-                d="M12 20a6 6 0 0 1-6-6c0-4 6-10.75 6-10.75S18 10 18 14a6 6 0 0 1-6 6Z"
-              ></path></svg
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="#09e57b" d="M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z"/></svg>
 
             <p
               class="flex items-center gap-2 text-2xl font-bold tracking-tighter"
             >
-              PotionUI
+              BaseLayer
             </p>
           </div>
           <div class="flex items-center">
@@ -67,7 +58,7 @@ import { Coffee } from "lucide-react";
             </div>
             <a
               class="mx-4 rounded-xl"
-              href="https://github.com/zwagnr/PotionUI"
+              href="https://github.com/zwagnr/BaseLayer"
             >
               <Github />
             </a>
@@ -88,8 +79,7 @@ import { Coffee } from "lucide-react";
           <p class="max-w-48 mt-8 text-xl text-fg-4">
             Unlock limitless potential and unparalleled convenience, right
             within your editor. Build stunning apps, libraries, and design
-            systems effortlessly. Your next big idea starts here, with Potion
-            UI.
+            systems effortlessly. Your next big idea starts here, with BaseLayer.
           </p>
           <div
             class="mt-12 flex w-full flex-col justify-center gap-4 md:flex-row"
@@ -100,7 +90,7 @@ import { Coffee } from "lucide-react";
             <Button className="p-8 bg-surface-2" size="lg">
               <a
                 class="flex items-center gap-2"
-                href="https://github.com/zwagnr/PotionUI"
+                href="https://github.com/zwagnr/BaseLayer"
               >
                 <span class="flex items-center text-fg-5">Github</span>
                 <Github className="h-6 w-6 text-fg-5" />

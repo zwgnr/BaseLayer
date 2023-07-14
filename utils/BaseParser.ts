@@ -28,12 +28,12 @@ const components: Component[] = tsFiles.map((file) => {
   // Read content of the file
   const fileContent = fs.readFileSync(path.join(baseDir, file), 'utf8');
 
-  // Generate Potion object
+  // Generate BaseLayer object
   const componentName = path.basename(file, '.tsx');
 
-  // Generate displayName by removing "Potion" from the end of potionName
+  // Generate displayName by removing "BaseLayer" from the end of potionName
   let displayName = componentName;
-  if(displayName.endsWith('Potion')) {
+  if(displayName.endsWith('BaseLayer')) {
     displayName = displayName.slice(0, -6);
   }
 

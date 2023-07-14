@@ -15,7 +15,7 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
     return;
   }
   const projectRootInput = await vscode.window.showInputBox({
-    placeHolder: 'Where is the folder you would like to init Potion in?',
+    placeHolder: 'Where is the folder you would like to init BaseLayer in?',
   });
 
   const projectRoot = `${workspaceRoot}/${projectRootInput}`;
@@ -82,7 +82,7 @@ Would you like to proceed?`;
       const kebabCaseName = baseName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
       formattedComponents[example.name] = {
         scope: `typescriptreact`,
-        prefix: `pui-${kebabCaseName}`,
+        prefix: `bl-${kebabCaseName}`,
         body: [example.files],
         description: `${
           example.name.charAt(0).toUpperCase() + example.name.slice(1)
@@ -237,7 +237,7 @@ Would you like to proceed?`;
           return;
         }
       );
-      vscode.window.showInformationMessage('PotionUI Ready!');
+      vscode.window.showInformationMessage('BaseLayer Ready!');
     } catch (err) {
       vscode.window.showErrorMessage(`Error executing command: ${err}`);
       return;

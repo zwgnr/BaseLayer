@@ -63,18 +63,9 @@ const currentPage = Astro.url.pathname;
         ]}
         href="/"
         ><div class="flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            ><path
-              fill="#09e57b"
-              d="M12 20a6 6 0 0 1-6-6c0-4 6-10.75 6-10.75S18 10 18 14a6 6 0 0 1-6 6Z"
-            ></path></svg
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="#09e57b" d="M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z"/></svg>
           <p class="flex items-center gap-2 text-2xl">
-            PotionUI <span
+            BaseLayer <span
               class:list={[
                 "rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal",
                 currentPage === "/" ? "hidden" : "",
@@ -111,7 +102,7 @@ const currentPage = Astro.url.pathname;
           "rounded-xl p-2 text-fg hover:bg-surface-2",
           currentPage === "/" ? "hidden" : "",
         ]}
-        href="https://github.com/zwagnr/PotionUI"
+        href="https://github.com/zwagnr/BaseLayer"
       >
         <Github />
       </a>

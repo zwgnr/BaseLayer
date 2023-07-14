@@ -8,7 +8,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Table.html"
 ---
 
 import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion  from '../../../components/Potion.astro'
+import BaseLayer  from '../../../components/BaseLayer.astro'
 import { TableExample } from "@/Examples/Table/Table"
 import { TableSortable } from "@/Examples/Table/TableSortable"
 import { TableReorderable } from "@/Examples/Table/TableReorderable"
@@ -25,9 +25,9 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder *components/base*.
 
-## Potion 
+## BaseLayer 
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
 import { forwardRef, ReactNode, type ElementRef } from "react";
@@ -90,7 +90,7 @@ export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Examples 
 
@@ -116,7 +116,7 @@ export const SwitchExample = () => {
 
     <Fragment slot="vsc">
 ```bash
-pui-table
+bl-table
 ```
   </Fragment>
 </DemoTabs>
@@ -143,7 +143,7 @@ export const SwitchExample = () => {
 
     <Fragment slot="vsc">
 ```bash
-pui-table-sortable
+bl-table-sortable
 ```
   </Fragment>
 </DemoTabs>
@@ -170,7 +170,7 @@ export const SwitchExample = () => {
 
     <Fragment slot="vsc">
 ```bash
-pui-table-reorderable
+bl-table-reorderable
 ```
   </Fragment>
 </DemoTabs>

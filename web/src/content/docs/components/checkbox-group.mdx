@@ -8,7 +8,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/CheckboxGroup.html"
 ---
 
 import DemoTabs from "../../../components/DemoTabs.astro";
-import Potion from "../../../components/Potion.astro";
+import BaseLayer from "../../../components/BaseLayer.astro";
 import { Checkbox } from "@/components/base/checkbox.tsx";
 import { CheckboxGroup } from "@/components/base/checkboxGroup.tsx";
 import { MdxExample } from "@/components/Demos/MdxExample.tsx";
@@ -25,9 +25,9 @@ import { MdxExample } from "@/components/Demos/MdxExample.tsx";
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at *components/base*.
 
-## Potion
+## BaseLayer
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
 import { VariantProps, tv } from "tailwind-variants";
@@ -55,7 +55,7 @@ export type CheckboxProps = VariantProps<typeof checkboxPotion>;
 
 ````
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Components
 
@@ -115,7 +115,7 @@ export const Checkbox = ({ children, size }: CheckboxProps) => {
 
 <Fragment slot="vsc">
 ```bash
-pui-checkbox
+bl-checkbox
 ```
 </Fragment>
 </DemoTabs>

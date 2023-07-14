@@ -8,7 +8,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Slider.html"
 ---
 
 import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion from '../../../components/Potion.astro'
+import BaseLayer from '../../../components/BaseLayer.astro'
 import { Slider } from '../../../Examples/Slider/Slider.tsx'
 
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
@@ -21,9 +21,9 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *components/base*.
 
-## Potion 
+## BaseLayer 
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
 import { tv } from "tailwind-variants";
@@ -42,7 +42,7 @@ export const sliderPotion = tv({
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Components 
 
@@ -51,7 +51,7 @@ export const sliderPotion = tv({
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-slider 
+bl-slider 
 ```
 </Fragment>
 <Fragment slot="react">

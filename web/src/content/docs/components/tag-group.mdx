@@ -8,7 +8,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/TagGroup.html"
 ---
 
 import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion from '../../../components/Potion.astro'
+import BaseLayer from '../../../components/BaseLayer.astro'
 import { TagGroupExample } from '../../../Examples/TagGroup/TagGroup.tsx'
 
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
@@ -21,9 +21,9 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *components/base*.
 
-## Potion 
+## BaseLayer 
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
 import {
@@ -113,7 +113,7 @@ export const Tag = ({ children, className, ...props }: TagProps) => {
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Examples 
 
@@ -122,7 +122,7 @@ export const Tag = ({ children, className, ...props }: TagProps) => {
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-tag-group 
+bl-tag-group 
 ```
 </Fragment>
 <Fragment slot="react">

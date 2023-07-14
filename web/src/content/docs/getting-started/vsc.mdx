@@ -1,12 +1,12 @@
 ---
 title: VScode Extension
-description: "The Potion extension, for VScode."
+description: "The BaseLayer extension, for VScode."
 tags: ["Install", "Configure", "Commands", "Snippets", "init", "add", "missing"]
 ---
 
 ---
 
-The Potion VScode Extension lies at the heart of PotionUI, powering your project initialization, potion installations, and enabling rapid component creation with code snippets.
+The BaseLayer VScode Extension lies at the heart of BaseLayer, powering your project initialization, potion installations, and enabling rapid component creation with code snippets.
 
 *What sets it apart from a CLI tool?*
 
@@ -16,7 +16,7 @@ But speed is just the tip of the iceberg. The VScode extension leverages the pla
 
 ## Install Extension
 
-Locate and install [PotionUI](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) through the VScode marketplace.
+Locate and install [BaseLayer](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap) through the VScode marketplace.
 
 ## Commands 
 
@@ -30,11 +30,11 @@ To use any of the below commands simply open the command palette in VScode.
 Ctrl+Shift+P
 ```
 
-### Potion: init
+### BaseLayer: init
 
  Automatically configures your project with everything you need. Here's a simplified version of the steps:
 
-  1.  When prompted, enter the folder where you want to initialize PotionUI. If it's in your workspace root, just press Enter. Or, if your project is in a folder called "myproject/frontend," enter "myproject/frontend."
+  1.  When prompted, enter the folder where you want to initialize BaseLayer. If it's in your workspace root, just press Enter. Or, if your project is in a folder called "myproject/frontend," enter "myproject/frontend."
 
     ![Install Destination](/installDestination.jpg)
 
@@ -44,10 +44,10 @@ Ctrl+Shift+P
 
   4. Finally, it will install workspace snippets (in .vscode) of all component examples.
 
-That's it! PotionUI is now ready to use in your project.
+That's it! BaseLayer is now ready to use in your project.
 
 
-### Potion: add
+### BaseLayer: add
 
 This command provies a multi-pick where you can choose one or more potions to install. Upon selection, the `potions.{ts}` files will be automatically created and placed in your potions folder. 
 
@@ -55,19 +55,19 @@ This command provies a multi-pick where you can choose one or more potions to in
 
 *If you do not have a potions folder set up, and error will be thrown.
 
-### Potion: missing
+### BaseLayer: missing
 
 If you come across a situation where you're using component snippets and realize that you're missing required Base components, don't worry! There's a convenient command you can use to resolve this. By running the "missing" command, it will scan the current file you have open and automatically install all the dependent Base components to your base folder.
 
-Simply run the "missing" command whenever you encounter missing dependencies, and PotionUI will take care of the rest.
+Simply run the "missing" command whenever you encounter missing dependencies, and BaseLayer will take care of the rest.
 
 ## Snippets
 
 ### Examples
 
-PotionUI offers an extensive collection of prebuilt components that you can customize and extend according to your needs. The extension is designed to install local workspace snippets of these component examples seamlessly.
+BaseLayer offers an extensive collection of prebuilt components that you can customize and extend according to your needs. The extension is designed to install local workspace snippets of these component examples seamlessly.
 
-To access the examples, simply use the "pui-" prefix followed by the component name. For example, if you want to use a button, type "pui-button" in your code.
+To access the examples, simply use the "bl-" prefix followed by the component name. For example, if you want to use a button, type "bl-button" in your code.
 
 ### Themes
 

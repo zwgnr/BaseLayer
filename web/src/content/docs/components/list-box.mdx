@@ -8,7 +8,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/ListBox.html"
 ---
 
 import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion from '../../../components/Potion.astro'
+import BaseLayer from '../../../components/BaseLayer.astro'
 import { ListBoxExample } from '../../../Examples/ListBox/ListBox.tsx'
 import { ListBoxReorderable } from '../../../Examples/ListBox/ListBoxReorderable.tsx'
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
@@ -22,9 +22,9 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
 
-## Potion 
+## BaseLayer 
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
 import { forwardRef, type ElementRef } from "react";
@@ -57,7 +57,7 @@ Toggle.displayName = "Toggle";
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Examples 
 
@@ -66,7 +66,7 @@ Toggle.displayName = "Toggle";
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-toggle 
+bl-toggle 
 ```
 </Fragment>
 <Fragment slot="react">
@@ -93,7 +93,7 @@ export const ToggleExample = () => {
 <DemoTabs vueDisabled solidDisabled>
 <Fragment slot="vsc">
 ```tsx
-pui-grid-list-reorderable 
+bl-grid-list-reorderable 
 ```
 </Fragment>
 <Fragment slot="react">

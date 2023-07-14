@@ -6,7 +6,7 @@ description: "Displays a badge component."
 ---
 
 import DemoTabs from '@/components/DemoTabs.astro'
-import Potion from '@/components/Potion.astro'
+import BaseLayer from '@/components/BaseLayer.astro'
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 import { Badge } from "@/components/base/badge"
 
@@ -22,7 +22,7 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 
 ## Base 
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
 import { tv, VariantProps } from "tailwind-variants";
@@ -59,7 +59,7 @@ Badge.displayName = "Badge";
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Examples 
 
@@ -70,7 +70,7 @@ Badge.displayName = "Badge";
 <Fragment slot="vsc">
 
 ```tsx
-pui-badge 
+bl-badge 
 ```
 
 </Fragment>

@@ -6,7 +6,7 @@ docLink: "https://react-spectrum.adobe.com/react-aria/Calendar.html"
 ---
 ---
 import DemoTabs from '../../../components/DemoTabs.astro'
-import Potion  from '../../../components/Potion.astro'
+import BaseLayer  from '../../../components/BaseLayer.astro'
 import { RangeCalendar } from "@/components/base/rangeCalendar"
 import { DatePicker } from "@/components/base/datePicker"
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
@@ -19,9 +19,9 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
 
-## Potion
+## BaseLayer
 
-<Potion>
+<BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
 import { tv } from "tailwind-variants";
@@ -44,7 +44,7 @@ export const dropdownPotion = tv({
 
 ```
 </Fragment>
-</Potion>
+</BaseLayer>
 
 ## Components
 
@@ -120,7 +120,7 @@ export const Dialog = () => {
 
     <Fragment slot="vsc">
 ```bash
-pui-dialog
+bl-dialog
 ```
   </Fragment>
 </DemoTabs>
