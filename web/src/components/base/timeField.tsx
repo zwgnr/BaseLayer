@@ -14,9 +14,9 @@ import { tv } from "tailwind-variants";
 export const timeField = tv({
   slots: {
     input:
-      "min-w-sm flex w-fit whitespace-nowrap rounded-xl border p-2 outline-none",
+      "min-w-sm flex w-fit whitespace-nowrap rounded-md border p-2 outline-none",
     segmentStyles:
-      "rounded-xl p-1 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
+      "rounded-md p-1 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
   },
 });
 

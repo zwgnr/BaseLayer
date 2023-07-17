@@ -13,13 +13,11 @@ import { tv } from "tailwind-variants";
 
 const tabs = tv({
   slots: {
-    root: "flex w-full flex-col items-center",
-    list: "text-muted-foreground relative inline-flex w-80 items-center justify-between rounded-xl bg-surface-2 p-1",
-    trigger:
-      "text-md focus-visible:ring-ring flex  h-10 appearance-none  items-center justify-center whitespace-nowrap rounded-md px-3 py-3 font-medium text-fg-5 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none  disabled:opacity-50 data-[selected]:bg-surface-2 data-[selected]:text-fg",
+    root: "flex w-full flex-col items-start",
+    list: "relative inline-flex w-72 items-center justify-between rounded-md p-1",
+    tab: "relative flex w-1/3 cursor-pointer justify-center rounded-md border-primary p-2  outline-none transition-colors duration-200 hover:bg-surface-2 aria-selected:cursor-default aria-selected:rounded-none aria-selected:border-b-2 aria-selected:hover:bg-transparent",
     panel:
-      "focus-visible:ring-ring  mt-4 p-4 focus-visible:outline-none focus-visible:ring-2",
-    tab: "relative flex w-1/3 cursor-pointer justify-center rounded-xl p-2 outline-none transition-colors  duration-200 hover:bg-surface aria-selected:cursor-default aria-selected:bg-surface aria-selected:shadow-md",
+      "focus-visible:ring-ring borderp-4 mt-4 w-96 rounded-xl focus-visible:outline-none focus-visible:ring-2",
   },
 });
 
@@ -77,4 +75,4 @@ const TabPanel = ({ children, className, ...props }: TabPanelProps) => (
 
 TabPanel.displayName = TabPanel;
 
-export { TabsRoot, TabList, Tab, TabPanel };
+export { Tab, TabList, TabPanel, TabsRoot };

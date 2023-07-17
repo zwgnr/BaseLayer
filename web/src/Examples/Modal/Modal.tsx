@@ -6,7 +6,9 @@ import { Heading } from "react-aria-components";
 export const ModalExample = () => {
   return (
     <ModalTrigger>
-      <Button className="bg-critical hover:bg-critical/70">Delete</Button>
+      <Button className="bg-critical hover:bg-critical/70">
+        Delete Project
+      </Button>
       <Modal>
         <ModalContent>
           {({ close }) => (
@@ -17,8 +19,8 @@ export const ModalExample = () => {
                 Your data will be permenantly deleted, proceed?
               </p>
               <div className="flex justify-center gap-4">
-                <Button intent="secondary" onPress={close}>
-                  Back to Safety
+                <Button state="outline" intent="secondary" onPress={close}>
+                  Cancel
                 </Button>
                 <Button
                   className="bg-critical hover:bg-critical/70"

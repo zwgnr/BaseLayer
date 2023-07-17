@@ -17,8 +17,8 @@ const checkbox = tv({
   variants: {
     size: {
       sm: { box: "h-4 w-4 rounded-md", root: "text-sm" },
-      md: { box: "h-6 w-6 rounded-lg", root: "text-md" },
-      lg: { box: "h-8 w-8 rounded-lg", root: "text-lg" },
+      md: { box: "h-6 w-6 rounded-md", root: "text-md" },
+      lg: { box: "h-8 w-8 rounded-md", root: "text-lg" },
     },
     selected: {
       true: { box: "border-primary bg-primary" },

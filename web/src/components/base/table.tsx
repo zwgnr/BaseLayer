@@ -21,7 +21,7 @@ import { Checkbox } from "./checkbox";
 
 const table = tv({
   slots: {
-    root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-2xl border-2 p-4 outline-none",
+    root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border p-4 outline-none",
     column: "border-b-2 px-4 py-1 text-left outline-none",
     header: " after:table-row after:h-[2px] last:border-b-2",
     label: "text-fg-3",
@@ -128,4 +128,4 @@ const TableRow = <T extends object>({
   );
 };
 
-export { TableBody, Table, TableCell, TableHeader, TableRow, Column };
+export { Column, Table, TableBody, TableCell, TableHeader, TableRow };

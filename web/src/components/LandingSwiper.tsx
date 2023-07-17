@@ -1,8 +1,3 @@
-// Import Swiper React components
-
-// Import Swiper styles
-
-// import required modules
 import { RadioGroupExample } from "@/Examples/RadioGroup/RadioGroup";
 import { Button } from "./base/button";
 

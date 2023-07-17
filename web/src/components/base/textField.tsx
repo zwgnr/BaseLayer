@@ -10,7 +10,7 @@ import { tv } from "tailwind-variants";
 export const textField = tv({
   slots: {
     input:
-      "font-sm m-0 appearance-none rounded-xl border p-2 focus:border-primary focus:shadow-xl focus:outline-none",
+      "font-sm m-0 appearance-none rounded-md bg-input border p-2 focus:border-primary focus:shadow-xl focus:outline-none",
     root: "flex flex-col gap-2",
     button: "absolute right-2 mt-3 [&[data-empty]]:hidden",
   },

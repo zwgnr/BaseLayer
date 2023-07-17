@@ -10,8 +10,8 @@ import Search, { type SearchProps } from "./search";
 
 export const SearchDialog = ({ searchList }: SearchProps) => {
   return (
-    <DialogTrigger >
-      <Button className="bg-surface-2 rounded-xl hover:bg-surface-3">
+    <DialogTrigger>
+      <Button className="rounded-md bg-surface-2 hover:bg-surface-3">
         <div className="flex gap-2 text-fg">
           <p className="hidden md:block">Search</p>
           <SearchIcon />

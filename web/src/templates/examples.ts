@@ -30,9 +30,19 @@ export const examples = [
       'import { Calendar } from "@/components/base/calendar";\n\nexport const CalendarExample = () => <Calendar />;\n',
   },
   {
+    name: "CheckboxGroup",
+    files:
+      'import { Checkbox } from "@/components/base/checkbox";\nimport { CheckboxGroup } from "@/components/base/checkboxGroup";\n\nexport const CheckboxGroupExample = () => {\n  return (\n    <CheckboxGroup label="Notifications">\n      <Checkbox value="push"> Push </Checkbox>\n      <Checkbox value="email"> Email </Checkbox>\n      <Checkbox value="text"> Text </Checkbox>\n    </CheckboxGroup>\n  );\n};\n',
+  },
+  {
     name: "ComboBox",
     files:
-      'import { ComboBox, ComboBoxItem } from "@/components/base/combobox";\n\nexport const ComboBoxExample = () => {\n  return (\n    <ComboBox label="Ice cream flavor">\n      <ComboBoxItem>Chocolate</ComboBoxItem>\n      <ComboBoxItem>Mint</ComboBoxItem>\n      <ComboBoxItem>Strawberry</ComboBoxItem>\n      <ComboBoxItem>Vanilla</ComboBoxItem>\n    </ComboBox>\n  );\n};\n',
+      'import { ComboBox, ComboBoxItem } from "@/components/base/combobox";\n\nexport const ComboBoxExample = () => {\n  return (\n    <ComboBox label="Project">\n      <ComboBoxItem>Health Dashboard</ComboBoxItem>\n      <ComboBoxItem>To-Do App</ComboBoxItem>\n      <ComboBoxItem>UI Kit</ComboBoxItem>\n      <ComboBoxItem>Portfolio Site</ComboBoxItem>\n    </ComboBox>\n  );\n};\n',
+  },
+  {
+    name: "DateField",
+    files:
+      'import { DateField } from "@/components/base/dateField";\n\nexport const DateFieldExample = () => {\n  return <DateField label="Deploy Date"/>;\n};\n',
   },
   {
     name: "DateRangePicker",
@@ -42,12 +52,12 @@ export const examples = [
   {
     name: "Dialog",
     files:
-      'import { Button } from "@/components/base/button";\nimport {\n  DialogContent,\n  DialogModal,\n  DialogTrigger,\n} from "@/components/base/dialog";\nimport { Check } from "lucide-react";\nimport { Heading } from "react-aria-components";\n\nexport const Dialog = () => {\n  return (\n    <DialogTrigger >\n      <Button>Checkout</Button>\n      <DialogModal>\n        <DialogContent>\n          {({ close }) => (\n            <>\n              <Check className="h-8 w-8 text-green-500" />\n              <Heading className="text-lg font-bold">\n                Payment Successfull\n              </Heading>\n              <p className="text-sm text-fg-3">\n                Your order has been placed. Check your email for order details!\n              </p>\n              <Button intent="secondary" onPress={close}>\n                Back to Dashboard\n              </Button>\n            </>\n          )}\n        </DialogContent>\n      </DialogModal>\n    </DialogTrigger>\n  );\n};\n',
+      'import { Button } from "@/components/base/button";\nimport {\n  DialogContent,\n  DialogModal,\n  DialogTrigger,\n} from "@/components/base/dialog";\nimport { Check } from "lucide-react";\nimport { Heading } from "react-aria-components";\n\nexport const Dialog = () => {\n  return (\n    <DialogTrigger>\n      <Button>Checkout</Button>\n      <DialogModal>\n        <DialogContent>\n          {({ close }) => (\n            <>\n              <Check className="h-8 w-8 text-green-500" />\n              <Heading className="text-lg font-bold">\n                Payment Successfull\n              </Heading>\n              <p className="text-sm text-fg-3">\n                Your order has been placed. Check your email for order details!\n              </p>\n              <Button intent="secondary" onPress={close}>\n                Back to Dashboard\n              </Button>\n            </>\n          )}\n        </DialogContent>\n      </DialogModal>\n    </DialogTrigger>\n  );\n};\n',
   },
   {
     name: "ListBox",
     files:
-      'import { ListBox, ListBoxItem } from "@/components/base/listBox";\n\nexport const ListBoxExample = () => {\n  return (\n    <ListBox aria-label="Ice cream flavors" selectionMode="multiple">\n      <ListBoxItem>Chocolate</ListBoxItem>\n      <ListBoxItem>Mint</ListBoxItem>\n      <ListBoxItem>Strawberry</ListBoxItem>\n      <ListBoxItem>Vanilla</ListBoxItem>\n    </ListBox>\n  );\n};\n',
+      'import { ListBox, ListBoxItem } from "@/components/base/listBox";\n\nexport const ListBoxExample = () => {\n  return (\n    <ListBox aria-label="Member" selectionMode="multiple">\n      <ListBoxItem>Matt</ListBoxItem>\n      <ListBoxItem>Sarah</ListBoxItem>\n      <ListBoxItem>James</ListBoxItem>\n      <ListBoxItem>Kim</ListBoxItem>\n    </ListBox>\n  );\n};\n',
   },
   {
     name: "ListBoxReorderable",
@@ -57,7 +67,7 @@ export const examples = [
   {
     name: "Menu",
     files:
-      'import { Button } from "@/components/base/button";\n\nimport {\n  MenuConent,\n  MenuHeader,\n  MenuItem,\n  MenuSeperator,\n  MenuTrigger,\n  Section,\n} from "@/components/base/menu";\n\nimport {\n  CreditCard,\n  HelpCircle,\n  LogOut,\n  Plus,\n  Settings,\n  User,\n} from "lucide-react";\n\nexport const Menu = () => {\n  return (\n    <MenuTrigger>\n      <Button className="h-full rounded-full p-4 text-xl" state="outline">\n        Me\n      </Button>\n      <MenuConent>\n        <Section>\n          <MenuHeader className="text-fg-4">me@hello.com</MenuHeader>\n        </Section>\n        <MenuSeperator className="mt-0" />\n        <MenuItem>\n          Account Settings\n          <Settings />\n        </MenuItem>\n        <MenuItem>\n          Billing\n          <CreditCard />\n        </MenuItem>\n        <MenuSeperator />\n        <MenuItem>\n          Create a Team\n          <Plus />\n        </MenuItem>\n        <MenuItem>\n          Invite Member\n          <User />\n        </MenuItem>\n        <MenuSeperator />\n        <MenuItem>\n          Support\n          <HelpCircle />\n        </MenuItem>\n        <MenuSeperator />\n        <MenuItem>\n          Logout\n          <LogOut />\n        </MenuItem>\n      </MenuConent>\n    </MenuTrigger>\n  );\n};\n',
+      'import { Button } from "@/components/base/button";\n\nimport {\n  MenuConent,\n  MenuHeader,\n  MenuItem,\n  MenuSeperator,\n  MenuTrigger,\n  Section,\n} from "@/components/base/menu";\n\nimport {\n  CreditCard,\n  HelpCircle,\n  LogOut,\n  Plus,\n  Settings,\n  User,\n} from "lucide-react";\n\nexport const Menu = () => {\n  return (\n    <MenuTrigger>\n      <Button\n        intent="secondary"\n        className="h-full rounded-full p-4 text-xl"\n        state="outline"\n      >\n        Me\n      </Button>\n      <MenuConent>\n        <Section>\n          <MenuHeader className="text-fg-4">me@hello.com</MenuHeader>\n        </Section>\n        <MenuSeperator className="mt-0" />\n        <MenuItem>\n          Account Settings\n          <Settings />\n        </MenuItem>\n        <MenuItem>\n          Billing\n          <CreditCard />\n        </MenuItem>\n        <MenuItem>\n          Create a Team\n          <Plus />\n        </MenuItem>\n        <MenuItem>\n          Invite Member\n          <User />\n        </MenuItem>\n        <MenuSeperator />\n        <MenuItem>\n          Support\n          <HelpCircle />\n        </MenuItem>\n        <MenuItem>\n          Logout\n          <LogOut />\n        </MenuItem>\n      </MenuConent>\n    </MenuTrigger>\n  );\n};\n',
   },
   {
     name: "MenuSimple",
@@ -72,12 +82,12 @@ export const examples = [
   {
     name: "Modal",
     files:
-      'import { Button } from "@/components/base/button";\nimport { Modal, ModalContent, ModalTrigger } from "@/components/base/modal";\nimport { AlertTriangle } from "lucide-react";\nimport { Heading } from "react-aria-components";\n\nexport const ModalExample = () => {\n  return (\n    <ModalTrigger>\n      <Button className="bg-critical hover:bg-critical/70">Delete</Button>\n      <Modal>\n        <ModalContent>\n          {({ close }) => (\n            <>\n              <AlertTriangle className="h-8 w-8 text-critical" />\n              <Heading className="text-lg font-bold">Warning</Heading>\n              <p className="text-sm text-fg-3">\n                Your data will be permenantly deleted, proceed?\n              </p>\n              <div className="flex justify-center gap-4">\n                <Button intent="secondary" onPress={close}>\n                  Back to Safety\n                </Button>\n                <Button\n                  className="bg-critical hover:bg-critical/70"\n                  onPress={close}\n                >\n                  Delete\n                </Button>\n              </div>\n            </>\n          )}\n        </ModalContent>\n      </Modal>\n    </ModalTrigger>\n  );\n};\n',
+      'import { Button } from "@/components/base/button";\nimport { Modal, ModalContent, ModalTrigger } from "@/components/base/modal";\nimport { AlertTriangle } from "lucide-react";\nimport { Heading } from "react-aria-components";\n\nexport const ModalExample = () => {\n  return (\n    <ModalTrigger>\n      <Button className="bg-critical hover:bg-critical/70">Delete Project</Button>\n      <Modal>\n        <ModalContent>\n          {({ close }) => (\n            <>\n              <AlertTriangle className="h-8 w-8 text-critical" />\n              <Heading className="text-lg font-bold">Warning</Heading>\n              <p className="text-sm text-fg-3">\n                Your data will be permenantly deleted, proceed?\n              </p>\n              <div className="flex justify-center gap-4">\n                <Button state="outline" intent="secondary" onPress={close}>\n                  Cancel\n                </Button>\n                <Button\n                  className="bg-critical hover:bg-critical/70"\n                  onPress={close}\n                >\n                  Delete\n                </Button>\n              </div>\n            </>\n          )}\n        </ModalContent>\n      </Modal>\n    </ModalTrigger>\n  );\n};\n',
   },
   {
     name: "Popover",
     files:
-      'import { Button } from "@/components/base/button";\nimport { Popover, PopoverTrigger } from "@/components/base/popover";\n\nexport const PopoverExample = () => {\n  return (\n    <PopoverTrigger>\n      <Button>Open ME</Button>\n      <Popover>This is an example popover.</Popover>\n    </PopoverTrigger>\n  );\n};\n',
+      'import { Button } from "@/components/base/button";\nimport { Popover, PopoverTrigger } from "@/components/base/popover";\nimport { MoreHorizontal } from "lucide-react";\n\nexport const PopoverExample = () => {\n  return (\n    <PopoverTrigger>\n      <Button intent="secondary">\n        <MoreHorizontal />\n      </Button>\n      <Popover>\n        <button className="rounded-md p-2 hover:bg-surface-2">\n          Download\n        </button>\n      </Popover>\n    </PopoverTrigger>\n  );\n};\n',
   },
   {
     name: "RadioGroup",
@@ -117,12 +127,17 @@ export const examples = [
   {
     name: "Tabs",
     files:
-      'import { Tab, TabList, TabPanel, TabsRoot } from "@/components/base/tabs";\n\nconst items = [\n  { value: "react", name: "React" },\n  { value: "solid", name: "Solid" },\n  { value: "vue", name: "Vue" },\n];\n\nexport const Tabs = () => (\n  <TabsRoot>\n    <TabList aria-label="Dashbord Panels">\n      <Tab id="FoR">Overview</Tab>\n      <Tab id="MaR">Activity</Tab>\n      <Tab id="Emp">Usage</Tab>\n    </TabList>\n    <TabPanel id="FoR">\n      Arma virumque cano, Troiae qui primus ab\n      oris.fffffffffffffffffffffffffffffffffffff\n    </TabPanel>\n    <TabPanel id="MaR">Senatus Populusque Romanus.</TabPanel>\n    <TabPanel id="Emp">Alea jacta est.</TabPanel>\n  </TabsRoot>\n);\n',
+      'import { Tab, TabList, TabPanel, TabsRoot } from "@/components/base/tabs";\n\nexport const Tabs = () => (\n  <TabsRoot>\n    <TabList aria-label="Dashbord Panels">\n      <Tab id="overview">Overview</Tab>\n      <Tab id="usage">Usage</Tab>\n      <Tab id="settings">Settings</Tab>\n    </TabList>\n    <TabPanel id="overview">\n      Overview Content\n    </TabPanel>\n    <TabPanel id="usage">Usage Content</TabPanel>\n    <TabPanel id="settings">Settings Content</TabPanel>\n  </TabsRoot>\n);\n',
   },
   {
     name: "TagGroup",
     files:
-      'import { Tag, TagGroupRoot } from "@/components/base/tagGroup";\n\nexport const TagGroupExample = () => {\n  return (\n    <TagGroupRoot label="Ice cream flavor" selectionMode="single">\n      <Tag>Chocolate</Tag>\n      <Tag>Mint</Tag>\n      <Tag>Strawberry</Tag>\n      <Tag>Vanilla</Tag>\n    </TagGroupRoot>\n  );\n};\n',
+      'import { Tag, TagGroupRoot } from "@/components/base/tagGroup";\n\nexport const TagGroupExample = () => {\n  return (\n    <TagGroupRoot label="Priority" selectionMode="single">\n      <Tag>High</Tag>\n      <Tag>Med</Tag>\n      <Tag>Low</Tag>\n    </TagGroupRoot>\n  );\n};\n',
+  },
+  {
+    name: "TimeField",
+    files:
+      'import { TimeField } from "@/components/base/timeField";\n\nexport const TimeFieldExample = () => {\n  return <TimeField label="Meeting Date" />;\n};\n',
   },
   {
     name: "Toggle",
@@ -132,6 +147,6 @@ export const examples = [
   {
     name: "Tooltip",
     files:
-      'import { Button } from "@/components/base/button";\nimport { Tooltip, TooltipTrigger } from "@/components/base/tooltip";\n\nexport const TooltipExample = () => {\n  return (\n    <TooltipTrigger>\n      <Button>💾</Button>\n      <Tooltip>Save</Tooltip>\n    </TooltipTrigger>\n  );\n};\n',
+      'import { Button } from "@/components/base/button";\nimport { Tooltip, TooltipTrigger } from "@/components/base/tooltip";\nimport { Save } from "lucide-react";\n\nexport const TooltipExample = () => {\n  return (\n    <TooltipTrigger>\n      <Button intent="secondary">\n        <Save />\n      </Button>\n      <Tooltip>Save</Tooltip>\n    </TooltipTrigger>\n  );\n};\n',
   },
 ];

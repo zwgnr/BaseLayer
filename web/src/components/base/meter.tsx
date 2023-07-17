@@ -8,7 +8,7 @@ import { tv } from "tailwind-variants";
 export const meter = tv({
   slots: {
     root: "flex w-56 flex-col gap-2",
-    bar: "h-4 overflow-hidden rounded-xl border shadow-xl",
+    bar: "h-4 overflow-hidden rounded-md border shadow-md",
     fill: "h-full bg-primary",
     label: "text-fg-3",
   },

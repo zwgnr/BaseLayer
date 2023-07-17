@@ -21,15 +21,15 @@ import { tv } from "tailwind-variants";
 const dateRangePicker = tv({
   slots: {
     group:
-      "relative flex w-fit  items-center rounded-2xl border bg-surface shadow-lg",
+      "relative flex w-fit items-center rounded-md border bg-surface shadow-lg",
     iconButton:
       "appearance-none border-none bg-primary p-0 align-middle text-primary-fg outline-none",
     input:
-      "flex w-fit whitespace-nowrap rounded-xl border-2 border-transparent bg-transparent py-2 pl-2 pr-12 ",
+      "flex w-fit whitespace-nowrap rounded-md border-2 border-transparent bg-transparent py-2 pl-2 pr-12 ",
     inputButton:
-      "absolute right-2 flex appearance-none items-center justify-center rounded-lg border-0 outline-none hover:bg-surface-2",
+      "absolute right-2 flex appearance-none items-center justify-center rounded-md border-0 outline-none hover:bg-surface-2",
     dateSegment:
-      "rounded-xl p-1 pr-2 text-end focus:bg-secondary focus:text-secondary-fg focus:outline-none",
+      "rounded-md p-1 pr-2 text-end focus:bg-secondary focus:text-secondary-fg focus:outline-none",
     popover:
       "overflow-auto [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
   },

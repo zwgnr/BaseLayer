@@ -10,15 +10,11 @@ docLink: "https://react-spectrum.adobe.com/react-aria/CheckboxGroup.html"
 import DemoTabs from "../../../components/DemoTabs.astro";
 import BaseLayer from "../../../components/BaseLayer.astro";
 import { Checkbox } from "@/components/base/checkbox.tsx";
-import { CheckboxGroup } from "@/components/base/checkboxGroup.tsx";
+import { CheckboxGroupExample } from "@/Examples/CheckboxGroup/CheckboxGroup.tsx";
 import { MdxExample } from "@/components/Demos/MdxExample.tsx";
 
 <MdxExample>
-  <CheckboxGroup label="Favorite Language">
-    <Checkbox value="typescript" client:load> Typescript </Checkbox>
-     <Checkbox value="rust" client:load> Rust </Checkbox>
-     <Checkbox value="go" client:load> Go </Checkbox>
-  </CheckboxGroup>
+  <CheckboxGroupExample client:load />
 </MdxExample>
 
 ## Installation

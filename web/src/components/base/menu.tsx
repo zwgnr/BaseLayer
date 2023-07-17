@@ -18,8 +18,8 @@ export const menu = tv({
     menuPopover:
       "overflow-auto rounded-xl border bg-surface shadow-xl [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut ",
     header: "p-2",
-    content: "flex h-fit w-56 flex-col gap-2  p-2 outline-none",
-    item: "relative flex cursor-pointer justify-between rounded-xl p-2 text-fg outline-none hover:bg-surface-2",
+    content: "flex h-fit w-56 flex-col gap-2 p-2 outline-none",
+    item: "relative flex cursor-pointer justify-between rounded-md p-2 text-fg outline-none hover:bg-surface-2",
     separator: "mx-2 my-2 h-[1px] bg-surface-3",
   },
 });
@@ -69,8 +69,8 @@ const MenuSeperator = ({
 
 export {
   MenuConent,
-  MenuItem,
   MenuHeader,
+  MenuItem,
   MenuSeperator,
   MenuTrigger,
   Section,

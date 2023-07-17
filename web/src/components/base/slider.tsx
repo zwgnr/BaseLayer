@@ -50,10 +50,10 @@ const SliderLabel = ({
   ...props
 }: LabelProps & { className?: string }) => (
   <div className="col-span-2 my-4 flex w-full justify-between">
-    <Label className="text-sm" {...props}>
+    <Label className="text-sm text-fg" {...props}>
       {children}
     </Label>
-    <SliderOutput className="text-sm" />
+    <SliderOutput className="text-sm text-fg" />
   </div>
 );
 

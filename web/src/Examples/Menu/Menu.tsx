@@ -21,7 +21,11 @@ import {
 export const Menu = () => {
   return (
     <MenuTrigger>
-      <Button className="h-full rounded-full p-4 text-xl" state="outline">
+      <Button
+        intent="secondary"
+        className="h-full rounded-full p-4 text-xl"
+        state="outline"
+      >
         Me
       </Button>
       <MenuConent>
@@ -37,7 +41,6 @@ export const Menu = () => {
           Billing
           <CreditCard />
         </MenuItem>
-        <MenuSeperator />
         <MenuItem>
           Create a Team
           <Plus />
@@ -51,7 +54,6 @@ export const Menu = () => {
           Support
           <HelpCircle />
         </MenuItem>
-        <MenuSeperator />
         <MenuItem>
           Logout
           <LogOut />

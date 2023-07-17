@@ -6,7 +6,7 @@ import {
 import { VariantProps, tv } from "tailwind-variants";
 
 const button = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
+  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
   variants: {
     intent: {
       primary: "bg-primary text-primary-fg hover:bg-primary/70",
@@ -44,18 +44,18 @@ const button = tv({
     {
       intent: "secondary",
       state: "ghost",
-      class: "border-2 border-primary bg-primary/30 hover:bg-primary",
+      class: "border-2 border-secondary bg-secondary/30 hover:bg-secondary",
     },
     {
       intent: "secondary",
       state: "soft",
-      class: "bg-primary/50 text-primary-fg hover:bg-primary/30",
+      class: "bg-secondary/50 text-secondary-fg hover:bg-secondary/30",
     },
     {
       intent: "secondary",
       state: "outline",
       class:
-        "border-2 border-secondary bg-transparent text-primary-fg hover:bg-primary",
+        "border-2 border-secondary bg-transparent text-fg hover:bg-secondary hover:text-secondary-fg",
     },
   ],
   defaultVariants: {

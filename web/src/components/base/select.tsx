@@ -20,11 +20,11 @@ import { tv } from "tailwind-variants";
 const select = tv({
   slots: {
     root: "max-h-inherit flex flex-col gap-2 overflow-auto p-1 outline-none",
-    item: "relative m-1 flex cursor-default flex-col rounded-xl p-2 outline-none hover:bg-surface-2 ",
+    item: "relative m-1 flex cursor-default flex-col rounded-md p-2 outline-none hover:bg-surface-2 ",
     popover:
       "w-64 rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none",
     button:
-      "flex w-56 appearance-none items-center justify-between rounded-lg border p-2 outline-none hover:bg-surface-2",
+      "flex w-56 appearance-none items-center justify-between rounded-md border p-2 outline-none hover:bg-surface-2",
   },
 });
 

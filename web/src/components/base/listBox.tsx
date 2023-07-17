@@ -11,8 +11,8 @@ import { tv } from "tailwind-variants";
 
 export const listBox = tv({
   slots: {
-    root: "flex w-72 flex-col overflow-auto rounded-xl border-2 border-surface-2 p-2 outline-none ",
-    item: "relative my-1 flex cursor-default flex-row items-center rounded-xl p-4  outline-none  aria-selected:bg-primary aria-selected:text-primary-fg [&[data-dragging]]:opacity-50",
+    root: "flex w-72 flex-col overflow-auto rounded-xl border border-surface-2 p-2 shadow-xl outline-none ",
+    item: "relative my-1 flex cursor-default flex-row items-center rounded-md p-2  outline-none  aria-selected:bg-primary aria-selected:text-primary-fg [&[data-dragging]]:opacity-50",
   },
 });
 
