@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@ark-ui/react": "^0.7.3",
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/react": "^2.2.1",
     "@astrojs/tailwind": "^4.0.0",
@@ -28,6 +29,7 @@
     "react-aria-components": "1.0.0-alpha.5",
     "react-dom": "^18.0.0",
     "react-stately": "^3.24.0",
+    "swiper": "^10.0.4",
     "tailwind-merge": "^1.13.2",
     "tailwind-variants": "^0.1.13",
     "tailwindcss": "^3.3.3",

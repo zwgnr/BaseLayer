@@ -1,0 +1,31 @@
+---
+import { ComboBoxExample } from "@/Examples/ComboBox/ComboBox";
+import { Slider } from "@/Examples/Slider/Slider";
+import { Button } from "@/components/base/button";
+import { Calendar } from "@/components/base/calendar";
+import { ComboBox } from "@/components/base/combobox";
+import { DateRangePicker } from "@/components/base/dateRangePicker";
+import { Switch } from "@/components/base/switch";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="demos">
+  <div class="flex h-screen w-full p-12">
+    <div class="flex w-1/2 flex-col gap-12">
+      <Calendar client:load />
+      <div class="flex flex-col gap-12">
+        <Slider client:load />
+        <Switch client:load>Switch</Switch>
+        <Button className="w-24" client:load>Button</Button>
+      </div>
+    </div>
+    <div class="flex w-1/2 flex-col gap-12">
+      <DateRangePicker client:load />
+      <ComboBoxExample client:load />
+      <div class="flex w-1/2 gap-4">
+        <Slider client:load />
+        <Button client:load>Button</Button>
+      </div>
+    </div>
+  </div>
+</Layout>
