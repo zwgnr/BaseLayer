@@ -21,7 +21,7 @@ import { tv } from "tailwind-variants";
 const dateRangePicker = tv({
   slots: {
     group:
-      "relative flex w-fit items-center rounded-md border bg-surface shadow-lg",
+      "relative flex w-fit flex-wrap items-center rounded-md border bg-surface shadow-lg",
     iconButton:
       "appearance-none border-none bg-primary p-0 align-middle text-primary-fg outline-none",
     input:

@@ -3,7 +3,7 @@ import { Accessibility, Component, PaintBucket } from "lucide-react";
 
 export const Cards = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-8 p-8">
+    <div className="flex flex-wrap justify-center gap-8 p-8 text-fg">
       <div className="flex h-56 w-full flex-col  gap-8 rounded-xl border p-8 shadow-xl md:w-1/3">
         <div className="flex justify-between">
           <h1 className="text-lg font-bold"> VSCode Extension</h1>

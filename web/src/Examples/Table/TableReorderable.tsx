@@ -12,10 +12,9 @@ import { useListData } from "react-stately";
 export function TableReorderable() {
   let list = useListData({
     initialItems: [
-      { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
-      { id: 2, name: "Program Files", date: "4/7/2021", type: "File folder" },
-      { id: 3, name: "bootmgr", date: "11/20/2010", type: "System file" },
-      { id: 4, name: "log.txt", date: "1/18/2016", type: "Text Document" },
+      { id: 1, name: "Dev", token: "****1822", env: "prod" },
+      { id: 2, name: "Production", token: "****3345", env: "preview" },
+      { id: 3, name: "beta", token: "****6431", env: "preview" },
     ],
   });
 
@@ -35,21 +34,21 @@ export function TableReorderable() {
 
   return (
     <Table
-      aria-label="Files"
+      aria-label="Tokens"
       selectionMode="multiple"
       dragAndDropHooks={dragAndDropHooks}
     >
       <TableHeader>
         <Column isRowHeader>Name</Column>
-        <Column>Type</Column>
-        <Column>Date Modified</Column>
+        <Column>Token</Column>
+        <Column>Env</Column>
       </TableHeader>
       <TableBody items={list.items}>
         {(item) => (
           <TableRow>
             <TableCell>{item.name}</TableCell>
-            <TableCell>{item.type}</TableCell>
-            <TableCell>{item.date}</TableCell>
+            <TableCell>{item.token}</TableCell>
+            <TableCell>{item.env}</TableCell>
           </TableRow>
         )}
       </TableBody>

@@ -1,6 +1,6 @@
 import {
   Column as AriaColumn,
-  Table as AriaTable,
+  GridList as AriaGridList,
   TableBody as AriaTableBody,
   TableHeader as AriaTableheader,
   Cell,
@@ -10,16 +10,16 @@ import {
   Row,
   RowProps,
   TableHeaderProps,
-  TableProps,
+  GridListProps,
   useTableOptions,
 } from "react-aria-components";
 
-import { ChevronDown, ChevronUp, Delete, Menu, Trash } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 import { tv } from "tailwind-variants";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
 
-const table = tv({
+const gridList = tv({
   slots: {
     root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border p-4 outline-none",
     column: "border-b-2 px-4 py-1 text-left outline-none",
@@ -28,18 +28,18 @@ const table = tv({
   },
 });
 
-const { root, header, column } = table();
+const { root, header, column } = gridList();
 
 const TableBody = AriaTableBody;
 
-const Table = ({
+const GridList = <T extends Object>({
   children,
   className,
   ...props
-}: TableProps & { className?: string }) => (
-  <AriaTable {...props} className={root({ className })}>
+}: GridListProps<T> & { className?: string }) => (
+  <AriaGridList {...props} className={root({ className })}>
     {children}
-  </AriaTable>
+  </AriaGridList>
 );
 
 const TableCell = ({
@@ -128,4 +128,4 @@ const TableRow = <T extends object>({
   );
 };
 
-export { Column, Table, TableBody, TableCell, TableHeader, TableRow };
+export { Column, GridList, TableBody, TableCell, TableHeader, TableRow };

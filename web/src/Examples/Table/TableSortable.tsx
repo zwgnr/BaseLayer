@@ -8,27 +8,30 @@ import {
 } from "@/components/base/table";
 import { useAsyncList } from "@react-stately/data";
 
-interface Character {
-  name: string;
-  height: number;
-  mass: number;
-  birth_year: number;
+interface Invoice {
+  [key: string]: any;
+  title: string;
+  price: number;
+  brand: string;
 }
 
 export function TableSortable() {
-  let list = useAsyncList<Character>({
+  let list = useAsyncList<Invoice>({
     async load({ signal }) {
-      let res = await fetch(`https://swapi.py4e.com/api/people/?search`, {
+      let res = await fetch(`https://dummyjson.com/products?limit=10`, {
         signal,
       });
       let json = await res.json();
       return {
-        items: json.results,
+        items: json.products,
       };
     },
     async sort({ items, sortDescriptor }) {
       return {
         items: items.sort((a, b) => {
+          if (!sortDescriptor.column) {
+            return 0;
+          }
           let first = a[sortDescriptor.column];
           let second = b[sortDescriptor.column];
           let cmp =
@@ -49,26 +52,22 @@ export function TableSortable() {
       onSortChange={list.sort}
     >
       <TableHeader>
-        <Column id="name" isRowHeader allowsSorting>
+        <Column id="item" isRowHeader allowsSorting>
           Name
         </Column>
-        <Column id="height" allowsSorting>
-          Height
+        <Column id="price" allowsSorting>
+          Price
         </Column>
-        <Column id="mass" allowsSorting>
-          Mass
-        </Column>
-        <Column id="birth_year" allowsSorting>
-          Birth Year
+        <Column id="brand" allowsSorting>
+          Brand
         </Column>
       </TableHeader>
       <TableBody items={list.items}>
         {(item) => (
-          <TableRow id={item.name}>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.height}</TableCell>
-            <TableCell>{item.mass}</TableCell>
-            <TableCell>{item.birth_year}</TableCell>
+          <TableRow id={item.title}>
+            <TableCell>{item.title}</TableCell>
+            <TableCell>{item.price}</TableCell>
+            <TableCell>{item.brand}</TableCell>
           </TableRow>
         )}
       </TableBody>
