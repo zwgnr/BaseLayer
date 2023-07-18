@@ -45,7 +45,7 @@ const SIDEBAR: SideNav = {
   ],
 };
 
-const currentPage = Astro.url.pathname;
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <div
@@ -70,18 +70,18 @@ const currentPage = Astro.url.pathname;
                   <li
                     class:list={[
                       "h-8 flex items-center p-4 border-l-2 border-border",
-                      currentPage === child.link ? "border-primary" : "",
+                      pathname === child.link ? "border-primary" : "",
                     ]}
                   >
                     <a
                       class:list={[
                         "text-sm w-full",
-                        currentPage === child.link
+                        pathname === child.link
                           ? "font-bold text-secondary"
                           : "text-fg-5",
                       ]}
                       href={url}
-                      aria-current={currentPage === child.link ? "page" : false}
+                      aria-current={pathname === child.link ? "page" : false}
                     >
                       {child.text}
                     </a>

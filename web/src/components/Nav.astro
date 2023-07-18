@@ -6,7 +6,7 @@ import { version } from "../../package.json";
 import { Moon } from "lucide-react";
 
 const allDocs = await getCollection("docs");
-const currentPage = Astro.url.pathname;
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <script>
@@ -58,7 +58,7 @@ const currentPage = Astro.url.pathname;
       <a
         class:list={[
           "text-xl md:text-3xl font-bold tracking-tighter text-fg md:block",
-          currentPage === "/" ? "" : "hidden",
+          pathname === "/" ? "" : "hidden",
         ]}
         href="/"
         ><div class="flex items-center">
@@ -76,7 +76,7 @@ const currentPage = Astro.url.pathname;
             BaseLayer <span
               class:list={[
                 "rounded-xl bg-surface-3 p-2 text-xs font-light tracking-normal",
-                currentPage === "/" ? "hidden" : "",
+                pathname === "/" ? "hidden" : "",
               ]}>v{version}</span
             >
           </p>
@@ -85,7 +85,7 @@ const currentPage = Astro.url.pathname;
       <button
         id="menuToggle"
         aria-expanded="false"
-        class:list={[currentPage === "/" ? "hidden" : ""]}
+        class:list={[pathname === "/" ? "hidden" : ""]}
       >
         <Menu id="menuIcon" className="block md:hidden h-8 w-8 text-fg" />
         <X id="xIcon" className="hidden h-8 w-8 text-fg" />
@@ -94,7 +94,7 @@ const currentPage = Astro.url.pathname;
     <div class="flex flex-row items-center gap-2">
       <a
         href="/docs"
-        class:list={["text-fg-4", currentPage !== "/" ? "hidden" : ""]}>Docs</a
+        class:list={["text-fg-4", pathname !== "/" ? "hidden" : ""]}>Docs</a
       >
       <SearchDialog searchList={allDocs} client:load />
       <button
@@ -108,7 +108,7 @@ const currentPage = Astro.url.pathname;
       <a
         class:list={[
           "rounded-xl p-2 text-fg hover:bg-surface-2",
-          currentPage === "/" ? "hidden" : "",
+          pathname === "/" ? "hidden" : "",
         ]}
         href="https://github.com/zwgnr/BaseLayer"
       >
@@ -117,7 +117,7 @@ const currentPage = Astro.url.pathname;
       <a
         class:list={[
           "rounded-xl p-2 text-fg hover:bg-surface-2",
-          currentPage === "/" ? "hidden" : "",
+          pathname === "/" ? "hidden" : "",
         ]}
         href="https://twitter.com/zwagnr"
       >
