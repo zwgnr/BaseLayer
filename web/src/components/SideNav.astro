@@ -65,15 +65,11 @@ const pathname = Astro.url.pathname;
             </div>
             <ul class="mb-4">
               {children.map((child) => {
-                console.log("pathname:", pathname);
-                console.log("child.link:", child.link);
                 const url = child.link;
                 return (
                   <li
-                    class:list={[
-                      "h-8 flex items-center p-4 border-l-2 border-border",
-                      pathname === child.link ? "border-primary" : "",
-                    ]}
+                    aria-current={pathname === child.link ? "page" : false}
+                    class="flex h-8 items-center border-l-2 border-border p-4 [&[aria-current=page]]:border-primary"
                   >
                     <a
                       class:list={[
