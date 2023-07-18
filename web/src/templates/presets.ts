@@ -60,8 +60,7 @@ export const stylesPreset = `@tailwind base;
 @layer base {
   :root {
     --origin: translateX(8px);
-  }
-  [data-theme="light"] {
+
     --surface: 250 250 250; /* #fafafa */
     --surface-2: 229 229 229; /* #e5e5e5 */
     --surface-3: 212 212 212; /* 	#d4d4d4 */
@@ -83,7 +82,7 @@ export const stylesPreset = `@tailwind base;
     --primary-fg: 10 10 10; /* #0a0a0a */
 
     --secondary: 10 10 10; /* #0a0a0a*/
-    --secondary-fg: 255 255 255; /* #0a0a0a */
+    --secondary-fg: 255 255 255; /* #fafafa  */
 
     --positive: 109 211 46; /* #6DD32E */
 
@@ -110,12 +109,10 @@ export const stylesPreset = `@tailwind base;
     --fg-5: 148 163 184; /* #94a3b8 */
     --fg-6: 100 116 139; /* #64748b */
 
-    --arrow-background: 10 10 10; /* #0a0a0a */
-
-    --primary: 9 229 123; /* #09e57b  */
+    --primary: 9 229 123; /* #09e57b   */
     --primary-fg: 10 10 10; /* #0a0a0a */
 
-    --secondary: 250 250 250; /* #fafafa*/
+    --secondary: 255 255 255; /* #0a0a0a*/
     --secondary-fg: 10 10 10; /* #0a0a0a */
 
     --positive: 109 211 46; /* #6DD32E */
@@ -123,10 +120,30 @@ export const stylesPreset = `@tailwind base;
     --warning: 237 227 40; /* #EDE328 */
 
     --critical: 255 82 56; /* #FF5238 */
+    --scrollbar: #a3a3a3;
   }
-}
 
-.react-aria-DropIndicator[data-drop-target] {
-  outline: 1px solid #09e57b;
+  .react-aria-DropIndicator[data-drop-target] {
+    outline: 1px solid #09e57b;
+  }
+
+  /* clears the ‘X’ from Internet Explorer */
+  input[type="search"]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  input[type="search"]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
 }
 `;

@@ -49,23 +49,12 @@ export const initCommand = vscode.commands.registerCommand('extension.init', asy
     return;
   }
 
-  /*
-  const options = ['react', 'solid', 'vue'];
-  const framework = await vscode.window.showQuickPick(options, {
-    placeHolder: 'What framework are you using?',
-  });
-  if (!framework) {
-    // User canceled the prompt without making a selection
-    return;
-  }
-*/
-
   const message = `You are about to do the following:\n
   Install react-aria-components, lucide-react, tailwind-variants, tailwindcss-animate and
   overwrite your global.css + modify your tailwind.config files.
 Would you like to proceed?`;
 
-  const title = `Using ${packageManager}, installing react-aria-components, tailwind-variants & lucide-react.`;
+  const title = `Using ${packageManager}, installing react-aria-components, lucide-react, tailwind-variants & tailwindcss-animate.`;
 
   const answer = await vscode.window.showWarningMessage(message, 'Yes', 'No');
 
@@ -96,7 +85,7 @@ Would you like to proceed?`;
       fs.mkdirSync(snippetsDirPath, { recursive: true });
     }
     fs.writeFileSync(
-      path.join(snippetsDirPath, 'potion-examples.code-snippets'),
+      path.join(snippetsDirPath, 'baselayer-examples.code-snippets'),
       JSON.stringify(formattedComponents, null, 2),
       'utf8'
     );
@@ -106,8 +95,6 @@ Would you like to proceed?`;
 
   const setGlobalStyles = async () => {
     try {
-      //const presets = require(path.join(__dirname, '../templates/presets'));
-      //const stylesPresetContent = presets.stylesPreset;
       const response = await fetch('https://baselayer-zwgnr.vercel.app/api/global.json');
       const stylesPreset = await response.json();
 
@@ -132,11 +119,6 @@ Would you like to proceed?`;
   };
 
   async function copyPreset() {
-    //const destinationPresetPath = path.join(projectRoot, 'tailwindPreset.js');
-    //const presets = require(path.join(__dirname, '../templates/presets'));
-    //const tailwindPreset = presets.tailwindPreset;
-
-    //fs.writeFileSync(destinationPresetPath, tailwindPreset);
 
     const response = await fetch('https://baselayer-zwgnr.vercel.app/api/tailwind.json');
     const tailwindPreset = await response.json();

@@ -3,7 +3,7 @@
   "displayName": "BaseLayer",
   "publisher": "BaseLayer",
   "description": "",
-  "icon": "./potionIcon.png",
+  "icon": "./base.png",
   "version": "0.0.4",
   "engines": {
     "vscode": "^1.79.0"

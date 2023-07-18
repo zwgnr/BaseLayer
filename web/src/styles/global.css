@@ -5,8 +5,7 @@
 @layer base {
   :root {
     --origin: translateX(8px);
-  }
-  [data-theme="light"] {
+
     --surface: 250 250 250; /* #fafafa */
     --surface-2: 229 229 229; /* #e5e5e5 */
     --surface-3: 212 212 212; /* 	#d4d4d4 */
@@ -28,7 +27,7 @@
     --primary-fg: 10 10 10; /* #0a0a0a */
 
     --secondary: 10 10 10; /* #0a0a0a*/
-    --secondary-fg: 255 255 255; /* #0a0a0a */
+    --secondary-fg: 255 255 255; /* #fafafa  */
 
     --positive: 109 211 46; /* #6DD32E */
 
@@ -54,8 +53,6 @@
     --fg-4: 203 213 225; /* #cbd5e1 */
     --fg-5: 148 163 184; /* #94a3b8 */
     --fg-6: 100 116 139; /* #64748b */
-
-    --arrow-background: 10 10 10; /* #0a0a0a */
 
     --primary: 9 229 123; /* #09e57b   */
     --primary-fg: 10 10 10; /* #0a0a0a */
