@@ -75,7 +75,8 @@ import LandingCarousel from "@/components/LandingSwiper";
             <span>Unleashed</span>
           </p>
           <p class="max-w-48 mt-8 text-xl text-fg-4">
-            Craft your UI faster and with more freedom than ever. All without ever leaving your editor.
+            Craft your UI faster and with more freedom than ever. All without
+            ever leaving your editor.
           </p>
           <div
             class="mt-12 flex w-full flex-col justify-center gap-4 lg:flex-row"
@@ -83,10 +84,15 @@ import LandingCarousel from "@/components/LandingSwiper";
             <a href="/docs/getting-started/intro" class="inline-block">
               <Button className="p-8 w-full" size="lg">Get Started</Button>
             </a>
-            <Button intent="secondary" state="outline" className="p-[30px]" size="lg">
+            <Button
+              intent="secondary"
+              state="outline"
+              className="p-[30px]"
+              size="lg"
+            >
               <a
                 class="flex items-center gap-2"
-                href="https://github.com/zwagnr/BaseLayer"
+                href="https://github.com/zwgnr/BaseLayer"
               >
                 <span class="flex items-center">Github</span>
                 <Github className="h-6 w-6" />
@@ -94,10 +100,10 @@ import LandingCarousel from "@/components/LandingSwiper";
             </Button>
           </div>
         </div>
-        <div class="justify-center items-center hidden w-1/2 lg:flex pr-8">
-          <div class="rounded-xl w-full h-1/2 shadow-xl border border-border">
-          <LandingCarousel client:only="react" />
-        </div>
+        <div class="hidden w-1/2 items-center justify-center pr-8 lg:flex">
+          <div class="h-1/2 w-full rounded-xl border border-border shadow-xl">
+            <LandingCarousel client:only="react" />
+          </div>
         </div>
       </div>
 
@@ -133,7 +139,7 @@ import LandingCarousel from "@/components/LandingSwiper";
         </div>
       </div>
       <div class="lg:-p-0 w-full max-w-7xl overflow-x-hidden p-8">
-        <p class="mb-12 text-xl font-bold text-fg-3 w-full text-center">
+        <p class="mb-12 w-full text-center text-xl font-bold text-fg-3">
           Reusable multi part components, all controlled by a VScode Extension.
         </p>
         <Cards client:only="react" />
@@ -143,8 +149,11 @@ import LandingCarousel from "@/components/LandingSwiper";
       class="flex w-full flex-col items-center justify-between gap-8 border-t-2 px-8 py-12 md:flex-row"
     >
       <div class="flex gap-4 text-fg-3">
-        <Github className="h-8 w-8" />
-        <Twitter className="h-8 w-8" />
+        <a href="https://github.com/zwgnr/BaseLayer"
+          ><Github className="h-8 w-8" /></a
+        >
+        <a href="https://twitter.com/zwagnr/"><Twitter className="h-8 w-8" /></a
+        >
       </div>
       <p class="flex flex-wrap gap-2 text-fg-3">
         Made with <span><Heart /></span>and <span><Coffee /></span> by <a

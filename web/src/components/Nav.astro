@@ -1,9 +1,8 @@
 ---
-import { Github, Menu, X, Paintbrush, Twitter, Sun } from "lucide-react";
+import { Github, Menu, X, Twitter, Sun } from "lucide-react";
 import { SearchDialog } from "./SearchDialog";
 import { getCollection } from "astro:content";
 import { version } from "../../package.json";
-import { Icon } from "@iconify/react";
 import { Moon } from "lucide-react";
 
 const allDocs = await getCollection("docs");
@@ -63,7 +62,16 @@ const currentPage = Astro.url.pathname;
         ]}
         href="/"
         ><div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="#09e57b" d="M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            ><path
+              fill="#09e57b"
+              d="M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z"
+            ></path></svg
+          >
           <p class="flex items-center gap-2 text-2xl">
             BaseLayer <span
               class:list={[
@@ -102,7 +110,7 @@ const currentPage = Astro.url.pathname;
           "rounded-xl p-2 text-fg hover:bg-surface-2",
           currentPage === "/" ? "hidden" : "",
         ]}
-        href="https://github.com/zwagnr/BaseLayer"
+        href="https://github.com/zwgnr/BaseLayer"
       >
         <Github />
       </a>
