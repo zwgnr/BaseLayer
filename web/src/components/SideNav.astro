@@ -48,6 +48,24 @@ const SIDEBAR: SideNav = {
 const pathname = Astro.url.pathname;
 ---
 
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const links = Array.from(document.querySelectorAll("a"));
+    links.forEach((link) => {
+      console.log("pathname:", window.location.pathname);
+      console.log("href:", link.getAttribute("href"));
+
+      const parentLi = link.parentElement;
+
+      if (window.location.pathname === link.getAttribute("href")) {
+        parentLi?.classList.add("border-primary", "font-bold");
+      } else {
+        parentLi?.classList.remove("border-primary", "font-bold");
+      }
+    });
+  });
+</script>
+
 <div
   id="side-nav"
   class="small-scrollbar bottom-0 top-16 z-10 hidden w-full flex-col overflow-y-auto bg-surface py-8 pl-8 pr-8 shadow-lg md:fixed md:flex md:w-64 md:bg-transparent md:shadow-none xl:pl-0"
@@ -65,22 +83,9 @@ const pathname = Astro.url.pathname;
             </div>
             <ul class="mb-4">
               {children.map((child) => {
-                const url = child.link;
                 return (
-                  <li
-                    aria-current={pathname === child.link ? "page" : false}
-                    class="flex h-8 items-center border-l-2 border-border p-4 [&[aria-current=page]]:border-primary"
-                  >
-                    <a
-                      class:list={[
-                        "text-sm w-full",
-                        pathname === child.link
-                          ? "font-bold text-secondary"
-                          : "text-fg-5",
-                      ]}
-                      href={url}
-                      aria-current={pathname === child.link ? "page" : false}
-                    >
+                  <li class="flex h-8 items-center border-l-2 border-border p-4 text-fg">
+                    <a class="nav-link w-full text-sm" href={child.link}>
                       {child.text}
                     </a>
                   </li>
