@@ -20,40 +20,73 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer 
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
-import { forwardRef, type ElementRef } from "react";
+import { Menu } from "lucide-react";
 
-import { ToggleButton, ToggleButtonProps } from "react-aria-components";
+import {
+  ListBox as AriaListBox,
+  Item,
+  ItemProps,
+  ListBoxProps,
+} from "react-aria-components";
 
-import { VariantProps, tv } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
-export const toggle = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg bg-surface-2 p-2 font-medium outline-none transition-transform  duration-100 disabled:pointer-events-none disabled:opacity-50 [&[aria-pressed=true]]:bg-primary",
+export const listBox = tv({
+  slots: {
+    root: "flex w-72 flex-col overflow-auto rounded-xl border border-surface-2 p-2 shadow-xl outline-none ",
+    item: "relative my-1 flex cursor-default flex-row items-center rounded-md p-2  outline-none  aria-selected:bg-primary aria-selected:text-primary-fg [&[data-dragging]]:opacity-50",
+  },
 });
 
-export interface ToggleProps
-  extends ToggleButtonProps,
-    VariantProps<typeof toggle> {
-  className?: string | undefined;
-}
+const { root, item } = listBox();
 
-export const Toggle = forwardRef<ElementRef<typeof ToggleButton>, ToggleProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <ToggleButton className={toggle({ className })} ref={ref} {...props}>
-        {children}
-      </ToggleButton>
-    );
-  }
+const ListBox = <T extends object>({
+  children,
+  className,
+  ...props
+}: ListBoxProps<T> & { className?: string }) => (
+  <AriaListBox {...props} className={root({ className })}>
+    {children}
+  </AriaListBox>
 );
 
-Toggle.displayName = "Toggle";
+const ListBoxItem = <T extends object>({
+  children,
+  className,
+  ...props
+}: ItemProps<T> & { className?: string }) => {
+  let textValue = typeof children === "string" ? children : undefined;
+
+  return (
+    <Item textValue={textValue} {...props} className={item({ className })}>
+      {({ allowsDragging, isSelected }) => (
+        <div className="flex items-center gap-2">
+          <>
+            {/* Add elements for drag and drop and selection. */}
+            {allowsDragging && (
+              <Menu
+                className={`mr-4 h-4 w-4 text-fg ${
+                  isSelected ? "text-primary-fg" : ""
+                }`}
+              />
+            )}
+            {}
+            {children}
+          </>
+        </div>
+      )}
+    </Item>
+  );
+};
+
+export { ListBox, ListBoxItem };
 
 ```
 </Fragment>
@@ -63,20 +96,30 @@ Toggle.displayName = "Toggle";
 
 ### Default
 
-<DemoTabs vueDisabled solidDisabled>
+<DemoTabs >
 <Fragment slot="vsc">
+
 ```tsx
-bl-toggle 
+
+bl-list-box 
+
 ```
+
 </Fragment>
 <Fragment slot="react">
 ```tsx
-import { Toggle } from "@/components/base/toggle";
+import { ListBox, ListBoxItem } from "@/components/base/listBox";
 
-export const ToggleExample = () => {
-  return <Toggle>Mode</Toggle>;
+export const ListBoxExample = () => {
+  return (
+    <ListBox aria-label="Member" selectionMode="multiple">
+      <ListBoxItem>Matt</ListBoxItem>
+      <ListBoxItem>Sarah</ListBoxItem>
+      <ListBoxItem>James</ListBoxItem>
+      <ListBoxItem>Kim</ListBoxItem>
+    </ListBox>
+  );
 };
-
 
 ```
 </Fragment>
@@ -90,19 +133,53 @@ export const ToggleExample = () => {
 </MdxExample>
 
 
-<DemoTabs vueDisabled solidDisabled>
+<DemoTabs>
 <Fragment slot="vsc">
 ```tsx
-bl-grid-list-reorderable 
+bl-list-box-reorderable 
 ```
 </Fragment>
 <Fragment slot="react">
 ```tsx
-import { Toggle } from "@/components/base/toggle";
+import { ListBox, ListBoxItem } from "@/components/base/listBox";
+import { useDragAndDrop } from "react-aria-components";
+import { useListData } from "react-stately";
 
-export const ToggleExample = () => {
-  return <Toggle>Mode</Toggle>;
+export const ListBoxReorderable = () => {
+  let list = useListData({
+    initialItems: [
+      { id: 1, name: "Adobe Photoshop" },
+      { id: 2, name: "Adobe XD" },
+      { id: 3, name: "Adobe Dreamweaver" },
+      { id: 4, name: "Adobe InDesign" },
+      { id: 5, name: "Adobe Connect" },
+    ],
+  });
+
+  let { dragAndDropHooks } = useDragAndDrop({
+    getItems: (keys) =>
+      [...keys].map((key) => ({ "text/plain": list.getItem(key).name })),
+    onReorder(e) {
+      if (e.target.dropPosition === "before") {
+        list.moveBefore(e.target.key, e.keys);
+      } else if (e.target.dropPosition === "after") {
+        list.moveAfter(e.target.key, e.keys);
+      }
+    },
+  });
+
+  return (
+    <ListBox
+      aria-label="Reorderable list"
+      selectionMode="multiple"
+      items={list.items}
+      dragAndDropHooks={dragAndDropHooks}
+    >
+      {(item: any) => <ListBoxItem>{item.name}</ListBoxItem>}
+    </ListBox>
+  );
 };
+
 
 
 ```

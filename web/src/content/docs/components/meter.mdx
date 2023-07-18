@@ -17,7 +17,7 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
@@ -34,7 +34,7 @@ import { tv } from "tailwind-variants";
 export const meter = tv({
   slots: {
     root: "flex w-56 flex-col gap-2",
-    bar: "h-4 overflow-hidden shadow-xl rounded-xl border",
+    bar: "h-4 overflow-hidden rounded-md border shadow-md",
     fill: "h-full bg-primary",
     label: "text-fg-3",
   },
@@ -42,27 +42,24 @@ export const meter = tv({
 
 const { root, bar, fill } = meter();
 
-interface MeterProps extends AriaMeterProps {
-  label?: string;
-}
-
-export function Meter({ label, ...props }: MeterProps) {
-  return (
-    <AriaMeter className={root()} {...props}>
-      {({ percentage, valueText }) => (
-        <>
-          <div className="flex justify-between">
-            <Label >{label}</Label>
-            <span className="value">{valueText}</span>
-          </div>
-          <div className={bar()}>
-            <div className={fill()} style={{ width: percentage + "%" }} />
-          </div>
-        </>
-      )}
-    </AriaMeter>
-  );
-}
+export const Meter = ({
+  label,
+  ...props
+}: AriaMeterProps & { label?: string }) => (
+  <AriaMeter className={root()} {...props}>
+    {({ percentage, valueText }) => (
+      <>
+        <div className="flex justify-between">
+          <Label className="text-fg">{label}</Label>
+          <span className="value">{valueText}</span>
+        </div>
+        <div className={bar()}>
+          <div className={fill()} style={{ width: percentage + "%" }} />
+        </div>
+      </>
+    )}
+  </AriaMeter>
+);
 
 ```
 </Fragment>
@@ -72,77 +69,19 @@ export function Meter({ label, ...props }: MeterProps) {
 
 ### Default 
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
 ```tsx
-import { button } from "@/components/base/button";
-import { dialogPotion } from "@/components/base/dialogPotion";
-import {
-  Pressable as Button,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  Dialog as DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  Portal,
-} from "@ark-ui/react";
-import { X } from "lucide-react";
+import { Meter } from "@/components/base/meter";
 
-const { backdrop, container, content, description, title } = dialogPotion();
-
-export const Dialog = () => {
-  return (
-    <DialogRoot>
-      <DialogTrigger asChild>
-        <Button className={button()}>Open dialog</Button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop className={backdrop()} />
-        <DialogContainer className={container()}>
-          <DialogContent className={content()}>
-            <div className="flex flex-col gap-8 p-6">
-              <div className="flex flex-col gap-1">
-                <DialogTitle className={title()}>Dialog Title</DialogTitle>
-                <DialogDescription className={description()}>
-                  Dialog Description
-                </DialogDescription>
-              </div>
-              <div className="flex w-full items-center justify-center gap-3">
-                <DialogCloseTrigger asChild>
-                  <Button
-                    className={button({
-                      state: "outline",
-                      className:
-                        "border-critical text-critical hover:bg-critical hover:text-black",
-                    })}
-                  >
-                    Cancel
-                  </Button>
-                </DialogCloseTrigger>
-                <Button className={button()}>Confirm</Button>
-              </div>
-            </div>
-            <DialogCloseTrigger asChild>
-              <Button className="absolute right-6 top-6">
-                <X className="text-fg" aria-label="Close dialog" />
-              </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-    </DialogRoot>
-  );
-};
+export const MeterExample = () => <Meter label="Storage Space" value={80} />;
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-dialog
+bl-meter
 ```
   </Fragment>
 </DemoTabs>

@@ -12,22 +12,27 @@ export const examples = [
   {
     name: "Button",
     files:
-      'import { Button } from "@/components/base/button";\n\n<Button>Button</Button>;\n',
+      'import { Button } from "@/components/base/button";\n\nexport const ButtonExample = () => <Button>Button</Button>;\n',
   },
   {
     name: "ButtonIcon",
     files:
-      'import { Button } from "@/components/base/button";\nimport { Heart } from "lucide-react";\n\n<Button>\n  <Heart className="mr-2" />\n  Icon Button\n</Button>;\n',
+      'import { Button } from "@/components/base/button";\nimport { Heart } from "lucide-react";\n\nexport const ButtonIcon = () => (\n  <Button>\n    <Heart className="mr-2" />\n    Icon Button\n  </Button>\n);\n',
   },
   {
     name: "ButtonLoader",
     files:
-      'import { Button } from "@/components/base/button";\nimport { Loader } from "lucide-react";\n\n<Button isDisabled>\n  <Loader className="mr-2 h-4 w-4 animate-spin" />\n  Loading\n</Button>;\n',
+      'import { Button } from "@/components/base/button";\nimport { Loader } from "lucide-react";\n\nexport const ButtonLoader = () => (\n  <Button isDisabled>\n    <Loader className="mr-2 h-4 w-4 animate-spin" />\n    Loading\n  </Button>\n);\n',
   },
   {
     name: "Calendar",
     files:
       'import { Calendar } from "@/components/base/calendar";\n\nexport const CalendarExample = () => <Calendar />;\n',
+  },
+  {
+    name: "Checkbox",
+    files:
+      'import { Checkbox } from "@/components/base/checkbox";\n\nexport const CheckboxExample = () => <Checkbox>On/Offf</Checkbox>;\n',
   },
   {
     name: "CheckboxGroup",
@@ -43,6 +48,11 @@ export const examples = [
     name: "DateField",
     files:
       'import { DateField } from "@/components/base/dateField";\n\nexport const DateFieldExample = () => {\n  return <DateField label="Deploy Date" />;\n};\n',
+  },
+  {
+    name: "DatePicker",
+    files:
+      'import { DatePicker } from "@/components/base/datePicker";\n\nexport const DatePickerExample = () => <DatePicker label="Check In" />;\n',
   },
   {
     name: "DateRangePicker",
@@ -95,6 +105,16 @@ export const examples = [
       'import { Radio, RadioGroup } from "@/components/base/radioGroup";\n\nexport const RadioGroupExample = () => (\n  <RadioGroup label="Notifications">\n    <Radio value="bug">Push</Radio>\n    <Radio value="copy">Text</Radio>\n    <Radio value="deploy">Email</Radio>\n  </RadioGroup>\n);\n',
   },
   {
+    name: "RangeCalendar",
+    files:
+      'import { RangeCalendar } from "@/components/base/rangeCalendar";\n\nexport const RangeCalendarExample = () => <RangeCalendar />;\n',
+  },
+  {
+    name: "SearchField",
+    files:
+      'import { SearchField } from "@/components/base/searchField";\n\nexport const SearchFieldExample = () => <SearchField />;\n',
+  },
+  {
     name: "Select",
     files:
       'import { Select, SelectItem } from "@/components/base/select";\n\nexport const SelectExample = () => {\n  return (\n    <Select label="New Project">\n      <SelectItem>React</SelectItem>\n      <SelectItem>Vue</SelectItem>\n      <SelectItem>Svelte</SelectItem>\n      <SelectItem>Solid</SelectItem>\n    </Select>\n  );\n};\n',
@@ -135,14 +155,19 @@ export const examples = [
       'import { Tag, TagGroupRoot } from "@/components/base/tagGroup";\n\nexport const TagGroupExample = () => {\n  return (\n    <TagGroupRoot label="Priority" selectionMode="single">\n      <Tag>High</Tag>\n      <Tag>Med</Tag>\n      <Tag>Low</Tag>\n    </TagGroupRoot>\n  );\n};\n',
   },
   {
+    name: "TextField",
+    files:
+      'import { TextField } from "@/components/base/textField";\n\nexport const TextFieldExample = () => <TextField label="Name" />;\n',
+  },
+  {
     name: "TimeField",
     files:
-      'import { TimeField } from "@/components/base/timeField";\n\nexport const TimeFieldExample = () => {\n  return <TimeField label="Meeting Time" />;\n};\n',
+      'import { TimeField } from "@/components/base/timeField";\n\nexport const TimeFieldExample = () => <TimeField label="Meeting Time" />;\n',
   },
   {
     name: "Toggle",
     files:
-      'import { Toggle } from "@/components/base/toggle";\n\nexport const ToggleExample = () => {\n  return <Toggle>Mode</Toggle>;\n};\n',
+      'import { Toggle } from "@/components/base/toggle";\n\nexport const ToggleExample = () => <Toggle>Mode</Toggle>;\n',
   },
   {
     name: "Tooltip",

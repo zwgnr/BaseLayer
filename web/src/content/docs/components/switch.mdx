@@ -23,23 +23,24 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder *components/base*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer 
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
-import { forwardRef, ReactNode, type ElementRef } from "react";
+import type { ReactNode } from "react";
 
 import {
   Switch as AriaSwitch,
   SwitchProps as AriaSwitchProps,
+  Label,
 } from "react-aria-components";
 
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const switchVariants = tv({
+const switchVariants = tv({
   slots: {
     root: "flex items-center gap-2 transition-none duration-200",
     indicator:
@@ -56,36 +57,26 @@ export const switchVariants = tv({
   },
 });
 
-export type SwitchVariantProps = VariantProps<typeof switchVariants>;
+type SwitchVariantProps = VariantProps<typeof switchVariants>;
 
-interface SwitchProps
-  extends VariantProps<typeof switchVariants>,
-    AriaSwitchProps {
+interface SwitchProps extends SwitchVariantProps, AriaSwitchProps {
   children?: ReactNode;
   className?: string | undefined;
 }
 
-export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <AriaSwitch
-        className={switchVariants().root({ className })}
-        ref={ref}
-        {...props}
-      >
-        {({ isSelected }) => (
-          <>
-            <div
-              className={switchVariants({
-                selected: isSelected,
-              }).indicator()}
-            />
-            {children}
-          </>
-        )}
-      </AriaSwitch>
-    );
-  }
+export const Switch = ({ className, children, ...restProps }: SwitchProps) => (
+  <AriaSwitch className={switchVariants().root({ className })} {...restProps}>
+    {({ isSelected }) => (
+      <>
+        <div
+          className={switchVariants({
+            selected: isSelected,
+          }).indicator()}
+        />
+        <Label className={switchVariants().label()}> {children}</Label>
+      </>
+    )}
+  </AriaSwitch>
 );
 
 ```

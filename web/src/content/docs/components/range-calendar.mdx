@@ -17,30 +17,80 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  RangeCalendar as AriaRangeCalendar,
+  RangeCalendarProps as AriaRangeCalendarProps,
+  Button,
+  CalendarCell,
+  CalendarGrid,
+  CalendarGridBody,
+  CalendarGridHeader,
+  CalendarHeaderCell,
+  DateValue,
+  Heading,
+  Text,
+} from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-const baseItemPotion = tv({
-  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
-});
-
-export const dropdownPotion = tv({
+export const rangeCalendar = tv({
   slots: {
-    content:
-      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
-    item: [baseItemPotion(), "mb-2 flex justify-between p-2"],
-    itemGroupLabel: "text-sm  font-bold",
-    optionItem: [baseItemPotion(), "w-full rounded-md p-2 text-sm"],
-    triggerItem: [baseItemPotion(), "inline-flex w-full flex-wrap gap-2"],
-    seperator: "w-full rounded-md border border-gray-200",
+    root: "w-fit max-w-full rounded-xl border bg-surface p-6 text-fg shadow-lg ",
+    header: "mb-4 flex items-center ",
+    heading: "text-md m-0 flex-1 text-center text-lg font-bold",
+    gridHeaderCell: "pb-2 text-sm text-fg-5",
+    iconButton:
+      "m-0 flex h-8 w-8 appearance-none items-center justify-center rounded-md text-center outline-none hover:bg-surface-2",
+    cell: "-m-[1px] mb-1 flex h-8 w-8  items-center justify-center rounded-md p-5 text-center text-sm outline-none hover:bg-surface-2 data-[selected]:rounded-none [&[data-outside-month]]:hidden [&[data-pressed]]:bg-surface-2 [&[data-selected]]:bg-primary  [&[data-selected]]:text-primary-fg [&[data-selection-end]]:rounded-r-md [&[data-selection-start]]:rounded-l-md [&[data-unavailable]]:text-fg-6 [&[data-unavailable]]:line-through",
   },
 });
+
+const { root, header, heading, gridHeaderCell, cell, iconButton } =
+  rangeCalendar();
+
+interface RangeCalendarCalendarProps<T extends DateValue>
+  extends Omit<AriaRangeCalendarProps<T>, "className"> {
+  error?: string;
+  className?: string;
+}
+
+export const RangeCalendar = (props: RangeCalendarCalendarProps<DateValue>) => {
+  const { className, error, children, ...restProps } = props;
+  return (
+    <AriaRangeCalendar {...restProps} className={root({ className })}>
+      <header className={header()}>
+        <Button className={iconButton()} slot="previous">
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+        <Heading className={heading()} />
+        <Button className={iconButton()} slot="next">
+          <ChevronRight className="h-6 w-6" />
+        </Button>
+      </header>
+      <CalendarGrid>
+        <CalendarGridHeader>
+          {(day) => (
+            <CalendarHeaderCell className={gridHeaderCell()}>
+              {day}
+            </CalendarHeaderCell>
+          )}
+        </CalendarGridHeader>
+        <CalendarGridBody>
+          {(date) => <CalendarCell className={cell()} date={date} />}
+        </CalendarGridBody>
+      </CalendarGrid>
+      {error && <Text slot="error">{error}</Text>}
+    </AriaRangeCalendar>
+  );
+};
 
 ```
 </Fragment>
@@ -50,77 +100,19 @@ export const dropdownPotion = tv({
 
 ### Default 
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
 ```tsx
-import { button } from "@/components/base/button";
-import { dialogPotion } from "@/components/base/dialogPotion";
-import {
-  Pressable as Button,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  Dialog as DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  Portal,
-} from "@ark-ui/react";
-import { X } from "lucide-react";
+import { RangeCalendar } from "@/components/base/rangeCalendar";
 
-const { backdrop, container, content, description, title } = dialogPotion();
-
-export const Dialog = () => {
-  return (
-    <DialogRoot>
-      <DialogTrigger asChild>
-        <Button className={button()}>Open dialog</Button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop className={backdrop()} />
-        <DialogContainer className={container()}>
-          <DialogContent className={content()}>
-            <div className="flex flex-col gap-8 p-6">
-              <div className="flex flex-col gap-1">
-                <DialogTitle className={title()}>Dialog Title</DialogTitle>
-                <DialogDescription className={description()}>
-                  Dialog Description
-                </DialogDescription>
-              </div>
-              <div className="flex w-full items-center justify-center gap-3">
-                <DialogCloseTrigger asChild>
-                  <Button
-                    className={button({
-                      state: "outline",
-                      className:
-                        "border-critical text-critical hover:bg-critical hover:text-black",
-                    })}
-                  >
-                    Cancel
-                  </Button>
-                </DialogCloseTrigger>
-                <Button className={button()}>Confirm</Button>
-              </div>
-            </div>
-            <DialogCloseTrigger asChild>
-              <Button className="absolute right-6 top-6">
-                <X className="text-fg" aria-label="Close dialog" />
-              </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-    </DialogRoot>
-  );
-};
+export const RangeCalendarExample = () => <RangeCalendar />;
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-dialog
+bl-range-calendar
 ```
   </Fragment>
 </DemoTabs>

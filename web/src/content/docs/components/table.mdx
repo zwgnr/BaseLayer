@@ -30,63 +30,134 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
-import { forwardRef, ReactNode, type ElementRef } from "react";
-
 import {
-  Switch as AriaSwitch,
-  SwitchProps as AriaSwitchProps,
+  Column as AriaColumn,
+  Table as AriaTable,
+  TableBody as AriaTableBody,
+  TableHeader as AriaTableheader,
+  Cell,
+  CellProps,
+  Collection,
+  ColumnProps,
+  Row,
+  RowProps,
+  TableHeaderProps,
+  TableProps,
+  useTableOptions,
 } from "react-aria-components";
 
-import { tv, type VariantProps } from "tailwind-variants";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
+import { tv } from "tailwind-variants";
+import { Button } from "./button";
+import { Checkbox } from "./checkbox";
 
-export const switchVariants = tv({
+const table = tv({
   slots: {
-    root: "flex items-center gap-2 transition-none duration-200",
-    indicator:
-      "h-6 w-10 cursor-pointer rounded-2xl bg-surface-3 duration-200 before:mx-[2px] before:mt-[2px] before:block before:h-5 before:w-5 before:rounded-2xl before:bg-white before:transition-all",
+    root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border p-4 outline-none",
+    column: "border-b-2 px-4 py-1 text-left outline-none",
+    header: " text-fg after:table-row after:h-[2px] last:border-b-2",
     label: "text-fg-3",
-  },
-  variants: {
-    selected: {
-      true: { indicator: "bg-primary before:translate-x-4" },
-    },
-  },
-  defaultVariants: {
-    selected: false,
+    row: "relative cursor-default rounded-xl text-fg outline-none",
   },
 });
 
-export type SwitchVariantProps = VariantProps<typeof switchVariants>;
+const { root, header, column, row } = table();
 
-interface SwitchProps
-  extends VariantProps<typeof switchVariants>,
-    AriaSwitchProps {
-  children?: ReactNode;
-  className?: string | undefined;
-}
+const TableBody = AriaTableBody;
 
-export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <AriaSwitch
-        className={switchVariants().root({ className })}
-        ref={ref}
-        {...props}
-      >
-        {({ isSelected }) => (
-          <>
-            <div
-              className={switchVariants({
-                selected: isSelected,
-              }).indicator()}
-            />
-            {children}
-          </>
-        )}
-      </AriaSwitch>
-    );
-  }
+const Table = ({
+  children,
+  className,
+  ...props
+}: TableProps & { className?: string }) => (
+  <AriaTable {...props} className={root({ className })}>
+    {children}
+  </AriaTable>
 );
+
+const TableCell = ({
+  children,
+  className,
+  ...props
+}: CellProps & { className?: string }) => (
+  <Cell {...props} className="px-4 py-2">
+    {children}
+  </Cell>
+);
+
+const Column = ({
+  children,
+  className,
+  ...props
+}: ColumnProps & { className?: string }) => (
+  <AriaColumn {...props} className={column({ className })}>
+    {({ allowsSorting, sortDirection }) => (
+      <div className="flex items-center gap-2">
+        <>
+          {children}
+          {allowsSorting &&
+            (sortDirection === undefined ? (
+              <div className="w-6"></div>
+            ) : sortDirection === "ascending" ? (
+              <ChevronUp />
+            ) : (
+              <ChevronDown />
+            ))}
+        </>
+      </div>
+    )}
+  </AriaColumn>
+);
+
+const TableHeader = <T extends object>({
+  children,
+  className,
+  columns,
+  ...props
+}: TableHeaderProps<T> & { className?: string }) => {
+  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
+  return (
+    <AriaTableheader {...props} className={header()}>
+      {/* Add extra columns for drag and drop and selection. */}
+      {allowsDragging && <Column />}
+      {selectionBehavior === "toggle" && (
+        <Column>
+          {selectionMode === "multiple" && <Checkbox slot="selection" />}
+        </Column>
+      )}
+      <Collection items={columns}>{children}</Collection>
+    </AriaTableheader>
+  );
+};
+
+const TableRow = <T extends object>({
+  children,
+  className,
+  columns,
+  id,
+  ...props
+}: RowProps<T> & { className?: string }) => {
+  let { selectionBehavior, allowsDragging } = useTableOptions();
+  return (
+    <Row id={id} {...props} className={row()}>
+      {allowsDragging && (
+        <Cell>
+          <Button className="bg-transparent" slot="drag">
+            <Menu className="h-4 w-4 text-fg" />
+          </Button>
+        </Cell>
+      )}
+      {selectionBehavior === "toggle" && (
+        <Cell className="">
+          <Checkbox slot="selection" />
+        </Cell>
+      )}
+      <Collection items={columns}>{children}</Collection>
+    </Row>
+  );
+};
+
+export { Column, Table, TableBody, TableCell, TableHeader, TableRow };
 
 ```
 </Fragment>
@@ -105,10 +176,44 @@ export const Switch = forwardRef<ElementRef<typeof AriaSwitch>, SwitchProps>(
 <DemoTabs >
   <Fragment slot="react">
 ```tsx
-import { Switch } from "@/components/base/switch";
+import {
+  Column,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "@/components/base/table";
 
-export const SwitchExample = () => {
-  return <Switch>On/Off</Switch>;
+export const TableExample = () => {
+  return (
+    <Table aria-label="Tokens" selectionMode="multiple">
+      <TableHeader>
+        <Column isRowHeader>Name</Column>
+        <Column>Token</Column>
+        <Column>Env</Column>
+        <Column></Column>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Dev</TableCell>
+          <TableCell>****1822</TableCell>
+          <TableCell>preview</TableCell>
+        </TableRow>
+
+        <TableRow>
+          <TableCell>Production</TableCell>
+          <TableCell>****3345</TableCell>
+          <TableCell>prod</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>beta</TableCell>
+          <TableCell>****6431</TableCell>
+          <TableCell>preview</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
 };
 
 ```
@@ -132,11 +237,82 @@ bl-table
 <DemoTabs >
   <Fragment slot="react">
 ```tsx
-import { Switch } from "@/components/base/switch";
+import {
+  Column,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "@/components/base/table";
+import { useAsyncList } from "@react-stately/data";
 
-export const SwitchExample = () => {
-  return <Switch>On/Off</Switch>;
-};
+interface Invoice {
+  [key: string]: any;
+  title: string;
+  price: number;
+  brand: string;
+}
+
+export function TableSortable() {
+  let list = useAsyncList<Invoice>({
+    async load({ signal }) {
+      let res = await fetch(`https://dummyjson.com/products?limit=10`, {
+        signal,
+      });
+      let json = await res.json();
+      return {
+        items: json.products,
+      };
+    },
+    async sort({ items, sortDescriptor }) {
+      return {
+        items: items.sort((a, b) => {
+          if (!sortDescriptor.column) {
+            return 0;
+          }
+          let first = a[sortDescriptor.column];
+          let second = b[sortDescriptor.column];
+          let cmp =
+            (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+          if (sortDescriptor.direction === "descending") {
+            cmp *= -1;
+          }
+          return cmp;
+        }),
+      };
+    },
+  });
+
+  return (
+    <Table
+      aria-label="Example table with client side sorting"
+      sortDescriptor={list.sortDescriptor}
+      onSortChange={list.sort}
+    >
+      <TableHeader>
+        <Column id="item" isRowHeader allowsSorting>
+          Name
+        </Column>
+        <Column id="price" allowsSorting>
+          Price
+        </Column>
+        <Column id="brand" allowsSorting>
+          Brand
+        </Column>
+      </TableHeader>
+      <TableBody items={list.items}>
+        {(item) => (
+          <TableRow id={item.title}>
+            <TableCell>{item.title}</TableCell>
+            <TableCell>{item.price}</TableCell>
+            <TableCell>{item.brand}</TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
+  );
+}
 
 ```
   </Fragment>
@@ -159,11 +335,63 @@ bl-table-sortable
 <DemoTabs >
   <Fragment slot="react">
 ```tsx
-import { Switch } from "@/components/base/switch";
+import {
+  Column,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "@/components/base/table";
+import { useDragAndDrop } from "react-aria-components";
+import { useListData } from "react-stately";
 
-export const SwitchExample = () => {
-  return <Switch>On/Off</Switch>;
-};
+export function TableReorderable() {
+  let list = useListData({
+    initialItems: [
+      { id: 1, name: "Dev", token: "****1822", env: "prod" },
+      { id: 2, name: "Production", token: "****3345", env: "preview" },
+      { id: 3, name: "beta", token: "****6431", env: "preview" },
+    ],
+  });
+
+  let { dragAndDropHooks } = useDragAndDrop({
+    getItems: (keys) =>
+      [...keys].map((key) => ({
+        "text/plain": list.getItem(key).name,
+      })),
+    onReorder(e) {
+      if (e.target.dropPosition === "before") {
+        list.moveBefore(e.target.key, e.keys);
+      } else if (e.target.dropPosition === "after") {
+        list.moveAfter(e.target.key, e.keys);
+      }
+    },
+  });
+
+  return (
+    <Table
+      aria-label="Tokens"
+      selectionMode="multiple"
+      dragAndDropHooks={dragAndDropHooks}
+    >
+      <TableHeader>
+        <Column isRowHeader>Name</Column>
+        <Column>Token</Column>
+        <Column>Env</Column>
+      </TableHeader>
+      <TableBody items={list.items}>
+        {(item) => (
+          <TableRow>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>{item.token}</TableCell>
+            <TableCell>{item.env}</TableCell>
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
+  );
+}
 
 ```
   </Fragment>

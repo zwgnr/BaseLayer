@@ -17,72 +17,81 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
-import {
-  Breadcrumbs as AriaBreadcrumbs,
-  Item,
+import type {
+  SelectProps as AriaSelectProps,
   ItemProps,
-  Link,
-  LinkProps,
-  type BreadcrumbsProps as AriaBreadcrumbsProps,
 } from "react-aria-components";
+
+import {
+  Select as AriaSelect,
+  Button,
+  Item,
+  Label,
+  ListBox,
+  Popover,
+  SelectValue,
+  Text,
+} from "react-aria-components";
+
+import { ChevronDown } from "lucide-react";
 import { tv } from "tailwind-variants";
 
-export const breadcrumbs = tv({
+const select = tv({
   slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
-    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
-    item: "flex items-center gap-2",
+    root: "max-h-inherit flex flex-col gap-2 overflow-auto p-1 outline-none",
+    item: "relative m-1 flex cursor-default flex-col rounded-md p-2 outline-none hover:bg-surface-2 ",
+    popover:
+      "w-64 rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none",
+    button:
+      "flex w-56 appearance-none items-center justify-between rounded-md border p-2 outline-none hover:bg-surface-2",
   },
 });
 
-interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
-  className?: string | undefined;
+const { button, item, popover, root } = select();
+
+interface SelectProps<T extends object>
+  extends Omit<AriaSelectProps<T>, "children"> {
+  className?: string;
+  label?: string;
+  description?: string | null;
+  errorMessage?: string | null;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
-const { root, link, item } = breadcrumbs();
-
-export const Breadcrumbs = <T extends object>({
-  children,
+const Select = <T extends object>({
+  label,
   className,
+  description,
+  errorMessage,
+  children,
   ...props
-}: BreadcrumbsProps<T>) => {
-  return (
-    <AriaBreadcrumbs className={root({ className })} {...props}>
-      {children}
-    </AriaBreadcrumbs>
-  );
+}: SelectProps<T>) => (
+  <AriaSelect className={root({ className })} {...props}>
+    <Label>{label}</Label>
+    <Button className={button()}>
+      <SelectValue />
+      <ChevronDown />
+    </Button>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+    <Popover className={popover()}>
+      <ListBox className="outline-none">{children}</ListBox>
+    </Popover>
+  </AriaSelect>
+);
+
+const SelectItem = (props: ItemProps) => {
+  return <Item {...props} className={item()} />;
 };
 
-export const BreadCrumbsLink = ({
-  children,
-  className,
-  ...props
-}: LinkProps & { className?: string }) => {
-  return (
-    <Link className={link({ className })} {...props}>
-      {children}
-    </Link>
-  );
-};
-
-export const BreadCrumbsItem = ({
-  children,
-  className,
-  ...props
-}: ItemProps & { className?: string }) => {
-  return (
-    <Item className={item({ className })} {...props}>
-      {children}
-    </Item>
-  );
-};
+export { Select, SelectItem };
 
 ```
 </Fragment>
@@ -96,28 +105,16 @@ export const BreadCrumbsItem = ({
   <Fragment slot="react">
 ```tsx
 
-import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
-import { ChevronRight } from "lucide-react";
+import { Select, SelectItem } from "@/components/base/select";
 
-export const BreadcrumbsExample = () => {
+export const SelectExample = () => {
   return (
-    <Breadcrumbs>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/">Home</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/docs">Docs</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
-      </BreadCrumbsItem>
-    </Breadcrumbs>
+    <Select label="New Project">
+      <SelectItem>React</SelectItem>
+      <SelectItem>Vue</SelectItem>
+      <SelectItem>Svelte</SelectItem>
+      <SelectItem>Solid</SelectItem>
+    </Select>
   );
 };
 
@@ -127,7 +124,7 @@ export const BreadcrumbsExample = () => {
 
     <Fragment slot="vsc">
 ```bash
-bl-breadcrumbs
+bl-select
 ```
   </Fragment>
 </DemoTabs>

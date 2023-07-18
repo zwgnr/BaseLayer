@@ -16,30 +16,58 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
+import {
+  Dialog as AriaDialogContent,
+  DialogTrigger as AriaDialogTrigger,
+  Modal as AriaModal,
+  DialogProps,
+  ModalOverlay,
+  ModalOverlayProps,
+} from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-const baseItemPotion = tv({
-  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
-});
-
-export const dropdownPotion = tv({
+export const modal = tv({
   slots: {
-    content:
-      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
-    item: [baseItemPotion(), "mb-2 flex justify-between p-2"],
-    itemGroupLabel: "text-sm  font-bold",
-    optionItem: [baseItemPotion(), "w-full rounded-md p-2 text-sm"],
-    triggerItem: [baseItemPotion(), "inline-flex w-full flex-wrap gap-2"],
-    seperator: "w-full rounded-md border border-gray-200",
+    container: "fixed inset-0 z-40 flex items-center justify-center",
+    content: "flex flex-col gap-6 outline-none",
+    modalStyles:
+      "max-w-3/4 w:3/4 rounded-xl bg-surface p-6 outline-none md:w-96 [&[data-entering]]:animate-zoom",
+    overlay:
+      "fixed left-0 top-0 z-50 flex h-[var(--visual-viewport-height)] w-screen items-center justify-center bg-slate-500/50 [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
   },
 });
+
+const { overlay, modalStyles, content } = modal();
+
+interface ModalProps extends Omit<ModalOverlayProps, "className"> {
+  className?: string;
+}
+
+const Modal = ({ children, className, ...props }: ModalProps) => (
+  <ModalOverlay className={overlay()}>
+    <AriaModal {...props} className={modalStyles({ className })}>
+      {children}
+    </AriaModal>
+  </ModalOverlay>
+);
+
+const ModalContent = ({ children, className, ...props }: DialogProps) => (
+  <AriaDialogContent {...props} className={content({ className })}>
+    {children}
+  </AriaDialogContent>
+);
+
+const ModalTrigger = AriaDialogTrigger;
+
+export { Modal, ModalContent, ModalTrigger };
 
 ```
 </Fragment>
@@ -49,68 +77,45 @@ export const dropdownPotion = tv({
 
 ### Default 
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
 ```tsx
-import { button } from "@/components/base/button";
-import { dialogPotion } from "@/components/base/dialogPotion";
-import {
-  Pressable as Button,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  Dialog as DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  Portal,
-} from "@ark-ui/react";
-import { X } from "lucide-react";
+import { Button } from "@/components/base/button";
+import { Modal, ModalContent, ModalTrigger } from "@/components/base/modal";
+import { AlertTriangle } from "lucide-react";
+import { Heading } from "react-aria-components";
 
-const { backdrop, container, content, description, title } = dialogPotion();
-
-export const Dialog = () => {
+export const ModalExample = () => {
   return (
-    <DialogRoot>
-      <DialogTrigger asChild>
-        <Button className={button()}>Open dialog</Button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop className={backdrop()} />
-        <DialogContainer className={container()}>
-          <DialogContent className={content()}>
-            <div className="flex flex-col gap-8 p-6">
-              <div className="flex flex-col gap-1">
-                <DialogTitle className={title()}>Dialog Title</DialogTitle>
-                <DialogDescription className={description()}>
-                  Dialog Description
-                </DialogDescription>
+    <ModalTrigger>
+      <Button className="bg-critical hover:bg-critical/70">
+        Delete Project
+      </Button>
+      <Modal>
+        <ModalContent>
+          {({ close }) => (
+            <>
+              <AlertTriangle className="h-8 w-8 text-critical" />
+              <Heading className="text-lg font-bold">Warning</Heading>
+              <p className="text-sm text-fg-3">
+                Your data will be permenantly deleted, proceed?
+              </p>
+              <div className="flex justify-center gap-4">
+                <Button state="outline" intent="secondary" onPress={close}>
+                  Cancel
+                </Button>
+                <Button
+                  className="bg-critical hover:bg-critical/70"
+                  onPress={close}
+                >
+                  Delete
+                </Button>
               </div>
-              <div className="flex w-full items-center justify-center gap-3">
-                <DialogCloseTrigger asChild>
-                  <Button
-                    className={button({
-                      state: "outline",
-                      className:
-                        "border-critical text-critical hover:bg-critical hover:text-black",
-                    })}
-                  >
-                    Cancel
-                  </Button>
-                </DialogCloseTrigger>
-                <Button className={button()}>Confirm</Button>
-              </div>
-            </div>
-            <DialogCloseTrigger asChild>
-              <Button className="absolute right-6 top-6">
-                <X className="text-text" aria-label="Close dialog" />
-              </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-    </DialogRoot>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </ModalTrigger>
   );
 };
 
@@ -119,7 +124,9 @@ export const Dialog = () => {
 
     <Fragment slot="vsc">
 ```bash
-bl-dialog
+
+bl-modal
+
 ```
   </Fragment>
 </DemoTabs>

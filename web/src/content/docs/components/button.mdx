@@ -37,7 +37,7 @@ import {
 import { VariantProps, tv } from "tailwind-variants";
 
 const button = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
+  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
   variants: {
     intent: {
       primary: "bg-primary text-primary-fg hover:bg-primary/70",
@@ -75,18 +75,18 @@ const button = tv({
     {
       intent: "secondary",
       state: "ghost",
-      class: "border-2 border-primary bg-primary/30 hover:bg-primary",
+      class: "border-2 border-secondary bg-secondary/30 hover:bg-secondary",
     },
     {
       intent: "secondary",
       state: "soft",
-      class: "bg-primary/50 text-primary-fg hover:bg-primary/30",
+      class: "bg-secondary/50 text-secondary-fg hover:bg-secondary/30",
     },
     {
       intent: "secondary",
       state: "outline",
       class:
-        "border-2 border-secondary bg-transparent text-primary-fg hover:bg-primary",
+        "border-2 border-secondary bg-transparent text-fg hover:bg-secondary hover:text-secondary-fg",
     },
   ],
   defaultVariants: {
@@ -96,8 +96,10 @@ const button = tv({
   },
 });
 
-interface ButtonProps extends AriaButtonProps, VariantProps<typeof button> {
-  className?: string | undefined;
+type ButtonVariantProps = VariantProps<typeof button>;
+
+interface ButtonProps extends AriaButtonProps, ButtonVariantProps {
+  className?: string;
 }
 
 export const Button = ({
@@ -142,7 +144,7 @@ bl-button
 ```tsx
 import { Button } from "@/components/base/button";
 
-<Button>Button</Button>;
+export const ButtonExample = () => <Button>Button</Button>;
 
 ```
 </Fragment>
@@ -164,13 +166,15 @@ import { Button } from "@/components/base/button";
 <DemoTabs>
   <Fragment slot="react">
 ```tsx
-import { Button } from '@/components/base/button'
+import { Button } from "@/components/base/button";
 import { Heart } from "lucide-react";
 
-<Button>
-  <Heart className="mr-2" />
-  Icon Button
-</Button>;
+export const ButtonIcon = () => (
+  <Button>
+    <Heart className="mr-2" />
+    Icon Button
+  </Button>
+);
 
 ```
 </Fragment>
@@ -184,7 +188,7 @@ bl-button-icon
 
 ### Loader Button
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+<div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div class="flex gap-2 items-center">
       <Button disabled>
         <Loader className="mr-2 h-4 w-4 animate-spin" />
@@ -198,13 +202,15 @@ bl-button-icon
 <DemoTabs>
   <Fragment slot="react">
 ```tsx
-import { Button } from '@/components/base/button'
+import { Button } from "@/components/base/button";
 import { Loader } from "lucide-react";
 
-<Button disabled>
-  <Loader className="mr-2 h-4 w-4 animate-spin" />
-  Loading...
-</Button>;
+export const ButtonLoader = () => (
+  <Button isDisabled>
+    <Loader className="mr-2 h-4 w-4 animate-spin" />
+    Loading
+  </Button>
+);
 
 ```
   </Fragment>
@@ -220,7 +226,7 @@ bl-button-loader
 
 ### Intent
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+<div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div className="flex gap-2 items-center">
      <Button intent="primary">Primary</Button>
 <Button intent="secondary">Accent</Button>
@@ -240,7 +246,7 @@ import { Button } from "@/components/base/button";
 
 ### State 
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+<div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div className="flex gap-2 items-center flex-wrap">
       <Button state="filled">Filled</Button>
  <Button state="soft">Soft</Button>
@@ -264,7 +270,7 @@ import { Button } from "@/components/base/button";
 
 ### Sizes
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
+<div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div className="flex gap-2 items-center">
      <Button size="sm">sm</Button>
 <Button size="md">md</Button>

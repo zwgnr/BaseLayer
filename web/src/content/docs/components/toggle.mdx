@@ -19,37 +19,29 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer 
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
-import { forwardRef, type ElementRef } from "react";
-
 import { ToggleButton, ToggleButtonProps } from "react-aria-components";
 
-import { VariantProps, tv } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
-export const toggle = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg bg-surface-2 p-2 font-medium outline-none transition-transform  duration-100 disabled:pointer-events-none disabled:opacity-50 [&[aria-pressed=true]]:bg-primary",
+const toggle = tv({
+  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-md bg-surface-2 p-2 font-medium outline-none transition-transform  duration-100 disabled:pointer-events-none disabled:opacity-50 [&[aria-pressed=true]]:bg-primary",
 });
 
-export interface ToggleProps
-  extends ToggleButtonProps,
-    VariantProps<typeof toggle> {
-  className?: string | undefined;
-}
-
-export const Toggle = forwardRef<ElementRef<typeof ToggleButton>, ToggleProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <ToggleButton className={toggle({ className })} ref={ref} {...props}>
-        {children}
-      </ToggleButton>
-    );
-  }
+export const Toggle = ({
+  className,
+  children,
+  ...props
+}: ToggleButtonProps & { className?: string }) => (
+  <ToggleButton className={toggle({ className })} {...props}>
+    {children}
+  </ToggleButton>
 );
 
 Toggle.displayName = "Toggle";
@@ -62,7 +54,7 @@ Toggle.displayName = "Toggle";
 
 ### Default
 
-<DemoTabs vueDisabled solidDisabled>
+<DemoTabs>
 <Fragment slot="vsc">
 ```tsx
 bl-toggle 
@@ -72,10 +64,7 @@ bl-toggle
 ```tsx
 import { Toggle } from "@/components/base/toggle";
 
-export const ToggleExample = () => {
-  return <Toggle>Mode</Toggle>;
-};
-
+export const ToggleExample = () => <Toggle>Mode</Toggle>;
 
 ```
 </Fragment>

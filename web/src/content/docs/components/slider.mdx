@@ -19,26 +19,73 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *components/base*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer 
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
+import {
+  Slider as AriaSlider,
+  SliderThumb as AriaSliderThumb,
+  SliderTrack as AriaSliderTrack,
+  Label,
+  LabelProps,
+  SliderOutput,
+  SliderProps,
+  SliderThumbProps,
+} from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const sliderPotion = tv({
+const slider = tv({
   slots: {
-    sliderRoot: "w-full",
-    sliderControl: "relative flex items-center py-2",
-    sliderTrack: "h-2 flex-1 rounded-md bg-surface-3",
-    sliderRange: "h-2 rounded-md bg-secondary",
-    sliderThumb:
-      "h-6 w-6 rounded-full border-2 border-secondary bg-surface-2 shadow-sm outline-none data-[focus]:outline-none",
-    sliderMarker: "mt-2 text-sm text-text-4",
+    root: "grid w-64  auto-cols-fr grid-cols-1  text-gray-900",
+    thumb: "bg-slateblue h-5 w-5 rounded-full bg-primary",
+    track:
+      "relative col-span-2 col-start-1 w-full before:absolute before:top-1/2 before:h-0.5 before:w-full before:-translate-y-1/2 before:transform before:bg-gray-400",
+    button:
+      "flex w-56 appearance-none items-center justify-between rounded-lg border p-2 outline-none hover:bg-surface-2",
   },
 });
+
+const { root, thumb, track } = slider();
+
+const SliderRoot = ({
+  children,
+  className,
+  ...props
+}: SliderProps & { className?: string }) => (
+  <AriaSlider {...props} className={root({ className })}>
+    {children}
+  </AriaSlider>
+);
+
+const SliderThumb = ({
+  children,
+  className,
+  ...props
+}: SliderThumbProps & { className?: string }) => (
+  <AriaSliderTrack className={track()}>
+    <AriaSliderThumb className={thumb({ className })} {...props} />
+  </AriaSliderTrack>
+);
+
+const SliderLabel = ({
+  children,
+  className,
+  ...props
+}: LabelProps & { className?: string }) => (
+  <div className="col-span-2 my-4 flex w-full justify-between">
+    <Label className="text-sm text-fg" {...props}>
+      {children}
+    </Label>
+    <SliderOutput className="text-sm text-fg" />
+  </div>
+);
+
+export { SliderRoot, SliderThumb, SliderLabel };
 
 ```
 </Fragment>
@@ -48,7 +95,7 @@ export const sliderPotion = tv({
 
 ### Default
 
-<DemoTabs vueDisabled solidDisabled>
+<DemoTabs>
 <Fragment slot="vsc">
 ```tsx
 bl-slider 
@@ -56,50 +103,13 @@ bl-slider
 </Fragment>
 <Fragment slot="react">
 ```tsx
-import {
-  SliderControl,
-  SliderMarker,
-  SliderMarkerGroup,
-  SliderRange,
-  Slider as SliderRoot,
-  SliderThumb,
-  SliderTrack,
-  type SliderProps,
-} from "@ark-ui/react";
-import { sliderPotion } from "@potions/slider";
+import { SliderLabel, SliderRoot, SliderThumb } from "@/components/base/slider";
 
-const {
-  sliderControl,
-  sliderMarker,
-  sliderRange,
-  sliderRoot,
-  sliderThumb,
-  sliderTrack,
-} = sliderPotion();
-
-export const Slider = (props: Partial<SliderProps>) => {
-  const markers = [25, 50, 75];
+export const Slider = () => {
   return (
-    <SliderRoot
-      min={0}
-      max={100}
-      defaultValue={33}
-      className={sliderRoot()}
-      {...props}
-    >
-      <SliderControl className={sliderControl()}>
-        <SliderTrack className={sliderTrack()}>
-          <SliderRange className={sliderRange()} />
-        </SliderTrack>
-        <SliderThumb className={sliderThumb()} />
-      </SliderControl>
-      <SliderMarkerGroup>
-        {markers.map((marker) => (
-          <SliderMarker key={marker} className={sliderMarker()} value={marker}>
-            {marker}
-          </SliderMarker>
-        ))}
-      </SliderMarkerGroup>
+    <SliderRoot defaultValue={30}>
+      <SliderLabel>Opacity</SliderLabel>
+      <SliderThumb />
     </SliderRoot>
   );
 };

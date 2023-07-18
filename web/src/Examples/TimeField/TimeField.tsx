@@ -1,5 +1,3 @@
 import { TimeField } from "@/components/base/timeField";
 
-export const TimeFieldExample = () => {
-  return <TimeField label="Meeting Time" />;
-};
+export const TimeFieldExample = () => <TimeField label="Meeting Time" />;

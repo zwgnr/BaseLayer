@@ -17,72 +17,41 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
+import type { ReactNode } from "react";
+
 import {
-  Breadcrumbs as AriaBreadcrumbs,
-  Item,
-  ItemProps,
-  Link,
-  LinkProps,
-  type BreadcrumbsProps as AriaBreadcrumbsProps,
+  Tooltip as AriaTooltip,
+  TooltipTrigger as AriaTooltipTrigger,
+  type TooltipProps as AriaTooltipProps,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const breadcrumbs = tv({
-  slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
-    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
-    item: "flex items-center gap-2",
-  },
+const tooltip = tv({
+  base: "m-1 max-w-sm rounded-md border bg-surface p-2 text-fg shadow-xl outline-none [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
 });
 
-interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
-  className?: string | undefined;
+const TooltipTrigger = AriaTooltipTrigger;
+
+interface TooltipProps extends Omit<AriaTooltipProps, "children"> {
+  className?: string;
+  children: ReactNode;
 }
 
-const { root, link, item } = breadcrumbs();
+const Tooltip = ({ children, className, ...props }: TooltipProps) => (
+  <AriaTooltip className={tooltip({ className })} {...props}>
+    {children}
+  </AriaTooltip>
+);
 
-export const Breadcrumbs = <T extends object>({
-  children,
-  className,
-  ...props
-}: BreadcrumbsProps<T>) => {
-  return (
-    <AriaBreadcrumbs className={root({ className })} {...props}>
-      {children}
-    </AriaBreadcrumbs>
-  );
-};
-
-export const BreadCrumbsLink = ({
-  children,
-  className,
-  ...props
-}: LinkProps & { className?: string }) => {
-  return (
-    <Link className={link({ className })} {...props}>
-      {children}
-    </Link>
-  );
-};
-
-export const BreadCrumbsItem = ({
-  children,
-  className,
-  ...props
-}: ItemProps & { className?: string }) => {
-  return (
-    <Item className={item({ className })} {...props}>
-      {children}
-    </Item>
-  );
-};
+export { Tooltip, TooltipTrigger };
 
 ```
 </Fragment>
@@ -96,28 +65,18 @@ export const BreadCrumbsItem = ({
   <Fragment slot="react">
 ```tsx
 
-import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
-import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/base/button";
+import { Tooltip, TooltipTrigger } from "@/components/base/tooltip";
+import { Save } from "lucide-react";
 
-export const BreadcrumbsExample = () => {
+export const TooltipExample = () => {
   return (
-    <Breadcrumbs>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/">Home</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/docs">Docs</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
-      </BreadCrumbsItem>
-    </Breadcrumbs>
+    <TooltipTrigger>
+      <Button intent="secondary">
+        <Save />
+      </Button>
+      <Tooltip>Save</Tooltip>
+    </TooltipTrigger>
   );
 };
 
@@ -127,7 +86,7 @@ export const BreadcrumbsExample = () => {
 
     <Fragment slot="vsc">
 ```bash
-bl-breadcrumbs
+bl-tooltip
 ```
   </Fragment>
 </DemoTabs>

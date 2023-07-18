@@ -20,40 +20,90 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer 
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
-import { forwardRef, type ElementRef } from "react";
+import type { HTMLAttributes } from "react";
 
-import { ToggleButton, ToggleButtonProps } from "react-aria-components";
+import {
+  Header as AriaHeader,
+  Menu as AriaMenu,
+  MenuTrigger as AriaMenuTrigger,
+  Section as AriaSection,
+  Item,
+  ItemProps,
+  Popover,
+  PopoverProps,
+  Separator,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 
-import { VariantProps, tv } from "tailwind-variants";
-
-export const toggle = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-lg bg-surface-2 p-2 font-medium outline-none transition-transform  duration-100 disabled:pointer-events-none disabled:opacity-50 [&[aria-pressed=true]]:bg-primary",
+export const menu = tv({
+  slots: {
+    menuPopover:
+      "overflow-auto rounded-xl border bg-surface shadow-xl [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut ",
+    header: "p-2",
+    content: "flex h-fit w-56 flex-col gap-2 p-2 outline-none",
+    item: "relative flex cursor-pointer justify-between rounded-md p-2 text-fg outline-none hover:bg-surface-2",
+    separator: "mx-2 my-2 h-[1px] bg-surface-3",
+  },
 });
 
-export interface ToggleProps
-  extends ToggleButtonProps,
-    VariantProps<typeof toggle> {
-  className?: string | undefined;
-}
+const { menuPopover, content, header, item, separator } = menu();
 
-export const Toggle = forwardRef<ElementRef<typeof ToggleButton>, ToggleProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <ToggleButton className={toggle({ className })} ref={ref} {...props}>
-        {children}
-      </ToggleButton>
-    );
-  }
+const MenuTrigger = AriaMenuTrigger;
+const Section = AriaSection;
+
+const MenuConent = ({
+  children,
+  className,
+  ...props
+}: PopoverProps & { className?: string }) => (
+  <Popover isNonModal {...props} className={menuPopover()}>
+    <AriaMenu className={content({ className })}>{children}</AriaMenu>
+  </Popover>
 );
 
-Toggle.displayName = "Toggle";
+const MenuItem = ({
+  children,
+  className,
+  ...props
+}: ItemProps & { className?: string }) => (
+  <Item {...props} className={item({ className })}>
+    {children}
+  </Item>
+);
+
+const MenuHeader = ({
+  children,
+  className,
+  ...props
+}: HTMLAttributes<HTMLElement> & { className?: string }) => (
+  <AriaHeader {...props} className={header({ className })}>
+    {children}
+  </AriaHeader>
+);
+
+const MenuSeperator = ({
+  children,
+  className,
+  ...props
+}: HTMLAttributes<HTMLElement> & { className?: string }) => (
+  <Separator {...props} className={separator({ className })} />
+);
+
+export {
+  MenuConent,
+  MenuHeader,
+  MenuItem,
+  MenuSeperator,
+  MenuTrigger,
+  Section,
+};
 
 ```
 </Fragment>
@@ -77,12 +127,70 @@ bl-menu
 </Fragment>
 <Fragment slot="react">
 ```tsx
-import { Toggle } from "@/components/base/toggle";
+import { Button } from "@/components/base/button";
 
-export const ToggleExample = () => {
-  return <Toggle>Mode</Toggle>;
+import {
+  MenuConent,
+  MenuHeader,
+  MenuItem,
+  MenuSeperator,
+  MenuTrigger,
+  Section,
+} from "@/components/base/menu";
+
+import {
+  CreditCard,
+  HelpCircle,
+  LogOut,
+  Plus,
+  Settings,
+  User,
+} from "lucide-react";
+
+export const Menu = () => {
+  return (
+    <MenuTrigger>
+      <Button
+        intent="secondary"
+        className="h-full rounded-full p-4 text-xl"
+        state="outline"
+      >
+        Me
+      </Button>
+      <MenuConent>
+        <Section>
+          <MenuHeader className="text-fg-4">me@hello.com</MenuHeader>
+        </Section>
+        <MenuSeperator className="mt-0" />
+        <MenuItem>
+          Account Settings
+          <Settings />
+        </MenuItem>
+        <MenuItem>
+          Billing
+          <CreditCard />
+        </MenuItem>
+        <MenuItem>
+          Create a Team
+          <Plus />
+        </MenuItem>
+        <MenuItem>
+          Invite Member
+          <User />
+        </MenuItem>
+        <MenuSeperator />
+        <MenuItem>
+          Support
+          <HelpCircle />
+        </MenuItem>
+        <MenuItem>
+          Logout
+          <LogOut />
+        </MenuItem>
+      </MenuConent>
+    </MenuTrigger>
+  );
 };
-
 
 ```
 </Fragment>
@@ -105,11 +213,22 @@ bl-menu-simple
 </Fragment>
 <Fragment slot="react">
 ```tsx
-import { Toggle } from "@/components/base/toggle";
+import { Button } from "@/components/base/button";
+import { MenuConent, MenuItem, MenuTrigger } from "@/components/base/menu";
 
-export const ToggleExample = () => {
-  return <Toggle>Mode</Toggle>;
+export const MenuSimple = () => {
+  return (
+    <MenuTrigger>
+      <Button intent="secondary">Edit</Button>
+      <MenuConent>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Copy</MenuItem>
+        <MenuItem>Paste</MenuItem>
+      </MenuConent>
+    </MenuTrigger>
+  );
 };
+
 
 
 ```

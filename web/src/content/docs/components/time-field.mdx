@@ -16,72 +16,60 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
+import type {
+  TimeFieldProps as AriaTimeFieldProps,
+  TimeValue,
+} from "react-aria-components";
 import {
-  Breadcrumbs as AriaBreadcrumbs,
-  Item,
-  ItemProps,
-  Link,
-  LinkProps,
-  type BreadcrumbsProps as AriaBreadcrumbsProps,
+  TimeField as AriaTimeField,
+  DateInput,
+  DateSegment,
+  Label,
+  Text,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
-export const breadcrumbs = tv({
+export const timeField = tv({
   slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
-    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
-    item: "flex items-center gap-2",
+    input:
+      "min-w-sm flex w-fit whitespace-nowrap rounded-md border p-2 outline-none",
+    segmentStyles:
+      "rounded-md p-1 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
   },
 });
 
-interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
-  className?: string | undefined;
+const { input, segmentStyles } = timeField();
+
+interface TimeFieldProps<T extends TimeValue> extends AriaTimeFieldProps<T> {
+  label?: string;
+  description?: string;
+  errorMessage?: string;
 }
 
-const { root, link, item } = breadcrumbs();
-
-export const Breadcrumbs = <T extends object>({
-  children,
-  className,
+export const TimeField = <T extends TimeValue>({
+  label,
+  description,
+  errorMessage,
   ...props
-}: BreadcrumbsProps<T>) => {
-  return (
-    <AriaBreadcrumbs className={root({ className })} {...props}>
-      {children}
-    </AriaBreadcrumbs>
-  );
-};
-
-export const BreadCrumbsLink = ({
-  children,
-  className,
-  ...props
-}: LinkProps & { className?: string }) => {
-  return (
-    <Link className={link({ className })} {...props}>
-      {children}
-    </Link>
-  );
-};
-
-export const BreadCrumbsItem = ({
-  children,
-  className,
-  ...props
-}: ItemProps & { className?: string }) => {
-  return (
-    <Item className={item({ className })} {...props}>
-      {children}
-    </Item>
-  );
-};
+}: TimeFieldProps<T>) => (
+  <AriaTimeField className="flex flex-col gap-2" {...props}>
+    <Label>{label}</Label>
+    <DateInput className={input()}>
+      {(segment) => (
+        <DateSegment className={segmentStyles()} segment={segment} />
+      )}
+    </DateInput>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+  </AriaTimeField>
+);
 
 ```
 </Fragment>
@@ -95,38 +83,16 @@ export const BreadCrumbsItem = ({
   <Fragment slot="react">
 ```tsx
 
-import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
-import { ChevronRight } from "lucide-react";
+import { TimeField } from "@/components/base/timeField";
 
-export const BreadcrumbsExample = () => {
-  return (
-    <Breadcrumbs>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/">Home</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/docs">Docs</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
-      </BreadCrumbsItem>
-    </Breadcrumbs>
-  );
-};
-
+export const TimeFieldExample = () => <TimeField label="Meeting Time" />;
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-breadcrumbs
+bl-time-field
 ```
   </Fragment>
 </DemoTabs>

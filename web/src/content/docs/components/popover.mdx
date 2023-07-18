@@ -17,7 +17,7 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
@@ -25,64 +25,36 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 <Fragment slot="contentSlot">
 ```tsx
 import {
-  Breadcrumbs as AriaBreadcrumbs,
-  Item,
-  ItemProps,
-  Link,
-  LinkProps,
-  type BreadcrumbsProps as AriaBreadcrumbsProps,
+  DialogTrigger as AriaDialogTrigger,
+  Popover as AriaPopover,
+  Dialog,
+  type PopoverProps as AriaPopoverProps,
 } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const breadcrumbs = tv({
+export const popover = tv({
   slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
-    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
-    item: "flex items-center gap-2",
+    root: "m-1 max-w-lg rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
+    content: "outline-none",
   },
 });
 
-interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
-  className?: string | undefined;
+const { root, content } = popover();
+
+interface DialogProps extends Omit<AriaPopoverProps, "children"> {
+  children: React.ReactNode;
 }
 
-const { root, link, item } = breadcrumbs();
+const PopoverTrigger = AriaDialogTrigger;
 
-export const Breadcrumbs = <T extends object>({
-  children,
-  className,
-  ...props
-}: BreadcrumbsProps<T>) => {
-  return (
-    <AriaBreadcrumbs className={root({ className })} {...props}>
-      {children}
-    </AriaBreadcrumbs>
-  );
-};
+const Popover = ({ children, ...props }: DialogProps) => (
+  <AriaPopover className={root()} {...props}>
+    <Dialog className={content()}>{children}</Dialog>
+  </AriaPopover>
+);
 
-export const BreadCrumbsLink = ({
-  children,
-  className,
-  ...props
-}: LinkProps & { className?: string }) => {
-  return (
-    <Link className={link({ className })} {...props}>
-      {children}
-    </Link>
-  );
-};
-
-export const BreadCrumbsItem = ({
-  children,
-  className,
-  ...props
-}: ItemProps & { className?: string }) => {
-  return (
-    <Item className={item({ className })} {...props}>
-      {children}
-    </Item>
-  );
-};
+export { Popover, PopoverTrigger };
 
 ```
 </Fragment>
@@ -96,38 +68,29 @@ export const BreadCrumbsItem = ({
   <Fragment slot="react">
 ```tsx
 
-import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
-import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/base/button";
+import { Popover, PopoverTrigger } from "@/components/base/popover";
+import { MoreHorizontal } from "lucide-react";
 
-export const BreadcrumbsExample = () => {
+export const PopoverExample = () => {
   return (
-    <Breadcrumbs>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/">Home</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/docs">Docs</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
-      </BreadCrumbsItem>
-    </Breadcrumbs>
+    <PopoverTrigger>
+      <Button intent="secondary">
+        <MoreHorizontal />
+      </Button>
+      <Popover>
+        <button className="rounded-md p-2 hover:bg-surface-2">Download</button>
+      </Popover>
+    </PopoverTrigger>
   );
 };
-
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-breadcrumbs
+bl-popover
 ```
   </Fragment>
 </DemoTabs>

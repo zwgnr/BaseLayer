@@ -16,30 +16,91 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
+import type { DatePickerProps as AriaDatePickerProps } from "react-aria-components";
+
+import {
+  DatePicker as AriaDatePicker,
+  Button,
+  DateInput,
+  DateSegment,
+  DateValue,
+  Dialog,
+  Group,
+  Label,
+  Popover,
+  Text,
+} from "react-aria-components";
+
+import { Calendar } from "@/components/base/calendar";
+import { ChevronDown } from "lucide-react";
+
 import { tv } from "tailwind-variants";
 
-const baseItemPotion = tv({
-  base: "block cursor-pointer items-center rounded-md  text-sm data-[focus]:bg-surface-2 data-[selected]:bg-primary",
-});
-
-export const dropdownPotion = tv({
+const datePicker = tv({
   slots: {
-    content:
-      "min-w-[15rem] rounded-lg border bg-surface p-2 shadow-xl outline-none ",
-    item: [baseItemPotion(), "mb-2 flex justify-between p-2"],
-    itemGroupLabel: "text-sm  font-bold",
-    optionItem: [baseItemPotion(), "w-full rounded-md p-2 text-sm"],
-    triggerItem: [baseItemPotion(), "inline-flex w-full flex-wrap gap-2"],
-    seperator: "w-full rounded-md border border-gray-200",
+    group:
+      "relative flex w-fit  items-center rounded-md border bg-surface shadow-lg",
+    iconButton:
+      "appearance-none border-none bg-primary p-0 align-middle text-primary-fg outline-none",
+    input:
+      "flex w-fit whitespace-nowrap rounded-md border-2 border-transparent bg-transparent py-2 pl-2 pr-12 focus-within:border-secondary",
+    inputButton:
+      "absolute right-2 flex appearance-none items-center justify-center rounded-md border-0 outline-none hover:bg-surface-2",
+    dateSegment:
+      "rounded-md p-1 pr-2 text-end focus:bg-secondary focus:text-secondary-fg focus:outline-none",
+    popover:
+      "overflow-auto [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
   },
 });
+
+const { group, input, inputButton, dateSegment, popover } = datePicker();
+
+interface DatePickerProps<T extends DateValue> extends AriaDatePickerProps<T> {
+  label?: string;
+  description?: string;
+  error?: string;
+}
+
+export const DatePicker = <T extends DateValue>({
+  className,
+  label,
+  description,
+  error,
+  children,
+  ...props
+}: DatePickerProps<T>) => (
+  <AriaDatePicker className={className} {...props}>
+    <Label className="text-sm">{label}</Label>
+    <Group className={group()}>
+      <DateInput className={input()}>
+        {(segment) => (
+          <DateSegment className={dateSegment()} segment={segment} />
+        )}
+      </DateInput>
+      <Button className={inputButton()}>
+        <ChevronDown />
+      </Button>
+    </Group>
+    {description && (
+      <Text className="text-sm" slot="description">
+        {description}
+      </Text>
+    )}
+    {error && <Text slot="error">{error}</Text>}
+    <Popover className={popover()}>
+      <Dialog>
+        <Calendar />
+      </Dialog>
+    </Popover>
+  </AriaDatePicker>
+);
 
 ```
 </Fragment>
@@ -52,74 +113,16 @@ export const dropdownPotion = tv({
 <DemoTabs solidDisabled vueDisabled>
   <Fragment slot="react">
 ```tsx
-import { button } from "@/components/base/button";
-import { dialogPotion } from "@/components/base/dialogPotion";
-import {
-  Pressable as Button,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  Dialog as DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  Portal,
-} from "@ark-ui/react";
-import { X } from "lucide-react";
+import { DatePicker } from "@/components/base/datePicker";
 
-const { backdrop, container, content, description, title } = dialogPotion();
-
-export const Dialog = () => {
-  return (
-    <DialogRoot>
-      <DialogTrigger asChild>
-        <Button className={button()}>Open dialog</Button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop className={backdrop()} />
-        <DialogContainer className={container()}>
-          <DialogContent className={content()}>
-            <div className="flex flex-col gap-8 p-6">
-              <div className="flex flex-col gap-1">
-                <DialogTitle className={title()}>Dialog Title</DialogTitle>
-                <DialogDescription className={description()}>
-                  Dialog Description
-                </DialogDescription>
-              </div>
-              <div className="flex w-full items-center justify-center gap-3">
-                <DialogCloseTrigger asChild>
-                  <Button
-                    className={button({
-                      state: "outline",
-                      className:
-                        "border-critical text-critical hover:bg-critical hover:text-black",
-                    })}
-                  >
-                    Cancel
-                  </Button>
-                </DialogCloseTrigger>
-                <Button className={button()}>Confirm</Button>
-              </div>
-            </div>
-            <DialogCloseTrigger asChild>
-              <Button className="absolute right-6 top-6">
-                <X className="text-fg" aria-label="Close dialog" />
-              </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-    </DialogRoot>
-  );
-};
+export const DatePickerExample = () => <DatePicker label="Check In" />;
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-dialog
+bl-date-picker
 ```
   </Fragment>
 </DemoTabs>

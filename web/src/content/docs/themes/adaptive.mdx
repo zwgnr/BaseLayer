@@ -7,7 +7,7 @@ description: "Themes are built in, and adaptive by default."
 
 Themes are a first class citizen in BaseLayer and are adaptive by default.
 
-When running the init command, a global.css file is created, as well as an updated tailwind.config. By doing that themes powered by CSS Variables can be installed and ready to use.
+When running the init command, a global.css file is edited or created, as well as an updated tailwind.config. By doing that themes powered by CSS Variables can be installed and ready to use.
 
 The idea behind adaptive theming is that setting a color to *bg-primary* via css variable will allow the color to be switched automatically depending on what theme is set!
 
@@ -15,166 +15,103 @@ The idea behind adaptive theming is that setting a color to *bg-primary* via css
 ## Default Themes
 
 <div class="w-full max-h-96 overflow-y-auto no-scrollbar">
-```bash
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --arrow-size: 12px;
-  }
-  [data-theme="light"] {
+    --origin: translateX(8px);
+
     --surface: 250 250 250; /* #fafafa */
     --surface-2: 229 229 229; /* #e5e5e5 */
     --surface-3: 212 212 212; /* 	#d4d4d4 */
+    --surface-4: 163 163 163; /* 	#a3a3a3 */
 
     --border: 229 229 229; /* #e5e5e5 */
     --input: 229 229 229; /* #e5e5e5 */
-    --focus: 199 89 48; 
+    --focus: 14 165 233; /* #0ea5e9 */
 
-    /* text hierarchy */
-    --text: 10 10 10; /* #0a0a0a */
-    --text-2: 23 23 23; /* #171717 */
-    --text-3: 38 38 38; /* #262626 */
-    --text-4: 64 64 64; /* #404040 */
-    --text-5: 82 82 91; /* #52525b */
-    --text-6: 115 115 115; /* #737373 */
+    /* fg hierarchy */
+    --fg: 10 10 10; /* #0a0a0a */
+    --fg-2: 23 23 23; /* #171717 */
+    --fg-3: 38 38 38; /* #262626 */
+    --fg-4: 64 64 64; /* #404040 */
+    --fg-5: 82 82 91; /* #52525b */
+    --fg-6: 115 115 115; /* #737373 */
 
-    /*  primary #C269E9 */
-    --primary-100: 252 226 253; /* ⬅ #FCE2FD */
-    --primary-200: 246 197 252; /* ⬅ #F6C5FC */
-    --primary-300: 234 166 248; /* ⬅ #EAA6F8 */
-    --primary-400: 218 142 241; /* ⬅ #DA8EF1 */
-    --primary-500: 194 105 233; /* ⬅ #C269E9 */
-    --primary-600: 154 76 200; /* ⬅ #9A4CC8 */
-    --primary-700: 117 52 167; /* ⬅ #7534A7 */
-    --primary-800: 83 33 135; /* ⬅ #532187 */
-    --primary-900: 59 20 111; /* ⬅ #3B146F */
+    --primary: 9 229 123; /* #09e57b  */
+    --primary-fg: 10 10 10; /* #0a0a0a */
 
-    /*  secondary #2B91FF */
-    --secondary-100: 212 241 255; /* #D4F1FF */
-    --secondary-200: 170 223 255; /* #AADFFF */
-    --secondary-300: 127 201 255; /* #7FC9FF */
-    --secondary-400: 96 180 255; /* #60B4FF */
-    --secondary-500: 43 145 255; /* #2B91FF */
-    --secondary-600: 31 112 219; /* #1F70DB */
-    --secondary-700: 21 83 183; /* #1553B7 */
-    --secondary-800: 13 58 147; /* #0D3A93 */
-    --secondary-900: 8 41 122; /* #08297A */
+    --secondary: 10 10 10; /* #0a0a0a*/
+    --secondary-fg: 255 255 255; /* #fafafa  */
 
-    /* positive  #6DD32E  */
-    --positive-100: 237 252 213; /* #EDFCD5 */
-    --positive-200: 216 250 172; /* #D8FAAC */
-    --positive-300: 185 241 128; /* #B9F180 */
-    --positive-400: 153 228 94; /* #99E45E */
-    --positive-500: 109 211 46; /* #6DD32E */
-    --positive-600: 81 181 33; /* #51B521 */
-    --positive-700: 56 151 23; /* #389717 */
-    --positive-800: 36 122 14; /* #247A0E */
-    --positive-900: 21 101 8; /* #156508 */
+    --positive: 109 211 46; /* #6DD32E */
+    --positive-fg: 10 10 10; /* #0a0a0a */
 
-    /* warning  #EDE328  */
-    --warning-100: 254 252 211; /* #FEFCD3 */
-    --warning-200: 253 250 169; /* #FDFAA9 */
-    --warning-300: 249 244 125; /* #F9F47D */
-    --warning-400: 244 237 91; /* #F4ED5B */
-    --warning-500: 237 227 40; /* #EDE328 */
-    --warning-600: 203 194 29; /* #CBC21D */
-    --warning-700: 170 161 20; /* #AAA114 */
-    --warning-800: 137 129 12; /* #89810C */
-    --warning-900: 113 106 7; /* #716A07 */
+    --warning: 237 227 40; /* #EDE328 */
+    --warning-fg: 10 10 10; /* #0a0a0a */
 
-    /* critical  #FF5238 */
-    --critical-100: 255 232 215; /* #FFE8D7 */
-    --critical-200: 255 204 175; /* #FFCCAF */
-    --critical-300: 255 170 135; /* #FFAA87 */
-    --critical-400: 255 137 105; /* #FF8969 */
-    --critical-500: 255 82 56; /* #FF5238 */
-    --critical-600: 219 50 40; /* #DB3228 */
-    --critical-700: 183 28 32; /* #B71C20 */
-    --critical-800: 147 17 31; /* #93111F */
-    --critical-900: 122 10 31; /* #7A0A1F */
-
-    --arrow-background: #ffffff;
-    --scrollbar: #a3a3a3;
+    --critical: 255 82 56; /* #FF5238 */
+    --critical-fg: 10 10 10; /* #0a0a0a */
   }
   [data-theme="dark"] {
-    --surface: 15 23 42; /* 	#0f172a */
-    --surface-2: 30 41 59; /* #1e293b*/
+    --surface: 10 10 10; /* 	#0f172a */
+    --surface-2: 30 41 59; /* #1e293b */
     --surface-3: 51 65 85; /* 	#334155 */
+    --surface-4: 71 85 105; /* 	#475569 */
 
-    --border: 71 85 105; /* #475569 */
-    --input: 0 0% 90%; /* neutral-200 */
-    --focus: 199 89% 48%; /* sky-500 */
+    --border: 30 41 59; /* #1e293b  */
+    --input: 30 41 59; /* #1e293b  */
+    --focus: 14 165 233; /* #0ea5e9 */
 
-    /* text hierarchy */
-    --text: 248 250 252; /*  #f8fafc*/
-    --text-2: 241 245 249; /* #f1f5f9*/
-    --text-3: 226 232 240; /* #e2e8f0 */
-    --text-4: 203 213 225; /* #cbd5e1 */
-    --text-5: 148 163 184; /* #94a3b8 */
-    --text-6: 100 116 139; /* #64748b */
+    /* fg hierarchy */
+    --fg: 248 250 252; /*  #f8fafc*/
+    --fg-2: 241 245 249; /* #f1f5f9*/
+    --fg-3: 226 232 240; /* #e2e8f0 */
+    --fg-4: 203 213 225; /* #cbd5e1 */
+    --fg-5: 148 163 184; /* #94a3b8 */
+    --fg-6: 100 116 139; /* #64748b */
 
-    --arrow-background: 10 10 10; /* #0a0a0a */
+    --primary: 9 229 123; /* #09e57b   */
+    --primary-fg: 10 10 10; /* #0a0a0a */
 
-    /*  primary #C269E9 */
-    --primary-100: 252 226 253; /* ⬅ #FCE2FD */
-    --primary-200: 246 197 252; /* ⬅ #F6C5FC */
-    --primary-300: 234 166 248; /* ⬅ #EAA6F8 */
-    --primary-400: 218 142 241; /* ⬅ #DA8EF1 */
-    --primary-500: 194 105 233; /* ⬅ #C269E9 */
-    --primary-600: 154 76 200; /* ⬅ #9A4CC8 */
-    --primary-700: 117 52 167; /* ⬅ #7534A7 */
-    --primary-800: 83 33 135; /* ⬅ #532187 */
-    --primary-900: 59 20 111; /* ⬅ #3B146F */
+    --secondary: 250 250 250; /* #fafafa */
+    --secondary-fg: 10 10 10; /* #0a0a0a */
 
-    /*  secondary #2B91FF */
-    --secondary-100: 212 241 255; /* #D4F1FF */
-    --secondary-200: 170 223 255; /* #AADFFF */
-    --secondary-300: 127 201 255; /* #7FC9FF */
-    --secondary-400: 96 180 255; /* #60B4FF */
-    --secondary-500: 43 145 255; /* #2B91FF */
-    --secondary-600: 31 112 219; /* #1F70DB */
-    --secondary-700: 21 83 183; /* #1553B7 */
-    --secondary-800: 13 58 147; /* #0D3A93 */
-    --secondary-900: 8 41 122; /* #08297A */
+    --positive: 109 211 46; /* #6DD32E */
+    --positive-fg: 10 10 10; /* #0a0a0a */
 
-    /* positive  #6DD32E  */
-    --positive-100: 237 252 213; /* #EDFCD5 */
-    --positive-200: 216 250 172; /* #D8FAAC */
-    --positive-300: 185 241 128; /* #B9F180 */
-    --positive-400: 153 228 94; /* #99E45E */
-    --positive-500: 109 211 46; /* #6DD32E */
-    --positive-600: 81 181 33; /* #51B521 */
-    --positive-700: 56 151 23; /* #389717 */
-    --positive-800: 36 122 14; /* #247A0E */
-    --positive-900: 21 101 8; /* #156508 */
+    --warning: 237 227 40; /* #EDE328 */
+    --warning-fg: 10 10 10; /* #0a0a0a */
 
-    /* warning  #EDE328  */
-    --warning-100: 254 252 211; /* #FEFCD3 */
-    --warning-200: 253 250 169; /* #FDFAA9 */
-    --warning-300: 249 244 125; /* #F9F47D */
-    --warning-400: 244 237 91; /* #F4ED5B */
-    --warning-500: 237 227 40; /* #EDE328 */
-    --warning-600: 203 194 29; /* #CBC21D */
-    --warning-700: 170 161 20; /* #AAA114 */
-    --warning-800: 137 129 12; /* #89810C */
-    --warning-900: 113 106 7; /* #716A07 */
-
-    /* critical  #FF5238 */
-    --critical-100: 255 232 215; /* #FFE8D7 */
-    --critical-200: 255 204 175; /* #FFCCAF */
-    --critical-300: 255 170 135; /* #FFAA87 */
-    --critical-400: 255 137 105; /* #FF8969 */
-    --critical-500: 255 82 56; /* #FF5238 */
-    --critical-600: 219 50 40; /* #DB3228 */
-    --critical-700: 183 28 32; /* #B71C20 */
-    --critical-800: 147 17 31; /* #93111F */
-    --critical-900: 122 10 31; /* #7A0A1F */
-
-    --arrow-background: #ffffff;
+    --critical: 255 82 56; /* #FF5238 */
+    --critical-fg: 10 10 10; /* #0a0a0a */
   }
+  /* clears the ‘X’ from Internet Explorer */
+  input[type="search"]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  input[type="search"]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+.react-aria-DropIndicator[data-drop-target] {
+  outline: 1px solid #09e57b;
+}
 ```
 </div>
 
@@ -185,11 +122,11 @@ The theme conventions consist of
 1. surface(1-4) - used for backgrounds
 2. border, input, focus
 3. fg(1-6) - usually grays, use for foreground text hierarchy
-4. primary(100-900) - your main brand color
-5. secondary(100-900) - your secondary brand color
-6. positive(100-900) - used to indicate things like success, positive trends, completions, etc.
-7. warning(100-900) - used to draw caution
-8. critical(100-900) - used to signal danger, or any type of descrutcive action
+4. primary and primary-fg - your main brand color and its foreground color
+5. secondary and secondary-fg - your secondary brand color and its foreground color
+6. positive and positive-fg - used to indicate things like success, positive trends, completions, etc.
+7. warning and warning-fg - used to draw caution
+8. critical and critanl-fg - used to signal danger, or any type of descrutcive action
 
 ## Changing Themes
 

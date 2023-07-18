@@ -25,10 +25,11 @@ Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion bel
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
+import type { HTMLAttributes } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 export const badge = tv({
-  base: "flex items-center justify-center rounded-xl",
+  base: "flex items-center justify-center rounded-md",
   variants: {
     intent: {
       default: "bg-surface-3",
@@ -48,7 +49,7 @@ export const badge = tv({
 });
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
+  extends HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badge> {}
 
 export const Badge = ({ className, size, intent, ...props }: BadgeProps) => (

@@ -19,139 +19,100 @@ import { MdxExample } from "@/components/Demos/MdxExample.tsx";
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at *components/base*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
-```tsx
-import { VariantProps, tv } from "tailwind-variants";
 
-export const checkboxPotion = tv({
-  slots: {
-    root: "relative cursor-pointer",
-    control:
-      "flex cursor-pointer items-center justify-center border-2 data-[checked]:border-primary data-[checked]:bg-primary",
-    label: "font-bold",
-  },
-  variants: {
-    size: {
-      sm: { control: "h-4 w-4 rounded-md" },
-      md: { control: "h-6 w-6 rounded-lg" },
-      lg: { control: "h-8 w-8 rounded-lg" },
-    },
-  },
-  defaultVariants: {
-    size: "md",
-  },
+```tsx
+import type { CheckboxGroupProps as AriaCheckboxGroupProps } from "react-aria-components";
+
+import {
+  CheckboxGroup as AriaCheckboxGroup,
+  Text,
+} from "react-aria-components";
+
+import { tv } from "tailwind-variants";
+
+const checkboxGroup = tv({
+  base: "flex flex-col items-start gap-2",
 });
 
-export type CheckboxProps = VariantProps<typeof checkboxPotion>;
+interface CheckboxGroupProps
+  extends Omit<AriaCheckboxGroupProps, "className" | "children"> {
+  className?: string;
+  children?: React.ReactNode;
+  label?: string;
+  description?: string;
+  error?: string;
+}
 
-````
+export const CheckboxGroup = ({
+  className,
+  label,
+  description,
+  error,
+  children,
+  ...props
+}: CheckboxGroupProps) => (
+  <AriaCheckboxGroup {...props} className={checkboxGroup({ className })}>
+    {label}
+    {children}
+    {description && (
+      <Text className="text-md" slot="description">
+        {description}
+      </Text>
+    )}
+    {error && (
+      <Text className="text-md text-critical" slot="error">
+        {error}
+      </Text>
+    )}
+  </AriaCheckboxGroup>
+);
+
+CheckboxGroup.displayName = "CheckboxGroup";
+```
+
 </Fragment>
+
 </BaseLayer>
 
 ## Components
 
 ### Default
 
-<div class="p-4 w-full flex justify-center items-center bg-surface-2 rounded-md">
-    <div class="flex items-center">
-      <Checkbox className="flex-col" client:load />
-    </div>
-</div>
+<MdxExample>
+  <CheckboxGroupExample client:load />
+</MdxExample>
 
 <br />
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
+
 ```tsx
-import { Check, Minus } from "lucide-react";
+import { Checkbox } from "@/components/base/checkbox";
+import { CheckboxGroup } from "@/components/base/checkboxGroup";
 
-import {
-  CheckboxProps as ArkCheckboxProps,
-  CheckboxControl,
-  CheckboxInput,
-  CheckboxLabel,
-  Checkbox as CheckboxRoot,
-} from "@ark-ui/react";
-import { CheckboxPotionProps, checkboxPotion } from "@potions/checkboxPotion";
-import type { ReactNode } from "react";
-
-type CheckboxProps = ArkCheckboxProps &
-  CheckboxPotionProps & {
-    children?: ReactNode;
-  };
-
-export const Checkbox = ({ children, size }: CheckboxProps) => {
-  const { root, control, label } = checkboxPotion({ size });
+export const CheckboxGroupExample = () => {
   return (
-    <CheckboxRoot className={root()}>
-      {(state) => (
-        <div className="flex flex-row items-center gap-2">
-          <CheckboxInput className="peer" />
-          <CheckboxControl className={control()}>
-            {state.isChecked ? <Check /> : null}
-            {state.isIndeterminate ? <Minus /> : null}
-          </CheckboxControl>
-          {children ? (
-            <CheckboxLabel className={label()}>{children}</CheckboxLabel>
-          ) : null}
-        </div>
-      )}
-    </CheckboxRoot>
+    <CheckboxGroup label="Notifications">
+      <Checkbox value="push"> Push </Checkbox>
+      <Checkbox value="email"> Email </Checkbox>
+      <Checkbox value="text"> Text </Checkbox>
+    </CheckboxGroup>
   );
 };
-
-````
+```
 
 </Fragment>
 
 <Fragment slot="vsc">
 ```bash
-bl-checkbox
+bl-checkbox-group
 ```
 </Fragment>
 </DemoTabs>
-
-## Variants
-
-### With Label
-
-<div class="flex w-full items-center justify-center rounded-md bg-surface-2 p-4">
-  <div class="flex items-center">
-    <Checkbox client:only="react">Label</Checkbox>
-  </div>
-</div>
-
-<br />
-
-<div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
-  ```tsx
-  <Checkbox>Label</Checkbox>
-  ```
-</div>
-
-<br />
-
-### Sizes
-
-<div class="flex w-full items-center justify-center rounded-md bg-surface-2 p-4">
-  <div class="flex items-center gap-2">
-    <Checkbox size="sm" client:load />
-    <Checkbox size="md" client:load />
-    <Checkbox size="lg" client:load />
-  </div>
-</div>
-
-<br />
-
-<div className="max-h-72 w-full overflow-y-auto rounded-xl bg-[#1b1e28]">
-  ```tsx
-  <Checkbox size="sm" />
-  <Checkbox size="md" />
-  <Checkbox size="lg" />
-  ```
-</div>

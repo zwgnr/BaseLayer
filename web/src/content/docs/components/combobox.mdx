@@ -17,72 +17,88 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```tsx
-import {
-  Breadcrumbs as AriaBreadcrumbs,
-  Item,
+import type {
+  ComboBoxProps as AriaComboBoxProps,
   ItemProps,
-  Link,
-  LinkProps,
-  type BreadcrumbsProps as AriaBreadcrumbsProps,
 } from "react-aria-components";
+
+import {
+  ComboBox as AriaComboBox,
+  Button,
+  Input,
+  Item,
+  Label,
+  ListBox,
+  Popover,
+  Text,
+} from "react-aria-components";
+
+import { ChevronDown } from "lucide-react";
 import { tv } from "tailwind-variants";
 
-export const breadcrumbs = tv({
+const combobox = tv({
   slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
-    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
-    item: "flex items-center gap-2",
+    input: "m-0 w-64 rounded-md border bg-surface p-2 align-middle text-fg",
+    root: "max-h-inherit overflow-auto p-1 outline-none",
+    item: "relative m-1 flex cursor-default flex-col rounded-md p-2 outline-none hover:bg-surface-2 aria-selected:bg-secondary  aria-selected:text-secondary-fg",
+    popover:
+      "w-64 rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none",
+    button:
+      "absolute right-2 flex appearance-none items-center justify-center rounded-md border-0 outline-none hover:bg-surface-2",
   },
 });
 
-interface BreadcrumbsProps<T> extends AriaBreadcrumbsProps<T> {
-  className?: string | undefined;
+const { input, button, item, popover, root } = combobox();
+
+interface ComboBoxProps<T extends object>
+  extends Omit<AriaComboBoxProps<T>, "children"> {
+  className?: string;
+  label?: string;
+  description?: string | null;
+  errorMessage?: string | null;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
-const { root, link, item } = breadcrumbs();
-
-export const Breadcrumbs = <T extends object>({
-  children,
+const ComboBox = <T extends object>({
+  label,
   className,
-  ...props
-}: BreadcrumbsProps<T>) => {
-  return (
-    <AriaBreadcrumbs className={root({ className })} {...props}>
-      {children}
-    </AriaBreadcrumbs>
-  );
-};
-
-export const BreadCrumbsLink = ({
+  description,
+  errorMessage,
   children,
-  className,
   ...props
-}: LinkProps & { className?: string }) => {
-  return (
-    <Link className={link({ className })} {...props}>
-      {children}
-    </Link>
-  );
-};
+}: ComboBoxProps<T>) => (
+  <AriaComboBox className={root({ className })} {...props}>
+    <Label className="text-fg">{label}</Label>
+    <div className="relative flex w-fit items-center rounded-2xl bg-surface">
+      <Input className={input()} />
+      <Button className={button()}>
+        <ChevronDown className="text-fg"/>
+      </Button>
+    </div>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+    <Popover className={popover()}>
+      <ListBox>{children}</ListBox>
+    </Popover>
+  </AriaComboBox>
+);
 
-export const BreadCrumbsItem = ({
-  children,
-  className,
-  ...props
-}: ItemProps & { className?: string }) => {
-  return (
-    <Item className={item({ className })} {...props}>
-      {children}
-    </Item>
-  );
-};
+ComboBox.displayName = "ComboBox";
+
+const ComboBoxItem = (props: ItemProps) => (
+  <Item {...props} className={item()} />
+);
+
+ComboBoxItem.displayName = "ComboBoxItem";
+
+export { ComboBox, ComboBoxItem };
 
 ```
 </Fragment>
@@ -96,38 +112,25 @@ export const BreadCrumbsItem = ({
   <Fragment slot="react">
 ```tsx
 
-import { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs } from "@/components/base/breadcrumbs";
-import { ChevronRight } from "lucide-react";
+import { ComboBox, ComboBoxItem } from "@/components/base/combobox";
 
-export const BreadcrumbsExample = () => {
+export const ComboBoxExample = () => {
   return (
-    <Breadcrumbs>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/">Home</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>
-          <a href="/docs">Docs</a>
-        </BreadCrumbsLink>
-        <ChevronRight className="w-4 h-4"/>
-      </BreadCrumbsItem>
-      <BreadCrumbsItem>
-        <BreadCrumbsLink>Breadcrumbs</BreadCrumbsLink>
-      </BreadCrumbsItem>
-    </Breadcrumbs>
+    <ComboBox label="Project">
+      <ComboBoxItem>Health Dashboard</ComboBoxItem>
+      <ComboBoxItem>To-Do App</ComboBoxItem>
+      <ComboBoxItem>UI Kit</ComboBoxItem>
+      <ComboBoxItem>Portfolio Site</ComboBoxItem>
+    </ComboBox>
   );
 };
-
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-breadcrumbs
+bl-combobox
 ```
   </Fragment>
 </DemoTabs>

@@ -1,7 +1,8 @@
 ---
 title: Tabs
-description: "The Tabs component is a powerful and flexible navigation tool for your applications. It offers various interaction modes, accessibility features, and the ability to display different contents based on the selected tab."
-arkDocs: https://ark-ui.com/docs/react/components/tabs
+description: "Tabs organize content into multiple sections and allow users to navigate between them."
+primative: "ReactAria"
+docLink: "https://react-spectrum.adobe.com/react-aria/Tabs.html"
 ---
 ---
 
@@ -17,25 +18,91 @@ import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 ## Installation
 
-Install via <a href="/docs/getting-started/cli">CLI</a> or copy and paste the potion below into a new file, preferably in a folder called *potions*.
+Install via [VScode](/docs/getting-started/vsc) or copy and paste the potion below into a new file, preferably in a folder at _components/base_.
 
 ## BaseLayer 
 
 <BaseLayer>
 <Fragment slot="contentSlot">
 ```ts
+import {
+  Tab as AriaTab,
+  TabList as AriaTabList,
+  TabListProps as AriaTabListProps,
+  TabPanel as AriaTabPanel,
+  TabPanelProps as AriaTabPanelProps,
+  TabProps as AriaTabProps,
+  TabsProps as AriaTabsProps,
+  Tabs as AriaTabsRoot,
+} from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
-export const tabsPotion = tv({
+const tabs = tv({
   slots: {
-    list: "bg-muted text-muted-foreground relative inline-flex h-10 items-center justify-center rounded-md",
-    trigger:
-      "text-md ring-offset-background focus-visible:ring-ring data-[selected]:bg-background data-[selected]:text-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-2 font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[selected]:shadow-sm",
-    content:
-      "ring-offset-background focus-visible:ring-ring mt-4 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-    indicator: "-bottom-1 h-1 bg-primary",
+    root: "flex w-full flex-col items-start",
+    list: "relative inline-flex w-72 items-center justify-between rounded-md p-1",
+    tab: "relative flex w-1/3 cursor-pointer justify-center rounded-md border-primary p-2  outline-none transition-colors duration-200 hover:bg-surface-2 aria-selected:cursor-default aria-selected:rounded-none aria-selected:border-b-2 aria-selected:hover:bg-transparent",
+    panel:
+      "focus-visible:ring-ring borderp-4 mt-4 w-96 rounded-xl focus-visible:outline-none focus-visible:ring-2",
   },
 });
+
+const { list, root, panel, tab } = tabs();
+
+interface TabsProps extends Omit<AriaTabsProps, "className"> {
+  className?: string;
+}
+
+const TabsRoot = ({ children, className, ...props }: TabsProps) => (
+  <AriaTabsRoot {...props} className={root({ className })}>
+    {children}
+  </AriaTabsRoot>
+);
+
+TabsRoot.displayName = TabsRoot;
+
+interface TabListProps<T> extends Omit<AriaTabListProps<T>, "className"> {
+  className?: string;
+}
+
+const TabList = <T extends object>({
+  children,
+  className,
+  ...props
+}: TabListProps<T>) => (
+  <AriaTabList {...props} className={list({ className })}>
+    {children}
+  </AriaTabList>
+);
+
+TabList.displayName = TabList;
+
+interface TabProps extends Omit<AriaTabProps, "className"> {
+  className?: string;
+}
+
+const Tab = ({ children, className, ...props }: TabProps) => (
+  <AriaTab {...props} className={tab({ className })}>
+    {children}
+  </AriaTab>
+);
+
+Tab.displayName = Tab;
+
+interface TabPanelProps extends Omit<AriaTabPanelProps, "className"> {
+  className?: string;
+}
+
+const TabPanel = ({ children, className, ...props }: TabPanelProps) => (
+  <AriaTabPanel {...props} className={panel({ className })}>
+    {children}
+  </AriaTabPanel>
+);
+
+TabPanel.displayName = TabPanel;
+
+export { Tab, TabList, TabPanel, TabsRoot };
 
 ```
 </Fragment>
@@ -45,41 +112,21 @@ export const tabsPotion = tv({
 
 ### Default
 
-<DemoTabs solidDisabled vueDisabled>
+<DemoTabs>
   <Fragment slot="react">
 ```tsx
-import {
-  TabContent,
-  TabIndicator,
-  TabList,
-  TabTrigger,
-  Tabs as TabsRoot,
-} from "@ark-ui/react";
-import { tabsPotion } from "@potions/tabsPotion";
-
-const { list, trigger, content, indicator } = tabsPotion();
-
-const items = [
-  { value: "react", name: "React" },
-  { value: "solid", name: "Solid" },
-  { value: "vue", name: "Vue" },
-];
+import { Tab, TabList, TabPanel, TabsRoot } from "@/components/base/tabs";
 
 export const Tabs = () => (
-  <TabsRoot defaultValue={"react"}>
-    <TabList className={list()}>
-      {items.map((item) => (
-        <TabTrigger className={trigger()} value={item.value}>
-          {item.name}
-        </TabTrigger>
-      ))}
-      <TabIndicator className={indicator()} />
+  <TabsRoot>
+    <TabList aria-label="Dashbord Panels">
+      <Tab id="overview">Overview</Tab>
+      <Tab id="usage">Usage</Tab>
+      <Tab id="settings">Settings</Tab>
     </TabList>
-    {items.map((item) => (
-      <TabContent className={content()} value={item.value}>
-        {item.name} Content
-      </TabContent>
-    ))}
+    <TabPanel id="overview">Overview Content</TabPanel>
+    <TabPanel id="usage">Usage Content</TabPanel>
+    <TabPanel id="settings">Settings Content</TabPanel>
   </TabsRoot>
 );
 

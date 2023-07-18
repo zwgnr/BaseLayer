@@ -48,8 +48,8 @@ const calendar = tv({
     heading: "text-md m-0 flex-1 text-center text-lg font-bold",
     gridHeaderCell: "pb-2 text-sm text-fg-5",
     iconButton:
-      "m-0 flex h-8 w-8 appearance-none items-center justify-center rounded-xl text-center outline-none hover:bg-surface-2",
-    cell: " -m-[1px] mb-1 flex h-8 w-8 items-center justify-center rounded-xl p-5 text-center text-sm outline-none hover:bg-surface-2 [&[data-outside-month]]:hidden  [&[data-pressed]]:bg-surface-2 [&[data-selected]]:bg-primary [&[data-selected]]:text-primary-fg [&[data-unavailable]]:text-fg-6 [&[data-unavailable]]:line-through",
+      "m-0 flex h-8 w-8 appearance-none items-center justify-center rounded-md text-center outline-none hover:bg-surface-2",
+    cell: " -m-[1px] mb-1 flex h-8 w-8 items-center justify-center rounded-md p-5 text-center text-sm outline-none hover:bg-surface-2 [&[data-outside-month]]:hidden  [&[data-pressed]]:bg-surface-2 [&[data-selected]]:bg-primary [&[data-selected]]:text-primary-fg [&[data-unavailable]]:text-fg-6 [&[data-unavailable]]:line-through",
   },
 });
 
@@ -105,74 +105,16 @@ Calendar.displayName = "Calendar";
 <DemoTabs>
   <Fragment slot="react">
 ```tsx
-import { button } from "@/components/base/button";
-import { dialogPotion } from "@/components/base/dialogPotion";
-import {
-  Pressable as Button,
-  DialogBackdrop,
-  DialogCloseTrigger,
-  DialogContainer,
-  DialogContent,
-  DialogDescription,
-  Dialog as DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  Portal,
-} from "@ark-ui/react";
-import { X } from "lucide-react";
+import { Calendar } from "@/components/base/calendar";
 
-const { backdrop, container, content, description, title } = dialogPotion();
-
-export const Dialog = () => {
-  return (
-    <DialogRoot>
-      <DialogTrigger asChild>
-        <Button className={button()}>Open dialog</Button>
-      </DialogTrigger>
-      <Portal>
-        <DialogBackdrop className={backdrop()} />
-        <DialogContainer className={container()}>
-          <DialogContent className={content()}>
-            <div className="flex flex-col gap-8 p-6">
-              <div className="flex flex-col gap-1">
-                <DialogTitle className={title()}>Dialog Title</DialogTitle>
-                <DialogDescription className={description()}>
-                  Dialog Description
-                </DialogDescription>
-              </div>
-              <div className="flex w-full items-center justify-center gap-3">
-                <DialogCloseTrigger asChild>
-                  <Button
-                    className={button({
-                      state: "outline",
-                      className:
-                        "border-critical text-critical hover:bg-critical hover:text-black",
-                    })}
-                  >
-                    Cancel
-                  </Button>
-                </DialogCloseTrigger>
-                <Button className={button()}>Confirm</Button>
-              </div>
-            </div>
-            <DialogCloseTrigger asChild>
-              <Button className="absolute right-6 top-6">
-                <X className="text-fg" aria-label="Close dialog" />
-              </Button>
-            </DialogCloseTrigger>
-          </DialogContent>
-        </DialogContainer>
-      </Portal>
-    </DialogRoot>
-  );
-};
+export const CalendarExample = () => <Calendar />;
 
 ```
   </Fragment>
 
     <Fragment slot="vsc">
 ```bash
-bl-dialog
+bl-calendar
 ```
   </Fragment>
 </DemoTabs>

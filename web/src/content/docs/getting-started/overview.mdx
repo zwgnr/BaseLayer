@@ -40,16 +40,18 @@ import {
   Text,
 } from "react-aria-components";
 
-import { tv } from "tailwind-variants";
 import { ChevronDown } from "lucide-react";
+import { tv } from "tailwind-variants";
 
-export const combobox = tv({
+const combobox = tv({
   slots: {
-    input: "m-0 rounded-xl border p-2 align-middle w-64 bg-surface text-fg",
+    input: "m-0 w-64 rounded-md border bg-surface p-2 align-middle text-fg",
     root: "max-h-inherit overflow-auto p-1 outline-none",
-    item: "relative m-1 flex cursor-default flex-col rounded-xl outline-none p-2 hover:bg-surface-2 ",
-    popover: "rounded-xl border shadow-xl outline-none bg-surface w-64 p-2 text-fg",
-    button:"absolute right-2 flex appearance-none items-center justify-center rounded-lg border-0 outline-none hover:bg-surface-2"
+    item: "relative m-1 flex cursor-default flex-col rounded-md p-2 outline-none hover:bg-surface-2 aria-selected:bg-secondary  aria-selected:text-secondary-fg",
+    popover:
+      "w-64 rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none",
+    button:
+      "absolute right-2 flex appearance-none items-center justify-center rounded-md border-0 outline-none hover:bg-surface-2",
   },
 });
 
@@ -64,33 +66,39 @@ interface ComboBoxProps<T extends object>
   children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
-export function ComboBox<T extends object>({
+const ComboBox = <T extends object>({
   label,
   className,
   description,
   errorMessage,
   children,
   ...props
-}: ComboBoxProps<T>) {
-  return (
-    <AriaComboBox className={root({ className })} {...props}>
-      <Label>{label}</Label>
-      <div className="relative flex w-fit items-center rounded-2xl bg-surface">
-        <Input className={input()} />
-        <Button className={button()}><ChevronDown  /></Button>
-      </div>
-      {description && <Text slot="description">{description}</Text>}
-      {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
-      <Popover className={popover()}>
-        <ListBox>{children}</ListBox>
-      </Popover>
-    </AriaComboBox>
-  );
-}
+}: ComboBoxProps<T>) => (
+  <AriaComboBox className={root({ className })} {...props}>
+    <Label className="text-fg">{label}</Label>
+    <div className="relative flex w-fit items-center rounded-2xl bg-surface">
+      <Input className={input()} />
+      <Button className={button()}>
+        <ChevronDown className="text-fg"/>
+      </Button>
+    </div>
+    {description && <Text slot="description">{description}</Text>}
+    {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+    <Popover className={popover()}>
+      <ListBox>{children}</ListBox>
+    </Popover>
+  </AriaComboBox>
+);
 
-export function ComboBoxItem(props: ItemProps) {
-  return <Item {...props} className={item()} />;
-}
+ComboBox.displayName = "ComboBox";
+
+const ComboBoxItem = (props: ItemProps) => (
+  <Item {...props} className={item()} />
+);
+
+ComboBoxItem.displayName = "ComboBoxItem";
+
+export { ComboBox, ComboBoxItem };
 
 ```
 
@@ -101,11 +109,11 @@ import { ComboBox, ComboBoxItem } from "@/components/base/combobox";
 
 export const ComboBoxExample = () => {
   return (
-    <ComboBox label="Ice cream flavor">
-      <ComboBoxItem>Chocolate</ComboBoxItem>
-      <ComboBoxItem>Mint</ComboBoxItem>
-      <ComboBoxItem>Strawberry</ComboBoxItem>
-      <ComboBoxItem>Vanilla</ComboBoxItem>
+    <ComboBox label="Project">
+      <ComboBoxItem>Health Dashboard</ComboBoxItem>
+      <ComboBoxItem>To-Do App</ComboBoxItem>
+      <ComboBoxItem>UI Kit</ComboBoxItem>
+      <ComboBoxItem>Portfolio Site</ComboBoxItem>
     </ComboBox>
   );
 };
@@ -193,16 +201,15 @@ export type buttonProps = VariantProps<typeof button>;
 Here is a Button component using the button with several variants.
 
 <div class="flex items-center justify-center w-full p-2">
-<Button intent="secondary" state="ghost">
+<Button intent="secondary" state="outline">
 Button
 </Button>
 </div>
 
 ```tsx
-import { Pressable as Button } from "@ark-ui/react";
-import { button } from "@potions/button";
+import { button } from "@/components/base/button";
 
-<Button className={button({ intent:"secondary", state:"ghost" })}>Button</Button>;
+<Button intent="secondary" state="outline">Button</Button>;
 ```
 
 You can use the variants inline like shown above, or pass them as props to your component itself.
@@ -216,4 +223,4 @@ Be sure to check out the <a target="_blank" rel="noopener noreferrer" href="http
 
 ## Examples
 
-Assembled components built from the Base components, such as the pin-input above are distributed via VScode snippets. This allows you to rapidly build complex systems with just a few keystrokes. Have a look at the [VsCode Docs](/docs/getting-started/vsc#snippets) for how to use.
+Assembled components built from the Base components, such as the ComboBox above are distributed via VScode snippets. This allows you to rapidly build complex systems with just a few keystrokes. Have a look at the [VsCode Docs](/docs/getting-started/vsc#snippets) for how to use.
