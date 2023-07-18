@@ -45,7 +45,7 @@ export const addCommand = vscode.commands.registerCommand('extension.add', async
   }
 
   try {
-    const response = await fetch('https://baselayer-zwgnr.vercel.app/api/base.json');
+    const response = await fetch('https://www.baselayer.dev/api/base.json');
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

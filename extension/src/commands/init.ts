@@ -60,7 +60,7 @@ Would you like to proceed?`;
 
   const createSnippets = async () => {
     // Fetch data from URL
-    const response = await fetch('https://baselayer-zwgnr.vercel.app/api/examples.json');
+    const response = await fetch('https://www.baselayer.dev/api/examples.json');
     const data = await response.json();
 
  
@@ -95,7 +95,7 @@ Would you like to proceed?`;
 
   const setGlobalStyles = async () => {
     try {
-      const response = await fetch('https://baselayer-zwgnr.vercel.app/api/global.json');
+      const response = await fetch('https://www.baselayer.dev/api/global.json');
       const stylesPreset = await response.json();
 
       let stylesFilePath = await findFile(projectRoot, 'global.css');
@@ -120,7 +120,7 @@ Would you like to proceed?`;
 
   async function copyPreset() {
 
-    const response = await fetch('https://baselayer-zwgnr.vercel.app/api/tailwind.json');
+    const response = await fetch('https://www.baselayer.dev/api/tailwind.json');
     const tailwindPreset = await response.json();
     const tailwindPresetPath = path.join(projectRoot, 'tailwindPreset.js');
     fs.writeFileSync(tailwindPresetPath, tailwindPreset);

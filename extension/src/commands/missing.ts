@@ -50,7 +50,7 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
 
       const modulePath = path.join(baseDir, `${moduleName}.tsx`);
 
-      const response = await fetch('https://baselayer-zwgnr.vercel.app/api/base.json');
+      const response = await fetch('https://www.baselayer.dev/api/base.json');
       const json: Array<{ component: string; files: string }> = await response.json();
       const module = json.find((m) => m.component === moduleName);
 
