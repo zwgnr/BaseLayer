@@ -30,21 +30,25 @@
     --secondary-fg: 255 255 255; /* #fafafa  */
 
     --positive: 109 211 46; /* #6DD32E */
+    --positive-fg: 10 10 10; /* #0a0a0a */
 
     --warning: 237 227 40; /* #EDE328 */
+    --warning-fg: 10 10 10; /* #0a0a0a */
 
     --critical: 255 82 56; /* #FF5238 */
+    --critical-fg: 10 10 10; /* #0a0a0a */
+
     --scrollbar: #a3a3a3;
   }
   [data-theme="dark"] {
     --surface: 10 10 10; /* 	#0f172a */
-    --surface-2: 30 41 59; /* #1e293b*/
+    --surface-2: 30 41 59; /* #1e293b */
     --surface-3: 51 65 85; /* 	#334155 */
     --surface-4: 71 85 105; /* 	#475569 */
 
-    --border: 71 85 105; /* #475569 */
-    --input: 0 0% 90%; /* neutral-200 */
-    --focus: 199 89% 48%; /* sky-500 */
+    --border: 30 41 59; /* #1e293b  */
+    --input: 30 41 59; /* #1e293b  */
+    --focus: 14 165 233; /* #0ea5e9 */
 
     /* fg hierarchy */
     --fg: 248 250 252; /*  #f8fafc*/
@@ -57,14 +61,18 @@
     --primary: 9 229 123; /* #09e57b   */
     --primary-fg: 10 10 10; /* #0a0a0a */
 
-    --secondary: 255 255 255; /* #0a0a0a*/
+    --secondary: 250 250 250; /* #fafafa */
     --secondary-fg: 10 10 10; /* #0a0a0a */
 
     --positive: 109 211 46; /* #6DD32E */
+    --positive-fg: 10 10 10; /* #0a0a0a */
 
     --warning: 237 227 40; /* #EDE328 */
+    --warning-fg: 10 10 10; /* #0a0a0a */
 
     --critical: 255 82 56; /* #FF5238 */
+    --critical-fg: 10 10 10; /* #0a0a0a */
+
     --scrollbar: #a3a3a3;
   }
   /* clears the ‘X’ from Internet Explorer */

@@ -33,12 +33,15 @@ module.exports = {
         },
         positive: {
           DEFAULT: "rgb(var(--positive))",
+          fg: "rgb(var(--positive-fg))",
         },
         warning: {
           DEFAULT: "rgb(var(--warning))",
+          fg: "rgb(var(--warning-fg))",
         },
         critical: {
           DEFAULT: "rgb(var(--critical))",
+          fg: "rgb(var(--critical-fg))",
         },
       },
       keyframes: {
