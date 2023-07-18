@@ -3,7 +3,7 @@ import "../styles/global.css";
 import Nav from "@/components/Nav.astro";
 
 const { title } = Astro.props;
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = Astro.url.pathname
 
 export interface Props {
   title: string;

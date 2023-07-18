@@ -6,7 +6,7 @@ import { version } from "../../package.json";
 import { Moon } from "lucide-react";
 
 const allDocs = await getCollection("docs");
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = Astro.url.pathname
 ---
 
 <script>
