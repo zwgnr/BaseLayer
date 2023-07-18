@@ -95,8 +95,6 @@ export const stylesPreset = `@tailwind base;
 
     --critical: 255 82 56; /* #FF5238 */
     --critical-fg: 10 10 10; /* #0a0a0a */
-
-    --scrollbar: #a3a3a3;
   }
   [data-theme="dark"] {
     --surface: 10 10 10; /* 	#0f172a */
@@ -130,8 +128,6 @@ export const stylesPreset = `@tailwind base;
 
     --critical: 255 82 56; /* #FF5238 */
     --critical-fg: 10 10 10; /* #0a0a0a */
-
-    --scrollbar: #a3a3a3;
   }
   /* clears the ‘X’ from Internet Explorer */
   input[type="search"]::-ms-clear {

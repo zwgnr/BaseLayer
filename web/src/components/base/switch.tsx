@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import {
   Switch as AriaSwitch,
   SwitchProps as AriaSwitchProps,
+  Label,
 } from "react-aria-components";
 
 import { tv, type VariantProps } from "tailwind-variants";
@@ -40,7 +41,7 @@ export const Switch = ({ className, children, ...restProps }: SwitchProps) => (
             selected: isSelected,
           }).indicator()}
         />
-        {children}
+        <Label className={switchVariants().label()}> {children}</Label>
       </>
     )}
   </AriaSwitch>

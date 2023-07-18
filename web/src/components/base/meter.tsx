@@ -24,7 +24,7 @@ export const Meter = ({
     {({ percentage, valueText }) => (
       <>
         <div className="flex justify-between">
-          <Label>{label}</Label>
+          <Label className="text-fg">{label}</Label>
           <span className="value">{valueText}</span>
         </div>
         <div className={bar()}>

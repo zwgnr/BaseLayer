@@ -15,7 +15,7 @@ const radioGroup = tv({
   slots: {
     radio:
       "flex items-center gap-2 text-fg before:block before:h-5 before:w-5 before:rounded-full before:border before:border-fg-3 before:transition-all [&[data-selected]]:before:border-4 [&[data-selected]]:before:border-primary",
-    group: "flex flex-col gap-4",
+    group: "flex flex-col gap-4 text-fg",
   },
 });
 

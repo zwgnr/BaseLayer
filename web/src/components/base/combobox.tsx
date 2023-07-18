@@ -49,11 +49,11 @@ const ComboBox = <T extends object>({
   ...props
 }: ComboBoxProps<T>) => (
   <AriaComboBox className={root({ className })} {...props}>
-    <Label>{label}</Label>
+    <Label className="text-fg">{label}</Label>
     <div className="relative flex w-fit items-center rounded-2xl bg-surface">
       <Input className={input()} />
       <Button className={button()}>
-        <ChevronDown />
+        <ChevronDown className="text-fg"/>
       </Button>
     </div>
     {description && <Text slot="description">{description}</Text>}

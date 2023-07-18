@@ -14,7 +14,7 @@ import {
   useTableOptions,
 } from "react-aria-components";
 
-import { ChevronDown, ChevronUp, Delete, Menu, Trash } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 import { tv } from "tailwind-variants";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
@@ -23,12 +23,13 @@ const table = tv({
   slots: {
     root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border p-4 outline-none",
     column: "border-b-2 px-4 py-1 text-left outline-none",
-    header: " after:table-row after:h-[2px] last:border-b-2",
+    header: " text-fg after:table-row after:h-[2px] last:border-b-2",
     label: "text-fg-3",
+    row: "relative cursor-default rounded-xl text-fg outline-none",
   },
 });
 
-const { root, header, column } = table();
+const { root, header, column, row } = table();
 
 const TableBody = AriaTableBody;
 
@@ -106,11 +107,7 @@ const TableRow = <T extends object>({
 }: RowProps<T> & { className?: string }) => {
   let { selectionBehavior, allowsDragging } = useTableOptions();
   return (
-    <Row
-      id={id}
-      {...props}
-      className="relative cursor-default rounded-xl outline-none"
-    >
+    <Row id={id} {...props} className={row()}>
       {allowsDragging && (
         <Cell>
           <Button className="bg-transparent" slot="drag">

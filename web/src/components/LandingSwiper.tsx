@@ -18,7 +18,7 @@ import {
   CarouselViewport,
 } from "@ark-ui/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { RangeCalendar } from "./base/rangeCalendar";
+import { Calendar } from "./base/calendar";
 
 export default function LandingCarousel() {
   return (
@@ -37,7 +37,7 @@ export default function LandingCarousel() {
             className="z-50 flex items-center justify-center p-12"
             index={1}
           >
-            <RangeCalendar />
+            <Calendar />
           </CarouselSlide>
           <CarouselSlide
             className="z-50 flex items-center justify-center p-12"
@@ -62,12 +62,14 @@ export default function LandingCarousel() {
             className="z-50 flex flex-col items-center justify-center gap-8 p-12"
             index={4}
           >
-            <div className="flex gap-12">
-              <Button intent="secondary">Button</Button>
-              <SwitchExample />
+            <div className="flex flex-col items-start gap-8">
+              <div className="flex gap-12">
+                <Button intent="secondary">Button</Button>
+                <SwitchExample />
+              </div>
+              <RadioGroupExample />
+              <Slider />
             </div>
-            <RadioGroupExample />
-            <Slider />
           </CarouselSlide>
         </CarouselSlideGroup>
       </CarouselViewport>
