@@ -45,7 +45,7 @@ const SIDEBAR: SideNav = {
   ],
 };
 
-const pathname = Astro.url.pathname
+const pathname = Astro.url.pathname;
 ---
 
 <div
@@ -65,23 +65,25 @@ const pathname = Astro.url.pathname
             </div>
             <ul class="mb-4">
               {children.map((child) => {
+                console.log("pathname:", pathname);
+                console.log("child.link:", child.link);
                 const url = child.link;
                 return (
                   <li
                     class:list={[
                       "h-8 flex items-center p-4 border-l-2 border-border",
-                      Astro.site?.pathname === child.link ? "border-primary" : "",
+                      pathname === child.link ? "border-primary" : "",
                     ]}
                   >
                     <a
                       class:list={[
                         "text-sm w-full",
-                        Astro.site?.pathname === child.link
+                        pathname === child.link
                           ? "font-bold text-secondary"
                           : "text-fg-5",
                       ]}
                       href={url}
-                      aria-current={Astro.site?.pathname === child.link ? "page" : false}
+                      aria-current={pathname === child.link ? "page" : false}
                     >
                       {child.text}
                     </a>
