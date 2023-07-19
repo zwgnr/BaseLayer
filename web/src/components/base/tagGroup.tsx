@@ -9,7 +9,7 @@ import {
   Text,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { Button } from "./button";
+import { Button } from "@/components/base/button";
 
 const tagGroup = tv({
   slots: {

@@ -10,22 +10,26 @@ import {
 } from "react-aria-components";
 
 import { RangeCalendar } from "@/components/base/rangeCalendar";
+
 import { ChevronDown } from "lucide-react";
+
 import type {
   DateRangePickerProps as AriaDateRangePickerProps,
   DateValue,
 } from "react-aria-components";
+
 import { Text } from "react-aria-components";
+
 import { tv } from "tailwind-variants";
 
 const dateRangePicker = tv({
   slots: {
     group:
-      "relative flex w-fit flex-wrap items-center rounded-md border bg-surface shadow-lg",
+      "relative flex w-fit flex-wrap items-center rounded-md border border-border bg-surface shadow-lg",
     iconButton:
       "appearance-none border-none bg-primary p-0 align-middle text-primary-fg outline-none",
     input:
-      "flex w-fit whitespace-nowrap rounded-md border-2 border-transparent bg-transparent py-2 pl-2 pr-12 ",
+      "flex w-fit whitespace-nowrap rounded-md border border-transparent bg-transparent py-2 pl-2 pr-12 ",
     inputButton:
       "absolute right-2 flex appearance-none items-center justify-center rounded-md border-0 outline-none hover:bg-surface-2",
     dateSegment:

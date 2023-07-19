@@ -16,14 +16,14 @@ import {
 
 import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 import { tv } from "tailwind-variants";
-import { Button } from "./button";
-import { Checkbox } from "./checkbox";
+import { Button } from "@/components/base/button";
+import { Checkbox } from "@/components/base/checkbox";
 
 const table = tv({
   slots: {
-    root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border p-4 outline-none",
-    column: "border-b-2 px-4 py-1 text-left outline-none",
-    header: " text-fg after:table-row after:h-[2px] last:border-b-2",
+    root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border border-border p-4 outline-none",
+    column: "border-b-2 border-border px-4 py-1 text-left outline-none",
+    header: "text-fg after:table-row after:h-[2px]",
     label: "text-fg-3",
     row: "relative cursor-default rounded-xl text-fg outline-none",
   },

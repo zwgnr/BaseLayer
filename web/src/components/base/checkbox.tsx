@@ -12,7 +12,7 @@ import { VariantProps, tv } from "tailwind-variants";
 const checkbox = tv({
   slots: {
     root: "flex items-center justify-center gap-2 py-1",
-    box: "flex items-center justify-center rounded-lg border transition-all duration-200",
+    box: "flex items-center justify-center rounded-lg border border-border transition-all duration-200",
   },
   variants: {
     size: {
