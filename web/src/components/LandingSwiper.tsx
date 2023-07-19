@@ -4,7 +4,6 @@ import { Button } from "./base/button";
 import { ComboBoxExample } from "@/Examples/ComboBox/ComboBox";
 import { Dialog } from "@/Examples/Dialog/Dialog";
 import { MeterExample } from "@/Examples/Meter/Meter";
-import { ModalExample } from "@/Examples/Modal/Modal";
 import { Slider } from "@/Examples/Slider/Slider";
 import { SwitchExample } from "@/Examples/Switch/Switch";
 import { TableReorderable } from "@/Examples/Table/TableReorderable";
@@ -53,7 +52,7 @@ export default function LandingCarousel() {
             index={3}
           >
             <div className="flex gap-12">
-              <Dialog /> <ModalExample />
+              <Dialog />
             </div>
             <ComboBoxExample />
             <MeterExample />
