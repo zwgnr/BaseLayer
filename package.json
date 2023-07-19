@@ -1,6 +1,6 @@
 {
   "name": "baselayer",
-  "version": "0.0.9-rc2",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
