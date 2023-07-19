@@ -15,7 +15,7 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
   if (activeEditor) {
     const document = activeEditor.document;
     const text = document.getText();
-    const potionModules: string[] = [];
+    const componentModules: string[] = [];
 
     const sourceFile = project.createSourceFile('temp.ts', text);
 
@@ -25,7 +25,7 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
       const moduleSpecifier = declaration.getModuleSpecifierValue();
       if (moduleSpecifier.startsWith('@/components/base/')) {
         const moduleName = moduleSpecifier.replace('@/components/base/', '');
-        potionModules.push(moduleName);
+        componentModules.push(moduleName);
       }
     }
 
@@ -33,7 +33,7 @@ export const missingCommand = vscode.commands.registerCommand('extension.missing
     sourceFile.delete();
 
     // Process modules after traversal
-    for (const moduleName of potionModules) {
+    for (const moduleName of componentModules) {
       const workspaceRoot = getWorkspaceRoot();
       if (workspaceRoot === null) {
         return;

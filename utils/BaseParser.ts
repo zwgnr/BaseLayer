@@ -11,7 +11,7 @@ type Component = {
 // Get directory of the current module
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Define directory path for the potions
+// Define directory path for the base components
 const baseDir = path.resolve(dirname, '../web/src/components/base');
 
 // Define path for the components.json.ts file
@@ -31,7 +31,7 @@ const components: Component[] = tsFiles.map((file) => {
   // Generate BaseLayer object
   const componentName = path.basename(file, '.tsx');
 
-  // Generate displayName by removing "BaseLayer" from the end of potionName
+  // Generate displayName by removing "BaseLayer" from the end of componentName
   let displayName = componentName;
   if(displayName.endsWith('BaseLayer')) {
     displayName = displayName.slice(0, -6);
@@ -48,19 +48,19 @@ const components: Component[] = tsFiles.map((file) => {
 });
 
 
-// Read existing potions.json.ts file
+// Read existing components.json.ts file
 const baseJsonTsContent = fs.readFileSync(baseJsonTsFile, 'utf8');
 
-// Convert new potions array to a string
+// Convert new component array to a string
 const componentsString = JSON.stringify(components, null, 2)
   // Reformat to match the TypeScript syntax
   .replace(/"([^"]+)":/g, '$1:');
 
-// Replace existing potions array in the file content with the new one
+// Replace existing components array in the file content with the new one
 const newBaseJsonTsContent = baseJsonTsContent.replace(
   /(const components: Component\[] = )\[[\s\S]*?\];/m,
   `$1${componentsString};`
 );
 
-// Write updated content back to the potions.json.ts file
+// Write updated content back to the components.json.ts file
 fs.writeFileSync(baseJsonTsFile, newBaseJsonTsContent);
