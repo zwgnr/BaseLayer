@@ -1,4 +1,4 @@
-<img src="https://github.com/zwgnr/BaseLayer/assets/86675944/f46a4305-f423-43e9-b258-374307bc4cd4" width="100">
+<img src="https://github.com/zwgnr/BaseLayer/assets/86675944/e1403bd1-346f-4a21-8640-e58334ebd91f" width="100">
 
 # BaseLayer
 
@@ -7,3 +7,4 @@ Re-usable multi part components built on React Aria and TailwindCSS. All Powered
 ## Docs
 
 https://baselayer.dev/
+
