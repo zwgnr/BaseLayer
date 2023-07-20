@@ -15,7 +15,7 @@ const tabs = tv({
   slots: {
     root: "flex w-full flex-col items-start",
     list: "relative inline-flex w-72 items-center justify-between rounded-md p-1",
-    tab: "relative flex w-1/3 cursor-pointer justify-center rounded-md border-primary p-2 outline-none ring-focus  ring-offset-2 ring-offset-surface transition-colors duration-200 aria-selected:cursor-default aria-selected:rounded-none aria-selected:border-b-2 aria-selected:hover:bg-transparent data-[hovered]:bg-surface-2 data-[focus-visible]:ring-2",
+    tab: "relative flex w-1/3 cursor-pointer justify-center rounded-md border-primary p-2 outline-none ring-focus  ring-offset-2 ring-offset-surface transition-colors duration-200 aria-selected:cursor-default aria-selected:rounded-none aria-selected:border-b-2 data-[hovered]:bg-surface-2 data-[focus-visible]:ring-2 data-[hovered]:aria-selected:bg-transparent",
     panel:
       "mt-4 w-96 rounded-xl p-4 outline-none ring-focus data-[focus-visible]:ring-2",
   },
