@@ -1,5 +1,6 @@
 ---
 import { Button } from "@/components/base/button";
+import { Button as AriaButton } from "react-aria-components";
 import Layout from "../layouts/Layout.astro";
 import { Droplet, Github, Moon, Paintbrush, Sun, Twitter } from "lucide-react";
 import { Icon } from "@iconify/react";
@@ -74,29 +75,25 @@ import LandingCarousel from "@/components/LandingSwiper";
             <span>UI Redefined</span>
           </p>
           <p class="max-w-48 mt-8 text-xl text-fg-4">
-            Deliver faster and with more freedom than ever. All without
-            ever leaving your editor.
+            Deliver faster and with more freedom than ever. All without ever
+            leaving your editor.
           </p>
           <div
             class="mt-12 flex w-full flex-col justify-center gap-4 lg:flex-row"
           >
-            <a href="/docs/getting-started/intro" class="inline-block">
-              <Button className="p-8 w-full" size="lg">Get Started</Button>
-            </a>
-            <Button
-              intent="secondary"
-              state="outline"
-              className="p-[30px]"
-              size="lg"
+            <a
+              href="/docs/getting-started/intro"
+              class="flex h-12 items-center justify-center rounded-md bg-primary p-8 text-lg transition-transform duration-100 hover:bg-primary/70 active:scale-[.97]"
             >
-              <a
-                class="flex items-center gap-2"
-                href="https://github.com/zwgnr/BaseLayer"
-              >
-                <span class="flex items-center">Github</span>
-                <Github className="h-6 w-6" />
-              </a>
-            </Button>
+              Get Started
+            </a>
+            <a
+              class="flex h-12 items-center justify-center gap-2 rounded-md border-2 border-secondary p-[30px] text-lg text-fg transition-transform duration-100 hover:bg-secondary hover:text-secondary-fg active:scale-[.97]"
+              href="https://github.com/zwgnr/BaseLayer"
+            >
+              <span class="flex items-center">Github</span>
+              <Github className="h-6 w-6" />
+            </a>
           </div>
         </div>
         <div class="hidden w-1/2 items-center justify-center pr-8 lg:flex">

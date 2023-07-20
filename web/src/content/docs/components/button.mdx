@@ -15,7 +15,7 @@ import DemoTabs from '@/components/DemoTabs.astro'
 import { MdxExample } from '@/components/Demos/MdxExample.tsx'
 
 <MdxExample>
-  <Button >
+  <Button client:load>
     Button
   </Button>
 </MdxExample>
@@ -37,11 +37,12 @@ import {
 import { VariantProps, tv } from "tailwind-variants";
 
 const button = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform  duration-100 focus-visible:outline-none focus-visible:ring-2 active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
+  base: "ring-offset-background inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[pressed]:scale-[.97] data-[hovered]:bg-primary/70 data-[focus-visible]:ring-2",
   variants: {
     intent: {
-      primary: "bg-primary text-primary-fg hover:bg-primary/70",
-      secondary: "bg-secondary text-secondary-fg hover:bg-secondary/70",
+      primary: "bg-primary text-primary-fg data-[hovered]:bg-primary/70",
+      secondary:
+        "bg-secondary text-secondary-fg data-[hovered]:bg-secondary/70",
     },
     state: {
       filled: "",
@@ -59,34 +60,36 @@ const button = tv({
     {
       intent: "primary",
       state: "ghost",
-      class: "border-2 border-primary bg-primary/30 text-fg hover:bg-primary",
+      class:
+        "border-2 border-primary bg-primary/30 text-fg data-[hovered]:bg-primary",
     },
     {
       intent: "primary",
       state: "soft",
-      class: "bg-primary/50 hover:bg-primary/30",
+      class: "bg-primary/50 data-[hovered]:bg-primary/30",
     },
     {
       intent: "primary",
       state: "outline",
       class:
-        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary hover:text-primary-fg",
+        "text-primary-content border-2 border-primary bg-transparent data-[hovered]:bg-primary data-[hovered]:text-primary-fg",
     },
     {
       intent: "secondary",
       state: "ghost",
-      class: "border-2 border-secondary bg-secondary/30 hover:bg-secondary",
+      class:
+        "border-2 border-secondary bg-secondary/30 data-[hovered]:bg-secondary",
     },
     {
       intent: "secondary",
       state: "soft",
-      class: "bg-secondary/50 text-secondary-fg hover:bg-secondary/30",
+      class: "bg-secondary/50 text-secondary-fg data-[hovered]:bg-secondary/30",
     },
     {
       intent: "secondary",
       state: "outline",
       class:
-        "border-2 border-secondary bg-transparent text-fg hover:bg-secondary hover:text-secondary-fg",
+        "border-2 border-secondary bg-transparent text-fg data-[hovered]:bg-secondary data-[hovered]:text-secondary-fg",
     },
   ],
   defaultVariants: {
@@ -126,7 +129,7 @@ Button.displayName = "Button";
 ### Default
 
 <MdxExample>
-  <Button>
+  <Button client:load>
     Button
   </Button>
 </MdxExample>
@@ -155,7 +158,7 @@ export const ButtonExample = () => <Button>Button</Button>;
 ### Icon Button
 
 <MdxExample>
-     <Button>
+     <Button client:load>
        <Heart className="mr-2" />
          Icon Button
        </Button>
@@ -190,7 +193,7 @@ bl-button-icon
 
 <div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div class="flex gap-2 items-center">
-      <Button disabled>
+      <Button disabled client:load>
         <Loader className="mr-2 h-4 w-4 animate-spin" />
           Loading...
       </Button>
@@ -228,8 +231,8 @@ bl-button-loader
 
 <div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div className="flex gap-2 items-center">
-     <Button intent="primary">Primary</Button>
-<Button intent="secondary">Accent</Button>
+     <Button client:load intent="primary">Primary</Button>
+<Button client:load intent="secondary">Accent</Button>
     </div>
 </div>
 
@@ -248,10 +251,10 @@ import { Button } from "@/components/base/button";
 
 <div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div className="flex gap-2 items-center flex-wrap">
-      <Button state="filled">Filled</Button>
- <Button state="soft">Soft</Button>
- <Button state="ghost">Ghost</Button>
- <Button state="outline">Outline</Button>
+      <Button client:load state="filled">Filled</Button>
+ <Button client:load state="soft">Soft</Button>
+ <Button client:load state="ghost">Ghost</Button>
+ <Button client:load state="outline">Outline</Button>
     </div>
 </div>
 
@@ -272,9 +275,9 @@ import { Button } from "@/components/base/button";
 
 <div class="p-4 w-full flex justify-center items-center border rounded-xl">
     <div className="flex gap-2 items-center">
-     <Button size="sm">sm</Button>
-<Button size="md">md</Button>
-<Button size="lg">lg</Button>
+     <Button client:load size="sm">sm</Button>
+<Button client:load size="md">md</Button>
+<Button client:load size="lg">lg</Button>
     </div>
 </div>
 

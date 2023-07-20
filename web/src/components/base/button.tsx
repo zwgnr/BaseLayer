@@ -6,11 +6,12 @@ import {
 import { VariantProps, tv } from "tailwind-variants";
 
 const button = tv({
-  base: "ring-offset-background [&[data-hovered]:ring-4 inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform duration-100  active:scale-[.97] disabled:pointer-events-none disabled:opacity-50",
+  base: "ring-offset-background inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[pressed]:scale-[.97] data-[hovered]:bg-primary/70 data-[focus-visible]:ring-2",
   variants: {
     intent: {
-      primary: "bg-primary text-primary-fg hover:bg-primary/70",
-      secondary: "bg-secondary text-secondary-fg hover:bg-secondary/70",
+      primary: "bg-primary text-primary-fg data-[hovered]:bg-primary/70",
+      secondary:
+        "bg-secondary text-secondary-fg data-[hovered]:bg-secondary/70",
     },
     state: {
       filled: "",
@@ -28,34 +29,36 @@ const button = tv({
     {
       intent: "primary",
       state: "ghost",
-      class: "border-2 border-primary bg-primary/30 text-fg hover:bg-primary",
+      class:
+        "border-2 border-primary bg-primary/30 text-fg data-[hovered]:bg-primary",
     },
     {
       intent: "primary",
       state: "soft",
-      class: "bg-primary/50 hover:bg-primary/30",
+      class: "bg-primary/50 data-[hovered]:bg-primary/30",
     },
     {
       intent: "primary",
       state: "outline",
       class:
-        "text-primary-content border-2 border-primary bg-transparent hover:bg-primary hover:text-primary-fg",
+        "text-primary-content border-2 border-primary bg-transparent data-[hovered]:bg-primary data-[hovered]:text-primary-fg",
     },
     {
       intent: "secondary",
       state: "ghost",
-      class: "border-2 border-secondary bg-secondary/30 hover:bg-secondary",
+      class:
+        "border-2 border-secondary bg-secondary/30 data-[hovered]:bg-secondary",
     },
     {
       intent: "secondary",
       state: "soft",
-      class: "bg-secondary/50 text-secondary-fg hover:bg-secondary/30",
+      class: "bg-secondary/50 text-secondary-fg data-[hovered]:bg-secondary/30",
     },
     {
       intent: "secondary",
       state: "outline",
       class:
-        "border-2 border-secondary bg-transparent text-fg hover:bg-secondary hover:text-secondary-fg",
+        "border-2 border-secondary bg-transparent text-fg data-[hovered]:bg-secondary data-[hovered]:text-secondary-fg",
     },
   ],
   defaultVariants: {
