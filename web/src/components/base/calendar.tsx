@@ -23,8 +23,8 @@ const calendar = tv({
     heading: "text-md m-0 flex-1 text-center text-lg font-bold",
     gridHeaderCell: "pb-2 text-sm text-fg-5",
     iconButton:
-      "m-0 flex h-8 w-8 appearance-none items-center justify-center rounded-md text-center outline-none hover:bg-surface-2",
-    cell: " -m-[1px] mb-1 flex h-8 w-8 items-center justify-center rounded-md p-5 text-center text-sm outline-none hover:bg-surface-2 [&[data-outside-month]]:hidden  [&[data-pressed]]:bg-surface-2 [&[data-selected]]:bg-primary [&[data-selected]]:text-primary-fg [&[data-unavailable]]:text-fg-6 [&[data-unavailable]]:line-through",
+      "m-0 flex h-8 w-8 appearance-none items-center justify-center rounded-md text-center outline-none data-[hovered]:bg-surface-2",
+    cell: " -m-[1px] mb-1 flex h-8 w-8 items-center justify-center rounded-md p-5 text-center text-sm outline-none data-[hovered]:bg-surface-2 data-[pressed]:bg-surface-2 data-[selected]:bg-primary data-[selected]:text-primary-fg data-[unavailable]:text-fg-6 data-[unavailable]:line-through [&[data-outside-month]]:hidden",
   },
 });
 
