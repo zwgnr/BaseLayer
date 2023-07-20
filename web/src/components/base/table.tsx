@@ -14,22 +14,23 @@ import {
   useTableOptions,
 } from "react-aria-components";
 
-import { ChevronDown, ChevronUp, Menu } from "lucide-react";
-import { tv } from "tailwind-variants";
 import { Button } from "@/components/base/button";
 import { Checkbox } from "@/components/base/checkbox";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
+import { tv } from "tailwind-variants";
 
 const table = tv({
   slots: {
-    root: "table min-h-[100px] w-full border-separate border-spacing-0 self-start rounded-xl border border-border p-4 outline-none",
+    root: "table min-h-[100px] border-separate border-spacing-0 self-start rounded-xl border border-border p-4 outline-none",
     column: "border-b-2 border-border px-4 py-1 text-left outline-none",
     header: "text-fg after:table-row after:h-[2px]",
     label: "text-fg-3",
-    row: "relative cursor-default rounded-xl text-fg outline-none",
+    row: "relative cursor-default rounded-xl text-fg outline-none ring-focus data-[focus-visible]:ring-2",
+    cell: "px-4 py-2 outline-none ring-focus data-[focus-visible]:ring-2",
   },
 });
 
-const { root, header, column, row } = table();
+const { root, header, column, row, cell } = table();
 
 const TableBody = AriaTableBody;
 
@@ -48,7 +49,7 @@ const TableCell = ({
   className,
   ...props
 }: CellProps & { className?: string }) => (
-  <Cell {...props} className="px-4 py-2">
+  <Cell {...props} className={cell({ className })}>
     {children}
   </Cell>
 );
@@ -109,7 +110,7 @@ const TableRow = <T extends object>({
   return (
     <Row id={id} {...props} className={row()}>
       {allowsDragging && (
-        <Cell>
+        <Cell className="ring-focus data-[focus-visible]:ring-2">
           <Button className="bg-transparent" slot="drag">
             <Menu className="h-4 w-4 text-fg" />
           </Button>
