@@ -52,11 +52,7 @@ const pathname = Astro.url.pathname;
   window.addEventListener("DOMContentLoaded", (event) => {
     const links = Array.from(document.querySelectorAll("a"));
     links.forEach((link) => {
-      console.log("pathname:", window.location.pathname);
-      console.log("href:", link.getAttribute("href"));
-
       const parentLi = link.parentElement;
-
       if (window.location.pathname === link.getAttribute("href")) {
         parentLi?.classList.add("border-primary", "font-bold");
       } else {
