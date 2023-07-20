@@ -6,7 +6,7 @@ import { Heading } from "react-aria-components";
 export const ModalExample = () => {
   return (
     <ModalTrigger>
-      <Button className="bg-critical hover:bg-critical/70">
+      <Button className="bg-critical data-[hovered]:bg-critical/70">
         Delete Project
       </Button>
       <Modal>
@@ -23,7 +23,7 @@ export const ModalExample = () => {
                   Cancel
                 </Button>
                 <Button
-                  className="bg-critical hover:bg-critical/70"
+                  className="bg-critical data-[hovered]:bg-critical/70"
                   onPress={close}
                 >
                   Delete

@@ -46,11 +46,11 @@ import { tv } from "tailwind-variants";
 const select = tv({
   slots: {
     root: "max-h-inherit flex flex-col gap-2 overflow-auto p-1 outline-none",
-    item: "relative m-1 flex cursor-default flex-col rounded-md p-2 outline-none hover:bg-surface-2 ",
+    item: "relative m-1 flex cursor-default flex-col rounded-md p-2 outline-none ring-focus ring-offset-surface aria-selected:bg-primary data-[focus-visible]:border-transparent data-[focus-visible]:bg-surface data-[hovered]:bg-surface-2 data-[focus-visible]:ring-2  data-[hovered]:aria-selected:bg-primary data-[focus-visible]:aria-selected:ring-offset-2",
     popover:
-      "w-64 rounded-xl border bg-surface p-2 text-fg shadow-xl outline-none",
+      "w-64 rounded-xl border border-border bg-surface p-2 text-fg shadow-xl outline-none",
     button:
-      "flex w-56 appearance-none items-center justify-between rounded-md border p-2 outline-none hover:bg-surface-2",
+      "flex w-56 appearance-none items-center justify-between rounded-md border border-border p-2 outline-none ring-focus ring-offset-2 ring-offset-surface data-[hovered]:bg-surface-2 data-[focus-visible]:ring-2",
   },
 });
 
