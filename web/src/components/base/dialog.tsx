@@ -14,9 +14,9 @@ const dialog = tv({
     container: "fixed inset-0 z-40 flex items-center justify-center",
     content: "flex flex-col gap-6 text-fg outline-none",
     modal:
-      "max-w-3/4 w-3/4 rounded-xl bg-surface p-6 outline-none md:w-96 [&[data-entering]]:animate-zoom",
+      "max-w-3/4 w-3/4 rounded-xl bg-surface p-6 outline-none data-[entering]:animate-zoom md:w-96",
     overlay:
-      "fixed left-0 top-0 z-50 flex h-[var(--visual-viewport-height)] w-screen items-center justify-center bg-slate-500/50 [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
+      "fixed left-0 top-0 z-50 flex h-[var(--visual-viewport-height)] w-screen items-center justify-center bg-slate-500/50 data-[entering]:animate-fade data-[exiting]:animate-fadeOut",
   },
 });
 

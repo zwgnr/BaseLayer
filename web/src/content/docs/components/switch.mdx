@@ -42,9 +42,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const switchVariants = tv({
   slots: {
-    root: "flex items-center gap-2 transition-none duration-200",
+    root: "flex items-center gap-2 transition-none duration-200 [&>div]:ring-focus [&>div]:ring-offset-2 [&>div]:ring-offset-surface [&>div]:data-[focus-visible]:ring-2",
     indicator:
-      "h-6 w-10 cursor-pointer rounded-2xl bg-surface-3 duration-200 before:mx-[2px] before:mt-[2px] before:block before:h-5 before:w-5 before:rounded-2xl before:bg-white before:transition-all",
+      "h-6 w-10 cursor-pointer rounded-2xl bg-surface-3 duration-200 before:mx-[2px] before:mt-[2px] before:block before:h-5 before:w-5 before:rounded-2xl before:bg-white before:transition-all ",
     label: "text-fg-3",
   },
   variants: {
@@ -61,7 +61,7 @@ type SwitchVariantProps = VariantProps<typeof switchVariants>;
 
 interface SwitchProps extends SwitchVariantProps, AriaSwitchProps {
   children?: ReactNode;
-  className?: string | undefined;
+  className?: string;
 }
 
 export const Switch = ({ className, children, ...restProps }: SwitchProps) => (

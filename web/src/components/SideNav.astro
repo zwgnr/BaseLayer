@@ -25,10 +25,10 @@ const SIDEBAR: SideNav = {
     { text: "DateRange Picker", link: "/docs/components/date-range-picker" },
     { text: "Dialog", link: "/docs/components/dialog" },
     { text: "List Box", link: "/docs/components/list-box" },
-    { text: "Popover", link: "/docs/components/popover" },
     { text: "Menu", link: "/docs/components/menu" },
     { text: "Meter", link: "/docs/components/meter" },
     { text: "Modal", link: "/docs/components/modal" },
+    { text: "Popover", link: "/docs/components/popover" },
     { text: "Radio Group", link: "/docs/components/radio-group" },
     { text: "Range Calendar", link: "/docs/components/range-calendar" },
     { text: "Search Field", link: "/docs/components/search-field" },
@@ -52,11 +52,7 @@ const pathname = Astro.url.pathname;
   window.addEventListener("DOMContentLoaded", (event) => {
     const links = Array.from(document.querySelectorAll("a"));
     links.forEach((link) => {
-      console.log("pathname:", window.location.pathname);
-      console.log("href:", link.getAttribute("href"));
-
       const parentLi = link.parentElement;
-
       if (window.location.pathname === link.getAttribute("href")) {
         parentLi?.classList.add("border-primary", "font-bold");
       } else {

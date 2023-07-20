@@ -11,7 +11,7 @@ import { VariantProps, tv } from "tailwind-variants";
 
 const checkbox = tv({
   slots: {
-    root: "flex items-center justify-center gap-2 py-1",
+    root: "flex items-center justify-center gap-2 py-1 [&>div]:ring-focus [&>div]:ring-offset-2 [&>div]:ring-offset-surface [&>div]:data-[selected]:border-primary [&>div]:data-[selected]:bg-primary [&>div]:data-[focus-visible]:ring-2",
     box: "flex items-center justify-center rounded-lg border border-border transition-all duration-200",
   },
   variants: {
@@ -20,13 +20,9 @@ const checkbox = tv({
       md: { box: "h-6 w-6 rounded-md", root: "text-md" },
       lg: { box: "h-8 w-8 rounded-md", root: "text-lg" },
     },
-    selected: {
-      true: { box: "border-primary bg-primary" },
-    },
   },
   defaultVariants: {
     size: "md",
-    selected: false,
   },
 });
 
@@ -48,7 +44,7 @@ export const Checkbox = forwardRef<
     >
       {({ isSelected }) => (
         <>
-          <div className={checkbox({ selected: isSelected, size }).box()}>
+          <div className={checkbox({ size }).box()}>
             {isSelected && <Check />}
           </div>
           {children}

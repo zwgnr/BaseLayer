@@ -11,8 +11,8 @@ import { tv } from "tailwind-variants";
 
 const breadcrumbs = tv({
   slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center  [&>ol]:gap-2 [&>ol]:p-0",
-    link: "relative cursor-pointer text-fg-5 outline-none hover:underline [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
+    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center [&>ol]:gap-2 [&>ol]:p-0",
+    link: "relative cursor-pointer rounded-md text-fg-5 outline-none ring-focus data-[hovered]:underline data-[focus-visible]:ring-2 [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
     item: "flex items-center gap-2",
   },
 });
@@ -55,4 +55,4 @@ const BreadCrumbsItem = ({
 
 BreadCrumbsItem.displayName = "BreadCrumbsItem";
 
-export { Breadcrumbs, BreadCrumbsItem, BreadCrumbsLink };
+export { BreadCrumbsItem, BreadCrumbsLink, Breadcrumbs };

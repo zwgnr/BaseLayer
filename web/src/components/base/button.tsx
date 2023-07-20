@@ -6,7 +6,7 @@ import {
 import { VariantProps, tv } from "tailwind-variants";
 
 const button = tv({
-  base: "ring-offset-background inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[pressed]:scale-[.97] data-[hovered]:bg-primary/70 data-[focus-visible]:ring-2",
+  base: "inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none ring-focus ring-offset-2 ring-offset-surface transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[pressed]:scale-[.97] data-[hovered]:bg-primary/70 data-[focus-visible]:ring-2",
   variants: {
     intent: {
       primary: "bg-primary text-primary-fg data-[hovered]:bg-primary/70",

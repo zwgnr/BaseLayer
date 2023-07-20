@@ -3,7 +3,7 @@ import { ToggleButton, ToggleButtonProps } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
 const toggle = tv({
-  base: "ring-offset-background focus-focus inline-flex appearance-none items-center justify-center rounded-md bg-surface-2 p-2 font-medium outline-none transition-transform  duration-100 disabled:pointer-events-none disabled:opacity-50 [&[aria-pressed=true]]:bg-primary",
+  base: "inline-flex appearance-none items-center justify-center rounded-md bg-surface-2 p-2 font-medium outline-none ring-focus ring-offset-2 ring-offset-surface transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 aria-pressed:bg-primary data-[focus-visible]:ring-2",
 });
 
 export const Toggle = ({

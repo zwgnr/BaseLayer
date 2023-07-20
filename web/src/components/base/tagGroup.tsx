@@ -1,3 +1,4 @@
+import { Button } from "@/components/base/button";
 import {
   Label as AriaLabel,
   Tag as AriaTag,
@@ -9,13 +10,12 @@ import {
   Text,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { Button } from "@/components/base/button";
 
 const tagGroup = tv({
   slots: {
     root: "flex flex-col gap-2 text-sm",
     list: "flex flex-wrap gap-2",
-    tag: "flex cursor-default items-center rounded-md border p-2 outline-none aria-selected:bg-secondary aria-selected:text-secondary-fg",
+    tag: "flex cursor-default items-center rounded-md border p-2 outline-none ring-focus ring-offset-2 ring-offset-surface aria-selected:bg-secondary aria-selected:text-secondary-fg data-[focus-visible]:ring-2",
   },
 });
 

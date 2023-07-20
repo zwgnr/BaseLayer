@@ -36,10 +36,10 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
-export const timeField = tv({
+const timeField = tv({
   slots: {
     input:
-      "min-w-sm flex w-fit whitespace-nowrap rounded-md border border-border p-2 outline-none",
+      "min-w-sm flex w-fit whitespace-nowrap rounded-md border border-border p-2 outline-none ring-fg focus-within:border-transparent focus-within:ring-2",
     segmentStyles:
       "rounded-md p-1 text-end outline-none focus:bg-secondary focus:text-secondary-fg",
   },
