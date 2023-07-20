@@ -2,6 +2,10 @@
 
 All notable changes to the "BaseLayer" extension will be documented in this file.
 
+## [v0.1.2]
+
+- Fix Calendars padding issues
+
 ## [v0.1.1]
 
 - Fix border colors

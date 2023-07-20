@@ -31,7 +31,7 @@ const datePicker = tv({
     dateSegment:
       "rounded-md p-1 pr-2 text-end focus:bg-secondary focus:text-secondary-fg focus:outline-none",
     popover:
-      "overflow-auto [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
+      "overflow-auto px-4 pb-4 [&[data-entering]]:animate-fade [&[data-exiting]]:animate-fadeOut",
   },
 });
 

@@ -18,7 +18,7 @@ import { tv } from "tailwind-variants";
 
 const calendar = tv({
   slots: {
-    root: "w-fit max-w-full rounded-xl border border-border bg-surface p-6 text-fg shadow-lg",
+    root: "w-fit max-w-full rounded-xl border border-border bg-surface p-4 text-fg shadow-lg",
     header: "mb-4 flex items-center ",
     heading: "text-md m-0 flex-1 text-center text-lg font-bold",
     gridHeaderCell: "pb-2 text-sm text-fg-5",
