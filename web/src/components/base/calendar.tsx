@@ -2,16 +2,16 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import {
   Calendar as AriaCalendar,
-  CalendarProps as AriaCalendarProps,
   Button,
   CalendarCell,
   CalendarGrid,
   CalendarGridBody,
   CalendarGridHeader,
   CalendarHeaderCell,
-  DateValue,
   Heading,
   Text,
+  type CalendarProps as AriaCalendarProps,
+  type DateValue,
 } from "react-aria-components";
 
 import { tv } from "tailwind-variants";

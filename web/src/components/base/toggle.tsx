@@ -1,4 +1,4 @@
-import { ToggleButton, ToggleButtonProps } from "react-aria-components";
+import { ToggleButton, type ToggleButtonProps } from "react-aria-components";
 
 import { tv } from "tailwind-variants";
 

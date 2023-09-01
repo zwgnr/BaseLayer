@@ -3,8 +3,8 @@ import { Menu } from "lucide-react";
 import {
   ListBox as AriaListBox,
   Item,
-  ItemProps,
-  ListBoxProps,
+  type ItemProps,
+  type ListBoxProps,
 } from "react-aria-components";
 
 import { tv } from "tailwind-variants";

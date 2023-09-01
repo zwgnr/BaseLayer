@@ -1,12 +1,12 @@
 import {
   Tab as AriaTab,
   TabList as AriaTabList,
-  TabListProps as AriaTabListProps,
   TabPanel as AriaTabPanel,
-  TabPanelProps as AriaTabPanelProps,
-  TabProps as AriaTabProps,
-  TabsProps as AriaTabsProps,
   Tabs as AriaTabsRoot,
+  type TabListProps as AriaTabListProps,
+  type TabPanelProps as AriaTabPanelProps,
+  type TabProps as AriaTabProps,
+  type TabsProps as AriaTabsProps,
 } from "react-aria-components";
 
 import { tv } from "tailwind-variants";

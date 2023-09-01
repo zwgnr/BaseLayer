@@ -4,14 +4,14 @@ import {
   TableBody as AriaTableBody,
   TableHeader as AriaTableheader,
   Cell,
-  CellProps,
   Collection,
-  ColumnProps,
   Row,
-  RowProps,
-  TableHeaderProps,
-  TableProps,
   useTableOptions,
+  type CellProps,
+  type ColumnProps,
+  type RowProps,
+  type TableHeaderProps,
+  type TableProps,
 } from "react-aria-components";
 
 import { Button } from "@/components/base/button";

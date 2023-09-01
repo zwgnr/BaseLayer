@@ -1,9 +1,9 @@
 import {
   Button as AriaButton,
-  ButtonProps as AriaButtonProps,
+  type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 
-import { VariantProps, tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
   base: "inline-flex appearance-none items-center justify-center rounded-md font-medium outline-none ring-focus ring-offset-2 ring-offset-surface transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[pressed]:scale-[.97] data-[hovered]:bg-primary/70 data-[focus-visible]:ring-2",

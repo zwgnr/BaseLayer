@@ -2,12 +2,12 @@ import { Button } from "@/components/base/button";
 import {
   Label as AriaLabel,
   Tag as AriaTag,
-  TagGroupProps as AriaTagGroupProps,
-  TagProps as AriaTagProps,
   TagGroup,
   TagList,
-  TagListProps,
   Text,
+  type TagGroupProps as AriaTagGroupProps,
+  type TagProps as AriaTagProps,
+  type TagListProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 

@@ -1,13 +1,13 @@
 import { Check } from "lucide-react";
 
-import { ElementRef, forwardRef } from "react";
+import { forwardRef, type ElementRef } from "react";
 
 import {
-  CheckboxProps as AriaCheckBoxProps,
   Checkbox as AriaCheckbox,
+  type CheckboxProps as AriaCheckBoxProps,
 } from "react-aria-components";
 
-import { VariantProps, tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const checkbox = tv({
   slots: {

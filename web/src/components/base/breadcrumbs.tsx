@@ -1,10 +1,10 @@
 import {
   Breadcrumbs as AriaBreadcrumbs,
   Item,
-  ItemProps,
   Link,
-  LinkProps,
   type BreadcrumbsProps as AriaBreadcrumbsProps,
+  type ItemProps,
+  type LinkProps,
 } from "react-aria-components";
 
 import { tv } from "tailwind-variants";

@@ -3,10 +3,10 @@ import {
   SliderThumb as AriaSliderThumb,
   SliderTrack as AriaSliderTrack,
   Label,
-  LabelProps,
   SliderOutput,
-  SliderProps,
-  SliderThumbProps,
+  type LabelProps,
+  type SliderProps,
+  type SliderThumbProps,
 } from "react-aria-components";
 
 import { tv } from "tailwind-variants";

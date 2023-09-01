@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import { tv, VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const badge = tv({
   base: "flex items-center justify-center rounded-md",

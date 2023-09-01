@@ -1,10 +1,10 @@
 import {
   Dialog as AriaDialogContent,
   DialogTrigger as AriaDialogTrigger,
-  DialogProps,
   Modal,
   ModalOverlay,
-  ModalOverlayProps,
+  type DialogProps,
+  type ModalOverlayProps,
 } from "react-aria-components";
 
 import { tv } from "tailwind-variants";

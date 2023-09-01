@@ -6,10 +6,10 @@ import {
   MenuTrigger as AriaMenuTrigger,
   Section as AriaSection,
   Item,
-  ItemProps,
   Popover,
-  PopoverProps,
   Separator,
+  type ItemProps,
+  type PopoverProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 

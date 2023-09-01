@@ -5,12 +5,12 @@ import {
   Button,
   DateInput,
   DateSegment,
-  DateValue,
   Dialog,
   Group,
   Label,
   Popover,
   Text,
+  type DateValue,
 } from "react-aria-components";
 
 import { Calendar } from "@/components/base/calendar";

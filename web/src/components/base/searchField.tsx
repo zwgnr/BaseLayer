@@ -9,7 +9,7 @@ import {
   Text,
 } from "react-aria-components";
 
-import { VariantProps, tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const searchField = tv({
   slots: {

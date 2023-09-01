@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 
 import {
   Switch as AriaSwitch,
-  SwitchProps as AriaSwitchProps,
   Label,
+  type SwitchProps as AriaSwitchProps,
 } from "react-aria-components";
 
 import { tv, type VariantProps } from "tailwind-variants";
