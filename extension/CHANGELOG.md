@@ -2,6 +2,10 @@
 
 All notable changes to the "BaseLayer" extension will be documented in this file.
 
+## [v0.1.3]
+
+- Fix type import syntax and other misc linting issues.
+
 ## [v0.1.2]
 
 - Fix Calendars padding issues
