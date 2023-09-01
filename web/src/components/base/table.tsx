@@ -80,11 +80,11 @@ const Column = ({
 
 const TableHeader = <T extends object>({
   children,
-  className,
   columns,
   ...props
 }: TableHeaderProps<T> & { className?: string }) => {
-  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
+  const { selectionBehavior, selectionMode, allowsDragging } =
+    useTableOptions();
   return (
     <AriaTableheader {...props} className={header()}>
       {/* Add extra columns for drag and drop and selection. */}
@@ -101,12 +101,11 @@ const TableHeader = <T extends object>({
 
 const TableRow = <T extends object>({
   children,
-  className,
   columns,
   id,
   ...props
 }: RowProps<T> & { className?: string }) => {
-  let { selectionBehavior, allowsDragging } = useTableOptions();
+  const { selectionBehavior, allowsDragging } = useTableOptions();
   return (
     <Row id={id} {...props} className={row()}>
       {allowsDragging && (

@@ -16,12 +16,12 @@ interface Invoice {
 }
 
 export function TableSortable() {
-  let list = useAsyncList<Invoice>({
+  const list = useAsyncList<Invoice>({
     async load({ signal }) {
-      let res = await fetch(`https://dummyjson.com/products?limit=10`, {
+      const res = await fetch(`https://dummyjson.com/products?limit=10`, {
         signal,
       });
-      let json = await res.json();
+      const json = await res.json();
       return {
         items: json.products,
       };
@@ -32,8 +32,8 @@ export function TableSortable() {
           if (!sortDescriptor.column) {
             return 0;
           }
-          let first = a[sortDescriptor.column];
-          let second = b[sortDescriptor.column];
+          const first = a[sortDescriptor.column];
+          const second = b[sortDescriptor.column];
           let cmp =
             (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
           if (sortDescriptor.direction === "descending") {

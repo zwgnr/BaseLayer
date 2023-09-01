@@ -48,7 +48,6 @@ export const DatePicker = <T extends DateValue>({
   label,
   description,
   error,
-  children,
   ...props
 }: DatePickerProps<T>) => (
   <AriaDatePicker className={className} {...props}>

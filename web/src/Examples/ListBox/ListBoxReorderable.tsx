@@ -3,7 +3,7 @@ import { useDragAndDrop } from "react-aria-components";
 import { useListData } from "react-stately";
 
 export const ListBoxReorderable = () => {
-  let list = useListData({
+  const list = useListData({
     initialItems: [
       { id: 1, name: "Adobe Photoshop" },
       { id: 2, name: "Adobe XD" },
@@ -13,7 +13,7 @@ export const ListBoxReorderable = () => {
     ],
   });
 
-  let { dragAndDropHooks } = useDragAndDrop({
+  const { dragAndDropHooks } = useDragAndDrop({
     getItems: (keys) =>
       [...keys].map((key) => ({ "text/plain": list.getItem(key).name })),
     onReorder(e) {
@@ -32,7 +32,7 @@ export const ListBoxReorderable = () => {
       items={list.items}
       dragAndDropHooks={dragAndDropHooks}
     >
-      {(item: any) => <ListBoxItem>{item.name}</ListBoxItem>}
+      {(item) => <ListBoxItem>{item.name}</ListBoxItem>}
     </ListBox>
   );
 };

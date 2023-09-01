@@ -37,7 +37,7 @@ interface RangeCalendarCalendarProps<T extends DateValue>
 }
 
 export const RangeCalendar = (props: RangeCalendarCalendarProps<DateValue>) => {
-  const { className, error, children, ...restProps } = props;
+  const { className, error, ...restProps } = props;
   return (
     <AriaRangeCalendar {...restProps} className={root({ className })}>
       <header className={header()}>

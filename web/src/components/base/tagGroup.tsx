@@ -68,7 +68,7 @@ const Tag = ({
   className,
   ...props
 }: AriaTagProps & { className?: string }) => {
-  let textValue = typeof children === "string" ? children : undefined;
+  const textValue = typeof children === "string" ? children : undefined;
   return (
     <AriaTag className={tag({ className })} textValue={textValue} {...props}>
       {({ allowsRemoving }) => (

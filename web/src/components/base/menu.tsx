@@ -60,7 +60,6 @@ const MenuHeader = ({
 );
 
 const MenuSeperator = ({
-  children,
   className,
   ...props
 }: HTMLAttributes<HTMLElement> & { className?: string }) => (

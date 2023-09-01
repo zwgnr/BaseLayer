@@ -48,7 +48,9 @@ module.exports = {
         tsconfigRootDir: __dirname,
         project: ['./web/tsconfig.json'],
       },
-      rules: {},
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+      },
     },
     {
       files: ['*.astro'],

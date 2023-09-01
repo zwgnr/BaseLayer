@@ -34,7 +34,6 @@ const SliderRoot = ({
 );
 
 const SliderThumb = ({
-  children,
   className,
   ...props
 }: SliderThumbProps & { className?: string }) => (
@@ -45,7 +44,6 @@ const SliderThumb = ({
 
 const SliderLabel = ({
   children,
-  className,
   ...props
 }: LabelProps & { className?: string }) => (
   <div className="col-span-2 my-4 flex w-full justify-between">
