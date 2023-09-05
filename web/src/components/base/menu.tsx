@@ -29,7 +29,7 @@ const { menuPopover, content, header, item, separator } = menu();
 const MenuTrigger = AriaMenuTrigger;
 const Section = AriaSection;
 
-const MenuConent = ({
+const MenuContent = ({
   children,
   className,
   ...props
@@ -67,7 +67,7 @@ const MenuSeperator = ({
 );
 
 export {
-  MenuConent,
+  MenuContent,
   MenuHeader,
   MenuItem,
   MenuSeperator,
