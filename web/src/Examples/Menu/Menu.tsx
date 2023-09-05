@@ -1,7 +1,7 @@
 import { Button } from "@/components/base/button";
 
 import {
-  MenuConent,
+  MenuContent,
   MenuHeader,
   MenuItem,
   MenuSeperator,
@@ -28,7 +28,7 @@ export const Menu = () => {
       >
         Me
       </Button>
-      <MenuConent>
+      <MenuContent>
         <Section>
           <MenuHeader className="text-fg-4">me@hello.com</MenuHeader>
         </Section>
@@ -58,7 +58,7 @@ export const Menu = () => {
           Logout
           <LogOut />
         </MenuItem>
-      </MenuConent>
+      </MenuContent>
     </MenuTrigger>
   );
 };
