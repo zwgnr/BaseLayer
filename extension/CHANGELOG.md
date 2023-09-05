@@ -2,6 +2,12 @@
 
 All notable changes to the "BaseLayer" extension will be documented in this file.
 
+## [v0.1.4]
+
+- Fix Menu Content Typo
+- Fix Menu Content type and props
+- Add several missing components to extension 
+
 ## [v0.1.3]
 
 - Fix type import syntax and other misc linting issues.
