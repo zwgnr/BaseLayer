@@ -9,7 +9,7 @@ import {
   Popover,
   Separator,
   type ItemProps,
-  type PopoverProps,
+  type MenuProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
@@ -29,13 +29,15 @@ const { menuPopover, content, header, item, separator } = menu();
 const MenuTrigger = AriaMenuTrigger;
 const Section = AriaSection;
 
-const MenuContent = ({
+const MenuContent = <T extends object>({
   children,
   className,
   ...props
-}: PopoverProps & { className?: string }) => (
+}: MenuProps<T> & { className?: string }) => (
   <Popover isNonModal {...props} className={menuPopover()}>
-    <AriaMenu className={content({ className })}>{children}</AriaMenu>
+    <AriaMenu {...props} className={content({ className })}>
+      {children}
+    </AriaMenu>
   </Popover>
 );
 
