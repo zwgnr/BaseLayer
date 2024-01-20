@@ -1,8 +1,9 @@
 import type { APIRoute } from "astro";
-import { examples } from '../../templates/examples'
+import { examples } from "../../templates/examples";
 
-export const get: APIRoute = () => {
-  return {
-    body: JSON.stringify(examples),
-  };
-};
+export const GET: APIRoute = async () =>
+  new Response(
+    JSON.stringify({
+      body: examples,
+    })
+  );

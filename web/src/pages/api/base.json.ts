@@ -154,8 +154,9 @@ const components: Component[] = [
   }
 ];
 
-export const get: APIRoute = () => {
-  return {
-    body: JSON.stringify(components),
-  };
-};
+export const GET: APIRoute = async () =>
+  new Response(
+    JSON.stringify({
+      body: components,
+    })
+  );

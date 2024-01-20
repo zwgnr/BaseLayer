@@ -1,8 +1,9 @@
-import type { APIRoute } from "astro";
 import { stylesPreset } from "@/templates/presets";
+import type { APIRoute } from "astro";
 
-export const get: APIRoute = () => {
-  return {
-    body: JSON.stringify(stylesPreset),
-  };
-};
+export const GET: APIRoute = async () =>
+  new Response(
+    JSON.stringify({
+      body: stylesPreset,
+    })
+  );
