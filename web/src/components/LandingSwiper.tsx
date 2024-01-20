@@ -10,10 +10,10 @@ import { TableReorderable } from "@/Examples/Table/TableReorderable";
 import {
   Carousel as ArkCarousel,
   CarouselControl,
-  CarouselNextSlideTrigger,
-  CarouselPrevSlideTrigger,
-  CarouselSlide,
-  CarouselSlideGroup,
+  CarouselNextTrigger,
+  CarouselPrevTrigger,
+  CarouselItem,
+  CarouselItemGroup,
   CarouselViewport,
 } from "@ark-ui/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -23,22 +23,22 @@ export default function LandingCarousel() {
   return (
     <ArkCarousel className="relative  flex h-full w-full items-center justify-center">
       <CarouselControl>
-        <CarouselPrevSlideTrigger className="absolute left-4 top-1/2 z-10 flex -translate-y-1/2">
+        <CarouselPrevTrigger className="absolute left-4 top-1/2 z-10 flex -translate-y-1/2">
           <ChevronLeft className="h-12 w-12 text-fg-5" />
-        </CarouselPrevSlideTrigger>
-        <CarouselNextSlideTrigger className="absolute right-4 top-1/2 z-10 flex -translate-y-1/2">
+        </CarouselPrevTrigger>
+        <CarouselNextTrigger className="absolute right-4 top-1/2 z-10 flex -translate-y-1/2">
           <ChevronRight className="h-12 w-12 text-fg-5" />
-        </CarouselNextSlideTrigger>
+        </CarouselNextTrigger>
       </CarouselControl>
       <CarouselViewport className="relative overflow-x-hidden">
-        <CarouselSlideGroup>
-          <CarouselSlide
+        <CarouselItemGroup>
+          <CarouselItem
             className="z-50 flex items-center justify-center p-12"
             index={1}
           >
             <Calendar />
-          </CarouselSlide>
-          <CarouselSlide
+          </CarouselItem>
+          <CarouselItem
             className="z-50 flex items-center justify-center p-12"
             index={2}
           >
@@ -46,8 +46,8 @@ export default function LandingCarousel() {
               {" "}
               <TableReorderable />
             </div>
-          </CarouselSlide>
-          <CarouselSlide
+          </CarouselItem>
+          <CarouselItem
             className="z-50 flex flex-col items-center justify-center gap-8 p-12"
             index={3}
           >
@@ -56,8 +56,8 @@ export default function LandingCarousel() {
             </div>
             <ComboBoxExample />
             <MeterExample />
-          </CarouselSlide>
-          <CarouselSlide
+          </CarouselItem>
+          <CarouselItem
             className="z-50 flex flex-col items-center justify-center gap-8 p-12"
             index={4}
           >
@@ -69,8 +69,8 @@ export default function LandingCarousel() {
               <RadioGroupExample />
               <Slider />
             </div>
-          </CarouselSlide>
-        </CarouselSlideGroup>
+          </CarouselItem>
+        </CarouselItemGroup>
       </CarouselViewport>
     </ArkCarousel>
   );
