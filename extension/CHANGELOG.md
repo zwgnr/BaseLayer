@@ -2,6 +2,10 @@
 
 All notable changes to the "BaseLayer" extension will be documented in this file.
 
+## [v0.1.5]
+
+- Upgrade components to RAC 1.0
+
 ## [v0.1.4]
 
 - Fix Menu Content Typo
