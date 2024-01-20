@@ -34,11 +34,11 @@ import {
   Menu as AriaMenu,
   MenuTrigger as AriaMenuTrigger,
   Section as AriaSection,
-  Item,
-  ItemProps,
+  MenuItem as AriaMenuItem,
   Popover,
-  PopoverProps,
   Separator,
+  type MenuItemProps,
+  type MenuProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
@@ -58,13 +58,15 @@ const { menuPopover, content, header, item, separator } = menu();
 const MenuTrigger = AriaMenuTrigger;
 const Section = AriaSection;
 
-const MenuConent = ({
+const MenuContent = <T extends object>({
   children,
   className,
   ...props
-}: PopoverProps & { className?: string }) => (
+}: MenuProps<T> & { className?: string }) => (
   <Popover isNonModal {...props} className={menuPopover()}>
-    <AriaMenu className={content({ className })}>{children}</AriaMenu>
+    <AriaMenu {...props} className={content({ className })}>
+      {children}
+    </AriaMenu>
   </Popover>
 );
 
@@ -72,10 +74,10 @@ const MenuItem = ({
   children,
   className,
   ...props
-}: ItemProps & { className?: string }) => (
-  <Item {...props} className={item({ className })}>
+}: MenuItemProps & { className?: string }) => (
+  <AriaMenuItem {...props} className={item({ className })}>
     {children}
-  </Item>
+  </AriaMenuItem>
 );
 
 const MenuHeader = ({
@@ -89,7 +91,6 @@ const MenuHeader = ({
 );
 
 const MenuSeperator = ({
-  children,
   className,
   ...props
 }: HTMLAttributes<HTMLElement> & { className?: string }) => (
@@ -97,7 +98,7 @@ const MenuSeperator = ({
 );
 
 export {
-  MenuConent,
+  MenuContent,
   MenuHeader,
   MenuItem,
   MenuSeperator,

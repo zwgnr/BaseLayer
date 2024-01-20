@@ -1,12 +1,12 @@
 import type {
   SelectProps as AriaSelectProps,
-  ItemProps,
+  ListBoxItemProps,
 } from "react-aria-components";
 
 import {
   Select as AriaSelect,
   Button,
-  Item,
+  ListBoxItem,
   Label,
   ListBox,
   Popover,
@@ -61,8 +61,8 @@ const Select = <T extends object>({
   </AriaSelect>
 );
 
-const SelectItem = (props: ItemProps) => {
-  return <Item {...props} className={item()} />;
+const SelectItem = (props: ListBoxItemProps) => {
+  return <ListBoxItem {...props} className={item()} />;
 };
 
 export { Select, SelectItem };

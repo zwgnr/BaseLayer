@@ -2,8 +2,8 @@ import { Menu } from "lucide-react";
 
 import {
   ListBox as AriaListBox,
-  Item,
-  type ItemProps,
+  ListBoxItem as AriaListBoxItem,
+  type ListBoxItemProps,
   type ListBoxProps,
 } from "react-aria-components";
 
@@ -32,11 +32,11 @@ const ListBoxItem = <T extends object>({
   children,
   className,
   ...props
-}: ItemProps<T> & { className?: string }) => {
+}: ListBoxItemProps<T> & { className?: string }) => {
   const textValue = typeof children === "string" ? children : undefined;
 
   return (
-    <Item textValue={textValue} {...props} className={item({ className })}>
+    <AriaListBoxItem textValue={textValue} {...props} className={item({ className })}>
       {({ allowsDragging, isSelected }) => (
         <div className="flex items-center gap-2">
           <>
@@ -53,7 +53,7 @@ const ListBoxItem = <T extends object>({
           </>
         </div>
       )}
-    </Item>
+    </AriaListBoxItem>
   );
 };
 
