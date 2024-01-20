@@ -1,9 +1,9 @@
 import {
   Breadcrumbs as AriaBreadcrumbs,
-  Item,
+  Breadcrumb,
   Link,
   type BreadcrumbsProps as AriaBreadcrumbsProps,
-  type ItemProps,
+  type BreadcrumbProps,
   type LinkProps,
 } from "react-aria-components";
 
@@ -11,7 +11,7 @@ import { tv } from "tailwind-variants";
 
 const breadcrumbs = tv({
   slots: {
-    root: "[&>ol]:font-md [&>ol]:m-0 [&>ol]:flex [&>ol]:list-none [&>ol]:items-center [&>ol]:gap-2 [&>ol]:p-0",
+    root: "font-md m-0 flex list-none items-center gap-2 p-0",
     link: "relative cursor-pointer rounded-md text-fg-5 outline-none ring-focus data-[hovered]:underline data-[focus-visible]:ring-2 [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg",
     item: "flex items-center gap-2",
   },
@@ -47,10 +47,10 @@ const BreadCrumbsItem = ({
   children,
   className,
   ...props
-}: ItemProps & { className?: string }) => (
-  <Item className={item({ className })} {...props}>
+}: BreadcrumbProps & { className?: string }) => (
+  <Breadcrumb className={item({ className })} {...props}>
     {children}
-  </Item>
+  </Breadcrumb>
 );
 
 BreadCrumbsItem.displayName = "BreadCrumbsItem";

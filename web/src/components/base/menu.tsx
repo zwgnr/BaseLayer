@@ -5,10 +5,10 @@ import {
   Menu as AriaMenu,
   MenuTrigger as AriaMenuTrigger,
   Section as AriaSection,
-  Item,
+  MenuItem as AriaMenuItem,
   Popover,
   Separator,
-  type ItemProps,
+  type MenuItemProps,
   type MenuProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
@@ -45,10 +45,10 @@ const MenuItem = ({
   children,
   className,
   ...props
-}: ItemProps & { className?: string }) => (
-  <Item {...props} className={item({ className })}>
+}: MenuItemProps & { className?: string }) => (
+  <AriaMenuItem {...props} className={item({ className })}>
     {children}
-  </Item>
+  </AriaMenuItem>
 );
 
 const MenuHeader = ({

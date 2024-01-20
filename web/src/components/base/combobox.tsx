@@ -1,13 +1,13 @@
 import type {
   ComboBoxProps as AriaComboBoxProps,
-  ItemProps,
+  ListBoxItemProps,
 } from "react-aria-components";
 
 import {
   ComboBox as AriaComboBox,
   Button,
   Input,
-  Item,
+  ListBoxItem,
   Label,
   ListBox,
   Popover,
@@ -67,8 +67,8 @@ const ComboBox = <T extends object>({
 
 ComboBox.displayName = "ComboBox";
 
-const ComboBoxItem = (props: ItemProps) => (
-  <Item {...props} className={item()} />
+const ComboBoxItem = (props: ListBoxItemProps) => (
+  <ListBoxItem {...props} className={item()} />
 );
 
 ComboBoxItem.displayName = "ComboBoxItem";
