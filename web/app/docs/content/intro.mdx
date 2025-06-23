@@ -1,0 +1,59 @@
+---
+title: Intro
+description: BaseLayer is a distribution system for React components. It provides a registry and MCP server for AI-assisted development. Built with React Aria Components TailwindCSS, and tailwind-variants it provides beautiful, accessible components that AI coding assistants can discover and install directly into your projects.
+---
+
+## Key Features
+
+- **AI-First Design** - Built-in MCP server for seamless AI assistant integration
+- **Accessible by default** - Built on React Aria Components
+- **Own your components** - Components you own and control, not a dependency
+- **Component Registry** - Searchable catalog with metadata and versioning
+- **Modern Stack** - React Aria Components + TailwindCSS + tailwind-variants + TypeScript
+- **MCP Server** - Model Context Protocol server for AI-assisted development
+
+## Getting Started
+
+There are two main interaction methods to use for BaseLayer. Each one allows the LLM to: 
+  - Search and discover components by name, category, or functionality
+  - Get component installation code and instructions
+  - Access component metadata and documentation
+
+1. MCP server in an editor like Cursor.
+2. Via chatbots like ChatGPT or Claude. llms.txt and .well-known endpoints are available.
+
+#### MCP Server
+
+To use BaseLayer with an AI assistant, the assistant needs to connect to our MCP server. Once connected, you can ask your AI assistant to:
+
+```
+"setup BaseLayer"
+"install the BaseLayer button component"  
+"show me all form components"
+```
+
+It's that simple.
+
+#### Chatbots
+
+To use BaseLayer with a chatbot, you can use the llms.txt and .well-known endpoints.
+
+```
+"build me a sign in page using BaseLayer, 
+you can find out everything you need to know about BaseLayer from the docs 
+at https://www.baselayer.dev/llms.txt"
+```
+
+## Pro tips
+
+It may be a good idea to add a custom cusor rule to say something like:
+
+```
+"always use BaseLayer components"
+```
+
+This will help the AI assistant consistently use BaseLayer components in your project.
+
+## Manual Installation
+
+While we recommend using an AI assistant, you can also manually install BaseLayer components. The source for all components is available under the source tab for each component. 

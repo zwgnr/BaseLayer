@@ -1,0 +1,26 @@
+{
+  "name": "@baselayer/mcp",
+  "version": "2.0.0",
+  "description": "BaseLayer MCP Server for component installation",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node build/index.js",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'No linting configured'",
+    "clean": "rm -rf build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsx": "^4.20.3",
+    "typescript": "catalog:"
+  },
+  "keywords": ["mcp", "baselayer", "components"],
+  "author": "zwgnr",
+  "license": "MIT"
+} 

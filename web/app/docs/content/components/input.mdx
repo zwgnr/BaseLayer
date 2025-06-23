@@ -1,0 +1,43 @@
+---
+title: Input
+description: Allows a user to enter a plain text value with a keyboard.
+featured: false
+component: true
+---
+
+import { Button, Input } from "@baselayer/components";
+
+<RACLink href="https://react-spectrum.adobe.com/react-aria/TextField.html">
+  RAC Docs
+</RACLink>
+
+<ComponentPreview
+  name="input-demo"
+  sourceName="input"
+  description="Basic input component"
+>
+  <div className="flex gap-2 items-center justify-center">
+    <Input aria-label="Name" placeholder="Enter your name" />
+    <Button>Submit</Button>
+  </div>
+</ComponentPreview>
+
+## Label
+
+<ComponentPreview
+  name="input-label"
+  exampleSource='<Input label="Name" />'
+  description="Input with label"
+>
+  <Input label="Name" />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview
+  name="input-disabled"
+  exampleSource='<Input label="Name" isDisabled />'
+  description="Disabled input component"
+>
+  <Input label="Name" isDisabled />
+</ComponentPreview>
