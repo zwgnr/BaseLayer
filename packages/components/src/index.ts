@@ -1,6 +1,8 @@
 // Components
 export { Button } from './button/button';
 export { Input } from './input/input';
+export { Badge } from './badge/badge';
+export { ComboBox, ComboBoxItem } from './combobox/combobox';
 
 // Registry
 export {

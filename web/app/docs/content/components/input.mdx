@@ -17,8 +17,7 @@ import { Button, Input } from "@baselayer/components";
   description="Basic input component"
 >
   <div className="flex gap-2 items-center justify-center">
-    <Input aria-label="Name" placeholder="Enter your name" />
-    <Button>Submit</Button>
+    <Input aria-label="email" placeholder="Enter your email" />
   </div>
 </ComponentPreview>
 
@@ -26,18 +25,18 @@ import { Button, Input } from "@baselayer/components";
 
 <ComponentPreview
   name="input-label"
-  exampleSource='<Input label="Name" />'
+  exampleSource='<Input label="Email" placeholder="example@email.com" />'
   description="Input with label"
 >
-  <Input label="Name" />
+  <Input label="Email" placeholder="example@email.com" />
 </ComponentPreview>
 
 ## Disabled
 
 <ComponentPreview
   name="input-disabled"
-  exampleSource='<Input label="Name" isDisabled />'
-  description="Disabled input component"
+  exampleSource='<Input label="Email" placeholder="example@email.com" isDisabled />'
+  description="Input with disabled state"
 >
-  <Input label="Name" isDisabled />
+  <Input label="Email" placeholder="example@email.com" isDisabled />
 </ComponentPreview>

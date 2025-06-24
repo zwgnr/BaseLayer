@@ -4,9 +4,52 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-23T21:51:06.243Z",
+  "generatedAt": "2025-06-24T04:13:39.743Z",
   "version": "2.0.0",
   "components": [
+    {
+      "id": "badge",
+      "displayName": "Badge",
+      "path": "src/badge/badge.tsx",
+      "template": "/api/templates/badge.tsx",
+      "imports": [
+        "react",
+        "tailwind-variants"
+      ],
+      "meta": {
+        "category": "display",
+        "status": "stable",
+        "description": "A badge is a small label that can be used to display information or status.",
+        "tags": [
+          "status"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "591d9e9e098bf8f204f2c8979bd7460c57ee107685d53210849412eedc2e055e"
+    },
+    {
+      "id": "combo-box",
+      "displayName": "ComboBox",
+      "path": "src/combobox/combobox.tsx",
+      "template": "/api/templates/combo-box.tsx",
+      "imports": [
+        "react",
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react"
+      ],
+      "meta": {
+        "category": "forms",
+        "status": "stable",
+        "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "024518df947ddb6246d0396fed0944288f878632973fc69f58207c1f2b24e9a9"
+    },
     {
       "id": "button",
       "displayName": "Button",
@@ -26,7 +69,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "bbc30c844373c1824b18fa146f7b0cb0aa221fc631df7bf7413f65b6403997b6"
+      "sha256": "d2f05daf4ade8438e08e71607a0ba776c84c1ff04973ee5ec0d11fd37a72f290"
     },
     {
       "id": "input",
@@ -34,7 +77,8 @@ const manifest: ComponentManifest = {
       "path": "src/input/input.tsx",
       "template": "/api/templates/input.tsx",
       "imports": [
-        "react-aria-components"
+        "react-aria-components",
+        "tailwind-variants"
       ],
       "meta": {
         "category": "forms",
@@ -46,7 +90,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "6940c8a24b62656728b397402804b2611c5e7498e280b31710e6bb65ded7c9a8"
+      "sha256": "5cc9bd964a54174e97ae4b2c42225b26d931baa056ae0df0ed59eaa4d0b83538"
     }
   ]
 };

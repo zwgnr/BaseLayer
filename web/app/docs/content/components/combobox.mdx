@@ -1,0 +1,60 @@
+---
+title: Combobox
+description: A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.
+featured: false
+component: true
+---
+
+import { ComboBox, ComboBoxItem } from "@baselayer/components";
+
+<RACLink href="https://react-spectrum.adobe.com/react-aria/ComboBox.html">
+  RAC Docs
+</RACLink>
+
+<ComponentPreview
+  name="combobox-demo"
+  sourceName="combobox"
+  description="Basic combobox component"
+>
+  <div className="flex gap-2 items-center justify-center w-64">
+    <ComboBox label="Select a Model">
+      <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
+      <ComboBoxItem textValue="Gemini">Gemini</ComboBoxItem>
+      <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
+    </ComboBox>
+  </div>
+</ComponentPreview>
+
+## Menu trigger behavior
+
+<ComponentPreview
+  name="combobox-demo"
+  sourceName="combobox"
+  description="Basic combobox component"
+>
+  <div className="flex gap-2 items-center justify-center w-64">
+    <ComboBox label="Select a Model" menuTrigger="input">
+      <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
+      <ComboBoxItem textValue="Gemini">Gemini</ComboBoxItem>
+      <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
+    </ComboBox>
+  </div>
+</ComponentPreview>
+
+## Disabled Options
+
+
+<ComponentPreview
+  name="combobox-demo"
+  sourceName="combobox"
+  description="Basic combobox component"
+>
+  <div className="flex gap-2 items-center justify-center w-64">
+    <ComboBox label="Select a Model">
+      <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
+      <ComboBoxItem isDisabled textValue="Gemini">Gemini</ComboBoxItem>
+      <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
+    </ComboBox>
+  </div>
+</ComponentPreview>
+

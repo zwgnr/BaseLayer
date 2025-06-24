@@ -14,6 +14,7 @@
     "generate:manifest": "tsx scripts/gen-manifest.ts"
   },
   "dependencies": {
+    "lucide-react": "^0.522.0",
     "react": "^19.1.0",
     "react-aria-components": "catalog:",
     "tailwind-variants": "catalog:"
@@ -21,10 +22,10 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "@types/react": "^19.1.8",
-    "@typescript-eslint/parser": "^8.34.1",
     "fast-glob": "^3.3.2",
     "ts-morph": "^26.0.0",
     "tsx": "^4.20.3",
+    "tw-animate-css": "^1.3.4",
     "typescript": "catalog:"
   },
   "peerDependencies": {
