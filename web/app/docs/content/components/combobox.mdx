@@ -30,6 +30,11 @@ import { ComboBox, ComboBoxItem } from "@baselayer/components";
 <ComponentPreview
   name="combobox-demo"
   sourceName="combobox"
+  exampleSource={`<ComboBox label="Select a Model" menuTrigger="input">
+  <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
+  <ComboBoxItem textValue="Gemini">Gemini</ComboBoxItem>
+  <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
+</ComboBox>`}
   description="Basic combobox component"
 >
   <div className="flex gap-2 items-center justify-center w-64">
@@ -46,7 +51,11 @@ import { ComboBox, ComboBoxItem } from "@baselayer/components";
 
 <ComponentPreview
   name="combobox-demo"
-  sourceName="combobox"
+  exampleSource={`<ComboBox label="Select a Model">
+  <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
+  <ComboBoxItem isDisabled textValue="Gemini">Gemini</ComboBoxItem>
+  <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
+</ComboBox>`}
   description="Basic combobox component"
 >
   <div className="flex gap-2 items-center justify-center w-64">

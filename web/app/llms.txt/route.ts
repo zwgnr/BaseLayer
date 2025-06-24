@@ -1,42 +1,115 @@
-import { COMPONENTS as components } from '@baselayer/components';
+import { COMPONENTS as components } from "@baselayer/components";
 
 export async function GET() {
-  const content = `# BaseLayer Components
+	const content = `# BaseLayer Components v2.0
 
-BaseLayer is a component system for the AI era. Built with React Aria Components and TailwindCSS.
+BaseLayer is a modern React component registry for the AI era. Built with React Aria Components, TailwindCSS, and tailwind-variants.
+
+## Important: BaseLayer is NOT an npm package
+
+BaseLayer is a component registry, not a package dependency. You don't install BaseLayer itself - instead, you fetch individual component source code and copy it into your project.
 
 ## Available Components
 
-${components.map(comp => `- ${comp.displayName}: ${comp.meta.description}`).join('\n')}
+${components.map((comp) => `- **${comp.displayName}** (${comp.meta.category}): ${comp.meta.description}`).join("\n")}
 
 ## Categories
 
-${[...new Set(components.map(c => c.meta.category))].map(cat =>
-  `- ${cat}: ${components.filter(c => c.meta.category === cat).map(c => c.displayName).join(', ')}`
-).join('\n')}
+${[...new Set(components.map((c) => c.meta.category))]
+		.map(
+			(cat) =>
+				`- **${cat}**: ${components
+					.filter((c) => c.meta.category === cat)
+					.map((c) => c.displayName)
+					.join(", ")}`,
+		)
+		.join("\n")}
 
-## Usage
+## How to Use BaseLayer Components
 
-Use the BaseLayer VSCode extension to add components to your project:
+### For AI Assistants: Use the API Endpoints
 
+To get component source code, make HTTP requests to these endpoints:
+
+**Get component source code:**
 \`\`\`bash
-# Open Command Palette (Ctrl+Shift+P / Cmd+Shift+P)
-BaseLayer: init
-BaseLayer: add button
+curl https://baselayer.dev/api/components/button/template
 \`\`\`
 
-Each component is:
-- Accessible by default (React Aria Components)
-- Fully customizable
-- Theme-aware
-- TypeScript ready
+**Get installation instructions:**
+\`\`\`bash
+curl https://baselayer.dev/api/components/button/install
+\`\`\`
 
-For more information, visit https://baselayer.dev
+**List all components:**
+\`\`\`bash
+curl https://baselayer.dev/api/manifest
+\`\`\`
+
+**Search components:**
+\`\`\`bash
+curl https://baselayer.dev/.well-known/baselayer
+\`\`\`
+
+### For Users: MCP Server Available
+
+BaseLayer also provides an MCP server for editor integration. Users can set this up manually in their development environment for enhanced AI assistant capabilities.
+
+### Manual Copy (Fallback)
+
+1. Visit https://baselayer.dev/docs
+2. Browse components 
+3. Copy the source code from the component page
+4. Paste into your project
+
+## Example Workflow for AI Assistants
+
+Instead of \`npm install baselayer\`, do this:
+
+1. **Get component code**:
+   \`\`\`bash
+   curl https://baselayer.dev/api/components/button/template
+   \`\`\`
+   This returns the actual React component source code.
+
+2. **Get installation instructions** (if needed):
+   \`\`\`bash
+   curl https://baselayer.dev/api/components/button/install
+   \`\`\`
+   This returns setup instructions and dependencies.
+
+3. **Save to user's project**:
+   Save the returned code to \`components/ui/button.tsx\` (or similar path).
+
+4. **Install dependencies** (if needed):
+   \`\`\`bash
+   npm install react-aria-components tailwind-variants
+   \`\`\`
+
+## Component Architecture
+
+- **Framework**: Next.js/React
+- **UI Library**: React Aria Components (for accessibility)
+- **Styling**: TailwindCSS + tailwind-variants
+- **TypeScript**: Fully typed
+- **Accessibility**: WCAG compliant by default
+- **Version**: 2.0.0
+
+## Available API Endpoints
+
+- \`GET /api/manifest\` - List all components with metadata
+- \`GET /api/components/{id}/template\` - Get component source code
+- \`GET /api/components/{id}/install\` - Get installation instructions
+- \`GET /.well-known/baselayer\` - Complete API specification
+
+Remember: You own the components once you copy them - they're not dependencies!
+
+For complete documentation and component examples, visit https://baselayer.dev/docs
 `;
 
-  return new Response(content, {
-    headers: {
-      'Content-Type': 'text/plain',
-    },
-  });
-} 
+	return new Response(content, {
+		headers: {
+			"Content-Type": "text/plain",
+		},
+	});
+}

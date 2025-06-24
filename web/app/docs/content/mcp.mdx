@@ -1,0 +1,21 @@
+---
+title: MCP
+description: "BaseLayer provides an MCP server that can be used to discover and install components."
+---
+
+## Cursor Installation
+
+Go to "Cursor Settings > MCP", and click on "Add new global MCP server". Then, fill out this "baselayer" section in the mcp.json:
+
+<ComponentPreview exampleSource={`
+  "mcpServers": {
+    "baselayer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "baselayer@latest",
+        "mcp",
+        "start",
+      ]
+    }
+  }`} />

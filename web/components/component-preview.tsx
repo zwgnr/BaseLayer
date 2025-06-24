@@ -8,10 +8,21 @@ export const ComponentPreview = ({
 	children,
 	sourceCodeElement,
 }: {
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	sourceCodeElement?: React.ReactElement;
 }) => {
 	const [activeTab, setActiveTab] = useState<"preview" | "source">("preview");
+
+	// If no children and only sourceCodeElement, render just the source code
+	if (!children && sourceCodeElement) {
+		return (
+			<div className="overflow-hidden rounded-2xl border border-border">
+				<div className="overflow-hidden bg-[#eff1f5] p-6 text-sm dark:bg-[#303446] [&_code]:whitespace-pre-wrap [&_code]:break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
+					{sourceCodeElement}
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div>

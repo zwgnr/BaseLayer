@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import { COMPONENTS } from '@baselayer/components';
 
 export async function GET() {
@@ -10,18 +11,18 @@ export async function GET() {
     "type": "Service",
     "name": "BaseLayer Component System",
     "summary": "A component system for the AI era",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "generator": {
       "type": "Application",
       "name": "BaseLayer",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "url": baseUrl
     },
     "endpoints": {
-      "components": `${baseUrl}/api/components`,
+      "components": `${baseUrl}/api/manifest`,
       "component": `${baseUrl}/api/components/{name}`,
-      "template": `${baseUrl}/api/templates/{name}.tsx`,
-      "install": `${baseUrl}/api/install/{name}`,
+      "template": `${baseUrl}/api/components/{name}/template`,
+      "install": `${baseUrl}/api/components/{name}/install`,
       "llms": `${baseUrl}/llms.txt`
     },
     "components": components.reduce((acc, comp) => {
@@ -31,8 +32,8 @@ export async function GET() {
         description: comp.meta.description,
         endpoints: {
           spec: `${baseUrl}/api/components/${comp.id}`,
-          template: `${baseUrl}/api/templates/${comp.id}.tsx`,
-          install: `${baseUrl}/api/install/${comp.id}`
+          template: `${baseUrl}/api/components/${comp.id}/template`,
+          install: `${baseUrl}/api/components/${comp.id}/install`
         }
       };
       return acc;
@@ -63,7 +64,7 @@ export async function GET() {
       {
         "rel": "components",
         "type": "application/json", 
-        "href": `${baseUrl}/api/components`
+        "href": `${baseUrl}/api/manifest`
       },
       {
         "rel": "llms-txt",

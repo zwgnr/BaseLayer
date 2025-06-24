@@ -18,7 +18,7 @@ export const meta = {
 } as const;
 
 const input = tv({
-	base: "appearance-none rounded-xl bg-surface-2 px-3 py-1.5 font-semibold shadow-xs outline-none ring-primary transition-all disabled:bg-surface-disabled disabled:text-fg-disabled disabled:shadow-none data-[disabled]:cursor-not-allowed data-[focused]:border-transparent data-[focused]:ring-2 [&::placeholder]:text-sm",
+	base: "appearance-none rounded-xl bg-surface-2 px-3 py-1.5 font-semibold outline-none ring-primary transition-all disabled:bg-surface-disabled disabled:text-fg-disabled data-[disabled]:cursor-not-allowed data-[focused]:border-transparent data-[focused]:bg-surface data-[focused]:ring-2 [&::placeholder]:text-sm",
 });
 
 interface InputProps extends Omit<AriaTextFieldProps, "className"> {

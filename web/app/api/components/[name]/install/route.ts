@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { readFile, existsSync } from "fs";
-import { promisify } from "util";
-import { join } from "path";
+import { type NextRequest, NextResponse } from "next/server";
+
+import { existsSync, readFile } from "node:fs";
+import { join } from "node:path";
+import { promisify } from "node:util";
 
 const readFileAsync = promisify(readFile);
 

@@ -1,7 +1,8 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import { cx } from "@/lib/cx";
-import { type ReactNode } from "react";
 
 interface TocItem {
   depth: number;
@@ -36,9 +37,9 @@ export function TableOfContents({ toc, activeId }: TableOfContentsProps) {
   if (toc.length === 0) return null;
 
   return (
-    <aside className="w-64 h-[calc(100vh-73px)] sticky top-[73px] overflow-y-auto hidden lg:block">
+    <aside className="sticky top-[73px] hidden h-[calc(100vh-73px)] w-64 overflow-y-auto lg:block">
       <div className="p-6">
-        <h2 className="text-sm font-semibold text-fg-muted uppercase tracking-wide mb-4">
+        <h2 className="mb-4 font-semibold text-fg-muted text-sm uppercase tracking-wide">
           On This Page
         </h2>
 
@@ -74,7 +75,7 @@ export function TableOfContents({ toc, activeId }: TableOfContentsProps) {
                 href={item.url}
                 onClick={(e) => handleTocClick(item.url, e)}
                 className={cx(
-                  "block text-sm px-3 py-1 transition-all duration-200 text-fg-muted",
+                  "block px-3 py-1 text-fg-muted text-sm transition-all duration-200",
                   getIndentClass(item.depth),
                   isActive && "text-fg",
                   !isActive && "text-fg-muted hover:text-fg"

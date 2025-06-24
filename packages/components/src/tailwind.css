@@ -1,34 +1,33 @@
 :root {
   /* SURFACES (neutrals & elevation) */
-  --surface: #ffffff; /* app/page background */
-  --surface-1: #fafafa; /* card / raised 1 */
-  --surface-2: #f5f5f5; /* card / raised 2 */
-  --surface-overlay: #ffffff; /* modals, popovers */
+  --surface: oklch(98.5% 0 0); /* app/page background */
+  --surface-2: oklch(92% 0.004 286.32); /* card / raised 1 */
+  --surface-3: oklch(87% 0 0); /* card / raised 2 */
+  --surface-overlay: oklch(55.6% 0 0); /* modals, popovers */
+  --surface-disabled: oklch(87% 0 0); /* disabled state */
 
   /* CONTENT (foreground) */
   --fg: oklch(14.5% 0 0); /* primary reading text */
-  --fg-muted: oklch(70.8% 0 0); /* secondary text, captions */
+  --fg-muted: oklch(55.2% 0.016 285.938); /* secondary text, captions */
   --fg-inverse: #ffffff; /* text on dark / brand surfaces */
-  --fg-disabled: oklch(87% 0 0); /* explicit disabled state text */
+  --fg-disabled: oklch(70.5% 0.015 286.067); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
-  --border: #e5e5e5; /* generic 1px rules, inputs */
+  --border: oklch(92% 0.004 286.32); /* generic 1px rules, inputs */
   --focus: oklch(68.5% 0.169 237.323); /* focus ring / a11y outline */
 
   /* INTERACTIVE ROLES (paired bg / fg / border) */
   --primary: #000000;
   --primary-fg: #ffffff;
-  --primary-border: #000000;
 
-  --secondary: #f5f5f5;
-  --secondary-fg: #0a0a0a;
-  --secondary-border: #e5e5e5;
+  --secondary: oklch(87.1% 0.006 286.286);
+  --secondary-fg: #000000;
 
   /* STATUS / FUNCTIONAL */
   --positive: oklch(72.3% 0.219 149.579);
   --positive-fg: #0a0a0a;
   
-  --warning: oklch(90.5% 0.182 98.111)
+  --warning: oklch(90.5% 0.182 98.111);
   --warning-fg: #0a0a0a;
   
   --danger: oklch(63.7% 0.237 25.331);
@@ -37,29 +36,28 @@
 
 [data-theme='dark'] {
   /* SURFACES (neutrals & elevation) */
-  --surface: #000000; /* app/page background */
-  --surface-1: #0f172a; /* card / raised 1 */
-  --surface-2: #1e293b; /* card / raised 2 */
+  --surface: oklch(14.1% 0.005 285.823); /* app/page background */
+  --surface-2: oklch(27.4% 0.006 286.033); /* card / raised 1 */
+  --surface-3: oklch(37% 0.013 285.805); /* card / raised 2 */
   --surface-overlay: #0f172a; /* modals, popovers */
+  --surface-disabled: oklch(21% 0.006 285.885); /* disabled state */
 
   /* CONTENT (foreground) */
   --fg: #f8fafc; /* primary reading text */
-  --fg-muted: #94a3b8; /* secondary text, captions */
+  --fg-muted: oklch(55.2% 0.016 285.938); /* secondary text, captions */
   --fg-inverse: #0a0a0a; /* text on dark / brand surfaces */
-  --fg-disabled: #64748b; /* explicit disabled state text */
+  --fg-disabled: oklch(37% 0.013 285.805); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
-  --border: #1e293b; /* generic 1px rules, inputs */
+  --border: oklch(37% 0.013 285.805); /* generic 1px rules, inputs */
   --focus: #0ea5e9; /* focus ring / a11y outline */
 
   /* INTERACTIVE ROLES (paired bg / fg / border) */
   --primary: #ffffff;
   --primary-fg: #0a0a0a;
-  --primary-border: #09e57b;
 
-  --secondary: #1e293b;
+  --secondary: oklch(27.4% 0.006 286.033);
   --secondary-fg: #f8fafc;
-  --secondary-border: #334155;
 
   /* STATUS / FUNCTIONAL */
   --positive: #6dd32e;
@@ -72,23 +70,22 @@
   --danger-fg: #ffffff;
 }
 
-@theme inline {
+@theme {
   --color-surface: var(--surface);
-  --color-surface-1: var(--surface-1);
   --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
   --color-surface-overlay: var(--surface-overlay);
+  --color-surface-disabled: var(--surface-disabled);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
-  --color-fg-inverse: var(--fg-inverse);
   --color-fg-disabled: var(--fg-disabled);
+  --color-fg-inverse: var(--fg-inverse);
   --color-border: var(--border);
   --color-focus: var(--focus);
   --color-primary: var(--primary);
   --color-primary-fg: var(--primary-fg);
-  --color-primary-border: var(--primary-border);
   --color-secondary: var(--secondary);
   --color-secondary-fg: var(--secondary-fg);
-  --color-secondary-border: var(--secondary-border);
   --color-positive: var(--positive);
   --color-positive-fg: var(--positive-fg);
   --color-warning: var(--warning);

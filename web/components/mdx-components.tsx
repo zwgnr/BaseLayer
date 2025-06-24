@@ -12,7 +12,7 @@ export const ComponentPreview = async ({
   exampleSource,
 }: {
   name: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   sourceName?: string;
   exampleSource?: string;
   description?: string;
