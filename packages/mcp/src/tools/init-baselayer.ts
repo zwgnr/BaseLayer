@@ -11,11 +11,11 @@ export async function initBaselayer(): Promise<{
   try {
     console.log("🚀 Fetching BaseLayer setup information...");
 
-    // Fetch BaseLayer CSS from API
-    const response = await fetch(`${apiUrl}/api/tailwind`);
+    // Fetch BaseLayer CSS from static file endpoint
+    const response = await fetch(`${apiUrl}/tailwind.css`);
     if (!response.ok) {
       throw new Error(
-        `API returned ${response.status}: ${response.statusText}`
+        `Static file returned ${response.status}: ${response.statusText}`
       );
     }
     const tailwindCss = await response.text();

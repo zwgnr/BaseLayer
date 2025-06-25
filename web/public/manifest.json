@@ -1,9 +1,4 @@
-// Auto-generated registry from manifest
-// Do not edit manually - regenerate with 'pnpm build'
-
-import type { ComponentManifest, ComponentManifestEntry } from './schema';
-
-const manifest: ComponentManifest = {
+{
   "generatedAt": "2025-06-24T23:56:51.531Z",
   "version": "2.0.0",
   "components": [
@@ -75,31 +70,4 @@ const manifest: ComponentManifest = {
       "sha256": "e67858dcf0b571b0baa798006d7a9f30f99f7c530bc5d0675f9386d3671f09b1"
     }
   ]
-};
-
-export const COMPONENTS: readonly ComponentManifestEntry[] = manifest.components;
-export type ComponentId = ComponentManifestEntry['id'];
-
-export function getComponent(id: ComponentId): ComponentManifestEntry | null {
-  return COMPONENTS.find(c => c.id === id) || null;
 }
-
-export function getComponentsByCategory(category: string): ComponentManifestEntry[] {
-  return COMPONENTS.filter(c => c.meta.category === category);
-}
-
-export function getComponentsByStatus(status: string): ComponentManifestEntry[] {
-  return COMPONENTS.filter(c => c.meta.status === status);
-}
-
-export function searchComponents(query: string): ComponentManifestEntry[] {
-  const lowerQuery = query.toLowerCase();
-  return COMPONENTS.filter(c => 
-    c.displayName.toLowerCase().includes(lowerQuery) ||
-    c.meta.description.toLowerCase().includes(lowerQuery) ||
-    c.meta.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
-  );
-}
-
-export { manifest };
-export default COMPONENTS;

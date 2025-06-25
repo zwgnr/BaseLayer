@@ -1,8 +1,8 @@
-import { Project, Node } from "ts-morph";
-import glob from "fast-glob";
 import { createHash } from "crypto";
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import glob from "fast-glob";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { basename } from "path";
+import { Node, Project } from "ts-morph";
 
 interface ComponentMeta {
   category: string;
@@ -17,7 +17,6 @@ interface ComponentManifestEntry {
   displayName: string;
   path: string;
   template: string;
-  imports: string[];
   meta: ComponentMeta;
   sha256: string;
 }
@@ -56,12 +55,11 @@ async function generateManifest(): Promise<void> {
     project.addSourceFileAtPath(path);
   }
 
-  // Ensure output directories exist
-  if (!existsSync("dist")) {
-    mkdirSync("dist", { recursive: true });
-  }
-  if (!existsSync("dist/templates")) {
-    mkdirSync("dist/templates", { recursive: true });
+  // Create public directory structure
+  const publicDir = "../../web/public";
+  const publicTemplatesDir = `${publicDir}/templates`;
+  if (!existsSync(publicTemplatesDir)) {
+    mkdirSync(publicTemplatesDir, { recursive: true });
   }
 
   const components: ComponentManifestEntry[] = [];
@@ -91,13 +89,19 @@ async function generateManifest(): Promise<void> {
     components,
   };
 
-  // Write manifest
-  const manifestPath = "dist/manifest.json";
+  // Write manifest to public for static serving
+  const manifestPath = `${publicDir}/manifest.json`;
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+
+  // Copy tailwind.css to public directory for static serving
+  const tailwindCssPath = `${publicDir}/tailwind.css`;
+  const tailwindCssContent = readFileSync("src/tailwind.css", "utf8");
+  writeFileSync(tailwindCssPath, tailwindCssContent);
 
   console.log(`🎉 Generated manifest with ${components.length} components`);
   console.log(`📄 Manifest saved to: ${manifestPath}`);
-  console.log(`📁 Clean templates saved to: dist/templates/`);
+  console.log(`📁 Clean templates saved to: ${publicTemplatesDir}/`);
+  console.log(`🎨 Tailwind CSS saved to: ${tailwindCssPath}`);
 
   // Generate registry-v2.ts
   await generateRegistry(manifest);
@@ -168,9 +172,6 @@ async function processComponent(
     return null;
   }
 
-  // Extract imports
-  const imports = extractImports(sourceFile);
-
   // Calculate file hash
   const fileContent = readFileSync(filePath, "utf8");
   const sha256 = createHash("sha256").update(fileContent).digest("hex");
@@ -179,8 +180,7 @@ async function processComponent(
     id,
     displayName,
     path: filePath,
-    template: `/api/templates/${id}.tsx`,
-    imports,
+    template: `/templates/${id}.tsx`,
     meta: metaValue,
     sha256,
   };
@@ -228,26 +228,6 @@ function extractMetaValue(metaDeclaration: any): ComponentMeta | null {
     console.error("Error extracting meta:", error);
     return null;
   }
-}
-
-function extractImports(sourceFile: any): string[] {
-  const imports = new Set<string>();
-
-  for (const importDecl of sourceFile.getImportDeclarations()) {
-    const moduleSpecifier = importDecl.getModuleSpecifierValue();
-
-    // Skip relative imports
-    if (moduleSpecifier.startsWith(".")) continue;
-
-    // Add external dependencies
-    if (!moduleSpecifier.startsWith("@/") && !moduleSpecifier.startsWith("~")) {
-      // Extract base package name (e.g., 'react-aria-components' from 'react-aria-components/Button')
-      const basePkg = moduleSpecifier.split("/")[0];
-      imports.add(basePkg);
-    }
-  }
-
-  return Array.from(imports);
 }
 
 async function generateRegistry(manifest: ComponentManifest): Promise<void> {
@@ -309,7 +289,7 @@ async function generateCleanTemplate(
   const metaDeclaration = sourceFile.getVariableDeclaration("meta");
   if (!metaDeclaration) {
     // No meta to remove, just write the original content
-    const templatePath = `dist/templates/${component.id}.tsx`;
+    const templatePath = `../../web/public/templates/${component.id}.tsx`;
     writeFileSync(templatePath, originalContent);
     console.log(`📝 Generated clean template: ${templatePath}`);
     return;
@@ -332,8 +312,8 @@ async function generateCleanTemplate(
   // Clean up excessive newlines that might be left behind
   cleanContent = cleanContent.replace(/\n\s*\n\s*\n+/g, "\n\n");
 
-  // Write the clean template
-  const templatePath = `dist/templates/${component.id}.tsx`;
+  // Write the clean template to public/templates for static serving
+  const templatePath = `../../web/public/templates/${component.id}.tsx`;
   writeFileSync(templatePath, cleanContent);
 
   console.log(`📝 Generated clean template: ${templatePath}`);

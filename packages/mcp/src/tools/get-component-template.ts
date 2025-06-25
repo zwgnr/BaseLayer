@@ -1,4 +1,4 @@
-// Get component template from BaseLayer API
+// Get component template from BaseLayer static files
 export async function getComponentTemplate(
   componentId: string,
   componentName: string
@@ -7,16 +7,16 @@ export async function getComponentTemplate(
 
   try {
     console.log(
-      `🔍 Fetching ${componentId} template from ${apiUrl}/api/components/${componentId}/template`
+      `🔍 Fetching ${componentId} template from ${apiUrl}/templates/${componentId}.tsx`
     );
 
     const response = await fetch(
-      `${apiUrl}/api/components/${componentId}/template`
+      `${apiUrl}/templates/${componentId}.tsx`
     );
 
     if (!response.ok) {
       throw new Error(
-        `API returned ${response.status}: ${response.statusText}`
+        `Static file returned ${response.status}: ${response.statusText}`
       );
     }
 

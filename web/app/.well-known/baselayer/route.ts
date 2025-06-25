@@ -19,10 +19,9 @@ export async function GET() {
       "url": baseUrl
     },
     "endpoints": {
-      "components": `${baseUrl}/api/manifest`,
-      "component": `${baseUrl}/api/components/{name}`,
-      "template": `${baseUrl}/api/components/{name}/template`,
-      "install": `${baseUrl}/api/components/{name}/install`,
+      "components": `${baseUrl}/manifest.json`,
+      "template": `${baseUrl}/templates/{name}.tsx`,
+      "tailwind": `${baseUrl}/tailwind.css`,
       "llms": `${baseUrl}/llms.txt`
     },
     "components": components.reduce((acc, comp) => {
@@ -31,9 +30,7 @@ export async function GET() {
         category: comp.meta.category,
         description: comp.meta.description,
         endpoints: {
-          spec: `${baseUrl}/api/components/${comp.id}`,
-          template: `${baseUrl}/api/components/${comp.id}/template`,
-          install: `${baseUrl}/api/components/${comp.id}/install`
+          template: `${baseUrl}/templates/${comp.id}.tsx`
         }
       };
       return acc;
@@ -42,9 +39,7 @@ export async function GET() {
       category: string;
       description: string;
       endpoints: {
-        spec: string;
         template: string;
-        install: string;
       };
     }>),
     "metadata": {
@@ -64,7 +59,12 @@ export async function GET() {
       {
         "rel": "components",
         "type": "application/json", 
-        "href": `${baseUrl}/api/manifest`
+        "href": `${baseUrl}/manifest.json`
+      },
+      {
+        "rel": "tailwind",
+        "type": "text/css",
+        "href": `${baseUrl}/tailwind.css`
       },
       {
         "rel": "llms-txt",

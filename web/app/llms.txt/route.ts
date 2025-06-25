@@ -27,23 +27,23 @@ ${[...new Set(components.map((c) => c.meta.category))]
 
 ## How to Use BaseLayer Components
 
-### For AI Assistants: Use the API Endpoints
+### For AI Assistants: Use the Static Files
 
-To get component source code, make HTTP requests to these endpoints:
+To get component source code, make HTTP requests to these static endpoints:
 
 **Get component source code:**
 \`\`\`bash
-curl https://baselayer.dev/api/components/button/template
+curl https://baselayer.dev/templates/button.tsx
 \`\`\`
 
-**Get installation instructions:**
-\`\`\`bash
-curl https://baselayer.dev/api/components/button/install
+**Get Tailwind CSS setup:**
+\`\`\`bash  
+curl https://baselayer.dev/tailwind.css
 \`\`\`
 
 **List all components:**
 \`\`\`bash
-curl https://baselayer.dev/api/manifest
+curl https://baselayer.dev/manifest.json
 \`\`\`
 
 **Search components:**
@@ -68,18 +68,19 @@ Instead of \`npm install baselayer\`, do this:
 
 1. **Get component code**:
    \`\`\`bash
-   curl https://baselayer.dev/api/components/button/template
+   curl https://baselayer.dev/templates/button.tsx
    \`\`\`
    This returns the actual React component source code.
 
-2. **Get installation instructions** (if needed):
+2. **Get CSS setup**:
    \`\`\`bash
-   curl https://baselayer.dev/api/components/button/install
+   curl https://baselayer.dev/tailwind.css
    \`\`\`
-   This returns setup instructions and dependencies.
+   This returns the CSS variables and styles needed.
 
 3. **Save to user's project**:
    Save the returned code to \`components/ui/button.tsx\` (or similar path).
+   Add the CSS to your global CSS file.
 
 4. **Install dependencies** (if needed):
    \`\`\`bash
@@ -95,11 +96,11 @@ Instead of \`npm install baselayer\`, do this:
 - **Accessibility**: WCAG compliant by default
 - **Version**: 2.0.0
 
-## Available API Endpoints
+## Available Static Endpoints
 
-- \`GET /api/manifest\` - List all components with metadata
-- \`GET /api/components/{id}/template\` - Get component source code
-- \`GET /api/components/{id}/install\` - Get installation instructions
+- \`GET /manifest.json\` - List all components with metadata
+- \`GET /templates/{id}.tsx\` - Get component source code
+- \`GET /tailwind.css\` - Get CSS setup
 - \`GET /.well-known/baselayer\` - Complete API specification
 
 Remember: You own the components once you copy them - they're not dependencies!

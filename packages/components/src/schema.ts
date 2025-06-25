@@ -14,7 +14,6 @@ export interface ComponentManifestEntry {
   displayName: string;
   path: string;
   template: string;
-  imports: string[];
   meta: ComponentMeta;
   sha256: string;
 }
@@ -66,16 +65,12 @@ export const ComponentManifestSchema = {
   definitions: {
             ComponentManifestEntry: {
           type: "object",
-          required: ["id", "displayName", "path", "template", "imports", "meta", "sha256"],
+          required: ["id", "displayName", "path", "template", "meta", "sha256"],
           properties: {
             id: { type: "string" },
             displayName: { type: "string" },
             path: { type: "string" },
             template: { type: "string" },
-        imports: {
-          type: "array",
-          items: { type: "string" }
-        },
         meta: { $ref: "#/definitions/ComponentMeta" },
         sha256: { type: "string" }
       }

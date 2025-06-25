@@ -1,15 +1,20 @@
 /** biome-ignore-all lint/security/noDangerouslySetInnerHtml: file is safe */
 import { codeToHtml } from "shiki";
 
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
-
 export const CSSContentDisplay = async () => {
   try {
-    // Path relative to the web directory (where Next.js runs from)
-    const tailwindPath = join(process.cwd(), '../packages/components/src/tailwind.css');
+    // Fetch CSS content from the static endpoint
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/tailwind.css`, {
+      // Add cache control for better performance
+      cache: 'force-cache'
+    });
     
-    const cssContent = await readFile(tailwindPath, 'utf8');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch CSS: ${response.status} ${response.statusText}`);
+    }
+    
+    const cssContent = await response.text();
 
     // Generate both light and dark versions with CSS syntax highlighting
     const lightHtml = await codeToHtml(cssContent, {

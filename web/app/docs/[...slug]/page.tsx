@@ -1,8 +1,14 @@
-import { source } from "@/lib/source";
 import { notFound } from "next/navigation";
+
 import type { Metadata } from "next";
+
+import { source } from "@/lib/source";
+
 import { DocsPage } from "@/components/docs-page";
 import { mdxComponents } from "@/components/mdx-components";
+
+// Ensure strict static-only build
+export const dynamic = 'error';
 
 interface PageProps {
   params: Promise<{
@@ -24,7 +30,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <DocsPage toc={toc}>
       <div className="prose dark:prose-invert max-w-none px-12 pb-12">
-        <h1 className="text-3xl font-bold tracking-tight">{page.data.title}</h1>
+        <h1 className="font-bold text-3xl tracking-tight">{page.data.title}</h1>
         {page.data.description && (
           <p className="-mt-4">{page.data.description}</p>
         )}
