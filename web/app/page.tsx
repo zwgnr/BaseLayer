@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@baselayer/components";
 import {
 	Accessibility,
 	ArrowRight,
@@ -67,7 +66,7 @@ export default function Home() {
 						</p>
 
 						{/* Enhanced CTA Button */}
-						<div className="mb-16 flex flex-row flex-col justify-center gap-4 rounded-full">
+						<div className="mb-16 flex flex-row justify-center gap-4 rounded-full">
 							<div className="group relative">
 								{/* Glow ring */}
 								<div className="-inset-0.5 md:-inset-1 absolute rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-60 blur-sm transition-all duration-300 group-hover:opacity-75 group-hover:blur-md md:blur-md md:group-hover:blur-lg"></div>

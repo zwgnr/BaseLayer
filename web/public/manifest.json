@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-06-25T05:24:03.227Z",
+  "generatedAt": "2025-06-26T05:00:02.856Z",
   "version": "2.0.0",
   "components": [
     {
@@ -35,6 +35,40 @@
       "sha256": "d9f1d2a491c833b074c6eedae8d6331b1633d306b56badc8fe0c25083329db3f"
     },
     {
+      "id": "calendar",
+      "path": "src/core/calendar/calendar.tsx",
+      "template": "/templates/calendar.txt",
+      "meta": {
+        "name": "calendar",
+        "category": "data-entry",
+        "status": "stable",
+        "description": "A calendar displays one or more date grids and allows users to select a single date.",
+        "tags": [
+          "data-entry",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "2b55cef8a4d74518af73d1898494afa20ff5ac4091248bfc7d94ecf5cff57e99"
+    },
+    {
+      "id": "input",
+      "path": "src/core/input/input.tsx",
+      "template": "/templates/input.txt",
+      "meta": {
+        "name": "input",
+        "category": "forms",
+        "status": "stable",
+        "description": "Allows a user to enter a plain text value with a keyboard.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "2241d12d5ebfa284ad7305adc3b9a092d93b917406b12c9a26b98b8ef4cef6aa"
+    },
+    {
       "id": "combobox",
       "path": "src/core/combobox/combobox.tsx",
       "template": "/templates/combobox.txt",
@@ -67,23 +101,6 @@
         "version": "2.0.0"
       },
       "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
-    },
-    {
-      "id": "input",
-      "path": "src/core/input/input.tsx",
-      "template": "/templates/input.txt",
-      "meta": {
-        "name": "input",
-        "category": "forms",
-        "status": "stable",
-        "description": "Allows a user to enter a plain text value with a keyboard.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "2241d12d5ebfa284ad7305adc3b9a092d93b917406b12c9a26b98b8ef4cef6aa"
     }
   ]
 }

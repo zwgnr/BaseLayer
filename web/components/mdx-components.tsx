@@ -43,13 +43,15 @@ export const ComponentPreview = async ({
 	}
 
 	return (
-		<Preview
-			sourceCodeElement={
-				sourceCode ? <CodeBlock code={sourceCode} /> : undefined
-			}
-		>
-			{exampleComponent || children}
-		</Preview>
+		<div className="not-prose">
+			<Preview
+				sourceCodeElement={
+					sourceCode ? <CodeBlock code={sourceCode} /> : undefined
+				}
+			>
+				{exampleComponent || children}
+			</Preview>
+		</div>
 	);
 };
 

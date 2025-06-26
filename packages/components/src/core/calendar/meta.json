@@ -1,0 +1,8 @@
+{
+  "name": "calendar",
+  "category": "data-entry",
+  "status": "stable",
+  "description": "A calendar displays one or more date grids and allows users to select a single date.",
+  "tags": ["data-entry", "interactive"],
+  "version": "2.0.0"
+} 

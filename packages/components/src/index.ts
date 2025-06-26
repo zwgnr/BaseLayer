@@ -5,6 +5,7 @@ export {
 	BreadcrumbsLink,
 } from "./core/breadcrumbs/breadcrumbs";
 export { Button } from "./core/button/button";
+export { Calendar } from "./core/calendar/calendar";
 export { ComboBox, ComboBoxItem } from "./core/combobox/combobox";
 export { Input } from "./core/input/input";
 // Examples - Auto-generated
@@ -16,6 +17,7 @@ export { ButtonBase } from "./examples/button-base";
 export { ButtonHelperIcons } from "./examples/button-helper-icons";
 export { ButtonSizes } from "./examples/button-sizes";
 export { ButtonVariants } from "./examples/button-variants";
+export { CalendarExample } from "./examples/calendar-base";
 export { ComboboxBase } from "./examples/combobox-base";
 export { ComboboxDisabledOption } from "./examples/combobox-disabled-option";
 export { ComboboxMenuTrigger } from "./examples/combobox-menu-trigger";

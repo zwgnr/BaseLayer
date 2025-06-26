@@ -1,8 +1,9 @@
 "use client";
 
-import { cx } from "@/lib/cx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { cx } from "@/lib/cx";
 
 interface SidebarLinkProps {
   href: string;
@@ -17,8 +18,8 @@ export function SidebarLink({ href, children }: SidebarLinkProps) {
     <Link
       href={href}
       className={cx(
-        "block px-3 py-2 text-sm transition-colors rounded-lg hover:bg-surface-2",
-        isActive && "text-primary bg-surface-2 hover:bg-surface-2"
+        "block rounded-lg px-3 py-2 font-semibold text-sm transition-colors hover:bg-surface-2",
+        isActive && "bg-surface-2 text-primary hover:bg-surface-2"
       )}
     >
       {children}

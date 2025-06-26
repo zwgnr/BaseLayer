@@ -82,6 +82,16 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "calendar-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/calendar-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "combobox-base",
     type: "registry:example" as const,
     files: [
