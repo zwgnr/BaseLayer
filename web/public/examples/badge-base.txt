@@ -1,0 +1,7 @@
+import { Badge } from "@components/base/badge";
+
+export const BadgeBase = () => {
+  return (
+    <Badge>Badge</Badge>
+  );
+};

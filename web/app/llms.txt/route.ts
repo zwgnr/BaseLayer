@@ -11,7 +11,7 @@ BaseLayer is a component registry, not a package dependency. You don't install B
 
 ## Available Components
 
-${components.map((comp) => `- **${comp.displayName}** (${comp.meta.category}): ${comp.meta.description}`).join("\n")}
+${components.map((comp) => `- **${comp.meta.name}** (${comp.meta.category}): ${comp.meta.description}`).join("\n")}
 
 ## Categories
 
@@ -20,7 +20,7 @@ ${[...new Set(components.map((c) => c.meta.category))]
 			(cat) =>
 				`- **${cat}**: ${components
 					.filter((c) => c.meta.category === cat)
-					.map((c) => c.displayName)
+					.map((c) => c.meta.name)
 					.join(", ")}`,
 		)
 		.join("\n")}
@@ -33,7 +33,7 @@ To get component source code, make HTTP requests to these static endpoints:
 
 **Get component source code:**
 \`\`\`bash
-curl https://baselayer.dev/templates/button.tsx
+curl https://baselayer.dev/templates/button.txt
 \`\`\`
 
 **Get Tailwind CSS setup:**
@@ -68,7 +68,7 @@ Instead of \`npm install baselayer\`, do this:
 
 1. **Get component code**:
    \`\`\`bash
-   curl https://baselayer.dev/templates/button.tsx
+   curl https://baselayer.dev/templates/button.txt
    \`\`\`
    This returns the actual React component source code.
 
@@ -79,7 +79,7 @@ Instead of \`npm install baselayer\`, do this:
    This returns the CSS variables and styles needed.
 
 3. **Save to user's project**:
-   Save the returned code to \`components/ui/button.tsx\` (or similar path).
+   Save the returned code to \`components/base/button.tsx\` (or similar path).
    Add the CSS to your global CSS file.
 
 4. **Install dependencies** (if needed):
@@ -99,7 +99,7 @@ Instead of \`npm install baselayer\`, do this:
 ## Available Static Endpoints
 
 - \`GET /manifest.json\` - List all components with metadata
-- \`GET /templates/{id}.tsx\` - Get component source code
+- \`GET /templates/{id}.txt\` - Get component source code
 - \`GET /tailwind.css\` - Get CSS setup
 - \`GET /.well-known/baselayer\` - Complete API specification
 

@@ -1,107 +1,22 @@
 ---
 title: Button
-description: A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
-featured: false
-component: true
+description: rac
 ---
 
-import { Button } from "@baselayer/components";
-import { PlusIcon } from "lucide-react";
-
-<RACLink href="https://react-spectrum.adobe.com/react-aria/Button.html">
-  RAC Docs
-</RACLink>
-
-<ComponentPreview
-  name="button-demo"
-  sourceName="button"
-  description="Basic button component"
->
-  <Button>Button</Button>
-</ComponentPreview>
+<ComponentPreview example="button-base" />
 
 ## Variants
 
-<ComponentPreview
-  name="button-variants"
-  exampleSource={`<div className="flex flex-wrap items-center gap-4">
-  <Button variant="primary">Primary</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="danger">Danger</Button>
-  <Button variant="ghost">Ghost</Button>
-</div>`}
-  description="Different button variants"
->
-  <div className="flex flex-wrap items-center gap-4">
-    <Button variant="primary">Primary</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="danger">Danger</Button>
-    <Button variant="ghost">Ghost</Button>
-  </div>
-</ComponentPreview>
+<ComponentPreview example="button-variants" />
 
 ## Sizes
 
-<ComponentPreview
-  name="button-sizes"
-  exampleSource={`<div className="flex items-center gap-4">
-  <Button size="sm">Small</Button>
-  <Button size="md">Medium</Button>
-  <Button size="lg">Large</Button>
-  <Button aria-label="Add Item" size="icon">
-    <PlusIcon />
-  </Button>
-</div>`}
-  description="Different button sizes"
->
-  <div className="flex items-center gap-4">
-    <Button size="sm">Small</Button>
-    <Button size="md">Medium</Button>
-    <Button size="lg">Large</Button>
-    <Button aria-label="Add Item" size="icon">
-      <PlusIcon className="size-4" />
-    </Button>
-  </div>
-</ComponentPreview>
+<ComponentPreview example="button-sizes" />
 
 ## Helper Icons
 
-<ComponentPreview name="button-with-icons" description="Buttons with icons">
-  <div className="flex flex-wrap items-center gap-4">
-    <Button
-      variant="primary"
-      className="flex items-center justify-center gap-2"
-    >
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-        />
-      </svg>
-      <span>Add Item</span>
-    </Button>
-    <Button variant="danger" className="flex items-center justify-center gap-2">
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-        />
-      </svg>
-      <span>Delete</span>
-    </Button>
-  </div>
-</ComponentPreview>
+<ComponentPreview example="button-helper-icons" />
+
+## Source
+
+<ComponentPreview name="button" />

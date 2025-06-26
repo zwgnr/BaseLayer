@@ -2,15 +2,6 @@ import type { HTMLAttributes } from "react";
 
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const meta = {
-	category: "display",
-	status: "stable",
-	description:
-		"A badge is a small label that can be used to display information or status.",
-	tags: ["status"],
-	version: "2.0.0",
-} as const;
-
 export const badge = tv({
 	base: "flex items-center justify-center rounded-4xl px-3 py-2 font-semibold text-xs",
 	variants: {

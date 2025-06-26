@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button, } from "@baselayer/components";
+import { Accessibility, CodeIcon, Github, MessageCircle, Palette, Server } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -9,16 +10,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-surface via-surface to-surface-2">
       {/* Navigation */}
-      <nav className="relative z-50 flex items-center justify-between px-6 py-6 md:px-8 lg:px-12">
-        <div className="flex items-center gap-1">
+      <nav className="relative z-50 flex items-center justify-between px-6 py-4">
+        <div className="flex items-center gap-2">
           <Image 
-            src="/holo1.png" 
+            src="/bl.svg" 
             alt="BaseLayer" 
             width={40} 
             height={40}
-            className="rounded-lg"
+            className="rounded-lg dark:invert"
           />
-          <span className="font-extrabold text-xl uppercase tracking-wide">BaseLayer</span>
+          <span className="font-bold text-xl uppercase tracking-tight">BaseLayer</span>
         </div>
 
         <div className="flex items-center gap-6">
@@ -43,11 +44,6 @@ export default function Home() {
       {/* Hero Section */}
       <main className="relative overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 h-96 w-96 animate-pulse rounded-full bg-primary/10 blur-3xl"></div>
-          <div className="absolute top-1/3 right-1/4 h-80 w-80 animate-pulse rounded-full bg-focus/15 blur-3xl delay-1000"></div>
-          <div className="absolute bottom-1/4 left-1/2 h-64 w-64 animate-pulse rounded-full bg-primary/10 blur-3xl delay-2000"></div>
-        </div>
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center px-6 py-20 text-center md:py-28 lg:py-36">
@@ -62,7 +58,7 @@ export default function Home() {
 
             {/* Subtitle */}
             <p className="mx-auto mb-12 max-w-2xl text-fg-muted text-lg leading-relaxed md:text-xl lg:text-2xl">
-              Accessible, beautiful primitives powered by React Aria Components and Tailwind CSS. 
+              Production-ready, accessible primitives powered by React Aria Components and Tailwind CSS. 
               Perfect for modern applications and AI-powered development workflows.
             </p>
 
@@ -92,28 +88,12 @@ export default function Home() {
 
             {/* Feature Cards */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {/* AI Development Tools */}
-              <div className="rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface-3 p-8 transition-all duration-300 hover:border-focus/50 hover:shadow-xl">
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                    <span className="text-3xl">⚡</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-2xl text-fg">AI Ready</h3>
-                    <p className="text-fg-muted">Cursor, ChatGPT & MCP</p>
-                  </div>
-                </div>
-                <p className="text-lg text-secondary-fg leading-relaxed">
-                  Optimized for Cursor AI, ChatGPT, Claude, and other AI assistants. Built-in MCP server 
-                  for seamless integration with AI tools. Browse components and get code directly from your AI assistant.
-                </p>
-              </div>
 
               {/* You Own Your Code */}
               <div className="rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface-3 p-8 transition-all duration-300 hover:border-focus/50 hover:shadow-xl">
                 <div className="mb-6 flex items-center gap-4">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                    <span className="text-3xl">🏠</span>
+                    <span className="text-3xl"><CodeIcon /></span>
                   </div>
                   <div>
                     <h3 className="font-bold text-2xl text-fg">You Own Your Code</h3>
@@ -126,20 +106,36 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Open Source */}
+              {/* MCP */}
               <div className="rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface-3 p-8 transition-all duration-300 hover:border-focus/50 hover:shadow-xl">
                 <div className="mb-6 flex items-center gap-4">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                    <span className="text-3xl">🌟</span>
+                    <span className="text-3xl"><Server /></span>
                   </div>
                   <div>
-                    <h3 className="font-bold text-2xl text-fg">Open Source & Free</h3>
-                    <p className="text-fg-muted">MIT Licensed</p>
+                    <h3 className="font-bold text-2xl text-fg">MCP</h3>
+                    <p className="text-fg-muted">Model Context Protocol Server</p>
                   </div>
                 </div>
                 <p className="text-lg text-secondary-fg leading-relaxed">
-                  Completely open source and free to use. TypeScript-first with excellent IntelliSense, 
-                  comprehensive documentation, and built for modern development workflows.
+                  BaseLayer has an MCP server ready to use with your favorite AI tools like Cursor.
+                </p>
+              </div>
+
+
+              {/* Chat Bots & AI Tools */}
+              <div className="rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface-3 p-8 transition-all duration-300 hover:border-focus/50 hover:shadow-xl">
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
+                    <span className="text-3xl"><MessageCircle /></span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-2xl text-fg">Chat Bots & AI Tools</h3>
+                    <p className="text-fg-muted">ChatGPT, Claude, and more</p>
+                  </div>
+                </div>
+                <p className="text-lg text-secondary-fg leading-relaxed">
+                    Designed for use with your favorite chat bots and AI tools. llms.txt and more keep your AI tools in sync with your components.
                 </p>
               </div>
             </div>
@@ -152,7 +148,7 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               <div className="text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                  <span className="text-2xl">🎨</span>
+                  <span className="text-2xl"><Palette /></span>
                 </div>
                 <h3 className="mb-2 font-semibold text-fg text-xl">Beautiful Design</h3>
                 <p className="text-fg-muted">
@@ -162,7 +158,7 @@ export default function Home() {
 
               <div className="text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                  <span className="text-2xl">♿</span>
+                  <span className="text-2xl"><Accessibility /></span>
                 </div>
                 <h3 className="mb-2 font-semibold text-fg text-xl">Accessible</h3>
                 <p className="text-fg-muted">
@@ -172,11 +168,11 @@ export default function Home() {
 
               <div className="text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                  <span className="text-2xl">⚡</span>
+                  <span className="text-2xl"><Github /></span>
                 </div>
-                <h3 className="mb-2 font-semibold text-fg text-xl">Performance</h3>
+                <h3 className="mb-2 font-semibold text-fg text-xl">Open Source</h3>
                 <p className="text-fg-muted">
-                  Optimized for performance with tree-shaking support and minimal bundle impact.
+                  Completely open source and free to use. MIT Licensed.
                 </p>
               </div>
             </div>

@@ -52,5 +52,7 @@ const Button = ({
 	</AriaButton>
 );
 
+Button.displayName = "Button";
+
 export { Button };
 export type { ButtonProps };

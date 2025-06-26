@@ -9,15 +9,17 @@
     "templates"
   ],
   "scripts": {
-    "build": "tsc && tsx scripts/gen-manifest.ts",
+    "build": "tsc && tsx scripts/gen-manifest.ts && tsx scripts/gen-examples.ts",
     "dev": "tsc --watch",
-    "generate:manifest": "tsx scripts/gen-manifest.ts"
+    "generate:manifest": "tsx scripts/gen-manifest.ts",
+    "generate:examples": "tsx scripts/gen-examples.ts"
   },
   "dependencies": {
     "lucide-react": "^0.522.0",
     "react": "^19.1.0",
     "react-aria-components": "catalog:",
-    "tailwind-variants": "catalog:"
+    "tailwind-variants": "catalog:",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@types/node": "catalog:",

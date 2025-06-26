@@ -9,10 +9,14 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "outDir": "./build",
-      "rootDir": "./src",
       "declaration": true,
       "sourceMap": true,
-      "resolveJsonModule": true
+      "resolveJsonModule": true,
+      "baseUrl": ".",
+      "paths": {
+        "@baselayer/components": ["../components/src/index.ts"],
+        "@baselayer/components/*": ["../components/src/*"]
+      }
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "build"]

@@ -59,7 +59,7 @@ export function MobileNav({ introDocs, componentDocs }: MobileNavProps) {
         {/* Mobile menu header */}
         <div className="flex items-center justify-between border-border border-b p-4">
           <div className="flex items-center">
-            <Image src="/holo1.png" alt="BaseLayer" width={32} height={32} />
+            <Image src="/holo5.png" alt="BaseLayer" width={32} height={32} />
             <span className="ml-2 font-bold text-lg uppercase tracking-tight">
               BaseLayer
             </span>
@@ -79,11 +79,6 @@ export function MobileNav({ introDocs, componentDocs }: MobileNavProps) {
           onClick={closeMobileMenu}
         >
           <div className="space-y-6 p-6">
-            {/* Announcement */}
-            <div className="rounded-lg bg-gradient-to-r from-pink-500/10 to-purple-500/10 p-3">
-              <p className="text-sm ">🎉 BaseLayer v2 is here!</p>
-            </div>
-
             {/* Getting Started */}
             <nav className="space-y-4">
               <div>

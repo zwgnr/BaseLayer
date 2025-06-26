@@ -1,237 +1,144 @@
-import { createHash } from "crypto";
 import glob from "fast-glob";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import { basename } from "path";
-import { Node, Project } from "ts-morph";
 
-interface ComponentMeta {
-  category: string;
-  status: "alpha" | "beta" | "stable" | "deprecated";
-  description: string;
-  tags: string[];
-  version: string;
-}
-
-interface ComponentManifestEntry {
-  id: string;
-  displayName: string;
-  path: string;
-  template: string;
-  meta: ComponentMeta;
-  sha256: string;
-}
-
-interface ComponentManifest {
-  generatedAt: string;
-  version: string;
-  components: ComponentManifestEntry[];
-}
+import {
+	type ComponentManifest,
+	type ComponentManifestEntry,
+	ComponentManifestEntrySchema,
+	ComponentManifestSchema,
+	type ComponentMeta,
+	ComponentMetaSchema,
+} from "../src/schema";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, dirname } from "node:path";
 
 async function generateManifest(): Promise<void> {
-  console.log("🔍 Discovering components...");
+	console.log("🔍 Discovering components...");
 
-  // Discover component files
-  const componentPaths = await glob("src/**/*.{tsx,ts}", {
-    ignore: [
-      "**/*.test.*",
-      "**/*.stories.*",
-      "**/node_modules/**",
-      "**/index.{tsx,ts}",
-      "**/registry.{tsx,ts}",
-      "**/schema.{tsx,ts}",
-    ],
-  });
+	// Discover component files in the core directory only
+	const componentPaths = await glob("src/core/**/*.{tsx,ts}", {
+		ignore: [
+			"**/*.test.*",
+			"**/*.stories.*",
+			"**/node_modules/**",
+			"**/index.{tsx,ts}",
+			"**/registry.{tsx,ts}",
+			"**/schema.{tsx,ts}",
+			"**/examples/**",
+			"**/meta.json",
+		],
+	});
 
-  console.log(`📦 Found ${componentPaths.length} component files`);
+	console.log(`📦 Found ${componentPaths.length} component files`);
 
-  // Initialize TypeScript project
-  const project = new Project({
-    tsConfigFilePath: "tsconfig.json",
-    skipAddingFilesFromTsConfig: true,
-  });
+	// Create public directory structure
+	const publicDir = "../../web/public";
+	const publicTemplatesDir = `${publicDir}/templates`;
+	if (!existsSync(publicTemplatesDir)) {
+		mkdirSync(publicTemplatesDir, { recursive: true });
+	}
 
-  // Add discovered files to project
-  for (const path of componentPaths) {
-    project.addSourceFileAtPath(path);
-  }
+	const components: ComponentManifestEntry[] = [];
 
-  // Create public directory structure
-  const publicDir = "../../web/public";
-  const publicTemplatesDir = `${publicDir}/templates`;
-  if (!existsSync(publicTemplatesDir)) {
-    mkdirSync(publicTemplatesDir, { recursive: true });
-  }
+	for (const filePath of componentPaths) {
+		try {
+			const component = await processComponent(filePath);
+			if (component) {
+				// Validate component entry using Zod
+				const validatedComponent =
+					ComponentManifestEntrySchema.parse(component);
+				components.push(validatedComponent);
+				console.log(`✅ Processed ${component.meta.name}`);
 
-  const components: ComponentManifestEntry[] = [];
+				// Generate clean template file (just copy the component file)
+				await generateCleanTemplate(filePath, component);
+			}
+		} catch (error) {
+			console.error(`❌ Failed to process ${filePath}:`, error);
+		}
+	}
 
-  for (const filePath of componentPaths) {
-    try {
-      const component = await processComponent(project, filePath);
-      if (component) {
-        components.push(component);
-        console.log(`✅ Processed ${component.displayName}`);
+	// Read package version
+	const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 
-        // Generate clean template file
-        await generateCleanTemplate(project, filePath, component);
-      }
-    } catch (error) {
-      console.error(`❌ Failed to process ${filePath}:`, error);
-    }
-  }
+	// Generate manifest
+	const manifest: ComponentManifest = {
+		generatedAt: new Date().toISOString(),
+		version: packageJson.version,
+		components,
+	};
 
-  // Read package version
-  const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
+	// Validate the entire manifest using Zod before writing
+	try {
+		const validatedManifest = ComponentManifestSchema.parse(manifest);
 
-  // Generate manifest
-  const manifest: ComponentManifest = {
-    generatedAt: new Date().toISOString(),
-    version: packageJson.version,
-    components,
-  };
+		// Write manifest to public for static serving
+		const manifestPath = `${publicDir}/manifest.json`;
+		writeFileSync(manifestPath, JSON.stringify(validatedManifest, null, 2));
 
-  // Write manifest to public for static serving
-  const manifestPath = `${publicDir}/manifest.json`;
-  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+		console.log(`🎉 Generated manifest with ${components.length} components`);
+		console.log(`📄 Manifest saved to: ${manifestPath}`);
 
-  // Copy tailwind.css to public directory for static serving
-  const tailwindCssPath = `${publicDir}/tailwind.css`;
-  const tailwindCssContent = readFileSync("src/tailwind.css", "utf8");
-  writeFileSync(tailwindCssPath, tailwindCssContent);
+		// Generate registry-v2.ts with validated manifest
+		await generateRegistry(validatedManifest);
+	} catch (validationError) {
+		console.error(`❌ Manifest validation failed:`, validationError);
+		throw validationError;
+	}
 
-  console.log(`🎉 Generated manifest with ${components.length} components`);
-  console.log(`📄 Manifest saved to: ${manifestPath}`);
-  console.log(`📁 Clean templates saved to: ${publicTemplatesDir}/`);
-  console.log(`🎨 Tailwind CSS saved to: ${tailwindCssPath}`);
+	// Copy tailwind.css to public directory for static serving
+	const tailwindCssPath = `${publicDir}/tailwind.css`;
+	const tailwindCssContent = readFileSync("src/tailwind.css", "utf8");
+	writeFileSync(tailwindCssPath, tailwindCssContent);
 
-  // Generate registry-v2.ts
-  await generateRegistry(manifest);
+	console.log(`📁 Clean templates saved to: ${publicTemplatesDir}/`);
+	console.log(`🎨 Tailwind CSS saved to: ${tailwindCssPath}`);
 }
 
 async function processComponent(
-  project: Project,
-  filePath: string
+	filePath: string,
 ): Promise<ComponentManifestEntry | null> {
-  const sourceFile = project.getSourceFile(filePath);
-  if (!sourceFile) return null;
+	const componentDir = dirname(filePath);
+	const metaPath = `${componentDir}/meta.json`;
 
-  // Try to get the component name from exports
-  let displayName = "Unknown";
+	// Check if meta.json exists
+	if (!existsSync(metaPath)) {
+		console.warn(`⚠️  No meta.json found for ${filePath}`);
+		return null;
+	}
 
-  // First try: look for named exports that match typical component patterns
-  const exportSymbols = sourceFile.getExportSymbols();
+	// Read and parse meta.json
+	const metaContent = readFileSync(metaPath, "utf8");
+	let metaValue: ComponentMeta;
 
-  for (const symbol of exportSymbols) {
-    const name = symbol.getName();
-    if (
-      name !== "default" &&
-      name !== "meta" &&
-      /^[A-Z]/.test(name) &&
-      !name.endsWith("Props") &&
-      !name.endsWith("Type")
-    ) {
-      displayName = name;
-      break;
-    }
-  }
+	try {
+		const parsedMeta = JSON.parse(metaContent);
+		metaValue = ComponentMetaSchema.parse(parsedMeta);
+	} catch (error) {
+		console.warn(`⚠️  Could not parse meta.json for ${filePath}:`, error);
+		return null;
+	}
 
-  // Second try: check for default export
-  const defaultExport = sourceFile.getDefaultExportSymbol();
-  if (displayName === "Unknown" && defaultExport) {
-    const exportName = defaultExport.getName();
-    if (exportName !== "default") {
-      displayName = exportName;
-    }
-  }
+	// Generate id from meta.name (now always lowercase)
+	const id = metaValue.name
+	// Calculate file hash
+	const fileContent = readFileSync(filePath, "utf8");
+	const sha256 = createHash("sha256").update(fileContent).digest("hex");
 
-  // Third try: extract from filename
-  if (displayName === "Unknown") {
-    const fileName = basename(filePath, ".tsx");
-    if (/^[A-Z]/.test(fileName)) {
-      displayName = fileName;
-    }
-  }
+	// Use original filename but with .txt extension for template
+	const originalFileName = basename(filePath).replace(/\.tsx?$/, ".txt");
 
-  if (displayName === "Unknown") {
-    return null;
-  }
-
-  const id = displayName
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .toLowerCase();
-
-  // Extract meta export
-  const metaExport = sourceFile.getVariableDeclaration("meta");
-  if (!metaExport) {
-    console.warn(`⚠️  No meta export found in ${filePath}`);
-    return null;
-  }
-
-  const metaValue = extractMetaValue(metaExport);
-  if (!metaValue) {
-    console.warn(`⚠️  Could not parse meta in ${filePath}`);
-    return null;
-  }
-
-  // Calculate file hash
-  const fileContent = readFileSync(filePath, "utf8");
-  const sha256 = createHash("sha256").update(fileContent).digest("hex");
-
-  return {
-    id,
-    displayName,
-    path: filePath,
-    template: `/templates/${id}.tsx`,
-    meta: metaValue,
-    sha256,
-  };
-}
-
-function extractMetaValue(metaDeclaration: any): ComponentMeta | null {
-  try {
-    // Get the initializer (the object assigned to meta)
-    let initializer = metaDeclaration.getInitializer();
-
-    // Handle "as const" expressions
-    if (Node.isAsExpression(initializer)) {
-      initializer = initializer.getExpression();
-    }
-
-    if (!initializer || !Node.isObjectLiteralExpression(initializer)) {
-      return null;
-    }
-
-    const meta: Partial<ComponentMeta> = {};
-
-    for (const property of initializer.getProperties()) {
-      if (Node.isPropertyAssignment(property)) {
-        const name = property.getName();
-        const value = property.getInitializer();
-
-        if (Node.isStringLiteral(value)) {
-          (meta as any)[name] = value.getLiteralValue();
-        } else if (Node.isArrayLiteralExpression(value)) {
-          (meta as any)[name] = value
-            .getElements()
-            .filter(Node.isStringLiteral)
-            .map((el) => el.getLiteralValue());
-        }
-      }
-    }
-
-    // Validate required fields
-    if (!meta.category || !meta.status || !meta.description) {
-      return null;
-    }
-
-    return meta as ComponentMeta;
-  } catch (error) {
-    console.error("Error extracting meta:", error);
-    return null;
-  }
+	return {
+		id,
+		path: filePath,
+		template: `/templates/${originalFileName}`,
+		meta: metaValue,
+		sha256,
+	};
 }
 
 async function generateRegistry(manifest: ComponentManifest): Promise<void> {
-  const registryContent = `// Auto-generated registry from manifest
+	const registryContent = `// Auto-generated registry from manifest
 // Do not edit manually - regenerate with 'pnpm build'
 
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
@@ -256,7 +163,7 @@ export function getComponentsByStatus(status: string): ComponentManifestEntry[] 
 export function searchComponents(query: string): ComponentManifestEntry[] {
   const lowerQuery = query.toLowerCase();
   return COMPONENTS.filter(c => 
-    c.displayName.toLowerCase().includes(lowerQuery) ||
+    c.meta.name.toLowerCase().includes(lowerQuery) ||
     c.meta.description.toLowerCase().includes(lowerQuery) ||
     c.meta.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
   );
@@ -266,57 +173,26 @@ export { manifest };
 export default COMPONENTS;
 `;
 
-  writeFileSync("src/registry.ts", registryContent);
-  console.log("📝 Generated registry.ts");
+	writeFileSync("src/registry.ts", registryContent);
+	console.log("📝 Generated registry.ts");
 }
 
 /**
- * Generate a clean template file without meta exports
- * Uses AST manipulation to remove only the meta export while preserving everything else
+ * Generate a clean template file - now simply copy the component file
+ * since meta is no longer embedded in the component
  */
 async function generateCleanTemplate(
-  project: Project,
-  filePath: string,
-  component: ComponentManifestEntry
+	filePath: string,
+	component: ComponentManifestEntry,
 ): Promise<void> {
-  const sourceFile = project.getSourceFile(filePath);
-  if (!sourceFile) return;
+	// Simply copy the component file content as-is
+	const componentContent = readFileSync(filePath, "utf8");
+	const originalFileName = basename(filePath).replace(/\.tsx?$/, ".txt");
 
-  // Get the original content
-  const originalContent = sourceFile.getFullText();
+	const templatePath = `../../web/public/templates/${originalFileName}`;
+	writeFileSync(templatePath, componentContent);
 
-  // Find the meta declaration using AST
-  const metaDeclaration = sourceFile.getVariableDeclaration("meta");
-  if (!metaDeclaration) {
-    // No meta to remove, just write the original content
-    const templatePath = `../../web/public/templates/${component.id}.tsx`;
-    writeFileSync(templatePath, originalContent);
-    console.log(`📝 Generated clean template: ${templatePath}`);
-    return;
-  }
-
-  // Get the variable statement containing the meta declaration
-  const variableStatement = metaDeclaration.getVariableStatementOrThrow();
-
-  // Get the exact position of the meta declaration in the source
-  const start = variableStatement.getStart();
-  const end = variableStatement.getEnd();
-
-  // Remove the meta declaration by slicing the original content
-  const beforeMeta = originalContent.slice(0, start);
-  const afterMeta = originalContent.slice(end);
-
-  // Combine and clean up whitespace
-  let cleanContent = beforeMeta + afterMeta;
-
-  // Clean up excessive newlines that might be left behind
-  cleanContent = cleanContent.replace(/\n\s*\n\s*\n+/g, "\n\n");
-
-  // Write the clean template to public/templates for static serving
-  const templatePath = `../../web/public/templates/${component.id}.tsx`;
-  writeFileSync(templatePath, cleanContent);
-
-  console.log(`📝 Generated clean template: ${templatePath}`);
+	console.log(`📝 Generated clean template: ${templatePath}`);
 }
 
 // Run the generator

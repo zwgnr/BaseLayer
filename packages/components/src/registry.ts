@@ -4,15 +4,15 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-24T23:56:51.531Z",
+  "generatedAt": "2025-06-25T05:24:03.227Z",
   "version": "2.0.0",
   "components": [
     {
       "id": "badge",
-      "displayName": "Badge",
-      "path": "src/badge/badge.tsx",
-      "template": "/templates/badge.tsx",
+      "path": "src/core/badge/badge.tsx",
+      "template": "/templates/badge.txt",
       "meta": {
+        "name": "badge",
         "category": "display",
         "status": "stable",
         "description": "A badge is a small label that can be used to display information or status.",
@@ -21,31 +21,30 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "591d9e9e098bf8f204f2c8979bd7460c57ee107685d53210849412eedc2e055e"
+      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
-      "id": "button",
-      "displayName": "Button",
-      "path": "src/button/button.tsx",
-      "template": "/templates/button.tsx",
+      "id": "breadcrumbs",
+      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+      "template": "/templates/breadcrumbs.txt",
       "meta": {
-        "category": "forms",
+        "name": "breadcrumbs",
+        "category": "navigation",
         "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
         "tags": [
-          "form",
-          "interactive"
+          "navigation"
         ],
         "version": "2.0.0"
       },
-      "sha256": "d2f05daf4ade8438e08e71607a0ba776c84c1ff04973ee5ec0d11fd37a72f290"
+      "sha256": "d9f1d2a491c833b074c6eedae8d6331b1633d306b56badc8fe0c25083329db3f"
     },
     {
-      "id": "combo-box",
-      "displayName": "ComboBox",
-      "path": "src/combobox/combobox.tsx",
-      "template": "/templates/combo-box.tsx",
+      "id": "combobox",
+      "path": "src/core/combobox/combobox.tsx",
+      "template": "/templates/combobox.txt",
       "meta": {
+        "name": "combobox",
         "category": "forms",
         "status": "stable",
         "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
@@ -55,14 +54,31 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "0f0724380253514c00d69c1caa90e6eb2739c0bb8e6d1a48d2a8dfbd8a203fec"
+      "sha256": "8dc86ee5d261d6b396c21a855ce36e1b6a588a2abf59acdd519a9581c93d9518"
+    },
+    {
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
     },
     {
       "id": "input",
-      "displayName": "Input",
-      "path": "src/input/input.tsx",
-      "template": "/templates/input.tsx",
+      "path": "src/core/input/input.tsx",
+      "template": "/templates/input.txt",
       "meta": {
+        "name": "input",
         "category": "forms",
         "status": "stable",
         "description": "Allows a user to enter a plain text value with a keyboard.",
@@ -72,7 +88,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "e67858dcf0b571b0baa798006d7a9f30f99f7c530bc5d0675f9386d3671f09b1"
+      "sha256": "2241d12d5ebfa284ad7305adc3b9a092d93b917406b12c9a26b98b8ef4cef6aa"
     }
   ]
 };
@@ -95,7 +111,7 @@ export function getComponentsByStatus(status: string): ComponentManifestEntry[] 
 export function searchComponents(query: string): ComponentManifestEntry[] {
   const lowerQuery = query.toLowerCase();
   return COMPONENTS.filter(c => 
-    c.displayName.toLowerCase().includes(lowerQuery) ||
+    c.meta.name.toLowerCase().includes(lowerQuery) ||
     c.meta.description.toLowerCase().includes(lowerQuery) ||
     c.meta.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
   );

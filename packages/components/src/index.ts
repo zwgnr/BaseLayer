@@ -1,22 +1,44 @@
-// Components
-export { Button } from './button/button';
-export { Input } from './input/input';
-export { Badge } from './badge/badge';
-export { ComboBox, ComboBoxItem } from './combobox/combobox';
+export { Badge } from "./core/badge/badge";
+export {
+	Breadcrumbs,
+	BreadcrumbsItem,
+	BreadcrumbsLink,
+} from "./core/breadcrumbs/breadcrumbs";
+export { Button } from "./core/button/button";
+export { ComboBox, ComboBoxItem } from "./core/combobox/combobox";
+export { Input } from "./core/input/input";
+// Examples - Auto-generated
+export { BadgeBase } from "./examples/badge-base";
+export { BadgeVariants } from "./examples/badge-variants";
+export { BreadcrumbsBase } from "./examples/breadcrumbs-base";
+export { BreadcrumbsSeperators } from "./examples/breadcrumbs-seperators";
+export { ButtonBase } from "./examples/button-base";
+export { ButtonHelperIcons } from "./examples/button-helper-icons";
+export { ButtonSizes } from "./examples/button-sizes";
+export { ButtonVariants } from "./examples/button-variants";
+export { ComboboxBase } from "./examples/combobox-base";
+export { ComboboxDisabledOption } from "./examples/combobox-disabled-option";
+export { ComboboxMenuTrigger } from "./examples/combobox-menu-trigger";
+export { InputBase } from "./examples/input-base";
+export { InputDisabled } from "./examples/input-disabled";
+export { InputLabel } from "./examples/input-label";
 
 // Registry
 export {
-  COMPONENTS,
-  getComponent,
-  getComponentsByCategory,
-  getComponentsByStatus,
-  searchComponents,
-  manifest,
-} from './registry';
-
+	COMPONENTS,
+	getComponent,
+	getComponentsByCategory,
+	getComponentsByStatus,
+	manifest,
+	searchComponents,
+} from "./registry";
 export type {
-  ComponentId,
-  ComponentManifestEntry,
-  ComponentMeta,
-  ComponentManifest,
-} from './schema';
+	ComponentId,
+	ComponentManifest,
+	ComponentManifestEntry,
+	ComponentMeta,
+	ExampleRegistryEntry,
+	ExamplesRegistry,
+} from "./schema";
+
+``;

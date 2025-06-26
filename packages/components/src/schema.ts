@@ -1,101 +1,71 @@
 // Component Manifest Schema Definition
 // This defines the structure for machine-readable component metadata
 
-export interface ComponentMeta {
-  category: string;
-  status: 'alpha' | 'beta' | 'stable' | 'deprecated';
-  description: string;
-  tags: string[];
-  version: string;
-}
+import { z } from 'zod';
 
-export interface ComponentManifestEntry {
-  id: string;
-  displayName: string;
-  path: string;
-  template: string;
-  meta: ComponentMeta;
-  sha256: string;
-}
+// Zod schemas
+export const ComponentMetaSchema = z.object({
+  name: z.string(),
+  category: z.string(),
+  status: z.enum(['alpha', 'beta', 'stable', 'deprecated']),
+  description: z.string(),
+  tags: z.array(z.string()),
+  version: z.string(),
+});
 
-export interface ComponentManifest {
-  generatedAt: string;
-  version: string;
-  components: ComponentManifestEntry[];
-}
+export const ComponentManifestEntrySchema = z.object({
+  id: z.string(),
+  path: z.string(),
+  template: z.string(),
+  meta: ComponentMetaSchema,
+  sha256: z.string(),
+});
 
-export interface EndpointDefinition {
-  manifest: string;
-  component: string;
-  template: string;
-  search: string;
-}
+export const ComponentManifestSchema = z.object({
+  generatedAt: z.string().datetime(),
+  version: z.string().regex(/^\d+\.\d+\.\d+(-[\w.-]+)?$/),
+  components: z.array(ComponentManifestEntrySchema),
+});
 
-export interface ManifestMetadata {
-  generator: string;
-  generatedAt: string;
-  packageVersion: string;
-  apiVersion: string;
-  checksums: Record<string, string>;
-}
+export const EndpointDefinitionSchema = z.object({
+  manifest: z.string(),
+  component: z.string(),
+  template: z.string(),
+  search: z.string(),
+});
 
-// JSON Schema for validation
-export const ComponentManifestSchema = {
-  $schema: "http://json-schema.org/draft-07/schema#",
-  type: "object",
-  required: ["generatedAt", "version", "components"],
-  properties: {
-    generatedAt: {
-      type: "string",
-      format: "date-time",
-      description: "ISO timestamp when manifest was generated"
-    },
-    version: {
-      type: "string",
-      pattern: "^\\d+\\.\\d+\\.\\d+(-[\\w\\.-]+)?$",
-      description: "Package version"
-    },
-    components: {
-      type: "array",
-      items: {
-        $ref: "#/definitions/ComponentManifestEntry"
-      }
-    }
-  },
-  definitions: {
-            ComponentManifestEntry: {
-          type: "object",
-          required: ["id", "displayName", "path", "template", "meta", "sha256"],
-          properties: {
-            id: { type: "string" },
-            displayName: { type: "string" },
-            path: { type: "string" },
-            template: { type: "string" },
-        meta: { $ref: "#/definitions/ComponentMeta" },
-        sha256: { type: "string" }
-      }
-    },
-    ComponentMeta: {
-      type: "object",
-      required: ["category", "status", "description", "tags", "version"],
-      properties: {
-        category: { type: "string" },
-        status: {
-          type: "string",
-          enum: ["alpha", "beta", "stable", "deprecated"]
-        },
-        description: { type: "string" },
-        tags: {
-          type: "array",
-          items: { type: "string" }
-        },
-        version: { type: "string" }
-      }
-    }
-  }
-} as const;
+export const ManifestMetadataSchema = z.object({
+  generator: z.string(),
+  generatedAt: z.string(),
+  packageVersion: z.string(),
+  apiVersion: z.string(),
+  checksums: z.record(z.string()),
+});
 
-// Type exports
+// Example registry schemas
+export const ExampleRegistryEntrySchema = z.object({
+  name: z.string(),
+  type: z.literal("registry:example"),
+  files: z.array(z.object({
+    path: z.string(),
+    type: z.literal("registry:example"),
+  })),
+});
+
+export const ExamplesRegistrySchema = z.object({
+  items: z.array(ExampleRegistryEntrySchema),
+});
+
+// Derived TypeScript types
+export type ComponentMeta = z.infer<typeof ComponentMetaSchema>;
+export type ComponentManifestEntry = z.infer<typeof ComponentManifestEntrySchema>;
+export type ComponentManifest = z.infer<typeof ComponentManifestSchema>;
+export type EndpointDefinition = z.infer<typeof EndpointDefinitionSchema>;
+export type ManifestMetadata = z.infer<typeof ManifestMetadataSchema>;
+export type ExampleRegistryEntry = z.infer<typeof ExampleRegistryEntrySchema>;
+export type ExamplesRegistry = z.infer<typeof ExamplesRegistrySchema>;
+
+// Type aliases for convenience
 export type ComponentId = ComponentManifestEntry['id'];
 export type ComponentCategory = ComponentMeta['category'];
 export type ComponentStatus = ComponentMeta['status']; 

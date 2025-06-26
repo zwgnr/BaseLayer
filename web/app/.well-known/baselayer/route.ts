@@ -20,7 +20,7 @@ export async function GET() {
     },
     "endpoints": {
       "components": `${baseUrl}/manifest.json`,
-      "template": `${baseUrl}/templates/{name}.tsx`,
+      "template": `${baseUrl}/templates/{name}.txt`,
       "tailwind": `${baseUrl}/tailwind.css`,
       "llms": `${baseUrl}/llms.txt`
     },
@@ -30,7 +30,7 @@ export async function GET() {
         category: comp.meta.category,
         description: comp.meta.description,
         endpoints: {
-          template: `${baseUrl}/templates/${comp.id}.tsx`
+          template: `${baseUrl}/templates/${comp.id}.txt`
         }
       };
       return acc;

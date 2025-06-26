@@ -16,7 +16,6 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  // Extract sidebar data server-side and convert to plain objects
   const pages = source.getPages();
   const introDocs = pages
     .filter((page) => !page.url.startsWith("/docs/components"))
@@ -41,14 +40,14 @@ export default function Layout({ children }: LayoutProps) {
       <header className="sticky top-0 z-50 w-full border-border border-b bg-surface">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center">
-            <Image src="/holo1.png" alt="BaseLayer" width={40} height={40} />
+            <Image src="/bl.svg" alt="BaseLayer" width={40} height={40} className="dark:invert" />
 
             <MobileNav introDocs={introDocs} componentDocs={componentDocs} />
 
             {/* Desktop title - hidden on mobile, visible on desktop */}
             <Link
               href="/"
-              className="ml-3 hidden font-bold text-xl uppercase tracking-tight md:block"
+              className="ml-2 hidden font-bold text-xl uppercase tracking-tight md:block"
             >
               BaseLayer
             </Link>

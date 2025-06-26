@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.13.0",
+    "@baselayer/components": "workspace:*",
     "zod": "^3.25.67"
   },
   "devDependencies": {

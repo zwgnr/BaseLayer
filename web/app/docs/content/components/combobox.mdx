@@ -1,69 +1,18 @@
 ---
-title: Combobox
-description: A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.
-featured: false
-component: true
+title: ComboBox
+description: rac
 ---
 
-import { ComboBox, ComboBoxItem } from "@baselayer/components";
-
-<RACLink href="https://react-spectrum.adobe.com/react-aria/ComboBox.html">
-  RAC Docs
-</RACLink>
-
-<ComponentPreview
-  name="combobox-demo"
-  sourceName="combobox"
-  description="Basic combobox component"
->
-  <div className="flex gap-2 items-center justify-center w-64">
-    <ComboBox label="Select a Model">
-      <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
-      <ComboBoxItem textValue="Gemini">Gemini</ComboBoxItem>
-      <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
-    </ComboBox>
-  </div>
-</ComponentPreview>
+<ComponentPreview example="combobox-base" />
 
 ## Menu trigger behavior
 
-<ComponentPreview
-  name="combobox-demo"
-  sourceName="combobox"
-  exampleSource={`<ComboBox label="Select a Model" menuTrigger="input">
-  <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
-  <ComboBoxItem textValue="Gemini">Gemini</ComboBoxItem>
-  <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
-</ComboBox>`}
-  description="Basic combobox component"
->
-  <div className="flex gap-2 items-center justify-center w-64">
-    <ComboBox label="Select a Model" menuTrigger="input">
-      <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
-      <ComboBoxItem textValue="Gemini">Gemini</ComboBoxItem>
-      <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
-    </ComboBox>
-  </div>
-</ComponentPreview>
+<ComponentPreview example="combobox-menu-trigger" />
 
 ## Disabled Options
 
+<ComponentPreview example="combobox-disabled-option" />
 
-<ComponentPreview
-  name="combobox-demo"
-  exampleSource={`<ComboBox label="Select a Model">
-  <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
-  <ComboBoxItem isDisabled textValue="Gemini">Gemini</ComboBoxItem>
-  <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
-</ComboBox>`}
-  description="Basic combobox component"
->
-  <div className="flex gap-2 items-center justify-center w-64">
-    <ComboBox label="Select a Model">
-      <ComboBoxItem textValue="ChatGPT">ChatGPT</ComboBoxItem>
-      <ComboBoxItem isDisabled textValue="Gemini">Gemini</ComboBoxItem>
-      <ComboBoxItem textValue="Claude">Claude</ComboBoxItem>
-    </ComboBox>
-  </div>
-</ComponentPreview>
+## Source
 
+<ComponentPreview name="combobox" />

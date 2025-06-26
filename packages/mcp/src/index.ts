@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { getManifest } from "./tools/get-manifest";
+
 import { getComponentTemplate } from "./tools/get-component-template";
+import { getManifest } from "./tools/get-manifest";
 import { initBaselayer } from "./tools/init-baselayer";
 
 // Helper function to convert PascalCase/camelCase to kebab-case
@@ -279,7 +281,6 @@ server.registerTool(
 
       // Process each component
       const componentResults = [];
-      const allDependencies = new Set<string>();
 
       for (const compType of componentsToInstall) {
         const component = manifest.components.find(
@@ -307,8 +308,8 @@ server.registerTool(
           finalComponentName
         );
 
-        // Add dependencies to the set
-        component.imports.forEach((dep: string) => allDependencies.add(dep));
+        // Note: Dependencies would be tracked here if available in manifest
+        // For now, BaseLayer components are self-contained
 
         componentResults.push({
           component,
@@ -384,12 +385,11 @@ ${componentSections}
 **📂 Category**: ${component.meta.category}
 **🔖 Status**: ${component.meta.status}
 **📝 Description**: ${component.meta.description}
-**🔗 Dependencies**: ${component.imports.join(", ")}
 **🏷️  Tags**: ${component.meta.tags.join(", ")}
 
 **📋 Installation Steps**:
-1. Create a \`components\` directory if it doesn't exist
-2. Save the component code below as \`components/${toKebabCase(
+1. Create a \`components/base\` directory if it doesn't exist
+2. Save the component code below as \`components/base/${toKebabCase(
                 finalComponentName
               )}.tsx\`
 
@@ -399,7 +399,7 @@ ${componentCode}
 
 **💻 Usage Example**:
 \`\`\`tsx
-import { ${finalComponentName} } from '@/components/${toKebabCase(
+import { ${finalComponentName} } from '@/components/base/${toKebabCase(
                 finalComponentName
               )}';
 

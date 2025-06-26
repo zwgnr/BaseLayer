@@ -18,15 +18,6 @@ import { tv } from "tailwind-variants";
 
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 
-export const meta = {
-	category: "forms",
-	status: "stable",
-	description:
-		"A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
-	tags: ["form", "interactive"],
-	version: "2.0.0",
-} as const;
-
 const combobox = tv({
 	slots: {
 		root: "group max-h-inherit w-full overflow-auto p-1 outline-none",

@@ -1,0 +1,5 @@
+import { Input } from "@components/base/input";
+
+export const InputDisabled = () => {
+	return <Input label="Email" placeholder="example@email.com" isDisabled />;
+};

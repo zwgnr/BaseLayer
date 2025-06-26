@@ -7,11 +7,11 @@ export async function getComponentTemplate(
 
   try {
     console.log(
-      `🔍 Fetching ${componentId} template from ${apiUrl}/templates/${componentId}.tsx`
+      `🔍 Fetching ${componentId} template from ${apiUrl}/templates/${componentId}.txt`
     );
 
     const response = await fetch(
-      `${apiUrl}/templates/${componentId}.tsx`
+      `${apiUrl}/templates/${componentId}.txt`
     );
 
     if (!response.ok) {
