@@ -1,5 +1,7 @@
 import { codeToHtml } from "shiki";
 
+import { CodeBlockWithCopy } from "./code-block-client";
+
 interface CodeBlockProps {
 	code: string;
 	lang?: string;
@@ -15,6 +17,5 @@ export const CodeBlock = async ({ code, lang = "tsx" }: CodeBlockProps) => {
 		defaultColor: "light-dark()",
 	});
 
-	// biome-ignore lint/security/noDangerouslySetInnerHtml: fine
-	return <div dangerouslySetInnerHTML={{ __html: html }} />;
+	return <CodeBlockWithCopy code={code} html={html} />;
 };
