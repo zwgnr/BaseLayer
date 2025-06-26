@@ -59,7 +59,7 @@ export function MobileNav({ introDocs, componentDocs }: MobileNavProps) {
         {/* Mobile menu header */}
         <div className="flex items-center justify-between border-border border-b p-4">
           <div className="flex items-center">
-            <Image src="/holo5.png" alt="BaseLayer" width={32} height={32} />
+            <Image src="/bl.svg" alt="BaseLayer" width={32} height={32} className="dark:invert" />
             <span className="ml-2 font-bold text-lg uppercase tracking-tight">
               BaseLayer
             </span>

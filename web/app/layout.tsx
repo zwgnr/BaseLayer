@@ -9,6 +9,9 @@ import { ThemeProvider } from "next-themes";
 export const metadata: Metadata = {
   title: "BaseLayer",
   description: "BaseLayer is a component system for building web applications.",
+  icons: {
+    icon: "/bl.svg",
+  },
 };
 
 export default function RootLayout({
