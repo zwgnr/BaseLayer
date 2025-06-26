@@ -1,5 +1,6 @@
 import { source } from "@/lib/source";
 
+import { SearchDialog } from "./search";
 import { SidebarLink } from "./sidebar-link";
 
 export function Sidebar() {
@@ -14,6 +15,8 @@ export function Sidebar() {
   return (
     <div className="sticky top-[73px] h-[calc(100vh-73px)] w-64 overflow-y-auto border-border border-r">
       <div className="space-y-6 p-6">
+        {/* Search */}
+        <SearchDialog />
         {/* Getting Started */}
         <nav className="space-y-4">
           <div>

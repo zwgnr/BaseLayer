@@ -1,9 +1,13 @@
 "use client";
 
-import type { TextFieldProps as AriaTextFieldProps } from "react-aria-components";
+import type {
+	TextFieldProps as AriaTextFieldProps,
+	ValidationResult,
+} from "react-aria-components";
 import {
 	Input as AriaInput,
 	TextField as AriaTextField,
+	FieldError,
 	Label,
 	Text,
 } from "react-aria-components";
@@ -17,7 +21,7 @@ interface InputProps extends Omit<AriaTextFieldProps, "className"> {
 	className?: string;
 	label?: string;
 	description?: string;
-	errorMessage?: string;
+	errorMessage?: string | ((validation: ValidationResult) => string);
 	placeholder?: string;
 }
 
@@ -32,8 +36,12 @@ const Input = ({
 	<AriaTextField className="flex flex-col gap-1" {...props}>
 		{label && <Label className="text-sm">{label}</Label>}
 		<AriaInput className={input({ className })} placeholder={placeholder} />
-		{description && <Text slot="description">{description}</Text>}
-		{errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+		{description && (
+			<Text className="text-fg-muted text-sm" slot="description">
+				{description}
+			</Text>
+		)}
+		<FieldError className="text-danger text-sm">{errorMessage}</FieldError>
 	</AriaTextField>
 );
 

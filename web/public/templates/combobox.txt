@@ -6,6 +6,7 @@ import {
 	ComboBox as AriaComboBox,
 	type ComboBoxProps as AriaComboBoxProps,
 	Button,
+	FieldError,
 	Input,
 	Label,
 	ListBox,
@@ -13,6 +14,7 @@ import {
 	type ListBoxItemProps,
 	Popover,
 	Text,
+	type ValidationResult,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
@@ -34,12 +36,11 @@ const combobox = tv({
 const styles = combobox();
 
 interface ComboBoxProps<T extends ListBoxItemProps>
-	extends Omit<AriaComboBoxProps<T>, "children"> {
+	extends Omit<AriaComboBoxProps<T>, "className"> {
 	className?: string;
 	label?: string;
 	description?: string;
-	errorMessage?: string;
-	children: ReactNode;
+	errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
 const ComboBox = <T extends ListBoxItemProps>({
@@ -63,8 +64,12 @@ const ComboBox = <T extends ListBoxItemProps>({
 				<ChevronsUpDown className="size-5 text-fg-muted group-data-[focused]:text-fg" />
 			</Button>
 		</div>
-		{description && <Text slot="description">{description}</Text>}
-		{errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
+		{description && (
+			<Text className="text-fg-muted text-sm" slot="description">
+				{description}
+			</Text>
+		)}
+		<FieldError className="text-danger text-sm">{errorMessage}</FieldError>
 		<Popover className={styles.popover()}>
 			<ListBox>{children}</ListBox>
 		</Popover>
@@ -89,3 +94,4 @@ const ComboBoxItem = ({ className, ...props }: ComboBoxItemProps) => (
 );
 
 export { ComboBox, ComboBoxItem };
+export type { ComboBoxProps, ListBoxItemProps as ComboBoxItemProps };

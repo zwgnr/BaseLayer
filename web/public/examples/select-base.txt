@@ -1,0 +1,12 @@
+import { Select, SelectItem } from "@components/base/select";
+
+export const SelectExample = () => {
+	return (
+		<Select label="Model">
+			<SelectItem>4o</SelectItem>
+			<SelectItem>o3</SelectItem>
+			<SelectItem>Sonnet 4</SelectItem>
+			<SelectItem>Gemini 2.0 Flash</SelectItem>
+		</Select>
+	);
+};

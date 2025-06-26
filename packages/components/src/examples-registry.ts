@@ -150,6 +150,36 @@ export const examples: ExamplesRegistry["items"] = [
         type: "registry:example" as const,
       },
     ],
+  },
+  {
+    name: "modal-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/modal-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "modal-dismissable",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/modal-dismissable.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "select-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/select-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
   }
 ];
 

@@ -18,14 +18,14 @@ const breadcrumbs = tv({
 	},
 });
 
-const { root, link, item } = breadcrumbs();
+const styles = breadcrumbs();
 
 const Breadcrumbs = <T extends object>({
 	children,
 	className,
 	...props
 }: AriaBreadcrumbsProps<T> & { className?: string }) => (
-	<AriaBreadcrumbs className={root({ className })} {...props}>
+	<AriaBreadcrumbs className={styles.root({ className })} {...props}>
 		{children}
 	</AriaBreadcrumbs>
 );
@@ -35,7 +35,7 @@ const BreadcrumbsLink = ({
 	className,
 	...props
 }: LinkProps & { className?: string }) => (
-	<Link className={link({ className })} {...props}>
+	<Link className={styles.link({ className })} {...props}>
 		{children}
 	</Link>
 );
@@ -45,7 +45,7 @@ const BreadcrumbsItem = ({
 	className,
 	...props
 }: BreadcrumbProps & { className?: string }) => (
-	<Breadcrumb className={item({ className })} {...props}>
+	<Breadcrumb className={styles.item({ className })} {...props}>
 		{children}
 	</Breadcrumb>
 );

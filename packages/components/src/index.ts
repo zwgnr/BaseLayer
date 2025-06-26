@@ -8,6 +8,8 @@ export { Button } from "./core/button/button";
 export { Calendar } from "./core/calendar/calendar";
 export { ComboBox, ComboBoxItem } from "./core/combobox/combobox";
 export { Input } from "./core/input/input";
+export { Dialog, Modal, ModalTrigger } from "./core/modal/modal";
+export { Select, SelectItem } from "./core/select/select";
 // Examples - Auto-generated
 export { BadgeBase } from "./examples/badge-base";
 export { BadgeVariants } from "./examples/badge-variants";
@@ -24,6 +26,9 @@ export { ComboboxMenuTrigger } from "./examples/combobox-menu-trigger";
 export { InputBase } from "./examples/input-base";
 export { InputDisabled } from "./examples/input-disabled";
 export { InputLabel } from "./examples/input-label";
+export { ModalExample } from "./examples/modal-base";
+export { ModalDismissable } from "./examples/modal-dismissable";
+export { SelectExample } from "./examples/select-base";
 
 // Registry
 export {

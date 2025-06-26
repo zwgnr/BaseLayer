@@ -1,0 +1,8 @@
+{
+  "name": "modal",
+  "category": "overlays",
+  "status": "stable",
+  "description": "A modal is an overlay element which blocks interaction with elements outside it.",
+  "tags": ["overlay"],
+  "version": "2.0.0"
+} 

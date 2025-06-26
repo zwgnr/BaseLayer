@@ -3,6 +3,6 @@
   "category": "forms",
   "status": "stable",
   "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
-  "tags": ["form", "interactive"],
+  "tags": ["form", "interactive", "picker"],
   "version": "2.0.0"
 } 
