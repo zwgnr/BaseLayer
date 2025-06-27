@@ -1,0 +1,8 @@
+{
+  "name": "switch",
+  "category": "forms",
+  "status": "stable",
+  "description": "A switch allows a user to turn a setting on or off.",
+  "tags": ["form", "interactive", "toggle"],
+  "version": "2.0.0"
+} 

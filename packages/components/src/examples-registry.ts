@@ -92,6 +92,26 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "checkbox-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/checkbox-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "checkbox-group",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/checkbox-group.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "combobox-base",
     type: "registry:example" as const,
     files: [
@@ -117,6 +137,16 @@ export const examples: ExamplesRegistry["items"] = [
     files: [
       {
         path: "examples/combobox-menu-trigger.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "date-field-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/date-field-base.txt",
         type: "registry:example" as const,
       },
     ],
@@ -177,6 +207,16 @@ export const examples: ExamplesRegistry["items"] = [
     files: [
       {
         path: "examples/select-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "switch-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/switch-base.txt",
         type: "registry:example" as const,
       },
     ],

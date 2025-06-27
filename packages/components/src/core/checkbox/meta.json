@@ -1,0 +1,8 @@
+{
+  "name": "checkbox",
+  "category": "forms",
+  "status": "stable",
+  "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
+  "tags": ["form", "interactive"],
+  "version": "2.0.0"
+} 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { CheckIcon, CopyIcon } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 
 interface CodeBlockWithCopyProps {
 	code: string;
@@ -30,9 +30,9 @@ const CopyButton = ({ code }: { code: string }) => {
 			title={copied ? "Copied!" : "Copy to clipboard"}
 		>
 			{copied ? (
-				<CheckIcon className="size-4" />
+				<Check className="size-4" />
 			) : (
-				<CopyIcon className="size-4" />
+				<Copy className="size-4" />
 			)}
 		</button>
 	);
