@@ -1,0 +1,16 @@
+import { SearchableSelect, SelectItem } from "@components/base/select";
+
+export const SearchableSelectExample = () => {
+	return (
+		<SearchableSelect 
+			label="Model"
+			searchPlaceholder="Search"
+      className="w-96"
+		>
+			<SelectItem>4o</SelectItem>
+			<SelectItem>o3</SelectItem>
+			<SelectItem>Sonnet 4</SelectItem>
+			<SelectItem>Gemini 2.0</SelectItem>
+		</SearchableSelect>
+	);
+}; 

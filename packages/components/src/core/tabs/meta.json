@@ -1,0 +1,8 @@
+{
+  "name": "tabs",
+  "category": "navigation",
+  "status": "stable",
+  "description": "Tabs organize content into multiple sections and allow users to navigate between them.",
+  "tags": ["navigation", "interactive", "layout"],
+  "version": "2.0.0"
+} 

@@ -2,7 +2,7 @@
   "name": "calendar",
   "category": "data-entry",
   "status": "stable",
-  "description": "A calendar displays one or more date grids and allows users to select a single date.",
-  "tags": ["data-entry", "interactive"],
+  "description": "A calendar displays one or more date grids and allows users to select either a single date or a contiguous range of dates.",
+  "tags": ["form", "interactive", "date-time"],
   "version": "2.0.0"
 } 

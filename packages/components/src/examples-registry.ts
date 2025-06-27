@@ -152,6 +152,26 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "date-picker-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/date-picker-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "date-range-picker-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/date-range-picker-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "input-base",
     type: "registry:example" as const,
     files: [
@@ -182,6 +202,26 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "menu-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/menu-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "meter-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/meter-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "modal-base",
     type: "registry:example" as const,
     files: [
@@ -202,6 +242,36 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "popover-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/popover-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "radio-group-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/radio-group-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "range-calendar-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/range-calendar-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "select-base",
     type: "registry:example" as const,
     files: [
@@ -212,11 +282,91 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "select-searchable",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/select-searchable.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "slider-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/slider-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "switch-base",
     type: "registry:example" as const,
     files: [
       {
         path: "examples/switch-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "table-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/table-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "tabs-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/tabs-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "tag-group-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/tag-group-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "time-field-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/time-field-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "toggle-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/toggle-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "tooltip-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/tooltip-base.txt",
         type: "registry:example" as const,
       },
     ],

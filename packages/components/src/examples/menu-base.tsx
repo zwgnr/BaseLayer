@@ -1,0 +1,57 @@
+import {
+	CreditCard,
+	HelpCircle,
+	LogOut,
+	Plus,
+	Settings,
+	User,
+} from "lucide-react";
+
+import { Button } from "../core/button/button";
+import {
+	MenuContent,
+	MenuHeader,
+	MenuItem,
+	MenuSection,
+	MenuSeperator,
+	MenuTrigger,
+} from "../core/menu/menu";
+
+export const Menu = () => {
+	return (
+		<MenuTrigger>
+			<Button>Menu</Button>
+			<MenuContent>
+				<MenuSection>
+					<MenuHeader>me@hello.com</MenuHeader>
+				</MenuSection>
+				<MenuSeperator />
+				<MenuItem>
+					Account Settings
+					<Settings />
+				</MenuItem>
+				<MenuItem>
+					Billing
+					<CreditCard />
+				</MenuItem>
+				<MenuItem>
+					Create a Team
+					<Plus />
+				</MenuItem>
+				<MenuItem>
+					Invite Member
+					<User />
+				</MenuItem>
+				<MenuSeperator />
+				<MenuItem>
+					Support
+					<HelpCircle />
+				</MenuItem>
+				<MenuItem>
+					Logout
+					<LogOut />
+				</MenuItem>
+			</MenuContent>
+		</MenuTrigger>
+	);
+};

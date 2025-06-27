@@ -11,19 +11,11 @@ import { tv } from "tailwind-variants";
 
 const switchStyles = tv({
 	slots: {
-		root: "flex items-center gap-2 transition-none duration-200 [&>div]:ring-focus [&>div]:ring-offset-2 [&>div]:ring-offset-surface [&>div]:data-[focus-visible]:ring-2",
+		root: "group flex items-center gap-2 transition-none duration-200",
 		indicator:
-			"h-6 w-10 cursor-pointer rounded-2xl bg-surface-3 duration-200 before:mx-[4px] before:mt-[4px] before:block before:size-4 before:rounded-2xl before:bg-surface before:transition-all ",
+			"h-6 w-10 cursor-pointer rounded-2xl bg-surface-3 duration-200 before:mx-[4px] before:mt-[4px] before:block before:size-4 before:rounded-2xl before:bg-surface before:transition-all data-[selected]:bg-primary group-data-[selected]:bg-primary group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-focus group-data-[focus-visible]:ring-offset-2 group-data-[focus-visible]:ring-offset-surface group-data-[selected]:before:translate-x-4",
 		label: "text-fg-muted text-sm",
-	},
-	variants: {
-		selected: {
-			true: { indicator: "bg-primary before:translate-x-4" },
-		},
-	},
-	defaultVariants: {
-		selected: false,
-	},
+	},	
 });
 
 const styles = switchStyles();
@@ -35,16 +27,8 @@ interface SwitchProps extends AriaSwitchProps {
 
  const Switch = ({ className, children, ...restProps }: SwitchProps) => (
 	<AriaSwitch className={styles.root({ className })} {...restProps}>
-		{({ isSelected }) => (
-			<>
-				<div
-					className={styles.indicator({
-						selected: isSelected,
-					})}
-				/>
-				<Label className={styles.label()}> {children}</Label>
-			</>
-		)}
+		<div className={styles.indicator()} />
+		<Label className={styles.label()}> {children}</Label>
 	</AriaSwitch>
 );
 

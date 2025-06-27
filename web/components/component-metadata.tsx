@@ -31,7 +31,7 @@ export async function ComponentMetadata({
   const { meta } = component;
 
   return (
-    <div className="not-prose flex flex-col gap-3">
+    <div className="not-prose flex flex-col">
       {showTitle && (
         <h1 className="font-bold text-3xl capitalize tracking-tight">
           {meta.name}
@@ -39,7 +39,7 @@ export async function ComponentMetadata({
       )}
       
       {showDescription && (
-        <p className="text-lg text-muted-foreground">
+        <p className="-mt-4 text-muted-foreground">
           {meta.description}
         </p>
       )}

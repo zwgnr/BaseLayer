@@ -1,0 +1,8 @@
+{
+  "name": "table",
+  "category": "data-display",
+  "status": "stable",
+  "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+  "tags": ["data-display", "interactive"],
+  "version": "2.0.0"
+} 

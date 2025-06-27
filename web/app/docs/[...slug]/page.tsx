@@ -18,6 +18,22 @@ interface PageProps {
 	}>;
 }
 
+// Convert PascalCase title to kebab-case component ID
+function titleToComponentId(title: string): string {
+	// Handle special cases
+	if (title === "ComboBox") {
+		return "combobox";
+	}
+
+	return (
+		title
+			// Insert a hyphen before uppercase letters that follow lowercase letters
+			.replace(/([a-z])([A-Z])/g, "$1-$2")
+			// Convert to lowercase
+			.toLowerCase()
+	);
+}
+
 export default async function Page({ params }: PageProps) {
 	const { slug } = await params;
 	const page = source.getPage(slug);
@@ -29,17 +45,24 @@ export default async function Page({ params }: PageProps) {
 	const toc = page.data.toc || [];
 	const MDXContent = page.data.body;
 
+	// Check if this is a component page
+	const isComponentPage = page.data?.description?.includes("rac");
+	const hasManualDescription = page.data.description && !page.data.description.includes("rac");
+	const componentId = isComponentPage
+		? titleToComponentId(page.data.title)
+		: null;
+
 	return (
 		<DocsPage toc={toc}>
 			<div className="prose dark:prose-invert max-w-none px-12 pb-12">
 				<h1 className="font-bold text-3xl tracking-tigh">{page.data.title}</h1>
-				{/* {page.data.description && (
-          <p className="-mt-4">{page.data.description}</p>
-        )} */}
-				<ComponentMetadata componentId={page.data.title.toLowerCase()} />
-				{page.data?.description?.includes("rac") && (
-					<RACLink componentName={page.data.title} />
+				{hasManualDescription && (
+					<p className="-mt-4 text-muted-foreground">{page.data.description}</p>
 				)}
+				{isComponentPage && componentId && (
+					<ComponentMetadata componentId={componentId} />
+				)}
+				{isComponentPage && <RACLink componentName={page.data.title} />}
 				<MDXContent components={mdxComponents} />
 			</div>
 		</DocsPage>

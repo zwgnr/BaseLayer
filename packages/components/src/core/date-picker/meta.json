@@ -1,0 +1,8 @@
+{
+  "name": "date-picker",
+  "category": "forms",
+  "status": "stable",
+  "description": "A date picker combines one or more DateFields with a calendar popover, allowing users to enter or select a single date/time or a range.",
+  "tags": ["form", "interactive", "date-time"],
+  "version": "2.0.0"
+} 

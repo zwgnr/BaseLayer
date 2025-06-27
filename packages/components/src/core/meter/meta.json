@@ -1,0 +1,8 @@
+{
+  "name": "meter",
+  "category": "data-display",
+  "status": "stable",
+  "description": "A meter represents a quantity within a known range, or a fractional value.",
+  "tags": ["data-display", "progress"],
+  "version": "2.0.0"
+} 

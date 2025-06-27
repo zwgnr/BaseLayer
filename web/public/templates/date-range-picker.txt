@@ -1,0 +1,91 @@
+"use client";
+
+import type {
+  DateRangePickerProps as AriaDateRangePickerProps,
+  DateValue,
+} from "react-aria-components";
+import {
+  DateRangePicker as AriaDateRangePicker,
+  Button,
+  DateInput,
+  DateSegment,
+  Dialog,
+  FieldError,
+  Group,
+  Label,
+  Popover,
+  RangeCalendar,Text 
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+
+import { ChevronDown } from "lucide-react";
+
+const dateRangePicker = tv({
+  slots: {
+    group:
+      "relative flex w-fit flex-wrap items-center rounded-xl bg-surface-2 transition-all data-[focus-within]:bg-surface",
+    input:
+      "min-w-32 appearance-none rounded-xl bg-transparent px-3 py-1.5 font-semibold outline-none ring-primary transition-all data-[focus-within]:ring-2",
+    inputButton:
+      "absolute right-2 flex appearance-none items-center justify-center rounded-md p-1 outline-none ring-primary ring-offset-2 ring-offset-surface transition-all data-[hovered]:bg-surface-2 data-[focus-visible]:ring-2",
+    dateSegment:
+      "rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[type='literal']:font-semibold data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted",
+    popover:
+      "overflow-auto rounded-2xl data-[entering]:animate-fade data-[exiting]:animate-fadeOut",
+    separator: "px-2 font-semibold text-fg-muted",
+  },
+});
+
+const styles = dateRangePicker();
+
+interface DateRangePickerProps<T extends DateValue>
+  extends AriaDateRangePickerProps<T> {
+  label?: string;
+  description?: string;
+  errorMessage?: string;
+}
+
+const DateRangePicker = <T extends DateValue>({
+  className,
+  label,
+  description,
+  errorMessage,
+  children,
+  ...props
+}: DateRangePickerProps<T>) => (
+  <AriaDateRangePicker className="flex flex-col gap-2" {...props}>
+    {label && <Label className="text-sm">{label}</Label>}
+    <Group className={styles.group()}>
+      <DateInput slot="start" className={styles.input()}>
+        {(segment) => (
+          <DateSegment className={styles.dateSegment()} segment={segment} />
+        )}
+      </DateInput>
+      <span className={styles.separator()} aria-hidden="true">
+        –
+      </span>
+      <DateInput slot="end" className={styles.input()}>
+        {(segment) => (
+          <DateSegment className={styles.dateSegment()} segment={segment} />
+        )}
+      </DateInput>
+      <Button className={styles.inputButton()}>
+        <ChevronDown className="size-4 text-fg-muted" />
+      </Button>
+    </Group>
+    {description && (
+      <Text className="text-fg-muted text-sm" slot="description">
+        {description}
+      </Text>
+    )}
+    <FieldError className="text-critical text-sm">{errorMessage}</FieldError>
+    <Popover className={styles.popover()}>
+      <Dialog>
+        <RangeCalendar />
+      </Dialog>
+    </Popover>
+  </AriaDateRangePicker>
+);
+
+export { DateRangePicker };
+export type { DateRangePickerProps }; 

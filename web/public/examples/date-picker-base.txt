@@ -1,0 +1,3 @@
+import { DatePicker } from "@components/base/date-picker";
+
+export const DatePickerBase = () => <DatePicker label="Check In" />; 
