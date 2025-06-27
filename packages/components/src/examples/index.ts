@@ -9,6 +9,8 @@ export * from "./button-helper-icons";
 export * from "./button-sizes";
 export * from "./button-variants";
 export * from "./calendar-base";
+export * from "./card-base";
+export * from "./card-variants";
 export * from "./checkbox-base";
 export * from "./checkbox-group";
 export * from "./combobox-base";

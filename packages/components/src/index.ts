@@ -12,6 +12,8 @@ export { ButtonHelperIcons } from "./examples/button-helper-icons";
 export { ButtonSizes } from "./examples/button-sizes";
 export { ButtonVariants } from "./examples/button-variants";
 export { CalendarExample } from "./examples/calendar-base";
+export { CardBase } from "./examples/card-base";
+export { CardVariants } from "./examples/card-variants";
 export { CheckboxBase } from "./examples/checkbox-base";
 export { CheckboxGroupExample } from "./examples/checkbox-group";
 export { ComboboxBase } from "./examples/combobox-base";
@@ -40,7 +42,6 @@ export { TagGroupExample } from "./examples/tag-group-base";
 export { TimeFieldExample } from "./examples/time-field-base";
 export { ToggleExample } from "./examples/toggle-base";
 export { TooltipExample } from "./examples/tooltip-base";
-
 // Registry
 export {
 	COMPONENTS,

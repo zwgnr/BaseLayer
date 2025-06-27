@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-27T20:46:50.340Z",
+  "generatedAt": "2025-06-27T20:53:54.407Z",
   "version": "2.0.0",
   "components": [
     {
@@ -25,39 +25,6 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "a344fed7668493816c4739f59811ace07a0a9114a69d84f2a7be76c8961cbd24"
-    },
-    {
-      "id": "badge",
-      "path": "src/core/badge/badge.tsx",
-      "template": "/templates/badge.txt",
-      "meta": {
-        "name": "badge",
-        "category": "display",
-        "status": "stable",
-        "description": "A badge is a small label that can be used to display information or status.",
-        "tags": [
-          "status"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
-    },
-    {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
     },
     {
       "id": "breadcrumbs",
@@ -94,22 +61,39 @@ const manifest: ComponentManifest = {
       "sha256": "f319d0dc21160633a1cf310705b3e4a6e15e8e7082df9939fdafd99f646eb681"
     },
     {
-      "id": "combobox",
-      "path": "src/core/combobox/combobox.tsx",
-      "template": "/templates/combobox.txt",
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
       "meta": {
-        "name": "combobox",
+        "name": "button",
         "category": "forms",
         "status": "stable",
-        "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
         "tags": [
           "form",
-          "interactive",
-          "picker"
+          "interactive"
         ],
         "version": "2.0.0"
       },
-      "sha256": "066ccde400c475e86b7f2a6c40e8555100ece83d357f5153c08af4ed810fd5a4"
+      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
+    },
+    {
+      "id": "card",
+      "path": "src/core/card/card.tsx",
+      "template": "/templates/card.txt",
+      "meta": {
+        "name": "card",
+        "category": "layout",
+        "status": "stable",
+        "description": "Displays a card with header, content, and footer.",
+        "tags": [
+          "layout",
+          "container",
+          "display"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "7843adaad17b9ba3927fcdc967ac6e91dff2dae66b5d7801fa46f3f5e58b55ae"
     },
     {
       "id": "checkbox",
@@ -127,6 +111,40 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "7facdb015c7b6acc8fd477b4dcec57b4d96f4c36e07f03c883ea4f24b320ea66"
+    },
+    {
+      "id": "badge",
+      "path": "src/core/badge/badge.tsx",
+      "template": "/templates/badge.txt",
+      "meta": {
+        "name": "badge",
+        "category": "display",
+        "status": "stable",
+        "description": "A badge is a small label that can be used to display information or status.",
+        "tags": [
+          "status"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
+    },
+    {
+      "id": "combobox",
+      "path": "src/core/combobox/combobox.tsx",
+      "template": "/templates/combobox.txt",
+      "meta": {
+        "name": "combobox",
+        "category": "forms",
+        "status": "stable",
+        "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
+        "tags": [
+          "form",
+          "interactive",
+          "picker"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "066ccde400c475e86b7f2a6c40e8555100ece83d357f5153c08af4ed810fd5a4"
     },
     {
       "id": "date-field",
@@ -180,6 +198,23 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "57d324d4e00e34d7996a383532045163bc423c5ca534fbf62762707efbf09bac"
+    },
+    {
+      "id": "menu",
+      "path": "src/core/menu/menu.tsx",
+      "template": "/templates/menu.txt",
+      "meta": {
+        "name": "menu",
+        "category": "pickers",
+        "status": "stable",
+        "description": "A menu displays a list of actions or options that a user can choose.",
+        "tags": [
+          "interactive",
+          "navigation"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "499ad0760013f8e35bd542846ee266665fd1430d27b755a645369cfb73a3feb6"
     },
     {
       "id": "meter",
@@ -266,23 +301,6 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "852230446935a69a3af7999e01f503250931dc9e89f0eb2f178224c506de074f"
-    },
-    {
-      "id": "menu",
-      "path": "src/core/menu/menu.tsx",
-      "template": "/templates/menu.txt",
-      "meta": {
-        "name": "menu",
-        "category": "pickers",
-        "status": "stable",
-        "description": "A menu displays a list of actions or options that a user can choose.",
-        "tags": [
-          "interactive",
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "499ad0760013f8e35bd542846ee266665fd1430d27b755a645369cfb73a3feb6"
     },
     {
       "id": "slider",

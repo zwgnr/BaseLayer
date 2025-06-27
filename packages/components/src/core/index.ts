@@ -3,6 +3,7 @@ export * from "./badge/badge";
 export * from "./breadcrumbs/breadcrumbs";
 export * from "./button/button";
 export * from "./calendar/calendar";
+export * from "./card/card";
 export * from "./checkbox/checkbox";
 export * from "./combobox/combobox";
 export * from "./date-field/date-field";

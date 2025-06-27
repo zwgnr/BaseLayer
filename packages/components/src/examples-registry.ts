@@ -112,6 +112,36 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "card-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/card-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "card-sizes",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/card-sizes.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "card-variants",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/card-variants.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "checkbox-base",
     type: "registry:example" as const,
     files: [
