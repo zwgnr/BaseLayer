@@ -2,6 +2,26 @@ import type { ExamplesRegistry } from "./schema";
 
 export const examples: ExamplesRegistry["items"] = [
   {
+    name: "accordion-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/accordion-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "accordion-group",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/accordion-group.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "badge-base",
     type: "registry:example" as const,
     files: [

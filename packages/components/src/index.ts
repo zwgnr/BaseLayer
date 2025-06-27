@@ -1,6 +1,8 @@
 export * from "./core";
 export * from "./examples";
 // Examples - Auto-generated
+export { AccordionBase } from "./examples/accordion-base";
+export { AccordionGroupExample } from "./examples/accordion-group";
 export { BadgeBase } from "./examples/badge-base";
 export { BadgeVariants } from "./examples/badge-variants";
 export { BreadcrumbsBase } from "./examples/breadcrumbs-base";

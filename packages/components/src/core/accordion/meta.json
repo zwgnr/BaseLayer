@@ -1,0 +1,8 @@
+{
+  "name": "accordion",
+  "category": "layout",
+  "status": "stable",
+  "description": "An accordion allows users to toggle the display of sections of content. Each accordion consists of a header with a title and content area.",
+  "tags": ["disclosure", "collapsible", "expandable", "content"],
+  "version": "2.0.0"
+} 

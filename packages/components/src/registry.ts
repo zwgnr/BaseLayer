@@ -4,9 +4,28 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-27T19:43:01.187Z",
+  "generatedAt": "2025-06-27T20:46:50.340Z",
   "version": "2.0.0",
   "components": [
+    {
+      "id": "accordion",
+      "path": "src/core/accordion/accordion.tsx",
+      "template": "/templates/accordion.txt",
+      "meta": {
+        "name": "accordion",
+        "category": "layout",
+        "status": "stable",
+        "description": "An accordion allows users to toggle the display of sections of content. Each accordion consists of a header with a title and content area.",
+        "tags": [
+          "disclosure",
+          "collapsible",
+          "expandable",
+          "content"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "a344fed7668493816c4739f59811ace07a0a9114a69d84f2a7be76c8961cbd24"
+    },
     {
       "id": "badge",
       "path": "src/core/badge/badge.tsx",
@@ -22,6 +41,23 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
+    },
+    {
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
     },
     {
       "id": "breadcrumbs",
@@ -56,23 +92,6 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "f319d0dc21160633a1cf310705b3e4a6e15e8e7082df9939fdafd99f646eb681"
-    },
-    {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
     },
     {
       "id": "combobox",
@@ -163,23 +182,6 @@ const manifest: ComponentManifest = {
       "sha256": "57d324d4e00e34d7996a383532045163bc423c5ca534fbf62762707efbf09bac"
     },
     {
-      "id": "menu",
-      "path": "src/core/menu/menu.tsx",
-      "template": "/templates/menu.txt",
-      "meta": {
-        "name": "menu",
-        "category": "pickers",
-        "status": "stable",
-        "description": "A menu displays a list of actions or options that a user can choose.",
-        "tags": [
-          "interactive",
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "499ad0760013f8e35bd542846ee266665fd1430d27b755a645369cfb73a3feb6"
-    },
-    {
       "id": "meter",
       "path": "src/core/meter/meter.tsx",
       "template": "/templates/meter.txt",
@@ -264,6 +266,23 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "852230446935a69a3af7999e01f503250931dc9e89f0eb2f178224c506de074f"
+    },
+    {
+      "id": "menu",
+      "path": "src/core/menu/menu.tsx",
+      "template": "/templates/menu.txt",
+      "meta": {
+        "name": "menu",
+        "category": "pickers",
+        "status": "stable",
+        "description": "A menu displays a list of actions or options that a user can choose.",
+        "tags": [
+          "interactive",
+          "navigation"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "499ad0760013f8e35bd542846ee266665fd1430d27b755a645369cfb73a3feb6"
     },
     {
       "id": "slider",

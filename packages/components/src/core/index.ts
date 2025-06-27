@@ -1,3 +1,4 @@
+export * from "./accordion/accordion";
 export * from "./badge/badge";
 export * from "./breadcrumbs/breadcrumbs";
 export * from "./button/button";

@@ -1,3 +1,5 @@
+export * from "./accordion-base";
+export * from "./accordion-group";
 export * from "./badge-base";
 export * from "./badge-variants";
 export * from "./breadcrumbs-base";
