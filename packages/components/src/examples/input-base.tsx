@@ -1,5 +1,9 @@
 import { Input } from "../core/input/input";
 
 export const InputBase = () => {
-	return <Input  aria-label="email" placeholder="Enter your email" />;
+	return (
+		<div className="flex w-56 flex-col gap-2">
+				<Input aria-label="email" placeholder="Enter your email" />
+		</div>
+	);
 };

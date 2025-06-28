@@ -55,7 +55,7 @@ const TagGroup = <T extends object>({
 			</Text>
 		)}
 		{errorMessage && (
-			<Text className="text-critical text-sm" slot="errorMessage">
+			<Text className="text-danger text-sm" slot="errorMessage">
 				{errorMessage}
 			</Text>
 		)}

@@ -1,5 +1,5 @@
 // Get manifest from BaseLayer static files
-import { type ComponentManifest, ComponentManifestSchema } from '@baselayer/components/schema';
+import { type ComponentManifest, ComponentManifestSchema } from '../../../components/src/schema.js';
 
 export async function getManifest(): Promise<ComponentManifest> {
   const apiUrl = process.env.BASELAYER_API_URL || "http://localhost:3000";

@@ -1,0 +1,19 @@
+import { Accordion, AccordionGroup } from "@components/base/accordion";
+
+export const AccordionGroupExample = () => {
+	return (
+		<div className="h-80">
+		<AccordionGroup className="w-96" defaultExpandedKeys={["personal"]}>
+			<Accordion id="personal" title="Personal Information">
+				Personal information form here. Update your name, email, and other personal details.
+			</Accordion>
+			<Accordion id="billing" title="Billing Address">
+				Billing address form here. Manage your payment methods and billing information.
+			</Accordion>
+			<Accordion id="security" title="Security Settings">
+				Security settings form here. Update your password and enable two-factor authentication.
+			</Accordion>
+		</AccordionGroup>
+		</div>
+	);
+}; 

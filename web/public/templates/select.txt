@@ -24,12 +24,13 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
-import { CheckIcon, ChevronsUpDown, Search, X } from "lucide-react";
+import { CheckIcon, ChevronsUpDown, Search} from "lucide-react";
 
 const select = tv({
 	slots: {
+		group: "group flex flex-col gap-1",
 		button:
-			"flex w-full min-w-48 items-center justify-between gap-4 rounded-xl border border-border bg-surface px-3 py-1.25 align-middle font-semibold text-fg outline-none ring-fg transition-all group-data-[focused]:bg-surface group-data-[focused]:ring-2",
+			"flex w-full min-w-48 items-center justify-between gap-4 rounded-xl border border-border bg-surface px-3 py-2.25 align-middle font-semibold text-fg text-sm outline-none ring-fg transition-all group-data-[focused]:bg-surface group-data-[focused]:ring-2",
 		item: "relative m-1 flex cursor-default flex-col rounded-lg p-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-surface-2 data-[disabled]:text-fg-disabled",
 		searchField:
 			"group m-1 flex items-center rounded-lg border border-border bg-surface px-2 py-1.5",
@@ -60,7 +61,7 @@ const Select = <T extends ListBoxItemProps>({
 	...props
 }: SelectProps<T>) => (
 	<AriaSelect
-		className="group flex max-h-inherit flex-col gap-1 overflow-auto p-1 outline-none"
+		className={styles.group({ className })}
 		{...props}
 	>
 		{label && <Label className="text-sm">{label}</Label>}
@@ -97,8 +98,7 @@ const SelectItem = ({ className, ...props }: SelectItemProps) => (
 	</ListBoxItem>
 );
 
-interface SearchableSelectProps<T extends ListBoxItemProps>
-	extends SelectProps<T> {
+interface SearchableSelectProps<T extends ListBoxItemProps> extends SelectProps<T> {
 	searchPlaceholder?: string;
 }
 
@@ -115,7 +115,7 @@ const SearchableSelect = <T extends ListBoxItemProps>({
 
 	return (
 		<AriaSelect
-			className="group flex max-h-inherit flex-col gap-1 overflow-auto p-1 outline-none"
+			className={styles.group({ className })}
 			{...props}
 		>
 			{label && <Label className="text-sm">{label}</Label>}

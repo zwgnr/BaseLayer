@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import type { Metadata } from "next";
 
+import { getPageNavigation } from "@/lib/navigation";
 import { source } from "@/lib/source";
 
 import { ComponentMetadata } from "@/components/component-metadata";
@@ -20,7 +21,7 @@ interface PageProps {
 
 // Convert PascalCase title to kebab-case component ID
 function titleToComponentId(title: string): string {
-	// Handle special cases
+	//  special cases
 	if (title === "ComboBox") {
 		return "combobox";
 	}
@@ -29,7 +30,6 @@ function titleToComponentId(title: string): string {
 		title
 			// Insert a hyphen before uppercase letters that follow lowercase letters
 			.replace(/([a-z])([A-Z])/g, "$1-$2")
-			// Convert to lowercase
 			.toLowerCase()
 	);
 }
@@ -44,6 +44,7 @@ export default async function Page({ params }: PageProps) {
 
 	const toc = page.data.toc || [];
 	const MDXContent = page.data.body;
+	const navigation = getPageNavigation(page.url);
 
 	// Check if this is a component page
 	const isComponentPage = page.data?.description?.includes("rac");
@@ -53,7 +54,7 @@ export default async function Page({ params }: PageProps) {
 		: null;
 
 	return (
-		<DocsPage toc={toc}>
+		<DocsPage toc={toc} navigation={navigation}>
 			<div className="prose dark:prose-invert max-w-none px-12 pb-12">
 				<h1 className="font-bold text-3xl tracking-tigh">{page.data.title}</h1>
 				{hasManualDescription && (

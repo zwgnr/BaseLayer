@@ -1,37 +1,33 @@
-// Simplified BaseLayer initialization - provides instructions for MCP-enabled editors
-
 export async function initBaselayer(): Promise<{
-  success: boolean;
-  tailwindCss: string;
-  instructions: string;
-  dependencies: string[];
+	success: boolean;
+	tailwindCss: string;
+	instructions: string;
+	dependencies: string[];
 }> {
-  const apiUrl = process.env.BASELAYER_API_URL || "http://localhost:3000";
+	const apiUrl = process.env.BASELAYER_API_URL || "http://localhost:3000";
 
-  try {
-    console.log("🚀 Fetching BaseLayer setup information...");
+	try {
+		// Fetch BaseLayer CSS from static file endpoint
+		const response = await fetch(`${apiUrl}/tailwind.css`);
+		if (!response.ok) {
+			throw new Error(
+				`Static file returned ${response.status}: ${response.statusText}`,
+			);
+		}
+		const tailwindCss = await response.text();
 
-    // Fetch BaseLayer CSS from static file endpoint
-    const response = await fetch(`${apiUrl}/tailwind.css`);
-    if (!response.ok) {
-      throw new Error(
-        `Static file returned ${response.status}: ${response.statusText}`
-      );
-    }
-    const tailwindCss = await response.text();
+		const dependencies = [
+			"react-aria-components",
+			"lucide-react",
+			"tailwind-variants",
+			"tw-animate-css",
+		];
 
-    const dependencies = [
-      "react-aria-components",
-      "lucide-react",
-      "tailwind-variants",
-      "tw-animate-css",
-    ];
-
-    const instructions = `Please set up BaseLayer in this project by completing these steps:
+		const instructions = `Please set up BaseLayer in this project by completing these steps:
 
 1. **Add BaseLayer CSS**: 
-   - Find or create a global CSS file (globals.css, global.css, index.css, etc.)
-   - Add the BaseLayer CSS variables and styles to the top of the file
+   - Find or create a global CSS file (globals.css, global.css, index.css, app.css, etc.)
+   - Add the BaseLayer CSS variables and styles to the file
    - The CSS content is provided below
 
 2. **Update tsconfig.json**:
@@ -46,6 +42,32 @@ export async function initBaselayer(): Promise<{
        }
      }
      \`\`\`
+    - **VITE APP SPECIFIC**:
+      // tsconfig.json
+       "compilerOptions": {
+          "baseUrl": ".",
+            "paths": {
+              "@/*": ["./src/*"]
+            }
+          }
+        }
+      // tsconfig.app.json
+        "compilerOptions": {
+          "baseUrl": ".",
+            "paths": {
+            "@/*": ["./src/*"]
+          }
+        }
+      // vite.config.ts
+        export default defineConfig({
+          plugins: [react(), tailwindcss()],
+          resolve: {
+            alias: {
+            "@": path.resolve(__dirname, "./src"),
+            },
+          },
+        })
+      \`\`\`
 
 3. **Install dependencies**:
    - Install these packages: ${dependencies.join(", ")}
@@ -63,21 +85,21 @@ BL2.0
    - Confirm TypeScript paths are configured
    - Ensure all dependencies are installed`;
 
-    return {
-      success: true,
-      tailwindCss,
-      instructions,
-      dependencies,
-    };
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    console.error(`❌ Failed to fetch BaseLayer setup:`, errorMessage);
+		return {
+			success: true,
+			tailwindCss,
+			instructions,
+			dependencies,
+		};
+	} catch (error) {
+		const errorMessage = error instanceof Error ? error.message : String(error);
+		console.error(`❌ Failed to fetch BaseLayer setup:`, errorMessage);
 
-    return {
-      success: false,
-      tailwindCss: "",
-      instructions: `❌ Failed to fetch BaseLayer CSS: ${errorMessage}`,
-      dependencies: [],
-    };
-  }
+		return {
+			success: false,
+			tailwindCss: "",
+			instructions: `❌ Failed to fetch BaseLayer CSS: ${errorMessage}`,
+			dependencies: [],
+		};
+	}
 }

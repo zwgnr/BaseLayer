@@ -33,7 +33,7 @@ const Input = ({
 	className,
 	...props
 }: InputProps) => (
-	<AriaTextField className="flex flex-col gap-1" {...props}>
+	<AriaTextField className="flex w-full flex-col gap-1" {...props}>
 		{label && <Label className="text-sm">{label}</Label>}
 		<AriaInput className={input({ className })} placeholder={placeholder} />
 		{description && (

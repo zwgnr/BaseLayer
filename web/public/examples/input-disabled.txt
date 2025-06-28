@@ -1,5 +1,9 @@
 import { Input } from "@components/base/input";
 
 export const InputDisabled = () => {
-	return <Input label="Email" placeholder="example@email.com" isDisabled />;
+	return (
+		<div className="flex w-56 flex-col gap-2">
+			<Input label="Email" placeholder="example@email.com" isDisabled />
+		</div>
+	);
 };

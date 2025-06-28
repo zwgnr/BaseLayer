@@ -6,13 +6,13 @@ export async function getComponentTemplate(
   const apiUrl = process.env.BASELAYER_API_URL || "http://localhost:3000";
 
   try {
-    console.log(
-      `🔍 Fetching ${componentId} template from ${apiUrl}/templates/${componentId}.txt`
-    );
+    const templateUrl = `${apiUrl}/templates/${componentId}.txt`;
+    console.log(`🔍 Fetching ${componentId} template from ${templateUrl}`);
+    console.log(`🔍 API URL: ${apiUrl}`);
+    console.log(`🔍 Component ID: ${componentId}`);
+    console.log(`🔍 Environment BASELAYER_API_URL:`, process.env.BASELAYER_API_URL);
 
-    const response = await fetch(
-      `${apiUrl}/templates/${componentId}.txt`
-    );
+    const response = await fetch(templateUrl);
 
     if (!response.ok) {
       throw new Error(

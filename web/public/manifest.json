@@ -1,7 +1,26 @@
 {
-  "generatedAt": "2025-06-27T19:43:01.187Z",
+  "generatedAt": "2025-06-28T03:01:48.785Z",
   "version": "2.0.0",
   "components": [
+    {
+      "id": "accordion",
+      "path": "src/core/accordion/accordion.tsx",
+      "template": "/templates/accordion.txt",
+      "meta": {
+        "name": "accordion",
+        "category": "layout",
+        "status": "stable",
+        "description": "An accordion allows users to toggle the display of sections of content. Each accordion consists of a header with a title and content area.",
+        "tags": [
+          "disclosure",
+          "collapsible",
+          "expandable",
+          "content"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "a344fed7668493816c4739f59811ace07a0a9114a69d84f2a7be76c8961cbd24"
+    },
     {
       "id": "badge",
       "path": "src/core/badge/badge.tsx",
@@ -35,6 +54,23 @@
       "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
+    },
+    {
       "id": "calendar",
       "path": "src/core/calendar/calendar.tsx",
       "template": "/templates/calendar.txt",
@@ -53,21 +89,39 @@
       "sha256": "f319d0dc21160633a1cf310705b3e4a6e15e8e7082df9939fdafd99f646eb681"
     },
     {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
+      "id": "card",
+      "path": "src/core/card/card.tsx",
+      "template": "/templates/card.txt",
       "meta": {
-        "name": "button",
+        "name": "card",
+        "category": "layout",
+        "status": "stable",
+        "description": "Displays a card with header, content, and footer.",
+        "tags": [
+          "layout",
+          "container",
+          "display"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "7ffb3d992abfa655a9b91cbc414e54ee83ee521d343619bd44790d89be70ac22"
+    },
+    {
+      "id": "checkbox",
+      "path": "src/core/checkbox/checkbox.tsx",
+      "template": "/templates/checkbox.txt",
+      "meta": {
+        "name": "checkbox",
         "category": "forms",
         "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
         "tags": [
           "form",
           "interactive"
         ],
         "version": "2.0.0"
       },
-      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
+      "sha256": "441a92219741ada54862eaca945b63f49954be288fb09e240cd6456e7f45f50b"
     },
     {
       "id": "combobox",
@@ -88,21 +142,23 @@
       "sha256": "066ccde400c475e86b7f2a6c40e8555100ece83d357f5153c08af4ed810fd5a4"
     },
     {
-      "id": "checkbox",
-      "path": "src/core/checkbox/checkbox.tsx",
-      "template": "/templates/checkbox.txt",
+      "id": "command",
+      "path": "src/core/command/command.tsx",
+      "template": "/templates/command.txt",
       "meta": {
-        "name": "checkbox",
-        "category": "forms",
-        "status": "stable",
-        "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
+        "name": "command",
+        "category": "navigation",
+        "status": "beta",
+        "description": "A command palette that allows users to quickly search and execute commands using keyboard shortcuts.",
         "tags": [
-          "form",
-          "interactive"
+          "search",
+          "navigation",
+          "keyboard",
+          "palette"
         ],
         "version": "2.0.0"
       },
-      "sha256": "7facdb015c7b6acc8fd477b4dcec57b4d96f4c36e07f03c883ea4f24b320ea66"
+      "sha256": "34a1a70de7319c6bd28e7b1705cab4de0564476d2ac530fa82244e1ee6d566d9"
     },
     {
       "id": "date-field",
@@ -120,7 +176,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "1730ca8154a12b5579bf542354393dfcb73bbcc4b45171720bd497ce1bed677e"
+      "sha256": "27a3c67603d9decee120f7ca21bbd5952eab662ea053779cd36f6962f18e7db2"
     },
     {
       "id": "date-picker",
@@ -138,7 +194,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "e8ccc35aeaac7f6ee228d83683f4a1817dac39ab99d2056cf95311202059093e"
+      "sha256": "7d64fcd95e7589cd75c128180747e1e8312b7f8ca42afd057abc71293dc2dcff"
     },
     {
       "id": "input",
@@ -155,7 +211,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "57d324d4e00e34d7996a383532045163bc423c5ca534fbf62762707efbf09bac"
+      "sha256": "d72b127f5307140ee6571858ce79ed6e8229647b62a010a38b1f11bbd06e2233"
     },
     {
       "id": "menu",
@@ -258,7 +314,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "852230446935a69a3af7999e01f503250931dc9e89f0eb2f178224c506de074f"
+      "sha256": "1efdee99443148b7f7a3cd42668a741f2bcd3a1def3369356b191ae4a60d39dd"
     },
     {
       "id": "slider",
@@ -348,7 +404,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "9bd4c4323b868e72feceb1b80d3f3c63528ceb382b84591494d936d9ae9fac67"
+      "sha256": "ae618f6b551fddb67b955988c059fad57417d693d05007b3ad45d68b7c53747b"
     },
     {
       "id": "time-field",
@@ -366,7 +422,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "8d0b9c7f809c17829b366f44256c0a3368359ee3695196c05ae409ec40b00203"
+      "sha256": "5be5cb0374b73264511e4fb1776d7c123b2b93b909ba77e89e71470065737ec4"
     },
     {
       "id": "toggle",

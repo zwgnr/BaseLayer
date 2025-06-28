@@ -88,7 +88,7 @@ const DatePicker = <T extends DateValue>({
 				{description}
 			</Text>
 		)}
-		<FieldError className="text-critical text-sm">{errorMessage}</FieldError>
+		<FieldError className="text-danger text-sm">{errorMessage}</FieldError>
 		<Popover className={styles.popover()}>
 			<Dialog>
 				<Calendar />
@@ -143,7 +143,7 @@ const DateRangePicker = <T extends DateValue>({
 				{description}
 			</Text>
 		)}
-		<FieldError className="text-critical text-sm">{errorMessage}</FieldError>
+		<FieldError className="text-danger text-sm">{errorMessage}</FieldError>
 		<Popover className={rangeStyles.popover()}>
 			<Dialog>
 				<RangeCalendar />

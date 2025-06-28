@@ -1,8 +1,9 @@
 {
   "name": "@baselayer/mcp",
   "version": "2.0.0",
+  "type": "module",
   "description": "BaseLayer MCP Server for component installation",
-  "main": "build/index.js",
+  "main": "build/mcp/src/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",

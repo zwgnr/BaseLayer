@@ -40,7 +40,7 @@ export default function Layout({ children }: LayoutProps) {
       <header className="sticky top-0 z-50 w-full border-border border-b bg-surface">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center">
-            <Image src="/bl.svg" alt="BaseLayer" width={40} height={40} className="dark:invert" />
+            <Image src="/bl.svg" alt="BaseLayer" width={40} height={40} className="hidden md:block dark:invert" />
 
             <MobileNav introDocs={introDocs} componentDocs={componentDocs} />
 

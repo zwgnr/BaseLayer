@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-27T22:32:50.559Z",
+  "generatedAt": "2025-06-28T03:01:48.785Z",
   "version": "2.0.0",
   "components": [
     {
@@ -43,6 +43,22 @@ const manifest: ComponentManifest = {
       "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
+      "id": "breadcrumbs",
+      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+      "template": "/templates/breadcrumbs.txt",
+      "meta": {
+        "name": "breadcrumbs",
+        "category": "navigation",
+        "status": "stable",
+        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
+        "tags": [
+          "navigation"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
+    },
+    {
       "id": "button",
       "path": "src/core/button/button.tsx",
       "template": "/templates/button.txt",
@@ -58,22 +74,6 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
-    },
-    {
-      "id": "breadcrumbs",
-      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
-      "template": "/templates/breadcrumbs.txt",
-      "meta": {
-        "name": "breadcrumbs",
-        "category": "navigation",
-        "status": "stable",
-        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
-        "tags": [
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
       "id": "calendar",
@@ -109,7 +109,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "2e866c27cecaf71cb7ea79e0c54aa1d6389507b857d1f97230d3a56defcb3c21"
+      "sha256": "7ffb3d992abfa655a9b91cbc414e54ee83ee521d343619bd44790d89be70ac22"
     },
     {
       "id": "checkbox",
@@ -126,7 +126,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "7facdb015c7b6acc8fd477b4dcec57b4d96f4c36e07f03c883ea4f24b320ea66"
+      "sha256": "441a92219741ada54862eaca945b63f49954be288fb09e240cd6456e7f45f50b"
     },
     {
       "id": "combobox",
@@ -181,7 +181,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "1730ca8154a12b5579bf542354393dfcb73bbcc4b45171720bd497ce1bed677e"
+      "sha256": "27a3c67603d9decee120f7ca21bbd5952eab662ea053779cd36f6962f18e7db2"
     },
     {
       "id": "date-picker",
@@ -199,7 +199,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "e8ccc35aeaac7f6ee228d83683f4a1817dac39ab99d2056cf95311202059093e"
+      "sha256": "7d64fcd95e7589cd75c128180747e1e8312b7f8ca42afd057abc71293dc2dcff"
     },
     {
       "id": "input",
@@ -322,6 +322,24 @@ const manifest: ComponentManifest = {
       "sha256": "1efdee99443148b7f7a3cd42668a741f2bcd3a1def3369356b191ae4a60d39dd"
     },
     {
+      "id": "slider",
+      "path": "src/core/slider/slider.tsx",
+      "template": "/templates/slider.txt",
+      "meta": {
+        "name": "slider",
+        "category": "forms",
+        "status": "stable",
+        "description": "A slider allows a user to select one or more values within a range.",
+        "tags": [
+          "form",
+          "interactive",
+          "range"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "c077282655ce31303167e6b28cfa724a57aa8a141ffc6b813bdd730bbadec210"
+    },
+    {
       "id": "switch",
       "path": "src/core/switch/switch.tsx",
       "template": "/templates/switch.txt",
@@ -338,6 +356,23 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "8f5bca38bfd3b6d7d6daa0b531c9e814e0ec688ca211005866c06e3a8523e14b"
+    },
+    {
+      "id": "table",
+      "path": "src/core/table/table.tsx",
+      "template": "/templates/table.txt",
+      "meta": {
+        "name": "table",
+        "category": "data-display",
+        "status": "stable",
+        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+        "tags": [
+          "data-display",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
     },
     {
       "id": "tabs",
@@ -358,22 +393,23 @@ const manifest: ComponentManifest = {
       "sha256": "03c2b92a89abade7a4efef0cb0485b014e86d958ed3860b7018823d1d1c62d14"
     },
     {
-      "id": "slider",
-      "path": "src/core/slider/slider.tsx",
-      "template": "/templates/slider.txt",
+      "id": "tag-group",
+      "path": "src/core/tag-group/tag-group.tsx",
+      "template": "/templates/tag-group.txt",
       "meta": {
-        "name": "slider",
+        "name": "tag-group",
         "category": "forms",
         "status": "stable",
-        "description": "A slider allows a user to select one or more values within a range.",
+        "description": "A tag group is a focusable list of labels, categories, keywords, filters, or other items, with support for keyboard navigation, selection, and removal.",
         "tags": [
           "form",
           "interactive",
-          "range"
+          "selection",
+          "filtering"
         ],
         "version": "2.0.0"
       },
-      "sha256": "c077282655ce31303167e6b28cfa724a57aa8a141ffc6b813bdd730bbadec210"
+      "sha256": "ae618f6b551fddb67b955988c059fad57417d693d05007b3ad45d68b7c53747b"
     },
     {
       "id": "time-field",
@@ -391,43 +427,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "8d0b9c7f809c17829b366f44256c0a3368359ee3695196c05ae409ec40b00203"
-    },
-    {
-      "id": "tag-group",
-      "path": "src/core/tag-group/tag-group.tsx",
-      "template": "/templates/tag-group.txt",
-      "meta": {
-        "name": "tag-group",
-        "category": "forms",
-        "status": "stable",
-        "description": "A tag group is a focusable list of labels, categories, keywords, filters, or other items, with support for keyboard navigation, selection, and removal.",
-        "tags": [
-          "form",
-          "interactive",
-          "selection",
-          "filtering"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "9bd4c4323b868e72feceb1b80d3f3c63528ceb382b84591494d936d9ae9fac67"
-    },
-    {
-      "id": "table",
-      "path": "src/core/table/table.tsx",
-      "template": "/templates/table.txt",
-      "meta": {
-        "name": "table",
-        "category": "data-display",
-        "status": "stable",
-        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
-        "tags": [
-          "data-display",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
+      "sha256": "5be5cb0374b73264511e4fb1776d7c123b2b93b909ba77e89e71470065737ec4"
     },
     {
       "id": "toggle",

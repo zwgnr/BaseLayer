@@ -22,7 +22,7 @@ export const ThemeToggle = () => {
 	const isDark = theme === "dark";
 
 	if (!mounted) {
-		return <span className="h-9 w-9" />;
+		return <span className="size-9" />;
 	}
 
 	return (

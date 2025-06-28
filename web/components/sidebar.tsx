@@ -12,13 +12,16 @@ export function Sidebar() {
     page.url.startsWith("/docs/components")
   );
 
-  return (
-    <div className="sticky top-[73px] h-[calc(100vh-73px)] w-64 overflow-y-auto border-border border-r">
-      <div className="space-y-6 p-6">
-        {/* Search */}
+  return (  
+    <div className="sticky top-[73px] flex h-[calc(100vh-73px)] w-64 flex-col border-border border-r">
+      {/* Fixed Search Section */}
+      <div className="p-6 pb-0">
         <SearchDialog />
-        {/* Getting Started */}
-        <nav className="space-y-4">
+      </div>
+      
+      {/* Scrollable Navigation Section */}
+      <div className="flex-1 overflow-y-auto">
+        <nav className="space-y-4 p-6">
           <div>
             <h3 className="mb-3 font-semibold text-fg-muted text-xs uppercase tracking-wide">
               Getting Started

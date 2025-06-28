@@ -52,7 +52,7 @@ const Checkbox = ({
 							{description}
 						</Text>
 					)}
-					<FieldError className="text-critical text-sm">
+					<FieldError className="text-danger text-sm">
 						{errorMessage}
 					</FieldError>
 				</>
@@ -85,7 +85,7 @@ const CheckboxGroup = ({
 				{description}
 			</Text>
 		)}
-		<FieldError className="text-critical text-sm">{errorMessage}</FieldError>
+		<FieldError className="text-danger text-sm">{errorMessage}</FieldError>
 	</AriaCheckboxGroup>
 );
 
