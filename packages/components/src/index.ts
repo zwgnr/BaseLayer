@@ -19,6 +19,8 @@ export { CheckboxGroupExample } from "./examples/checkbox-group";
 export { ComboboxBase } from "./examples/combobox-base";
 export { ComboboxDisabledOption } from "./examples/combobox-disabled-option";
 export { ComboboxMenuTrigger } from "./examples/combobox-menu-trigger";
+export { CommandBase } from "./examples/command-base";
+export { CommandCustomTrigger } from "./examples/command-custom-trigger";
 export { DateFieldBase } from "./examples/date-field-base";
 export { DatePickerBase } from "./examples/date-picker-base";
 export { DateRangePickerBase } from "./examples/date-range-picker-base";
@@ -42,6 +44,7 @@ export { TagGroupExample } from "./examples/tag-group-base";
 export { TimeFieldExample } from "./examples/time-field-base";
 export { ToggleExample } from "./examples/toggle-base";
 export { TooltipExample } from "./examples/tooltip-base";
+
 // Registry
 export {
 	COMPONENTS,

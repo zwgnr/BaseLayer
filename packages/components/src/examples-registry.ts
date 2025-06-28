@@ -122,16 +122,6 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
-    name: "card-sizes",
-    type: "registry:example" as const,
-    files: [
-      {
-        path: "examples/card-sizes.txt",
-        type: "registry:example" as const,
-      },
-    ],
-  },
-  {
     name: "card-variants",
     type: "registry:example" as const,
     files: [
@@ -187,6 +177,26 @@ export const examples: ExamplesRegistry["items"] = [
     files: [
       {
         path: "examples/combobox-menu-trigger.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "command-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/command-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
+    name: "command-custom-trigger",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/command-custom-trigger.txt",
         type: "registry:example" as const,
       },
     ],

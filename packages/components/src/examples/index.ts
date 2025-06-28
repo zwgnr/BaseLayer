@@ -16,6 +16,8 @@ export * from "./checkbox-group";
 export * from "./combobox-base";
 export * from "./combobox-disabled-option";
 export * from "./combobox-menu-trigger";
+export * from "./command-base";
+export * from "./command-custom-trigger";
 export * from "./date-field-base";
 export * from "./date-picker-base";
 export * from "./date-range-picker-base";

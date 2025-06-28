@@ -6,6 +6,7 @@ export * from "./calendar/calendar";
 export * from "./card/card";
 export * from "./checkbox/checkbox";
 export * from "./combobox/combobox";
+export * from "./command/command";
 export * from "./date-field/date-field";
 export * from "./date-picker/date-picker";
 export * from "./input/input";

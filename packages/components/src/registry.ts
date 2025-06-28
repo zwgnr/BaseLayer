@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-27T20:53:54.407Z",
+  "generatedAt": "2025-06-27T22:32:50.559Z",
   "version": "2.0.0",
   "components": [
     {
@@ -25,6 +25,39 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "a344fed7668493816c4739f59811ace07a0a9114a69d84f2a7be76c8961cbd24"
+    },
+    {
+      "id": "badge",
+      "path": "src/core/badge/badge.tsx",
+      "template": "/templates/badge.txt",
+      "meta": {
+        "name": "badge",
+        "category": "display",
+        "status": "stable",
+        "description": "A badge is a small label that can be used to display information or status.",
+        "tags": [
+          "status"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
+    },
+    {
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
     },
     {
       "id": "breadcrumbs",
@@ -61,23 +94,6 @@ const manifest: ComponentManifest = {
       "sha256": "f319d0dc21160633a1cf310705b3e4a6e15e8e7082df9939fdafd99f646eb681"
     },
     {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
-    },
-    {
       "id": "card",
       "path": "src/core/card/card.tsx",
       "template": "/templates/card.txt",
@@ -93,7 +109,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "7843adaad17b9ba3927fcdc967ac6e91dff2dae66b5d7801fa46f3f5e58b55ae"
+      "sha256": "2e866c27cecaf71cb7ea79e0c54aa1d6389507b857d1f97230d3a56defcb3c21"
     },
     {
       "id": "checkbox",
@@ -113,22 +129,6 @@ const manifest: ComponentManifest = {
       "sha256": "7facdb015c7b6acc8fd477b4dcec57b4d96f4c36e07f03c883ea4f24b320ea66"
     },
     {
-      "id": "badge",
-      "path": "src/core/badge/badge.tsx",
-      "template": "/templates/badge.txt",
-      "meta": {
-        "name": "badge",
-        "category": "display",
-        "status": "stable",
-        "description": "A badge is a small label that can be used to display information or status.",
-        "tags": [
-          "status"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
-    },
-    {
       "id": "combobox",
       "path": "src/core/combobox/combobox.tsx",
       "template": "/templates/combobox.txt",
@@ -145,6 +145,25 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "066ccde400c475e86b7f2a6c40e8555100ece83d357f5153c08af4ed810fd5a4"
+    },
+    {
+      "id": "command",
+      "path": "src/core/command/command.tsx",
+      "template": "/templates/command.txt",
+      "meta": {
+        "name": "command",
+        "category": "navigation",
+        "status": "beta",
+        "description": "A command palette that allows users to quickly search and execute commands using keyboard shortcuts.",
+        "tags": [
+          "search",
+          "navigation",
+          "keyboard",
+          "palette"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "34a1a70de7319c6bd28e7b1705cab4de0564476d2ac530fa82244e1ee6d566d9"
     },
     {
       "id": "date-field",
@@ -197,7 +216,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "57d324d4e00e34d7996a383532045163bc423c5ca534fbf62762707efbf09bac"
+      "sha256": "d72b127f5307140ee6571858ce79ed6e8229647b62a010a38b1f11bbd06e2233"
     },
     {
       "id": "menu",
@@ -300,25 +319,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "852230446935a69a3af7999e01f503250931dc9e89f0eb2f178224c506de074f"
-    },
-    {
-      "id": "slider",
-      "path": "src/core/slider/slider.tsx",
-      "template": "/templates/slider.txt",
-      "meta": {
-        "name": "slider",
-        "category": "forms",
-        "status": "stable",
-        "description": "A slider allows a user to select one or more values within a range.",
-        "tags": [
-          "form",
-          "interactive",
-          "range"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "c077282655ce31303167e6b28cfa724a57aa8a141ffc6b813bdd730bbadec210"
+      "sha256": "1efdee99443148b7f7a3cd42668a741f2bcd3a1def3369356b191ae4a60d39dd"
     },
     {
       "id": "switch",
@@ -339,23 +340,6 @@ const manifest: ComponentManifest = {
       "sha256": "8f5bca38bfd3b6d7d6daa0b531c9e814e0ec688ca211005866c06e3a8523e14b"
     },
     {
-      "id": "table",
-      "path": "src/core/table/table.tsx",
-      "template": "/templates/table.txt",
-      "meta": {
-        "name": "table",
-        "category": "data-display",
-        "status": "stable",
-        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
-        "tags": [
-          "data-display",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
-    },
-    {
       "id": "tabs",
       "path": "src/core/tabs/tabs.tsx",
       "template": "/templates/tabs.txt",
@@ -372,6 +356,42 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "03c2b92a89abade7a4efef0cb0485b014e86d958ed3860b7018823d1d1c62d14"
+    },
+    {
+      "id": "slider",
+      "path": "src/core/slider/slider.tsx",
+      "template": "/templates/slider.txt",
+      "meta": {
+        "name": "slider",
+        "category": "forms",
+        "status": "stable",
+        "description": "A slider allows a user to select one or more values within a range.",
+        "tags": [
+          "form",
+          "interactive",
+          "range"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "c077282655ce31303167e6b28cfa724a57aa8a141ffc6b813bdd730bbadec210"
+    },
+    {
+      "id": "time-field",
+      "path": "src/core/time-field/time-field.tsx",
+      "template": "/templates/time-field.txt",
+      "meta": {
+        "name": "time-field",
+        "category": "forms",
+        "status": "stable",
+        "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+        "tags": [
+          "form",
+          "interactive",
+          "time"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "8d0b9c7f809c17829b366f44256c0a3368359ee3695196c05ae409ec40b00203"
     },
     {
       "id": "tag-group",
@@ -393,22 +413,21 @@ const manifest: ComponentManifest = {
       "sha256": "9bd4c4323b868e72feceb1b80d3f3c63528ceb382b84591494d936d9ae9fac67"
     },
     {
-      "id": "time-field",
-      "path": "src/core/time-field/time-field.tsx",
-      "template": "/templates/time-field.txt",
+      "id": "table",
+      "path": "src/core/table/table.tsx",
+      "template": "/templates/table.txt",
       "meta": {
-        "name": "time-field",
-        "category": "forms",
+        "name": "table",
+        "category": "data-display",
         "status": "stable",
-        "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
         "tags": [
-          "form",
-          "interactive",
-          "time"
+          "data-display",
+          "interactive"
         ],
         "version": "2.0.0"
       },
-      "sha256": "8d0b9c7f809c17829b366f44256c0a3368359ee3695196c05ae409ec40b00203"
+      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
     },
     {
       "id": "toggle",
