@@ -18,7 +18,7 @@
     "clean": "rm -rf build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.13.0",
+    "@modelcontextprotocol/sdk": "^1.13.2",
     "@baselayer/components": "workspace:*",
     "zod": "^3.25.67"
   },

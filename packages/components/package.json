@@ -16,7 +16,7 @@
     "generate:examples": "tsx scripts/gen-examples.ts"
   },
   "dependencies": {
-    "lucide-react": "^0.522.0",
+    "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-aria-components": "catalog:",
     "tailwind-variants": "catalog:",

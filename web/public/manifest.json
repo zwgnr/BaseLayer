@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2025-06-29T05:07:17.150Z",
-  "version": "2.0.0",
+  "generatedAt": "2025-06-29T20:52:14.531Z",
+  "version": "1.9.0",
   "components": [
     {
       "id": "accordion",
@@ -20,6 +20,22 @@
         "version": "2.0.0"
       },
       "sha256": "c6852e750c53bbd2262a19582dee5f9464745bc91d265b79a54249072a0e2d6d"
+    },
+    {
+      "id": "badge",
+      "path": "src/core/badge/badge.tsx",
+      "template": "/templates/badge.txt",
+      "meta": {
+        "name": "badge",
+        "category": "display",
+        "status": "stable",
+        "description": "A badge is a small label that can be used to display information or status.",
+        "tags": [
+          "status"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
       "id": "breadcrumbs",
@@ -55,40 +71,6 @@
       "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
     },
     {
-      "id": "card",
-      "path": "src/core/card/card.tsx",
-      "template": "/templates/card.txt",
-      "meta": {
-        "name": "card",
-        "category": "layout",
-        "status": "stable",
-        "description": "Displays a card with header, content, and footer.",
-        "tags": [
-          "layout",
-          "container",
-          "display"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
-    },
-    {
-      "id": "badge",
-      "path": "src/core/badge/badge.tsx",
-      "template": "/templates/badge.txt",
-      "meta": {
-        "name": "badge",
-        "category": "display",
-        "status": "stable",
-        "description": "A badge is a small label that can be used to display information or status.",
-        "tags": [
-          "status"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
-    },
-    {
       "id": "calendar",
       "path": "src/core/calendar/calendar.tsx",
       "template": "/templates/calendar.txt",
@@ -105,6 +87,24 @@
         "version": "2.0.0"
       },
       "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
+    },
+    {
+      "id": "card",
+      "path": "src/core/card/card.tsx",
+      "template": "/templates/card.txt",
+      "meta": {
+        "name": "card",
+        "category": "layout",
+        "status": "stable",
+        "description": "Displays a card with header, content, and footer.",
+        "tags": [
+          "layout",
+          "container",
+          "display"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
     },
     {
       "id": "checkbox",
@@ -179,57 +179,6 @@
       "sha256": "f3de65bdcb97c4bfacd06b16a6bc06d468d53e5cb008173191c11807509a7679"
     },
     {
-      "id": "menu",
-      "path": "src/core/menu/menu.tsx",
-      "template": "/templates/menu.txt",
-      "meta": {
-        "name": "menu",
-        "category": "pickers",
-        "status": "stable",
-        "description": "A menu displays a list of actions or options that a user can choose.",
-        "tags": [
-          "interactive",
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
-    },
-    {
-      "id": "meter",
-      "path": "src/core/meter/meter.tsx",
-      "template": "/templates/meter.txt",
-      "meta": {
-        "name": "meter",
-        "category": "data-display",
-        "status": "stable",
-        "description": "A meter represents a quantity within a known range, or a fractional value.",
-        "tags": [
-          "data-display",
-          "progress"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
-    },
-    {
-      "id": "popover",
-      "path": "src/core/popover/popover.tsx",
-      "template": "/templates/popover.txt",
-      "meta": {
-        "name": "popover",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A popover is an overlay element positioned relative to a trigger.",
-        "tags": [
-          "overlay",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3d0f74c9c6058c392c11cf658631b863df9d2b93428cc1fbe7af097e165cee6a"
-    },
-    {
       "id": "date-picker",
       "path": "src/core/date-picker/date-picker.tsx",
       "template": "/templates/date-picker.txt",
@@ -265,22 +214,38 @@
       "sha256": "027e8056e06646ba9b1b5ff0f78f8d77a95c90018764e672b50d0499d48a040b"
     },
     {
-      "id": "radio-group",
-      "path": "src/core/radio-group/radio-group.tsx",
-      "template": "/templates/radio-group.txt",
+      "id": "menu",
+      "path": "src/core/menu/menu.tsx",
+      "template": "/templates/menu.txt",
       "meta": {
-        "name": "radio-group",
-        "category": "forms",
+        "name": "menu",
+        "category": "pickers",
         "status": "stable",
-        "description": "A radio group allows a user to select a single option from a list of mutually exclusive options.",
+        "description": "A menu displays a list of actions or options that a user can choose.",
         "tags": [
-          "form",
           "interactive",
-          "selection"
+          "navigation"
         ],
         "version": "2.0.0"
       },
-      "sha256": "79eb9e3dc739c5928931ef3ce1c4540873c80aa7804da514d41fe567f94faa6b"
+      "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
+    },
+    {
+      "id": "meter",
+      "path": "src/core/meter/meter.tsx",
+      "template": "/templates/meter.txt",
+      "meta": {
+        "name": "meter",
+        "category": "data-display",
+        "status": "stable",
+        "description": "A meter represents a quantity within a known range, or a fractional value.",
+        "tags": [
+          "data-display",
+          "progress"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
     },
     {
       "id": "modal",
@@ -299,22 +264,39 @@
       "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
     },
     {
-      "id": "switch",
-      "path": "src/core/switch/switch.tsx",
-      "template": "/templates/switch.txt",
+      "id": "popover",
+      "path": "src/core/popover/popover.tsx",
+      "template": "/templates/popover.txt",
       "meta": {
-        "name": "switch",
-        "category": "forms",
+        "name": "popover",
+        "category": "overlays",
         "status": "stable",
-        "description": "A switch allows a user to turn a setting on or off.",
+        "description": "A popover is an overlay element positioned relative to a trigger.",
         "tags": [
-          "form",
-          "interactive",
-          "toggle"
+          "overlay",
+          "interactive"
         ],
         "version": "2.0.0"
       },
-      "sha256": "79783523d967e996ed53fc22224f458ebb8309d05f809d0184233bfa8199e8d2"
+      "sha256": "3d0f74c9c6058c392c11cf658631b863df9d2b93428cc1fbe7af097e165cee6a"
+    },
+    {
+      "id": "radio-group",
+      "path": "src/core/radio-group/radio-group.tsx",
+      "template": "/templates/radio-group.txt",
+      "meta": {
+        "name": "radio-group",
+        "category": "forms",
+        "status": "stable",
+        "description": "A radio group allows a user to select a single option from a list of mutually exclusive options.",
+        "tags": [
+          "form",
+          "interactive",
+          "selection"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "79eb9e3dc739c5928931ef3ce1c4540873c80aa7804da514d41fe567f94faa6b"
     },
     {
       "id": "select",
@@ -335,22 +317,40 @@
       "sha256": "3a46ddc0a68af706b38962212938ca1a560ed787f8c17bdd42175c93dfdc41dc"
     },
     {
-      "id": "tabs",
-      "path": "src/core/tabs/tabs.tsx",
-      "template": "/templates/tabs.txt",
+      "id": "slider",
+      "path": "src/core/slider/slider.tsx",
+      "template": "/templates/slider.txt",
       "meta": {
-        "name": "tabs",
-        "category": "navigation",
+        "name": "slider",
+        "category": "forms",
         "status": "stable",
-        "description": "Tabs organize content into multiple sections and allow users to navigate between them.",
+        "description": "A slider allows a user to select one or more values within a range.",
         "tags": [
-          "navigation",
+          "form",
           "interactive",
-          "layout"
+          "range"
         ],
         "version": "2.0.0"
       },
-      "sha256": "03c2b92a89abade7a4efef0cb0485b014e86d958ed3860b7018823d1d1c62d14"
+      "sha256": "c76a0056a3429d7bc5d5ebea6a0b91a6d03ed7b302a4a4c7455f41d25ce22e66"
+    },
+    {
+      "id": "switch",
+      "path": "src/core/switch/switch.tsx",
+      "template": "/templates/switch.txt",
+      "meta": {
+        "name": "switch",
+        "category": "forms",
+        "status": "stable",
+        "description": "A switch allows a user to turn a setting on or off.",
+        "tags": [
+          "form",
+          "interactive",
+          "toggle"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "79783523d967e996ed53fc22224f458ebb8309d05f809d0184233bfa8199e8d2"
     },
     {
       "id": "table",
@@ -370,58 +370,22 @@
       "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
     },
     {
-      "id": "time-field",
-      "path": "src/core/time-field/time-field.tsx",
-      "template": "/templates/time-field.txt",
+      "id": "tabs",
+      "path": "src/core/tabs/tabs.tsx",
+      "template": "/templates/tabs.txt",
       "meta": {
-        "name": "time-field",
-        "category": "forms",
+        "name": "tabs",
+        "category": "navigation",
         "status": "stable",
-        "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+        "description": "Tabs organize content into multiple sections and allow users to navigate between them.",
         "tags": [
-          "form",
+          "navigation",
           "interactive",
-          "time"
+          "layout"
         ],
         "version": "2.0.0"
       },
-      "sha256": "766f9855fd52633b29c31c597bb010a3899a125e917fb03c8dcb2e2cbcfeec8e"
-    },
-    {
-      "id": "tooltip",
-      "path": "src/core/tooltip/tooltip.tsx",
-      "template": "/templates/tooltip.txt",
-      "meta": {
-        "name": "tooltip",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A tooltip displays a description of an element on hover or focus.",
-        "tags": [
-          "overlay",
-          "interactive",
-          "help"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3596cebb1c894862cf08f9bd6c3dda1d3bea6c9bbcc3674fe3947a470c679226"
-    },
-    {
-      "id": "slider",
-      "path": "src/core/slider/slider.tsx",
-      "template": "/templates/slider.txt",
-      "meta": {
-        "name": "slider",
-        "category": "forms",
-        "status": "stable",
-        "description": "A slider allows a user to select one or more values within a range.",
-        "tags": [
-          "form",
-          "interactive",
-          "range"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "c76a0056a3429d7bc5d5ebea6a0b91a6d03ed7b302a4a4c7455f41d25ce22e66"
+      "sha256": "03c2b92a89abade7a4efef0cb0485b014e86d958ed3860b7018823d1d1c62d14"
     },
     {
       "id": "tag-group",
@@ -443,6 +407,24 @@
       "sha256": "f8efe746cf7e6bbb27e109c021ecee251109289d112c541d48d18fe4f36bb3d7"
     },
     {
+      "id": "time-field",
+      "path": "src/core/time-field/time-field.tsx",
+      "template": "/templates/time-field.txt",
+      "meta": {
+        "name": "time-field",
+        "category": "forms",
+        "status": "stable",
+        "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+        "tags": [
+          "form",
+          "interactive",
+          "time"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "766f9855fd52633b29c31c597bb010a3899a125e917fb03c8dcb2e2cbcfeec8e"
+    },
+    {
       "id": "toggle",
       "path": "src/core/toggle/toggle.tsx",
       "template": "/templates/toggle.txt",
@@ -459,6 +441,24 @@
         "version": "2.0.0"
       },
       "sha256": "c17f9e17817edba451e0de264bdb0e4d1f71d4a2abaffed28451d9cb69cb40c9"
+    },
+    {
+      "id": "tooltip",
+      "path": "src/core/tooltip/tooltip.tsx",
+      "template": "/templates/tooltip.txt",
+      "meta": {
+        "name": "tooltip",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A tooltip displays a description of an element on hover or focus.",
+        "tags": [
+          "overlay",
+          "interactive",
+          "help"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3596cebb1c894862cf08f9bd6c3dda1d3bea6c9bbcc3674fe3947a470c679226"
     }
   ]
 }
