@@ -84,7 +84,7 @@ export async function generateMetadata({
 	if (!page) notFound();
 
 	return {
-		title: page.data.title,
+		title: `${page.data.title} - BaseLayer`,
 		description: page.data.description,
 	};
 }

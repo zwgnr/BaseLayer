@@ -3,94 +3,125 @@ title: Usage
 description: How to setup BaseLayer in your project
 ---
 
-There are three main interaction methods to use for BaseLayer.
+## Before you start
 
-1. MCP server in an editor like Cursor.
-2. Via chatbots like ChatGPT or Claude. llms.txt and .well-known endpoints are available.
-3. Manual.
+Make sure your project has:
 
-*Each method assumes you have a project setup with React, TailwindCSS >= 4, and TypeScript.*
+- React with TypeScript
+- TailwindCSS >= 4
 
-### MCP
+## AI-Powered Setup (Recommended)
 
-To use BaseLayer with an AI assistant, the assistant needs to connect to our MCP server. Once connected (see [MCP](./mcp) for more details), you can ask your AI assistant to:
+BaseLayer works seamlessly with AI assistants. Use this canonical prompt:
 
-```
-"setup BaseLayer"
-"create me a sign up page using BaseLayer components"
-```
+> **Use BaseLayer components. If you need docs, they're at https://www.baselayer.dev/llms.txt**
 
-It's that simple. You can find more details about the MCP server in the [MCP](./mcp) section.
+### MCP (Cursor)
 
-### Chatbots
+If you have the BaseLayer MCP server connected (see [MCP](./mcp) for setup):
 
-To use BaseLayer with a chatbot, you can use the llms.txt endpoint.
+> Setup BaseLayer
 
-```
-"build me a sign in page using BaseLayer,
-"you can find out everything you need to know about BaseLayer from
-at https://www.baselayer.dev/llms.txt"
-```
+> Use BaseLayer components to create a sign up page
 
-### Manual
+### Chatbots (ChatGPT, Claude, etc.)
 
-While we recommend using an AI assistant, you can also manually install setup and add BaseLayer components to your project.
+> Use BaseLayer components to build a sign in page. If you need docs, they're at https://www.baselayer.dev/llms.txt
 
-1. Install the following dependencies: react-aria-components, tailwind-variants, tw-css-animate
-2. Add the global styles to your project, see [styles](./styles) for more details.
-3. Ensure you have the following tsconfig options.
+<div className='bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-4 text-blue-900 dark:text-blue-100'>
+  <strong className='text-blue-800 dark:text-blue-200'>Pro Tip:</strong> Set up once, use everywhere:
+  <ul className='mt-2 ml-4 list-disc'>
+    <li>
+      <strong className='text-blue-800 dark:text-blue-200'>Cursor:</strong> Add{' '}
+      <code className='bg-blue-100 dark:bg-blue-900/50 px-1 py-0.5 rounded text-sm'>"Always use BaseLayer components when possible"</code> to your{' '}
+      <code className='bg-blue-100 dark:bg-blue-900/50 px-1 py-0.5 rounded text-sm'>.cursorrules</code> file
+    </li>
+    <li>
+      <strong className='text-blue-800 dark:text-blue-200'>ChatGPT:</strong> Save{' '}
+      <code className='bg-blue-100 dark:bg-blue-900/50 px-1 py-0.5 rounded text-sm'>https://www.baselayer.dev/llms.txt</code> as a custom instruction
+    </li>
+  </ul>
+</div>
 
-```json
-"baseUrl": ".",
-"paths": {
-  "@/*": ["./*"]
-}
-```
+## Manual Setup
 
-For Vite projects,
+While we recommend using an AI assistant, you can manually add BaseLayer components:
+
+1. **Install dependencies:**
+
+   ```bash
+   pnpm add react-aria-components tailwind-variants tw-css-animate
+   ```
+
+2. **Add global styles** - see [styles](/docs/styles) for details
+
+3. **Configure TypeScript paths:**
+
+<details>
+<summary><strong>Next.js example</strong></summary>
 
 ```json
 // tsconfig.json
-"compilerOptions": {
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["./src/*"]
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><strong>Vite example</strong></summary>
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
 ```
 
 ```json
 // tsconfig.app.json
-"compilerOptions": {
-  "baseUrl": ".",
-   "paths": {
-    "@/*": ["./src/*"]
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
 ```
 
 ```ts
 // vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });
 ```
 
-4. Copy the components you want to use into your project. Each component has a source section at the bottom of the page that shows the code for the component.
+</details>
 
-## Pro tips
+4. **Copy components** - Each component page has a source section showing the code to copy
 
-1. The [React Aria Components](https://react-spectrum.adobe.com/react-aria/getting-started.html) documentation is a great resource for learning about the components and their props. You find incredibly detailed documations for each component and how to use them.
+## Additional Resources
 
-2. It may be a good idea to add a custom cusor rule to say something like:
-
-```
-"Always use BaseLayer components when possible"
-```
-
-This will allow you to avoid including references to use Baselayer in every prompt you send.
+- [React Aria Components docs](https://react-spectrum.adobe.com/react-aria/getting-started.html) - Detailed documentation for all component props and behavior

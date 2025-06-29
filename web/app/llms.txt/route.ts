@@ -16,14 +16,14 @@ ${components.map((comp) => `- **${comp.meta.name}** (${comp.meta.category}): ${c
 ## Categories
 
 ${[...new Set(components.map((c) => c.meta.category))]
-		.map(
-			(cat) =>
-				`- **${cat}**: ${components
-					.filter((c) => c.meta.category === cat)
-					.map((c) => c.meta.name)
-					.join(", ")}`,
-		)
-		.join("\n")}
+	.map(
+		(cat) =>
+			`- **${cat}**: ${components
+				.filter((c) => c.meta.category === cat)
+				.map((c) => c.meta.name)
+				.join(", ")}`,
+	)
+	.join("\n")}
 
 ## How to Use BaseLayer Components
 
@@ -54,17 +54,7 @@ curl https://baselayer.dev/.well-known/baselayer
 ### For Users: MCP Server Available
 
 BaseLayer also provides an MCP server for editor integration. Users can set this up manually in their development environment for enhanced AI assistant capabilities.
-
-### Manual Copy (Fallback)
-
-1. Visit https://baselayer.dev/docs
-2. Browse components 
-3. Copy the source code from the component page
-4. Paste into your project
-
 ## Example Workflow for AI Assistants
-
-Instead of \`npm install baselayer\`, do this:
 
 1. **Get component code**:
    \`\`\`bash
@@ -106,6 +96,7 @@ Instead of \`npm install baselayer\`, do this:
 Remember: You own the components once you copy them - they're not dependencies!
 
 For complete documentation and component examples, visit https://baselayer.dev/docs
+For detailed prop and usage information, refer to the React Aria Components docs: https://react-spectrum.adobe.com/react-aria/getting-started.html
 `;
 
 	return new Response(content, {

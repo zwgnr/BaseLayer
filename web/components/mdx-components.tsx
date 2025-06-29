@@ -1,7 +1,4 @@
-import {
-	getComponentSource,
-	getExampleSource,
-} from "../lib/component-data";
+import { getComponentSource, getExampleSource } from "../lib/component-data";
 // Auto-generated examples map
 import { exampleComponents } from "../lib/examples-map";
 import { CodeBlock } from "./code-block";
@@ -87,13 +84,13 @@ export const Step = ({ children }: { children: React.ReactNode }) => (
 );
 
 export const Pre = ({ children }: { children: React.ReactNode }) => (
-	<pre className="mb-4 overflow-x-auto rounded-lg border border-gray-700 p-4">
+	<pre className="mb-4 overflow-x-auto rounded-lg border border-border/25 bg-surface-2 p-4">
 		{children}
 	</pre>
 );
 
 export const Code = ({ children }: { children: React.ReactNode }) => (
-	<code className="rounded px-2 py-1 font-mono text-emerald-400 text-sm">
+	<code className="not-prose rounded px-2 py-1 font-mono font-semibold text-primary text-sm">
 		{children}
 	</code>
 );

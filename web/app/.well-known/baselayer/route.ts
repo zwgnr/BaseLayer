@@ -26,7 +26,7 @@ export async function GET() {
     },
     "components": components.reduce((acc, comp) => {
       acc[comp.id] = {
-        name: comp.displayName,
+        name: comp.meta.name,
         category: comp.meta.category,
         description: comp.meta.description,
         endpoints: {
