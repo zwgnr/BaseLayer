@@ -1,15 +1,16 @@
+@variant dark ([data-theme="dark"] &);
+
 :root {
   /* SURFACES (neutrals & elevation) */
   --surface: oklch(98.5% 0 0); /* app/page background */
   --surface-2: oklch(97% 0 0); /* card / raised 1 */
   --surface-overlay: oklch(55.6% 0 0); /* modals, popovers */
-  --surface-disabled: oklch(87% 0 0); /* disabled state */
 
   /* CONTENT (foreground) */
   --fg: oklch(14.5% 0 0); /* primary reading text */
-  --fg-muted: oklch(55.2% 0.016 285.938); /* secondary text, captions */
+  --fg-muted: oklch(55.6% 0 0); /* secondary text, captions */
   --fg-inverse: #ffffff; /* text on dark / brand surfaces */
-  --fg-disabled: oklch(70.5% 0.015 286.067); /* explicit disabled state text */
+  --fg-disabled: oklch(70.8% 0 0); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
   --border: oklch(87% 0 0); /* generic 1px rules, inputs */
@@ -38,7 +39,6 @@
   --surface: oklch(14.5% 0 0); /* app/page background */
   --surface-2: oklch(20.5% 0 0); /* card / raised 1 */
   --surface-overlay: #0f172a; /* modals, popovers */
-  --surface-disabled: oklch(21% 0.006 285.885); /* disabled state */
 
   /* CONTENT (foreground) */
   --fg: oklch(98.5% 0.001 106.423); /* primary reading text */
@@ -73,7 +73,6 @@
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
   --color-surface-overlay: var(--surface-overlay);
-  --color-surface-disabled: var(--surface-disabled);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
   --color-fg-disabled: var(--fg-disabled);

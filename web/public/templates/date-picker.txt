@@ -37,7 +37,7 @@ const datePicker = tv({
 	extend: baseStyles,
 	slots: {
 		group:
-			"relative flex min-h-11 w-auto min-w-48 items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
+			"relative flex min-h-11 w-auto min-w-48 items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:border-transparent data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
 		dateSegment:
 			"min-w-16 rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
 	},
@@ -47,7 +47,7 @@ const dateRangePicker = tv({
 	extend: baseStyles,
 	slots: {
 		group:
-			"relative flex min-h-11 w-fit min-w-96 flex-wrap items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
+			"relative flex min-h-11 w-fit min-w-96 flex-wrap items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:border-transparent data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
 		dateSegment:
 			"rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
 		separator: "px-2 text-fg-muted",
@@ -71,7 +71,7 @@ const DatePicker = <T extends DateValue>({
 	children,
 	...props
 }: DatePickerProps<T>) => (
-	<AriaDatePicker className="flex flex-col gap-2" {...props}>
+	<AriaDatePicker className="flex flex-col gap-1" {...props}>
 		{label && <Label className="text-sm">{label}</Label>}
 		<Group className={styles.group()}>
 			<DateInput className={styles.input()}>
@@ -112,7 +112,7 @@ const DateRangePicker = <T extends DateValue>({
 	children,
 	...props
 }: DateRangePickerProps<T>) => (
-	<AriaDateRangePicker className="flex flex-col gap-2" {...props}>
+	<AriaDateRangePicker className="flex flex-col gap-1" {...props}>
 		{label && <Label className="text-sm">{label}</Label>}
 		<Group className={rangeStyles.group()}>
 			<DateInput slot="start" className={rangeStyles.input()}>

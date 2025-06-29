@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-29T20:52:14.531Z",
+  "generatedAt": "2025-06-29T22:34:46.623Z",
   "version": "1.9.0",
   "components": [
     {
@@ -43,22 +43,6 @@ const manifest: ComponentManifest = {
       "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
-      "id": "breadcrumbs",
-      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
-      "template": "/templates/breadcrumbs.txt",
-      "meta": {
-        "name": "breadcrumbs",
-        "category": "navigation",
-        "status": "stable",
-        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
-        "tags": [
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
-    },
-    {
       "id": "button",
       "path": "src/core/button/button.tsx",
       "template": "/templates/button.txt",
@@ -74,6 +58,22 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
+    },
+    {
+      "id": "breadcrumbs",
+      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+      "template": "/templates/breadcrumbs.txt",
+      "meta": {
+        "name": "breadcrumbs",
+        "category": "navigation",
+        "status": "stable",
+        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
+        "tags": [
+          "navigation"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
       "id": "calendar",
@@ -181,7 +181,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "f3de65bdcb97c4bfacd06b16a6bc06d468d53e5cb008173191c11807509a7679"
+      "sha256": "be56a4cccb5540500d3838e68d13bed762f08c98a616893488cdbf600f08a085"
     },
     {
       "id": "date-picker",
@@ -199,7 +199,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "12f505e994f370b46760c565f3a249524fc151eaccbdb553f87927d823c4ddb2"
+      "sha256": "e8bf7d6cb7d6d4aed55a8653fb8cc91e25aa97018695d7f86c3c7834db6583b4"
     },
     {
       "id": "input",
@@ -216,7 +216,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "027e8056e06646ba9b1b5ff0f78f8d77a95c90018764e672b50d0499d48a040b"
+      "sha256": "d8139063758b0609911fe0507fab11e9e0afac1104dafb53ed7798834ccb336c"
     },
     {
       "id": "menu",
@@ -427,7 +427,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "766f9855fd52633b29c31c597bb010a3899a125e917fb03c8dcb2e2cbcfeec8e"
+      "sha256": "8cb1174fbedc16eb805e53d7f23abc3c8f404de662d6c8530d91ec167936863c"
     },
     {
       "id": "toggle",
