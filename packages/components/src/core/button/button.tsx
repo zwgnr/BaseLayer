@@ -20,9 +20,9 @@ const button = tv({
 				"border border-transparent bg-danger text-danger-fg data-[hovered]:bg-danger/80",
 		},
 		size: {
-			sm: "px-2 py-1 text-sm has-[>svg]:px-3",
-			md: "px-4 py-2 text-base has-[>svg]:px-6",
-			lg: "px-6 py-3 font-bold text-lg has-[>svg]:px-8",
+			sm: "px-2 py-1.5 text-sm has-[>svg]:px-3",
+			md: "px-4 py-2.5 text-base has-[>svg]:px-6",
+			lg: "px-6 py-3.5 font-bold text-lg has-[>svg]:px-8",
 			icon: "size-9",
 		},
 	},

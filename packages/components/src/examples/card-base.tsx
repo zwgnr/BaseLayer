@@ -1,32 +1,38 @@
+import { GithubIcon } from "lucide-react";
+
 import { Button } from "../core/button/button";
 import { Card, CardContent, CardFooter } from "../core/card/card";
 import { Input } from "../core/input/input";
-import { Select, SelectItem } from "../core/select/select";
 
 export const CardBase = () => {
 	return (
 		<Card
-			className="w-[350px]"
-			title="Create project"
-			description="Deploy your new project in one-click."
+			className="w-[400px]"
+			title="Sign in"
+			description="Sign in to your account."
 		>
 			<CardContent>
 				<form>
 					<div className="flex w-full flex-col items-center justify-between gap-4">
-						<Input className="w-full" id="name" placeholder="Name of your project" />
-
-						<Select className="w-full" id="framework" placeholder="Select a framework">
-							<SelectItem>Next.js</SelectItem>
-							<SelectItem>SvelteKit</SelectItem>
-							<SelectItem>Astro</SelectItem>
-							<SelectItem>Nuxt.js</SelectItem>
-						</Select>
+						<Input
+							className="w-full"
+							label="Email"
+							placeholder="Email"
+						/>
+						<Input
+							className="w-full"
+							label="Password"
+							placeholder="Password"
+						/>
 					</div>
 				</form>
 			</CardContent>
-			<CardFooter className="flex justify-between">
-				<Button variant="ghost">Cancel</Button>
-				<Button>Deploy</Button>
+			<CardFooter className="flex w-full flex-col justify-between gap-3">
+				<Button className="w-full">Sign in</Button>
+				<Button className="w-full gap-4" variant="secondary">
+					<GithubIcon className="size-4" />
+					Continue with GitHub
+				</Button>
 			</CardFooter>
 		</Card>
 	);

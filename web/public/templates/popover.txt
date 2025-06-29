@@ -11,7 +11,7 @@ import {
 import { tv } from "tailwind-variants";
 
 export const popover = tv({
-	base: "data-[entering]:fade-in data-[exiting]:fade-out m-1 max-w-lg rounded-2xl border border-border bg-surface p-2 text-fg shadow-xl outline-none data-[entering]:animate-in data-[exiting]:animate-out",
+	base: "data-[entering]:fade-in data-[exiting]:fade-out m-1 max-w-lg rounded-2xl border border-border/25 bg-surface p-2 text-fg shadow-lg outline-none data-[entering]:animate-in data-[exiting]:animate-out",
 });
 
 interface DialogProps extends Omit<AriaPopoverProps, "className" | "children"> {

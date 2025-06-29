@@ -1,8 +1,7 @@
 :root {
   /* SURFACES (neutrals & elevation) */
   --surface: oklch(98.5% 0 0); /* app/page background */
-  --surface-2: oklch(92% 0.004 286.32); /* card / raised 1 */
-  --surface-3: oklch(87% 0 0); /* card / raised 2 */
+  --surface-2: oklch(97% 0 0); /* card / raised 1 */
   --surface-overlay: oklch(55.6% 0 0); /* modals, popovers */
   --surface-disabled: oklch(87% 0 0); /* disabled state */
 
@@ -13,14 +12,14 @@
   --fg-disabled: oklch(70.5% 0.015 286.067); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
-  --border: oklch(92% 0.004 286.32); /* generic 1px rules, inputs */
+  --border: oklch(87% 0 0); /* generic 1px rules, inputs */
   --focus: oklch(68.5% 0.169 237.323); /* focus ring / a11y outline */
 
   /* INTERACTIVE ROLES (paired bg / fg / border) */
   --primary: #000000;
   --primary-fg: #ffffff;
 
-  --secondary: oklch(87.1% 0.006 286.286);
+  --secondary: oklch(92.2% 0 0);
   --secondary-fg: #000000;
 
   /* STATUS / FUNCTIONAL */
@@ -36,27 +35,26 @@
 
 [data-theme='dark'] {
   /* SURFACES (neutrals & elevation) */
-  --surface: oklch(14.1% 0.005 285.823); /* app/page background */
-  --surface-2: oklch(27.4% 0.006 286.033); /* card / raised 1 */
-  --surface-3: oklch(37% 0.013 285.805); /* card / raised 2 */
+  --surface: oklch(14.5% 0 0); /* app/page background */
+  --surface-2: oklch(20.5% 0 0); /* card / raised 1 */
   --surface-overlay: #0f172a; /* modals, popovers */
   --surface-disabled: oklch(21% 0.006 285.885); /* disabled state */
 
   /* CONTENT (foreground) */
-  --fg: #f8fafc; /* primary reading text */
-  --fg-muted: oklch(55.2% 0.016 285.938); /* secondary text, captions */
+  --fg: oklch(98.5% 0.001 106.423); /* primary reading text */
+  --fg-muted: oklch(55.6% 0 0); /* secondary text, captions */
   --fg-inverse: #0a0a0a; /* text on dark / brand surfaces */
   --fg-disabled: oklch(37% 0.013 285.805); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
-  --border: oklch(37% 0.013 285.805); /* generic 1px rules, inputs */
+  --border: oklch(37.1% 0 0); /* generic 1px rules, inputs */
   --focus: #0ea5e9; /* focus ring / a11y outline */
 
   /* INTERACTIVE ROLES (paired bg / fg / border) */
   --primary: #ffffff;
   --primary-fg: #0a0a0a;
 
-  --secondary: oklch(27.4% 0.006 286.033);
+  --secondary: oklch(26.9% 0 0);
   --secondary-fg: #f8fafc;
 
   /* STATUS / FUNCTIONAL */

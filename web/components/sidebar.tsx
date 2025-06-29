@@ -13,7 +13,7 @@ export function Sidebar() {
   );
 
   return (  
-    <div className="sticky top-[73px] flex h-[calc(100vh-73px)] w-64 flex-col border-border border-r">
+    <div className="sticky top-[73px] flex h-[calc(100vh-73px)] w-64 flex-col border-border/50 border-r">
       {/* Fixed Search Section */}
       <div className="p-6 pb-0">
         <SearchDialog />

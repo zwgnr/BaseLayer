@@ -8,7 +8,7 @@ import {
 import { tv } from "tailwind-variants";
 
 const bar = tv({
-	base: "h-5 overflow-hidden rounded-2xl bg-surface-2",
+	base: "h-4 overflow-hidden rounded-2xl bg-surface-2",
 });
 
 interface MeterProps extends Omit<AriaMeterProps, "className"> {

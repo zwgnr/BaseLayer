@@ -21,26 +21,26 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const baseStyles = tv({
 	slots: {
-		root: "w-fit max-w-full rounded-2xl border border-border bg-surface p-4 text-fg shadow-lg",
+		root: "w-fit max-w-full rounded-2xl border border-border bg-surface p-4 text-fg",
 		header: "flex w-full items-center gap-1 pb-4",
 		heading: "flex-1 text-center font-bold",
 		headerCell: "pb-2 text-fg-muted text-sm",
 		monthButton:
-			"flex appearance-none items-center justify-center rounded-full p-2 text-center outline-none ring-focus data-[hovered]:bg-surface-2 data-[focus-visible]:ring-2",
+			"flex appearance-none items-center justify-center rounded-full p-2 text-center outline-none ring-focus data-[hovered]:bg-secondary data-[focus-visible]:ring-2",
 	},
 });
 
 const calendar = tv({
 	extend: baseStyles,
 	slots: {
-		cell: "flex size-9 cursor-default items-center justify-center rounded-full border-border text-center text-sm outline-focus outline-offset-2 data-[hovered]:bg-surface-2 data-[pressed]:bg-surface-2 data-[selected]:bg-primary data-[selected]:text-primary-fg data-[unavailable]:text-fg-muted data-[unavailable]:line-through data-[focus-visible]:outline-2 data-[focus-visible]:outline-focus [&[data-outside-month]]:hidden",
+		cell: "flex size-9 cursor-default items-center justify-center rounded-full border-border text-center text-sm outline-focus outline-offset-2 data-[hovered]:bg-secondary data-[pressed]:bg-secondary data-[selected]:bg-primary data-[selected]:text-primary-fg data-[unavailable]:text-fg-muted data-[unavailable]:line-through data-[focus-visible]:outline-2 data-[focus-visible]:outline-focus [&[data-outside-month]]:hidden",
 	},
 });
 
 const rangeCalendar = tv({
 	extend: baseStyles,
 	slots: {
-		cell: "flex size-9 cursor-default items-center justify-center rounded-full text-center text-sm outline-none outline-offset-2 data-[selected]:rounded-none data-[hovered]:bg-surface-2 data-[pressed]:bg-surface-2 data-[selected]:bg-primary data-[selected]:text-primary-fg data-[unavailable]:text-fg-muted data-[unavailable]:line-through data-[focus-visible]:ring-2 data-[focus-visible]:ring-focus data-[focus-visible]:ring-offset-2 [&[data-outside-month]]:hidden [&[data-selection-end]]:rounded-r-full [&[data-selection-start]]:rounded-l-full",
+		cell: "flex size-9 cursor-default items-center justify-center rounded-full text-center text-sm outline-none outline-offset-2 data-[selected]:rounded-none data-[hovered]:bg-secondary data-[pressed]:bg-secondary data-[selected]:bg-primary data-[selected]:text-primary-fg data-[unavailable]:text-fg-muted data-[unavailable]:line-through data-[focus-visible]:ring-2 data-[focus-visible]:ring-focus data-[focus-visible]:ring-offset-2 [&[data-outside-month]]:hidden [&[data-selection-end]]:rounded-r-full [&[data-selection-start]]:rounded-l-full",
 	},
 });
 

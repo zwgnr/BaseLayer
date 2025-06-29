@@ -14,7 +14,7 @@ import {
 import { tv } from "tailwind-variants";
 
 const input = tv({
-	base: "appearance-none rounded-xl bg-surface-2 px-3 py-1.5 font-semibold outline-none ring-primary transition-all disabled:bg-surface-disabled disabled:text-fg-disabled data-[disabled]:cursor-not-allowed data-[focused]:border-transparent data-[focused]:bg-surface data-[focused]:ring-2 [&::placeholder]:text-sm",
+	base: "min-h-11 appearance-none rounded-lg border border-border bg-surface px-3 py-1 text-fg outline-none ring-primary transition-all disabled:bg-surface-disabled disabled:text-fg-disabled data-[disabled]:cursor-not-allowed data-[focused]:border-transparent data-[focused]:ring-2 [&::placeholder]:text-fg-muted [&::placeholder]:text-sm",
 });
 
 interface InputProps extends Omit<AriaTextFieldProps, "className"> {

@@ -18,11 +18,11 @@ import { tv } from "tailwind-variants";
 export const menu = tv({
 	slots: {
 		menuPopover:
-			"data-[entering]:fade-in data-[exiting]:fade-out overflow-auto rounded-2xl border border-border bg-surface shadow-xl data-[entering]:animate-in data-[exiting]:animate-out ",
+			"data-[entering]:fade-in data-[exiting]:fade-out overflow-auto rounded-2xl border border-border/25 bg-surface shadow-xl data-[entering]:animate-in data-[exiting]:animate-out",
 		header: "p-2 font-semibold",
 		content: "flex h-fit min-w-56 flex-col gap-2 p-3 outline-none",
-		item: "relative flex cursor-default justify-between rounded-lg p-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-surface-2 data-[disabled]:text-fg-disabled",
-		separator: "h-[1px] bg-surface-3",
+		item: "relative flex cursor-default justify-between rounded-lg p-3 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-secondary data-[disabled]:text-fg-disabled",
+		separator: "h-[1px] bg-border",
 	},
 });
 

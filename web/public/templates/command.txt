@@ -25,7 +25,7 @@ import { Search } from "lucide-react";
 const command = tv({
 	slots: {
 		trigger:
-			"flex w-full items-center justify-between rounded-full bg-surface-2 px-4 py-2 font-semibold text-fg outline-none ring-primary ring-offset-2 ring-offset-surface transition-colors hover:bg-surface-3 data-[focus-visible]:ring-2",
+			"flex w-full items-center justify-between rounded-full bg-secondary px-4 py-2 font-semibold text-fg outline-none ring-primary ring-offset-2 ring-offset-surface transition-colors hover:bg-secondary data-[focus-visible]:ring-2",
 		overlay:
 			"data-[entering]:fade-in data-[exiting]:fade-out fixed inset-0 z-50 flex min-h-full items-start justify-center bg-zinc-500/25 p-4 text-center data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200 sm:items-center",
 		modal:
@@ -36,7 +36,7 @@ const command = tv({
 		input:
 			"rounded-lg border-b-2 border-none bg-transparent px-3 py-2 text-base text-fg leading-5 outline-none placeholder:text-fg-muted",
 		menu: "mt-2 max-h-44 overflow-auto p-1",
-		item: "group flex min-h-12 w-full cursor-default items-center rounded-md px-3 py-2 text-fg outline-none hover:bg-surface-2 data-[focused]:bg-surface-2 data-[pressed]:bg-surface-3 data-[focused]:text-focus-fg",
+		item: "group flex min-h-12 w-full cursor-default items-center rounded-md px-3 py-2 text-fg outline-none data-[focused]:bg-secondary data-[pressed]:bg-surface-3 data-[focused]:text-focus-fg",
 		kbd: "ml-auto rounded border border-border bg-surface-2 px-2 py-1 font-semibold text-fg-muted text-xs",
 	},
 });
@@ -103,11 +103,11 @@ const Command = ({
 		<AriaDialogTrigger isOpen={isOpen} onOpenChange={setOpen}>
 			{trigger || (
 				<AriaButton className={styles.trigger({ className })}>
-					<div className="flex items-center gap-2">
+					<div className="flex items-center gap-2 text-fg-muted">
 						<Search className="size-4 text-fg-muted" />
 						Search
 					</div>
-					<kbd className="rounded-md bg-surface-3 px-2 py-1 font-semibold text-xs">
+					<kbd className="rounded-md border border-border px-2 py-1 font-semibold text-fg-muted text-xs">
 						{isMac ? "⌘" : "Ctrl"} {triggerKey.toUpperCase()}
 					</kbd>
 				</AriaButton>

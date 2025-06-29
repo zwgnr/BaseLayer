@@ -38,8 +38,8 @@ export const Preview = ({
 
 	// If no children and only sourceCodeElement, render just the source code
 	if (!children && sourceCodeElement) {
-		return (
-			<div className="h-96 overflow-hidden overflow-y-auto rounded-2xl border border-border">
+		return (	
+			<div className="h-96 overflow-hidden overflow-y-auto rounded-2xl border border-border/50">
 				<div className="overflow-hidden bg-[#eff1f5] p-6 text-sm dark:bg-[#303446] [&_code]:whitespace-pre-wrap [&_code]:break-words [&_pre]:whitespace-pre-wrap [&_pre]:break-words">
 					{sourceCodeElement}
 				</div>
@@ -76,7 +76,7 @@ export const Preview = ({
 					</div>
 				</div>
 			)}
-			<div className="h-96 overflow-hidden rounded-2xl border border-border">
+			<div className="flex min-h-96 flex-col items-center justify-center overflow-hidden rounded-2xl border border-border/50">
 				{activeTab === "preview" ? (
 					<div className="flex h-full items-center justify-center p-6">
 						{children}

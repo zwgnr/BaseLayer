@@ -16,7 +16,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { Check } from "lucide-react";
 
 const checkbox = tv({
-	base: "flex items-center justify-center gap-2 py-1 [&>div]:ring-focus [&>div]:ring-offset-2 [&>div]:ring-offset-surface [&>div]:data-[selected]:border-primary [&>div]:data-[selected]:bg-primary [&>div]:data-[focus-visible]:ring-2",
+	base: "group flex items-center justify-center gap-2 py-1 text-fg",
 });
 
 const checkboxGroup = tv({
@@ -43,8 +43,8 @@ const Checkbox = ({
 		<AriaCheckbox className={checkbox({ className })} {...props}>
 			{({ isSelected }) => (
 				<>
-					<div className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-border transition-all">
-						{isSelected && <Check />}
+					<div className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-border transition-all group-data-[selected]:border-primary group-data-[selected]:bg-primary group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-focus group-data-[focus-visible]:ring-offset-2 group-data-[focus-visible]:ring-offset-surface">
+						{isSelected && <Check className="size-4 text-primary-fg" />}
 					</div>
 					{children}
 					{description && (
@@ -78,7 +78,11 @@ const CheckboxGroup = ({
 	...props
 }: CheckboxGroupProps) => (
 	<AriaCheckboxGroup {...props} className={checkboxGroup({ className })}>
-		{label && <Text className="text-md" slot="label">{label}</Text>}
+		{label && (
+			<Text className="text-md" slot="label">
+				{label}
+			</Text>
+		)}
 		{children}
 		{description && (
 			<Text className="text-md" slot="description">

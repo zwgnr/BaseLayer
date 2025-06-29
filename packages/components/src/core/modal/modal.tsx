@@ -14,7 +14,7 @@ export const modal = tv({
 	slots: {
 		dialog: "flex w-full flex-col gap-6 outline-none",
 		modalStyles:
-			"fade-in w-full rounded-2xl bg-surface p-8 text-fg outline-none data-[entering]:animate-in md:w-md",
+			"fade-in w-full rounded-2xl bg-surface p-6 text-fg outline-none data-[entering]:animate-in md:w-md",
 	},
 });
 

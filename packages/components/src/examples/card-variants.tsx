@@ -7,7 +7,7 @@ export const CardVariants = () => {
         className="w-[300px]" 
         variant="outlined"
         title="Outlined Card"
-        description="This is the default outlined card variant."
+        description="Default outlined card variant."
       >
         <CardContent>
           <p>Content goes here with outlined border.</p>

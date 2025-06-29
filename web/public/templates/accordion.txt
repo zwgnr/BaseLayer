@@ -6,24 +6,24 @@ import {
 	Button,
 	Disclosure,
 	DisclosureGroup,
-	type DisclosureGroupProps ,
+	type DisclosureGroupProps,
 	DisclosurePanel,
 	type DisclosureProps,
 	Heading,
-	Text,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { ChevronRight } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 
 const accordion = tv({
 	slots: {
-		root: "border-border border-b last:border-b-0",
-		group: "divide-y divide-border rounded-lg border border-border px-2",
+		root: "group w-full",
+		group: "flex flex-col gap-3",
 		button:
-			"flex w-full items-center justify-between gap-2 border-none bg-transparent p-3 text-left font-bold text-base shadow-none last:pb-0 data-[focus-visible]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-focus data-[focus-visible]:ring-offset-2 data-[focus-visible]:ring-offset-surface",
-		icon: "size-4 shrink-0 rotate-0 fill-none transition-transform duration-200 data-[expanded]:rotate-90",
-		panel: "px-3 pt-1 pb-2 text-muted-foreground text-sm",
+			"flex w-full items-center justify-between gap-6 rounded-2xl border border-border bg-surface-2 p-4 data-[focus-visible]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-focus data-[focus-visible]:ring-offset-2 data-[focus-visible]:ring-offset-surface group-data-[expanded]:rounded-b-none group-data-[expanded]:border-b-0",
+		icon: "size-4 shrink-0 fill-none transition-transform duration-200",
+		panel:
+			"rounded-b-2xl border-border bg-surface-2 px-4 text-muted-foreground text-sm group-data-[expanded]:border-x group-data-[expanded]:border-b group-data-[expanded]:pb-4",
 	},
 });
 
@@ -51,12 +51,12 @@ const Accordion = ({
 				<>
 					<Heading>
 						<Button slot="trigger" className={styles.button()}>
-            <span>{title}</span>
-							<ChevronRight
-								className={styles.icon()}
-								data-expanded={isExpanded ? "" : undefined}
-							/>
-
+							<span className="font-bold">{title}</span>
+							{isExpanded ? (
+								<Minus className={styles.icon()} />
+							) : (
+								<Plus className={styles.icon()} />
+							)}
 						</Button>
 					</Heading>
 					<DisclosurePanel className={styles.panel()}>
@@ -70,22 +70,15 @@ const Accordion = ({
 
 interface AccordionGroupProps extends DisclosureGroupProps {
 	className?: string;
-	label?: string;
 	children: ReactNode;
 }
 
 const AccordionGroup = ({
 	className,
-	label,
 	children,
 	...props
 }: AccordionGroupProps) => (
 	<DisclosureGroup {...props} className={styles.group({ className })}>
-		{label && (
-			<Text className="mb-2 font-medium text-md" slot="label">
-				{label}
-			</Text>
-		)}
 		{children}
 	</DisclosureGroup>
 );

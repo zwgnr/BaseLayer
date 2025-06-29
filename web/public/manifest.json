@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-06-28T03:01:48.785Z",
+  "generatedAt": "2025-06-29T03:28:44.658Z",
   "version": "2.0.0",
   "components": [
     {
@@ -19,7 +19,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "a344fed7668493816c4739f59811ace07a0a9114a69d84f2a7be76c8961cbd24"
+      "sha256": "c6852e750c53bbd2262a19582dee5f9464745bc91d265b79a54249072a0e2d6d"
     },
     {
       "id": "badge",
@@ -38,22 +38,6 @@
       "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
-      "id": "breadcrumbs",
-      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
-      "template": "/templates/breadcrumbs.txt",
-      "meta": {
-        "name": "breadcrumbs",
-        "category": "navigation",
-        "status": "stable",
-        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
-        "tags": [
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
-    },
-    {
       "id": "button",
       "path": "src/core/button/button.tsx",
       "template": "/templates/button.txt",
@@ -68,25 +52,23 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "3cf31315de60ca11bbb8b2b152080d8665ebc901d1dfc2647f7ececc7714c44e"
+      "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
     },
     {
-      "id": "calendar",
-      "path": "src/core/calendar/calendar.tsx",
-      "template": "/templates/calendar.txt",
+      "id": "breadcrumbs",
+      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+      "template": "/templates/breadcrumbs.txt",
       "meta": {
-        "name": "calendar",
-        "category": "data-entry",
+        "name": "breadcrumbs",
+        "category": "navigation",
         "status": "stable",
-        "description": "A calendar displays one or more date grids and allows users to select either a single date or a contiguous range of dates.",
+        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
         "tags": [
-          "form",
-          "interactive",
-          "date-time"
+          "navigation"
         ],
         "version": "2.0.0"
       },
-      "sha256": "f319d0dc21160633a1cf310705b3e4a6e15e8e7082df9939fdafd99f646eb681"
+      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
       "id": "card",
@@ -104,7 +86,25 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "7ffb3d992abfa655a9b91cbc414e54ee83ee521d343619bd44790d89be70ac22"
+      "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
+    },
+    {
+      "id": "calendar",
+      "path": "src/core/calendar/calendar.tsx",
+      "template": "/templates/calendar.txt",
+      "meta": {
+        "name": "calendar",
+        "category": "data-entry",
+        "status": "stable",
+        "description": "A calendar displays one or more date grids and allows users to select either a single date or a contiguous range of dates.",
+        "tags": [
+          "form",
+          "interactive",
+          "date-time"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
     },
     {
       "id": "checkbox",
@@ -121,7 +121,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "441a92219741ada54862eaca945b63f49954be288fb09e240cd6456e7f45f50b"
+      "sha256": "cb897486e21e7980211b2babb352f25bff683f5f3c6444c90ba43aa8aaf8c2b2"
     },
     {
       "id": "combobox",
@@ -139,7 +139,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "066ccde400c475e86b7f2a6c40e8555100ece83d357f5153c08af4ed810fd5a4"
+      "sha256": "df26c26b7f289474d4cd4319ffe8f9568ef20508e293a1282e9143b798b64b87"
     },
     {
       "id": "command",
@@ -158,7 +158,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "34a1a70de7319c6bd28e7b1705cab4de0564476d2ac530fa82244e1ee6d566d9"
+      "sha256": "0afe41a844edfb453038993eb454293257928773016c70933870134febfff302"
     },
     {
       "id": "date-field",
@@ -176,7 +176,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "27a3c67603d9decee120f7ca21bbd5952eab662ea053779cd36f6962f18e7db2"
+      "sha256": "f3de65bdcb97c4bfacd06b16a6bc06d468d53e5cb008173191c11807509a7679"
     },
     {
       "id": "date-picker",
@@ -194,7 +194,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "7d64fcd95e7589cd75c128180747e1e8312b7f8ca42afd057abc71293dc2dcff"
+      "sha256": "12f505e994f370b46760c565f3a249524fc151eaccbdb553f87927d823c4ddb2"
     },
     {
       "id": "input",
@@ -211,7 +211,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "d72b127f5307140ee6571858ce79ed6e8229647b62a010a38b1f11bbd06e2233"
+      "sha256": "027e8056e06646ba9b1b5ff0f78f8d77a95c90018764e672b50d0499d48a040b"
     },
     {
       "id": "menu",
@@ -228,7 +228,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "499ad0760013f8e35bd542846ee266665fd1430d27b755a645369cfb73a3feb6"
+      "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
     },
     {
       "id": "meter",
@@ -245,7 +245,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "d4990cefc83f17004a861bb023ce8ca1188a0c7c22a6e15dcc57b166870625a2"
+      "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
     },
     {
       "id": "modal",
@@ -261,7 +261,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "ac3e88e0339bbc3d1c4ac1119f2572f6f592f1737c3c2c01dfcc5acc17fc5ea0"
+      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
     },
     {
       "id": "popover",
@@ -278,7 +278,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "1f7c1da59ea4c682db0fe5bdab98278d3c2339def5b21b50b2c76225eaa35b21"
+      "sha256": "3d0f74c9c6058c392c11cf658631b863df9d2b93428cc1fbe7af097e165cee6a"
     },
     {
       "id": "radio-group",
@@ -296,7 +296,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "afbc2504218e140e94b59d793d522e3d73451d972399189e2056364f2a93c2e6"
+      "sha256": "79eb9e3dc739c5928931ef3ce1c4540873c80aa7804da514d41fe567f94faa6b"
     },
     {
       "id": "select",
@@ -314,7 +314,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "1efdee99443148b7f7a3cd42668a741f2bcd3a1def3369356b191ae4a60d39dd"
+      "sha256": "3a46ddc0a68af706b38962212938ca1a560ed787f8c17bdd42175c93dfdc41dc"
     },
     {
       "id": "slider",
@@ -332,7 +332,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "c077282655ce31303167e6b28cfa724a57aa8a141ffc6b813bdd730bbadec210"
+      "sha256": "c76a0056a3429d7bc5d5ebea6a0b91a6d03ed7b302a4a4c7455f41d25ce22e66"
     },
     {
       "id": "switch",
@@ -350,7 +350,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "8f5bca38bfd3b6d7d6daa0b531c9e814e0ec688ca211005866c06e3a8523e14b"
+      "sha256": "79783523d967e996ed53fc22224f458ebb8309d05f809d0184233bfa8199e8d2"
     },
     {
       "id": "table",
@@ -404,7 +404,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "ae618f6b551fddb67b955988c059fad57417d693d05007b3ad45d68b7c53747b"
+      "sha256": "f8efe746cf7e6bbb27e109c021ecee251109289d112c541d48d18fe4f36bb3d7"
     },
     {
       "id": "time-field",
@@ -422,7 +422,7 @@
         ],
         "version": "2.0.0"
       },
-      "sha256": "5be5cb0374b73264511e4fb1776d7c123b2b93b909ba77e89e71470065737ec4"
+      "sha256": "766f9855fd52633b29c31c597bb010a3899a125e917fb03c8dcb2e2cbcfeec8e"
     },
     {
       "id": "toggle",

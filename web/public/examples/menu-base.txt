@@ -1,10 +1,8 @@
 import {
-	CreditCard,
 	HelpCircle,
 	LogOut,
 	Plus,
 	Settings,
-	User,
 } from "lucide-react";
 
 import { Button } from "@components/base/button";
@@ -20,8 +18,10 @@ import {
 export const Menu = () => {
 	return (
 		<MenuTrigger>
-			<Button>Menu</Button>
-			<MenuContent>
+			<Button size="icon" className="size-12 rounded-full p-0">
+				Z
+			</Button>
+			<MenuContent className="w-72">
 				<MenuSection>
 					<MenuHeader>me@hello.com</MenuHeader>
 				</MenuSection>
@@ -31,16 +31,8 @@ export const Menu = () => {
 					<Settings />
 				</MenuItem>
 				<MenuItem>
-					Billing
-					<CreditCard />
-				</MenuItem>
-				<MenuItem>
-					Create a Team
+					Add Account
 					<Plus />
-				</MenuItem>
-				<MenuItem>
-					Invite Member
-					<User />
 				</MenuItem>
 				<MenuSeperator />
 				<MenuItem>

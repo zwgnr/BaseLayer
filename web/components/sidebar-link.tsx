@@ -22,8 +22,8 @@ export function SidebarLink({ href, children, onClick }: SidebarLinkProps) {
       }}
       href={href}
       className={cx(
-        "block rounded-lg px-3 py-2 font-semibold text-sm transition-colors hover:bg-surface-2",
-        isActive && "bg-surface-2 text-primary hover:bg-surface-2"
+        "block rounded-lg px-3 py-2 font-semibold text-sm transition-colors hover:bg-secondary",
+        isActive && "bg-secondary text-primary hover:bg-secondary"
       )}
     >
       {children}

@@ -24,12 +24,12 @@ const combobox = tv({
 	slots: {
 		root: "group max-h-inherit w-full overflow-auto p-1 outline-none",
 		input:
-			"w-full rounded-xl bg-surface-2 px-4 py-1.5 align-middle font-semibold text-fg outline-none ring-fg transition-all group-data-[focused]:bg-surface group-data-[focused]:ring-2",
+			"w-full rounded-lg border border-border bg-surface px-4 py-1.5 align-middle font-semibold text-fg outline-none ring-fg transition-all group-data-[focused]:border-transparent group-data-[focused]:bg-surface group-data-[focused]:ring-2",
 		button:
 			"absolute right-2 flex appearance-none items-center justify-center rounded-full border-0 outline-none ring-focus ring-offset-2 ring-offset-surface data-[focus-visible]:ring-2",
 		popover:
-			"fade-in w-[var(--trigger-width)] animate-in rounded-xl border border-border bg-surface p-1 text-fg shadow-lg outline-none duration-250",
-		item: "relative m-1 flex cursor-default flex-col rounded-lg p-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-surface-2 data-[disabled]:text-fg-disabled",
+			"w-[var(--trigger-width)] rounded-xl border border-border/25 bg-surface p-1 text-fg shadow-lg outline-none",
+		item: "relative m-1 flex cursor-default flex-col rounded-lg p-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-secondary data-[disabled]:text-fg-disabled",
 	},
 });
 
@@ -49,13 +49,11 @@ const ComboBox = <T extends ListBoxItemProps>({
 	description,
 	errorMessage,
 	children,
-	menuTrigger = "focus",
 	...props
 }: ComboBoxProps<T>) => (
 	<AriaComboBox
 		{...props}
 		className={styles.root({ className })}
-		menuTrigger={menuTrigger}
 	>
 		{label && <Label className="text-sm">{label}</Label>}
 		<div className="relative flex w-full items-center rounded-2xl bg-surface">
@@ -71,7 +69,7 @@ const ComboBox = <T extends ListBoxItemProps>({
 		)}
 		<FieldError className="text-danger text-sm">{errorMessage}</FieldError>
 		<Popover className={styles.popover()}>
-			<ListBox>{children}</ListBox>
+			<ListBox className="max-h-56 overflow-y-auto">{children}</ListBox>
 		</Popover>
 	</AriaComboBox>
 );

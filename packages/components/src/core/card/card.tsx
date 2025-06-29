@@ -6,7 +6,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const card = tv({
 	slots: {
-		root: "rounded-2xl border-2 border-border bg-surface text-fg",
+		root: "rounded-2xl border-2 bg-surface text-fg",
 		header: "flex flex-col space-y-1.5 p-6",
 		title: "font-semibold text-2xl leading-none tracking-tight",
 		description: "text-fg-muted text-sm",
@@ -16,7 +16,7 @@ const card = tv({
 	variants: {
 		variant: {
 			outlined: {
-				root: "border border-border",
+				root: "border border-border/50",
 			},
 			filled: {
 				root: "border-surface-2 bg-surface-2",

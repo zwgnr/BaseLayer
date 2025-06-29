@@ -17,9 +17,9 @@ import { tv } from "tailwind-variants";
 const dateField = tv({
 	slots: {
 		input:
-			"min-w-48 appearance-none rounded-xl bg-surface-2 px-3 py-1.5 font-semibold outline-none ring-primary transition-all disabled:bg-surface-disabled disabled:text-fg-disabled data-[disabled]:cursor-not-allowed data-[focus-within]:border-transparent data-[focus-within]:bg-surface data-[focus-within]:ring-2 [&::placeholder]:text-sm",
+			"min-h-11 min-w-48 appearance-none rounded-lg border border-border bg-surface px-3 py-1.5 outline-none ring-primary transition-all disabled:bg-surface-disabled disabled:text-fg-disabled data-[disabled]:cursor-not-allowed data-[focus-within]:border-transparent data-[focus-within]:bg-surface data-[focus-within]:ring-2 [&::placeholder]:text-sm",
 		segmentStyles:
-			"rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[type='literal']:font-semibold data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted",
+			"rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted",
 	},
 });
 

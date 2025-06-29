@@ -27,7 +27,7 @@ import { Calendar, RangeCalendar } from "../calendar/calendar";
 const baseStyles = tv({
 	slots: {
 		input:
-			"appearance-none rounded-xl bg-transparent px-3 py-1.5 font-semibold outline-none ring-primary transition-all",
+			"appearance-none rounded-lg px-3 py-1.5 outline-none ring-primary transition-all",
 		popover:
 			"overflow-auto rounded-2xl data-[entering]:animate-fade data-[exiting]:animate-fadeOut",
 	},
@@ -37,9 +37,9 @@ const datePicker = tv({
 	extend: baseStyles,
 	slots: {
 		group:
-			"relative flex w-auto min-w-48 items-center rounded-xl bg-surface-2 transition-all data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
+			"relative flex min-h-11 w-auto min-w-48 items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
 		dateSegment:
-			"min-w-16 rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[type='literal']:font-semibold data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
+			"min-w-16 rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
 	},
 });
 
@@ -47,10 +47,10 @@ const dateRangePicker = tv({
 	extend: baseStyles,
 	slots: {
 		group:
-			"relative flex w-fit min-w-96 flex-wrap items-center rounded-xl bg-surface-2 transition-all data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
+			"relative flex min-h-11 w-fit min-w-96 flex-wrap items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
 		dateSegment:
-			"rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[type='literal']:font-semibold data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
-		separator: "px-2 font-semibold text-fg-muted",
+			"rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
+		separator: "px-2 text-fg-muted",
 	},
 });
 

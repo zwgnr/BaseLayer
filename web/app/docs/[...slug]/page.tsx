@@ -48,14 +48,15 @@ export default async function Page({ params }: PageProps) {
 
 	// Check if this is a component page
 	const isComponentPage = page.data?.description?.includes("rac");
-	const hasManualDescription = page.data.description && !page.data.description.includes("rac");
+	const hasManualDescription =
+		page.data.description && !page.data.description.includes("rac");
 	const componentId = isComponentPage
 		? titleToComponentId(page.data.title)
 		: null;
 
 	return (
 		<DocsPage toc={toc} navigation={navigation}>
-			<div className="prose dark:prose-invert max-w-none px-12 pb-12">
+			<div className="prose dark:prose-invert max-w-none px-6 pb-12 md:px-12">
 				<h1 className="font-bold text-3xl tracking-tigh">{page.data.title}</h1>
 				{hasManualDescription && (
 					<p className="-mt-4 text-muted-foreground">{page.data.description}</p>

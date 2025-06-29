@@ -342,6 +342,16 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "select-popover-classname",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/select-popover-classname.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "select-searchable",
     type: "registry:example" as const,
     files: [

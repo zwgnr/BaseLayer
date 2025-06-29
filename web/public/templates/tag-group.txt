@@ -16,7 +16,7 @@ const tagGroup = tv({
 	slots: {
 		root: "flex flex-col gap-2 text-sm",
 		list: "flex flex-wrap gap-2",
-		tag: "flex cursor-default items-center rounded-full border px-2 py-1 outline-none ring-focus ring-offset-2 ring-offset-surface aria-selected:bg-primary aria-selected:text-primary-fg data-[focus-visible]:ring-2",
+		tag: "flex cursor-default items-center rounded-full border border-border px-2 py-1 outline-none ring-focus ring-offset-2 ring-offset-surface aria-selected:border-primary aria-selected:bg-primary aria-selected:text-primary-fg data-[focus-visible]:ring-2",
 	},
 });
 

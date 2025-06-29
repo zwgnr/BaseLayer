@@ -35,6 +35,7 @@ export { PopoverExample } from "./examples/popover-base";
 export { RadioExample } from "./examples/radio-group-base";
 export { RangeCalendarBase } from "./examples/range-calendar-base";
 export { SelectExample } from "./examples/select-base";
+export { SelectPopoverClassname } from "./examples/select-popover-classname";
 export { SearchableSelectExample } from "./examples/select-searchable";
 export { Slider } from "./examples/slider-base";
 export { SwitchBase } from "./examples/switch-base";

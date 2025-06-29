@@ -18,7 +18,7 @@ const slider = tv({
 		thumb:
 			"h-5 w-5 rounded-full bg-primary ring-focus ring-offset-2 ring-offset-surface data-[focus-visible]:ring-2",
 		track:
-			"before:-translate-y-1/2 relative col-span-2 col-start-1 w-full before:absolute before:top-1/2 before:h-0.5 before:w-full before:transform before:bg-surface-3",
+			"before:-translate-y-1/2 relative col-span-2 col-start-1 w-full before:absolute before:top-1/2 before:h-0.5 before:w-full before:transform before:bg-secondary",
 	},
 });
 
