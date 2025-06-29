@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Component Sync Check
 
 on:
   pull_request:
@@ -7,8 +7,6 @@ on:
       - 'packages/components/scripts/**'
       - 'packages/components/package.json'
   push:
-    tags:
-      - 'v*'
     branches:
       - main
 
@@ -31,7 +29,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10.12.1
           
       - name: Install dependencies
         run: pnpm install
@@ -41,7 +39,7 @@ jobs:
         
       - name: Check for manifest drift
         run: |
-          if git diff --quiet packages/components/dist/; then
+          if git diff --quiet web/public/; then
             echo "✅ Manifest is in sync"
           else
             echo "❌ Manifest out of sync! Generated files differ from committed files."
@@ -50,10 +48,10 @@ jobs:
             echo "  pnpm --filter @baselayer/components build"
             echo ""
             echo "Changed files:"
-            git diff --name-only packages/components/dist/
+            git diff --name-only web/public/
             echo ""
             echo "Diff:"
-            git diff packages/components/dist/
+            git diff web/public/
             exit 1
           fi
 
@@ -75,7 +73,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 10.12.1
           
       - name: Install dependencies
         run: pnpm install
@@ -86,66 +84,4 @@ jobs:
       - name: Generate fresh manifest
         run: pnpm --filter @baselayer/components build
 
-  release:
-    if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-latest
-    name: Release
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
-          
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
-          
-      - name: Install dependencies
-        run: pnpm install
-        
-      - name: Build all packages
-        run: pnpm build
-        
-      - name: Generate release manifest
-        run: pnpm --filter @baselayer/components build
-        
-      - name: Create release artifacts
-        run: |
-          mkdir -p release-artifacts
-          cp packages/components/dist/manifest.json release-artifacts/
-          cp -r packages/components/dist/schemas release-artifacts/
-          
-      - name: Upload release artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: component-manifest-${{ github.ref_name }}
-          path: release-artifacts/
-          
-      - name: Publish MCP Server to NPM
-        run: pnpm --filter @baselayer/mcp publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          body: |
-            ## Component Manifest
-            
-            - Manifest SHA: ${{ hashFiles('packages/components/dist/manifest.json') }}
-            - Components: ${{ fromJson(steps.count.outputs.count) }}
-            
-            Download the component manifest and schemas from the artifacts below.
-          draft: false
-          prerelease: false 
+ 
