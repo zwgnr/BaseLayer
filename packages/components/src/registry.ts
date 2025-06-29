@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-29T22:34:46.623Z",
+  "generatedAt": "2025-06-29T23:57:21.271Z",
   "version": "1.9.0",
   "components": [
     {
@@ -27,39 +27,6 @@ const manifest: ComponentManifest = {
       "sha256": "c6852e750c53bbd2262a19582dee5f9464745bc91d265b79a54249072a0e2d6d"
     },
     {
-      "id": "badge",
-      "path": "src/core/badge/badge.tsx",
-      "template": "/templates/badge.txt",
-      "meta": {
-        "name": "badge",
-        "category": "display",
-        "status": "stable",
-        "description": "A badge is a small label that can be used to display information or status.",
-        "tags": [
-          "status"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
-    },
-    {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
-    },
-    {
       "id": "breadcrumbs",
       "path": "src/core/breadcrumbs/breadcrumbs.tsx",
       "template": "/templates/breadcrumbs.txt",
@@ -74,6 +41,22 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
+    },
+    {
+      "id": "badge",
+      "path": "src/core/badge/badge.tsx",
+      "template": "/templates/badge.txt",
+      "meta": {
+        "name": "badge",
+        "category": "display",
+        "status": "stable",
+        "description": "A badge is a small label that can be used to display information or status.",
+        "tags": [
+          "status"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
       "id": "calendar",
@@ -92,6 +75,23 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
+    },
+    {
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
     },
     {
       "id": "card",
@@ -163,7 +163,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "0afe41a844edfb453038993eb454293257928773016c70933870134febfff302"
+      "sha256": "396cab5f17dfd18d9e92628be2b27b4eaa87ff6edd1af6c481b1ef01238321b6"
     },
     {
       "id": "date-field",
@@ -236,6 +236,22 @@ const manifest: ComponentManifest = {
       "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
     },
     {
+      "id": "modal",
+      "path": "src/core/modal/modal.tsx",
+      "template": "/templates/modal.txt",
+      "meta": {
+        "name": "modal",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
+        "tags": [
+          "overlay"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
+    },
+    {
       "id": "meter",
       "path": "src/core/meter/meter.tsx",
       "template": "/templates/meter.txt",
@@ -251,22 +267,6 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
-    },
-    {
-      "id": "modal",
-      "path": "src/core/modal/modal.tsx",
-      "template": "/templates/modal.txt",
-      "meta": {
-        "name": "modal",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
-        "tags": [
-          "overlay"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
     },
     {
       "id": "popover",
@@ -337,7 +337,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "c76a0056a3429d7bc5d5ebea6a0b91a6d03ed7b302a4a4c7455f41d25ce22e66"
+      "sha256": "9ea87cc749058560b619f43641c447f5444b55afd9ebbdd48ace28324c4566a5"
     },
     {
       "id": "switch",

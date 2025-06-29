@@ -25,18 +25,16 @@ import { Search } from "lucide-react";
 const command = tv({
 	slots: {
 		trigger:
-			"flex w-full items-center justify-between rounded-full bg-secondary px-4 py-2 font-semibold text-fg outline-none ring-primary ring-offset-2 ring-offset-surface transition-colors hover:bg-secondary data-[focus-visible]:ring-2",
+			"flex w-full items-center justify-between rounded-full bg-secondary px-4 py-2 font-semibold text-fg outline-none ring-primary ring-offset-2 ring-offset-surface transition-colors data-[hovered]:bg-secondary/75 data-[focus-visible]:ring-2",
 		overlay:
 			"data-[entering]:fade-in data-[exiting]:fade-out fixed inset-0 z-50 flex min-h-full items-start justify-center bg-zinc-500/25 p-4 text-center data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200 sm:items-center",
 		modal:
 			"data-[entering]:zoom-in-95 data-[exiting]:zoom-out-95 data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200",
-		dialog: "outline-none",
-		content:
-			"flex min-h-72 w-[95vw] max-w-full flex-col gap-1 rounded-xl bg-surface p-2 shadow-lg sm:w-[500px]",
+		dialog: "flex min-h-96 min-w-80 max-w-full flex-col gap-1 rounded-2xl bg-surface p-2 shadow-lg outline-none md:w-lg",
 		input:
 			"rounded-lg border-b-2 border-none bg-transparent px-3 py-2 text-base text-fg leading-5 outline-none placeholder:text-fg-muted",
-		menu: "mt-2 max-h-44 overflow-auto p-1",
-		item: "group flex min-h-12 w-full cursor-default items-center rounded-md px-3 py-2 text-fg outline-none data-[focused]:bg-secondary data-[pressed]:bg-surface-3 data-[focused]:text-focus-fg",
+		menu: "mt-2 h-80 overflow-auto",
+		item: "group flex min-h-12 w-full cursor-default items-center rounded-lg px-3 py-2 text-fg outline-none data-[focused]:bg-secondary data-[pressed]:bg-surface-3 data-[focused]:text-focus-fg",
 		kbd: "ml-auto rounded border border-border bg-surface-2 px-2 py-1 font-semibold text-fg-muted text-xs",
 	},
 });
@@ -115,7 +113,6 @@ const Command = ({
 			<ModalOverlay {...props} isDismissable className={styles.overlay()}>
 				<AriaModal className={styles.modal()}>
 					<AriaDialog className={styles.dialog()}>
-						<div className={styles.content()}>
 							<Autocomplete filter={onSearchChange ? () => true : contains}>
 								<TextField
 									aria-label="Search commands"
@@ -161,7 +158,6 @@ const Command = ({
 									)}
 								</Menu>
 							</Autocomplete>
-						</div>
 					</AriaDialog>
 				</AriaModal>
 			</ModalOverlay>
