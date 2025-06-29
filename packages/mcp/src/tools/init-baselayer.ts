@@ -23,12 +23,18 @@ export async function initBaselayer(): Promise<{
 			"tw-animate-css",
 		];
 
-		const instructions = `Please set up BaseLayer in this project by completing these steps:
+		const instructions = `Set up BaseLayer in this project by completing these steps:
 
 1. **Add BaseLayer CSS**: 
    - Find or create a global CSS file (globals.css, global.css, index.css, app.css, etc.)
-   - Add the BaseLayer CSS variables and styles to the file
-   - The CSS content is provided below
+   - Add the following line to the file:
+     \`\`\`css
+     @import "tw-animate-css";
+     \`\`\`
+   - Add the following content to the file:
+     \`\`\`css
+     ${tailwindCss}
+     \`\`\`
 
 2. **Update tsconfig.json**:
    - Ensure it has these compilerOptions:
@@ -73,14 +79,11 @@ export async function initBaselayer(): Promise<{
    - Install these packages: ${dependencies.join(", ")}
    - Use the appropriate package manager (pnpm, yarn, or npm)
 
+4. **Create components/base directory**:
+    - In most projects this will be in the root directory of the web app
+    - In a vite project this will be in the src directory
 
-5. **Create .baselayer**:
-create a simple file in the root of the project called .baselayer with the following content:
-\`\`\`
-BL2.0
-\`\`\`
-
-4. **Verify setup**:
+5. **Verify setup**:
    - Check that the CSS file imports the BaseLayer styles
    - Confirm TypeScript paths are configured
    - Ensure all dependencies are installed`;
@@ -93,12 +96,12 @@ BL2.0
 		};
 	} catch (error) {
 		const errorMessage = error instanceof Error ? error.message : String(error);
-		console.error(`❌ Failed to fetch BaseLayer setup:`, errorMessage);
+		console.error(`Failed to fetch BaseLayer setup:`, errorMessage);
 
 		return {
 			success: false,
 			tailwindCss: "",
-			instructions: `❌ Failed to fetch BaseLayer CSS: ${errorMessage}`,
+			instructions: `Failed to fetch BaseLayer CSS: ${errorMessage}`,
 			dependencies: [],
 		};
 	}

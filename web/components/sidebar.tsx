@@ -7,7 +7,21 @@ export function Sidebar() {
   const pages = source.getPages();
 
   // Separate docs into categories
-  const introDocs = pages.filter((page) => !page.url.startsWith("/docs/components"));
+  const introDocs = pages
+    .filter((page) => !page.url.startsWith("/docs/components"))
+    .sort((a, b) => {
+      // Define specific order for intro docs
+      const order = ["/docs/intro", "/docs/usage", "/docs/mcp", "/docs/styles"];
+      const aIndex = order.indexOf(a.url);
+      const bIndex = order.indexOf(b.url);
+
+      if (aIndex !== -1 && bIndex !== -1) {
+        return aIndex - bIndex;
+      }
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      return a.url.localeCompare(b.url);
+    });
   const componentDocs = pages.filter((page) =>
     page.url.startsWith("/docs/components")
   );

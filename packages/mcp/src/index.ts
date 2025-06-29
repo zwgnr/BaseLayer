@@ -30,20 +30,24 @@ server.registerTool(
 	async (args) => {
 		try {
 			const manifest = await getManifest();
-			
+
 			return {
-				content: [{
-					type: "text",
-					text: `Here are all BaseLayer components:\n\n${JSON.stringify(manifest, null, 2)}\n\nSearch through these components based on the user's request: ${JSON.stringify(args)}`
-				}]
+				content: [
+					{
+						type: "text",
+						text: `Here are all BaseLayer components:\n\n${JSON.stringify(manifest, null, 2)}\n\nSearch through these components based on the user's request: ${JSON.stringify(args)}`,
+					},
+				],
 			};
 		} catch (error) {
 			return {
-				content: [{
-					type: "text",
-					text: `❌ Failed to get components: ${error instanceof Error ? error.message : String(error)}`
-				}],
-				isError: true
+				content: [
+					{
+						type: "text",
+						text: `Failed to get components: ${error instanceof Error ? error.message : String(error)}`,
+					},
+				],
+				isError: true,
 			};
 		}
 	},
@@ -57,65 +61,28 @@ server.registerTool(
 		description:
 			"Get BaseLayer component code and installation instructions for one or multiple components.",
 		inputSchema: {
-			componentTypes: z
+			componentNames: z
 				.array(z.string())
-				.optional()
 				.describe(
 					'Array of component IDs to install (e.g., ["button", "input"])',
-				),
-			componentType: z
-				.string()
-				.optional()
-				.describe(
-					'Single component ID to install (e.g., "button") - for backwards compatibility',
-				),
-			componentName: z
-				.string()
-				.optional()
-				.describe(
-					"Custom name for the component (only works with single component installation)",
 				),
 		},
 	},
 	async (args) => {
-		const { componentTypes, componentType, componentName } = args;
+		const { componentNames } = args;
 
 		try {
-			// Determine which components to install
-			let componentsToInstall: string[] = [];
-
-			if (componentTypes && componentTypes.length > 0) {
-				componentsToInstall = componentTypes;
-			} else if (componentType) {
-				componentsToInstall = [componentType];
-			} else {
-				throw new Error(
-					"Either componentTypes array or componentType is required",
-				);
+			if (!componentNames || componentNames.length === 0) {
+				throw new Error("Please provide at least one component name");
 			}
 
-			// Validate that componentName is only used with single component
-			if (componentName && componentsToInstall.length > 1) {
-				throw new Error(
-					"componentName can only be used when installing a single component",
-				);
-			}
-
-			console.error(
-				`🚀 Fetching ${
-					componentsToInstall.length
-				} component(s): ${componentsToInstall.join(", ")}`,
-			);
-
-			// Get manifest
 			const manifest = await getManifest();
 
-			// Process each component
-			const componentResults = [];
-
-			for (const compType of componentsToInstall) {
+			// First, validate all components exist and collect metadata
+			const componentsToFetch = [];
+			for (const componentId of componentNames) {
 				const component = manifest.components.find(
-					(c: ComponentManifestEntry) => c.id === compType.toLowerCase(),
+					(c: ComponentManifestEntry) => c.id === componentId.toLowerCase(),
 				);
 
 				if (!component) {
@@ -124,138 +91,71 @@ server.registerTool(
 						.map((c: ComponentManifestEntry) => c.id)
 						.join(", ");
 					throw new Error(
-						`Component '${compType}' not found. Available components: ${availableComponents}`,
+						`Component '${componentId}' not found. Available components: ${availableComponents}`,
 					);
 				}
 
-				// Use provided name for single component, or default name for batch
-				const finalComponentName =
-					componentsToInstall.length === 1 && componentName
-						? componentName
-						: component?.meta?.name || component?.id || "Component";
-
-				// Get the component template
-				const componentCode = await getComponentTemplate(
-					component.id,
-					finalComponentName,
-				);
-
-				// Note: Dependencies would be tracked here if available in manifest
-				// For now, BaseLayer components are self-contained
-
-				componentResults.push({
-					component,
-					finalComponentName,
-					componentCode,
-				});
-
-				console.error(
-					`✅ Successfully fetched ${component?.meta?.name || component?.id || "component"}`,
-				);
+				const name = component?.meta?.name || component?.id;
+				componentsToFetch.push({ component, name });
 			}
 
-			// Create response text
-			const isMultiple = componentResults.length > 1;
+			// Fetch all component templates in parallel
+			const componentCodes = await Promise.all(
+				componentsToFetch.map(({ component }) =>
+					getComponentTemplate(component.id),
+				),
+			);
 
-			if (isMultiple) {
-				// Batch installation response
-				const componentSections = componentResults
-					.map(
-						({ component, finalComponentName, componentCode }) =>
-							`## ${component?.meta?.name || component?.id || "Component"}
+			// Combine results
+			const componentResults = componentsToFetch.map((comp, index) => ({
+				...comp,
+				componentCode: componentCodes[index],
+			}));
 
-**📂 Category**: ${component?.meta?.category || "Unknown"} | **🔖 Status**: ${
-								component?.meta?.status || "Unknown"
-							}
-**📝 Description**: ${component?.meta?.description || "No description"}
-**🏷️ Tags**: ${Array.isArray(component?.meta?.tags) ? component.meta.tags.join(", ") : "None"}
+			const componentSections = componentResults
+				.map(
+					({ name, componentCode }) =>
+						`## ${name}
 
-Create \`components/base/${toKebabCase(finalComponentName)}.tsx\`:
+Create \`components/base/${toKebabCase(name)}.tsx\`:
 \`\`\`tsx
 ${componentCode}
 \`\`\`
 
 **Usage**:
+- be sure to import the component from the correct path with the @/ prefix:
 \`\`\`tsx 
-import { ${finalComponentName} } from '@/components/base/${toKebabCase(
-								finalComponentName,
-							)}';
-<${finalComponentName} />
+import { ${name} } from '@/components/base/${toKebabCase(name)}';
+<${name} />
 \`\`\``,
-					)
-					.join("\n\n---\n\n");
-
-				return {
-					content: [
-						{
-							type: "text",
-							text: `✅ **Successfully fetched ${componentResults.length} components**
-
-**📋 Installation Steps**:
-1. Create each component file as shown below
-
-${componentSections}
-
-🌐 **Templates fetched from BaseLayer API** (v${manifest.version})`,
-						},
-					],
-				};
-			} else {
-				// Single component response (preserve existing format)
-				const { component, finalComponentName, componentCode } =
-					componentResults[0];
-
-				return {
-					content: [
-						{
-							type: "text",
-							text: `✅ **Successfully fetched ${
-								component?.meta?.name || component?.id || "component"
-							} component**
-
-**📦 Component**: ${finalComponentName}
-**📂 Category**: ${component?.meta?.category || "Unknown"}
-**🔖 Status**: ${component?.meta?.status || "Unknown"}
-**📝 Description**: ${component?.meta?.description || "No description"}
-**🏷️  Tags**: ${Array.isArray(component?.meta?.tags) ? component.meta.tags.join(", ") : "None"}
-
-**📋 Installation Steps**:
-1. Create a \`components/base\` directory if it doesn't exist
-2. Save the component code below as \`components/base/${toKebabCase(
-								finalComponentName,
-							)}.tsx\`
-
-\`\`\`tsx
-${componentCode}
-\`\`\`
-
-**💻 Usage Example**:
-\`\`\`tsx
-import { ${finalComponentName} } from '@/components/base/${toKebabCase(
-								finalComponentName,
-							)}';
-
-// Basic usage
-<${finalComponentName} />
-\`\`\`
-
-🌐 **Template fetched from BaseLayer API** (v${manifest.version})`,
-						},
-					],
-				};
-			}
-		} catch (error) {
-			const errorMessage =
-				error instanceof Error ? error.message : String(error);
-			console.error(`❌ Failed to fetch components:`, errorMessage);
+				)
+				.join("\n\n---\n\n");
 
 			return {
 				content: [
 					{
 						type: "text",
-						text: `❌ **Failed to fetch components**: ${errorMessage}
+						text: `Successfully fetched ${componentResults.length} component${componentResults.length > 1 ? "s" : ""}
 
-💡 **Troubleshooting**:
+Installation Steps:
+1. Create each component file as shown below
+
+${componentSections}`,
+					},
+				],
+			};
+		} catch (error) {
+			const errorMessage =
+				error instanceof Error ? error.message : String(error);
+			console.error(`Failed to fetch components:`, errorMessage);
+
+			return {
+				content: [
+					{
+						type: "text",
+						text: `Failed to fetch components: ${errorMessage}
+
+Troubleshooting:
 • Make sure the BaseLayer API is running at ${
 							process.env.BASELAYER_API_URL || "http://localhost:3000"
 						}
@@ -273,7 +173,8 @@ server.registerTool(
 	"setupBaseLayer",
 	{
 		title: "Setup BaseLayer",
-		description: "This sets up BaseLayer for the first time in a project. If a .baselayer file exists, baselayer is already initialized.",
+		description:
+			"Initialises Baselayer in this repo. **Call this tool *only* if the *user explicitly requests setup*",
 		inputSchema: {},
 	},
 	async () => {
@@ -296,45 +197,22 @@ server.registerTool(
 				content: [
 					{
 						type: "text",
-						text: `🎉 **BaseLayer Setup Instructions**
-
-${result.instructions}
-
-**📦 Dependencies to install:**
-\`\`\`bash
-# Using pnpm (recommended)
-pnpm add ${result.dependencies.join(" ")}
-
-# Or using npm
-npm install ${result.dependencies.join(" ")}
-
-# Or using yarn  
-yarn add ${result.dependencies.join(" ")}
-\`\`\`
-
-**🎨 BaseLayer CSS to add:**
-\`\`\`css
-${result.tailwindCss}
-\`\`\`
-
-💡 **After setup, you can:**
-• Import components: \`import { Button } from '@/components/base/Button'\`
-• Install components: \`installComponents componentType="button"\` or \`installComponents componentTypes=["button", "input"]\``,
+						text: result.instructions,
 					},
 				],
 			};
 		} catch (error) {
 			const errorMessage =
 				error instanceof Error ? error.message : String(error);
-			console.error(`❌ BaseLayer setup failed:`, errorMessage);
+			console.error(`BaseLayer setup failed:`, errorMessage);
 
 			return {
 				content: [
 					{
 						type: "text",
-						text: `❌ **Failed to fetch BaseLayer setup**: ${errorMessage}
+						text: `Failed to fetch BaseLayer setup: ${errorMessage}
 
-💡 **Troubleshooting**:
+Troubleshooting:
 • Ensure the BaseLayer API is running at ${
 							process.env.BASELAYER_API_URL || "http://localhost:3000"
 						}
@@ -353,7 +231,6 @@ process.on("SIGINT", async () => {
 	process.exit(0);
 });
 
-// Start receiving messages on stdin and sending messages on stdout
 async function main() {
 	try {
 		const transport = new StdioServerTransport();

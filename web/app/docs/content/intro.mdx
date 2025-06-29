@@ -6,57 +6,22 @@ description: BaseLayer is a distribution system for React components. It provide
 ## Key Features
 
 - **AI-First Design** - Built-in MCP server for seamless AI assistant integration
-- **Accessible by default** - Built on React Aria Components
+- **Accessible by default**
 - **Own your components** - Components you own and control, not a dependency
-- **Component Registry** - Searchable catalog with metadata and versioning
-- **Modern Stack** - React Aria Components + TailwindCSS + tailwind-variants + TypeScript
+- **Component Manifest** - Searchable catalog with metadata
 - **MCP Server** - Model Context Protocol server for AI-assisted development
 
-## Getting Started
 
-There are two main interaction methods to use for BaseLayer. Each one allows the LLM to: 
-  - Search and discover components by name, category, or functionality
-  - Get component installation code and instructions
-  - Access component metadata and documentation
+## Stack
 
-1. MCP server in an editor like Cursor.
-2. Via chatbots like ChatGPT or Claude. llms.txt and .well-known endpoints are available.
+BaseLayer is built on top of the following technologies:
 
-#### MCP Server
-
-To use BaseLayer with an AI assistant, the assistant needs to connect to our MCP server. Once connected (see [MCP](./mcp) for more details), you can ask your AI assistant to:
-
-```
-"setup BaseLayer"
-"install the BaseLayer button component"  
-"show me all form components"
-```
-
-It's that simple.
-
-#### Chatbots
-
-To use BaseLayer with a chatbot, you can use the llms.txt and .well-known endpoints.
-
-```
-"build me a sign in page using BaseLayer, 
-you can find out everything you need to know about BaseLayer from
-at https://www.baselayer.dev/llms.txt"
-```
-
-## Pro tips
-
-1. The [React Aria Components](https://react-spectrum.adobe.com/react-aria/getting-started.html) documentation is a great resource for learning about the components and their props. You find incredibly detailed documations for each component and how to use them.
-
-2. It may be a good idea to add a custom cusor rule to say something like:
-
-```
-"always use BaseLayer components"
-```
-
-This will help the AI assistant consistently use BaseLayer components in your project.
+- [React Aria Components](https://react-spectrum.adobe.com/react-aria/getting-started.html)
+- [TailwindCSS](https://tailwindcss.com/)
+- [tailwind-variants](https://www.tailwind-variants.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 
-## Manual Installation
+## Zero-Config
 
-While we recommend using an AI assistant, you can also manually install BaseLayer components. The source for all components is available under the source tab for each component. 
+A fundemental design goal of BaseLayer is to be zero-config. In the age of AI-assisted development, the goal is to make it as easy as possible to get started and use BaseLayer. This means no config files, no build steps, no setup. Just add the components and use them. Over time, there will be upgrade options and customization paths, but this will be done by leveraging AI instead of manual configuration.  
