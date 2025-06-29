@@ -40,4 +40,5 @@ export * from "./tabs-base";
 export * from "./tag-group-base";
 export * from "./time-field-base";
 export * from "./toggle-base";
+export * from "./toggle-group-base";
 export * from "./tooltip-base";

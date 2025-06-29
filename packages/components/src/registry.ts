@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-29T03:28:44.658Z",
+  "generatedAt": "2025-06-29T05:07:17.150Z",
   "version": "2.0.0",
   "components": [
     {
@@ -27,20 +27,20 @@ const manifest: ComponentManifest = {
       "sha256": "c6852e750c53bbd2262a19582dee5f9464745bc91d265b79a54249072a0e2d6d"
     },
     {
-      "id": "badge",
-      "path": "src/core/badge/badge.tsx",
-      "template": "/templates/badge.txt",
+      "id": "breadcrumbs",
+      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+      "template": "/templates/breadcrumbs.txt",
       "meta": {
-        "name": "badge",
-        "category": "display",
+        "name": "breadcrumbs",
+        "category": "navigation",
         "status": "stable",
-        "description": "A badge is a small label that can be used to display information or status.",
+        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
         "tags": [
-          "status"
+          "navigation"
         ],
         "version": "2.0.0"
       },
-      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
+      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
       "id": "button",
@@ -60,22 +60,6 @@ const manifest: ComponentManifest = {
       "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
     },
     {
-      "id": "breadcrumbs",
-      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
-      "template": "/templates/breadcrumbs.txt",
-      "meta": {
-        "name": "breadcrumbs",
-        "category": "navigation",
-        "status": "stable",
-        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
-        "tags": [
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
-    },
-    {
       "id": "card",
       "path": "src/core/card/card.tsx",
       "template": "/templates/card.txt",
@@ -92,6 +76,22 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
+    },
+    {
+      "id": "badge",
+      "path": "src/core/badge/badge.tsx",
+      "template": "/templates/badge.txt",
+      "meta": {
+        "name": "badge",
+        "category": "display",
+        "status": "stable",
+        "description": "A badge is a small label that can be used to display information or status.",
+        "tags": [
+          "status"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
       "id": "calendar",
@@ -184,6 +184,57 @@ const manifest: ComponentManifest = {
       "sha256": "f3de65bdcb97c4bfacd06b16a6bc06d468d53e5cb008173191c11807509a7679"
     },
     {
+      "id": "menu",
+      "path": "src/core/menu/menu.tsx",
+      "template": "/templates/menu.txt",
+      "meta": {
+        "name": "menu",
+        "category": "pickers",
+        "status": "stable",
+        "description": "A menu displays a list of actions or options that a user can choose.",
+        "tags": [
+          "interactive",
+          "navigation"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
+    },
+    {
+      "id": "meter",
+      "path": "src/core/meter/meter.tsx",
+      "template": "/templates/meter.txt",
+      "meta": {
+        "name": "meter",
+        "category": "data-display",
+        "status": "stable",
+        "description": "A meter represents a quantity within a known range, or a fractional value.",
+        "tags": [
+          "data-display",
+          "progress"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
+    },
+    {
+      "id": "popover",
+      "path": "src/core/popover/popover.tsx",
+      "template": "/templates/popover.txt",
+      "meta": {
+        "name": "popover",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A popover is an overlay element positioned relative to a trigger.",
+        "tags": [
+          "overlay",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3d0f74c9c6058c392c11cf658631b863df9d2b93428cc1fbe7af097e165cee6a"
+    },
+    {
       "id": "date-picker",
       "path": "src/core/date-picker/date-picker.tsx",
       "template": "/templates/date-picker.txt",
@@ -219,73 +270,6 @@ const manifest: ComponentManifest = {
       "sha256": "027e8056e06646ba9b1b5ff0f78f8d77a95c90018764e672b50d0499d48a040b"
     },
     {
-      "id": "menu",
-      "path": "src/core/menu/menu.tsx",
-      "template": "/templates/menu.txt",
-      "meta": {
-        "name": "menu",
-        "category": "pickers",
-        "status": "stable",
-        "description": "A menu displays a list of actions or options that a user can choose.",
-        "tags": [
-          "interactive",
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
-    },
-    {
-      "id": "meter",
-      "path": "src/core/meter/meter.tsx",
-      "template": "/templates/meter.txt",
-      "meta": {
-        "name": "meter",
-        "category": "data-display",
-        "status": "stable",
-        "description": "A meter represents a quantity within a known range, or a fractional value.",
-        "tags": [
-          "data-display",
-          "progress"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
-    },
-    {
-      "id": "modal",
-      "path": "src/core/modal/modal.tsx",
-      "template": "/templates/modal.txt",
-      "meta": {
-        "name": "modal",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
-        "tags": [
-          "overlay"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
-    },
-    {
-      "id": "popover",
-      "path": "src/core/popover/popover.tsx",
-      "template": "/templates/popover.txt",
-      "meta": {
-        "name": "popover",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A popover is an overlay element positioned relative to a trigger.",
-        "tags": [
-          "overlay",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3d0f74c9c6058c392c11cf658631b863df9d2b93428cc1fbe7af097e165cee6a"
-    },
-    {
       "id": "radio-group",
       "path": "src/core/radio-group/radio-group.tsx",
       "template": "/templates/radio-group.txt",
@@ -304,40 +288,20 @@ const manifest: ComponentManifest = {
       "sha256": "79eb9e3dc739c5928931ef3ce1c4540873c80aa7804da514d41fe567f94faa6b"
     },
     {
-      "id": "select",
-      "path": "src/core/select/select.tsx",
-      "template": "/templates/select.txt",
+      "id": "modal",
+      "path": "src/core/modal/modal.tsx",
+      "template": "/templates/modal.txt",
       "meta": {
-        "name": "select",
-        "category": "forms",
+        "name": "modal",
+        "category": "overlays",
         "status": "stable",
-        "description": "A select displays a collapsible list of options and allows a user to select one of them.",
+        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
         "tags": [
-          "form",
-          "interactive",
-          "picker"
+          "overlay"
         ],
         "version": "2.0.0"
       },
-      "sha256": "3a46ddc0a68af706b38962212938ca1a560ed787f8c17bdd42175c93dfdc41dc"
-    },
-    {
-      "id": "slider",
-      "path": "src/core/slider/slider.tsx",
-      "template": "/templates/slider.txt",
-      "meta": {
-        "name": "slider",
-        "category": "forms",
-        "status": "stable",
-        "description": "A slider allows a user to select one or more values within a range.",
-        "tags": [
-          "form",
-          "interactive",
-          "range"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "c76a0056a3429d7bc5d5ebea6a0b91a6d03ed7b302a4a4c7455f41d25ce22e66"
+      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
     },
     {
       "id": "switch",
@@ -358,21 +322,22 @@ const manifest: ComponentManifest = {
       "sha256": "79783523d967e996ed53fc22224f458ebb8309d05f809d0184233bfa8199e8d2"
     },
     {
-      "id": "table",
-      "path": "src/core/table/table.tsx",
-      "template": "/templates/table.txt",
+      "id": "select",
+      "path": "src/core/select/select.tsx",
+      "template": "/templates/select.txt",
       "meta": {
-        "name": "table",
-        "category": "data-display",
+        "name": "select",
+        "category": "forms",
         "status": "stable",
-        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+        "description": "A select displays a collapsible list of options and allows a user to select one of them.",
         "tags": [
-          "data-display",
-          "interactive"
+          "form",
+          "interactive",
+          "picker"
         ],
         "version": "2.0.0"
       },
-      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
+      "sha256": "3a46ddc0a68af706b38962212938ca1a560ed787f8c17bdd42175c93dfdc41dc"
     },
     {
       "id": "tabs",
@@ -391,6 +356,77 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "03c2b92a89abade7a4efef0cb0485b014e86d958ed3860b7018823d1d1c62d14"
+    },
+    {
+      "id": "table",
+      "path": "src/core/table/table.tsx",
+      "template": "/templates/table.txt",
+      "meta": {
+        "name": "table",
+        "category": "data-display",
+        "status": "stable",
+        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+        "tags": [
+          "data-display",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
+    },
+    {
+      "id": "time-field",
+      "path": "src/core/time-field/time-field.tsx",
+      "template": "/templates/time-field.txt",
+      "meta": {
+        "name": "time-field",
+        "category": "forms",
+        "status": "stable",
+        "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+        "tags": [
+          "form",
+          "interactive",
+          "time"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "766f9855fd52633b29c31c597bb010a3899a125e917fb03c8dcb2e2cbcfeec8e"
+    },
+    {
+      "id": "tooltip",
+      "path": "src/core/tooltip/tooltip.tsx",
+      "template": "/templates/tooltip.txt",
+      "meta": {
+        "name": "tooltip",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A tooltip displays a description of an element on hover or focus.",
+        "tags": [
+          "overlay",
+          "interactive",
+          "help"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "3596cebb1c894862cf08f9bd6c3dda1d3bea6c9bbcc3674fe3947a470c679226"
+    },
+    {
+      "id": "slider",
+      "path": "src/core/slider/slider.tsx",
+      "template": "/templates/slider.txt",
+      "meta": {
+        "name": "slider",
+        "category": "forms",
+        "status": "stable",
+        "description": "A slider allows a user to select one or more values within a range.",
+        "tags": [
+          "form",
+          "interactive",
+          "range"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "c76a0056a3429d7bc5d5ebea6a0b91a6d03ed7b302a4a4c7455f41d25ce22e66"
     },
     {
       "id": "tag-group",
@@ -412,24 +448,6 @@ const manifest: ComponentManifest = {
       "sha256": "f8efe746cf7e6bbb27e109c021ecee251109289d112c541d48d18fe4f36bb3d7"
     },
     {
-      "id": "time-field",
-      "path": "src/core/time-field/time-field.tsx",
-      "template": "/templates/time-field.txt",
-      "meta": {
-        "name": "time-field",
-        "category": "forms",
-        "status": "stable",
-        "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
-        "tags": [
-          "form",
-          "interactive",
-          "time"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "766f9855fd52633b29c31c597bb010a3899a125e917fb03c8dcb2e2cbcfeec8e"
-    },
-    {
       "id": "toggle",
       "path": "src/core/toggle/toggle.tsx",
       "template": "/templates/toggle.txt",
@@ -445,25 +463,7 @@ const manifest: ComponentManifest = {
         ],
         "version": "2.0.0"
       },
-      "sha256": "0b4f2f09dfe3245e09b1a3460f458fb988db11b4029bd162643e7d04518674b0"
-    },
-    {
-      "id": "tooltip",
-      "path": "src/core/tooltip/tooltip.tsx",
-      "template": "/templates/tooltip.txt",
-      "meta": {
-        "name": "tooltip",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A tooltip displays a description of an element on hover or focus.",
-        "tags": [
-          "overlay",
-          "interactive",
-          "help"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3596cebb1c894862cf08f9bd6c3dda1d3bea6c9bbcc3674fe3947a470c679226"
+      "sha256": "c17f9e17817edba451e0de264bdb0e4d1f71d4a2abaffed28451d9cb69cb40c9"
     }
   ]
 };

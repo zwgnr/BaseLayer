@@ -432,6 +432,16 @@ export const examples: ExamplesRegistry["items"] = [
     ],
   },
   {
+    name: "toggle-group-base",
+    type: "registry:example" as const,
+    files: [
+      {
+        path: "examples/toggle-group-base.txt",
+        type: "registry:example" as const,
+      },
+    ],
+  },
+  {
     name: "tooltip-base",
     type: "registry:example" as const,
     files: [
