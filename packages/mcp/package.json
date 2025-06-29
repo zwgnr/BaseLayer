@@ -1,9 +1,14 @@
 {
   "name": "@baselayer/mcp",
-  "version": "2.0.0",
+  "version": "1.9.0",
   "type": "module",
   "description": "BaseLayer MCP Server for component installation",
-  "main": "build/mcp/src/index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
@@ -24,5 +29,11 @@
   },
   "keywords": ["mcp", "baselayer", "components"],
   "author": "zwgnr",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zwgnr/BaseLayer.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/zwgnr/BaseLayer#readme"
 } 
