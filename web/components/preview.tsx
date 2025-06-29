@@ -16,6 +16,7 @@ const TabButton = ({ tab, activeTab, onClick, icon: Icon }: TabButtonProps) => {
 
 	return (
 		<button
+			aria-label={`Switch to ${tab} tab`}
 			type="button"
 			onClick={onClick}
 			className={`relative z-10 flex items-center justify-center gap-2 rounded-full p-2 font-semibold text-sm transition-transform duration-300 ease-out ${
@@ -51,10 +52,10 @@ export const Preview = ({
 		<div>
 			{sourceCodeElement && (
 				<div className="flex items-center justify-between py-3">
-					<div className="relative flex rounded-4xl bg-surface-2 p-1">
+					<div className="relative flex rounded-4xl bg-secondary p-1">
 						{/* Active indicator background */}
 						<div
-							className={`absolute top-1 bottom-1 rounded-lg bg-surface-2 transition-all duration-300 ease-out ${
+							className={`absolute top-1 bottom-1 rounded-lg bg-secondary transition-all duration-300 ease-out ${
 								activeTab === "preview"
 									? "left-1 w-[calc(50%-4px)]"
 									: "left-[calc(50%+2px)] w-[calc(50%-4px)]"

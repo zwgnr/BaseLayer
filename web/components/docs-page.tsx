@@ -38,7 +38,7 @@ export function DocsPage({ toc, children, navigation }: DocsPageProps) {
                 {navigation.previous ? (
                   <Link
                     href={navigation.previous.url}
-                    className="flex items-center gap-2 rounded-lg border border-border bg-surface p-3 text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+                    className="flex items-center gap-2 rounded-lg bg-surface p-3 text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
                   >
                     <ChevronLeftIcon className="h-4 w-4" />
                     <div className="text-right">
@@ -53,7 +53,7 @@ export function DocsPage({ toc, children, navigation }: DocsPageProps) {
                 {navigation.next ? (
                   <Link
                     href={navigation.next.url}
-                    className="flex items-center gap-2 rounded-lg border border-border bg-surface p-3 text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+                    className="flex items-center gap-2 rounded-lg bg-surface p-3 text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
                   >
                     <div className="text-left">
                       <div className="text-xs">Next</div>

@@ -1,7 +1,6 @@
 import {
 	getComponentSource,
 	getExampleSource,
-	getInstallData,
 } from "../lib/component-data";
 // Auto-generated examples map
 import { exampleComponents } from "../lib/examples-map";
@@ -51,42 +50,6 @@ export const ComponentPreview = async ({
 			>
 				{exampleComponent || children}
 			</Preview>
-		</div>
-	);
-};
-
-export const Installation = async ({ name }: { name: string }) => {
-	const data = await getInstallData(name);
-
-	if (!data) {
-		return (
-			<div className="mb-6 rounded-lg border border-gray-700 bg-gray-900 p-4">
-				<p className="text-gray-400">
-					Installation data not available for {name}
-				</p>
-			</div>
-		);
-	}
-
-	return (
-		<div className="mb-6">
-			<h3 className="mb-4 font-semibold text-lg text-white">Installation</h3>
-
-			<div className="mb-4">
-				<h4 className="mb-2 font-medium text-gray-300 text-sm">
-					Quick Install
-				</h4>
-				<div className="rounded-lg border border-gray-700 bg-gray-900 p-3">
-					<code className="text-emerald-400 text-sm">{data.cliCommand}</code>
-				</div>
-			</div>
-
-			<div className="mb-4">
-				<h4 className="mb-2 font-medium text-gray-300 text-sm">Usage</h4>
-				<div className="rounded-lg border border-gray-700 bg-gray-900 text-sm">
-					<CodeBlock code={data.usageExample} />
-				</div>
-			</div>
 		</div>
 	);
 };
@@ -147,7 +110,6 @@ export const Li = ({ children }: { children: React.ReactNode }) => (
 export const mdxComponents = {
 	ComponentPreview,
 	ComponentMetadata,
-	Installation,
 	CodeTabs,
 	TabsList,
 	TabsTrigger,
