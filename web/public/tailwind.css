@@ -3,32 +3,26 @@
 :root {
   /* SURFACES (neutrals & elevation) */
   --surface: oklch(98.5% 0 0); /* app/page background */
-  --surface-2: oklch(97% 0 0); /* card / raised 1 */
-  --surface-overlay: oklch(55.6% 0 0); /* modals, popovers */
+  --surface-2: oklch(97% 0 0); /* card / raised */
 
   /* CONTENT (foreground) */
   --fg: oklch(14.5% 0 0); /* primary reading text */
   --fg-muted: oklch(55.6% 0 0); /* secondary text, captions */
-  --fg-inverse: #ffffff; /* text on dark / brand surfaces */
+  --fg-inverse: oklch(98.5% 0 0); /* text on dark */
   --fg-disabled: oklch(70.8% 0 0); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
   --border: oklch(87% 0 0); /* generic 1px rules, inputs */
   --focus: oklch(68.5% 0.169 237.323); /* focus ring / a11y outline */
 
-  /* INTERACTIVE ROLES (paired bg / fg / border) */
-  --primary: #000000;
-  --primary-fg: #ffffff;
+  /* INTERACTIVE ROLES (paired bg / fg ) */
+  --primary: oklch(14.5% 0 0);
+  --primary-fg: oklch(98.5% 0 0);
 
   --secondary: oklch(92.2% 0 0);
-  --secondary-fg: #000000;
+  --secondary-fg: oklch(98.5% 0 0);
 
   /* STATUS / FUNCTIONAL */
-  --positive: oklch(72.3% 0.219 149.579);
-  --positive-fg: #0a0a0a;
-  
-  --warning: oklch(90.5% 0.182 98.111);
-  --warning-fg: #0a0a0a;
   
   --danger: oklch(63.7% 0.237 25.331);
   --danger-fg: #ffffff;
@@ -37,42 +31,34 @@
 [data-theme='dark'] {
   /* SURFACES (neutrals & elevation) */
   --surface: oklch(14.5% 0 0); /* app/page background */
-  --surface-2: oklch(20.5% 0 0); /* card / raised 1 */
-  --surface-overlay: #0f172a; /* modals, popovers */
+  --surface-2: oklch(20.5% 0 0); /* card / raised */
 
   /* CONTENT (foreground) */
   --fg: oklch(98.5% 0.001 106.423); /* primary reading text */
   --fg-muted: oklch(55.6% 0 0); /* secondary text, captions */
-  --fg-inverse: #0a0a0a; /* text on dark / brand surfaces */
-  --fg-disabled: oklch(37% 0.013 285.805); /* explicit disabled state text */
+  --fg-inverse: oklch(98.5% 0 0); /* text on dark */
+  --fg-disabled: oklch(37.1% 0 0); /* explicit disabled state text */
 
   /* OUTLINES & DIVIDERS */
   --border: oklch(37.1% 0 0); /* generic 1px rules, inputs */
-  --focus: #0ea5e9; /* focus ring / a11y outline */
+  --focus: oklch(68.5% 0.169 237.323); /* focus ring / a11y outline */
 
-  /* INTERACTIVE ROLES (paired bg / fg / border) */
-  --primary: #ffffff;
-  --primary-fg: #0a0a0a;
+  /* INTERACTIVE ROLES (paired bg / fg ) */
+  --primary: oklch(98.5% 0 0);
+  --primary-fg: oklch(14.5% 0 0);
 
   --secondary: oklch(26.9% 0 0);
-  --secondary-fg: #f8fafc;
+  --secondary-fg: oklch(98.5% 0 0);
 
   /* STATUS / FUNCTIONAL */
-  --positive: #6dd32e;
-  --positive-fg: #0a0a0a;
   
-  --warning: #ede328;
-  --warning-fg: #0a0a0a;
-  
-  --danger: #ff5238;
-  --danger-fg: #ffffff;
+  --danger: oklch(63.7% 0.237 25.331);
+  --danger-fg: oklch(98.5% 0 0);
 }
 
 @theme {
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
-  --color-surface-3: var(--surface-3);
-  --color-surface-overlay: var(--surface-overlay);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
   --color-fg-disabled: var(--fg-disabled);
@@ -83,33 +69,6 @@
   --color-primary-fg: var(--primary-fg);
   --color-secondary: var(--secondary);
   --color-secondary-fg: var(--secondary-fg);
-  --color-positive: var(--positive);
-  --color-positive-fg: var(--positive-fg);
-  --color-warning: var(--warning);
-  --color-warning-fg: var(--warning-fg);
   --color-danger: var(--danger);
   --color-danger-fg: var(--danger-fg);
-}
-
-/* clears the 'X' from Internet Explorer */
-input[type='search']::-ms-clear {
-  display: none;
-  width: 0;
-  height: 0;
-}
-input[type='search']::-ms-reveal {
-  display: none;
-  width: 0;
-  height: 0;
-}
-/* clears the 'X' from Chrome */
-input[type='search']::-webkit-search-decoration,
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-results-button,
-input[type='search']::-webkit-search-results-decoration {
-  display: none;
-}
-
-.react-aria-DropIndicator[data-drop-target] {
-  outline: 1px solid var(--primary);
 }

@@ -42,7 +42,7 @@ export function MobileNav({ introDocs, componentDocs }: MobileNavProps) {
 				isDismissable
 				isOpen={isOpen}
 				onOpenChange={setIsOpen}
-				className="fixed inset-0 z-60 bg-zinc-900/75 md:hidden"
+				className="fixed inset-0 z-60 bg-zinc-500/50 md:hidden"
 			>
 				<Modal className="fixed top-0 left-0 z-50 h-full w-80 border-border border-r bg-surface outline-none">
 					<Dialog className="h-full w-full outline-none">
