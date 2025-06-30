@@ -9,6 +9,8 @@ import {
 	MessageCircle,
 	Palette,
 	Server,
+	Sparkles,
+	Zap,
 } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -52,29 +54,55 @@ export default function Home() {
 
 			{/* Hero Section */}
 			<main className="relative overflow-hidden">
+				{/* Animated Background Elements */}
+				<div className="absolute inset-0 overflow-hidden">
+					{/* Floating Shapes */}
+					<div className="-top-40 -left-40 absolute h-80 w-80 rounded-full bg-primary/5 blur-3xl"></div>
+					<div className="-top-20 -right-20 absolute h-60 w-60 rounded-full bg-primary/5 blur-2xl delay-1000"></div>
+					<div className="-translate-x-1/2 absolute bottom-0 left-1/2 h-96 w-96 rounded-full bg-primary/5 blur-3xl delay-500"></div>
+					
+					{/* Grid Pattern */}
+					<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]"></div>
+				</div>
+
 				<div className="relative z-10 flex h-screen flex-col items-center justify-center px-6 py-20 text-center md:py-28 lg:py-36">
 					<div className="mx-auto max-w-4xl">
-						{/* Main Heading */}
-						<h1 className="mb-6 font-extrabold text-5xl text-fg leading-tight tracking-tight md:text-7xl lg:text-8xl">
-							Own Your UI Code.
+						{/* Badge */}
+						<div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 font-medium text-primary text-sm backdrop-blur-sm">
+							<Sparkles className="h-4 w-4" />
+							<span>v2 is here</span>
+						</div>
+
+						{/* Main Heading with Gradient Text */}
+						<h1 className="mb-6 font-bold text-5xl leading-tight tracking-tight md:text-6xl lg:text-8xl">
+							<span className="bg-gradient-to-r from-fg via-fg to-fg-muted bg-clip-text text-transparent">
+								Own Your UI Code.
+							</span>
 						</h1>
 
-						{/* Subtitle */}
-						<p className="mx-auto mb-12 max-w-3xl text-fg-muted text-xl leading-relaxed md:text-2xl lg:text-3xl">
-							Components that ship to your codebase, not your node_modules.
-							AI-optimized, accessible, yours.
+						{/* Subtitle with Better Typography */}
+						<p className="mx-auto mb-12 max-w-3xl text-fg-muted text-xl leading-relaxed md:text-xl lg:text-2xl">
+							Components that ship to your{" "}
+							<span className="font-semibold text-fg">codebase</span>, not your{" "}
+							<span className="font-mono text-primary">node_modules</span>.
+							<br />
+							<span className="text-lg">AI-optimized, accessible, yours.</span>
 						</p>
 
-						{/* Enhanced CTA Button */}
-						<div className="mb-16 flex flex-row justify-center gap-4 rounded-full">
+						{/* Enhanced CTA Section */}
+						<div className="mb-16 flex flex-col items-center gap-6">
 							<div className="group relative">
+								{/* Glowing background effect */}
+								<div className="-inset-1 absolute rounded-full bg-gradient-to-r from-primary/50 to-primary/30 opacity-30 blur transition-opacity duration-300 group-hover:opacity-50"></div>
 								<Link
 									href="/docs/intro"
-									className="relative inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-lg text-primary-fg shadow-xl transition-all duration-300 hover:shadow-2xl md:px-12 md:py-5 md:text-xl"
+									className="relative inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-lg text-primary-fg shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/25 md:px-10 md:py-5 md:text-xl"
 								>
 									<span>Start Building</span>
 								</Link>
 							</div>
+							
+
 						</div>
 					</div>
 				</div>
@@ -165,7 +193,7 @@ export default function Home() {
 					<div className="mx-auto max-w-6xl">
 						<div className="grid grid-cols-1 gap-12 md:grid-cols-3">
 							<div className="group text-center">
-								<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+								<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-300">
 									<Palette className="h-8 w-8 text-primary" />
 								</div>
 								<h3 className="mb-3 font-semibold text-fg text-xl">
@@ -178,7 +206,7 @@ export default function Home() {
 							</div>
 
 							<div className="group text-center">
-								<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+								<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-300">
 									<Accessibility className="h-8 w-8 text-primary" />
 								</div>
 								<h3 className="mb-3 font-semibold text-fg text-xl">
@@ -191,7 +219,7 @@ export default function Home() {
 							</div>
 
 							<div className="group text-center">
-								<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
+								<div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition-all duration-300">
 									<Github className="h-8 w-8 text-primary" />
 								</div>
 								<h3 className="mb-3 font-semibold text-fg text-xl">
