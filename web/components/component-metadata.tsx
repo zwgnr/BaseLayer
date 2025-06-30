@@ -22,8 +22,7 @@ export async function ComponentMetadata({
   showVersion = false,
 }: ComponentMetadataProps) {
   const manifest = await getManifest();
-  const component = manifest.components.find(c => c.id === componentId);
-
+  const component = manifest.components.find(c => c.id === componentId.toLowerCase());
   if (!component) {
     return null;
   }
