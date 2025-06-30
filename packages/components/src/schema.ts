@@ -10,36 +10,18 @@ export const ComponentMetaSchema = z.object({
   status: z.enum(['alpha', 'beta', 'stable', 'deprecated']),
   description: z.string(),
   tags: z.array(z.string()),
-  version: z.string(),
 });
 
 export const ComponentManifestEntrySchema = z.object({
   id: z.string(),
-  path: z.string(),
   template: z.string(),
   meta: ComponentMetaSchema,
-  sha256: z.string(),
 });
 
 export const ComponentManifestSchema = z.object({
   generatedAt: z.string().datetime(),
   version: z.string().regex(/^\d+\.\d+\.\d+(-[\w.-]+)?$/),
   components: z.array(ComponentManifestEntrySchema),
-});
-
-export const EndpointDefinitionSchema = z.object({
-  manifest: z.string(),
-  component: z.string(),
-  template: z.string(),
-  search: z.string(),
-});
-
-export const ManifestMetadataSchema = z.object({
-  generator: z.string(),
-  generatedAt: z.string(),
-  packageVersion: z.string(),
-  apiVersion: z.string(),
-  checksums: z.record(z.string()),
 });
 
 // Example registry schemas
@@ -60,8 +42,6 @@ export const ExamplesRegistrySchema = z.object({
 export type ComponentMeta = z.infer<typeof ComponentMetaSchema>;
 export type ComponentManifestEntry = z.infer<typeof ComponentManifestEntrySchema>;
 export type ComponentManifest = z.infer<typeof ComponentManifestSchema>;
-export type EndpointDefinition = z.infer<typeof EndpointDefinitionSchema>;
-export type ManifestMetadata = z.infer<typeof ManifestMetadataSchema>;
 export type ExampleRegistryEntry = z.infer<typeof ExampleRegistryEntrySchema>;
 export type ExamplesRegistry = z.infer<typeof ExamplesRegistrySchema>;
 

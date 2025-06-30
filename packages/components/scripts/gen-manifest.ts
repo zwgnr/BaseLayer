@@ -8,7 +8,6 @@ import {
 	type ComponentMeta,
 	ComponentMetaSchema,
 } from "../src/schema";
-import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname } from "node:path";
 
@@ -121,19 +120,14 @@ async function processComponent(
 
 	// Generate id from meta.name (now always lowercase)
 	const id = metaValue.name
-	// Calculate file hash
-	const fileContent = readFileSync(filePath, "utf8");
-	const sha256 = createHash("sha256").update(fileContent).digest("hex");
 
 	// Use original filename but with .txt extension for template
 	const originalFileName = basename(filePath).replace(/\.tsx?$/, ".txt");
 
 	return {
 		id,
-		path: filePath,
 		template: `/templates/${originalFileName}`,
 		meta: metaValue,
-		sha256,
 	};
 }
 

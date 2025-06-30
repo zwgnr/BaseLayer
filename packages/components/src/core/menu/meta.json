@@ -3,6 +3,8 @@
   "category": "pickers",
   "status": "stable",
   "description": "A menu displays a list of actions or options that a user can choose.",
-  "tags": ["interactive", "navigation"],
-  "version": "2.0.0"
-} 
+  "tags": [
+    "interactive",
+    "navigation"
+  ]
+}

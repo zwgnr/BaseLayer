@@ -4,12 +4,11 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-30T20:08:13.175Z",
+  "generatedAt": "2025-06-30T21:07:09.457Z",
   "version": "1.9.0",
   "components": [
     {
       "id": "accordion",
-      "path": "src/core/accordion/accordion.tsx",
       "template": "/templates/accordion.txt",
       "meta": {
         "name": "accordion",
@@ -21,14 +20,11 @@ const manifest: ComponentManifest = {
           "collapsible",
           "expandable",
           "content"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "c6852e750c53bbd2262a19582dee5f9464745bc91d265b79a54249072a0e2d6d"
+        ]
+      }
     },
     {
       "id": "badge",
-      "path": "src/core/badge/badge.tsx",
       "template": "/templates/badge.txt",
       "meta": {
         "name": "badge",
@@ -37,14 +33,11 @@ const manifest: ComponentManifest = {
         "description": "A badge is a small label that can be used to display information or status.",
         "tags": [
           "status"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
+        ]
+      }
     },
     {
       "id": "breadcrumbs",
-      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
       "template": "/templates/breadcrumbs.txt",
       "meta": {
         "name": "breadcrumbs",
@@ -53,14 +46,25 @@ const manifest: ComponentManifest = {
         "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
         "tags": [
           "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
+        ]
+      }
+    },
+    {
+      "id": "button",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
+        ]
+      }
     },
     {
       "id": "calendar",
-      "path": "src/core/calendar/calendar.tsx",
       "template": "/templates/calendar.txt",
       "meta": {
         "name": "calendar",
@@ -71,31 +75,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "date-time"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
-    },
-    {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
+        ]
+      }
     },
     {
       "id": "card",
-      "path": "src/core/card/card.tsx",
       "template": "/templates/card.txt",
       "meta": {
         "name": "card",
@@ -106,14 +90,11 @@ const manifest: ComponentManifest = {
           "layout",
           "container",
           "display"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
+        ]
+      }
     },
     {
       "id": "checkbox",
-      "path": "src/core/checkbox/checkbox.tsx",
       "template": "/templates/checkbox.txt",
       "meta": {
         "name": "checkbox",
@@ -123,14 +104,11 @@ const manifest: ComponentManifest = {
         "tags": [
           "form",
           "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "cb897486e21e7980211b2babb352f25bff683f5f3c6444c90ba43aa8aaf8c2b2"
+        ]
+      }
     },
     {
       "id": "combobox",
-      "path": "src/core/combobox/combobox.tsx",
       "template": "/templates/combobox.txt",
       "meta": {
         "name": "combobox",
@@ -141,14 +119,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "picker"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "df26c26b7f289474d4cd4319ffe8f9568ef20508e293a1282e9143b798b64b87"
+        ]
+      }
     },
     {
       "id": "command",
-      "path": "src/core/command/command.tsx",
       "template": "/templates/command.txt",
       "meta": {
         "name": "command",
@@ -160,14 +135,11 @@ const manifest: ComponentManifest = {
           "navigation",
           "keyboard",
           "palette"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "396cab5f17dfd18d9e92628be2b27b4eaa87ff6edd1af6c481b1ef01238321b6"
+        ]
+      }
     },
     {
       "id": "date-field",
-      "path": "src/core/date-field/date-field.tsx",
       "template": "/templates/date-field.txt",
       "meta": {
         "name": "date-field",
@@ -178,14 +150,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "date"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "be56a4cccb5540500d3838e68d13bed762f08c98a616893488cdbf600f08a085"
+        ]
+      }
     },
     {
       "id": "date-picker",
-      "path": "src/core/date-picker/date-picker.tsx",
       "template": "/templates/date-picker.txt",
       "meta": {
         "name": "date-picker",
@@ -196,14 +165,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "date-time"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "e8bf7d6cb7d6d4aed55a8653fb8cc91e25aa97018695d7f86c3c7834db6583b4"
+        ]
+      }
     },
     {
       "id": "input",
-      "path": "src/core/input/input.tsx",
       "template": "/templates/input.txt",
       "meta": {
         "name": "input",
@@ -213,14 +179,11 @@ const manifest: ComponentManifest = {
         "tags": [
           "form",
           "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "d8139063758b0609911fe0507fab11e9e0afac1104dafb53ed7798834ccb336c"
+        ]
+      }
     },
     {
       "id": "menu",
-      "path": "src/core/menu/menu.tsx",
       "template": "/templates/menu.txt",
       "meta": {
         "name": "menu",
@@ -230,30 +193,11 @@ const manifest: ComponentManifest = {
         "tags": [
           "interactive",
           "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
-    },
-    {
-      "id": "modal",
-      "path": "src/core/modal/modal.tsx",
-      "template": "/templates/modal.txt",
-      "meta": {
-        "name": "modal",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
-        "tags": [
-          "overlay"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
+        ]
+      }
     },
     {
       "id": "meter",
-      "path": "src/core/meter/meter.tsx",
       "template": "/templates/meter.txt",
       "meta": {
         "name": "meter",
@@ -263,14 +207,24 @@ const manifest: ComponentManifest = {
         "tags": [
           "data-display",
           "progress"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
+        ]
+      }
+    },
+    {
+      "id": "modal",
+      "template": "/templates/modal.txt",
+      "meta": {
+        "name": "modal",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
+        "tags": [
+          "overlay"
+        ]
+      }
     },
     {
       "id": "popover",
-      "path": "src/core/popover/popover.tsx",
       "template": "/templates/popover.txt",
       "meta": {
         "name": "popover",
@@ -280,14 +234,11 @@ const manifest: ComponentManifest = {
         "tags": [
           "overlay",
           "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3d0f74c9c6058c392c11cf658631b863df9d2b93428cc1fbe7af097e165cee6a"
+        ]
+      }
     },
     {
       "id": "radio-group",
-      "path": "src/core/radio-group/radio-group.tsx",
       "template": "/templates/radio-group.txt",
       "meta": {
         "name": "radio-group",
@@ -298,14 +249,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "selection"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "79eb9e3dc739c5928931ef3ce1c4540873c80aa7804da514d41fe567f94faa6b"
+        ]
+      }
     },
     {
       "id": "select",
-      "path": "src/core/select/select.tsx",
       "template": "/templates/select.txt",
       "meta": {
         "name": "select",
@@ -316,49 +264,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "picker"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3a46ddc0a68af706b38962212938ca1a560ed787f8c17bdd42175c93dfdc41dc"
-    },
-    {
-      "id": "table",
-      "path": "src/core/table/table.tsx",
-      "template": "/templates/table.txt",
-      "meta": {
-        "name": "table",
-        "category": "data-display",
-        "status": "stable",
-        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
-        "tags": [
-          "data-display",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
-    },
-    {
-      "id": "switch",
-      "path": "src/core/switch/switch.tsx",
-      "template": "/templates/switch.txt",
-      "meta": {
-        "name": "switch",
-        "category": "forms",
-        "status": "stable",
-        "description": "A switch allows a user to turn a setting on or off.",
-        "tags": [
-          "form",
-          "interactive",
-          "toggle"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "79783523d967e996ed53fc22224f458ebb8309d05f809d0184233bfa8199e8d2"
+        ]
+      }
     },
     {
       "id": "slider",
-      "path": "src/core/slider/slider.tsx",
       "template": "/templates/slider.txt",
       "meta": {
         "name": "slider",
@@ -369,14 +279,40 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "range"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "9ea87cc749058560b619f43641c447f5444b55afd9ebbdd48ace28324c4566a5"
+        ]
+      }
+    },
+    {
+      "id": "switch",
+      "template": "/templates/switch.txt",
+      "meta": {
+        "name": "switch",
+        "category": "forms",
+        "status": "stable",
+        "description": "A switch allows a user to turn a setting on or off.",
+        "tags": [
+          "form",
+          "interactive",
+          "toggle"
+        ]
+      }
+    },
+    {
+      "id": "table",
+      "template": "/templates/table.txt",
+      "meta": {
+        "name": "table",
+        "category": "data-display",
+        "status": "stable",
+        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+        "tags": [
+          "data-display",
+          "interactive"
+        ]
+      }
     },
     {
       "id": "tabs",
-      "path": "src/core/tabs/tabs.tsx",
       "template": "/templates/tabs.txt",
       "meta": {
         "name": "tabs",
@@ -387,14 +323,11 @@ const manifest: ComponentManifest = {
           "navigation",
           "interactive",
           "layout"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "03c2b92a89abade7a4efef0cb0485b014e86d958ed3860b7018823d1d1c62d14"
+        ]
+      }
     },
     {
       "id": "tag-group",
-      "path": "src/core/tag-group/tag-group.tsx",
       "template": "/templates/tag-group.txt",
       "meta": {
         "name": "tag-group",
@@ -406,14 +339,11 @@ const manifest: ComponentManifest = {
           "interactive",
           "selection",
           "filtering"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "f8efe746cf7e6bbb27e109c021ecee251109289d112c541d48d18fe4f36bb3d7"
+        ]
+      }
     },
     {
       "id": "time-field",
-      "path": "src/core/time-field/time-field.tsx",
       "template": "/templates/time-field.txt",
       "meta": {
         "name": "time-field",
@@ -424,32 +354,11 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "time"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "8cb1174fbedc16eb805e53d7f23abc3c8f404de662d6c8530d91ec167936863c"
-    },
-    {
-      "id": "tooltip",
-      "path": "src/core/tooltip/tooltip.tsx",
-      "template": "/templates/tooltip.txt",
-      "meta": {
-        "name": "tooltip",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A tooltip displays a description of an element on hover or focus.",
-        "tags": [
-          "overlay",
-          "interactive",
-          "help"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "3596cebb1c894862cf08f9bd6c3dda1d3bea6c9bbcc3674fe3947a470c679226"
+        ]
+      }
     },
     {
       "id": "toggle",
-      "path": "src/core/toggle/toggle.tsx",
       "template": "/templates/toggle.txt",
       "meta": {
         "name": "toggle",
@@ -460,10 +369,23 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "toggle"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "c17f9e17817edba451e0de264bdb0e4d1f71d4a2abaffed28451d9cb69cb40c9"
+        ]
+      }
+    },
+    {
+      "id": "tooltip",
+      "template": "/templates/tooltip.txt",
+      "meta": {
+        "name": "tooltip",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A tooltip displays a description of an element on hover or focus.",
+        "tags": [
+          "overlay",
+          "interactive",
+          "help"
+        ]
+      }
     }
   ]
 };

@@ -24,7 +24,7 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
-import { CheckIcon, ChevronDown, Search} from "lucide-react";
+import { CheckIcon, ChevronDown, Search } from "lucide-react";
 
 const select = tv({
 	slots: {
@@ -33,13 +33,14 @@ const select = tv({
 			"group flex w-fit items-center justify-between gap-4 rounded-full border border-border bg-surface px-4 py-2.75 align-middle font-semibold text-fg text-sm outline-none ring-fg transition-all data-[hovered]:bg-surface-2 group-data-[focus-visible]:border-transparent group-data-[open]:bg-surface-2 group-data-[focus-visible]:ring-2",
 		item: "relative m-1 flex cursor-default flex-col rounded-lg p-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-secondary data-[disabled]:text-fg-disabled",
 		searchField:
-			"group m-1 flex items-center rounded-lg border border-border bg-surface px-2 py-1.5",
+			"group m-1 flex items-center rounded-full border border-border bg-surface px-2 py-1.5",
 		searchInput:
 			"flex-1 bg-transparent text-fg outline-none placeholder:text-fg-muted",
 		searchIcon: "mr-2 size-4 text-fg-muted",
 		clearButton:
 			"ml-2 rounded p-0.5 text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg group-empty:invisible",
-		popover: "min-w-[var(--trigger-width)] rounded-xl border border-border/25 bg-surface p-1 text-fg shadow-lg outline-none",
+		popover:
+			"min-w-[var(--trigger-width)] rounded-xl border border-border/25 bg-surface p-1 text-fg shadow-lg outline-none",
 	},
 });
 
@@ -63,10 +64,7 @@ const Select = <T extends ListBoxItemProps>({
 	children,
 	...props
 }: SelectProps<T>) => (
-	<AriaSelect
-		className={styles.group()}
-		{...props}
-	>
+	<AriaSelect className={styles.group()} {...props}>
 		{label && <Label className="text-sm">{label}</Label>}
 		<Button className={styles.button({ className })}>
 			<SelectValue className="data-[placeholder]:text-fg-muted" />
@@ -101,7 +99,8 @@ const SelectItem = ({ className, ...props }: SelectItemProps) => (
 	</ListBoxItem>
 );
 
-interface SearchableSelectProps<T extends ListBoxItemProps> extends SelectProps<T> {
+interface SearchableSelectProps<T extends ListBoxItemProps>
+	extends SelectProps<T> {
 	searchPlaceholder?: string;
 }
 
@@ -118,14 +117,11 @@ const SearchableSelect = <T extends ListBoxItemProps>({
 	const { contains } = useFilter({ sensitivity: "base" });
 
 	return (
-		<AriaSelect
-			className={styles.group({ className })}
-			{...props}
-		>
+		<AriaSelect className={styles.group()} {...props}>
 			{label && <Label className="text-sm">{label}</Label>}
-			<Button className={styles.button()}>
+			<Button className={styles.button({ className })}>
 				<SelectValue className="data-[placeholder]:text-fg-muted" />
-				<ChevronDown className="size-4 text-fg-muted group-data-[focused]:rotate-90 group-data-[focused]:text-fg" />
+				<ChevronDown className="size-4 text-fg-muted group-data-[open]:rotate-180 group-data-[focused]:text-fg" />
 			</Button>
 			{description && (
 				<Text className="text-fg-muted text-sm" slot="description">

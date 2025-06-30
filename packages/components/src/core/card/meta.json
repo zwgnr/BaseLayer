@@ -3,6 +3,9 @@
   "category": "layout",
   "status": "stable",
   "description": "Displays a card with header, content, and footer.",
-  "tags": ["layout", "container", "display"],
-  "version": "2.0.0"
-} 
+  "tags": [
+    "layout",
+    "container",
+    "display"
+  ]
+}

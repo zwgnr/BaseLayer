@@ -3,6 +3,7 @@
   "category": "navigation",
   "status": "stable",
   "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
-  "tags": ["navigation"],
-  "version": "2.0.0"
-} 
+  "tags": [
+    "navigation"
+  ]
+}
