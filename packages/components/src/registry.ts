@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-30T21:07:09.457Z",
+  "generatedAt": "2025-06-30T22:10:20.314Z",
   "version": "1.9.0",
   "components": [
     {
@@ -50,20 +50,6 @@ const manifest: ComponentManifest = {
       }
     },
     {
-      "id": "button",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ]
-      }
-    },
-    {
       "id": "calendar",
       "template": "/templates/calendar.txt",
       "meta": {
@@ -75,6 +61,20 @@ const manifest: ComponentManifest = {
           "form",
           "interactive",
           "date-time"
+        ]
+      }
+    },
+    {
+      "id": "button",
+      "template": "/templates/button.txt",
+      "meta": {
+        "name": "button",
+        "category": "forms",
+        "status": "stable",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+        "tags": [
+          "form",
+          "interactive"
         ]
       }
     },
