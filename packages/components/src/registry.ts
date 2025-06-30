@@ -4,7 +4,7 @@
 import type { ComponentManifest, ComponentManifestEntry } from './schema';
 
 const manifest: ComponentManifest = {
-  "generatedAt": "2025-06-30T03:07:46.848Z",
+  "generatedAt": "2025-06-30T18:55:10.978Z",
   "version": "1.9.0",
   "components": [
     {
@@ -76,24 +76,6 @@ const manifest: ComponentManifest = {
       "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
     },
     {
-      "id": "card",
-      "path": "src/core/card/card.tsx",
-      "template": "/templates/card.txt",
-      "meta": {
-        "name": "card",
-        "category": "layout",
-        "status": "stable",
-        "description": "Displays a card with header, content, and footer.",
-        "tags": [
-          "layout",
-          "container",
-          "display"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
-    },
-    {
       "id": "calendar",
       "path": "src/core/calendar/calendar.tsx",
       "template": "/templates/calendar.txt",
@@ -127,6 +109,24 @@ const manifest: ComponentManifest = {
         "version": "2.0.0"
       },
       "sha256": "cb897486e21e7980211b2babb352f25bff683f5f3c6444c90ba43aa8aaf8c2b2"
+    },
+    {
+      "id": "card",
+      "path": "src/core/card/card.tsx",
+      "template": "/templates/card.txt",
+      "meta": {
+        "name": "card",
+        "category": "layout",
+        "status": "stable",
+        "description": "Displays a card with header, content, and footer.",
+        "tags": [
+          "layout",
+          "container",
+          "display"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
     },
     {
       "id": "combobox",

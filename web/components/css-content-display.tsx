@@ -6,7 +6,7 @@ export const CSSContentDisplay = async () => {
 	const baseUrl = getBaseUrl();
 	const response = await fetch(`${baseUrl}/tailwind.css`, {
 		// Add cache control for better performance
-		cache: "force-cache",
+	//	cache: "force-cache",
 	});
 
 	if (!response.ok) {
