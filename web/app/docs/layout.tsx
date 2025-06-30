@@ -38,7 +38,7 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen bg-surface">
       {/* Top Navigation Bar - Full Width */}
       <header className="sticky top-0 z-50 w-full border-border/50 border-b bg-surface">
-        <div className="flex items-center justify-between px-6 py-4">
+        <div className="flex items-center justify-between px-2 py-4 md:px-6">
           <div className="flex items-center">
             <Image src="/bl.svg" alt="BaseLayer" width={40} height={40} className="hidden md:block dark:invert" />
 
