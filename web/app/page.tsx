@@ -16,24 +16,6 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export default function Home() {
 	return (
 		<div className="relative min-h-screen bg-gradient-to-br from-surface via-surface to-surface-2">
-			{/* Geometric Background Pattern */}
-			<div className="pointer-events-none absolute inset-0 overflow-hidden">
-				{/* Grid Pattern */}
-				<div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:60px_60px] dark:bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)]"></div>
-
-				{/* Dotted Pattern Overlay */}
-				<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.08)_1px,transparent_1px)] bg-[size:40px_40px] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_1px,transparent_1px)]"></div>
-
-				{/* Floating Geometric Shapes */}
-				<div className="absolute top-1/3 right-1/6 h-32 w-32 rotate-45 border border-border/25 bg-gradient-to-br from-primary/5 to-transparent dark:border-border/20 dark:from-primary/3"></div>
-				<div className="absolute top-1/3 left-1/5 h-20 w-20 rotate-12 border border-border/20 bg-gradient-to-br from-primary/3 to-transparent dark:border-border/15 dark:from-primary/2"></div>
-				<div className="-rotate-12 absolute right-1/3 bottom-1/4 h-24 w-24 border border-border/20 bg-gradient-to-br from-primary/4 to-transparent dark:border-border/15 dark:from-primary/2"></div>
-				<div className="absolute bottom-1/6 left-1/3 h-16 w-16 rotate-45 border border-border/15 bg-gradient-to-br from-primary/2 to-transparent dark:border-border/12 dark:from-primary/1"></div>
-
-				{/* Subtle Lines */}
-				<div className="absolute top-0 left-1/4 h-full w-px bg-gradient-to-b from-transparent via-border/10 to-transparent dark:via-border/8"></div>
-				<div className="absolute top-0 right-1/3 h-full w-px bg-gradient-to-b from-transparent via-border/8 to-transparent dark:via-border/6"></div>
-			</div>
 			{/* Navigation */}
 			<nav className="relative z-50 flex items-center justify-between px-6 py-4">
 				<div className="flex items-center gap-2">
@@ -57,7 +39,7 @@ export default function Home() {
 						Docs
 					</Link>
 					<Link
-						href="https://github.com/zachshallbetter/BaseLayer"
+						href="https://github.com/zwgnr/BaseLayer"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="rounded-full px-4 py-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
