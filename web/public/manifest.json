@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-06-30T18:55:10.978Z",
+  "generatedAt": "2025-06-30T20:08:13.175Z",
   "version": "1.9.0",
   "components": [
     {
@@ -54,23 +54,6 @@
       "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
-      "id": "button",
-      "path": "src/core/button/button.tsx",
-      "template": "/templates/button.txt",
-      "meta": {
-        "name": "button",
-        "category": "forms",
-        "status": "stable",
-        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
-        "tags": [
-          "form",
-          "interactive"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
-    },
-    {
       "id": "calendar",
       "path": "src/core/calendar/calendar.tsx",
       "template": "/templates/calendar.txt",
@@ -89,21 +72,21 @@
       "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
     },
     {
-      "id": "checkbox",
-      "path": "src/core/checkbox/checkbox.tsx",
-      "template": "/templates/checkbox.txt",
+      "id": "button",
+      "path": "src/core/button/button.tsx",
+      "template": "/templates/button.txt",
       "meta": {
-        "name": "checkbox",
+        "name": "button",
         "category": "forms",
         "status": "stable",
-        "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
+        "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
         "tags": [
           "form",
           "interactive"
         ],
         "version": "2.0.0"
       },
-      "sha256": "cb897486e21e7980211b2babb352f25bff683f5f3c6444c90ba43aa8aaf8c2b2"
+      "sha256": "5892e46e950e87acab572382d282333908a7236ac4fe5f074cf8d1a920da6f0e"
     },
     {
       "id": "card",
@@ -122,6 +105,23 @@
         "version": "2.0.0"
       },
       "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
+    },
+    {
+      "id": "checkbox",
+      "path": "src/core/checkbox/checkbox.tsx",
+      "template": "/templates/checkbox.txt",
+      "meta": {
+        "name": "checkbox",
+        "category": "forms",
+        "status": "stable",
+        "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
+        "tags": [
+          "form",
+          "interactive"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "cb897486e21e7980211b2babb352f25bff683f5f3c6444c90ba43aa8aaf8c2b2"
     },
     {
       "id": "combobox",
@@ -231,6 +231,22 @@
       "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
     },
     {
+      "id": "modal",
+      "path": "src/core/modal/modal.tsx",
+      "template": "/templates/modal.txt",
+      "meta": {
+        "name": "modal",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
+        "tags": [
+          "overlay"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
+    },
+    {
       "id": "meter",
       "path": "src/core/meter/meter.tsx",
       "template": "/templates/meter.txt",
@@ -246,22 +262,6 @@
         "version": "2.0.0"
       },
       "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
-    },
-    {
-      "id": "modal",
-      "path": "src/core/modal/modal.tsx",
-      "template": "/templates/modal.txt",
-      "meta": {
-        "name": "modal",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
-        "tags": [
-          "overlay"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
     },
     {
       "id": "popover",
@@ -317,22 +317,21 @@
       "sha256": "3a46ddc0a68af706b38962212938ca1a560ed787f8c17bdd42175c93dfdc41dc"
     },
     {
-      "id": "slider",
-      "path": "src/core/slider/slider.tsx",
-      "template": "/templates/slider.txt",
+      "id": "table",
+      "path": "src/core/table/table.tsx",
+      "template": "/templates/table.txt",
       "meta": {
-        "name": "slider",
-        "category": "forms",
+        "name": "table",
+        "category": "data-display",
         "status": "stable",
-        "description": "A slider allows a user to select one or more values within a range.",
+        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
         "tags": [
-          "form",
-          "interactive",
-          "range"
+          "data-display",
+          "interactive"
         ],
         "version": "2.0.0"
       },
-      "sha256": "9ea87cc749058560b619f43641c447f5444b55afd9ebbdd48ace28324c4566a5"
+      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
     },
     {
       "id": "switch",
@@ -353,21 +352,22 @@
       "sha256": "79783523d967e996ed53fc22224f458ebb8309d05f809d0184233bfa8199e8d2"
     },
     {
-      "id": "table",
-      "path": "src/core/table/table.tsx",
-      "template": "/templates/table.txt",
+      "id": "slider",
+      "path": "src/core/slider/slider.tsx",
+      "template": "/templates/slider.txt",
       "meta": {
-        "name": "table",
-        "category": "data-display",
+        "name": "slider",
+        "category": "forms",
         "status": "stable",
-        "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+        "description": "A slider allows a user to select one or more values within a range.",
         "tags": [
-          "data-display",
-          "interactive"
+          "form",
+          "interactive",
+          "range"
         ],
         "version": "2.0.0"
       },
-      "sha256": "567d090d572feb8ab3c792b9a810503816794e15127e1c75091af5f62154773a"
+      "sha256": "9ea87cc749058560b619f43641c447f5444b55afd9ebbdd48ace28324c4566a5"
     },
     {
       "id": "tabs",
@@ -425,24 +425,6 @@
       "sha256": "8cb1174fbedc16eb805e53d7f23abc3c8f404de662d6c8530d91ec167936863c"
     },
     {
-      "id": "toggle",
-      "path": "src/core/toggle/toggle.tsx",
-      "template": "/templates/toggle.txt",
-      "meta": {
-        "name": "toggle",
-        "category": "forms",
-        "status": "stable",
-        "description": "A toggle button allows a user to toggle a selection on or off, for example switching between two states or modes.",
-        "tags": [
-          "form",
-          "interactive",
-          "toggle"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "c17f9e17817edba451e0de264bdb0e4d1f71d4a2abaffed28451d9cb69cb40c9"
-    },
-    {
       "id": "tooltip",
       "path": "src/core/tooltip/tooltip.tsx",
       "template": "/templates/tooltip.txt",
@@ -459,6 +441,24 @@
         "version": "2.0.0"
       },
       "sha256": "3596cebb1c894862cf08f9bd6c3dda1d3bea6c9bbcc3674fe3947a470c679226"
+    },
+    {
+      "id": "toggle",
+      "path": "src/core/toggle/toggle.tsx",
+      "template": "/templates/toggle.txt",
+      "meta": {
+        "name": "toggle",
+        "category": "forms",
+        "status": "stable",
+        "description": "A toggle button allows a user to toggle a selection on or off, for example switching between two states or modes.",
+        "tags": [
+          "form",
+          "interactive",
+          "toggle"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "c17f9e17817edba451e0de264bdb0e4d1f71d4a2abaffed28451d9cb69cb40c9"
     }
   ]
 }
