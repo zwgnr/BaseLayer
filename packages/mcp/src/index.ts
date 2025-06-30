@@ -156,8 +156,7 @@ ${componentSections}`,
 						text: `Failed to fetch components: ${errorMessage}
 
 Troubleshooting:
-• Make sure the BaseLayer API is running at ${
-							process.env.BASELAYER_API_URL || "http://localhost:3000"
+• Make sure you can access BaseLayer at https://baselayer.dev
 						}
 • Check that the component IDs are correct (use \`searchComponents\`)`,
 					},
@@ -213,8 +212,7 @@ server.registerTool(
 						text: `Failed to fetch BaseLayer setup: ${errorMessage}
 
 Troubleshooting:
-• Ensure the BaseLayer API is running at ${
-							process.env.BASELAYER_API_URL || "http://localhost:3000"
+• Ensure you can access BaseLayer at https://baselayer.dev
 						}
 • Check your internet connection
 • Try again in a few moments`,

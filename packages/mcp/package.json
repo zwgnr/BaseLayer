@@ -1,5 +1,5 @@
 {
-  "name": "@baselayer/mcp",
+  "name": "@baselayer-dev/mcp",
   "version": "1.9.0",
   "type": "module",
   "description": "BaseLayer MCP Server for component installation",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsx src/index.ts",
+    "dev": "NODE_ENV=development tsx src/index.ts",
     "start": "node build/index.js",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No linting configured'",

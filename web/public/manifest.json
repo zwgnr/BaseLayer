@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-06-29T23:57:21.271Z",
+  "generatedAt": "2025-06-30T03:07:46.848Z",
   "version": "1.9.0",
   "components": [
     {
@@ -22,22 +22,6 @@
       "sha256": "c6852e750c53bbd2262a19582dee5f9464745bc91d265b79a54249072a0e2d6d"
     },
     {
-      "id": "breadcrumbs",
-      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
-      "template": "/templates/breadcrumbs.txt",
-      "meta": {
-        "name": "breadcrumbs",
-        "category": "navigation",
-        "status": "stable",
-        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
-        "tags": [
-          "navigation"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
-    },
-    {
       "id": "badge",
       "path": "src/core/badge/badge.tsx",
       "template": "/templates/badge.txt",
@@ -54,22 +38,20 @@
       "sha256": "09078332ca0cce55061988ce813a2982fbcb3b96d904435bb3946f5ff0517e99"
     },
     {
-      "id": "calendar",
-      "path": "src/core/calendar/calendar.tsx",
-      "template": "/templates/calendar.txt",
+      "id": "breadcrumbs",
+      "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+      "template": "/templates/breadcrumbs.txt",
       "meta": {
-        "name": "calendar",
-        "category": "data-entry",
+        "name": "breadcrumbs",
+        "category": "navigation",
         "status": "stable",
-        "description": "A calendar displays one or more date grids and allows users to select either a single date or a contiguous range of dates.",
+        "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
         "tags": [
-          "form",
-          "interactive",
-          "date-time"
+          "navigation"
         ],
         "version": "2.0.0"
       },
-      "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
+      "sha256": "67741066cd913ade20b36efa6f9d656c94178604bc42cb43d892c809416dc696"
     },
     {
       "id": "button",
@@ -105,6 +87,24 @@
         "version": "2.0.0"
       },
       "sha256": "4cd18e4a864f5b85a241b7d251ef02f9f40b4da8ce2da574f7f661d4dcc17a95"
+    },
+    {
+      "id": "calendar",
+      "path": "src/core/calendar/calendar.tsx",
+      "template": "/templates/calendar.txt",
+      "meta": {
+        "name": "calendar",
+        "category": "data-entry",
+        "status": "stable",
+        "description": "A calendar displays one or more date grids and allows users to select either a single date or a contiguous range of dates.",
+        "tags": [
+          "form",
+          "interactive",
+          "date-time"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "60134b102f7463a3805bb9b7be2f31ca3a72f94caa303a14bd708c652c953f4e"
     },
     {
       "id": "checkbox",
@@ -231,22 +231,6 @@
       "sha256": "26b24a9b5001893e689b35668c86308c34232cbc9d929a823b62aac551a70b1b"
     },
     {
-      "id": "modal",
-      "path": "src/core/modal/modal.tsx",
-      "template": "/templates/modal.txt",
-      "meta": {
-        "name": "modal",
-        "category": "overlays",
-        "status": "stable",
-        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
-        "tags": [
-          "overlay"
-        ],
-        "version": "2.0.0"
-      },
-      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
-    },
-    {
       "id": "meter",
       "path": "src/core/meter/meter.tsx",
       "template": "/templates/meter.txt",
@@ -262,6 +246,22 @@
         "version": "2.0.0"
       },
       "sha256": "0ae52b58a597a375ead5714f2c7ac95905641f03322ad6c4ccfcbda2f5ed8b25"
+    },
+    {
+      "id": "modal",
+      "path": "src/core/modal/modal.tsx",
+      "template": "/templates/modal.txt",
+      "meta": {
+        "name": "modal",
+        "category": "overlays",
+        "status": "stable",
+        "description": "A modal is an overlay element which blocks interaction with elements outside it.",
+        "tags": [
+          "overlay"
+        ],
+        "version": "2.0.0"
+      },
+      "sha256": "d592efe8881922f3ea16e82947763b6397f025f4071ff185fec896890269d69a"
     },
     {
       "id": "popover",

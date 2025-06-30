@@ -5,7 +5,10 @@ import {
 } from "../../../components/src/schema.js";
 
 export async function getManifest(): Promise<ComponentManifest> {
-	const apiUrl = process.env.BASELAYER_API_URL || "http://localhost:3000";
+	// Default to production, but allow dev override for local MCP development
+	const apiUrl = process.env.NODE_ENV === 'development'
+		? 'http://localhost:3000' 
+		: 'https://baselayer.dev';
 
 	try {
 		const response = await fetch(`${apiUrl}/manifest.json`);
