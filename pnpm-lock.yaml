@@ -81,9 +81,6 @@ importers:
 
   packages/mcp:
     dependencies:
-      '@baselayer/registry':
-        specifier: workspace:*
-        version: link:../registry
       '@modelcontextprotocol/sdk':
         specifier: ^1.13.2
         version: 1.13.2
@@ -91,6 +88,9 @@ importers:
         specifier: ^3.25.67
         version: 3.25.67
     devDependencies:
+      '@baselayer/registry':
+        specifier: workspace:*
+        version: link:../registry
       '@types/node':
         specifier: 'catalog:'
         version: 24.0.3
