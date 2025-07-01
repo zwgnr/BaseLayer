@@ -1,5 +1,12 @@
 # @baselayer/web
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies [6f94762]
+  - @baselayer/components@2.0.1
+
 ## 2.0.0
 
 ### Major Changes

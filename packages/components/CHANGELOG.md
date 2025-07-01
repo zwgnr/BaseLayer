@@ -1,5 +1,11 @@
 # @baselayer/components
 
+## 2.0.1
+
+### Patch Changes
+
+- 6f94762: fix secondary button border
+
 ## 2.0.0
 
 ### Major Changes
