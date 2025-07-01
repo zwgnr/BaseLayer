@@ -63,7 +63,7 @@ async function generateRegistry(): Promise<void> {
 	// Generate JSON registry file
 	await generateRegistryJSON(registry);
 
-	// Copy tailwind.css to public directory 
+	// Copy tailwind.css to public directory
 	await copyTailwindCSS();
 
 	console.log(`🎉 Generated registry with ${components.length} components`);
@@ -105,9 +105,9 @@ async function processComponent(
 }
 
 async function generateRegistryTS(
-	registry: ComponentRegistry, 
+	registry: ComponentRegistry,
 	componentsWithTemplates: ComponentWithTemplate[],
-	tailwindContent: string
+	tailwindContent: string,
 ): Promise<void> {
 	const componentsArray = registry.components
 		.map(

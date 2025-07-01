@@ -2,7 +2,7 @@
   "name": "baselayer",
   "private": true,
   "version": "1.9.0",
-  "description": "Modern React Component System for the AI Era",
+  "description": "Beautiful, accessible, and AI optimized React components for the web.",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
