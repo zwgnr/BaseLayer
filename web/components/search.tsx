@@ -31,7 +31,7 @@ export function SearchDialog() {
 					id: "intro",
 					label: "Introduction",
 					icon: BookOpenIcon,
-					onSelect: () => router.push("/docs"),
+					onSelect: () => router.push("/docs/intro"),
 				},
 			];
 		}
@@ -50,9 +50,6 @@ export function SearchDialog() {
 		<Command
 			commands={commands}
 			placeholder="Search documentation..."
-			onCommandSelect={(command) => {
-				command.onSelect?.();
-			}}
 			onSearchChange={setSearchTerm}
 			className="w-full"
 		/>

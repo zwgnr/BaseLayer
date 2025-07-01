@@ -30,7 +30,8 @@ const command = tv({
 			"data-[entering]:fade-in data-[exiting]:fade-out fixed inset-0 z-50 flex min-h-full items-start justify-center bg-zinc-500/25 p-4 text-center data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200 sm:items-center",
 		modal:
 			"data-[entering]:zoom-in-95 data-[exiting]:zoom-out-95 data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200",
-		dialog: "flex min-h-96 min-w-80 max-w-full flex-col gap-1 rounded-2xl bg-surface p-2 shadow-lg outline-none md:w-lg",
+		dialog:
+			"flex min-h-96 min-w-80 max-w-full flex-col gap-1 rounded-2xl bg-surface p-2 shadow-lg outline-none md:w-lg",
 		input:
 			"rounded-lg border-b-2 border-none bg-transparent px-3 py-2 text-base text-fg leading-5 outline-none placeholder:text-fg-muted",
 		menu: "mt-2 h-80 overflow-auto",
@@ -70,10 +71,12 @@ const Command = ({
 	...props
 }: CommandProps) => {
 	const [isOpen, setOpen] = useState(false);
+	const [isMac, setIsMac] = useState(true);
 	const { contains } = useFilter({ sensitivity: "base" });
-	const isMac = useMemo(() => {
-		if (typeof window === "undefined") return false;
-		return /Mac/.test(navigator?.platform || "");
+
+	// Detect platform after hydration to avoid SSR mismatch
+	useEffect(() => {
+		setIsMac(/Mac/.test(navigator?.platform || ""));
 	}, []);
 
 	useEffect(() => {
@@ -116,51 +119,51 @@ const Command = ({
 			<ModalOverlay {...props} isDismissable className={styles.overlay()}>
 				<AriaModal className={styles.modal()}>
 					<AriaDialog className={styles.dialog()}>
-							<Autocomplete filter={onSearchChange ? () => true : contains}>
-								<TextField
-									aria-label="Search commands"
-									className="flex flex-col border-border border-b px-3 py-2 outline-none"
-									onChange={onSearchChange}
-								>
-									<Input
-										autoFocus
-										placeholder={placeholder}
-										className={styles.input()}
-									/>
-								</TextField>
-								<Menu
-									items={commands}
-									className={styles.menu()}
-									selectionMode="none"
-								>
-									{({ label, shortcut, icon: Icon, ...command }) => (
-										<CommandMenuItem
-											{...command}
-											textValue={label}
-											onAction={() =>
-												handleCommandSelect({
-													label,
-													shortcut,
-													icon: Icon,
-													...command,
-												})
-											}
-										>
-											<div className="flex min-w-0 items-center gap-3">
-												{Icon && (
-													<Icon className="size-4 shrink-0 text-fg-muted" />
-												)}
-												<span className="truncate font-medium text-sm leading-tight">
-													{label}
-												</span>
-											</div>
-											{shortcut && (
-												<span className={styles.kbd()}>{shortcut}</span>
+						<Autocomplete filter={onSearchChange ? () => true : contains}>
+							<TextField
+								aria-label="Search commands"
+								className="flex flex-col border-border border-b px-3 py-2 outline-none"
+								onChange={onSearchChange}
+							>
+								<Input
+									autoFocus
+									placeholder={placeholder}
+									className={styles.input()}
+								/>
+							</TextField>
+							<Menu
+								items={commands}
+								className={styles.menu()}
+								selectionMode="none"
+							>
+								{({ label, shortcut, icon: Icon, ...command }) => (
+									<CommandMenuItem
+										{...command}
+										textValue={label}
+										onAction={() =>
+											handleCommandSelect({
+												label,
+												shortcut,
+												icon: Icon,
+												...command,
+											})
+										}
+									>
+										<div className="flex min-w-0 items-center gap-3">
+											{Icon && (
+												<Icon className="size-4 shrink-0 text-fg-muted" />
 											)}
-										</CommandMenuItem>
-									)}
-								</Menu>
-							</Autocomplete>
+											<span className="truncate font-medium text-sm leading-tight">
+												{label}
+											</span>
+										</div>
+										{shortcut && (
+											<span className={styles.kbd()}>{shortcut}</span>
+										)}
+									</CommandMenuItem>
+								)}
+							</Menu>
+						</Autocomplete>
 					</AriaDialog>
 				</AriaModal>
 			</ModalOverlay>
