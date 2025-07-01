@@ -21,7 +21,7 @@ export async function GET() {
 			url: baseUrl,
 		},
 		endpoints: {
-			components: `${baseUrl}/manifest.json`,
+			components: `${baseUrl}/registry.json`,
 			template: `${baseUrl}/templates/{name}.txt`,
 			tailwind: `${baseUrl}/tailwind.css`,
 			llms: `${baseUrl}/llms.txt`,
@@ -67,7 +67,7 @@ export async function GET() {
 			{
 				rel: "components",
 				type: "application/json",
-				href: `${baseUrl}/manifest.json`,
+				href: `${baseUrl}/registry.json`,
 			},
 			{
 				rel: "tailwind",

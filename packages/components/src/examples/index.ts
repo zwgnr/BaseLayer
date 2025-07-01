@@ -32,6 +32,7 @@ export * from "./popover-base";
 export * from "./radio-group-base";
 export * from "./range-calendar-base";
 export * from "./select-base";
+export * from "./select-popover-classname";
 export * from "./select-searchable";
 export * from "./slider-base";
 export * from "./switch-base";

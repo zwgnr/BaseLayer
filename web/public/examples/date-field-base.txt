@@ -1,5 +1,0 @@
-import { DateField } from "@components/base/date-field";
-
-export const DateFieldBase = () => {
-	return <DateField label="Birthday" />;
-};

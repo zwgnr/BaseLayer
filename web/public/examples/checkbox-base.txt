@@ -1,7 +1,0 @@
-import { Checkbox } from "@components/base/checkbox";
-
-export const CheckboxBase = () => {
-  return (
-    <Checkbox>Accept terms and conditions</Checkbox>
-  );
-}; 

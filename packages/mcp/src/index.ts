@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
+import type { ComponentRegistryEntry } from "@baselayer/registry";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-import type { ComponentManifestEntry } from "../../components/src/schema";
 import { getComponentTemplate } from "./tools/get-component-template.js";
-import { getManifest } from "./tools/get-manifest.js";
+import { getRegistry } from "./tools/get-registry.js";
 import { initBaselayer } from "./tools/init-baselayer.js";
 
 // Helper function to convert PascalCase/camelCase to kebab-case
@@ -29,13 +29,13 @@ server.registerTool(
 	},
 	async (args) => {
 		try {
-			const manifest = await getManifest();
+			const registry = await getRegistry();
 
 			return {
 				content: [
 					{
 						type: "text",
-						text: `Here are all BaseLayer components:\n\n${JSON.stringify(manifest, null, 2)}\n\nSearch through these components based on the user's request: ${JSON.stringify(args)}`,
+						text: `Here are all BaseLayer components:\n\n${JSON.stringify(registry, null, 2)}\n\nSearch through these components based on the user's request: ${JSON.stringify(args)}`,
 					},
 				],
 			};
@@ -76,19 +76,19 @@ server.registerTool(
 				throw new Error("Please provide at least one component name");
 			}
 
-			const manifest = await getManifest();
+			const registry = await getRegistry();
 
 			// First, validate all components exist and collect metadata
 			const componentsToFetch = [];
 			for (const componentId of componentNames) {
-				const component = manifest.components.find(
-					(c: ComponentManifestEntry) => c.id === componentId.toLowerCase(),
+				const component = registry.components.find(
+					(c: ComponentRegistryEntry) => c.id === componentId.toLowerCase(),
 				);
 
 				if (!component) {
-					const availableComponents = manifest.components
-						.filter((c: ComponentManifestEntry) => c?.id)
-						.map((c: ComponentManifestEntry) => c.id)
+					const availableComponents = registry.components
+						.filter((c: ComponentRegistryEntry) => c?.id)
+						.map((c: ComponentRegistryEntry) => c.id)
 						.join(", ");
 					throw new Error(
 						`Component '${componentId}' not found. Available components: ${availableComponents}`,

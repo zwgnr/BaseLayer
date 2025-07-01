@@ -1,3 +1,0 @@
-import { Meter } from "@components/base/meter";
-
-export const MeterExample = () => <Meter label="Monthly Usage" value={80} />; 

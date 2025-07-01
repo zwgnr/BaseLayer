@@ -1,3 +1,0 @@
-import { DateRangePicker } from "@components/base/date-picker";
-
-export const DateRangePickerBase = () => <DateRangePicker label="Trip Dates" />; 

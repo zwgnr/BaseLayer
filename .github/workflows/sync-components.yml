@@ -14,7 +14,7 @@ jobs:
   pr-check:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    name: Check Manifest Drift
+    name: Check Registry Drift
     
     steps:
       - name: Checkout
@@ -34,15 +34,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
         
-      - name: Build components and generate manifest
+      - name: Build components and generate registry
         run: pnpm --filter @baselayer/components build
         
-      - name: Check for manifest drift
+      - name: Check for registry drift
         run: |
           if git diff --quiet web/public/; then
-            echo "✅ Manifest is in sync"
+            echo "✅ Registry is in sync"
           else
-            echo "❌ Manifest out of sync! Generated files differ from committed files."
+            echo "❌ Registry out of sync! Generated files differ from committed files."
             echo ""
             echo "Please run the following locally and commit the changes:"
             echo "  pnpm --filter @baselayer/components build"
@@ -81,7 +81,7 @@ jobs:
       - name: Build all packages
         run: pnpm build
         
-      - name: Generate fresh manifest
+      - name: Generate fresh registry
         run: pnpm --filter @baselayer/components build
 
  

@@ -1,5 +1,0 @@
-import { Switch } from "@components/base/switch";
-
-export const SwitchBase = () => {
-  return <Switch>On/Off</Switch>;
-}; 

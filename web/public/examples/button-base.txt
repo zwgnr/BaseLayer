@@ -1,7 +1,0 @@
-import { Button } from "@components/base/button";
-
-export const ButtonBase = () => {
-  return (
-    <Button>Button</Button>
-  );
-};

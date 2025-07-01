@@ -35,6 +35,9 @@ importers:
 
   packages/components:
     dependencies:
+      '@baselayer/registry':
+        specifier: workspace:*
+        version: link:../registry
       lucide-react:
         specifier: ^0.525.0
         version: 0.525.0(react@19.1.0)
@@ -78,9 +81,9 @@ importers:
 
   packages/mcp:
     dependencies:
-      '@baselayer/components':
+      '@baselayer/registry':
         specifier: workspace:*
-        version: link:../components
+        version: link:../registry
       '@modelcontextprotocol/sdk':
         specifier: ^1.13.2
         version: 1.13.2
@@ -98,11 +101,27 @@ importers:
         specifier: 'catalog:'
         version: 5.8.3
 
+  packages/registry:
+    dependencies:
+      zod:
+        specifier: ^3.25.67
+        version: 3.25.67
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.0.3
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
   web:
     dependencies:
       '@baselayer/components':
         specifier: workspace:*
         version: link:../packages/components
+      '@baselayer/registry':
+        specifier: workspace:*
+        version: link:../packages/registry
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13

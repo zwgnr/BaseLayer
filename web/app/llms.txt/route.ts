@@ -43,7 +43,7 @@ curl https://baselayer.dev/tailwind.css
 
 **List all components:**
 \`\`\`bash
-curl https://baselayer.dev/manifest.json
+curl https://baselayer.dev/registry.json
 \`\`\`
 
 **Search components:**
@@ -88,7 +88,7 @@ BaseLayer also provides an MCP server for editor integration. Users can set this
 
 ## Available Static Endpoints
 
-- \`GET /manifest.json\` - List all components with metadata
+- \`GET /registry.json\` - List all components with metadata
 - \`GET /templates/{id}.txt\` - Get component source code
 - \`GET /tailwind.css\` - Get CSS setup
 - \`GET /.well-known/baselayer\` - Complete API specification

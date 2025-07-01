@@ -1,3 +1,0 @@
-import { RangeCalendar } from "@components/base/calendar";
-
-export const RangeCalendarBase = () => <RangeCalendar />; 

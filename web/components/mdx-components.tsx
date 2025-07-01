@@ -1,6 +1,5 @@
 import { getComponentSource, getExampleSource } from "../lib/component-data";
-// Auto-generated examples map
-import { exampleComponents } from "../lib/examples-map";
+import { getExampleComponent } from "../lib/examples-map";
 import { CodeBlock } from "./code-block";
 import { ComponentMetadata } from "./component-metadata";
 import { Preview } from "./preview";
@@ -18,11 +17,9 @@ export const ComponentPreview = async ({
 	let exampleComponent: React.ReactNode | undefined;
 
 	if (example) {
-		// Load example from registry
 		try {
 			sourceCode = await getExampleSource(example);
-			const ExampleComponent =
-				exampleComponents[example as keyof typeof exampleComponents];
+			const ExampleComponent = await getExampleComponent(example);
 			if (ExampleComponent) {
 				exampleComponent = <ExampleComponent />;
 			}

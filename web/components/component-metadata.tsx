@@ -1,6 +1,6 @@
 import { Badge } from "@baselayer/components";
 
-import { getManifest } from "../lib/component-data";
+import { getRegistry } from "../lib/component-data";
 
 interface ComponentMetadataProps {
   componentId: string;
@@ -21,8 +21,8 @@ export async function ComponentMetadata({
   showTags = false,
   showVersion = false,
 }: ComponentMetadataProps) {
-  const manifest = await getManifest();
-  const component = manifest.components.find(c => c.id === componentId.toLowerCase());
+  	const registry = await getRegistry();
+	const component = registry.components.find(c => c.id === componentId.toLowerCase());
   if (!component) {
     return null;
   }
