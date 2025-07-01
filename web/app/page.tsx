@@ -32,10 +32,10 @@ export default function Home() {
 					</span>
 				</div>
 
-				<div className="flex items-center gap-6">
+				<div className="flex items-center gap-0 md:gap-6">
 					<Link
 						href="/docs/intro"
-						className="rounded-full px-4 py-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
+						className="rounded-full py-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
 					>
 						Docs
 					</Link>
