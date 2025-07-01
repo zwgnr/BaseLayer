@@ -5,6 +5,9 @@
   "description": "BaseLayer MCP Server",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "bin": {
+    "mcp": "build/index.js"
+  },
   "files": [
     "build",
     "README.md"
