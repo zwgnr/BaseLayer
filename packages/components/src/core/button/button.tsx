@@ -13,7 +13,7 @@ const button = tv({
 			primary:
 				"bg-primary text-primary-fg data-[hovered]:bg-primary/80",
 			secondary:
-				"text-fg shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)] shadow-border data-[hovered]:border-secondary data-[hovered]:bg-secondary",
+				"border border-border text-fg data-[hovered]:border-secondary data-[hovered]:bg-secondary",
 			ghost:
 				"bg-transparent text-fg data-[hovered]:bg-secondary data-[hovered]:text-secondary-fg",
 			danger:
