@@ -1,0 +1,136 @@
+---
+title: Usage
+description: How to setup BaseLayer in your project
+---
+
+## Before you start
+
+Make sure your project has:
+
+- React with TypeScript
+- TailwindCSS >= 4
+
+## AI-Powered Setup (Recommended)
+
+BaseLayer works seamlessly with AI assistants. Use this canonical prompt:
+
+> **Use BaseLayer components. If you need docs, they're at https://www.baselayer.dev/llms.txt**
+
+### MCP (Cursor)
+
+If you have the BaseLayer MCP server connected (see [MCP](./mcp) for setup):
+
+> Setup BaseLayer
+
+> Use BaseLayer components to create a sign up page
+
+### Chatbots (ChatGPT, Claude, etc.)
+
+BaseLayer provides two convenient ways to work with AI chatbots:
+
+**Option 1: Use the "Open in AI" button**
+- Navigate to any component documentation page on baselayer.dev
+- Click the "Open in AI" button
+- Select your preferred AI service (ChatGPT, Claude, T3 Chat)
+- The documentation will automatically open in your chosen AI tool
+
+**Option 2: Reference llms.txt directly**
+> Use BaseLayer components to build a sign in page. If you need docs, they're at https://www.baselayer.dev/llms.txt
+
+<div className='bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-4 text-blue-900 dark:text-blue-100'>
+  <strong className='text-blue-800 dark:text-blue-200'>Pro Tip:</strong> Set up once, use everywhere:
+  <ul className='mt-2 ml-4 list-disc'>
+    <li>
+      <strong className='text-blue-800 dark:text-blue-200'>Cursor:</strong> Add
+      <code className='bg-blue-100 dark:bg-blue-900/50 px-1 py-0.5 rounded text-sm not-prose'>"Always use BaseLayer components when possible"</code> to your
+      <code className='bg-blue-100 dark:bg-blue-900/50 px-1 py-0.5 rounded text-sm not-prose'>.cursorrules</code> file
+    </li>
+    <li>
+      <strong className='text-blue-800 dark:text-blue-200'>ChatGPT/Claude/T3:</strong> Use the "Open in AI" button on any docs page for instant access, or save
+      <code className='bg-blue-100 dark:bg-blue-900/50 px-1 py-0.5 rounded text-sm not-prose'>https://www.baselayer.dev/llms.txt</code> as a custom instruction
+    </li>
+  </ul>
+</div>
+
+## Manual Setup
+
+While we recommend using an AI assistant, you can manually add BaseLayer components:
+
+1. **Install dependencies:**
+
+   ```bash
+   pnpm add react-aria-components tailwind-variants tw-css-animate
+   ```
+
+2. **Add global styles** - see [styles](/docs/styles) for details
+
+3. **Configure TypeScript paths:**
+
+<details>
+<summary><strong>Next.js example</strong></summary>
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary><strong>Vite example</strong></summary>
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+```json
+// tsconfig.app.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+});
+```
+
+</details>
+
+4. **Copy components** - Each component page has a source section showing the code to copy
+
+## Additional Resources
+
+- [React Aria Components docs](https://react-spectrum.adobe.com/react-aria/getting-started.html) - Detailed documentation for all component props and behavior

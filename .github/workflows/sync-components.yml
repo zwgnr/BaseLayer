@@ -1,0 +1,88 @@
+name: Component Sync Check
+
+on:
+  pull_request:
+    paths:
+      - 'packages/components/src/**'
+      - 'packages/components/scripts/**'
+      - 'packages/components/package.json'
+  push:
+    branches:
+      - main
+
+jobs:
+  pr-check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Check Registry Drift
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.1
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Build registry dependency first
+        run: pnpm --filter @baselayer/registry build
+        
+      - name: Build components and generate registry
+        run: pnpm --filter @baselayer/components build
+        
+      - name: Check for registry drift
+        run: |
+          # Check only registry.json and templates, exclude build-info.json (which changes every build)
+          if git diff --quiet web/public/registry.json web/public/templates/ web/public/tailwind.css; then
+            echo "✅ Registry is in sync"
+          else
+            echo "❌ Registry out of sync! Generated files differ from committed files."
+            echo ""
+            echo "Please run the following locally and commit the changes:"
+            echo "  pnpm --filter @baselayer/components build"
+            echo ""
+            echo "Changed files:"
+            git diff --name-only web/public/registry.json web/public/templates/ web/public/tailwind.css
+            echo ""
+            echo "Diff:"
+            git diff web/public/registry.json web/public/templates/ web/public/tailwind.css
+            exit 1
+          fi
+
+  build-and-test:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    name: Build and Test
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.1
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Build all packages
+        run: pnpm build
+
+ 

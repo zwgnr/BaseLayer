@@ -1,0 +1,10 @@
+{
+  "name": "popover",
+  "category": "overlays",
+  "status": "stable",
+  "description": "A popover is an overlay element positioned relative to a trigger.",
+  "tags": [
+    "overlay",
+    "interactive"
+  ]
+}

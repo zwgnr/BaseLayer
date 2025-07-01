@@ -1,0 +1,39 @@
+{
+  "name": "@baselayer-dev/mcp",
+  "version": "1.9.0",
+  "type": "module",
+  "description": "BaseLayer MCP Server",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "NODE_ENV=development tsx src/index.ts",
+    "start": "node build/index.js",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'No linting configured'",
+    "clean": "rm -rf build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.2",
+    "@baselayer/registry": "workspace:*",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsx": "^4.20.3",
+    "typescript": "catalog:"
+  },
+  "keywords": ["mcp", "baselayer", "components"],
+  "author": "zwgnr",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zwgnr/BaseLayer.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/zwgnr/BaseLayer#readme"
+} 

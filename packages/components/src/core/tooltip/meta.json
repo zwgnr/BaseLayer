@@ -1,0 +1,11 @@
+{
+  "name": "tooltip",
+  "category": "overlays",
+  "status": "stable",
+  "description": "A tooltip displays a description of an element on hover or focus.",
+  "tags": [
+    "overlay",
+    "interactive",
+    "help"
+  ]
+}

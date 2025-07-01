@@ -1,0 +1,38 @@
+{
+	"name": "@baselayer/components",
+	"version": "1.9.0",
+	"private": true,
+	"type": "module",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"files": [
+		"src",
+		"templates"
+	],
+	"scripts": {
+		"build": "tsc && tsx scripts/gen-registry.ts",
+		"dev": "tsc --watch",
+		"generate:registry": "tsx scripts/gen-registry.ts"
+	},
+	"dependencies": {
+		"@baselayer/registry": "workspace:*",
+		"lucide-react": "^0.525.0",
+		"react": "^19.1.0",
+		"react-aria-components": "catalog:",
+		"tailwind-variants": "catalog:",
+		"zod": "^3.25.67"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@types/react": "^19.1.8",
+		"fast-glob": "^3.3.2",
+		"ts-morph": "^26.0.0",
+		"tsx": "^4.20.3",
+		"tw-animate-css": "^1.3.4",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"react": ">=19.0.0",
+		"tailwindcss": ">=4.0.0"
+	}
+}

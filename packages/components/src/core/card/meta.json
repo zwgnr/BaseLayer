@@ -1,0 +1,11 @@
+{
+  "name": "card",
+  "category": "layout",
+  "status": "stable",
+  "description": "Displays a card with header, content, and footer.",
+  "tags": [
+    "layout",
+    "container",
+    "display"
+  ]
+}

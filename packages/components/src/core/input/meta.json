@@ -1,0 +1,10 @@
+{
+  "name": "input",
+  "category": "forms",
+  "status": "stable",
+  "description": "Allows a user to enter a plain text value with a keyboard.",
+  "tags": [
+    "form",
+    "interactive"
+  ]
+}

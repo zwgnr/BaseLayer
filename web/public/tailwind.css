@@ -1,0 +1,93 @@
+@variant dark ([data-theme="dark"] &);
+
+:root {
+  /* SURFACES (neutrals & elevation) */
+  --surface: oklch(98.5% 0 0); /* app/page background */
+  --surface-2: oklch(97% 0 0); /* card / raised */
+
+  /* CONTENT (foreground) */
+  --fg: oklch(14.5% 0 0); /* primary reading text */
+  --fg-muted: oklch(55.6% 0 0); /* secondary text, captions */
+  --fg-inverse: oklch(98.5% 0 0); /* text on dark */
+  --fg-disabled: oklch(70.8% 0 0); /* explicit disabled state text */
+
+  /* OUTLINES & DIVIDERS */
+  --border: oklch(87% 0 0); /* generic 1px rules, inputs */
+  --focus: oklch(68.5% 0.169 237.323); /* focus ring / a11y outline */
+
+  /* INTERACTIVE ROLES (paired bg / fg ) */
+  --primary: oklch(14.5% 0 0);
+  --primary-fg: oklch(98.5% 0 0);
+
+  --secondary: oklch(92.2% 0 0);
+  --secondary-fg: oklch(14.5% 0 0);
+
+  /* STATUS / FUNCTIONAL */
+  
+  --danger: oklch(63.7% 0.237 25.331);
+  --danger-fg: #ffffff;
+}
+
+[data-theme='dark'] {
+  /* SURFACES (neutrals & elevation) */
+  --surface: oklch(14.5% 0 0); /* app/page background */
+  --surface-2: oklch(20.5% 0 0); /* card / raised */
+
+  /* CONTENT (foreground) */
+  --fg: oklch(98.5% 0.001 106.423); /* primary reading text */
+  --fg-muted: oklch(55.6% 0 0); /* secondary text, captions */
+  --fg-inverse: oklch(98.5% 0 0); /* text on dark */
+  --fg-disabled: oklch(37.1% 0 0); /* explicit disabled state text */
+
+  /* OUTLINES & DIVIDERS */
+  --border: oklch(37.1% 0 0); /* generic 1px rules, inputs */
+  --focus: oklch(68.5% 0.169 237.323); /* focus ring / a11y outline */
+
+  /* INTERACTIVE ROLES (paired bg / fg ) */
+  --primary: oklch(98.5% 0 0);
+  --primary-fg: oklch(14.5% 0 0);
+
+  --secondary: oklch(26.9% 0 0);
+  --secondary-fg: oklch(98.5% 0 0);
+
+  /* STATUS / FUNCTIONAL */
+  
+  --danger: oklch(63.7% 0.237 25.331);
+  --danger-fg: oklch(98.5% 0 0);
+}
+
+@theme {
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-disabled: var(--fg-disabled);
+  --color-fg-inverse: var(--fg-inverse);
+  --color-border: var(--border);
+  --color-focus: var(--focus);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-secondary: var(--secondary);
+  --color-secondary-fg: var(--secondary-fg);
+  --color-danger: var(--danger);
+  --color-danger-fg: var(--danger-fg);
+}
+
+  /* clears the ‘X’ from Internet Explorer */
+  input[type="search"]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  input[type="search"]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  } 

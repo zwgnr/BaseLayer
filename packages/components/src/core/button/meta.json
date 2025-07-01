@@ -1,0 +1,10 @@
+{
+  "name": "button",
+  "category": "forms",
+  "status": "stable",
+  "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+  "tags": [
+    "form",
+    "interactive"
+  ]
+}

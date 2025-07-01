@@ -1,0 +1,12 @@
+{
+  "name": "command",
+  "category": "navigation",
+  "status": "beta",
+  "description": "A command palette that allows users to quickly search and execute commands using keyboard shortcuts.",
+  "tags": [
+    "search",
+    "navigation",
+    "keyboard",
+    "palette"
+  ]
+}

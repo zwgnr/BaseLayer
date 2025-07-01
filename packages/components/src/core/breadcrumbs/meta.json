@@ -1,0 +1,9 @@
+{
+  "name": "breadcrumbs",
+  "category": "navigation",
+  "status": "stable",
+  "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
+  "tags": [
+    "navigation"
+  ]
+}

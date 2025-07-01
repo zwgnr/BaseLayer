@@ -1,0 +1,10 @@
+packages:
+  - 'web'
+  - 'packages/*'
+
+# Define a catalog of version ranges.
+catalog:
+  react-aria-components: 1.10.1
+  tailwind-variants: 1.0.0
+  typescript: ^5.8.3
+  "@types/node": ^24.0.3 

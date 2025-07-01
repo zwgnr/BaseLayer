@@ -1,0 +1,9 @@
+{
+  "name": "badge",
+  "category": "display",
+  "status": "stable",
+  "description": "A badge is a small label that can be used to display information or status.",
+  "tags": [
+    "status"
+  ]
+}
