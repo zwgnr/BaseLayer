@@ -47,7 +47,6 @@ next-env.d.ts
 # build outputs
 **/dist/
 **/build/
-**/lib/
 **/.next/
 **/.turbo/
 
