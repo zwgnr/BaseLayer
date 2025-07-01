@@ -51,22 +51,20 @@ async function generateRegistry(): Promise<void> {
 	// Read tailwind.css content
 	const tailwindContent = readFileSync(TAILWIND_SOURCE, "utf8");
 
-	// Get deterministic timestamp based on git commit
-	let generatedAt: string;
+	// Get git commit hash for deterministic build identifier
+	let buildHash: string;
 	try {
 		const { execSync } = await import("node:child_process");
-		const gitCommitDate = execSync("git log -1 --format=%cI", {
+		buildHash = execSync("git rev-parse HEAD", {
 			encoding: "utf8",
 		}).trim();
-		// Normalize to UTC to ensure consistency across environments
-		generatedAt = new Date(gitCommitDate).toISOString();
 	} catch {
-		// Fallback to current time if git is not available
-		generatedAt = new Date().toISOString();
+		// Fallback to version if git is not available
+		buildHash = `fallback-${version}`;
 	}
 
 	const registry: ComponentRegistry = {
-		generatedAt,
+		buildHash,
 		version,
 		components: components.map(({ templateContent, ...comp }) => comp),
 	};
@@ -144,7 +142,7 @@ async function generateRegistryTS(
 import type { ComponentRegistry, ComponentRegistryEntry } from '@baselayer/registry';
 
 const registry: ComponentRegistry = {
-  "generatedAt": "${registry.generatedAt}",
+  "buildHash": "${registry.buildHash}",
   "version": "${registry.version}",
   "components": [
 ${componentsArray}

@@ -19,7 +19,7 @@ export const ComponentRegistryEntrySchema = z.object({
 });
 
 export const ComponentRegistrySchema = z.object({
-	generatedAt: z.string().datetime(),
+	buildHash: z.string(),
 	version: z.string().regex(/^\d+\.\d+\.\d+(-[\w.-]+)?$/),
 	components: z.array(ComponentRegistryEntrySchema),
 });
