@@ -35,7 +35,7 @@ export default function Home() {
 				<div className="flex items-center gap-0 md:gap-6">
 					<Link
 						href="/docs/intro"
-						className="rounded-full py-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
+						className="rounded-full p-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
 					>
 						Docs
 					</Link>
@@ -43,7 +43,7 @@ export default function Home() {
 						href="https://github.com/zwgnr/BaseLayer"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="rounded-full px-4 py-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
+						className="rounded-full p-2 font-medium text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
 					>
 						GitHub
 					</Link>
