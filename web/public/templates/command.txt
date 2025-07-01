@@ -71,7 +71,10 @@ const Command = ({
 }: CommandProps) => {
 	const [isOpen, setOpen] = useState(false);
 	const { contains } = useFilter({ sensitivity: "base" });
-	const isMac = useMemo(() => /Mac/.test(navigator?.platform || ""), []);
+	const isMac = useMemo(() => {
+		if (typeof window === "undefined") return false;
+		return /Mac/.test(navigator?.platform || "");
+	}, []);
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
