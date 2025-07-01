@@ -2,7 +2,7 @@
   "name": "@baselayer-dev/mcp",
   "version": "1.9.0",
   "type": "module",
-  "description": "BaseLayer MCP Server for component installation",
+  "description": "BaseLayer MCP Server",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
