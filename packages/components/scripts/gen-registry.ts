@@ -51,8 +51,21 @@ async function generateRegistry(): Promise<void> {
 	// Read tailwind.css content
 	const tailwindContent = readFileSync(TAILWIND_SOURCE, "utf8");
 
+	// Get deterministic timestamp based on git commit
+	let generatedAt: string;
+	try {
+		const { execSync } = await import("node:child_process");
+		const gitCommitDate = execSync("git log -1 --format=%cI", {
+			encoding: "utf8",
+		}).trim();
+		generatedAt = gitCommitDate;
+	} catch {
+		// Fallback to current time if git is not available
+		generatedAt = new Date().toISOString();
+	}
+
 	const registry: ComponentRegistry = {
-		generatedAt: new Date().toISOString(),
+		generatedAt,
 		version,
 		components: components.map(({ templateContent, ...comp }) => comp),
 	};
