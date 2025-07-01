@@ -13,7 +13,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "dev": "NODE_ENV=development tsx src/index.ts",
     "start": "node build/index.js",
     "type-check": "tsc --noEmit",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "typescript": "catalog:"
   },
