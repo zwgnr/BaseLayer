@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import type { ComponentRegistryEntry } from "@baselayer/registry";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";

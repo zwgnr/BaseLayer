@@ -13,7 +13,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "dev": "NODE_ENV=development tsx src/index.ts",
     "start": "node build/index.js",
     "type-check": "tsc --noEmit",
@@ -22,11 +22,12 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.13.2",
-    "@baselayer/registry": "workspace:*",
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@baselayer/registry": "workspace:*",
     "@types/node": "catalog:",
+    "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "typescript": "catalog:"
   },
