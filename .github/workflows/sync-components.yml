@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
         
+      - name: Build registry dependency first
+        run: pnpm --filter @baselayer/registry build
+        
       - name: Build components and generate registry
         run: pnpm --filter @baselayer/components build
         
@@ -80,8 +83,5 @@ jobs:
         
       - name: Build all packages
         run: pnpm build
-        
-      - name: Generate fresh registry
-        run: pnpm --filter @baselayer/components build
 
  
