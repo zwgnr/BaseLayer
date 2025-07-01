@@ -2,7 +2,26 @@ import { NextResponse } from "next/server";
 
 import { COMPONENTS } from "@baselayer/components";
 
-import { getBaseUrl } from "../../../lib/get-base-url";
+/**
+ * Get the appropriate base URL for the current environment
+ * - Production: Custom domain
+ * - Preview: Vercel preview URL
+ * - Local: localhost
+ */
+function getBaseUrl(): string {
+	// Production environment
+	if (process.env.VERCEL_ENV === "production") {
+		return "https://baselayer.dev";
+	}
+
+	// Preview environment (on Vercel)
+	if (process.env.VERCEL_URL) {
+		return `https://${process.env.VERCEL_URL}`;
+	}
+
+	// Local development
+	return "http://localhost:3000";
+}
 
 export async function GET() {
 	const baseUrl = getBaseUrl();
