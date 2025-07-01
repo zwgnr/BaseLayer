@@ -1,5 +1,12 @@
 # @baselayer-dev/mcp
 
+## 2.0.2
+
+### Patch Changes
+
+- 83f6917: bundle registry
+- 83f6917: add bin
+
 ## 2.0.1
 
 ### Patch Changes
