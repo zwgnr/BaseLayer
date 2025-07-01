@@ -4,12 +4,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 
-import {
-	Button,
-	Dialog,
-	Modal,
-	ModalOverlay,
-} from "react-aria-components";
+import { Button, Dialog, Modal, ModalOverlay } from "react-aria-components";
 
 import { MenuIcon } from "lucide-react";
 

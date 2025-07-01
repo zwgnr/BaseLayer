@@ -12,70 +12,76 @@ import { Sidebar } from "@/components/sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 interface LayoutProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const pages = source.getPages();
-  const introDocs = pages
-    .filter((page) => !page.url.startsWith("/docs/components"))
-    .map((page) => ({
-      url: page.url,
-      data: {
-        title: page.data.title,
-      },
-    }));
-  const componentDocs = pages
-    .filter((page) => page.url.startsWith("/docs/components"))
-    .map((page) => ({
-      url: page.url,
-      data: {
-        title: page.data.title,
-      },
-    }));
+	const pages = source.getPages();
+	const introDocs = pages
+		.filter((page) => !page.url.startsWith("/docs/components"))
+		.map((page) => ({
+			url: page.url,
+			data: {
+				title: page.data.title,
+			},
+		}));
+	const componentDocs = pages
+		.filter((page) => page.url.startsWith("/docs/components"))
+		.map((page) => ({
+			url: page.url,
+			data: {
+				title: page.data.title,
+			},
+		}));
 
-  return (
-    <div className="min-h-screen bg-surface">
-      {/* Top Navigation Bar - Full Width */}
-      <header className="sticky top-0 z-50 w-full border-border/50 border-b bg-surface">
-        <div className="flex items-center justify-between px-2 py-4 md:px-6">
-          <div className="flex items-center">
-            <Image src="/bl.svg" alt="BaseLayer" width={40} height={40} className="hidden md:block dark:invert" />
+	return (
+		<div className="min-h-screen bg-surface">
+			{/* Top Navigation Bar - Full Width */}
+			<header className="sticky top-0 z-50 w-full border-border/50 border-b bg-surface">
+				<div className="flex items-center justify-between px-2 py-4 md:px-6">
+					<div className="flex items-center">
+						<Image
+							src="/bl.svg"
+							alt="BaseLayer"
+							width={40}
+							height={40}
+							className="hidden md:block dark:invert"
+						/>
 
-            <MobileNav introDocs={introDocs} componentDocs={componentDocs} />
+						<MobileNav introDocs={introDocs} componentDocs={componentDocs} />
 
-            {/* Desktop title - hidden on mobile, visible on desktop */}
-            <Link
-              href="/"
-              className="ml-2 hidden font-bold text-xl uppercase tracking-tight md:block"
-            >
-              BaseLayer
-            </Link>
-          </div>
+						{/* Desktop title - hidden on mobile, visible on desktop */}
+						<Link
+							href="/"
+							className="ml-2 hidden font-bold text-xl uppercase tracking-tight md:block"
+						>
+							BaseLayer
+						</Link>
+					</div>
 
-          <div className="flex items-center gap-4">
-            <Link
-              href="https://github.com/zwgnr/BaseLayer"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GithubIcon className="text-fg-muted transition-colors hover:text-fg" />
-            </Link>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+					<div className="flex items-center gap-4">
+						<Link
+							href="https://github.com/zwgnr/BaseLayer"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<GithubIcon className="text-fg-muted transition-colors hover:text-fg" />
+						</Link>
+						<ThemeToggle />
+					</div>
+				</div>
+			</header>
 
-      {/* below the top nav */}
-      <div className="flex">
-        {/* Left Sidebar - hidden on mobile, visible on desktop */}
-        <div className="hidden md:block">
-          <Sidebar />
-        </div>
+			{/* below the top nav */}
+			<div className="flex">
+				{/* Left Sidebar - hidden on mobile, visible on desktop */}
+				<div className="hidden md:block">
+					<Sidebar />
+				</div>
 
-        {/* Main content area - center content + right TOC */}
-        <div className="min-w-0 max-w-7xl flex-1">{children}</div>
-      </div>
-    </div>
-  );
+				{/* Main content area - center content + right TOC */}
+				<div className="min-w-0 max-w-7xl flex-1">{children}</div>
+			</div>
+		</div>
+	);
 }

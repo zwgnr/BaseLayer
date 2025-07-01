@@ -29,11 +29,7 @@ const CopyButton = ({ code }: { code: string }) => {
 			className="absolute top-0 right-0 rounded-md p-2 text-fg-muted"
 			title={copied ? "Copied!" : "Copy to clipboard"}
 		>
-			{copied ? (
-				<Check className="size-4" />
-			) : (
-				<Copy className="size-4" />
-			)}
+			{copied ? <Check className="size-4" /> : <Copy className="size-4" />}
 		</button>
 	);
 };
@@ -46,4 +42,4 @@ export const CodeBlockWithCopy = ({ code, html }: CodeBlockWithCopyProps) => {
 			<CopyButton code={code} />
 		</div>
 	);
-}; 
+};

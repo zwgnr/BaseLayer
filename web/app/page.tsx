@@ -10,7 +10,6 @@ import {
 	Palette,
 	Server,
 	Sparkles,
-	Zap,
 } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -60,7 +59,7 @@ export default function Home() {
 					<div className="-top-40 -left-40 absolute h-80 w-80 rounded-full bg-primary/5 blur-3xl"></div>
 					<div className="-top-20 -right-20 absolute h-60 w-60 rounded-full bg-primary/5 blur-2xl delay-1000"></div>
 					<div className="-translate-x-1/2 absolute bottom-0 left-1/2 h-96 w-96 rounded-full bg-primary/5 blur-3xl delay-500"></div>
-					
+
 					{/* Grid Pattern */}
 					<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]"></div>
 				</div>
@@ -73,14 +72,14 @@ export default function Home() {
 							<span>v2 is here</span>
 						</div>
 
-						{/* Main Heading with Gradient Text */}
+						{/* Main Heading */}
 						<h1 className="mb-6 font-bold text-5xl leading-tight tracking-tight md:text-6xl lg:text-8xl">
 							<span className="bg-gradient-to-r from-fg via-fg to-fg-muted bg-clip-text text-transparent">
 								Own Your UI Code.
 							</span>
 						</h1>
 
-						{/* Subtitle with Better Typography */}
+						{/* Subtitle  */}
 						<p className="mx-auto mb-12 max-w-3xl text-fg-muted text-xl leading-relaxed md:text-xl lg:text-2xl">
 							Components that ship to your{" "}
 							<span className="font-semibold text-fg">codebase</span>, not your{" "}
@@ -101,8 +100,6 @@ export default function Home() {
 									<span>Start Building</span>
 								</Link>
 							</div>
-							
-
 						</div>
 					</div>
 				</div>
@@ -120,7 +117,7 @@ export default function Home() {
 							</p>
 						</div>
 
-						{/* Feature Cards - Improved Design */}
+						{/* Feature Cards */}
 						<div className="grid grid-cols-1 gap-8 md:grid-cols-3">
 							{/* You Own Your Code */}
 							<div className="group hover:-translate-y-1 rounded-2xl border border-border bg-surface-2 p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg">
@@ -188,7 +185,7 @@ export default function Home() {
 					</div>
 				</div>
 
-				{/* Traditional Features Section - Improved */}
+				{/* Traditional Features Section */}
 				<div className="relative z-10 px-6 pb-20 md:px-8 lg:px-12">
 					<div className="mx-auto max-w-6xl">
 						<div className="grid grid-cols-1 gap-12 md:grid-cols-3">
@@ -233,7 +230,7 @@ export default function Home() {
 					</div>
 				</div>
 
-				{/* CTA Section - Improved */}
+				{/* CTA Section */}
 				<div className="relative z-10 px-6 pb-20 md:px-8 lg:px-12">
 					<div className="mx-auto max-w-4xl text-center">
 						<div className="rounded-3xl border border-border bg-gradient-to-br from-surface-2 to-surface-3 p-12 shadow-lg">
