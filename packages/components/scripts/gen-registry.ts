@@ -12,6 +12,7 @@ const COMPONENTS_DIR = "src/core";
 const TEMPLATES_DIR = "../../web/public/templates";
 const OUTPUT_REGISTRY_TS = "src/registry.ts";
 const OUTPUT_REGISTRY_JSON = "../../web/public/registry.json";
+const OUTPUT_BUILD_INFO = "../../web/public/build-info.json";
 const TAILWIND_SOURCE = "src/tailwind.css";
 const TAILWIND_OUTPUT = "../../web/public/tailwind.css";
 
@@ -51,23 +52,13 @@ async function generateRegistry(): Promise<void> {
 	// Read tailwind.css content
 	const tailwindContent = readFileSync(TAILWIND_SOURCE, "utf8");
 
-	// Get git commit hash for deterministic build identifier
-	let buildHash: string;
-	try {
-		const { execSync } = await import("node:child_process");
-		buildHash = execSync("git rev-parse HEAD", {
-			encoding: "utf8",
-		}).trim();
-	} catch {
-		// Fallback to version if git is not available
-		buildHash = `fallback-${version}`;
-	}
-
 	const registry: ComponentRegistry = {
-		buildHash,
 		version,
 		components: components.map(({ templateContent, ...comp }) => comp),
 	};
+
+	// Generate build info for provenance tracking
+	await generateBuildInfo(components, version);
 
 	// Generate TypeScript registry file with inlined templates and CSS
 	await generateRegistryTS(registry, components, tailwindContent);
@@ -142,7 +133,6 @@ async function generateRegistryTS(
 import type { ComponentRegistry, ComponentRegistryEntry } from '@baselayer/registry';
 
 const registry: ComponentRegistry = {
-  "buildHash": "${registry.buildHash}",
   "version": "${registry.version}",
   "components": [
 ${componentsArray}
@@ -205,6 +195,49 @@ async function generateRegistryJSON(
 	const jsonContent = JSON.stringify(registry, null, 2);
 	writeFileSync(OUTPUT_REGISTRY_JSON, jsonContent);
 	console.log("📝 Generated registry.json");
+}
+
+async function generateBuildInfo(
+	components: ComponentWithTemplate[],
+	version: string,
+): Promise<void> {
+	// Generate content hash for registry content verification
+	const crypto = await import("node:crypto");
+	const contentToHash = JSON.stringify({
+		version,
+		components: components.map((comp) => ({
+			id: comp.id,
+			template: comp.template,
+			meta: comp.meta,
+			templateContent: comp.templateContent,
+		})),
+	});
+	const registrySHA256 = crypto
+		.createHash("sha256")
+		.update(contentToHash)
+		.digest("hex")
+		.substring(0, 16);
+
+	// Get git commit hash
+	let gitCommit: string;
+	try {
+		const { execSync } = await import("node:child_process");
+		gitCommit = execSync("git rev-parse HEAD", {
+			encoding: "utf8",
+		}).trim();
+	} catch {
+		gitCommit = "unknown";
+	}
+
+	const buildInfo = {
+		git: gitCommit,
+		builtAt: new Date().toISOString(),
+		registrySHA256,
+	};
+
+	const buildInfoContent = JSON.stringify(buildInfo, null, 2);
+	writeFileSync(OUTPUT_BUILD_INFO, buildInfoContent);
+	console.log("📝 Generated build-info.json");
 }
 
 async function copyTailwindCSS(): Promise<void> {

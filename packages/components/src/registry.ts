@@ -4,7 +4,6 @@
 import type { ComponentRegistry, ComponentRegistryEntry } from '@baselayer/registry';
 
 const registry: ComponentRegistry = {
-  "buildHash": "0530b5ba03a966e5e34945bf71461cf42e79ef42",
   "version": "1.9.0",
   "components": [
     {
