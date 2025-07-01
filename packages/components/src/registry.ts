@@ -4,7 +4,7 @@
 import type { ComponentRegistry, ComponentRegistryEntry } from '@baselayer/registry';
 
 const registry: ComponentRegistry = {
-  "generatedAt": "2025-06-30T23:38:30-04:00",
+  "generatedAt": "2025-07-01T03:42:09.000Z",
   "version": "1.9.0",
   "components": [
     {

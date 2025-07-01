@@ -58,7 +58,8 @@ async function generateRegistry(): Promise<void> {
 		const gitCommitDate = execSync("git log -1 --format=%cI", {
 			encoding: "utf8",
 		}).trim();
-		generatedAt = gitCommitDate;
+		// Normalize to UTC to ensure consistency across environments
+		generatedAt = new Date(gitCommitDate).toISOString();
 	} catch {
 		// Fallback to current time if git is not available
 		generatedAt = new Date().toISOString();
