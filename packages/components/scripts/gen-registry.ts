@@ -20,6 +20,27 @@ interface ComponentWithTemplate extends ComponentRegistryEntry {
 	templateContent: string;
 }
 
+async function copySourceToTemplates(metaFiles: string[]): Promise<void> {
+	console.log("📋 Copying source components to templates...");
+	
+	for (const metaFilePath of metaFiles) {
+		const componentId = metaFilePath.split("/").slice(-2, -1)[0];
+		const sourceFile = `${COMPONENTS_DIR}/${componentId}/${componentId}.tsx`;
+		const templateFile = join(TEMPLATES_DIR, `${componentId}.txt`);
+		
+		try {
+			if (existsSync(sourceFile)) {
+				copyFileSync(sourceFile, templateFile);
+				console.log(`✅ Copied ${componentId}.tsx → templates/${componentId}.txt`);
+			} else {
+				console.warn(`⚠️  Source file not found: ${sourceFile}`);
+			}
+		} catch (error) {
+			console.error(`❌ Failed to copy ${componentId}:`, error);
+		}
+	}
+}
+
 async function generateRegistry(): Promise<void> {
 	console.log("🔍 Discovering components...");
 
@@ -27,6 +48,9 @@ async function generateRegistry(): Promise<void> {
 	const metaFiles = await glob(`${COMPONENTS_DIR}/*/meta.json`);
 
 	console.log(`📦 Found ${metaFiles.length} components`);
+
+	// First, copy source components to templates
+	await copySourceToTemplates(metaFiles);
 
 	const components: ComponentWithTemplate[] = [];
 

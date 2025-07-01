@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentType, ReactNode } from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
 	Button as AriaButton,
@@ -74,7 +74,6 @@ const Command = ({
 	const [isMac, setIsMac] = useState(true);
 	const { contains } = useFilter({ sensitivity: "base" });
 
-	// Detect platform after hydration to avoid SSR mismatch
 	useEffect(() => {
 		setIsMac(/Mac/.test(navigator?.platform || ""));
 	}, []);
