@@ -1,7 +1,5 @@
 "use client";
 
-import { Time } from "@internationalized/date";
-
 import { TimeField } from "../core/time-field/time-field";
 
 export const TimeFieldExample = () => (
@@ -10,7 +8,6 @@ export const TimeFieldExample = () => (
     
     <TimeField 
       label="Appointment time" 
-      defaultValue={new Time(14, 30)} 
     />
     
     <TimeField 
