@@ -24,7 +24,7 @@ import { Checkbox } from "../checkbox/checkbox";
 
 const table = tv({
 	slots: {
-		root: "table min-h-[100px] border-separate border-spacing-0 self-start rounded-xl border border-border p-4 outline-none",
+		root: "table min-h-[100px] border-separate border-spacing-0 rounded-xl border border-border p-4 outline-none",
 		column: "border-border border-b-2 px-4 py-1 text-left outline-none",
 		header: "text-fg after:table-row after:h-[2px]",
 		label: "text-fg-3",
