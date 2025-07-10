@@ -7,7 +7,7 @@ import { Input } from "../core/input/input";
 export const CardBase = () => {
 	return (
 		<Card
-			className="w-[400px]"
+			className="w-72 md:w-96"
 			title="Sign in"
 			description="Sign in to your account."
 		>

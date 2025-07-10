@@ -77,7 +77,7 @@ export const Preview = ({
 					</div>
 				</div>
 			)}
-			<div className="flex min-h-96 flex-col items-center justify-center overflow-hidden rounded-2xl border border-border/50">
+			<div className="flex min-h-96 flex-col items-center justify-center overflow-hidden overflow-x-auto rounded-2xl border border-border/50">
 				{activeTab === "preview" ? (
 					<div className="flex h-full items-center justify-center p-6">
 						{children}

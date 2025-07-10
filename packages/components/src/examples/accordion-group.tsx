@@ -4,7 +4,7 @@ export const AccordionGroupExample = () => {
 	return (
 		<div className="h-[500px]">
 			<AccordionGroup
-				className="w-96"
+				className="w-72 lg:w-80"
 				defaultExpandedKeys={["getting-started"]}
 			>
 				<Accordion id="getting-started" title="Getting Started">
