@@ -56,7 +56,8 @@ const users: User[] = [
 ];
 
 export const TableExample = () => (
-	<Table aria-label="User management table">
+	<div className="ml-56 md:ml-0">
+	<Table aria-label="User management table" className="shrink-0">
 		<TableHeader>
 			<TableColumn isRowHeader>Name</TableColumn>
 			<TableColumn>Email</TableColumn>
@@ -86,4 +87,5 @@ export const TableExample = () => (
 			)}
 		</TableBody>
 	</Table>
+	</div>
 );

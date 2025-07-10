@@ -47,7 +47,7 @@ const dateRangePicker = tv({
 	extend: baseStyles,
 	slots: {
 		group:
-			"relative flex min-h-11 w-fit min-w-96 flex-wrap items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:border-transparent data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
+			"relative flex min-h-11 w-full flex-wrap items-center rounded-lg border border-border bg-surface transition-all data-[focus-within]:border-transparent data-[focus-within]:bg-surface data-[focus-within]:ring-2 data-[focus-within]:ring-primary data-[focus-within]:ring-offset-surface",
 		dateSegment:
 			"rounded-md p-1 text-end outline-none focus:bg-primary focus:text-primary-fg data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg",
 		separator: "px-2 text-fg-muted",
@@ -102,6 +102,7 @@ interface DateRangePickerProps<T extends DateValue>
 	label?: string;
 	description?: string;
 	errorMessage?: string;
+	className?: string;
 }
 
 const DateRangePicker = <T extends DateValue>({
@@ -112,9 +113,9 @@ const DateRangePicker = <T extends DateValue>({
 	children,
 	...props
 }: DateRangePickerProps<T>) => (
-	<AriaDateRangePicker className="flex flex-col gap-1" {...props}>
+	<AriaDateRangePicker className="flex w-full flex-col gap-1" {...props}>
 		{label && <Label className="text-sm">{label}</Label>}
-		<Group className={rangeStyles.group()}>
+		<Group className={rangeStyles.group({ className })}>
 			<DateInput slot="start" className={rangeStyles.input()}>
 				{(segment) => (
 					<DateSegment
