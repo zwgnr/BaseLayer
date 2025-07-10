@@ -1,5 +1,11 @@
 # @baselayer/components
 
+## 2.0.2
+
+### Patch Changes
+
+- 6f88f68: mobile optimizations
+
 ## 2.0.1
 
 ### Patch Changes

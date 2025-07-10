@@ -1,5 +1,13 @@
 # @baselayer/web
 
+## 2.0.2
+
+### Patch Changes
+
+- 6f88f68: mobile optimizations
+- Updated dependencies [6f88f68]
+  - @baselayer/components@2.0.2
+
 ## 2.0.1
 
 ### Patch Changes
