@@ -4,7 +4,7 @@
 import type { ComponentRegistry, ComponentRegistryEntry } from '@baselayer/registry';
 
 const registry: ComponentRegistry = {
-  "version": "2.0.1",
+  "version": "2.0.2",
   "components": [
     {
         "id": "accordion",

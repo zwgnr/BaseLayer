@@ -28,7 +28,7 @@
 		"fast-glob": "^3.3.2",
 		"ts-morph": "^26.0.0",
 		"tsx": "^4.20.3",
-		"tw-animate-css": "^1.3.4",
+		"tw-animate-css": "^1.3.6",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
