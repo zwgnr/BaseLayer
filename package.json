@@ -1,7 +1,7 @@
 {
   "name": "baselayer",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Beautiful, accessible, and AI optimized React components for the web.",
   "scripts": {
     "build": "turbo build",
@@ -13,7 +13,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
     "shadcn": "3.4.0",
-    "turbo": "^2.5.4"
+    "turbo": "^2.5.8"
   },
   "packageManager": "pnpm@10.12.1",
   "engines": {
