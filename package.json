@@ -1,24 +1,19 @@
 {
   "name": "baselayer",
   "private": true,
-  "version": "1.9.0",
+  "version": "2.1.0",
   "description": "Beautiful, accessible, and AI optimized React components for the web.",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "clean": "turbo clean",
-    "type-check": "turbo type-check",
-    "changeset": "changeset",
-    "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish",
-    "changeset:status": "changeset status",
-    "release": "pnpm build && pnpm --filter @baselayer-dev/mcp build && pnpm changeset:publish"
+    "type-check": "turbo type-check"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
-    "@changesets/cli": "^2.29.5",
-    "turbo": "^2.5.4"
+    "@biomejs/biome": "2.2.5",
+    "shadcn": "3.4.0",
+    "turbo": "^2.5.8"
   },
   "packageManager": "pnpm@10.12.1",
   "engines": {

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "title": "checkbox",
+  "author": "BaseLayer",
+  "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/checkbox/checkbox.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\ttype CheckboxProps as AriaCheckBoxProps,\n\tCheckbox as AriaCheckbox,\n\tCheckboxGroup as AriaCheckboxGroup,\n\ttype CheckboxGroupProps as AriaCheckboxGroupProps,\n\tFieldError,\n\tText,\n\ttype ValidationResult,\n} from \"react-aria-components\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nimport { Check } from \"lucide-react\";\n\nconst checkbox = tv({\n\tbase: \"group flex items-center justify-center gap-2 py-1 text-fg\",\n});\n\nconst checkboxGroup = tv({\n\tbase: \"flex flex-col gap-2\",\n});\n\ntype CheckboxVariantProps = VariantProps<typeof checkbox>;\n\ninterface CheckboxProps extends CheckboxVariantProps, AriaCheckBoxProps {\n\tclassName?: string;\n\tchildren: ReactNode;\n\tdescription?: string;\n\terrorMessage?: string | ((validation: ValidationResult) => string);\n}\n\nconst Checkbox = ({\n\tclassName,\n\terrorMessage,\n\tchildren,\n\tdescription,\n\t...props\n}: CheckboxProps) => {\n\treturn (\n\t\t<AriaCheckbox className={checkbox({ className })} {...props}>\n\t\t\t{({ isSelected }) => (\n\t\t\t\t<>\n\t\t\t\t\t<div className=\"flex size-6 shrink-0 items-center justify-center rounded-lg border border-border transition-all group-data-[selected]:border-primary group-data-[selected]:bg-primary group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-focus group-data-[focus-visible]:ring-offset-2 group-data-[focus-visible]:ring-offset-surface\">\n\t\t\t\t\t\t{isSelected && <Check className=\"size-4 text-primary-fg\" />}\n\t\t\t\t\t</div>\n\t\t\t\t\t{children}\n\t\t\t\t\t{description && (\n\t\t\t\t\t\t<Text className=\"text-sm\" slot=\"description\">\n\t\t\t\t\t\t\t{description}\n\t\t\t\t\t\t</Text>\n\t\t\t\t\t)}\n\t\t\t\t\t<FieldError className=\"text-danger text-sm\">\n\t\t\t\t\t\t{errorMessage}\n\t\t\t\t\t</FieldError>\n\t\t\t\t</>\n\t\t\t)}\n\t\t</AriaCheckbox>\n\t);\n};\n\ninterface CheckboxGroupProps extends AriaCheckboxGroupProps {\n\tclassName?: string;\n\tlabel?: string;\n\tchildren: ReactNode;\n\tdescription?: string;\n\terrorMessage?: string | ((validation: ValidationResult) => string);\n}\n\nconst CheckboxGroup = ({\n\tclassName,\n\tlabel,\n\tdescription,\n\terrorMessage,\n\tchildren,\n\t...props\n}: CheckboxGroupProps) => (\n\t<AriaCheckboxGroup {...props} className={checkboxGroup({ className })}>\n\t\t{label && (\n\t\t\t<Text className=\"text-md\" slot=\"label\">\n\t\t\t\t{label}\n\t\t\t</Text>\n\t\t)}\n\t\t{children}\n\t\t{description && (\n\t\t\t<Text className=\"text-md\" slot=\"description\">\n\t\t\t\t{description}\n\t\t\t</Text>\n\t\t)}\n\t\t<FieldError className=\"text-danger text-sm\">{errorMessage}</FieldError>\n\t</AriaCheckboxGroup>\n);\n\nexport { Checkbox, CheckboxGroup };\nexport type { CheckboxProps, CheckboxGroupProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "form",
+      "interactive"
+    ]
+  },
+  "categories": [
+    "forms"
+  ]
+}

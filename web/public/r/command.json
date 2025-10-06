@@ -1,0 +1,96 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command",
+  "type": "registry:ui",
+  "title": "command",
+  "author": "BaseLayer",
+  "description": "A command palette that allows users to quickly search and execute commands using keyboard shortcuts.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/command/command.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentType, ReactNode } from \"react\";\nimport { useEffect, useState } from \"react\";\n\nimport {\n\tButton as AriaButton,\n\tDialog as AriaDialog,\n\tDialogTrigger as AriaDialogTrigger,\n\tModal as AriaModal,\n\tAutocomplete,\n\tInput,\n\tMenu,\n\tMenuItem,\n\ttype MenuItemProps,\n\tModalOverlay,\n\ttype ModalOverlayProps,\n\tTextField,\n\tuseFilter,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nimport { Search } from \"lucide-react\";\n\nconst command = tv({\n\tslots: {\n\t\ttrigger:\n\t\t\t\"flex w-full items-center justify-between rounded-full bg-secondary px-4 py-2 font-semibold text-fg outline-none ring-primary ring-offset-2 ring-offset-surface transition-colors data-[hovered]:bg-secondary/75 data-[focus-visible]:ring-2\",\n\t\toverlay:\n\t\t\t\"data-[entering]:fade-in data-[exiting]:fade-out fixed inset-0 z-50 flex min-h-full items-start justify-center bg-zinc-500/25 p-4 text-center data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200 sm:items-center\",\n\t\tmodal:\n\t\t\t\"data-[entering]:zoom-in-95 data-[exiting]:zoom-out-95 data-[entering]:animate-in data-[exiting]:animate-out data-[entering]:duration-300 data-[exiting]:duration-200\",\n\t\tdialog:\n\t\t\t\"flex min-h-96 min-w-80 max-w-full flex-col gap-1 rounded-2xl bg-surface p-2 shadow-lg outline-none md:w-lg\",\n\t\tinput:\n\t\t\t\"rounded-lg border-b-2 border-none bg-transparent px-3 py-2 text-base text-fg leading-5 outline-none placeholder:text-fg-muted\",\n\t\tmenu: \"mt-2 h-80 overflow-auto\",\n\t\titem: \"group flex min-h-12 w-full cursor-default items-center rounded-lg px-3 py-2 text-fg outline-none data-[focused]:bg-secondary data-[pressed]:bg-surface-3 data-[focused]:text-focus-fg\",\n\t\tkbd: \"ml-auto rounded border border-border bg-surface-2 px-2 py-1 font-semibold text-fg-muted text-xs\",\n\t},\n});\n\nconst styles = command();\n\ninterface CommandItem {\n\tid: string;\n\tlabel: string;\n\tshortcut?: string;\n\ticon?: ComponentType<{ className?: string }>;\n\tonSelect?: () => void;\n}\n\ninterface CommandProps extends Omit<ModalOverlayProps, \"className\"> {\n\tclassName?: string;\n\ttrigger?: ReactNode;\n\tcommands: CommandItem[];\n\tplaceholder?: string;\n\ttriggerKey?: string;\n\tonCommandSelect?: (command: CommandItem) => void;\n\tonSearchChange?: (search: string) => void;\n}\n\nconst Command = ({\n\tclassName,\n\ttrigger,\n\tcommands,\n\tplaceholder = \"Search commands…\",\n\ttriggerKey = \"k\",\n\tonCommandSelect,\n\tonSearchChange,\n\t...props\n}: CommandProps) => {\n\tconst [isOpen, setOpen] = useState(false);\n\tconst [isMac, setIsMac] = useState(true);\n\tconst { contains } = useFilter({ sensitivity: \"base\" });\n\n\tuseEffect(() => {\n\t\tsetIsMac(/Mac/.test(navigator?.platform || \"\"));\n\t}, []);\n\n\tuseEffect(() => {\n\t\tconst handleKeyDown = (e: KeyboardEvent) => {\n\t\t\tif (\n\t\t\t\te.key.toLowerCase() === triggerKey.toLowerCase() &&\n\t\t\t\t(isMac ? e.metaKey : e.ctrlKey)\n\t\t\t) {\n\t\t\t\te.preventDefault();\n\t\t\t\tsetOpen((prev) => !prev);\n\t\t\t} else if (e.key === \"Escape\") {\n\t\t\t\te.preventDefault();\n\t\t\t\tsetOpen(false);\n\t\t\t}\n\t\t};\n\n\t\tdocument.addEventListener(\"keydown\", handleKeyDown);\n\t\treturn () => document.removeEventListener(\"keydown\", handleKeyDown);\n\t}, [isMac, triggerKey]);\n\n\tconst handleCommandSelect = (command: CommandItem) => {\n\t\tcommand.onSelect?.();\n\t\tonCommandSelect?.(command);\n\t\tsetOpen(false);\n\t};\n\n\treturn (\n\t\t<AriaDialogTrigger isOpen={isOpen} onOpenChange={setOpen}>\n\t\t\t{trigger || (\n\t\t\t\t<AriaButton className={styles.trigger({ className })}>\n\t\t\t\t\t<div className=\"flex items-center gap-2 text-fg-muted\">\n\t\t\t\t\t\t<Search className=\"size-4 text-fg-muted\" />\n\t\t\t\t\t\tSearch\n\t\t\t\t\t</div>\n\t\t\t\t\t<kbd className=\"rounded-md border border-border px-2 py-1 font-semibold text-fg-muted text-xs\">\n\t\t\t\t\t\t{isMac ? \"⌘\" : \"Ctrl\"} {triggerKey.toUpperCase()}\n\t\t\t\t\t</kbd>\n\t\t\t\t</AriaButton>\n\t\t\t)}\n\t\t\t<ModalOverlay {...props} isDismissable className={styles.overlay()}>\n\t\t\t\t<AriaModal className={styles.modal()}>\n\t\t\t\t\t<AriaDialog className={styles.dialog()}>\n\t\t\t\t\t\t<Autocomplete filter={onSearchChange ? () => true : contains}>\n\t\t\t\t\t\t\t<TextField\n\t\t\t\t\t\t\t\taria-label=\"Search commands\"\n\t\t\t\t\t\t\t\tclassName=\"flex flex-col border-border border-b px-3 py-2 outline-none\"\n\t\t\t\t\t\t\t\tonChange={onSearchChange}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<Input\n\t\t\t\t\t\t\t\t\tautoFocus\n\t\t\t\t\t\t\t\t\tplaceholder={placeholder}\n\t\t\t\t\t\t\t\t\tclassName={styles.input()}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</TextField>\n\t\t\t\t\t\t\t<Menu\n\t\t\t\t\t\t\t\titems={commands}\n\t\t\t\t\t\t\t\tclassName={styles.menu()}\n\t\t\t\t\t\t\t\tselectionMode=\"none\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{({ label, shortcut, icon: Icon, ...command }) => (\n\t\t\t\t\t\t\t\t\t<CommandMenuItem\n\t\t\t\t\t\t\t\t\t\t{...command}\n\t\t\t\t\t\t\t\t\t\ttextValue={label}\n\t\t\t\t\t\t\t\t\t\tonAction={() =>\n\t\t\t\t\t\t\t\t\t\t\thandleCommandSelect({\n\t\t\t\t\t\t\t\t\t\t\t\tlabel,\n\t\t\t\t\t\t\t\t\t\t\t\tshortcut,\n\t\t\t\t\t\t\t\t\t\t\t\ticon: Icon,\n\t\t\t\t\t\t\t\t\t\t\t\t...command,\n\t\t\t\t\t\t\t\t\t\t\t})\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t<div className=\"flex min-w-0 items-center gap-3\">\n\t\t\t\t\t\t\t\t\t\t\t{Icon && (\n\t\t\t\t\t\t\t\t\t\t\t\t<Icon className=\"size-4 shrink-0 text-fg-muted\" />\n\t\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t\t\t<span className=\"truncate font-medium text-sm leading-tight\">\n\t\t\t\t\t\t\t\t\t\t\t\t{label}\n\t\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t{shortcut && (\n\t\t\t\t\t\t\t\t\t\t\t<span className={styles.kbd()}>{shortcut}</span>\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t</CommandMenuItem>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t</Menu>\n\t\t\t\t\t\t</Autocomplete>\n\t\t\t\t\t</AriaDialog>\n\t\t\t\t</AriaModal>\n\t\t\t</ModalOverlay>\n\t\t</AriaDialogTrigger>\n\t);\n};\n\ninterface CommandMenuItemProps extends Omit<MenuItemProps, \"className\"> {\n\tclassName?: string;\n\tchildren: ReactNode;\n}\n\nconst CommandMenuItem = ({\n\tclassName,\n\tchildren,\n\t...props\n}: CommandMenuItemProps) => (\n\t<MenuItem {...props} className={styles.item({ className })}>\n\t\t{children}\n\t</MenuItem>\n);\n\nconst CommandTrigger = AriaDialogTrigger;\n\nexport { Command, CommandMenuItem, CommandTrigger };\nexport type { CommandProps, CommandMenuItemProps, CommandItem };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "beta",
+    "tags": [
+      "search",
+      "navigation",
+      "keyboard",
+      "palette"
+    ]
+  },
+  "categories": [
+    "navigation"
+  ]
+}

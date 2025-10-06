@@ -10,8 +10,7 @@ export function Sidebar() {
 	const introDocs = pages
 		.filter((page) => !page.url.startsWith("/docs/components"))
 		.sort((a, b) => {
-			// Define specific order for intro docs
-			const order = ["/docs/intro", "/docs/usage", "/docs/mcp", "/docs/styles"];
+			const order = ["/docs/intro", "/docs/usage", "/docs/styles"];
 			const aIndex = order.indexOf(a.url);
 			const bIndex = order.indexOf(b.url);
 

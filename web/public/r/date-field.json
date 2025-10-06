@@ -1,0 +1,95 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-field",
+  "type": "registry:ui",
+  "title": "date-field",
+  "author": "BaseLayer",
+  "description": "A date field allows users to enter and edit date and time values using a keyboard. Each part of a date value is displayed in an individually editable segment.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/date-field/date-field.tsx",
+      "content": "\"use client\";\n\nimport type {\n\tDateFieldProps as AriaDateFieldProps,\n\tDateValue,\n} from \"react-aria-components\";\nimport {\n\tDateField as AriaDateField,\n\tDateInput,\n\tDateSegment,\n\tFieldError,\n\tLabel,\n\tText,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst dateField = tv({\n\tslots: {\n\t\tinput:\n\t\t\t\"flex min-h-11 min-w-48 appearance-none items-center rounded-lg border border-border bg-surface px-3 py-0.5 outline-none ring-primary transition-all data-[disabled]:cursor-not-allowed data-[focus-within]:border-transparent data-[disabled]:border-none data-[disabled]:bg-primary/10 data-[focus-within]:bg-surface data-[disabled]:text-fg-disabled data-[focus-within]:ring-2 [&::placeholder]:text-sm\",\n\t\tsegmentStyles:\n\t\t\t\"rounded-md p-1 text-end outline-none focus:text-primary-fg data-[focused]:bg-primary data-[placeholder]:text-fg-muted data-[type='literal']:text-fg-muted data-[placeholder]:focus:text-primary-fg\",\n\t},\n});\n\nconst styles = dateField();\n\ninterface DateFieldProps<T extends DateValue> extends AriaDateFieldProps<T> {\n\tlabel?: string;\n\tdescription?: string;\n\terrorMessage?: string;\n}\n\nconst DateField = <T extends DateValue>({\n\tlabel,\n\tdescription,\n\terrorMessage,\n\t...props\n}: DateFieldProps<T>) => (\n\t<AriaDateField className=\"flex flex-col gap-1\" {...props}>\n\t\t{label && <Label className=\"text-sm\">{label}</Label>}\n\t\t<DateInput className={styles.input()}>\n\t\t\t{(segment) => (\n\t\t\t\t<DateSegment className={styles.segmentStyles()} segment={segment} />\n\t\t\t)}\n\t\t</DateInput>\n\t\t{description && <Text slot=\"description\">{description}</Text>}\n\t\t<FieldError className=\"text-danger text-sm\">{errorMessage}</FieldError>\n\t</AriaDateField>\n);\n\nexport { DateField };\nexport type { DateFieldProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "form",
+      "interactive",
+      "date"
+    ]
+  },
+  "categories": [
+    "forms"
+  ]
+}

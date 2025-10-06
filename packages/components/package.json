@@ -1,18 +1,18 @@
 {
 	"name": "@baselayer/components",
-	"version": "2.0.3",
+	"version": "2.1.0",
 	"private": true,
 	"type": "module",
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
 	"files": [
-		"src",
-		"templates"
+		"src"
 	],
 	"scripts": {
-		"build": "tsc && tsx scripts/gen-registry.ts",
+		"build": "tsc && pnpm generate:registry && pnpm registry:build",
 		"dev": "tsc --watch",
-		"generate:registry": "tsx scripts/gen-registry.ts"
+		"generate:registry": "tsx scripts/gen-registry-json.ts",
+		"registry:build": "shadcn build --cwd . --output ../../web/public/r"
 	},
 	"dependencies": {
 		"@baselayer/registry": "workspace:*",

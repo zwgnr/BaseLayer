@@ -1,41 +1,27 @@
-import {
-	type ComponentId,
-	getComponentTemplate,
-	registry,
-} from "@baselayer/components";
-import type {
-	ComponentRegistry,
-	ComponentRegistryEntry,
-} from "@baselayer/registry";
+import type { RegistryItem } from "@baselayer/registry";
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const examplesDir = join(process.cwd(), "../packages/components/src/examples");
 
-export async function getRegistry(): Promise<ComponentRegistry> {
-	return registry;
-}
-
 export async function getComponentSource(name: string): Promise<string> {
 	try {
-		const component = registry.components.find(
-			(comp: ComponentRegistryEntry) =>
-				comp.id.toLowerCase() === name.toLowerCase() ||
-				comp.meta.name.toLowerCase() === name.toLowerCase(),
+		// Read the shadcn registry
+		const shadcnRegistryPath = join(process.cwd(), "public/r/index.json");
+		const shadcnRegistryContent = readFileSync(shadcnRegistryPath, "utf8");
+		const shadcnRegistry = JSON.parse(shadcnRegistryContent);
+
+		// Find the component in the shadcn registry
+		const shadcnComponent = shadcnRegistry.items?.find(
+			(item: RegistryItem) => item.name === name,
 		);
 
-		if (!component) {
-			return `// Component '${name}' not found in registry`;
+		if (shadcnComponent?.files?.[0]?.content) {
+			return shadcnComponent.files[0].content;
 		}
 
-		const templateContent = getComponentTemplate(component.id as ComponentId);
-
-		if (!templateContent) {
-			return `// Template content not found for component '${component.id}'`;
-		}
-
-		return templateContent;
+		return `// Component '${name}' not found in registry`;
 	} catch (error) {
 		console.error(`Error loading component ${name}:`, error);
 		return `// Error loading component: ${
@@ -50,10 +36,10 @@ export async function getExampleSource(name: string): Promise<string> {
 		const exampleFilePath = join(examplesDir, `${name}.tsx`);
 		let content = readFileSync(exampleFilePath, "utf8");
 
-		// Transform the import path for display 
+		// Transform the import path for display
 		content = content.replace(
 			/from ["']\.\.\/core\/([^/]+)\/\1["']/g,
-			'from "@components/base/$1"',
+			'from "@/components/ui/$1"',
 		);
 
 		return content;

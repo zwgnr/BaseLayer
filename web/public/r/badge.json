@@ -1,0 +1,93 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "badge",
+  "author": "BaseLayer",
+  "description": "A badge is a small label that can be used to display information or status.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/badge/badge.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\n\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nexport const badge = tv({\n\tbase: \"flex items-center justify-center rounded-4xl px-3 py-2 font-semibold text-xs\",\n\tvariants: {\n\t\tvariant: {\n\t\t\tattention: \"bg-gradient-to-r from-pink-500 to-purple-500 text-white\",\n\t\t\tneutral: \"bg-secondary text-secondary-fg\",\n\t\t\tdanger: \"bg-danger text-danger-fg\",\n\t\t},\n\t},\n\tdefaultVariants: {\n\t\tvariant: \"attention\",\n\t},\n});\n\ntype BadgeProps = VariantProps<typeof badge> & HTMLAttributes<HTMLSpanElement>;\n\nconst Badge = ({ className, variant, ...props }: BadgeProps) => (\n\t<span className={badge({ variant, className })} {...props} />\n);\n\nexport { Badge };\nexport type { BadgeProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "status"
+    ]
+  },
+  "categories": [
+    "display"
+  ]
+}

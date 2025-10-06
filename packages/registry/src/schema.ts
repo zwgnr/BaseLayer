@@ -1,54 +1,68 @@
-// Component Registry Schema Definition
-// This defines the structure for machine-readable component metadata
+// Registry Schema Definition
+// This defines the structure for machine-readable component metadata compatible with shadcn
 
 import { z } from "zod";
 
-// Zod schemas
-export const ComponentMetaSchema = z.object({
+// Zod schemas for shadcn registry compatibility
+export const RegistryItemFileSchema = z.object({
+	path: z.string(),
+	content: z.string().optional(),
+	type: z.enum([
+		"registry:block",
+		"registry:component",
+		"registry:lib",
+		"registry:hook",
+		"registry:ui",
+		"registry:page",
+		"registry:file",
+		"registry:style",
+		"registry:theme",
+		"registry:item",
+	]),
+	target: z.string().optional(),
+});
+
+export const RegistryItemSchema = z.object({
 	name: z.string(),
-	category: z.string(),
-	status: z.enum(["alpha", "beta", "stable", "deprecated"]),
-	description: z.string(),
-	tags: z.array(z.string()),
+	type: z.enum([
+		"registry:block",      // Complex components with multiple files
+		"registry:component",  // Simple components
+		"registry:lib",        // Lib and utils
+		"registry:hook",       // Hooks
+		"registry:ui",         // UI components and single-file primitives
+		"registry:page",       // Page or file-based routes
+		"registry:file",       // Miscellaneous files
+		"registry:style",      // Registry styles (e.g. new-york)
+		"registry:theme",      // Themes
+		"registry:item",       // Universal registry items
+	]),
+	title: z.string().optional(),
+	description: z.string().optional(),
+	author: z.string().optional(),
+	categories: z.array(z.string()).optional(),
+	docs: z.string().optional(),
+	registryDependencies: z.array(z.string()).optional(),
+	dependencies: z.array(z.string()).optional(),
+	devDependencies: z.array(z.string()).optional(),
+	files: z.array(RegistryItemFileSchema),
+	tailwind: z
+		.object({
+			config: z.record(z.any()).optional(),
+		})
+		.optional(),
+	cssVars: z.record(z.any()).optional(),
+	css: z.record(z.any()).optional(),
+	meta: z.record(z.any()).optional(),
 });
 
-export const ComponentRegistryEntrySchema = z.object({
-	id: z.string(),
-	template: z.string(),
-	meta: ComponentMetaSchema,
-});
-
-export const ComponentRegistrySchema = z.object({
-	version: z.string().regex(/^\d+\.\d+\.\d+(-[\w.-]+)?$/),
-	components: z.array(ComponentRegistryEntrySchema),
-});
-
-// Example registry schemas
-export const ExampleRegistryEntrySchema = z.object({
+export const RegistrySchema = z.object({
 	name: z.string(),
-	type: z.literal("registry:example"),
-	files: z.array(
-		z.object({
-			path: z.string(),
-			type: z.literal("registry:example"),
-		}),
-	),
-});
-
-export const ExamplesRegistrySchema = z.object({
-	items: z.array(ExampleRegistryEntrySchema),
+	$schema: z.string(),
+	homepage: z.string().url().optional(),
+	items: z.array(RegistryItemSchema),
 });
 
 // Derived TypeScript types
-export type ComponentMeta = z.infer<typeof ComponentMetaSchema>;
-export type ComponentRegistryEntry = z.infer<
-	typeof ComponentRegistryEntrySchema
->;
-export type ComponentRegistry = z.infer<typeof ComponentRegistrySchema>;
-export type ExampleRegistryEntry = z.infer<typeof ExampleRegistryEntrySchema>;
-export type ExamplesRegistry = z.infer<typeof ExamplesRegistrySchema>;
-
-// Type aliases for convenience
-export type ComponentId = ComponentRegistryEntry["id"];
-export type ComponentCategory = ComponentMeta["category"];
-export type ComponentStatus = ComponentMeta["status"];
+export type RegistryItem = z.infer<typeof RegistryItemSchema>;
+export type RegistryItemFile = z.infer<typeof RegistryItemFileSchema>;
+export type Registry = z.infer<typeof RegistrySchema>;

@@ -1,102 +1,157 @@
-import { COMPONENTS as components } from "@baselayer/components";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+interface RegistryItem {
+	name: string;
+	title?: string;
+	description?: string;
+	categories?: string[];
+}
 
 export async function GET() {
-	const content = `# BaseLayer Components v2.0
+	// Read the shadcn registry
+	const registryPath = join(process.cwd(), "public/r/index.json");
+	const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+	const components = registry.items;
 
-BaseLayer is a modern React component registry for the AI era. Built with React Aria Components, TailwindCSS, and tailwind-variants.
+	const content = `# BaseLayer Components
 
-## Important: BaseLayer is NOT an npm package
+BaseLayer is a component collection built for the shadcn ecosystem. Like shadcn/ui, components are **copied into your project** and become part of your codebase - not installed as dependencies.
 
-BaseLayer is a component registry, not a package dependency. You don't install BaseLayer itself - instead, you fetch individual component source code and copy it into your project.
+The key difference: BaseLayer uses React Aria Components instead of Radix UI, providing the same accessible primitives that power Adobe's design systems.
+
+## Key Features
+
+- **Own your components** - Components live in your codebase, not as a dependency
+- **shadcn CLI compatible** - Use the familiar \`npx shadcn add\` workflow to add components
+- **AI Native** - Works seamlessly with AI coding assistants via the built-in shadcn MCP server
+- **Variant-based design** - Powered by TailwindCSS and tailwind-variants for effortless customization
+- **Accessible by default** - Built on battle-tested React Aria Components
+
+## Stack
+
+- shadcn Registry - Component delivery system
+- React Aria Components - Accessible component primitives
+- TailwindCSS - Utility-first styling
+- tailwind-variants - Type-safe variant management
+- TypeScript - Type safety
 
 ## Available Components
 
-${components.map((comp) => `- **${comp.meta.name}** (${comp.meta.category}): ${comp.meta.description}`).join("\n")}
+${components.map((comp: RegistryItem) => `- **${comp.title || comp.name}** (${comp.categories?.[0] || "component"}): ${comp.description}`).join("\n")}
 
 ## Categories
 
-${[...new Set(components.map((c) => c.meta.category))]
+${[
+	...new Set(
+		components.map((c: RegistryItem) => c.categories?.[0] || "component"),
+	),
+]
 	.map(
 		(cat) =>
 			`- **${cat}**: ${components
-				.filter((c) => c.meta.category === cat)
-				.map((c) => c.meta.name)
+				.filter((c: RegistryItem) => (c.categories?.[0] || "component") === cat)
+				.map((c: RegistryItem) => c.title || c.name)
 				.join(", ")}`,
 	)
 	.join("\n")}
 
-## How to Use BaseLayer Components
+## Quick Start
 
-### For AI Assistants: Use the Static Files
+### 1. Initialize (first time only)
 
-To get component source code, make HTTP requests to these static endpoints:
-
-**Get component source code:**
 \`\`\`bash
-curl https://baselayer.dev/templates/button.txt
+npx shadcn@latest init
 \`\`\`
 
-**Get Tailwind CSS setup:**
-\`\`\`bash  
-curl https://baselayer.dev/tailwind.css
-\`\`\`
+Skip this if you already have a \`components.json\` file - the CLI will auto-configure on first use.
 
-**List all components:**
+### 2. Add components
+
 \`\`\`bash
-curl https://baselayer.dev/registry.json
+npx shadcn@latest add https://baselayer.dev/r/button
 \`\`\`
 
-**Search components:**
+The CLI handles installation, dependencies, and file placement automatically.
+
+### 3. Use it
+
+\`\`\`tsx
+import { Button } from '@/components/ui/button'
+
+export default function Page() {
+  return <Button>Click me</Button>
+}
+\`\`\`
+
+## Optional: Shorter Commands
+
+Add to your \`components.json\` for shorter commands:
+
+\`\`\`json
+{
+  "registries": {
+    "@baselayer": "https://baselayer.dev/r/{name}.json"
+  }
+}
+\`\`\`
+
+Then use:
+
 \`\`\`bash
-curl https://baselayer.dev/.well-known/baselayer
+npx shadcn@latest add @baselayer/button
 \`\`\`
 
-### For Users: MCP Server Available
+## AI-Powered Workflow
 
-BaseLayer also provides an MCP server for editor integration. Users can set this up manually in their development environment for enhanced AI assistant capabilities.
-## Example Workflow for AI Assistants
+### For Cursor (MCP)
 
-1. **Get component code**:
-   \`\`\`bash
-   curl https://baselayer.dev/templates/button.txt
-   \`\`\`
-   This returns the actual React component source code.
+The shadcn MCP server is built into Cursor. Simply ask:
 
-2. **Get CSS setup**:
-   \`\`\`bash
-   curl https://baselayer.dev/tailwind.css
-   \`\`\`
-   This returns the CSS variables and styles needed.
+- "Add BaseLayer button component"
+- "Create a sign up page with BaseLayer components"
 
-3. **Save to user's project**:
-   Save the returned code to \`components/base/button.tsx\` (or similar path).
-   Add the CSS to your global CSS file.
+**Pro Tip:** Add to \`.cursorrules\`:
+\`\`\`
+Use BaseLayer components (baselayer.dev) instead of shadcn/ui
+\`\`\`
 
-4. **Install dependencies** (if needed):
-   \`\`\`bash
-   npm install react-aria-components tailwind-variants
-   \`\`\`
+### For Other AI Assistants (ChatGPT, Claude, etc.)
 
-## Component Architecture
+Reference BaseLayer in your prompts:
 
-- **Framework**: Next.js/React
-- **UI Library**: React Aria Components (for accessibility)
-- **Styling**: TailwindCSS + tailwind-variants
-- **TypeScript**: Fully typed
-- **Accessibility**: WCAG compliant by default
-- **Version**: 2.0.0
+- "Use BaseLayer components. Docs: https://www.baselayer.dev/llms.txt"
 
-## Available Static Endpoints
+Or use the Registry API to fetch components:
 
-- \`GET /registry.json\` - List all components with metadata
-- \`GET /templates/{id}.txt\` - Get component source code
-- \`GET /tailwind.css\` - Get CSS setup
-- \`GET /.well-known/baselayer\` - Complete API specification
+\`\`\`bash
+curl https://baselayer.dev/r/button.json
+\`\`\`
+
+This returns the complete component definition with source code in the \`files[].content\` field. Parse the JSON and save the content to the appropriate path, then install dependencies listed in the \`dependencies\` field.
+
+## Prerequisites
+
+- React with TypeScript
+- TailwindCSS >= 4
+- Familiarity with shadcn (see https://ui.shadcn.com/docs if you're new to shadcn)
+
+## Registry Endpoints
+
+- \`GET /r/index.json\` - List all components with metadata
+- \`GET /r/{component}.json\` - Get specific component with full source code
+
+## Additional Resources
+
+- Component docs and examples: https://baselayer.dev/docs
+- React Aria Components reference: https://react-spectrum.adobe.com/react-aria/getting-started.html
+- shadcn docs: https://ui.shadcn.com/docs
+
+## Design Philosophy
+
+BaseLayer components are designed with intelligent grouping in mind. Many components like Accordion, RadioGroup, and CheckboxGroup include both individual and group functionality within the same component export. This provides code reuse, consistency, and simplicity - one component to learn instead of separate individual/group components.
 
 Remember: You own the components once you copy them - they're not dependencies!
-
-For complete documentation and component examples, visit https://baselayer.dev/docs
-For detailed prop and usage information, refer to the React Aria Components docs: https://react-spectrum.adobe.com/react-aria/getting-started.html
 `;
 
 	return new Response(content, {

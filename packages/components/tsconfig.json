@@ -16,7 +16,11 @@
     "jsx": "react-jsx",
     "declaration": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@/components/ui/*": ["src/core/*"]
+    }
   },
   "include": [
     "src/**/*"

@@ -45,7 +45,7 @@ const RadioGroup = ({
     {label}
     {children}
     {description && <Text slot="description">{description}</Text>}
-    <FieldError className="text-fg-error text-sm">{errorMessage}</FieldError>
+    <FieldError className="text-danger text-sm">{errorMessage}</FieldError>
   </AriaRadioGroup>
 );
 

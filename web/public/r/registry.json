@@ -1,0 +1,2422 @@
+{
+  "name": "@baselayer",
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "homepage": "https://baselayer.dev",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "accordion",
+      "description": "An accordion allows users to toggle the display of sections of content. Each accordion consists of a header with a title and content area.",
+      "author": "BaseLayer",
+      "categories": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "src/core/accordion/accordion.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "disclosure",
+          "collapsible",
+          "expandable",
+          "content"
+        ]
+      }
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "badge",
+      "description": "A badge is a small label that can be used to display information or status.",
+      "author": "BaseLayer",
+      "categories": [
+        "display"
+      ],
+      "files": [
+        {
+          "path": "src/core/badge/badge.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "status"
+        ]
+      }
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "breadcrumbs",
+      "description": "Breadcrumbs display a heirarchy of links to the current page or resource in an application.",
+      "author": "BaseLayer",
+      "categories": [
+        "navigation"
+      ],
+      "files": [
+        {
+          "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "navigation"
+        ]
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "button",
+      "description": "A button allows a user to perform an action, with mouse, touch, and keyboard interactions.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/button/button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive"
+        ]
+      }
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "calendar",
+      "description": "A calendar displays one or more date grids and allows users to select either a single date or a contiguous range of dates.",
+      "author": "BaseLayer",
+      "categories": [
+        "data-entry"
+      ],
+      "files": [
+        {
+          "path": "src/core/calendar/calendar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "date-time"
+        ]
+      }
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "card",
+      "description": "Displays a card with header, content, and footer.",
+      "author": "BaseLayer",
+      "categories": [
+        "layout"
+      ],
+      "files": [
+        {
+          "path": "src/core/card/card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "layout",
+          "container",
+          "display"
+        ]
+      }
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "checkbox",
+      "description": "A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/checkbox/checkbox.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive"
+        ]
+      }
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "combobox",
+      "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/combobox/combobox.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "picker"
+        ]
+      }
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "command",
+      "description": "A command palette that allows users to quickly search and execute commands using keyboard shortcuts.",
+      "author": "BaseLayer",
+      "categories": [
+        "navigation"
+      ],
+      "files": [
+        {
+          "path": "src/core/command/command.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "beta",
+        "tags": [
+          "search",
+          "navigation",
+          "keyboard",
+          "palette"
+        ]
+      }
+    },
+    {
+      "name": "date-field",
+      "type": "registry:ui",
+      "title": "date-field",
+      "description": "A date field allows users to enter and edit date and time values using a keyboard. Each part of a date value is displayed in an individually editable segment.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/date-field/date-field.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "date"
+        ]
+      }
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "date-picker",
+      "description": "A date picker combines one or more DateFields with a calendar popover, allowing users to enter or select a single date/time or a range.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/date-picker/date-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "calendar"
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "date-time"
+        ]
+      }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "input",
+      "description": "Allows a user to enter a plain text value with a keyboard.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/input/input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive"
+        ]
+      }
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "menu",
+      "description": "A menu displays a list of actions or options that a user can choose.",
+      "author": "BaseLayer",
+      "categories": [
+        "pickers"
+      ],
+      "files": [
+        {
+          "path": "src/core/menu/menu.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "interactive",
+          "navigation"
+        ]
+      }
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "meter",
+      "description": "A meter represents a quantity within a known range, or a fractional value.",
+      "author": "BaseLayer",
+      "categories": [
+        "data-display"
+      ],
+      "files": [
+        {
+          "path": "src/core/meter/meter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "data-display",
+          "progress"
+        ]
+      }
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "title": "modal",
+      "description": "A modal is an overlay element which blocks interaction with elements outside it.",
+      "author": "BaseLayer",
+      "categories": [
+        "overlays"
+      ],
+      "files": [
+        {
+          "path": "src/core/modal/modal.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "overlay"
+        ]
+      }
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "popover",
+      "description": "A popover is an overlay element positioned relative to a trigger.",
+      "author": "BaseLayer",
+      "categories": [
+        "overlays"
+      ],
+      "files": [
+        {
+          "path": "src/core/popover/popover.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "overlay",
+          "interactive"
+        ]
+      }
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "radio-group",
+      "description": "A radio group allows a user to select a single option from a list of mutually exclusive options.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/radio-group/radio-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "selection"
+        ]
+      }
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "select",
+      "description": "A select displays a collapsible list of options and allows a user to select one of them.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/select/select.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "picker"
+        ]
+      }
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "slider",
+      "description": "A slider allows a user to select one or more values within a range.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/slider/slider.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "range"
+        ]
+      }
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "switch",
+      "description": "A switch allows a user to turn a setting on or off.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/switch/switch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "toggle"
+        ]
+      }
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "table",
+      "description": "A table displays data in rows and columns and enables a user to navigate its contents via directional navigation keys, and optionally supports row selection and sorting.",
+      "author": "BaseLayer",
+      "categories": [
+        "data-display"
+      ],
+      "files": [
+        {
+          "path": "src/core/table/table.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "checkbox"
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "data-display",
+          "interactive"
+        ]
+      }
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "tabs",
+      "description": "Tabs organize content into multiple sections and allow users to navigate between them.",
+      "author": "BaseLayer",
+      "categories": [
+        "navigation"
+      ],
+      "files": [
+        {
+          "path": "src/core/tabs/tabs.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "navigation",
+          "interactive",
+          "layout"
+        ]
+      }
+    },
+    {
+      "name": "tag-group",
+      "type": "registry:ui",
+      "title": "tag-group",
+      "description": "A tag group is a focusable list of labels, categories, keywords, filters, or other items, with support for keyboard navigation, selection, and removal.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/tag-group/tag-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "selection",
+          "filtering"
+        ]
+      }
+    },
+    {
+      "name": "time-field",
+      "type": "registry:ui",
+      "title": "time-field",
+      "description": "A time field allows users to enter and edit time values using a keyboard. Each part of a time value is displayed in an individually editable segment.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/time-field/time-field.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "time"
+        ]
+      }
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "toggle",
+      "description": "A toggle button allows a user to toggle a selection on or off, for example switching between two states or modes.",
+      "author": "BaseLayer",
+      "categories": [
+        "forms"
+      ],
+      "files": [
+        {
+          "path": "src/core/toggle/toggle.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "form",
+          "interactive",
+          "toggle"
+        ]
+      }
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "tooltip",
+      "description": "A tooltip displays a description of an element on hover or focus.",
+      "author": "BaseLayer",
+      "categories": [
+        "overlays"
+      ],
+      "files": [
+        {
+          "path": "src/core/tooltip/tooltip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "react-aria-components",
+        "tailwind-variants",
+        "lucide-react",
+        "tw-animate-css"
+      ],
+      "tailwind": {
+        "config": {
+          "content": [
+            "./components/**/*.{ts,tsx}"
+          ],
+          "theme": {
+            "extend": {}
+          }
+        }
+      },
+      "cssVars": {
+        "theme": {
+          "--color-surface": "var(--surface)",
+          "--color-surface-2": "var(--surface-2)",
+          "--color-fg": "var(--fg)",
+          "--color-fg-muted": "var(--fg-muted)",
+          "--color-fg-disabled": "var(--fg-disabled)",
+          "--color-fg-inverse": "var(--fg-inverse)",
+          "--color-border": "var(--border)",
+          "--color-focus": "var(--focus)",
+          "--color-primary": "var(--primary)",
+          "--color-primary-fg": "var(--primary-fg)",
+          "--color-secondary": "var(--secondary)",
+          "--color-secondary-fg": "var(--secondary-fg)",
+          "--color-danger": "var(--danger)",
+          "--color-danger-fg": "var(--danger-fg)"
+        },
+        "light": {
+          "--surface": "oklch(98.5% 0 0)",
+          "--surface-2": "oklch(97% 0 0)",
+          "--fg": "oklch(14.5% 0 0)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(70.8% 0 0)",
+          "--border": "oklch(87% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(14.5% 0 0)",
+          "--primary-fg": "oklch(98.5% 0 0)",
+          "--secondary": "oklch(92.2% 0 0)",
+          "--secondary-fg": "oklch(14.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "#ffffff"
+        },
+        "dark": {
+          "--surface": "oklch(14.5% 0 0)",
+          "--surface-2": "oklch(20.5% 0 0)",
+          "--fg": "oklch(98.5% 0.001 106.423)",
+          "--fg-muted": "oklch(55.6% 0 0)",
+          "--fg-inverse": "oklch(98.5% 0 0)",
+          "--fg-disabled": "oklch(37.1% 0 0)",
+          "--border": "oklch(37.1% 0 0)",
+          "--focus": "oklch(68.5% 0.169 237.323)",
+          "--primary": "oklch(98.5% 0 0)",
+          "--primary-fg": "oklch(14.5% 0 0)",
+          "--secondary": "oklch(26.9% 0 0)",
+          "--secondary-fg": "oklch(98.5% 0 0)",
+          "--danger": "oklch(63.7% 0.237 25.331)",
+          "--danger-fg": "oklch(98.5% 0 0)"
+        }
+      },
+      "css": {
+        "@import \"tw-animate-css\"": {}
+      },
+      "meta": {
+        "status": "stable",
+        "tags": [
+          "overlay",
+          "interactive",
+          "help"
+        ]
+      }
+    }
+  ]
+}
