@@ -12,7 +12,7 @@ export async function GET(
 
 		// If no segments, return the registry index
 		if (!segments || segments.length === 0) {
-			const registryPath = join(process.cwd(), "public/r/index.json");
+			const registryPath = join(process.cwd(), "public/r/registry.json");
 			const registryContent = readFileSync(registryPath, "utf8");
 			return new NextResponse(registryContent, {
 				headers: {

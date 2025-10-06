@@ -10,7 +10,7 @@ interface RegistryItem {
 
 export async function GET() {
 	// Read the shadcn registry
-	const registryPath = join(process.cwd(), "public/r/index.json");
+	const registryPath = join(process.cwd(), "public/r/registry.json");
 	const registry = JSON.parse(readFileSync(registryPath, "utf8"));
 	const components = registry.items;
 
@@ -138,7 +138,7 @@ This returns the complete component definition with source code in the \`files[]
 
 ## Registry Endpoints
 
-- \`GET /r/index.json\` - List all components with metadata
+- \`GET /r/registry.json\` - List all components with metadata
 - \`GET /r/{component}.json\` - Get specific component with full source code
 
 ## Additional Resources

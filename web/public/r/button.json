@@ -15,7 +15,8 @@
     {
       "path": "src/core/button/button.tsx",
       "content": "\"use client\";\n\nimport {\n\tButton as AriaButton,\n\ttype ButtonProps as AriaButtonProps,\n} from \"react-aria-components\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nconst button = tv({\n\tbase: \"inline-flex appearance-none items-center justify-center rounded-full font-semibold outline-none ring-focus ring-offset-3 ring-offset-surface transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[focus-visible]:ring-2\",\n\tvariants: {\n\t\tvariant: {\n\t\t\tprimary:\n\t\t\t\t\"bg-primary text-primary-fg data-[hovered]:bg-primary/80\",\n\t\t\tsecondary:\n\t\t\t\t\"border border-border text-fg data-[hovered]:border-secondary data-[hovered]:bg-secondary\",\n\t\t\tghost:\n\t\t\t\t\"bg-transparent text-fg data-[hovered]:bg-secondary data-[hovered]:text-secondary-fg\",\n\t\t\tdanger:\n\t\t\t\t\"border border-transparent bg-danger text-danger-fg data-[hovered]:bg-danger/80\",\n\t\t},\n\t\tsize: {\n\t\t\tsm: \"px-2 py-1.5 text-sm\",\n\t\t\tmd: \"px-4 py-2.5 text-base\",\n\t\t\tlg: \"px-6 py-3.5 font-bold text-lg\",\n\t\t\ticon: \"size-9\",\n\t\t},\n\t},\n\tdefaultVariants: {\n\t\tvariant: \"primary\",\n\t\tsize: \"md\",\n\t},\n});\n\ntype ButtonVariantProps = VariantProps<typeof button>;\n\ninterface ButtonProps\n\textends Omit<AriaButtonProps, \"className\">,\n\t\tButtonVariantProps {\n\tclassName?: string;\n}\n\nconst Button = ({\n\tclassName,\n\tsize,\n\tvariant,\n\tchildren,\n\t...props\n}: ButtonProps) => (\n\t<AriaButton className={button({ className, size, variant })} {...props}>\n\t\t{children}\n\t</AriaButton>\n);\n\nButton.displayName = \"Button\";\n\nexport { Button };\nexport type { ButtonProps };\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/ui/button.tsx"
     }
   ],
   "tailwind": {

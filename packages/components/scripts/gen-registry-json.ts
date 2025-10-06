@@ -100,6 +100,7 @@ async function processComponent(
 		files: [
 			{
 				path: `src/core/${componentId}/${componentId}.tsx`,
+				target: `components/ui/${componentId}.tsx`,
 				type: "registry:component",
 			},
 		],

@@ -15,7 +15,8 @@
     {
       "path": "src/core/input/input.tsx",
       "content": "\"use client\";\n\nimport type {\n\tTextFieldProps as AriaTextFieldProps,\n\tValidationResult,\n} from \"react-aria-components\";\nimport {\n\tInput as AriaInput,\n\tTextField as AriaTextField,\n\tFieldError,\n\tLabel,\n\tText,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst input = tv({\n\tbase: \"min-h-11 appearance-none rounded-lg border border-border bg-surface px-3 py-1 text-fg outline-none ring-primary transition-all data-[disabled]:cursor-not-allowed data-[focused]:border-transparent data-[disabled]:bg-primary/10 data-[disabled]:text-fg-disabled data-[focused]:ring-2 [&::placeholder]:text-fg-muted [&::placeholder]:text-sm\",\n});\n\ninterface InputProps extends Omit<AriaTextFieldProps, \"className\"> {\n\tclassName?: string;\n\tlabel?: string;\n\tdescription?: string;\n\terrorMessage?: string | ((validation: ValidationResult) => string);\n\tplaceholder?: string;\n}\n\nconst Input = ({\n\tlabel,\n\tdescription,\n\terrorMessage,\n\tplaceholder,\n\tclassName,\n\t...props\n}: InputProps) => (\n\t<AriaTextField className=\"flex w-full flex-col gap-1\" {...props}>\n\t\t{label && <Label className=\"text-sm\">{label}</Label>}\n\t\t<AriaInput className={input({ className })} placeholder={placeholder} />\n\t\t{description && (\n\t\t\t<Text className=\"text-fg-muted text-sm\" slot=\"description\">\n\t\t\t\t{description}\n\t\t\t</Text>\n\t\t)}\n\t\t<FieldError className=\"text-danger text-sm\">{errorMessage}</FieldError>\n\t</AriaTextField>\n);\n\nexport { Input };\nexport type { InputProps };\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/ui/input.tsx"
     }
   ],
   "tailwind": {

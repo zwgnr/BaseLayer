@@ -15,6 +15,7 @@
       "files": [
         {
           "path": "src/core/accordion/accordion.tsx",
+          "target": "components/ui/accordion.tsx",
           "type": "registry:component"
         }
       ],
@@ -109,6 +110,7 @@
       "files": [
         {
           "path": "src/core/badge/badge.tsx",
+          "target": "components/ui/badge.tsx",
           "type": "registry:component"
         }
       ],
@@ -200,6 +202,7 @@
       "files": [
         {
           "path": "src/core/breadcrumbs/breadcrumbs.tsx",
+          "target": "components/ui/breadcrumbs.tsx",
           "type": "registry:component"
         }
       ],
@@ -291,6 +294,7 @@
       "files": [
         {
           "path": "src/core/button/button.tsx",
+          "target": "components/ui/button.tsx",
           "type": "registry:component"
         }
       ],
@@ -383,6 +387,7 @@
       "files": [
         {
           "path": "src/core/calendar/calendar.tsx",
+          "target": "components/ui/calendar.tsx",
           "type": "registry:component"
         }
       ],
@@ -476,6 +481,7 @@
       "files": [
         {
           "path": "src/core/card/card.tsx",
+          "target": "components/ui/card.tsx",
           "type": "registry:component"
         }
       ],
@@ -569,6 +575,7 @@
       "files": [
         {
           "path": "src/core/checkbox/checkbox.tsx",
+          "target": "components/ui/checkbox.tsx",
           "type": "registry:component"
         }
       ],
@@ -661,6 +668,7 @@
       "files": [
         {
           "path": "src/core/combobox/combobox.tsx",
+          "target": "components/ui/combobox.tsx",
           "type": "registry:component"
         }
       ],
@@ -754,6 +762,7 @@
       "files": [
         {
           "path": "src/core/command/command.tsx",
+          "target": "components/ui/command.tsx",
           "type": "registry:component"
         }
       ],
@@ -848,6 +857,7 @@
       "files": [
         {
           "path": "src/core/date-field/date-field.tsx",
+          "target": "components/ui/date-field.tsx",
           "type": "registry:component"
         }
       ],
@@ -941,6 +951,7 @@
       "files": [
         {
           "path": "src/core/date-picker/date-picker.tsx",
+          "target": "components/ui/date-picker.tsx",
           "type": "registry:component"
         }
       ],
@@ -1037,6 +1048,7 @@
       "files": [
         {
           "path": "src/core/input/input.tsx",
+          "target": "components/ui/input.tsx",
           "type": "registry:component"
         }
       ],
@@ -1129,6 +1141,7 @@
       "files": [
         {
           "path": "src/core/menu/menu.tsx",
+          "target": "components/ui/menu.tsx",
           "type": "registry:component"
         }
       ],
@@ -1221,6 +1234,7 @@
       "files": [
         {
           "path": "src/core/meter/meter.tsx",
+          "target": "components/ui/meter.tsx",
           "type": "registry:component"
         }
       ],
@@ -1313,6 +1327,7 @@
       "files": [
         {
           "path": "src/core/modal/modal.tsx",
+          "target": "components/ui/modal.tsx",
           "type": "registry:component"
         }
       ],
@@ -1404,6 +1419,7 @@
       "files": [
         {
           "path": "src/core/popover/popover.tsx",
+          "target": "components/ui/popover.tsx",
           "type": "registry:component"
         }
       ],
@@ -1496,6 +1512,7 @@
       "files": [
         {
           "path": "src/core/radio-group/radio-group.tsx",
+          "target": "components/ui/radio-group.tsx",
           "type": "registry:component"
         }
       ],
@@ -1589,6 +1606,7 @@
       "files": [
         {
           "path": "src/core/select/select.tsx",
+          "target": "components/ui/select.tsx",
           "type": "registry:component"
         }
       ],
@@ -1682,6 +1700,7 @@
       "files": [
         {
           "path": "src/core/slider/slider.tsx",
+          "target": "components/ui/slider.tsx",
           "type": "registry:component"
         }
       ],
@@ -1775,6 +1794,7 @@
       "files": [
         {
           "path": "src/core/switch/switch.tsx",
+          "target": "components/ui/switch.tsx",
           "type": "registry:component"
         }
       ],
@@ -1868,6 +1888,7 @@
       "files": [
         {
           "path": "src/core/table/table.tsx",
+          "target": "components/ui/table.tsx",
           "type": "registry:component"
         }
       ],
@@ -1964,6 +1985,7 @@
       "files": [
         {
           "path": "src/core/tabs/tabs.tsx",
+          "target": "components/ui/tabs.tsx",
           "type": "registry:component"
         }
       ],
@@ -2057,6 +2079,7 @@
       "files": [
         {
           "path": "src/core/tag-group/tag-group.tsx",
+          "target": "components/ui/tag-group.tsx",
           "type": "registry:component"
         }
       ],
@@ -2151,6 +2174,7 @@
       "files": [
         {
           "path": "src/core/time-field/time-field.tsx",
+          "target": "components/ui/time-field.tsx",
           "type": "registry:component"
         }
       ],
@@ -2244,6 +2268,7 @@
       "files": [
         {
           "path": "src/core/toggle/toggle.tsx",
+          "target": "components/ui/toggle.tsx",
           "type": "registry:component"
         }
       ],
@@ -2337,6 +2362,7 @@
       "files": [
         {
           "path": "src/core/tooltip/tooltip.tsx",
+          "target": "components/ui/tooltip.tsx",
           "type": "registry:component"
         }
       ],

@@ -8,7 +8,7 @@ const examplesDir = join(process.cwd(), "../packages/components/src/examples");
 export async function getComponentSource(name: string): Promise<string> {
 	try {
 		// Read the shadcn registry
-		const shadcnRegistryPath = join(process.cwd(), "public/r/index.json");
+		const shadcnRegistryPath = join(process.cwd(), "public/r/registry.json");
 		const shadcnRegistryContent = readFileSync(shadcnRegistryPath, "utf8");
 		const shadcnRegistry = JSON.parse(shadcnRegistryContent);
 

@@ -15,7 +15,8 @@
     {
       "path": "src/core/popover/popover.tsx",
       "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tDialogTrigger as AriaDialogTrigger,\n\tPopover as AriaPopover,\n\ttype PopoverProps as AriaPopoverProps,\n\tDialog,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nexport const popover = tv({\n\tbase: \"data-[entering]:fade-in data-[exiting]:fade-out m-1 max-w-lg rounded-2xl border border-border/25 bg-surface p-2 text-fg shadow-lg outline-none data-[entering]:animate-in data-[exiting]:animate-out\",\n});\n\ninterface DialogProps extends Omit<AriaPopoverProps, \"className\" | \"children\"> {\n\tchildren: ReactNode;\n\tclassName?: string;\n}\n\nconst PopoverTrigger = AriaDialogTrigger;\n\nconst Popover = ({ children, className, ...props }: DialogProps) => (\n\t<AriaPopover className={popover({ className })} {...props}>\n\t\t<Dialog className=\"outline-none\">{children}</Dialog>\n\t</AriaPopover>\n);\n\nexport { Popover, PopoverTrigger };\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/ui/popover.tsx"
     }
   ],
   "tailwind": {
