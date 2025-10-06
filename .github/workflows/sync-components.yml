@@ -42,8 +42,8 @@ jobs:
         
       - name: Check for registry drift
         run: |
-          # Check only registry.json and templates, exclude build-info.json (which changes every build)
-          if git diff --quiet web/public/registry.json web/public/templates/ web/public/tailwind.css; then
+          # Check registry.json and generated shadcn registry files
+          if git diff --quiet packages/components/registry.json web/public/r/; then
             echo "✅ Registry is in sync"
           else
             echo "❌ Registry out of sync! Generated files differ from committed files."
@@ -52,10 +52,10 @@ jobs:
             echo "  pnpm --filter @baselayer/components build"
             echo ""
             echo "Changed files:"
-            git diff --name-only web/public/registry.json web/public/templates/ web/public/tailwind.css
+            git diff --name-only packages/components/registry.json web/public/r/
             echo ""
             echo "Diff:"
-            git diff web/public/registry.json web/public/templates/ web/public/tailwind.css
+            git diff packages/components/registry.json web/public/r/
             exit 1
           fi
 

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "switch",
+  "author": "BaseLayer",
+  "description": "A switch allows a user to turn a setting on or off.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/switch/switch.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tSwitch as AriaSwitch,\n\ttype SwitchProps as AriaSwitchProps,\n\tLabel,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst switchStyles = tv({\n\tslots: {\n\t\troot: \"group flex items-center gap-2 transition-none duration-200\",\n\t\tindicator:\n\t\t\t\"h-6 w-10 cursor-pointer rounded-xl bg-secondary duration-200 before:mx-[3px] before:mt-[3px] before:block before:size-4.5 before:rounded-2xl before:bg-surface before:transition-all data-[selected]:bg-primary group-data-[selected]:bg-primary group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-focus group-data-[focus-visible]:ring-offset-2 group-data-[focus-visible]:ring-offset-surface group-data-[selected]:before:translate-x-4\",\n\t\tlabel: \"font-semibold text-fg text-sm\",\n\t},\t\n});\n\nconst styles = switchStyles();\n\ninterface SwitchProps extends AriaSwitchProps {\n\tchildren?: ReactNode;\n\tclassName?: string;\n}\n\n const Switch = ({ className, children, ...restProps }: SwitchProps) => (\n\t<AriaSwitch className={styles.root({ className })} {...restProps}>\n\t\t<div className={styles.indicator()} />\n\t\t<Label className={styles.label()}> {children}</Label>\n\t</AriaSwitch>\n);\n\nexport { Switch };\nexport type { SwitchProps };",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "form",
+      "interactive",
+      "toggle"
+    ]
+  },
+  "categories": [
+    "forms"
+  ]
+}

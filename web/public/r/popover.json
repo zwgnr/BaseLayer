@@ -1,0 +1,94 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "popover",
+  "author": "BaseLayer",
+  "description": "A popover is an overlay element positioned relative to a trigger.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/popover/popover.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tDialogTrigger as AriaDialogTrigger,\n\tPopover as AriaPopover,\n\ttype PopoverProps as AriaPopoverProps,\n\tDialog,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nexport const popover = tv({\n\tbase: \"data-[entering]:fade-in data-[exiting]:fade-out m-1 max-w-lg rounded-2xl border border-border/25 bg-surface p-2 text-fg shadow-lg outline-none data-[entering]:animate-in data-[exiting]:animate-out\",\n});\n\ninterface DialogProps extends Omit<AriaPopoverProps, \"className\" | \"children\"> {\n\tchildren: ReactNode;\n\tclassName?: string;\n}\n\nconst PopoverTrigger = AriaDialogTrigger;\n\nconst Popover = ({ children, className, ...props }: DialogProps) => (\n\t<AriaPopover className={popover({ className })} {...props}>\n\t\t<Dialog className=\"outline-none\">{children}</Dialog>\n\t</AriaPopover>\n);\n\nexport { Popover, PopoverTrigger };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "overlay",
+      "interactive"
+    ]
+  },
+  "categories": [
+    "overlays"
+  ]
+}

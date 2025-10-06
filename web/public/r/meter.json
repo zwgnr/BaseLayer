@@ -1,0 +1,94 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter",
+  "type": "registry:ui",
+  "title": "meter",
+  "author": "BaseLayer",
+  "description": "A meter represents a quantity within a known range, or a fractional value.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/meter/meter.tsx",
+      "content": "\"use client\";\n\nimport {\n\tMeter as AriaMeter,\n\ttype MeterProps as AriaMeterProps,\n\tLabel,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst bar = tv({\n\tbase: \"h-4 overflow-hidden rounded-2xl bg-surface-2\",\n});\n\ninterface MeterProps extends Omit<AriaMeterProps, \"className\"> {\n\tlabel?: string;\n\tclassName?: string;\n}\n\nconst Meter = ({ label, className, ...props }: MeterProps) => (\n\t<AriaMeter className=\"flex w-56 flex-col gap-2\" {...props}>\n\t\t{({ percentage, valueText }) => (\n\t\t\t<>\n\t\t\t\t<div className=\"flex justify-between\">\n\t\t\t\t\t{label && <Label className=\"text-primary text-sm\">{label}</Label>}\n\t\t\t\t\t<span className=\"value text-primary text-sm\">{valueText}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className={bar({ className })}>\n\t\t\t\t\t<div\n\t\t\t\t\t\tclassName=\"h-full bg-primary\"\n\t\t\t\t\t\tstyle={{ width: `${percentage}%` }}\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t</>\n\t\t)}\n\t</AriaMeter>\n);\n\nexport { Meter };\nexport type { MeterProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "data-display",
+      "progress"
+    ]
+  },
+  "categories": [
+    "data-display"
+  ]
+}

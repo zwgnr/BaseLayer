@@ -1,0 +1,95 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "combobox",
+  "author": "BaseLayer",
+  "description": "A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/combobox/combobox.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tComboBox as AriaComboBox,\n\ttype ComboBoxProps as AriaComboBoxProps,\n\tButton,\n\tFieldError,\n\tInput,\n\tLabel,\n\tListBox,\n\tListBoxItem,\n\ttype ListBoxItemProps,\n\tPopover,\n\tText,\n\ttype ValidationResult,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nimport { CheckIcon, ChevronsUpDown } from \"lucide-react\";\n\nconst combobox = tv({\n\tslots: {\n\t\troot: \"group max-h-inherit w-full overflow-auto p-1 outline-none\",\n\t\tinput:\n\t\t\t\"w-full rounded-lg border border-border bg-surface px-4 py-1.5 align-middle font-semibold text-fg outline-none ring-fg transition-all group-data-[focused]:border-transparent group-data-[focused]:bg-surface group-data-[focused]:ring-2\",\n\t\tbutton:\n\t\t\t\"absolute right-2 flex appearance-none items-center justify-center rounded-full border-0 outline-none ring-focus ring-offset-2 ring-offset-surface data-[focus-visible]:ring-2\",\n\t\tpopover:\n\t\t\t\"w-[var(--trigger-width)] rounded-xl border border-border/25 bg-surface p-1 text-fg shadow-lg outline-none\",\n\t\titem: \"relative m-1 flex cursor-default flex-col rounded-lg p-2 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-secondary data-[disabled]:text-fg-disabled\",\n\t},\n});\n\nconst styles = combobox();\n\ninterface ComboBoxProps<T extends ListBoxItemProps>\n\textends Omit<AriaComboBoxProps<T>, \"className\"> {\n\tclassName?: string;\n\tlabel?: string;\n\tdescription?: string;\n\terrorMessage?: string | ((validation: ValidationResult) => string);\n}\n\nconst ComboBox = <T extends ListBoxItemProps>({\n\tlabel,\n\tclassName,\n\tdescription,\n\terrorMessage,\n\tchildren,\n\t...props\n}: ComboBoxProps<T>) => (\n\t<AriaComboBox\n\t\t{...props}\n\t\tclassName={styles.root({ className })}\n\t>\n\t\t{label && <Label className=\"text-sm\">{label}</Label>}\n\t\t<div className=\"relative flex w-full items-center rounded-2xl bg-surface\">\n\t\t\t<Input className={styles.input()} />\n\t\t\t<Button className={styles.button()}>\n\t\t\t\t<ChevronsUpDown className=\"size-5 text-fg-muted group-data-[focused]:text-fg\" />\n\t\t\t</Button>\n\t\t</div>\n\t\t{description && (\n\t\t\t<Text className=\"text-fg-muted text-sm\" slot=\"description\">\n\t\t\t\t{description}\n\t\t\t</Text>\n\t\t)}\n\t\t<FieldError className=\"text-danger text-sm\">{errorMessage}</FieldError>\n\t\t<Popover className={styles.popover()}>\n\t\t\t<ListBox className=\"max-h-56 overflow-y-auto\">{children}</ListBox>\n\t\t</Popover>\n\t</AriaComboBox>\n);\n\ninterface ComboBoxItemProps\n\textends Omit<ListBoxItemProps, \"className\" | \"children\"> {\n\tchildren: ReactNode;\n\tclassName?: string;\n}\n\nconst ComboBoxItem = ({ className, ...props }: ComboBoxItemProps) => (\n\t<ListBoxItem {...props} className={styles.item({ className })}>\n\t\t{({ isSelected }) => (\n\t\t\t<div className=\"flex items-center justify-between gap-2\">\n\t\t\t\t<span>{props.children}</span>\n\t\t\t\t{isSelected && <CheckIcon className=\"size-4\" />}\n\t\t\t</div>\n\t\t)}\n\t</ListBoxItem>\n);\n\nexport { ComboBox, ComboBoxItem };\nexport type { ComboBoxProps, ListBoxItemProps as ComboBoxItemProps };",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "form",
+      "interactive",
+      "picker"
+    ]
+  },
+  "categories": [
+    "forms"
+  ]
+}

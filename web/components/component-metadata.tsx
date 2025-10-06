@@ -1,6 +1,7 @@
 import { Badge } from "@baselayer/components";
 
-import { getRegistry } from "../lib/component-data";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 interface ComponentMetadataProps {
 	componentId: string;
@@ -9,7 +10,17 @@ interface ComponentMetadataProps {
 	showCategory?: boolean;
 	showStatus?: boolean;
 	showTags?: boolean;
-	showVersion?: boolean;
+}
+
+interface RegistryItem {
+	name: string;
+	title?: string;
+	description?: string;
+	categories?: string[];
+	meta?: {
+		status?: string;
+		tags?: string[];
+	};
 }
 
 export async function ComponentMetadata({
@@ -19,38 +30,41 @@ export async function ComponentMetadata({
 	showCategory = false,
 	showStatus = false,
 	showTags = false,
-	showVersion = false,
 }: ComponentMetadataProps) {
-	const registry = await getRegistry();
-	const component = registry.components.find(
-		(c) => c.id === componentId.toLowerCase(),
+	// Read from shadcn registry for metadata
+	const shadcnRegistryPath = join(process.cwd(), "public/r/index.json");
+	const shadcnRegistryContent = readFileSync(shadcnRegistryPath, "utf8");
+	const shadcnRegistry = JSON.parse(shadcnRegistryContent);
+
+	const item = shadcnRegistry.items?.find(
+		(i: RegistryItem) => i.name === componentId,
 	);
-	if (!component) {
+	if (!item) {
 		return null;
 	}
 
-	const { meta } = component;
+	const { title, description, categories, meta } = item;
 
 	return (
 		<div className="not-prose flex flex-col">
-			{showTitle && (
+			{showTitle && title && (
 				<h1 className="font-bold text-3xl capitalize tracking-tight">
-					{meta.name}
+					{title}
 				</h1>
 			)}
 
-			{showDescription && (
-				<p className="-mt-4 text-muted-foreground">{meta.description}</p>
+			{showDescription && description && (
+				<p className="-mt-4 text-muted-foreground">{description}</p>
 			)}
 
 			<div className="flex flex-wrap items-center gap-2">
-				{showCategory && (
+				{showCategory && categories && categories.length > 0 && (
 					<Badge variant="neutral" className="capitalize">
-						{meta.category}
+						{categories[0]}
 					</Badge>
 				)}
 
-				{showStatus && (
+				{showStatus && meta?.status && (
 					<Badge
 						variant={
 							meta.status === "stable"
@@ -68,6 +82,8 @@ export async function ComponentMetadata({
 				)}
 
 				{showTags &&
+					meta?.tags &&
+					meta.tags.length > 0 &&
 					meta.tags.map((tag: string) => (
 						<Badge key={tag} variant="neutral" className="text-xs">
 							{tag}

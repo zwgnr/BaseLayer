@@ -130,14 +130,14 @@ export default function Home() {
 											You Own Your Code
 										</h3>
 										<p className="text-fg-muted text-sm">
-											No dependencies, just code
+											shadcn CLI compatible
 										</p>
 									</div>
 								</div>
 								<p className="text-fg-muted leading-relaxed">
-									Not a library or dependency. Copy the code you need and make
-									it yours. Modify, extend, and customize without restrictions
-									or version lock-in.
+									Use the familiar shadcn CLI workflow to add components directly
+									to your codebase. No library dependencies—just code you own,
+									modify, and customize without restrictions.
 								</p>
 							</div>
 
@@ -148,15 +148,16 @@ export default function Home() {
 										<Server className="h-7 w-7 text-primary" />
 									</div>
 									<div>
-										<h3 className="font-bold text-fg text-xl">MCP</h3>
+										<h3 className="font-bold text-fg text-xl">shadcn MCP</h3>
 										<p className="text-fg-muted text-sm">
-											Model Context Protocol Server
+											Built-in Cursor support
 										</p>
 									</div>
 								</div>
 								<p className="text-fg-muted leading-relaxed">
-									BaseLayer has an MCP server ready to use with your favorite AI
-									tools like Cursor.
+									Works seamlessly with AI assistants via the shadcn MCP server.
+									Just ask Cursor or Claude to add BaseLayer components—no setup
+									required.
 								</p>
 							</div>
 

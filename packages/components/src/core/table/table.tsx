@@ -19,8 +19,8 @@ import { tv } from "tailwind-variants";
 
 import { Menu } from "lucide-react";
 
-import { Button } from "../button/button";
-import { Checkbox } from "../checkbox/checkbox";
+import { Button } from "@/components/ui/button/button";
+import { Checkbox } from "@/components/ui/checkbox/checkbox";
 
 const table = tv({
 	slots: {

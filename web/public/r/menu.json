@@ -1,0 +1,94 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu",
+  "type": "registry:ui",
+  "title": "menu",
+  "author": "BaseLayer",
+  "description": "A menu displays a list of actions or options that a user can choose.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/menu/menu.tsx",
+      "content": "\"use client\";\n\nimport type { HTMLAttributes } from \"react\";\n\nimport {\n\tHeader as AriaHeader,\n\tMenu as AriaMenu,\n\tMenuItem as AriaMenuItem,\n\tMenuSection as AriaMenuSection,\n\tMenuTrigger as AriaMenuTrigger,\n\ttype MenuItemProps,\n\ttype MenuProps,\n\tPopover,\n\tSeparator,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nexport const menu = tv({\n\tslots: {\n\t\tmenuPopover:\n\t\t\t\"data-[entering]:fade-in data-[exiting]:fade-out overflow-auto rounded-2xl border border-border/25 bg-surface shadow-xl data-[entering]:animate-in data-[exiting]:animate-out\",\n\t\theader: \"p-2 font-semibold\",\n\t\tcontent: \"flex h-fit min-w-56 flex-col gap-2 p-3 outline-none\",\n\t\titem: \"relative flex cursor-default justify-between rounded-lg p-3 font-semibold outline-none data-[disabled]:cursor-not-allowed data-[focused]:bg-secondary data-[disabled]:text-fg-disabled\",\n\t\tseparator: \"h-[1px] bg-border\",\n\t},\n});\n\nconst { menuPopover, content, header, item, separator } = menu();\n\nconst MenuTrigger = AriaMenuTrigger;\nconst MenuSection = AriaMenuSection;\n\nconst MenuContent = <T extends object>({\n\tchildren,\n\tclassName,\n\t...props\n}: MenuProps<T> & { className?: string }) => (\n\t<Popover className={menuPopover()}>\n\t\t<AriaMenu {...props} className={content({ className })}>\n\t\t\t{children}\n\t\t</AriaMenu>\n\t</Popover>\n);\n\nconst MenuItem = ({\n\tchildren,\n\tclassName,\n\t...props\n}: MenuItemProps & { className?: string }) => (\n\t<AriaMenuItem {...props} className={item({ className })}>\n\t\t{children}\n\t</AriaMenuItem>\n);\n\nconst MenuHeader = ({\n\tchildren,\n\tclassName,\n\t...props\n}: HTMLAttributes<HTMLElement> & { className?: string }) => (\n\t<AriaHeader {...props} className={header({ className })}>\n\t\t{children}\n\t</AriaHeader>\n);\n\nconst MenuSeperator = ({\n\tclassName,\n\t...props\n}: HTMLAttributes<HTMLElement> & { className?: string }) => (\n\t<Separator {...props} className={separator({ className })} />\n);\n\nexport {\n\tMenuContent,\n\tMenuHeader,\n\tMenuItem,\n\tMenuSeperator,\n\tMenuTrigger,\n\tMenuSection,\n};\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "interactive",
+      "navigation"
+    ]
+  },
+  "categories": [
+    "pickers"
+  ]
+}

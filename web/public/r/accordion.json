@@ -1,0 +1,96 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "title": "accordion",
+  "author": "BaseLayer",
+  "description": "An accordion allows users to toggle the display of sections of content. Each accordion consists of a header with a title and content area.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/accordion/accordion.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tButton,\n\tDisclosure,\n\tDisclosureGroup,\n\ttype DisclosureGroupProps,\n\tDisclosurePanel,\n\ttype DisclosureProps,\n\tHeading,\n} from \"react-aria-components\";\nimport { tv, type VariantProps } from \"tailwind-variants\";\n\nimport { Minus, Plus } from \"lucide-react\";\n\nconst accordion = tv({\n\tslots: {\n\t\troot: \"group w-full\",\n\t\tgroup: \"flex flex-col gap-3\",\n\t\tbutton:\n\t\t\t\"flex w-full items-center justify-between gap-6 rounded-2xl border border-border bg-surface-2 p-4 data-[focus-visible]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-focus data-[focus-visible]:ring-offset-2 data-[focus-visible]:ring-offset-surface group-data-[expanded]:rounded-b-none group-data-[expanded]:border-b-0\",\n\t\ticon: \"size-4 shrink-0 fill-none transition-transform duration-200\",\n\t\tpanel:\n\t\t\t\"rounded-b-2xl border-border bg-surface-2 px-4 text-muted-foreground text-sm group-data-[expanded]:border-x group-data-[expanded]:border-b group-data-[expanded]:pb-4\",\n\t},\n});\n\nconst styles = accordion();\n\ntype AccordionVariantProps = VariantProps<typeof accordion>;\n\ninterface AccordionProps\n\textends AccordionVariantProps,\n\t\tOmit<DisclosureProps, \"children\"> {\n\tclassName?: string;\n\ttitle?: string;\n\tchildren?: ReactNode;\n}\n\nconst Accordion = ({\n\tclassName,\n\ttitle,\n\tchildren,\n\t...props\n}: AccordionProps) => {\n\treturn (\n\t\t<Disclosure className={styles.root({ className })} {...props}>\n\t\t\t{({ isExpanded }) => (\n\t\t\t\t<>\n\t\t\t\t\t<Heading>\n\t\t\t\t\t\t<Button slot=\"trigger\" className={styles.button()}>\n\t\t\t\t\t\t\t<span className=\"font-bold\">{title}</span>\n\t\t\t\t\t\t\t{isExpanded ? (\n\t\t\t\t\t\t\t\t<Minus className={styles.icon()} />\n\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t<Plus className={styles.icon()} />\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</Button>\n\t\t\t\t\t</Heading>\n\t\t\t\t\t<DisclosurePanel className={styles.panel()}>\n\t\t\t\t\t\t{children}\n\t\t\t\t\t</DisclosurePanel>\n\t\t\t\t</>\n\t\t\t)}\n\t\t</Disclosure>\n\t);\n};\n\ninterface AccordionGroupProps extends DisclosureGroupProps {\n\tclassName?: string;\n\tchildren: ReactNode;\n}\n\nconst AccordionGroup = ({\n\tclassName,\n\tchildren,\n\t...props\n}: AccordionGroupProps) => (\n\t<DisclosureGroup {...props} className={styles.group({ className })}>\n\t\t{children}\n\t</DisclosureGroup>\n);\n\nexport { Accordion, AccordionGroup };\nexport type { AccordionProps, AccordionGroupProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "disclosure",
+      "collapsible",
+      "expandable",
+      "content"
+    ]
+  },
+  "categories": [
+    "layout"
+  ]
+}

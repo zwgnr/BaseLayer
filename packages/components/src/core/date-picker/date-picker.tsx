@@ -22,7 +22,7 @@ import { tv } from "tailwind-variants";
 
 import { ChevronDown } from "lucide-react";
 
-import { Calendar, RangeCalendar } from "../calendar/calendar";
+import { Calendar, RangeCalendar } from "@/components/ui/calendar/calendar";
 
 const baseStyles = tv({
 	slots: {

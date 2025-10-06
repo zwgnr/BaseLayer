@@ -1,0 +1,95 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "type": "registry:ui",
+  "title": "toggle",
+  "author": "BaseLayer",
+  "description": "A toggle button allows a user to toggle a selection on or off, for example switching between two states or modes.",
+  "dependencies": [
+    "react-aria-components",
+    "tailwind-variants",
+    "lucide-react",
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "src/core/toggle/toggle.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tToggleButton,\n\tToggleButtonGroup,\n\ttype ToggleButtonGroupProps,\n\ttype ToggleButtonProps,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst toggle = tv({\n\tbase: \"inline-flex appearance-none items-center justify-center rounded-full bg-surface-2 px-4 py-1 font-medium outline-none ring-focus ring-offset-2 ring-offset-surface transition-transform duration-100 disabled:pointer-events-none disabled:opacity-50 data-[selected]:bg-primary data-[selected]:text-primary-fg data-[focus-visible]:ring-2\",\n});\n\nconst toggleGroup = tv({\n\tbase: \"flex min-h-11 gap-1 rounded-full border border-border bg-surface-2 p-1\",\n});\n\ninterface ToggleProps extends Omit<ToggleButtonProps, \"className\"> {\n\tclassName?: string;\n}\n\nconst Toggle = ({ className, children, ...props }: ToggleProps) => (\n\t<ToggleButton className={toggle({ className })} {...props}>\n\t\t{children}\n\t</ToggleButton>\n);\n\ninterface ToggleGroupProps extends ToggleButtonGroupProps {\n\tclassName?: string;\n\tchildren: ReactNode;\n}\n\nconst ToggleGroup = ({ className, children, ...props }: ToggleGroupProps) => (\n\t<ToggleButtonGroup {...props} className={toggleGroup({ className })}>\n\t\t{children}\n\t</ToggleButtonGroup>\n);\n\nexport { Toggle, ToggleGroup };\nexport type { ToggleProps, ToggleGroupProps };\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "content": [
+        "./components/**/*.{ts,tsx}"
+      ],
+      "theme": {
+        "extend": {}
+      }
+    }
+  },
+  "cssVars": {
+    "theme": {
+      "--color-surface": "var(--surface)",
+      "--color-surface-2": "var(--surface-2)",
+      "--color-fg": "var(--fg)",
+      "--color-fg-muted": "var(--fg-muted)",
+      "--color-fg-disabled": "var(--fg-disabled)",
+      "--color-fg-inverse": "var(--fg-inverse)",
+      "--color-border": "var(--border)",
+      "--color-focus": "var(--focus)",
+      "--color-primary": "var(--primary)",
+      "--color-primary-fg": "var(--primary-fg)",
+      "--color-secondary": "var(--secondary)",
+      "--color-secondary-fg": "var(--secondary-fg)",
+      "--color-danger": "var(--danger)",
+      "--color-danger-fg": "var(--danger-fg)"
+    },
+    "light": {
+      "--surface": "oklch(98.5% 0 0)",
+      "--surface-2": "oklch(97% 0 0)",
+      "--fg": "oklch(14.5% 0 0)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(70.8% 0 0)",
+      "--border": "oklch(87% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(14.5% 0 0)",
+      "--primary-fg": "oklch(98.5% 0 0)",
+      "--secondary": "oklch(92.2% 0 0)",
+      "--secondary-fg": "oklch(14.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "#ffffff"
+    },
+    "dark": {
+      "--surface": "oklch(14.5% 0 0)",
+      "--surface-2": "oklch(20.5% 0 0)",
+      "--fg": "oklch(98.5% 0.001 106.423)",
+      "--fg-muted": "oklch(55.6% 0 0)",
+      "--fg-inverse": "oklch(98.5% 0 0)",
+      "--fg-disabled": "oklch(37.1% 0 0)",
+      "--border": "oklch(37.1% 0 0)",
+      "--focus": "oklch(68.5% 0.169 237.323)",
+      "--primary": "oklch(98.5% 0 0)",
+      "--primary-fg": "oklch(14.5% 0 0)",
+      "--secondary": "oklch(26.9% 0 0)",
+      "--secondary-fg": "oklch(98.5% 0 0)",
+      "--danger": "oklch(63.7% 0.237 25.331)",
+      "--danger-fg": "oklch(98.5% 0 0)"
+    }
+  },
+  "css": {
+    "@import \"tw-animate-css\"": {}
+  },
+  "meta": {
+    "status": "stable",
+    "tags": [
+      "form",
+      "interactive",
+      "toggle"
+    ]
+  },
+  "categories": [
+    "forms"
+  ]
+}

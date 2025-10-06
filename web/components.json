@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "@baselayer",
+  "homepage": "https://baselayer.dev",
+  "baseUrl": "https://baselayer.dev",
+  "registryUrl": "https://baselayer.dev/r",
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui"
+  },
+  "registries": {
+    "@baselayer": "https://baselayer.dev/r/{name}.json"
+  },
+  "rsc": {
+    "singleComponent": false
+  },
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  }
+}
