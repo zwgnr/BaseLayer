@@ -14,7 +14,7 @@ export async function getComponentSource(name: string): Promise<string> {
 
 		// Find the component in the shadcn registry
 		const shadcnComponent = shadcnRegistry.items?.find(
-			(item: RegistryItem) => item.name === name
+			(item: RegistryItem) => item.name === name,
 		);
 
 		if (shadcnComponent?.files?.[0]?.content) {
@@ -36,10 +36,10 @@ export async function getExampleSource(name: string): Promise<string> {
 		const exampleFilePath = join(examplesDir, `${name}.tsx`);
 		let content = readFileSync(exampleFilePath, "utf8");
 
-		// Transform the import path for display 
+		// Transform the import path for display
 		content = content.replace(
 			/from ["']\.\.\/core\/([^/]+)\/\1["']/g,
-			'from "@components/base/$1"',
+			'from "@/components/ui/$1"',
 		);
 
 		return content;
