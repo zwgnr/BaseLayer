@@ -15,7 +15,8 @@
     {
       "path": "src/core/switch/switch.tsx",
       "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tSwitch as AriaSwitch,\n\ttype SwitchProps as AriaSwitchProps,\n\tLabel,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst switchStyles = tv({\n\tslots: {\n\t\troot: \"group flex items-center gap-2 transition-none duration-200\",\n\t\tindicator:\n\t\t\t\"h-6 w-10 cursor-pointer rounded-xl bg-secondary duration-200 before:mx-[3px] before:mt-[3px] before:block before:size-4.5 before:rounded-2xl before:bg-surface before:transition-all data-[selected]:bg-primary group-data-[selected]:bg-primary group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-focus group-data-[focus-visible]:ring-offset-2 group-data-[focus-visible]:ring-offset-surface group-data-[selected]:before:translate-x-4\",\n\t\tlabel: \"font-semibold text-fg text-sm\",\n\t},\t\n});\n\nconst styles = switchStyles();\n\ninterface SwitchProps extends AriaSwitchProps {\n\tchildren?: ReactNode;\n\tclassName?: string;\n}\n\n const Switch = ({ className, children, ...restProps }: SwitchProps) => (\n\t<AriaSwitch className={styles.root({ className })} {...restProps}>\n\t\t<div className={styles.indicator()} />\n\t\t<Label className={styles.label()}> {children}</Label>\n\t</AriaSwitch>\n);\n\nexport { Switch };\nexport type { SwitchProps };",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": "components/ui/switch.tsx"
     }
   ],
   "tailwind": {

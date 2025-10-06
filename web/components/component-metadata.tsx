@@ -32,7 +32,7 @@ export async function ComponentMetadata({
 	showTags = false,
 }: ComponentMetadataProps) {
 	// Read from shadcn registry for metadata
-	const shadcnRegistryPath = join(process.cwd(), "public/r/index.json");
+	const shadcnRegistryPath = join(process.cwd(), "public/r/registry.json");
 	const shadcnRegistryContent = readFileSync(shadcnRegistryPath, "utf8");
 	const shadcnRegistry = JSON.parse(shadcnRegistryContent);
 
