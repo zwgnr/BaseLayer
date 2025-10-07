@@ -1,5 +1,3 @@
-import type { RegistryItem } from "@baselayer/registry";
-
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -7,18 +5,12 @@ const examplesDir = join(process.cwd(), "../packages/components/src/examples");
 
 export async function getComponentSource(name: string): Promise<string> {
 	try {
-		// Read the shadcn registry
-		const shadcnRegistryPath = join(process.cwd(), "public/r/registry.json");
-		const shadcnRegistryContent = readFileSync(shadcnRegistryPath, "utf8");
-		const shadcnRegistry = JSON.parse(shadcnRegistryContent);
+		const componentPath = join(process.cwd(), `public/r/${name}.json`);
+		const componentContent = readFileSync(componentPath, "utf8");
+		const component = JSON.parse(componentContent);
 
-		// Find the component in the shadcn registry
-		const shadcnComponent = shadcnRegistry.items?.find(
-			(item: RegistryItem) => item.name === name,
-		);
-
-		if (shadcnComponent?.files?.[0]?.content) {
-			return shadcnComponent.files[0].content;
+		if (component?.files?.[0]?.content) {
+			return component.files[0].content;
 		}
 
 		return `// Component '${name}' not found in registry`;
