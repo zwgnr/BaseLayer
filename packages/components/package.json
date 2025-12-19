@@ -1,6 +1,6 @@
 {
 	"name": "@baselayer/components",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"private": true,
 	"type": "module",
 	"main": "./src/index.ts",
@@ -17,14 +17,14 @@
 	"dependencies": {
 		"@baselayer/registry": "workspace:*",
 		"lucide-react": "^0.525.0",
-		"react": "^19.1.0",
+		"react": "^19.2.3",
 		"react-aria-components": "catalog:",
 		"tailwind-variants": "catalog:",
 		"zod": "^3.25.67"
 	},
 	"devDependencies": {
 		"@types/node": "catalog:",
-		"@types/react": "^19.1.8",
+		"@types/react": "^19.2.7",
 		"fast-glob": "^3.3.2",
 		"ts-morph": "^26.0.0",
 		"tsx": "^4.20.3",
