@@ -2,18 +2,12 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const examplesDir = join(process.cwd(), "../packages/components/src/examples");
+const componentsSourceDir = join(process.cwd(), "../packages/components/src/core");
 
 export async function getComponentSource(name: string): Promise<string> {
 	try {
-		const componentPath = join(process.cwd(), `public/r/${name}.json`);
-		const componentContent = readFileSync(componentPath, "utf8");
-		const component = JSON.parse(componentContent);
-
-		if (component?.files?.[0]?.content) {
-			return component.files[0].content;
-		}
-
-		return `// Component '${name}' not found in registry`;
+		const sourceFilePath = join(componentsSourceDir, name, `${name}.tsx`);
+		return readFileSync(sourceFilePath, "utf8");
 	} catch (error) {
 		console.error(`Error loading component ${name}:`, error);
 		return `// Error loading component: ${

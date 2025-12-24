@@ -14,7 +14,6 @@
   "files": [
     {
       "path": "src/core/tooltip/tooltip.tsx",
-      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport {\n\tTooltip as AriaTooltip,\n\ttype TooltipProps as AriaTooltipProps,\n\tTooltipTrigger as AriaTooltipTrigger,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst tooltip = tv({\n\tbase: \"[&[data-entering]]:fade-in [&[data-exiting]]:fade-out m-1 max-w-sm rounded-full border border-border bg-surface px-4 py-2 text-fg shadow-xl outline-none [&[data-entering]]:animate-fade-in [&[data-exiting]]:animate-fade-out\",\n});\n\nconst TooltipTrigger = AriaTooltipTrigger;\n\ninterface TooltipProps extends Omit<AriaTooltipProps, \"children\"> {\n\tclassName?: string;\n\tchildren: ReactNode;\n}\n\nconst Tooltip = ({ children, className, ...props }: TooltipProps) => (\n\t<AriaTooltip className={tooltip({ className })} {...props}>\n\t\t{children}\n\t</AriaTooltip>\n);\n\nexport { Tooltip, TooltipTrigger };\n",
       "type": "registry:component",
       "target": "components/ui/tooltip.tsx"
     }

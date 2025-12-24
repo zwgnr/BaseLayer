@@ -14,7 +14,6 @@
   "files": [
     {
       "path": "src/core/breadcrumbs/breadcrumbs.tsx",
-      "content": "\"use client\";\n\nimport {\n\tBreadcrumbs as AriaBreadcrumbs,\n\ttype BreadcrumbsProps as AriaBreadcrumbsProps,\n\tBreadcrumb,\n\ttype BreadcrumbProps,\n\tLink,\n\ttype LinkProps,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nconst breadcrumbs = tv({\n\tslots: {\n\t\troot: \"m-0 flex list-none items-center gap-2 p-0 font-md\",\n\t\tlink: \"relative cursor-pointer rounded-md text-fg outline-none ring-focus data-[hovered]:underline data-[focus-visible]:ring-2 [&[aria-current]]:font-extrabold [&[aria-current]]:text-fg\",\n\t\titem: \"flex items-center gap-2\",\n\t},\n});\n\nconst styles = breadcrumbs();\n\nconst Breadcrumbs = <T extends object>({\n\tchildren,\n\tclassName,\n\t...props\n}: AriaBreadcrumbsProps<T> & { className?: string }) => (\n\t<AriaBreadcrumbs className={styles.root({ className })} {...props}>\n\t\t{children}\n\t</AriaBreadcrumbs>\n);\n\nconst BreadcrumbsLink = ({\n\tchildren,\n\tclassName,\n\t...props\n}: LinkProps & { className?: string }) => (\n\t<Link className={styles.link({ className })} {...props}>\n\t\t{children}\n\t</Link>\n);\n\nconst BreadcrumbsItem = ({\n\tchildren,\n\tclassName,\n\t...props\n}: BreadcrumbProps & { className?: string }) => (\n\t<Breadcrumb className={styles.item({ className })} {...props}>\n\t\t{children}\n\t</Breadcrumb>\n);\n\nexport { BreadcrumbsItem, BreadcrumbsLink, Breadcrumbs };",
       "type": "registry:component",
       "target": "components/ui/breadcrumbs.tsx"
     }
