@@ -14,7 +14,6 @@
   "files": [
     {
       "path": "src/core/modal/modal.tsx",
-      "content": "\"use client\";\n\nimport {\n\tDialog as AriaDialog,\n\tDialogTrigger as AriaDialogTrigger,\n\tModal as AriaModal,\n\ttype DialogProps,\n\tModalOverlay,\n\ttype ModalOverlayProps,\n} from \"react-aria-components\";\nimport { tv } from \"tailwind-variants\";\n\nexport const modal = tv({\n\tslots: {\n\t\tdialog: \"flex w-full flex-col gap-6 outline-none\",\n\t\tmodalStyles:\n\t\t\t\"fade-in w-full rounded-2xl bg-surface p-6 text-fg outline-none data-[entering]:animate-in md:w-md\",\n\t},\n});\n\nconst styles = modal();\n\ninterface ModalProps extends Omit<ModalOverlayProps, \"className\"> {\n\tclassName?: string;\n}\n\nconst Modal = ({ children, className, ...props }: ModalProps) => (\n\t<ModalOverlay\n\t\t{...props}\n\t\tclassName=\"fade-in fade-out fixed top-0 left-0 z-50 flex h-[var(--visual-viewport-height)] w-screen items-center justify-center bg-zinc-500/50 data-[entering]:animate-in data-[exiting]:animate-out\"\n\t>\n\t\t<AriaModal className={styles.modalStyles({ className })}>\n\t\t\t{children}\n\t\t</AriaModal>\n\t</ModalOverlay>\n);\n\nconst Dialog = ({ children, className, ...props }: DialogProps) => (\n\t<AriaDialog {...props} className={styles.dialog({ className })}>\n\t\t{children}\n\t</AriaDialog>\n);\n\nconst ModalTrigger = AriaDialogTrigger;\n\nexport { Modal, Dialog, ModalTrigger };\nexport type { ModalProps, DialogProps };",
       "type": "registry:component",
       "target": "components/ui/modal.tsx"
     }
